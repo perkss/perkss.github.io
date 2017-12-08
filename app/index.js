@@ -7,7 +7,7 @@ alert("I am an alert box!");
 
 class App extends React.Component {
   render () {
-    return <p> Hello React!</p>;
+    return <p> Hello React! This is going to be a great new blog!! </p>;
   }
 }
 
