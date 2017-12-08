@@ -1,21 +1,26 @@
-const path = require("path");
+var webpack = require('webpack');
+var path = require('path');
 
-const PATHS = {
-  app: path.join(__dirname, "app"),
-  build: path.join(__dirname, "build"),
-};
+var BUILD_DIR = path.resolve(__dirname, 'build');
+var APP_DIR = path.resolve(__dirname, 'app');
 
-module.exports = {
-  // Entries have to resolve to files! They rely on Node
-  // convention by default so if a directory contains *index.js*,
-  // it resolves to that.
-  entry: {
-    app: PATHS.app,
-  },
+var config = {
+  entry: APP_DIR + '/index.js',
   output: {
-    path: PATHS.build,
-    filename: "[name].js",
+    path: BUILD_DIR,
+    filename: 'bundle.js'
   },
-  plugins: [
-  ],
+  module : {
+    loaders : [
+      {
+        test : /\.jsx?/,
+        include : APP_DIR,
+        loader : 'babel-loader'
+      }
+    ]
+  }
+
 };
+
+module.exports = config;
+
