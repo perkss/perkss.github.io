@@ -25850,12 +25850,12 @@ var Header = function (_React$Component) {
             _react2.default.createElement(
                'h1',
                null,
-               'Hello, world!'
+               'Egg-Plants Rambling\'s'
             ),
             _react2.default.createElement(
                'p',
                null,
-               'This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.'
+               'Hello and congratulatins on finding this Blog. It will be a treasure chest of technical and mathematical knowledge for all those interested in computer science and programming to learn. Suitable for all but especially for those who like to learn with all the details and solid examples, no more algorithm teachers assumptions. \'What the heck is that sigma notation?\' Build in PROGRESS!'
             ),
             _react2.default.createElement(
                'p',
