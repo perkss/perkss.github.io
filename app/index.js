@@ -3,13 +3,16 @@ import { render } from 'react-dom';
 import component from "./component";
 import Header from './header.jsx';
 import Footer from './footer.jsx';
+import Menu from './menu.jsx';
+import Blog from './blog.jsx';
 
 class App extends React.Component {
   render () {
     return (
 <div>
 <Header />  
-<p>C  Hello React! This is going to be a great new blog!! </p>
+            <Menu />
+            <Blog />
 <Footer />  
 </div>
 );

@@ -5,6 +5,7 @@
   "main": "webpack.config.js",
   "scripts": {
     "start": "webpack-dev-server --env development",
+    "start-watch": "webpack --progress --colors --watch",
     "build": "webpack --env production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -32,6 +33,8 @@
     "webpack-dev-server": "^2.9.7"
   },
   "dependencies": {
-    "react-bootstrap": "^0.31.5"
+    "react-bootstrap": "^0.31.5",
+    "react-router-dom": "^4.2.2",
+    "webpack-watch-server": "^1.2.1"
   }
 }
