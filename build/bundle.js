@@ -31292,7 +31292,7 @@ var Home = function (_React$Component) {
         _react2.default.createElement(
           "p",
           null,
-          " Change Build in PROGRESS!"
+          "Build in PROGRESS!"
         )
       );
     }
