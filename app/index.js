@@ -7,7 +7,7 @@ import Menu from './menu.jsx';
 import Blog from './blog.jsx';
 import "./../css/index.css";
 
-console.log('Testing version 2');
+console.log('Testing version 3');
 class App extends React.Component {
   render () {
     return (
