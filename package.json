@@ -33,6 +33,7 @@
     "react-dom": "^16.2.0",
     "react-katex": "^1.2.0",
     "react-latex": "^1.0.1",
+    "react-syntax-highlighter": "^6.1.1",
     "style-loader": "^0.19.1",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.9.7"

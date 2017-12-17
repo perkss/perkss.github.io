@@ -10,6 +10,7 @@ import Algorithms from "./algorithms.js";
 import MathFundamentals from "./math-fundamentals";
 import MathsForCompSci from "./maths-for-comp-sci.js";
 import CLanguage from "./c-language.js";
+import Clojure from "./clojure.js";
 
 class Main extends Component {
   render() {
@@ -22,7 +23,7 @@ class Main extends Component {
 <li><NavLink to="/MathFundamentals">Math Fundamentals</NavLink></li>
             <li><NavLink to="/MathsForCompSci">Maths for Computer Science</NavLink></li>
             <li><NavLink to="/Algorithms">Algorithms</NavLink></li>
-<li><NavLink to="/contact">Clojure</NavLink></li>
+<li><NavLink to="/clojure">Clojure</NavLink></li>
 <li><NavLink to="/FunctionalProgramming">Functional Programming</NavLink></li>
 <li><NavLink to="/CLanguage">C Language</NavLink></li>
 <li><NavLink to="/contact">Machine Learning</NavLink></li>
@@ -34,6 +35,7 @@ class Main extends Component {
  <Route path="/FunctionalProgramming" component={FunctionalProgramming}/>
             <Route path="/MathFundamentals" component={MathFundamentals}/>
           <Route path="/CLanguage" component={CLanguage}/>
+          <Route path="/Clojure" component={Clojure}/>
         </div>
         </div>
       </HashRouter>
