@@ -10094,7 +10094,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-console.log('Testing version 2');
+console.log('Testing version 3');
 
 var App = function (_React$Component) {
   _inherits(App, _React$Component);
@@ -31287,7 +31287,12 @@ var Home = function (_React$Component) {
         _react2.default.createElement(
           "p",
           null,
-          "Hello and congratulations on finding this Blog. It will be a treasure chest of technical and mathematical knowledge for all those interested in computer science and programming to learn. Suitable for all but especially for those who like to learn with all the details and solid examples, no more algorithm teachers assumptions. 'What the heck is that sigma notation?' Change Build in PROGRESS!"
+          "Hello and congratulations on finding this Blog. It will be a treasure chest of technical and mathematical knowledge for all those interested in computer science and programming to learn. Suitable for all but especially for those who like to learn with all the details and solid examples, no more algorithm teachers assumptions. 'What the heck is that sigma notation?'"
+        ),
+        _react2.default.createElement(
+          "p",
+          null,
+          " Change Build in PROGRESS!"
         )
       );
     }
