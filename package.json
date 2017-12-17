@@ -28,14 +28,19 @@
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.7",
     "html-webpack-plugin": "^2.30.1",
+    "katex": "^0.9.0-alpha2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-katex": "^1.2.0",
     "style-loader": "^0.19.1",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.9.7"
   },
   "dependencies": {
+    "prop-types": "^15.6.0",
     "react-bootstrap": "^0.31.5",
+    "react-formula-beautifier": "^0.2.3",
+    "react-mathjax": "^0.1.1",
     "react-router-dom": "^4.2.2",
     "webpack-watch-server": "^1.2.1"
   }

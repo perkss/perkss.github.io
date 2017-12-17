@@ -1,10 +1,10 @@
 import React, { Component } from "react";
- 
-class Stuff extends React.Component {
+  
+class CLanguage extends React.Component {
   render() {
     return (
       <div>
-        <h2>STUFF</h2>
+        <h2>C Programming</h2>
         <p>Mauris sem velit, vehicula eget sodales vitae,
         rhoncus eget sapien:</p>
         <ol>
@@ -18,5 +18,5 @@ class Stuff extends React.Component {
     );
   }
 }
- 
-export default Stuff
+
+export default CLanguage
