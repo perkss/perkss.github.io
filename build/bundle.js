@@ -26414,7 +26414,7 @@ var Algorithms = function (_React$Component) {
         _react2.default.createElement(
           "h2",
           null,
-          "STUFF"
+          "Algorithms"
         ),
         _react2.default.createElement(
           "p",
