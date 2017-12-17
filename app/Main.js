@@ -19,7 +19,7 @@ class Main extends Component {
          
           <ul className="header">
             <li><NavLink exact to="/">Home</NavLink></li>
-<li><NavLink to="/MathFundamentals">Maths Fundamentals</NavLink></li>
+<li><NavLink to="/MathFundamentals">Math Fundamentals</NavLink></li>
             <li><NavLink to="/MathsForCompSci">Maths for Computer Science</NavLink></li>
             <li><NavLink to="/Algorithms">Algorithms</NavLink></li>
 <li><NavLink to="/contact">Clojure</NavLink></li>
