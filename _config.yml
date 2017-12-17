@@ -12,4 +12,5 @@ tagline: A fun insight into the world of Maths, Computer Science and Programming
 description: egg plant is a fun dude with some great knowledge to share.
 url: http://stanko.github.io
 baseurl: ''
+future: true
 paginate: 5
