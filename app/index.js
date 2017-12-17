@@ -7,6 +7,8 @@ import Menu from './menu.jsx';
 import Blog from './blog.jsx';
 import "./../css/index.css";
 
+console.log('Testing version');
+
 // Check if a new cache is available on page load.
 window.addEventListener('load', function(e) {
 
