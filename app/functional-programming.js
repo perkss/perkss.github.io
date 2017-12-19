@@ -1,12 +1,11 @@
 import React, { Component } from "react";
   
-class FunctionalProgramming extends React.Component {
-  render() {
-    return (
+const FunctionalProgramming = () => 
+  
+     (
       <div>
         <h2>Functional Programming</h2>
-        <p>Mauris sem velit, vehicula eget sodales vitae,
-        rhoncus eget sapien:</p>
+        <p>Using the new React style</p>
         <ol>
           <li>Nulla pulvinar diam</li>
           <li>Facilisis bibendum</li>
@@ -16,7 +15,5 @@ class FunctionalProgramming extends React.Component {
         </ol>
       </div>
     );
-  }
-}
 
 export default FunctionalProgramming

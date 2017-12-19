@@ -5,7 +5,7 @@
   "main": "webpack.config.js",
   "scripts": {
     "start": "webpack-dev-server --env development",
-    "start-watch": "webpack --progress --colors --watch",
+    "start-watch": "webpack-dev-server --progress --colors --watch",
     "build": "webpack --env production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
