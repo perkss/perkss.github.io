@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import MathPrerequisites from './math-fundamentals/math-prerequisites';
 import BiteSizeMath from './math-fundamentals/bitesize-maths';
+import ConcreteMathematics from './math-fundamentals/concrete-mathematics';
 
 const MathFundamentals = ({ match })  => 
   
@@ -21,8 +22,16 @@ const MathFundamentals = ({ match })  =>
             <NavLink to={`${match.url}/BiteSizeMath`}>
           Bitesize Math
        </NavLink>
+           </li>
+               <li>
+        <NavLink to={`${match.url}/MathPrerequisites`}>
+          Math Prerequisites
+        </NavLink>
+           </li>
            <li>
+           <NavLink to={`${match.url}/ConcreteMathematics`}>
            Concrete Mathematics
+           </NavLink>
            <ul>
            <li>
            Recurrent Problems
@@ -45,15 +54,17 @@ const MathFundamentals = ({ match })  =>
          
            <li>
            Generating Functions
+       </li>
+            <li>
+           Discrete Probability
+       </li>
+            <li>
+           Asymptotics
            </li>
            </ul>
            </li>
-           </li>
-            <li>
-        <NavLink to={`${match.url}/MathPrerequisites`}>
-          Math Prerequisites
-        </NavLink>
-           </li>
+    
+        
    </ul>
 
 
@@ -61,7 +72,7 @@ const MathFundamentals = ({ match })  =>
            <Route path={`${match.url}/BiteSizeMath`} component={BiteSizeMath}/>
 
 
-       
+        <Route path={`${match.url}/ConcreteMathematics`} component={ConcreteMathematics}/>
        
              </div>
     );

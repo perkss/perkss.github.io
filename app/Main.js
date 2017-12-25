@@ -18,7 +18,7 @@ class Main extends Component {
        <HashRouter>
         <div>
          
-          <ul className="header">
+          <ul className="header" id="topNav">
             <li><NavLink exact to="/">Home</NavLink></li>
 <li><NavLink to="/MathFundamentals">Math Fundamentals</NavLink></li>
             <li><NavLink to="/MathsForCompSci">Maths for Computer Science</NavLink></li>
@@ -36,11 +36,23 @@ class Main extends Component {
             <Route path="/MathFundamentals" component={MathFundamentals}/>
           <Route path="/CLanguage" component={CLanguage}/>
           <Route path="/Clojure" component={Clojure}/>
-        </div>
+            </div>
+
+
+        
         </div>
       </HashRouter>
     );
   }
+burgerToggle() {
+		let linksEl = document.querySelector('.narrowLinks');
+		if (linksEl.style.display === 'block') {
+			linksEl.style.display = 'none';
+		} else {
+			linksEl.style.display = 'block';
+		}
+	}
+
 }
  
 export default Main;

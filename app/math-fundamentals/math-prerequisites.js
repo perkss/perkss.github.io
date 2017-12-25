@@ -5,11 +5,11 @@ const MathPrerequisites = () => (
 
 
         <div>
-  <h3>Math Prerequisites</h3>
+  <h2>Math Prerequisites</h2>
             <p>I was looking through the course notes for <a href="http://web.stanford.edu/class/cs103/">CS103</a> Mathematical Foundations of Computing and found a greate slide on <a href="http://web.stanford.edu/class/cs103/handouts/020%20Mathematical%20Prerequisites.pdf">mathematical prerequisites</a> for the course. I felt straight away this was a great small sample of the required maths for any maths for computer science or algorithm course in a short form, I still recommend Concrete Mathematics and the Math Preliminaries section in Art of Computer Programming vol1 by Knuth to add a fuller picture. Coming from the UK GCSE Bitesize maths is also great for really basic recap of High School maths.</p>
 
 
-        <h4>Multiplying Polynomials</h4>
+        <h3>Multiplying Polynomials</h3>
 
             <p><Latex>As part of this course polynomical knowledge is expected to be known which may not be the case if students did not have a great maths experience at earlier school years. They come to a specific case $n^2 = (2k)^2$ this is the same as $n^2 = 4k^2$. This is fairly trivial to understand as you take $(2k)\times(2k) = 2\times2$ and $k\times k = 4k^2$.</Latex></p>
 

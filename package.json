@@ -7,6 +7,7 @@
     "start": "webpack-dev-server --env development",
     "start-watch": "webpack-dev-server --progress --colors --watch",
     "build": "webpack --env production",
+    "build-watch": "webpack --progress --colors --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
