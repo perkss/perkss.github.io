@@ -23946,85 +23946,81 @@ var SideBar = function (_Component) {
         _reactRouterDom.HashRouter,
         null,
         _react2.default.createElement(
-          "div",
-          null,
+          _reactBurgerMenu.slide,
+          { className: "bm-menu" },
           _react2.default.createElement(
-            _reactBurgerMenu.slide,
+            "a",
+            null,
+            " ",
+            _react2.default.createElement(
+              _reactRouterDom.NavLink,
+              { exact: true, to: "/" },
+              "Home"
+            )
+          ),
+          _react2.default.createElement(
+            "a",
+            null,
+            " ",
+            _react2.default.createElement(
+              _reactRouterDom.NavLink,
+              { to: "/MathFundamentals" },
+              "Math Fundamentals"
+            )
+          ),
+          _react2.default.createElement(
+            "a",
+            null,
+            " ",
+            _react2.default.createElement(
+              _reactRouterDom.NavLink,
+              { to: "/MathsForCompSci" },
+              "Maths for Computer Science"
+            )
+          ),
+          _react2.default.createElement(
+            "a",
             null,
             _react2.default.createElement(
-              "a",
-              null,
-              " ",
-              _react2.default.createElement(
-                _reactRouterDom.NavLink,
-                { exact: true, to: "/" },
-                "Home"
-              )
-            ),
+              _reactRouterDom.NavLink,
+              { to: "/Algorithms" },
+              "Algorithms"
+            )
+          ),
+          _react2.default.createElement(
+            "a",
+            null,
             _react2.default.createElement(
-              "a",
-              null,
-              " ",
-              _react2.default.createElement(
-                _reactRouterDom.NavLink,
-                { to: "/MathFundamentals" },
-                "Math Fundamentals"
-              )
-            ),
+              _reactRouterDom.NavLink,
+              { to: "/clojure" },
+              "Clojure"
+            )
+          ),
+          _react2.default.createElement(
+            "a",
+            null,
             _react2.default.createElement(
-              "a",
-              null,
-              " ",
-              _react2.default.createElement(
-                _reactRouterDom.NavLink,
-                { to: "/MathsForCompSci" },
-                "Maths for Computer Science"
-              )
-            ),
+              _reactRouterDom.NavLink,
+              { to: "/FunctionalProgramming" },
+              "Functional Programming"
+            )
+          ),
+          _react2.default.createElement(
+            "a",
+            null,
             _react2.default.createElement(
-              "a",
-              null,
-              _react2.default.createElement(
-                _reactRouterDom.NavLink,
-                { to: "/Algorithms" },
-                "Algorithms"
-              )
-            ),
+              _reactRouterDom.NavLink,
+              { to: "/CLanguage" },
+              "C Language"
+            )
+          ),
+          _react2.default.createElement(
+            "a",
+            null,
             _react2.default.createElement(
-              "a",
-              null,
-              _react2.default.createElement(
-                _reactRouterDom.NavLink,
-                { to: "/clojure" },
-                "Clojure"
-              )
-            ),
-            _react2.default.createElement(
-              "a",
-              null,
-              _react2.default.createElement(
-                _reactRouterDom.NavLink,
-                { to: "/FunctionalProgramming" },
-                "Functional Programming"
-              )
-            ),
-            _react2.default.createElement(
-              "a",
-              null,
-              _react2.default.createElement(
-                _reactRouterDom.NavLink,
-                { to: "/CLanguage" },
-                "C Language"
-              )
-            ),
-            _react2.default.createElement(
-              "a",
-              null,
-              _react2.default.createElement(
-                _reactRouterDom.NavLink,
-                { to: "/contact" },
-                "Machine Learning"
-              )
+              _reactRouterDom.NavLink,
+              { to: "/contact" },
+              "Machine Learning"
             )
           )
         )
@@ -73267,7 +73263,7 @@ exports = module.exports = __webpack_require__(37)(undefined);
 
 
 // module
-exports.push([module.i, "html {\n    position: relative;\n    min-height: 100%;\n    margin: 0px;\n    padding: 0px;\n}\nbody {\n    background: #F6F0F0;\n     margin: 0px 0px 58px 0px; /* bottom = footer height */\n     padding: 0px;\n}\nh1, h2, p, ul, li {\n  font-family: sans-serif;\n}\n\n.content {\n  background-color: #FFF;\n  padding-top: 40px;\n  padding-left: 20px;\n  padding-bottom: 30px;\n  margin-left: 30px;\n  margin-right: 30px;\n}\n.content h2 {\n  padding-top: 0px;\n    padding-right: 0px;\n    padding-bottom: 0px;\n    padding-left: 0px;\n    margin: 0;\n    text-align: center;\n}\n.content li {\n  margin-bottom: 0px;\n}\n.active {\n/*  background-color: #0099FF;*/\n}\n\n/* Position and sizing of burger button */\n.bm-burger-button {\n  position: fixed;\n  width: 36px;\n  height: 30px;\n  left: 36px;\n  top: 36px;\n}\n\n/* Color/shape of burger icon bars */\n.bm-burger-bars {\n  background: #373a47;\n}\n\n/* Position and sizing of clickable cross button */\n.bm-cross-button {\n  height: 24px;\n  width: 24px;\n}\n\n/* Color/shape of close button cross */\n.bm-cross {\n  background: #bdc3c7;\n}\n\n/* General sidebar styles */\n.bm-menu {\n  background: #373a47;\n  padding: 2.5em 1.5em 0;\n  font-size: 1.15em;\n}\n\n/* Morph shape necessary with bubble or elastic */\n.bm-morph-shape {\n  fill: #373a47;\n}\n\n/* Wrapper for item list */\n.bm-item-list {\n  color: #b8b7ad;\n  padding: 0.8em;\n}\n\n.bm-item-list a {\n    color: #ffffff;\n\n}\n\n/* Styling of overlay */\n.bm-overlay {\n  background: rgba(0, 0, 0, 0.3);\n}\n\n\n\n", ""]);
+exports.push([module.i, "html {\n    position: relative;\n    min-height: 100%;\n    margin: 0px;\n    padding: 0px;\n}\nbody {\n    background: #F6F0F0;\n     margin: 0px 0px 58px 0px; /* bottom = footer height */\n     padding: 0px;\n}\nh1, h2, p, ul, li {\n  font-family: sans-serif;\n}\n\n.content {\n  background-color: #FFF;\n  padding-top: 40px;\n  padding-left: 20px;\n  padding-bottom: 30px;\n  margin-left: 30px;\n  margin-right: 30px;\n}\n.content h2 {\n  padding-top: 0px;\n    padding-right: 0px;\n    padding-bottom: 0px;\n    padding-left: 0px;\n    margin: 0;\n    text-align: center;\n}\n.content li {\n  margin-bottom: 0px;\n}\n.active {\n/*  background-color: #0099FF;*/\n}\n\n\n/* Position and sizing of burger button */\n.bm-burger-button {\n position: absolute;\n  width: 36px;\n  height: 30px;\n  left: 36px;\n  top: 36px;\n}\n\n/* Color/shape of burger icon bars */\n.bm-burger-bars {\n  background: #373a47;\n}\n\n/* Position and sizing of clickable cross button */\n.bm-cross-button {\n  height: 24px;\n  width: 24px;\n}\n\n/* Color/shape of close button cross */\n.bm-cross {\n  background: #bdc3c7;\n}\n\n/* General sidebar styles */\n.bm-menu {\n  background: #373a47;\n  padding: 2.5em 1.5em 0;\n  font-size: 1.15em;\n}\n\n/* Morph shape necessary with bubble or elastic */\n.bm-morph-shape {\n  fill: #373a47;\n}\n\n/* Wrapper for item list */\n.bm-item-list {\n  color: #b8b7ad;\n  padding: 0.8em;\n}\n\n.bm-item-list a {\n    color: #ffffff;\n\n}\n\n/* Styling of overlay */\n.bm-overlay {\n  background: rgba(0, 0, 0, 0.3);\n}\n\n\n\n", ""]);
 
 // exports
 

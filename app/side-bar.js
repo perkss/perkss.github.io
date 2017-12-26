@@ -24,8 +24,8 @@ class SideBar extends Component {
   render() {
     return (
        <HashRouter>
-            <div>
-            <Menu>
+
+            <Menu className="bm-menu">
         <a> <NavLink exact to="/">Home</NavLink></a>
         <a> <NavLink to="/MathFundamentals">Math Fundamentals</NavLink></a>
             <a> <NavLink to="/MathsForCompSci">Maths for Computer Science</NavLink></a>
@@ -38,7 +38,7 @@ class SideBar extends Component {
         
             </Menu>
 
-         </div>
+
       </HashRouter>
     );
   }
