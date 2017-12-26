@@ -1,17 +1,19 @@
 footer {
-  background-color: #111;
+  background-color: #F6F0F0;
   font-family: sans-serif;
   margin: 0px;
-  color: #FFF;
+  color: black;
   font-weight: bold;
   padding-top: 20px;
   padding-bottom: 20px;
-  padding-left: 10px;
+  padding-left: 20px;
   padding-right: 0px;
   text-decoration: none;
    position: absolute;
     left: 0;
     bottom: 0;
     width: 100%;
+    text-align: center;
     overflow:hidden;
+     font-size: 17px;
 }

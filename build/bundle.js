@@ -73063,7 +73063,7 @@ var Footer = function (_React$Component) {
         _react2.default.createElement(
           'footer',
           null,
-          'MSc Advanced Computer Science, BSc Computer Science'
+          'Perks, MSc Advanced Computer Science, BSc Computer Science'
         )
       );
     }
@@ -73114,7 +73114,7 @@ exports = module.exports = __webpack_require__(37)(undefined);
 
 
 // module
-exports.push([module.i, "footer {\n  background-color: #111;\n  font-family: sans-serif;\n  margin: 0px;\n  color: #FFF;\n  font-weight: bold;\n  padding-top: 20px;\n  padding-bottom: 20px;\n  padding-left: 10px;\n  padding-right: 0px;\n  text-decoration: none;\n   position: absolute;\n    left: 0;\n    bottom: 0;\n    width: 100%;\n    overflow:hidden;\n}\n", ""]);
+exports.push([module.i, "footer {\n  background-color: #F6F0F0;\n  font-family: sans-serif;\n  margin: 0px;\n  color: black;\n  font-weight: bold;\n  padding-top: 20px;\n  padding-bottom: 20px;\n  padding-left: 20px;\n  padding-right: 0px;\n  text-decoration: none;\n   position: absolute;\n    left: 0;\n    bottom: 0;\n    width: 100%;\n    text-align: center;\n    overflow:hidden;\n     font-size: 17px;\n}\n", ""]);
 
 // exports
 
