@@ -5,15 +5,7 @@ class Algorithms extends React.Component {
     return (
       <div>
         <h2>Algorithms</h2>
-        <p>Mauris sem velit, vehicula eget sodales vitae,
-        rhoncus eget sapien:</p>
-        <ol>
-          <li>Nulla pulvinar diam</li>
-          <li>Facilisis bibendum</li>
-          <li>Vestibulum vulputate</li>
-          <li>Eget erat</li>
-          <li>Id porttitor</li>
-        </ol>
+        <p>Work in progress.</p>
       </div>
     );
   }

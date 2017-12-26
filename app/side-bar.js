@@ -16,26 +16,34 @@ import { slide as Menu } from 'react-burger-menu';
 
 
 class SideBar extends Component {
-
-    showSettings (event) {
-    event.preventDefault();
-   
+ constructor(props) {
+    super(props);
+    this.handleMenuClick =  this.handleMenuClick.bind(this);
   }
+
+    
+   handleMenuClick (event) {
+       event.preventDefault();
+         console.log('closing menu');
+           this.setState({isOpen: false});
+     }
+
+
+    
   render() {
     return (
        <HashRouter>
 
-            <Menu className="bm-menu">
-        <a> <NavLink exact to="/">Home</NavLink></a>
-        <a> <NavLink to="/MathFundamentals">Math Fundamentals</NavLink></a>
-            <a> <NavLink to="/MathsForCompSci">Maths for Computer Science</NavLink></a>
-<a><NavLink to="/Algorithms">Algorithms</NavLink></a>
-<a><NavLink to="/clojure">Clojure</NavLink></a>
-<a><NavLink to="/FunctionalProgramming">Functional Programming</NavLink></a>
-<a><NavLink to="/CLanguage">C Language</NavLink></a>
-<a><NavLink to="/contact">Machine Learning</NavLink></a>
-
-        
+            <Menu isOpen={ false }>
+            <a onClick={ this.handleMenuClick }  > <NavLink exact to="/">Home</NavLink></a>
+            <a  onClick={ this.handleMenuClick } > <NavLink to="/MathFundamentals">Math Fundamentals</NavLink></a>
+            <a  onClick={ this.handleMenuClick } > <NavLink to="/MathsForCompSci">Maths for Computer Science</NavLink></a>
+            <a onClick={ this.handleMenuClick } ><NavLink to="/Algorithms">Algorithms</NavLink></a>
+            <a onClick={ this.handleMenuClick } ><NavLink to="/clojure">Clojure</NavLink></a>
+            <a onClick={ this.handleMenuClick } ><NavLink to="/FunctionalProgramming">Functional Programming</NavLink></a>
+            <a onClick={ this.handleMenuClick } ><NavLink to="/CLanguage">C Language</NavLink></a>
+            <a onClick={ this.handleMenuClick } ><NavLink to="/contact">Machine Learning</NavLink></a>
+                    
             </Menu>
 
 
