@@ -1,30 +1,24 @@
 import React from 'react';
 import { render } from 'react-dom';
-import Main from './Main';
+import SideBar from './side-bar';
 import Footer from './footer.js';
 import "./../css/index.css";
-
-
+import Header from './header.js';
+import Content from './blog-content.js';
 
 
 console.log('Testing version 4');
 class App extends React.Component {
 
- myFunction() {
-    var x = document.getElementById("topNav");
-    if (x.className === "header") {
-        x.className += " responsive";
-    } else {
-        x.className = "header";
-    }
-}
     
   render () {
     return (
-<div>
-            <Main/>
-        <Footer />
-</div>
+            <div>
+            <SideBar />
+            <Header /> 
+            <Content /> 
+              <Footer />
+            </div>
 );
 }
 }

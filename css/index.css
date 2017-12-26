@@ -1,41 +1,33 @@
 html {
     position: relative;
     min-height: 100%;
+    margin: 0px;
+    padding: 0px;
 }
 body {
-  background: #F6F0F0;
-  margin: 0 0 58px; /* bottom = footer height */
-}
-content {
-       margin: 0;
+    background: #F6F0F0;
+     margin: 0px 0px 58px 0px; /* bottom = footer height */
+     padding: 0px;
 }
 h1, h2, p, ul, li {
   font-family: sans-serif;
 }
-ul.header li {
-  display: inline;
-  list-style-type: none;
-  margin: 0;
-}
-ul.header {
-  background-color: #111;
-  padding: 0px;
-  margin: 0px;
-}
-ul.header li a {
-  color: #FFF;
-  font-weight: bold;
-  text-decoration: none;
-  padding: 20px;
-  display: inline-block;
-}
+
 .content {
   background-color: #FFF;
-  padding: 20px;
+  padding-top: 40px;
+  padding-left: 20px;
+  padding-bottom: 30px;
+  margin-left: 80px;
+  margin-right: 0px;
 }
 .content h2 {
-  padding: 0;
-  margin: 0;
+  padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    margin: 0;
+    text-align: center;
 }
 .content li {
   margin-bottom: 0px;
@@ -43,12 +35,58 @@ ul.header li a {
 .active {
 /*  background-color: #0099FF;*/
 }
-.header {
-    padding: 0px;
+
+/* Position and sizing of burger button */
+.bm-burger-button {
+  position: fixed;
+  width: 36px;
+  height: 30px;
+  left: 36px;
+  top: 36px;
 }
-.header a:hover {
-  background-color: #ddd;
-  color: black;
+
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+  background: #373a47;
+}
+
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+}
+
+/* Color/shape of close button cross */
+.bm-cross {
+  background: #bdc3c7;
+}
+
+/* General sidebar styles */
+.bm-menu {
+  background: #373a47;
+  padding: 2.5em 1.5em 0;
+  font-size: 1.15em;
+}
+
+/* Morph shape necessary with bubble or elastic */
+.bm-morph-shape {
+  fill: #373a47;
+}
+
+/* Wrapper for item list */
+.bm-item-list {
+  color: #b8b7ad;
+  padding: 0.8em;
+}
+
+.bm-item-list a {
+    color: #ffffff;
+
+}
+
+/* Styling of overlay */
+.bm-overlay {
+  background: rgba(0, 0, 0, 0.3);
 }
 
 

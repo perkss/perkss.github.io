@@ -1,0 +1,12 @@
+h1 {
+  text-align: center;
+  background: #F6F0F0;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  padding-left: 80px;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  /* Have the padding instead of margin on the left for the colour*/
+}
