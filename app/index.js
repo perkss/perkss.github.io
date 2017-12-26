@@ -15,7 +15,7 @@ class App extends React.Component {
     return (
             <div>
             <SideBar />
-            <Header /> 
+            <Header title={["The Perks of", <br/>,  "Computer Science Rambling"]} /> 
             <Content /> 
               <Footer />
             </div>

@@ -2,13 +2,13 @@ import React from 'react';
 import './../css/header.css';
 
 
-export default class Header extends React.Component {
- render() {
+export default function Header(props) {
+
     return (
 
         <div className="header">
-    <h1>The Perks of <br/> Computer Science Ramblings</h1>
+            <h1>{props.title}</h1>
      </div>
 );
-  }
+ 
 }
