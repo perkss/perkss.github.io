@@ -73127,7 +73127,7 @@ exports = module.exports = __webpack_require__(37)(undefined);
 
 
 // module
-exports.push([module.i, "footer {\n  background-color: #111;\n  font-family: sans-serif;\n  margin: 0px;\n  color: #FFF;\n  font-weight: bold;\n  padding-top: 20px;\n  padding-bottom: 20px;\n  padding-left: 10px;\n  padding-right: 0px;\n  text-decoration: none;\n   position: absolute;\n    left: 0;\n    bottom: 0;\n       overflow:hidden;\n}\n", ""]);
+exports.push([module.i, "footer {\n  background-color: #111;\n  font-family: sans-serif;\n  margin: 0px;\n  color: #FFF;\n  font-weight: bold;\n  padding-top: 20px;\n  padding-bottom: 20px;\n  padding-left: 10px;\n  padding-right: 0px;\n  text-decoration: none;\n   position: absolute;\n    left: 0;\n    bottom: 0;\n    width: 100%;\n    overflow:hidden;\n}\n", ""]);
 
 // exports
 
