@@ -7,14 +7,17 @@ import {
 import MathPrerequisites from './math-fundamentals/math-prerequisites';
 import BiteSizeMath from './math-fundamentals/bitesize-maths';
 import ConcreteMathematics from './math-fundamentals/concrete-mathematics';
-const MathFundamentals = ({ match })  => 
+import BlogPage from './blog-page.js';
+const MathFundamentals = ({ match })  => {
   
-   (
-      <div>
-            <h2>Math Fundamentals</h2>
+   return (
 
+       <BlogPage
+       title='Math Fundamentals'
 
-
+       contents={
+           <div>
+           
   <ul>
      
            <li>
@@ -64,17 +67,23 @@ const MathFundamentals = ({ match })  =>
            </li>
     
         
-   </ul>
+           </ul>
+</div>
+       }
 
 
-        <Route path={`${match.url}/MathPrerequisites`} component={MathPrerequisites}/>   
+       text={<div> <Route path={`${match.url}/MathPrerequisites`} component={MathPrerequisites}/>   
            <Route path={`${match.url}/BiteSizeMath`} component={BiteSizeMath}/>
 
 
         <Route path={`${match.url}/ConcreteMathematics`} component={ConcreteMathematics}/>
+       </div>
+            }
        
-             </div>
-    );
+       
+       />
+   );
+}
   
 
 

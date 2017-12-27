@@ -5652,7 +5652,7 @@ exports.default = AlgorithmsPage;
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 
 var _react = __webpack_require__(0);
@@ -5673,102 +5673,114 @@ var _concreteMathematics = __webpack_require__(133);
 
 var _concreteMathematics2 = _interopRequireDefault(_concreteMathematics);
 
+var _blogPage = __webpack_require__(9);
+
+var _blogPage2 = _interopRequireDefault(_blogPage);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var MathFundamentals = function MathFundamentals(_ref) {
-  var match = _ref.match;
-  return _react2.default.createElement(
-    "div",
-    null,
-    _react2.default.createElement(
-      "h2",
-      null,
-      "Math Fundamentals"
-    ),
-    _react2.default.createElement(
-      "ul",
-      null,
-      _react2.default.createElement(
-        "li",
-        null,
-        _react2.default.createElement(
-          _reactRouterDom.NavLink,
-          { to: match.url + "/BiteSizeMath" },
-          "Bitesize Math"
-        )
-      ),
-      _react2.default.createElement(
-        "li",
-        null,
-        _react2.default.createElement(
-          _reactRouterDom.NavLink,
-          { to: match.url + "/MathPrerequisites" },
-          "Math Prerequisites"
-        )
-      ),
-      _react2.default.createElement(
-        "li",
-        null,
-        _react2.default.createElement(
-          _reactRouterDom.NavLink,
-          { to: match.url + "/ConcreteMathematics" },
-          "Concrete Mathematics"
+    var match = _ref.match;
+
+
+    return _react2.default.createElement(_blogPage2.default, {
+        title: "Math Fundamentals",
+
+        contents: _react2.default.createElement(
+            "div",
+            null,
+            _react2.default.createElement(
+                "ul",
+                null,
+                _react2.default.createElement(
+                    "li",
+                    null,
+                    _react2.default.createElement(
+                        _reactRouterDom.NavLink,
+                        { to: match.url + "/BiteSizeMath" },
+                        "Bitesize Math"
+                    )
+                ),
+                _react2.default.createElement(
+                    "li",
+                    null,
+                    _react2.default.createElement(
+                        _reactRouterDom.NavLink,
+                        { to: match.url + "/MathPrerequisites" },
+                        "Math Prerequisites"
+                    )
+                ),
+                _react2.default.createElement(
+                    "li",
+                    null,
+                    _react2.default.createElement(
+                        _reactRouterDom.NavLink,
+                        { to: match.url + "/ConcreteMathematics" },
+                        "Concrete Mathematics"
+                    ),
+                    _react2.default.createElement(
+                        "ul",
+                        null,
+                        _react2.default.createElement(
+                            "li",
+                            null,
+                            "Recurrent Problems"
+                        ),
+                        _react2.default.createElement(
+                            "li",
+                            null,
+                            "Sums"
+                        ),
+                        _react2.default.createElement(
+                            "li",
+                            null,
+                            "Integer Functions"
+                        ),
+                        _react2.default.createElement(
+                            "li",
+                            null,
+                            "Number Theory"
+                        ),
+                        _react2.default.createElement(
+                            "li",
+                            null,
+                            "Binomial Coefficients"
+                        ),
+                        _react2.default.createElement(
+                            "li",
+                            null,
+                            "Special Numbers"
+                        ),
+                        _react2.default.createElement(
+                            "li",
+                            null,
+                            "Generating Functions"
+                        ),
+                        _react2.default.createElement(
+                            "li",
+                            null,
+                            "Discrete Probability"
+                        ),
+                        _react2.default.createElement(
+                            "li",
+                            null,
+                            "Asymptotics"
+                        )
+                    )
+                )
+            )
         ),
-        _react2.default.createElement(
-          "ul",
-          null,
-          _react2.default.createElement(
-            "li",
+
+        text: _react2.default.createElement(
+            "div",
             null,
-            "Recurrent Problems"
-          ),
-          _react2.default.createElement(
-            "li",
-            null,
-            "Sums"
-          ),
-          _react2.default.createElement(
-            "li",
-            null,
-            "Integer Functions"
-          ),
-          _react2.default.createElement(
-            "li",
-            null,
-            "Number Theory"
-          ),
-          _react2.default.createElement(
-            "li",
-            null,
-            "Binomial Coefficients"
-          ),
-          _react2.default.createElement(
-            "li",
-            null,
-            "Special Numbers"
-          ),
-          _react2.default.createElement(
-            "li",
-            null,
-            "Generating Functions"
-          ),
-          _react2.default.createElement(
-            "li",
-            null,
-            "Discrete Probability"
-          ),
-          _react2.default.createElement(
-            "li",
-            null,
-            "Asymptotics"
-          )
+            " ",
+            _react2.default.createElement(_reactRouterDom.Route, { path: match.url + "/MathPrerequisites", component: _mathPrerequisites2.default }),
+            _react2.default.createElement(_reactRouterDom.Route, { path: match.url + "/BiteSizeMath", component: _bitesizeMaths2.default }),
+            _react2.default.createElement(_reactRouterDom.Route, { path: match.url + "/ConcreteMathematics", component: _concreteMathematics2.default })
         )
-      )
-    ),
-    _react2.default.createElement(_reactRouterDom.Route, { path: match.url + "/MathPrerequisites", component: _mathPrerequisites2.default }),
-    _react2.default.createElement(_reactRouterDom.Route, { path: match.url + "/BiteSizeMath", component: _bitesizeMaths2.default }),
-    _react2.default.createElement(_reactRouterDom.Route, { path: match.url + "/ConcreteMathematics", component: _concreteMathematics2.default })
-  );
+
+    });
 };
 
 exports.default = MathFundamentals;
