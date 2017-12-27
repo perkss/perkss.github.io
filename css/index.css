@@ -11,11 +11,13 @@ body {
 }
 h1, h2, p, ul, li {
     font-family: sans-serif;
-    text-align: justify;
-    
 }
 
-.content {
+p, ul, li {
+    text-align: justify;
+}
+
+.Blog-Text-Body {
   background-color: #FFF;
   padding-top: 40px;
   padding-left: 20px;
@@ -25,7 +27,7 @@ h1, h2, p, ul, li {
   margin-right: 30px;
   font-size: 17px;
 }
-.content h2 {
+.Blog-Text-Body h2 {
   padding-top: 0px;
     padding-right: 0px;
     padding-bottom: 15px;

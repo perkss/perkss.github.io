@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { darcula, docco } from 'react-syntax-highlighter/styles/hljs';
+import BlogPage from './blog-page.js';
   
-class Clojure extends React.Component {
-  render() {
-    return (
-      <div>
+const clojure = {
+
+    title: 'Clojure',
+    contents: '',
+    text:[<div>
         <h2>Clojure Programming</h2>
         <p>Mauris sem velit, vehicula eget sodales vitae,
         rhoncus eget sapien:</p>
@@ -18,9 +20,23 @@ class Clojure extends React.Component {
           <li>Eget erat</li>
           <li>Id porttitor</li>
         </ol>
-      </div>
+      </div>]
+
+};
+
+
+
+
+const ClojurePage = (props) =>  {
+
+    return (
+            <BlogPage
+        title={clojure.title}
+        contents={clojure.contents}
+        text={clojure.text}
+        />
     );
-  }
+
 }
 
-export default Clojure
+export default ClojurePage;

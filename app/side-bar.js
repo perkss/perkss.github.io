@@ -5,13 +5,13 @@ import {
   NavLink,
   HashRouter
 } from "react-router-dom";
-import Home from "./home";
-import FunctionalProgramming from "./functional-programming";
-import Algorithms from "./algorithms.js";
-import MathFundamentals from "./math-fundamentals";
-import MathsForCompSci from "./maths-for-comp-sci.js";
-import CLanguage from "./c-language.js";
-import Clojure from "./clojure.js";
+import HomePage from "./home";
+import FunctionalProgrammingPage from "./functional-programming";
+import AlgorithmsPage from "./algorithms.js";
+import MathFundamentalsPage from "./math-fundamentals";
+import MathsForCompSciPage from "./maths-for-comp-sci.js";
+import CLanguagePage from "./c-language.js";
+import ClojurePage from "./clojure.js";
 import { slide as Menu } from 'react-burger-menu';
 
 

@@ -5,13 +5,14 @@ import {
   NavLink,
   HashRouter
 } from "react-router-dom";
-import Home from "./home";
-import FunctionalProgramming from "./functional-programming";
-import Algorithms from "./algorithms.js";
-import MathFundamentals from "./math-fundamentals";
-import MathsForCompSci from "./maths-for-comp-sci.js";
-import CLanguage from "./c-language.js";
-import Clojure from "./clojure.js";
+import HomePage from "./home";
+import FunctionalProgrammingPage from "./functional-programming.js";
+import AlgorithmsPage from "./algorithms.js";
+import MathFundamentalsPage from "./math-fundamentals";
+import MathsForCompSciPage from "./maths-for-comp-sci.js";
+import CLanguagePage from "./c-language.js";
+import ClojurePage from "./clojure.js";
+
 
 
 class Content extends Component {
@@ -22,13 +23,13 @@ class Content extends Component {
         <div>
 
  <div className="content">
-                   <Route exact path="/" component={Home}/>
-            <Route path="/MathsForCompSci" component={MathsForCompSci}/>
-            <Route path="/Algorithms" component={Algorithms}/>
- <Route path="/FunctionalProgramming" component={FunctionalProgramming}/>
-            <Route path="/MathFundamentals" component={MathFundamentals}/>
-          <Route path="/CLanguage" component={CLanguage}/>
-          <Route path="/Clojure" component={Clojure}/>
+                   <Route exact path="/" component={HomePage}/>
+            <Route path="/MathsForCompSci" component={MathsForCompSciPage}/>
+                <Route path="/Algorithms" component={AlgorithmsPage}/>
+ <Route path="/FunctionalProgramming" component={FunctionalProgrammingPage}/>
+            <Route path="/MathFundamentals" component={MathFundamentalsPage}/>
+          <Route path="/CLanguage" component={CLanguagePage}/>
+          <Route path="/Clojure" component={ClojurePage}/>
             </div>
 
 

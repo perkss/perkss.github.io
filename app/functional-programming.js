@@ -1,19 +1,27 @@
 import React, { Component } from "react";
+import BlogPage from './blog-page.js';
   
-const FunctionalProgramming = () => 
-  
-     (
-      <div>
-        <h2>Functional Programming</h2>
-        <p>Using the new React style</p>
-        <ol>
-          <li>Nulla pulvinar diam</li>
-          <li>Facilisis bibendum</li>
-          <li>Vestibulum vulputate</li>
-          <li>Eget erat</li>
-          <li>Id porttitor</li>
-        </ol>
-      </div>
-    );
 
-export default FunctionalProgramming
+
+const functionalProgramming = {
+
+    title: 'Functional Programming',
+    contents: '',
+    text: ''
+};
+
+
+
+
+const FunctionalProgrammingPage = (props) => {
+    return (
+            <BlogPage
+        title={functionalProgramming.title}
+        contents={functionalProgramming.contents}
+        text={functionalProgramming.text}
+       /> 
+    );
+}
+    
+
+export default FunctionalProgrammingPage;

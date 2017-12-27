@@ -1,22 +1,28 @@
 import React, { Component } from "react";
-  
-class CLanguage extends React.Component {
-  render() {
+import BlogPage from './blog-page.js';
+
+
+const cLanguage = {
+
+    title:'C Programming',
+    contents: '',
+    text: ''
+
+};
+
+
+const CLanguagePage = (props) => {
+
     return (
-      <div>
-        <h2>C Programming</h2>
-        <p>Mauris sem velit, vehicula eget sodales vitae,
-        rhoncus eget sapien:</p>
-        <ol>
-          <li>Nulla pulvinar diam</li>
-          <li>Facilisis bibendum</li>
-          <li>Vestibulum vulputate</li>
-          <li>Eget erat</li>
-          <li>Id porttitor</li>
-        </ol>
-      </div>
+
+            <BlogPage
+        title={cLanguage.title}
+        contents={cLanguage.contents}
+        text={cLanguage.text}
+        />
     );
-  }
+
 }
 
-export default CLanguage
+
+export default CLanguagePage;

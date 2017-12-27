@@ -3,7 +3,6 @@ import { render } from 'react-dom';
 import SideBar from './side-bar';
 import Footer from './footer.js';
 import "./../css/index.css";
-import Header from './header.js';
 import Content from './blog-content.js';
 
 
@@ -14,8 +13,8 @@ class App extends React.Component {
   render () {
     return (
             <div>
-            <SideBar />
-            <Header title={["The Perks of", <br/>,  "Computer Science Rambling"]} /> 
+             <SideBar />
+            
             <Content /> 
               <Footer />
             </div>

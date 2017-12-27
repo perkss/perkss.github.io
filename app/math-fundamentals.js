@@ -7,7 +7,6 @@ import {
 import MathPrerequisites from './math-fundamentals/math-prerequisites';
 import BiteSizeMath from './math-fundamentals/bitesize-maths';
 import ConcreteMathematics from './math-fundamentals/concrete-mathematics';
-
 const MathFundamentals = ({ match })  => 
   
    (
