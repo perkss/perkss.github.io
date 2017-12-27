@@ -25,7 +25,13 @@ const MathFundamentals = ({ match })  => {
        contents={
            <div>
            
-  <ul>
+               <ul>
+               
+           <li>
+            <NavLink to={`${match.url}`}>
+          Welcome to Maths
+       </NavLink>
+           </li>
      
            <li>
             <NavLink to={`${match.url}/BiteSizeMath`}>
@@ -80,7 +86,7 @@ const MathFundamentals = ({ match })  => {
 
 
        text={<div>
-             <Route exact path={`${match.url}/`} component={MathIntro} />
+             <Route exact path={`${match.url}`} component={MathIntro} />
  
              <Route path={`${match.url}/MathPrerequisites`} component={MathPrerequisites}/>   
            <Route path={`${match.url}/BiteSizeMath`} component={BiteSizeMath}/>

@@ -5707,6 +5707,15 @@ var MathFundamentals = function MathFundamentals(_ref) {
                     null,
                     _react2.default.createElement(
                         _reactRouterDom.NavLink,
+                        { to: "" + match.url },
+                        "Welcome to Maths"
+                    )
+                ),
+                _react2.default.createElement(
+                    "li",
+                    null,
+                    _react2.default.createElement(
+                        _reactRouterDom.NavLink,
                         { to: match.url + "/BiteSizeMath" },
                         "Bitesize Math"
                     )
@@ -5784,7 +5793,7 @@ var MathFundamentals = function MathFundamentals(_ref) {
         text: _react2.default.createElement(
             "div",
             null,
-            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: match.url + "/", component: _mathIntro2.default }),
+            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "" + match.url, component: _mathIntro2.default }),
             _react2.default.createElement(_reactRouterDom.Route, { path: match.url + "/MathPrerequisites", component: _mathPrerequisites2.default }),
             _react2.default.createElement(_reactRouterDom.Route, { path: match.url + "/BiteSizeMath", component: _bitesizeMaths2.default }),
             _react2.default.createElement(_reactRouterDom.Route, { path: match.url + "/ConcreteMathematics", component: _concreteMathematics2.default })
