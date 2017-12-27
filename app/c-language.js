@@ -5,8 +5,8 @@ import BlogPage from './blog-page.js';
 const cLanguage = {
 
     title:'C Programming',
-    contents: '',
-    text: ''
+    text: 'One day this will arive! 2018 peace',
+    contents: ''
 
 };
 

@@ -6,7 +6,7 @@ const algorithms = {
     title: 'Algorithms',
   contents:
     '',
-    text: [<p> This is the  <br/> body of text </p>]
+    text: [<p>Hurry up Perks and get this done the suspense is killing me! </p>]
 } ;
 
 

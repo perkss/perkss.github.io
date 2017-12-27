@@ -4,10 +4,17 @@ import {
   NavLink,
   HashRouter
 } from "react-router-dom";
+
+import MathIntro from './math-fundamentals/math-intro';
 import MathPrerequisites from './math-fundamentals/math-prerequisites';
 import BiteSizeMath from './math-fundamentals/bitesize-maths';
 import ConcreteMathematics from './math-fundamentals/concrete-mathematics';
+
+
 import BlogPage from './blog-page.js';
+
+
+
 const MathFundamentals = ({ match })  => {
   
    return (
@@ -72,7 +79,10 @@ const MathFundamentals = ({ match })  => {
        }
 
 
-       text={<div> <Route path={`${match.url}/MathPrerequisites`} component={MathPrerequisites}/>   
+       text={<div>
+             <Route exact path={`${match.url}/`} component={MathIntro} />
+ 
+             <Route path={`${match.url}/MathPrerequisites`} component={MathPrerequisites}/>   
            <Route path={`${match.url}/BiteSizeMath`} component={BiteSizeMath}/>
 
 

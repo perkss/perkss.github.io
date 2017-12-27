@@ -42,7 +42,7 @@ class SideBar extends Component {
             <a onClick={ this.handleMenuClick } ><NavLink to="/clojure">Clojure</NavLink></a>
             <a onClick={ this.handleMenuClick } ><NavLink to="/FunctionalProgramming">Functional Programming</NavLink></a>
             <a onClick={ this.handleMenuClick } ><NavLink to="/CLanguage">C Language</NavLink></a>
-            <a onClick={ this.handleMenuClick } ><NavLink to="/contact">Machine Learning</NavLink></a>
+            <a onClick={ this.handleMenuClick } ><NavLink to="/ProgrammingPearls">Programming Pearls</NavLink></a>
                     
             </Menu>
 

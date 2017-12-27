@@ -8,18 +8,9 @@ const clojure = {
     title: 'Clojure',
     contents: '',
     text:[<div>
-        <h2>Clojure Programming</h2>
-        <p>Mauris sem velit, vehicula eget sodales vitae,
-        rhoncus eget sapien:</p>
-
         <SyntaxHighlighter language='clojure' style={darcula}>(def a 2)</SyntaxHighlighter>
-        <ol>
-          <li>Nulla pulvinar diam</li>
-          <li>Facilisis bibendum</li>
-          <li>Vestibulum vulputate</li>
-          <li>Eget erat</li>
-          <li>Id porttitor</li>
-        </ol>
+
+<p>Your first bit of clojure much more to come! </p>
       </div>]
 
 };

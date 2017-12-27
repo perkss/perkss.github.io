@@ -8,11 +8,12 @@ const mathsForCompSci = {
     contents: '',
     text: [ <div>
 
-<Latex>What is $(3/times 4) \div (5-3)$</Latex>
-            <h2>Maths for Computer Science</h2>
 
         <p><strong>Please ensure you check out Math Fundamentals before proceeding into the world of Maths for Computer Science.</strong></p>
 
+<p>Hitting the blog very soon. Next infact!</p>
+
+<Latex>What is $(3 \times 4) \div (5-3)$</Latex>
       </div>]
 
 };
