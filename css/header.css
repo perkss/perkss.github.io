@@ -1,6 +1,6 @@
 h1 {
   text-align: center;
-  background: #F6F0F0;
+  background:#03A9F4;
   margin-left: 0px;
   margin-right: 0px;
   margin-bottom: 0px;
@@ -8,7 +8,8 @@ h1 {
   padding-right: 80px;
   padding-left: 80px;
   padding-top: 20px;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
   font-size: 50px;
+  color: white;
   /* Have the padding instead of margin on the left for the colour*/
 }

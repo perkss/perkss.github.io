@@ -13,6 +13,7 @@ import MathFundamentalsPage from "./math-fundamentals";
 import MathsForCompSciPage from "./maths-for-comp-sci.js";
 import CLanguagePage from "./c-language.js";
 import ClojurePage from "./clojure.js";
+import './../css/nav-grid.css';
 
 
 
@@ -23,48 +24,48 @@ const home = {
 
      <div className='center'>
            
-               <ul className='nav menu center'>
+               <ul className='nav nav-grid center'>
                
-           <li>
+            <li className='amber'>
             <NavLink to={"/MathFundamentals"}>
-         Math Fundamentals
+         Math<br/>Fundamentals
        </NavLink>
            </li>
      
-           <li>
+           <li className='cyan'>
             <NavLink to={"/MathsForCompSci"}>
-          Maths for Computer Science
+          Maths for<br/>Computer Science
        </NavLink>
            </li>
-               <li>
+               <li className='pink'>
         <NavLink to={"/Algorithms"}>
-          Algorithms
+         Algorithms
         </NavLink>
            </li>
-           <li>
+           <li className='purple'>
            <NavLink to={"/clojure"}>
-           Clojure
+          Clojure
            </NavLink>
       
                 </li>
 
-                 <li>
+                 <li className='sixth-gold'>
            <NavLink to={"/FunctionalProgramming"}>
-           Functional Programming
+           Functional<br/>Programming
            </NavLink>
       
                 </li>
 
-                 <li>
+                 <li className='orange'>
            <NavLink to={"/CLanguage"}>
-           C Programming
+           C <br/>Programming
            </NavLink>
       
                 </li>
 
-                 <li>
+                 <li className='yellow'>
            <NavLink to={"/ProgrammingPearls"}>
-           Programming Pearls
+           Programming<br/>Pearls
            </NavLink>
       
            </li>
@@ -74,7 +75,7 @@ const home = {
 </div>
 
     ],
-    text: [<div><p>Hello and congratulations on finding <strong>The Perks of Computer Science Ramblings</strong>. It will become a treasure chest of technical and mathematical knowledge for all those interested in computer science and programming to use. Suitable for all but especially for those who like to learn with all the details and solid examples, no more algorithm teachers assumptions.</p>
+    text: [<div><p>Hello and congratulations on finding <strong>The Perks of Computer Science</strong>. This blog will become a treasure chest of technical and mathematical knowledge for all those interested in computer science and programming to use. Suitable for all but especially for those who like to learn with all the details and solid examples, no more algorithm teachers assumptions.</p>
 
             <p>Please check the side menu on the top left. We will be covering fundamental maths looking in depth and Concrete Mathematics. Along with SICP to get some functional  programming languages using Clojure.</p>
 

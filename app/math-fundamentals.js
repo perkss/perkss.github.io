@@ -27,25 +27,25 @@ const MathFundamentals = ({ match })  => {
            
                <ul className='nav menu center'>
                
-           <li>
+               <li className='gray'>
             <NavLink to={`${match.url}`}>
-          Welcome to Maths
+          Welcome to<br/>Maths
        </NavLink>
            </li>
      
-           <li>
+           <li className='quay-pink'>
             <NavLink to={`${match.url}/BiteSizeMath`}>
-          Bitesize Math
+          Bitesize<br/>Math
        </NavLink>
            </li>
-               <li>
+               <li className='dark-blue'>
         <NavLink to={`${match.url}/MathPrerequisites`}>
-          Math Prerequisites
+          Math<br/>Prerequisites
         </NavLink>
            </li>
-           <li>
+           <li className='teal'>
            <NavLink to={`${match.url}/ConcreteMathematics`}>
-           Concrete Mathematics
+           Concrete<br/>Mathematics
            </NavLink>
       
            </li>

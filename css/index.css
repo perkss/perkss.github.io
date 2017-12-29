@@ -13,8 +13,12 @@ h1, h2, p, ul, li {
     font-family: sans-serif;
 }
 
-p, ul, li {
+p {
     text-align: justify;
+}
+
+ul, li {
+    text-align: center;
 }
 
 .center {
@@ -54,17 +58,18 @@ display: table;   /* Allow the centering to work */
 
 .Blog-Text-Body {
   background-color: #FFF;
-  padding-top: 40px;
+  padding-top: 20px;
   padding-left: 20px;
   padding-bottom: 30px;
   padding-right: 20px;
   margin-left: 30px;
-  margin-top: 15px;
+  margin-top: 30px;
   margin-right: 30px;
+  margin-bottom: 30px;
   font-size: 17px;
 }
 .Blog-Text-Body h2 {
-  padding-top: 0px;
+  padding-top: 10px;
     padding-right: 0px;
     padding-bottom: 15px;
     padding-left: 0px;
@@ -90,7 +95,7 @@ display: table;   /* Allow the centering to work */
 
 /* Color/shape of burger icon bars */
 .bm-burger-bars {
-  background: #373a47;
+  background: #FFFFFF;
 }
 
 /* Position and sizing of clickable cross button */

@@ -10,8 +10,6 @@ function HomeTemplate(props) {
       <div className="Blog-Text-Body">
         {props.text}
       </div>
-
-      <h2>Sections</h2>
       
       <div className="Blog-Contents">
             {props.contents}
