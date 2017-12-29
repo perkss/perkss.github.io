@@ -6,7 +6,6 @@ const BiteSizeMath = () => (
 
         <div>
   <h2>BiteSize Math</h2>
-            <p></p>
 
 
         <h3>Factors</h3>

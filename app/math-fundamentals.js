@@ -12,7 +12,7 @@ import ConcreteMathematics from './math-fundamentals/concrete-mathematics';
 
 
 import BlogPage from './blog-page.js';
-
+import "./../css/list-menu.css";
 
 
 const MathFundamentals = ({ match })  => {
@@ -23,9 +23,9 @@ const MathFundamentals = ({ match })  => {
        title='Math Fundamentals'
 
        contents={
-           <div>
+           <div className='center'>
            
-               <ul>
+               <ul className='nav menu center'>
                
            <li>
             <NavLink to={`${match.url}`}>
@@ -47,36 +47,7 @@ const MathFundamentals = ({ match })  => {
            <NavLink to={`${match.url}/ConcreteMathematics`}>
            Concrete Mathematics
            </NavLink>
-           <ul>
-           <li>
-           Recurrent Problems
-       </li>
-           <li>
-           Sums
-           </li>
-           <li>
-           Integer Functions
-           </li>
-           <li>
-           Number Theory
-           </li>
-           <li>
-           Binomial Coefficients
-           </li>
-           <li>
-           Special Numbers
-       </li>
-         
-           <li>
-           Generating Functions
-       </li>
-            <li>
-           Discrete Probability
-       </li>
-            <li>
-           Asymptotics
-           </li>
-           </ul>
+      
            </li>
     
         
