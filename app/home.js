@@ -14,6 +14,7 @@ import MathsForCompSciPage from "./maths-for-comp-sci.js";
 import CLanguagePage from "./c-language.js";
 import ClojurePage from "./clojure.js";
 import './../css/nav-grid.css';
+import { HashLink as Link } from 'react-router-hash-link';
 
 
 
@@ -27,9 +28,9 @@ const home = {
                <ul className='nav nav-grid center'>
                
             <li className='amber'>
-            <NavLink to={"/MathFundamentals"}>
+            <Link to={"/MathFundamentals#header"}>
          Math<br/>Fundamentals
-       </NavLink>
+       </Link>
            </li>
      
            <li className='cyan'>
