@@ -9,9 +9,12 @@ function BlogPage(props) {
           <div className="Blog-Contents">
             {props.contents}
           </div>
-      <div className="Blog-Text-Body">
+      <div id="text-body" className="Blog-Text-Body">
         {props.text}
       </div>
+          <div className="break">
+          <br />
+          </div>
     </div>
   );
 }

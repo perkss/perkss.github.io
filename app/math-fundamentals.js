@@ -9,7 +9,7 @@ import MathIntro from './math-fundamentals/math-intro';
 import MathPrerequisites from './math-fundamentals/math-prerequisites';
 import BiteSizeMath from './math-fundamentals/bitesize-maths';
 import ConcreteMathematics from './math-fundamentals/concrete-mathematics';
-
+import { HashLink as Link } from 'react-router-hash-link';
 
 
 import BlogPage from './blog-page.js';
@@ -29,25 +29,25 @@ const MathFundamentals = ({ match })  => {
                <ul className='nav menu center'>
                
                <li className='gray'>
-            <NavLink to={`${match.url}`}>
+            <Link to={`${match.url}#text-body`}>
           Welcome to<br/>Maths
-       </NavLink>
+       </Link>
            </li>
      
            <li className='quay-pink'>
-            <NavLink to={`${match.url}/BiteSizeMath`}>
+            <Link to={`${match.url}/BiteSizeMath#text-body`}>
           Bitesize<br/>Math
-       </NavLink>
+       </Link>
            </li>
                <li className='dark-blue'>
-        <NavLink to={`${match.url}/MathPrerequisites`}>
+        <Link to={`${match.url}/MathPrerequisites#text-body`}>
           Math<br/>Prerequisites
-        </NavLink>
+        </Link>
            </li>
            <li className='teal'>
-           <NavLink to={`${match.url}/ConcreteMathematics`}>
+           <Link to={`${match.url}/ConcreteMathematics#text-body`}>
            Concrete<br/>Mathematics
-           </NavLink>
+           </Link>
       
            </li>
     
