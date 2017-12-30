@@ -6091,19 +6091,37 @@ var home = {
         null,
         "Mathematics for Computer Science"
       ),
-      " using course content from MIT and Stanford follows using the fundamental knowledge. ",
+      " using course content from ",
+      _react2.default.createElement(
+        "a",
+        { href: "https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-042j-mathematics-for-computer-science-spring-2015/index.htm" },
+        "MIT"
+      ),
+      " and ",
+      _react2.default.createElement(
+        "a",
+        { href: "http://web.stanford.edu/class/cs103/" },
+        "Stanford"
+      ),
+      " follows using the fundamental knowledge. ",
       _react2.default.createElement(
         "strong",
         null,
         "Algorithms"
       ),
-      " will then be discussed in detail buidling them imperatively and functionally using C and Clojure respectively. We will then dig into the world of ",
+      " will then be discussed in detail building them imperatively and functionally using C and Clojure respectively. We will then dig into the world of ",
       _react2.default.createElement(
         "strong",
         null,
         "Functional Programming"
       ),
-      " using the text book the Structure and Interpretation of Computer Programs (SICP) as the basis and Clojure as the main language. Check out ",
+      " using the text book the ",
+      _react2.default.createElement(
+        "a",
+        { href: "https://mitpress.mit.edu/sicp/" },
+        "Structure and Interpretation of Computer Programs (SICP)"
+      ),
+      " as the basis and Clojure as the main language. Check out ",
       _react2.default.createElement(
         "strong",
         null,
@@ -6115,7 +6133,13 @@ var home = {
         null,
         "Programming Pearls"
       ),
-      " for all to learn from a case study of the book."
+      " for all to learn from a case study of the ",
+      _react2.default.createElement(
+        "a",
+        { href: "https://www.amazon.co.uk/Programming-Pearls-Joe-Bentley/dp/8177588583" },
+        "book"
+      ),
+      "."
     ),
     _react2.default.createElement(
       "p",
