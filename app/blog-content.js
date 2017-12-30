@@ -12,6 +12,7 @@ import MathFundamentalsPage from "./math-fundamentals";
 import MathsForCompSciPage from "./maths-for-comp-sci.js";
 import CLanguagePage from "./c-language.js";
 import ClojurePage from "./clojure.js";
+import ScrollToTopRoute from './scroll-to-top-route';
 
 
 
@@ -20,7 +21,8 @@ class Content extends Component {
     render() {
         return (
               <HashRouter>
-        <div>
+                <div>
+                <ScrollToTopRoute>
 
  <div className="content">
                    <Route exact path="/" component={HomePage}/>
@@ -33,7 +35,7 @@ class Content extends Component {
             </div>
 
 
-        
+        </ScrollToTopRoute>
         </div>
  </HashRouter>
         );

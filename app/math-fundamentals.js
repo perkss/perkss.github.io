@@ -29,7 +29,7 @@ const MathFundamentals = ({ match })  => {
                <ul className='nav menu center'>
                
                <li className='gray'>
-            <Link to={`${match.url}#text-contents`}>
+            <Link to={`${match.url}#text-body`}>
           Welcome to<br/>Maths
        </Link>
            </li>

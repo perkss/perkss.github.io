@@ -17,7 +17,6 @@ import './../css/nav-grid.css';
 import { HashLink as Link } from 'react-router-hash-link';
 
 
-
 const home = {
 
    title: 'The Perks of Computer Science',
@@ -28,9 +27,9 @@ const home = {
                <ul className='nav nav-grid center'>
                
             <li className='amber'>
-            <Link to={"/MathFundamentals#header"}>
+            <NavLink to={"/MathFundamentals"}>
          Math<br/>Fundamentals
-       </Link>
+       </NavLink>
            </li>
      
            <li className='cyan'>
