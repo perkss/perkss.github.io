@@ -6091,7 +6091,7 @@ var home = {
         null,
         "Mathematics for Computer Science"
       ),
-      " using course content from MIT and Stanford using the fundamental knowledge. ",
+      " using course content from MIT and Stanford follows using the fundamental knowledge. ",
       _react2.default.createElement(
         "strong",
         null,
