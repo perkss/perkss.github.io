@@ -7,9 +7,9 @@ h1 {
   margin-top: 0px;
   padding-right: 80px;
   padding-left: 80px;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  font-size: 50px;
+  padding-top: 30px;
+  padding-bottom: 40px;
+ 
   color: white;
   /* Have the padding instead of margin on the left for the colour*/
 }
