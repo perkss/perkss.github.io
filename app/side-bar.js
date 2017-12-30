@@ -38,10 +38,10 @@ class SideBar extends Component {
             <a onClick={ this.handleMenuClick }  > <NavLink exact to="/">Home</NavLink></a>
             <a  onClick={ this.handleMenuClick } > <NavLink to="/MathFundamentals">Math Fundamentals</NavLink></a>
             <a  onClick={ this.handleMenuClick } > <NavLink to="/MathsForCompSci">Maths for Computer Science</NavLink></a>
-            <a onClick={ this.handleMenuClick } ><NavLink to="/Algorithms">Algorithms</NavLink></a>
-            <a onClick={ this.handleMenuClick } ><NavLink to="/clojure">Clojure</NavLink></a>
+            <a onClick={ this.handleMenuClick } ><NavLink to="/Algorithms">Algorithm Fun</NavLink></a>
+            <a onClick={ this.handleMenuClick } ><NavLink to="/clojure">Hipster Clojure</NavLink></a>
             <a onClick={ this.handleMenuClick } ><NavLink to="/FunctionalProgramming">Functional Programming</NavLink></a>
-            <a onClick={ this.handleMenuClick } ><NavLink to="/CLanguage">C Programming</NavLink></a>
+            <a onClick={ this.handleMenuClick } ><NavLink to="/CLanguage">A Little Bit of C Programming</NavLink></a>
             <a onClick={ this.handleMenuClick } ><NavLink to="/ProgrammingPearls">Programming Pearls</NavLink></a>
                     
             </Menu>

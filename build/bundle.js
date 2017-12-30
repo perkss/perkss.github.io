@@ -5350,7 +5350,7 @@ var SideBar = function (_Component) {
             _react2.default.createElement(
               _reactRouterDom.NavLink,
               { to: "/Algorithms" },
-              "Algorithms"
+              "Algorithm Fun"
             )
           ),
           _react2.default.createElement(
@@ -5359,7 +5359,7 @@ var SideBar = function (_Component) {
             _react2.default.createElement(
               _reactRouterDom.NavLink,
               { to: "/clojure" },
-              "Clojure"
+              "Hipster Clojure"
             )
           ),
           _react2.default.createElement(
@@ -5377,7 +5377,7 @@ var SideBar = function (_Component) {
             _react2.default.createElement(
               _reactRouterDom.NavLink,
               { to: "/CLanguage" },
-              "C Programming"
+              "A Little Bit of C Programming"
             )
           ),
           _react2.default.createElement(
