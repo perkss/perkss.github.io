@@ -28088,7 +28088,7 @@ var MathIntro = function MathIntro() {
                 _react2.default.createElement(
                         'h2',
                         null,
-                        'Welcome to World of Math Fundamentals'
+                        'Welcome to the Magical World of Mathematics'
                 ),
                 _react2.default.createElement(
                         'p',
@@ -28099,7 +28099,7 @@ var MathIntro = function MathIntro() {
                                 null,
                                 'Fundamentals of Mathematics'
                         ),
-                        ' please select from the menu items to begin your magical journey through mathematics that you will understand. This section will make ',
+                        ' please select from the menu items to begin your magical journey through mathematics. This section will make the ',
                         _react2.default.createElement(
                                 'strong',
                                 null,
@@ -28111,7 +28111,7 @@ var MathIntro = function MathIntro() {
                                 null,
                                 'Algorithms'
                         ),
-                        ' sections much easier. Perks recommends working through this section or at least skimming before cotinuing. Enjoy!! '
+                        ' sections much easier to understand. Perks recommends working through this section or at least skimming before continuing. Enjoy!! '
                 )
         );
 };
