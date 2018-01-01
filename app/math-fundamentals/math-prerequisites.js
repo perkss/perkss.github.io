@@ -23,6 +23,23 @@ const MathPrerequisites = () => (
        
     <p>        <strong>Congratulations this is a great starting step to understanding any future courses in this area!!</strong> 
             </p>
+        <h3>Manipulating Equalities</h3>
+
+        <p>Similar to the above and covered in our BiteSize Maths section manipulating equalities is part of basic Algebra. For example <Latex>$2x + 6 = 10$ can be manipulated so we firstly subtract $5$ from each side to get $2x = 4$ and then divide both sides by $2$ to equal $x=2$. Nice and easy right?!</Latex></p>
+
+        <p>The next example is a little trickier and is chaining equalities the example shown<Latex> is $(2n+1)^2 - (2n)^2 = 4n + 1$ we have to refer back to expanding double brackets and can think of this in the form. $(2n+1)(2n+1) - (2n)(2n)$ so we expand out these brackets by multiplying the first term by the two terms in the second bracket and then the second term by the two terms in the second bracket. This calculation is $2n\times 2n + 2n\times 1 + 1\times 2n + 1\times 1$ followed by $2n\times 2n$ resulting in $4n^2 + 2n + 2n + 1 - 4n^2 = 4n + 1$ once simplified.</Latex></p>
+
+
+    
+        <h3>Manipulating Fractions</h3>
+
+        <p>Fraction requirements are minimal just need to be able to add and multiply them. Here are the two formulas firstly adding fractions <Latex>$a/b+c/d = ad/bd + bc/bd = ad+cb/bd$ and secondly how to multiply fractions $a/b\times c/d = ac/bd$</Latex></p> 
+    
+        <h3>Exponents and Roots</h3>
+        <h3>Types of Numbers Categorisation</h3>
+        <h3>Closure Properties</h3>
+        <h3>Manipulating Inequalities</h3>
+
     </div>
 
 );

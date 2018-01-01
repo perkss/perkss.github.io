@@ -28878,7 +28878,7 @@ exports.default = MathIntro;
 
 
 Object.defineProperty(exports, "__esModule", {
-        value: true
+    value: true
 });
 
 var _react = __webpack_require__(0);
@@ -28892,94 +28892,154 @@ var _reactLatex2 = _interopRequireDefault(_reactLatex);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var MathPrerequisites = function MathPrerequisites() {
-        return _react2.default.createElement(
-                'div',
+    return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+            'h2',
+            null,
+            'Math Prerequisites'
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            'I was looking through the course notes for ',
+            _react2.default.createElement(
+                'a',
+                { href: 'http://web.stanford.edu/class/cs103/' },
+                'CS103'
+            ),
+            ' Mathematical Foundations of Computing and found a greate slide on ',
+            _react2.default.createElement(
+                'a',
+                { href: 'http://web.stanford.edu/class/cs103/handouts/020%20Mathematical%20Prerequisites.pdf' },
+                'mathematical prerequisites'
+            ),
+            ' for the course. I felt straight away this was a great small sample of the required maths for any maths for computer science or algorithm course in a short form, I still recommend Concrete Mathematics and the Math Preliminaries section in Art of Computer Programming vol1 by Knuth to add a fuller picture. Coming from the UK GCSE Bitesize maths is also great for really basic recap of High School maths.'
+        ),
+        _react2.default.createElement(
+            'h3',
+            null,
+            'Multiplying Polynomials'
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            _react2.default.createElement(
+                _reactLatex2.default,
                 null,
-                _react2.default.createElement(
-                        'h2',
-                        null,
-                        'Math Prerequisites'
-                ),
-                _react2.default.createElement(
-                        'p',
-                        null,
-                        'I was looking through the course notes for ',
-                        _react2.default.createElement(
-                                'a',
-                                { href: 'http://web.stanford.edu/class/cs103/' },
-                                'CS103'
-                        ),
-                        ' Mathematical Foundations of Computing and found a greate slide on ',
-                        _react2.default.createElement(
-                                'a',
-                                { href: 'http://web.stanford.edu/class/cs103/handouts/020%20Mathematical%20Prerequisites.pdf' },
-                                'mathematical prerequisites'
-                        ),
-                        ' for the course. I felt straight away this was a great small sample of the required maths for any maths for computer science or algorithm course in a short form, I still recommend Concrete Mathematics and the Math Preliminaries section in Art of Computer Programming vol1 by Knuth to add a fuller picture. Coming from the UK GCSE Bitesize maths is also great for really basic recap of High School maths.'
-                ),
-                _react2.default.createElement(
-                        'h3',
-                        null,
-                        'Multiplying Polynomials'
-                ),
-                _react2.default.createElement(
-                        'p',
-                        null,
-                        _react2.default.createElement(
-                                _reactLatex2.default,
-                                null,
-                                'As part of this course polynomical knowledge is expected to be known which may not be the case if students did not have a great maths experience at earlier school years. They come to a specific case $n^2 = (2k)^2$ this is the same as $n^2 = 4k^2$. This is fairly trivial to understand as you take $(2k)\\times(2k) = 2\\times2$ and $k\\times k = 4k^2$.'
-                        )
-                ),
-                _react2.default.createElement(
-                        'p',
-                        null,
-                        _react2.default.createElement(
-                                _reactLatex2.default,
-                                null,
-                                'The next example is a little less trivial if you do not know polynomial multiplication and simply says $n^2 = (2k + 1)^2$ which simplied is $n^2 = 4k^2 + 4k + 1$. What always trips me up here is the 4k. Lets walk though this example.'
-                        )
-                ),
-                _react2.default.createElement(
-                        'p',
-                        null,
-                        _react2.default.createElement(
-                                _reactLatex2.default,
-                                null,
-                                '$(2k+1)^2$ can be written as $(2k+1)(2k+1)$'
-                        ),
-                        ' so we take each part of multiply by the next section so: '
-                ),
-                _react2.default.createElement(
-                        'p',
-                        null,
-                        _react2.default.createElement(
-                                _reactLatex2.default,
-                                null,
-                                '$2k \\times 2k$ and $2k \\times 1$ and then also $1 \\times 2k$ and $1 \\times 1$. This then equals $4k^2 + 2k + 2k + 1$ and is the same as $4k^2 + 4k + 1$.'
-                        )
-                ),
-                _react2.default.createElement(
-                        'p',
-                        null,
-                        _react2.default.createElement(
-                                _reactLatex2.default,
-                                null,
-                                'We can now clearly see how they have got $n^2 = 4k^2 + 4k + 1$ (hopefully). Please message me if not.'
-                        )
-                ),
-                _react2.default.createElement('p', null),
-                _react2.default.createElement(
-                        'p',
-                        null,
-                        '        ',
-                        _react2.default.createElement(
-                                'strong',
-                                null,
-                                'Congratulations this is a great starting step to understanding any future courses in this area!!'
-                        )
-                )
-        );
+                'As part of this course polynomical knowledge is expected to be known which may not be the case if students did not have a great maths experience at earlier school years. They come to a specific case $n^2 = (2k)^2$ this is the same as $n^2 = 4k^2$. This is fairly trivial to understand as you take $(2k)\\times(2k) = 2\\times2$ and $k\\times k = 4k^2$.'
+            )
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            _react2.default.createElement(
+                _reactLatex2.default,
+                null,
+                'The next example is a little less trivial if you do not know polynomial multiplication and simply says $n^2 = (2k + 1)^2$ which simplied is $n^2 = 4k^2 + 4k + 1$. What always trips me up here is the 4k. Lets walk though this example.'
+            )
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            _react2.default.createElement(
+                _reactLatex2.default,
+                null,
+                '$(2k+1)^2$ can be written as $(2k+1)(2k+1)$'
+            ),
+            ' so we take each part of multiply by the next section so: '
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            _react2.default.createElement(
+                _reactLatex2.default,
+                null,
+                '$2k \\times 2k$ and $2k \\times 1$ and then also $1 \\times 2k$ and $1 \\times 1$. This then equals $4k^2 + 2k + 2k + 1$ and is the same as $4k^2 + 4k + 1$.'
+            )
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            _react2.default.createElement(
+                _reactLatex2.default,
+                null,
+                'We can now clearly see how they have got $n^2 = 4k^2 + 4k + 1$ (hopefully). Please message me if not.'
+            )
+        ),
+        _react2.default.createElement('p', null),
+        _react2.default.createElement(
+            'p',
+            null,
+            '        ',
+            _react2.default.createElement(
+                'strong',
+                null,
+                'Congratulations this is a great starting step to understanding any future courses in this area!!'
+            )
+        ),
+        _react2.default.createElement(
+            'h3',
+            null,
+            'Manipulating Equalities'
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            'Similar to the above and covered in our BiteSize Maths section manipulating equalities is part of basic Algebra. For example ',
+            _react2.default.createElement(
+                _reactLatex2.default,
+                null,
+                '$2x + 6 = 10$ can be manipulated so we firstly subtract $5$ from each side to get $2x = 4$ and then divide both sides by $2$ to equal $x=2$. Nice and easy right?!'
+            )
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            'The next example is a little trickier and is chaining equalities the example shown',
+            _react2.default.createElement(
+                _reactLatex2.default,
+                null,
+                ' is $(2n+1)^2 - (2n)^2 = 4n + 1$ we have to refer back to expanding double brackets and can think of this in the form. $(2n+1)(2n+1) - (2n)(2n)$ so we expand out these brackets by multiplying the first term by the two terms in the second bracket and then the second term by the two terms in the second bracket. This calculation is $2n\\times 2n + 2n\\times 1 + 1\\times 2n + 1\\times 1$ followed by $2n\\times 2n$ resulting in $4n^2 + 2n + 2n + 1 - 4n^2 = 4n + 1$ once simplified.'
+            )
+        ),
+        _react2.default.createElement(
+            'h3',
+            null,
+            'Manipulating Fractions'
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            'Fraction requirements are minimal just need to be able to add and multiply them. Here are the two formulas firstly adding fractions ',
+            _react2.default.createElement(
+                _reactLatex2.default,
+                null,
+                '$a/b+c/d = ad/bd + bc/bd = ad+cb/bd$ and secondly how to multiply fractions $a/b\\times c/d = ac/bd$'
+            )
+        ),
+        _react2.default.createElement(
+            'h3',
+            null,
+            'Exponents and Roots'
+        ),
+        _react2.default.createElement(
+            'h3',
+            null,
+            'Types of Numbers Categorisation'
+        ),
+        _react2.default.createElement(
+            'h3',
+            null,
+            'Closure Properties'
+        ),
+        _react2.default.createElement(
+            'h3',
+            null,
+            'Manipulating Inequalities'
+        )
+    );
 };
 
 exports.default = MathPrerequisites;
