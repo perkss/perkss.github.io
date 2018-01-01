@@ -22,6 +22,11 @@ ul, li {
     text-align: center;
 }
 
+.text-list li {
+    text-align: left;
+  
+}
+
 .center {
 display: table;   /* Allow the centering to work */
 	margin: 0 auto;

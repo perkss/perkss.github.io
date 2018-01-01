@@ -1051,7 +1051,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Redirect", function() { return __WEBPACK_IMPORTED_MODULE_6__Redirect__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Route__ = __webpack_require__(60);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Route", function() { return __WEBPACK_IMPORTED_MODULE_7__Route__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Router__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Router__ = __webpack_require__(28);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Router", function() { return __WEBPACK_IMPORTED_MODULE_8__Router__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__StaticRouter__ = __webpack_require__(108);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "StaticRouter", function() { return __WEBPACK_IMPORTED_MODULE_9__StaticRouter__["a"]; });
@@ -1185,7 +1185,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _header = __webpack_require__(33);
+var _header = __webpack_require__(32);
 
 var _header2 = _interopRequireDefault(_header);
 
@@ -2496,149 +2496,6 @@ var locationsAreEqual = function locationsAreEqual(a, b) {
 /* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-/* WEBPACK VAR INJECTION */(function(module) {
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _katex = __webpack_require__(123);
-
-var _katex2 = _interopRequireDefault(_katex);
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = __webpack_require__(1);
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* eslint react/no-danger: 0 */
-
-// Eslint doesn't like react being in peerDependencies
-//eslint-disable-line
-
-
-var latexString = function latexString(string, options) {
-    // Remove potential HTML
-    string = string.replace(/(<([^>]+)>)/gi, "");
-    var regularExpression = /\$\$[\s\S]+?\$\$|\$[\s\S]+?\$/g;
-
-    var stripDollars = function stripDollars(stringToStrip) {
-        if (stringToStrip[1] === "$") {
-            stringToStrip = stringToStrip.slice(2, -2);
-        } else {
-            stringToStrip = stringToStrip.slice(1, -1);
-        }
-
-        return stringToStrip;
-    };
-
-    var renderLatexString = function renderLatexString(s) {
-        var renderedString = void 0;
-        try {
-            renderedString = _katex2.default.renderToString(s, options);
-        } catch (err) {
-            console.error("couldn`t convert string", s);
-            return s;
-        }
-        return renderedString;
-    };
-
-    var result = [];
-
-    var latexMatch = string.match(regularExpression);
-    var stringWithoutLatex = string.split(regularExpression);
-
-    if (latexMatch) {
-        stringWithoutLatex.forEach(function (s, index) {
-            result.push({
-                string: s,
-                type: "text"
-            });
-            if (latexMatch[index]) {
-                result.push({
-                    string: stripDollars(latexMatch[index]),
-                    type: "latex"
-                });
-            }
-        });
-    } else {
-        result.push({
-            string: string,
-            type: "text"
-        });
-    }
-
-    var processResult = function processResult(resultToProcess) {
-        var newResult = resultToProcess.map(function (r) {
-            if (r.type === "text") {
-                return r.string;
-            }
-            return renderLatexString(r.string);
-        });
-
-        return newResult.join(" ");
-    };
-
-    return processResult(result);
-};
-
-var Latex = function (_React$Component) {
-    _inherits(Latex, _React$Component);
-
-    function Latex() {
-        _classCallCheck(this, Latex);
-
-        return _possibleConstructorReturn(this, (Latex.__proto__ || Object.getPrototypeOf(Latex)).apply(this, arguments));
-    }
-
-    _createClass(Latex, [{
-        key: "render",
-        value: function render() {
-            var _props = this.props,
-                children = _props.children,
-                displayMode = _props.displayMode;
-
-            return _react2.default.createElement("span", {
-                dangerouslySetInnerHTML: {
-                    __html: latexString(children, { displayMode: displayMode })
-                }
-            });
-        }
-    }]);
-
-    return Latex;
-}(_react2.default.Component);
-
-Latex.propTypes = {
-    children: _propTypes2.default.string,
-    displayMode: _propTypes2.default.bool
-};
-Latex.defaultProps = {
-    children: "",
-    displayMode: false
-};
-
-
-if (module && module.exports) {
-    module.exports = Latex;
-} else {
-    window.Latex = Latex;
-}
-
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(122)(module)))
-
-/***/ }),
-/* 23 */
-/***/ (function(module, exports, __webpack_require__) {
-
 /* eslint no-console:0 */
 /**
  * This module contains general functions that can be used for building
@@ -2647,7 +2504,7 @@ if (module && module.exports) {
 
 var domTree = __webpack_require__(65);
 var fontMetrics = __webpack_require__(18);
-var symbols = __webpack_require__(24);
+var symbols = __webpack_require__(23);
 var utils = __webpack_require__(6);
 
 var greekCapitals = [
@@ -3122,7 +2979,7 @@ module.exports = {
 
 
 /***/ }),
-/* 24 */
+/* 23 */
 /***/ (function(module, exports) {
 
 /**
@@ -3800,7 +3657,7 @@ defineSymbol(text, main, textord, "\u201d", "”");
 
 
 /***/ }),
-/* 25 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3816,7 +3673,7 @@ defineSymbol(text, main, textord, "\u201d", "”");
 if (process.env.NODE_ENV !== 'production') {
   var invariant = __webpack_require__(13);
   var warning = __webpack_require__(20);
-  var ReactPropTypesSecret = __webpack_require__(26);
+  var ReactPropTypesSecret = __webpack_require__(25);
   var loggedTypeFailures = {};
 }
 
@@ -3867,7 +3724,7 @@ module.exports = checkPropTypes;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ }),
-/* 26 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3886,7 +3743,7 @@ module.exports = ReactPropTypesSecret;
 
 
 /***/ }),
-/* 27 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3970,7 +3827,7 @@ var locationsAreEqual = exports.locationsAreEqual = function locationsAreEqual(a
 };
 
 /***/ }),
-/* 28 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4061,18 +3918,18 @@ var createTransitionManager = function createTransitionManager() {
 exports.default = createTransitionManager;
 
 /***/ }),
-/* 29 */
+/* 28 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_Router__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_Router__ = __webpack_require__(29);
 // Written in this round about way for babel-transform-imports
 
 
 /* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_Router__["a" /* default */]);
 
 /***/ }),
-/* 30 */
+/* 29 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4191,7 +4048,7 @@ Router.childContextTypes = {
 /* harmony default export */ __webpack_exports__["a"] = (Router);
 
 /***/ }),
-/* 31 */
+/* 30 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4268,7 +4125,7 @@ var matchPath = function matchPath(pathname) {
 /* harmony default export */ __webpack_exports__["a"] = (matchPath);
 
 /***/ }),
-/* 32 */
+/* 31 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4353,7 +4210,7 @@ var createTransitionManager = function createTransitionManager() {
 /* harmony default export */ __webpack_exports__["a"] = (createTransitionManager);
 
 /***/ }),
-/* 33 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4386,7 +4243,7 @@ function Header(props) {
 }
 
 /***/ }),
-/* 34 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4432,7 +4289,7 @@ var FunctionalProgrammingPage = function FunctionalProgrammingPage(props) {
 exports.default = FunctionalProgrammingPage;
 
 /***/ }),
-/* 35 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4473,7 +4330,7 @@ var AlgorithmsPage = function AlgorithmsPage(props) {
 exports.default = AlgorithmsPage;
 
 /***/ }),
-/* 36 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4588,6 +4445,149 @@ var MathFundamentals = function MathFundamentals(_ref) {
 };
 
 exports.default = MathFundamentals;
+
+/***/ }),
+/* 36 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(module) {
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _katex = __webpack_require__(123);
+
+var _katex2 = _interopRequireDefault(_katex);
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(1);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* eslint react/no-danger: 0 */
+
+// Eslint doesn't like react being in peerDependencies
+//eslint-disable-line
+
+
+var latexString = function latexString(string, options) {
+    // Remove potential HTML
+    string = string.replace(/(<([^>]+)>)/gi, "");
+    var regularExpression = /\$\$[\s\S]+?\$\$|\$[\s\S]+?\$/g;
+
+    var stripDollars = function stripDollars(stringToStrip) {
+        if (stringToStrip[1] === "$") {
+            stringToStrip = stringToStrip.slice(2, -2);
+        } else {
+            stringToStrip = stringToStrip.slice(1, -1);
+        }
+
+        return stringToStrip;
+    };
+
+    var renderLatexString = function renderLatexString(s) {
+        var renderedString = void 0;
+        try {
+            renderedString = _katex2.default.renderToString(s, options);
+        } catch (err) {
+            console.error("couldn`t convert string", s);
+            return s;
+        }
+        return renderedString;
+    };
+
+    var result = [];
+
+    var latexMatch = string.match(regularExpression);
+    var stringWithoutLatex = string.split(regularExpression);
+
+    if (latexMatch) {
+        stringWithoutLatex.forEach(function (s, index) {
+            result.push({
+                string: s,
+                type: "text"
+            });
+            if (latexMatch[index]) {
+                result.push({
+                    string: stripDollars(latexMatch[index]),
+                    type: "latex"
+                });
+            }
+        });
+    } else {
+        result.push({
+            string: string,
+            type: "text"
+        });
+    }
+
+    var processResult = function processResult(resultToProcess) {
+        var newResult = resultToProcess.map(function (r) {
+            if (r.type === "text") {
+                return r.string;
+            }
+            return renderLatexString(r.string);
+        });
+
+        return newResult.join(" ");
+    };
+
+    return processResult(result);
+};
+
+var Latex = function (_React$Component) {
+    _inherits(Latex, _React$Component);
+
+    function Latex() {
+        _classCallCheck(this, Latex);
+
+        return _possibleConstructorReturn(this, (Latex.__proto__ || Object.getPrototypeOf(Latex)).apply(this, arguments));
+    }
+
+    _createClass(Latex, [{
+        key: "render",
+        value: function render() {
+            var _props = this.props,
+                children = _props.children,
+                displayMode = _props.displayMode;
+
+            return _react2.default.createElement("span", {
+                dangerouslySetInnerHTML: {
+                    __html: latexString(children, { displayMode: displayMode })
+                }
+            });
+        }
+    }]);
+
+    return Latex;
+}(_react2.default.Component);
+
+Latex.propTypes = {
+    children: _propTypes2.default.string,
+    displayMode: _propTypes2.default.bool
+};
+Latex.defaultProps = {
+    children: "",
+    displayMode: false
+};
+
+
+if (module && module.exports) {
+    module.exports = Latex;
+} else {
+    window.Latex = Latex;
+}
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(122)(module)))
 
 /***/ }),
 /* 37 */
@@ -4707,7 +4707,7 @@ exports = module.exports = __webpack_require__(10)(undefined);
 exports.i(__webpack_require__(429), "");
 
 // module
-exports.push([module.i, "html {\n    position: relative;\n    min-height: 100%;\n    margin: 0px;\n    padding: 0px;\n}\nbody {\n    background: #F6F0F0;\n     margin: 0px 0px 58px 0px; /* bottom = footer height */\n     padding: 0px;\n}\nh1, h2, p, ul, li {\n    font-family: 'Open Sans';\n}\n\np {\n    text-align: justify;\n}\n\nul, li {\n    text-align: center;\n}\n\n.center {\ndisplay: table;   /* Allow the centering to work */\n\tmargin: 0 auto;\n    margin: auto;\n    width: 100%;\n    padding-bottom: 10px;\n}\n\n.home h2 {\n\n     text-align: center;\n  background: #F6F0F0;\n  margin-left: 0px;\n  margin-right: 0px;\n  margin-bottom: 0px;\n  margin-top: 15px;\n  padding-right: 80px;\n  padding-left: 80px;\n  padding-top: 20px;\n  padding-bottom: 10px;\n  font-size: 40px;\n\n}\n\n.Blog-Contents {\n  \n   padding-top: 1px;\n  padding-bottom: 1px;\n  margin-left: 30px;\n  margin-right: 30px;\n  font-size: 17px;\n}\n\n.Blog-Text-Body {\n  background-color: #FFF;\n  padding-top: 20px;\n  padding-left: 20px;\n  padding-bottom: 30px;\n  padding-right: 20px;\n  margin-left: 30px;\n  margin-top: 30px;\n  margin-right: 30px;\n  margin-bottom: 30px;\n  font-size: 17px;\n}\n.Blog-Text-Body h2 {\n  padding-top: 10px;\n    padding-right: 0px;\n    padding-bottom: 15px;\n    padding-left: 0px;\n    margin: 0;\n    text-align: center;\n}\n.content li {\n  margin-bottom: 0px;\n}\n.active {\n/*  background-color: #0099FF;*/\n}\n\n\n/* Position and sizing of burger button */\n.bm-burger-button {\n position: absolute;\n  width: 36px;\n  height: 30px;\n  left: 36px;\n  top: 36px;\n}\n\n/* Color/shape of burger icon bars */\n.bm-burger-bars {\n  background: #FFFFFF;\n}\n\n/* Position and sizing of clickable cross button */\n.bm-cross-button {\n  height: 24px;\n  width: 24px;\n}\n\n/* Color/shape of close button cross */\n.bm-cross {\n  background: #bdc3c7;\n}\n\n/* General sidebar styles */\n.bm-menu {\n  background: #373a47;\n  padding: 2.5em 1.5em 0;\n  font-size: 1.45em;\n}\n\n/* Morph shape necessary with bubble or elastic */\n.bm-morph-shape {\n  fill: #373a47;\n}\n\n/* Wrapper for item list */\n.bm-item-list {\n  color: #b8b7ad;\n  padding: 0.8em;\n}\n\n.bm-item-list a {\n    color: #ffffff;\n\n}\n\n/* Styling of overlay */\n.bm-overlay {\n  background: rgba(0, 0, 0, 0.3);\n}\n\n\n\n", ""]);
+exports.push([module.i, "html {\n    position: relative;\n    min-height: 100%;\n    margin: 0px;\n    padding: 0px;\n}\nbody {\n    background: #F6F0F0;\n     margin: 0px 0px 58px 0px; /* bottom = footer height */\n     padding: 0px;\n}\nh1, h2, p, ul, li {\n    font-family: 'Open Sans';\n}\n\np {\n    text-align: justify;\n}\n\nul, li {\n    text-align: center;\n}\n\n.text-list li {\n    text-align: left;\n  \n}\n\n.center {\ndisplay: table;   /* Allow the centering to work */\n\tmargin: 0 auto;\n    margin: auto;\n    width: 100%;\n    padding-bottom: 10px;\n}\n\n.home h2 {\n\n     text-align: center;\n  background: #F6F0F0;\n  margin-left: 0px;\n  margin-right: 0px;\n  margin-bottom: 0px;\n  margin-top: 15px;\n  padding-right: 80px;\n  padding-left: 80px;\n  padding-top: 20px;\n  padding-bottom: 10px;\n  font-size: 40px;\n\n}\n\n.Blog-Contents {\n  \n   padding-top: 1px;\n  padding-bottom: 1px;\n  margin-left: 30px;\n  margin-right: 30px;\n  font-size: 17px;\n}\n\n.Blog-Text-Body {\n  background-color: #FFF;\n  padding-top: 20px;\n  padding-left: 20px;\n  padding-bottom: 30px;\n  padding-right: 20px;\n  margin-left: 30px;\n  margin-top: 30px;\n  margin-right: 30px;\n  margin-bottom: 30px;\n  font-size: 17px;\n}\n.Blog-Text-Body h2 {\n  padding-top: 10px;\n    padding-right: 0px;\n    padding-bottom: 15px;\n    padding-left: 0px;\n    margin: 0;\n    text-align: center;\n}\n.content li {\n  margin-bottom: 0px;\n}\n.active {\n/*  background-color: #0099FF;*/\n}\n\n\n/* Position and sizing of burger button */\n.bm-burger-button {\n position: absolute;\n  width: 36px;\n  height: 30px;\n  left: 36px;\n  top: 36px;\n}\n\n/* Color/shape of burger icon bars */\n.bm-burger-bars {\n  background: #FFFFFF;\n}\n\n/* Position and sizing of clickable cross button */\n.bm-cross-button {\n  height: 24px;\n  width: 24px;\n}\n\n/* Color/shape of close button cross */\n.bm-cross {\n  background: #bdc3c7;\n}\n\n/* General sidebar styles */\n.bm-menu {\n  background: #373a47;\n  padding: 2.5em 1.5em 0;\n  font-size: 1.45em;\n}\n\n/* Morph shape necessary with bubble or elastic */\n.bm-morph-shape {\n  fill: #373a47;\n}\n\n/* Wrapper for item list */\n.bm-item-list {\n  color: #b8b7ad;\n  padding: 0.8em;\n}\n\n.bm-item-list a {\n    color: #ffffff;\n\n}\n\n/* Styling of overlay */\n.bm-overlay {\n  background: rgba(0, 0, 0, 0.3);\n}\n\n\n\n", ""]);
 
 // exports
 
@@ -4726,10 +4726,6 @@ Object.defineProperty(exports, "__esModule", {
 var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
-
-var _reactLatex = __webpack_require__(22);
-
-var _reactLatex2 = _interopRequireDefault(_reactLatex);
 
 var _blogPage = __webpack_require__(11);
 
@@ -4757,11 +4753,6 @@ var mathsForCompSci = {
             'p',
             null,
             'Hitting the blog very soon. Next infact!'
-        ),
-        _react2.default.createElement(
-            _reactLatex2.default,
-            null,
-            'What is $(3 \\times 4) \\div (5-3)$'
         )
     )]
 
@@ -5252,15 +5243,15 @@ var _home = __webpack_require__(63);
 
 var _home2 = _interopRequireDefault(_home);
 
-var _functionalProgramming = __webpack_require__(34);
+var _functionalProgramming = __webpack_require__(33);
 
 var _functionalProgramming2 = _interopRequireDefault(_functionalProgramming);
 
-var _algorithms = __webpack_require__(35);
+var _algorithms = __webpack_require__(34);
 
 var _algorithms2 = _interopRequireDefault(_algorithms);
 
-var _mathFundamentals = __webpack_require__(36);
+var _mathFundamentals = __webpack_require__(35);
 
 var _mathFundamentals2 = _interopRequireDefault(_mathFundamentals);
 
@@ -5716,7 +5707,7 @@ Link.contextTypes = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prop_types__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__matchPath__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__matchPath__ = __webpack_require__(30);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -5939,7 +5930,7 @@ var _sideBar = __webpack_require__(55);
 
 var _sideBar2 = _interopRequireDefault(_sideBar);
 
-var _header = __webpack_require__(33);
+var _header = __webpack_require__(32);
 
 var _header2 = _interopRequireDefault(_header);
 
@@ -5947,15 +5938,15 @@ var _homePage = __webpack_require__(119);
 
 var _homePage2 = _interopRequireDefault(_homePage);
 
-var _functionalProgramming = __webpack_require__(34);
+var _functionalProgramming = __webpack_require__(33);
 
 var _functionalProgramming2 = _interopRequireDefault(_functionalProgramming);
 
-var _algorithms = __webpack_require__(35);
+var _algorithms = __webpack_require__(34);
 
 var _algorithms2 = _interopRequireDefault(_algorithms);
 
-var _mathFundamentals = __webpack_require__(36);
+var _mathFundamentals = __webpack_require__(35);
 
 var _mathFundamentals2 = _interopRequireDefault(_mathFundamentals);
 
@@ -7810,7 +7801,7 @@ var emptyObject = __webpack_require__(19);
 var invariant = __webpack_require__(13);
 var warning = __webpack_require__(20);
 var emptyFunction = __webpack_require__(7);
-var checkPropTypes = __webpack_require__(25);
+var checkPropTypes = __webpack_require__(24);
 
 // TODO: this is special because it gets imported during build.
 
@@ -9474,7 +9465,7 @@ var shallowEqual = __webpack_require__(52);
 var containsNode = __webpack_require__(53);
 var focusNode = __webpack_require__(54);
 var emptyObject = __webpack_require__(19);
-var checkPropTypes = __webpack_require__(25);
+var checkPropTypes = __webpack_require__(24);
 var hyphenateStyleName = __webpack_require__(84);
 var camelizeStyleName = __webpack_require__(86);
 
@@ -25011,7 +25002,7 @@ module.exports = camelize;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_prop_types__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_history_createBrowserHistory__ = __webpack_require__(91);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_history_createBrowserHistory___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_history_createBrowserHistory__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Router__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Router__ = __webpack_require__(28);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -25084,8 +25075,8 @@ var invariant = __webpack_require__(13);
 var warning = __webpack_require__(20);
 var assign = __webpack_require__(12);
 
-var ReactPropTypesSecret = __webpack_require__(26);
-var checkPropTypes = __webpack_require__(25);
+var ReactPropTypesSecret = __webpack_require__(25);
+var checkPropTypes = __webpack_require__(24);
 
 module.exports = function(isValidElement, throwOnDirectAccess) {
   /* global Symbol */
@@ -25631,7 +25622,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 
 var emptyFunction = __webpack_require__(7);
 var invariant = __webpack_require__(13);
-var ReactPropTypesSecret = __webpack_require__(26);
+var ReactPropTypesSecret = __webpack_require__(25);
 
 module.exports = function() {
   function shim(props, propName, componentName, location, propFullName, secret) {
@@ -25701,11 +25692,11 @@ var _invariant = __webpack_require__(4);
 
 var _invariant2 = _interopRequireDefault(_invariant);
 
-var _LocationUtils = __webpack_require__(27);
+var _LocationUtils = __webpack_require__(26);
 
 var _PathUtils = __webpack_require__(14);
 
-var _createTransitionManager = __webpack_require__(28);
+var _createTransitionManager = __webpack_require__(27);
 
 var _createTransitionManager2 = _interopRequireDefault(_createTransitionManager);
 
@@ -26006,7 +25997,7 @@ exports.default = createBrowserHistory;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_prop_types__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_history_createHashHistory__ = __webpack_require__(93);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_history_createHashHistory___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_history_createHashHistory__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Router__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Router__ = __webpack_require__(28);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -26078,11 +26069,11 @@ var _invariant = __webpack_require__(4);
 
 var _invariant2 = _interopRequireDefault(_invariant);
 
-var _LocationUtils = __webpack_require__(27);
+var _LocationUtils = __webpack_require__(26);
 
 var _PathUtils = __webpack_require__(14);
 
-var _createTransitionManager = __webpack_require__(28);
+var _createTransitionManager = __webpack_require__(27);
 
 var _createTransitionManager2 = _interopRequireDefault(_createTransitionManager);
 
@@ -26413,7 +26404,7 @@ exports.default = createHashHistory;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_prop_types__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_history_createMemoryHistory__ = __webpack_require__(96);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_history_createMemoryHistory___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_history_createMemoryHistory__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Router__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Router__ = __webpack_require__(29);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -26486,9 +26477,9 @@ var _warning2 = _interopRequireDefault(_warning);
 
 var _PathUtils = __webpack_require__(14);
 
-var _LocationUtils = __webpack_require__(27);
+var _LocationUtils = __webpack_require__(26);
 
-var _createTransitionManager = __webpack_require__(28);
+var _createTransitionManager = __webpack_require__(27);
 
 var _createTransitionManager2 = _interopRequireDefault(_createTransitionManager);
 
@@ -27424,7 +27415,7 @@ Redirect.contextTypes = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_invariant__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LocationUtils__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__PathUtils__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__createTransitionManager__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__createTransitionManager__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__DOMUtils__ = __webpack_require__(62);
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -27728,7 +27719,7 @@ var createBrowserHistory = function createBrowserHistory() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_invariant__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LocationUtils__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__PathUtils__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__createTransitionManager__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__createTransitionManager__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__DOMUtils__ = __webpack_require__(62);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -28047,7 +28038,7 @@ var createHashHistory = function createHashHistory() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_warning__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__PathUtils__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LocationUtils__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__createTransitionManager__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__createTransitionManager__ = __webpack_require__(31);
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -28232,7 +28223,7 @@ var createMemoryHistory = function createMemoryHistory() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_prop_types__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_history_PathUtils__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_history_PathUtils___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_history_PathUtils__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Router__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Router__ = __webpack_require__(29);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
@@ -28424,7 +28415,7 @@ StaticRouter.childContextTypes = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_warning__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_invariant__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_invariant__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__matchPath__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__matchPath__ = __webpack_require__(30);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -28510,7 +28501,7 @@ Switch.propTypes = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_matchPath__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_matchPath__ = __webpack_require__(30);
 // Written in this round about way for babel-transform-imports
 
 
@@ -28799,7 +28790,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _header = __webpack_require__(33);
+var _header = __webpack_require__(32);
 
 var _header2 = _interopRequireDefault(_header);
 
@@ -28894,7 +28885,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactLatex = __webpack_require__(22);
+var _reactLatex = __webpack_require__(36);
 
 var _reactLatex2 = _interopRequireDefault(_reactLatex);
 
@@ -29107,7 +29098,7 @@ module.exports = {
 
 var buildHTML = __webpack_require__(125);
 var buildMathML = __webpack_require__(128);
-var buildCommon = __webpack_require__(23);
+var buildCommon = __webpack_require__(22);
 var Options = __webpack_require__(130);
 var Settings = __webpack_require__(64);
 var Style = __webpack_require__(17);
@@ -29162,7 +29153,7 @@ module.exports = buildTree;
 var ParseError = __webpack_require__(8);
 var Style = __webpack_require__(17);
 
-var buildCommon = __webpack_require__(23);
+var buildCommon = __webpack_require__(22);
 var delimiter = __webpack_require__(127);
 var domTree = __webpack_require__(65);
 var fontMetrics = __webpack_require__(18);
@@ -32509,9 +32500,9 @@ module.exports = {
 var ParseError = __webpack_require__(8);
 var Style = __webpack_require__(17);
 
-var buildCommon = __webpack_require__(23);
+var buildCommon = __webpack_require__(22);
 var fontMetrics = __webpack_require__(18);
-var symbols = __webpack_require__(24);
+var symbols = __webpack_require__(23);
 var utils = __webpack_require__(6);
 
 var makeSpan = buildCommon.makeSpan;
@@ -33046,11 +33037,11 @@ module.exports = {
  * parser.
  */
 
-var buildCommon = __webpack_require__(23);
+var buildCommon = __webpack_require__(22);
 var fontMetrics = __webpack_require__(18);
 var mathMLTree = __webpack_require__(129);
 var ParseError = __webpack_require__(8);
-var symbols = __webpack_require__(24);
+var symbols = __webpack_require__(23);
 var utils = __webpack_require__(6);
 
 var makeSpan = buildCommon.makeSpan;
@@ -33960,7 +33951,7 @@ module.exports = parseTree;
 var functions = __webpack_require__(133);
 var environments = __webpack_require__(134);
 var MacroExpander = __webpack_require__(135);
-var symbols = __webpack_require__(24);
+var symbols = __webpack_require__(23);
 var utils = __webpack_require__(6);
 var cjkRegex = __webpack_require__(37).cjkRegex;
 
@@ -35984,7 +35975,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactLatex = __webpack_require__(22);
+var _reactLatex = __webpack_require__(36);
 
 var _reactLatex2 = _interopRequireDefault(_reactLatex);
 
@@ -36044,7 +36035,7 @@ var BiteSizeMath = function BiteSizeMath() {
             )
         ),
         _react2.default.createElement(
-            'h3',
+            'h4',
             null,
             'Prime Numbers'
         ),
@@ -36061,7 +36052,7 @@ var BiteSizeMath = function BiteSizeMath() {
         ),
         _react2.default.createElement(
             'ol',
-            null,
+            { className: 'text-list' },
             _react2.default.createElement(
                 'li',
                 null,
@@ -36086,22 +36077,62 @@ var BiteSizeMath = function BiteSizeMath() {
                 'There are a infinite number of prime numbers'
             )
         ),
+        _react2.default.createElement('br', null),
         _react2.default.createElement(
             'p',
             null,
-            'Prime numbers an example given ',
+            'Prime numbers an example: Given ',
             _react2.default.createElement(
                 _reactLatex2.default,
                 null,
-                '$33, 34, 35, 36, 37$ which numbers are prime? Well from the key facts we can ignore even numbers of $34$ and $36$ straight away. Now to work out $33$ we can divide by numbers from $3$ to the $\\sqrt 33$ as prime divisors will always be pairs. One member of the pair will be less than the square root and the other will be more adding an efficiency. So we can try $33 \\mod 3 = 0$ so here the first number tried is divisble so is modulo $0$ as $33/3 = 11$ so $33$ is not prime. Now lets try the same for $35$ so $35 \\mod 3$ is $!=0$, now try $35 \\mod 4$ which is also $!= 0$, now we try $35 \\mod 5=0$ which is as $7 \\times 5 = 35$ so $35$ is not prime. Finally we can run this algorithm over $37$ and see that no value when applying $37 \\mod 3$ ... $\\sqrt 37$ so $37$ is prime.'
+                '$33, 34, 35, 36, 37$'
             ),
-            ' This function has been written in Clojure for example:',
+            ' which numbers are prime? '
+        ),
+        ' ',
+        _react2.default.createElement(
+            'p',
+            null,
+            'Well from the key facts we can ignore even numbers of ',
             _react2.default.createElement(
-                _reactSyntaxHighlighter2.default,
-                { language: 'clojure', style: _hljs.darcula },
-                '(defn is-prime? [n] (cond (< n 2) false (= 2 n) true :else (not-any? #(zero? (mod n %)) (cons 2 (range 3 (inc (Math/sqrt n)) 2)))))'
+                _reactLatex2.default,
+                null,
+                '$34$ and $36$ straight away. Now to work out $33$ we can divide by numbers from $3$ to the $\\sqrt 33$ as prime divisors will always be pairs. One member of the pair will be less than the square root and the other will be more thus adding an efficiency to the algorithm. So we can try $33\\mod 3 = 0$ so here the first number tried is divisible so is modulo $0$ as $33/3 = 11$ so $33$ is not prime. Now lets try the same for $35$ so $35 \\mod 3$ is $!=0$, now try $35\\mod 4$ which is also $!= 0$, now we try $35 \\mod 5=0$ which is as $35/5 = 7$ so $35$ is not prime. Finally we can run this algorithm over $37$ and see that no value when applying $37\\mod 3$ ... $\\sqrt 37$ so $37$ is prime.'
             ),
             ' '
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            'This function has been written in Clojure for example:'
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            _react2.default.createElement(
+                'div',
+                { className: 'code-block' },
+                _react2.default.createElement(
+                    _reactSyntaxHighlighter2.default,
+                    { language: 'clojure', style: _hljs.darcula },
+                    '(defn is-prime? [n] (cond (< n 2) false (= 2 n) true :else (not-any? #(zero? (mod n %)) (cons 2 (range 3 (inc (Math/sqrt n)) 2)))))'
+                )
+            )
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            'Prime Factors are factors of a number that are also prime. The method is to look for two factors, check if they are prime if they are not break them down until they are.'
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            'Highest common factor is a factor shared by two or more numbers for example 8 and 12 have the common factors of 1,2 and 4. The highest common factor here is 4. '
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            'Lowest common multiple is a number that is shared multiple of two or more numbers. For example the lowest common multiple of 3 and 4 is 12.'
         ),
         _react2.default.createElement(
             'h3',
@@ -36111,13 +36142,14 @@ var BiteSizeMath = function BiteSizeMath() {
         _react2.default.createElement(
             'p',
             null,
-            _react2.default.createElement(_reactLatex2.default, null)
+            'The law of indices are important to know as a reference so please refer back to these when required: ',
+            _react2.default.createElement(
+                'a',
+                { href: 'https://www.bbc.co.uk/education/guides/z826y4j/revision/5' },
+                'Source'
+            )
         ),
-        _react2.default.createElement(
-            'h3',
-            null,
-            'Standard Form'
-        ),
+        _react2.default.createElement('ul', null),
         _react2.default.createElement(
             'p',
             null,
@@ -36129,9 +36161,227 @@ var BiteSizeMath = function BiteSizeMath() {
             'Algebra'
         ),
         _react2.default.createElement(
+            'h4',
+            null,
+            'Expanding Brackets'
+        ),
+        _react2.default.createElement(
             'p',
             null,
-            _react2.default.createElement(_reactLatex2.default, null)
+            'When working with future maths expanding brackets on Algebra is key lets have a ',
+            _react2.default.createElement(
+                'a',
+                { href: 'https://www.bbc.co.uk/education/guides/zcqmsrd/revision/3' },
+                'Bitesize'
+            ),
+            ' refresher. Expanding brackets directly means that we multiply each term in the expression by the term outside of it.'
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            _react2.default.createElement(
+                'h5',
+                null,
+                'Examples'
+            ),
+            _react2.default.createElement(
+                'ul',
+                { className: 'text-list' },
+                _react2.default.createElement(
+                    'li',
+                    null,
+                    '  ',
+                    _react2.default.createElement(
+                        _reactLatex2.default,
+                        null,
+                        '$3(m + 7) = 3 \\times m + 3 \\times 7 = 3m + 21$'
+                    ),
+                    ' '
+                ),
+                _react2.default.createElement(
+                    'li',
+                    null,
+                    '  ',
+                    _react2.default.createElement(
+                        _reactLatex2.default,
+                        null,
+                        '$k(k - 2) = k \\times k - 2 \\times k = k^2 - 2k$'
+                    ),
+                    ' '
+                ),
+                _react2.default.createElement(
+                    'li',
+                    null,
+                    '  ',
+                    _react2.default.createElement(
+                        _reactLatex2.default,
+                        null,
+                        '$3(m + 7) = 3 \\times m + 3 \\times 7 = 3m + 21$.'
+                    ),
+                    ' '
+                )
+            )
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            'When expanding out brackets with powers we must remember the Laws of Indices noted above. For example to expand ',
+            _react2.default.createElement(
+                _reactLatex2.default,
+                null,
+                '$5p^3q(4pq - 2p^5q^2 + 3p)$ we need to do the following steps:'
+            )
+        ),
+        _react2.default.createElement(
+            'ol',
+            { className: 'text-list' },
+            _react2.default.createElement(
+                'li',
+                null,
+                '  ',
+                _react2.default.createElement(
+                    _reactLatex2.default,
+                    null,
+                    '$5p^3q \\times 4pq = 20p^4q^2$'
+                ),
+                ' '
+            ),
+            _react2.default.createElement(
+                'li',
+                null,
+                '  ',
+                _react2.default.createElement(
+                    _reactLatex2.default,
+                    null,
+                    '$5p^3q \\times - 2p^5q^2 = - 10p^8q^3$'
+                ),
+                ' '
+            ),
+            _react2.default.createElement(
+                'li',
+                null,
+                '  ',
+                _react2.default.createElement(
+                    _reactLatex2.default,
+                    null,
+                    '$5p^3q \\times 3p = 15p^4q$'
+                ),
+                ' '
+            ),
+            _react2.default.createElement(
+                'li',
+                null,
+                ' ',
+                _react2.default.createElement(
+                    _reactLatex2.default,
+                    null,
+                    '$5p^3q(4pq - 2p^5q^2 + 3p) = 20p^4q^2 - 10p^8q^3 + 15p^4q$'
+                ),
+                ' '
+            )
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            'Expanding and then simplifying is another key skill required remember the rules of BIDMAS for this. ',
+            _react2.default.createElement(
+                _reactLatex2.default,
+                null,
+                '$6g + 2g(3g + 7) = 6g + 2g\\times 3g + 2g\\times 7 = 6g + 6g^2 + 14g$'
+            ),
+            '. Here you multiply the bracket equation ',
+            _react2.default.createElement(
+                _reactLatex2.default,
+                null,
+                '$(3g+7)\\times 2g$'
+            ),
+            ' following the rules of BIDMAS. Then you simplify it resulting in ',
+            _react2.default.createElement(
+                _reactLatex2.default,
+                null,
+                '$6g^2 + 20g$'
+            ),
+            '. '
+        ),
+        _react2.default.createElement(
+            'h4',
+            null,
+            'Expanding Double Brackets'
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            'To expand double brackets each term needs to be multipled together to the first term in the first brack needs to be multiplied by the first and second term in the second bracket. And then the second term in the first bracket needs to be multiplied by the first and second term in the second bracket also. An example: '
+        ),
+        _react2.default.createElement(
+            'ol',
+            { className: 'text-list' },
+            _react2.default.createElement(
+                'li',
+                null,
+                '  ',
+                _react2.default.createElement(
+                    _reactLatex2.default,
+                    null,
+                    '$2m\\times m = 2m^2$'
+                ),
+                ' '
+            ),
+            _react2.default.createElement(
+                'li',
+                null,
+                '  ',
+                _react2.default.createElement(
+                    _reactLatex2.default,
+                    null,
+                    '$2m\\times 1 = 2m$'
+                ),
+                ' '
+            ),
+            _react2.default.createElement(
+                'li',
+                null,
+                '  ',
+                _react2.default.createElement(
+                    _reactLatex2.default,
+                    null,
+                    '$(-3)\\times m = -3m$'
+                ),
+                ' '
+            ),
+            _react2.default.createElement(
+                'li',
+                null,
+                ' ',
+                _react2.default.createElement(
+                    _reactLatex2.default,
+                    null,
+                    '$(-3)\\times 1 = -3$'
+                ),
+                ' '
+            )
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            'Resulting in ',
+            _react2.default.createElement(
+                _reactLatex2.default,
+                null,
+                '$2m^2 + 2m - 3m - 3$'
+            ),
+            ' which can be simplified down to ',
+            _react2.default.createElement(
+                _reactLatex2.default,
+                null,
+                '$2m^2 - m - 3$'
+            ),
+            '.'
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            'This process can be applied to any number of brackets that need expanding.'
         )
     );
 };
@@ -63898,7 +64148,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactLatex = __webpack_require__(22);
+var _reactLatex = __webpack_require__(36);
 
 var _reactLatex2 = _interopRequireDefault(_reactLatex);
 
@@ -73833,15 +74083,15 @@ var _home = __webpack_require__(63);
 
 var _home2 = _interopRequireDefault(_home);
 
-var _functionalProgramming = __webpack_require__(34);
+var _functionalProgramming = __webpack_require__(33);
 
 var _functionalProgramming2 = _interopRequireDefault(_functionalProgramming);
 
-var _algorithms = __webpack_require__(35);
+var _algorithms = __webpack_require__(34);
 
 var _algorithms2 = _interopRequireDefault(_algorithms);
 
-var _mathFundamentals = __webpack_require__(36);
+var _mathFundamentals = __webpack_require__(35);
 
 var _mathFundamentals2 = _interopRequireDefault(_mathFundamentals);
 
