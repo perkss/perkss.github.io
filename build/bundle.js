@@ -36387,7 +36387,19 @@ var BiteSizeMath = function BiteSizeMath() {
         _react2.default.createElement(
             'p',
             null,
-            'This process can be applied to any number of brackets that need expanding.'
+            'This process can be applied to any number of brackets that need expanding. Also if you see something to the power of as brackets such as ',
+            _react2.default.createElement(
+                _reactLatex2.default,
+                null,
+                '$(2n+1)^2$'
+            ),
+            ' then it is the same as ',
+            _react2.default.createElement(
+                _reactLatex2.default,
+                null,
+                '$(2n+1)(2n+1)$ which can be expanded doing the same as above to $4n^2 + 2n + 2n + 1= 4n^2 + 4n + 1$'
+            ),
+            '. Remember this part for Math prerequisites.'
         )
     );
 };

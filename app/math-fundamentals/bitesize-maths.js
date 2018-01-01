@@ -118,7 +118,7 @@ const BiteSizeMath = () => (
 
     <p>Resulting in <Latex>$2m^2 + 2m - 3m - 3$</Latex> which can be simplified down to <Latex>$2m^2 - m - 3$</Latex>.</p>
 
-    <p>This process can be applied to any number of brackets that need expanding.</p>
+        <p>This process can be applied to any number of brackets that need expanding. Also if you see something to the power of as brackets such as <Latex>$(2n+1)^2$</Latex> then it is the same as <Latex>$(2n+1)(2n+1)$ which can be expanded doing the same as above to $4n^2 + 2n + 2n + 1= 4n^2 + 4n + 1$</Latex>. Remember this part for Math prerequisites.</p>
     </div>
 
     
