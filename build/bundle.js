@@ -29025,9 +29025,78 @@ var MathPrerequisites = function MathPrerequisites() {
             'Exponents and Roots'
         ),
         _react2.default.createElement(
+            'p',
+            null,
+            'This section presented by Stanford in the linked ',
+            _react2.default.createElement(
+                'a',
+                { href: 'http://web.stanford.edu/class/cs103/handouts/020%20Mathematical%20Prerequisites.pdf' },
+                'PDF'
+            ),
+            ' is very important and clearly explained. Please read it thoroughly. '
+        ),
+        _react2.default.createElement(
             'h3',
             null,
             'Types of Numbers Categorisation'
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            'Some definitions of numbers required for Mathematics for Computer Science'
+        ),
+        _react2.default.createElement(
+            'ul',
+            { className: 'text-list' },
+            _react2.default.createElement(
+                'li',
+                null,
+                'Natural Numbers are whole numbers starting from zero toward infinity: ',
+                _react2.default.createElement(
+                    _reactLatex2.default,
+                    null,
+                    '$0,1,2,3 ... n$ Natural numbers do not include $\\infty$ though.'
+                ),
+                ' '
+            ),
+            _react2.default.createElement(
+                'li',
+                null,
+                'Integer are all whole numbers including negative ones. ',
+                _react2.default.createElement(
+                    _reactLatex2.default,
+                    null,
+                    '..., $-3, -2, -1, 0, 1, 2, 3, ...$ positive and negative $\\infty$ are not included in Integers.'
+                )
+            ),
+            _react2.default.createElement(
+                'li',
+                null,
+                'Real Numbers are all numbers that exist on the number line but again do not include ',
+                _react2.default.createElement(
+                    _reactLatex2.default,
+                    null,
+                    'postive or negative $\\infty$.'
+                )
+            ),
+            _react2.default.createElement(
+                'li',
+                null,
+                'Rational numbers is the ratio of two numbers (a number that can be written as one ',
+                _react2.default.createElement(
+                    'strong',
+                    null,
+                    'integer'
+                ),
+                ' divided by another ',
+                _react2.default.createElement(
+                    'strong',
+                    null,
+                    'integer'
+                ),
+                ') or in other words A rational number is a number that can be in the form p/q where p and q are integers and q is not equal to zero.',
+                _react2.default.createElement(_reactLatex2.default, null)
+            )
         ),
         _react2.default.createElement(
             'h3',

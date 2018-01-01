@@ -36,7 +36,17 @@ const MathPrerequisites = () => (
         <p>Fraction requirements are minimal just need to be able to add and multiply them. Here are the two formulas firstly adding fractions <Latex>$a/b+c/d = ad/bd + bc/bd = ad+cb/bd$ and secondly how to multiply fractions $a/b\times c/d = ac/bd$</Latex></p> 
     
         <h3>Exponents and Roots</h3>
+        <p>This section presented by Stanford in the linked <a href="http://web.stanford.edu/class/cs103/handouts/020%20Mathematical%20Prerequisites.pdf">PDF</a> is very important and clearly explained. Please read it thoroughly. </p>
         <h3>Types of Numbers Categorisation</h3>
+        <p>Some definitions of numbers required for Mathematics for Computer Science</p>
+
+        <ul className="text-list">
+        <li>Natural Numbers are whole numbers starting from zero toward infinity: <Latex>$0,1,2,3 ... n$ Natural numbers do not include $\infty$ though.</Latex> </li>
+        <li>Integer are all whole numbers including negative ones. <Latex>..., $-3, -2, -1, 0, 1, 2, 3, ...$ positive and negative $\infty$ are not included in Integers.</Latex></li>
+        <li>Real Numbers are all numbers that exist on the number line but again do not include <Latex>postive or negative $\infty$.</Latex></li>
+        <li>Rational numbers is the ratio of two numbers (a number that can be written as one <strong>integer</strong> divided by another <strong>integer</strong>) or in other words A rational number is a number that can be in the form p/q
+where p and q are integers and q is not equal to zero.<Latex></Latex></li>
+        </ul>
         <h3>Closure Properties</h3>
         <h3>Manipulating Inequalities</h3>
 
