@@ -104,7 +104,7 @@ const BiteSizeMath = () => (
         <p>Expanding and then simplifying is another key skill required remember the rules of BIDMAS for this. <Latex>$6g + 2g(3g + 7) = 6g + 2g\times 3g + 2g\times 7 = 6g + 6g^2 + 14g$</Latex>. Here you multiply the bracket equation <Latex>$(3g+7)\times 2g$</Latex> following the rules of BIDMAS. Then you simplify it resulting in <Latex>$6g^2 + 20g$</Latex>. </p>
 
         <h4>Expanding Double Brackets</h4>
-        <p>To expand double brackets each term needs to be multipled together to the first term in the first brack needs to be multiplied by the first and second term in the second bracket. And then the second term in the first bracket needs to be multiplied by the first and second term in the second bracket also. An example: </p>
+        <p>To expand double brackets each term needs to be multipled together so the first term in the first bracket needs to be multiplied by the first and second term in the second bracket. And then the second term in the first bracket needs to be multiplied by the first and second term in the second bracket also. An example <Latex>expand the bracket $(2m - 3)(m + 1)$</Latex>: </p>
 
     
  <ol className="text-list">

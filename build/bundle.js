@@ -36311,7 +36311,13 @@ var BiteSizeMath = function BiteSizeMath() {
         _react2.default.createElement(
             'p',
             null,
-            'To expand double brackets each term needs to be multipled together to the first term in the first brack needs to be multiplied by the first and second term in the second bracket. And then the second term in the first bracket needs to be multiplied by the first and second term in the second bracket also. An example: '
+            'To expand double brackets each term needs to be multipled together so the first term in the first bracket needs to be multiplied by the first and second term in the second bracket. And then the second term in the first bracket needs to be multiplied by the first and second term in the second bracket also. An example ',
+            _react2.default.createElement(
+                _reactLatex2.default,
+                null,
+                'expand the bracket $(2m - 3)(m + 1)$'
+            ),
+            ': '
         ),
         _react2.default.createElement(
             'ol',
