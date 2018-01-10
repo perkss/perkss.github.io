@@ -4769,6 +4769,81 @@ var mathsForCompSci = {
             'p',
             null,
             'Hitting the blog very soon. Next infact!'
+        ),
+        _react2.default.createElement(
+            'h3',
+            null,
+            'Proofs'
+        ),
+        _react2.default.createElement(
+            'h4',
+            null,
+            'Intro'
+        ),
+        _react2.default.createElement(
+            'h4',
+            null,
+            'Proof Methods'
+        ),
+        _react2.default.createElement(
+            'h4',
+            null,
+            'Well Ordering Principle'
+        ),
+        _react2.default.createElement(
+            'h4',
+            null,
+            'Logic and Propositions'
+        ),
+        _react2.default.createElement(
+            'h4',
+            null,
+            'Quantifiers and Predicate Logic'
+        ),
+        _react2.default.createElement(
+            'h4',
+            null,
+            'Sets'
+        ),
+        _react2.default.createElement(
+            'h4',
+            null,
+            'Binary Relations'
+        ),
+        _react2.default.createElement(
+            'h4',
+            null,
+            'Induction'
+        ),
+        _react2.default.createElement(
+            'h4',
+            null,
+            'State Machines'
+        ),
+        _react2.default.createElement(
+            'h4',
+            null,
+            'Recursive Definition'
+        ),
+        _react2.default.createElement(
+            'h4',
+            null,
+            'Infinite Sets'
+        ),
+        _react2.default.createElement(
+            'h3',
+            null,
+            'Structures'
+        ),
+        _react2.default.createElement(
+            'h3',
+            null,
+            'Counting'
+        ),
+        _react2.default.createElement(
+            'h3',
+            null,
+            'Probability'
         )
     )]
 
@@ -64447,7 +64522,7 @@ exports.default = ConcreteMathematics;
 
 
 Object.defineProperty(exports, "__esModule", {
-        value: true
+    value: true
 });
 
 var _react = __webpack_require__(0);
@@ -64461,29 +64536,56 @@ var _reactLatex2 = _interopRequireDefault(_reactLatex);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var MathPreliminaries = function MathPreliminaries() {
-        return _react2.default.createElement(
-                'div',
+    return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+            'h2',
+            null,
+            'The Art of Computer Programming: Math Preliminaries'
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            'Welcome to the section on one of the most important texts in the computer science world The Art of Computer Programming (Knuth). This section will coer the mathematical preliminaries section of the book from the first chapter. The Concrete Mathematics book we also study in the next section has taken the preliminaries even further. So if this is tricky for you please read Concrete Mathematics first. '
+        ),
+        _react2.default.createElement(
+            'h3',
+            null,
+            'Mathematical Induction'
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            'The book starts with a proof using Mathematical Induction. (A initially very scary concept, but please think like a mathematician not an engineer). The steps for mathematical induction are: '
+        ),
+        ' ',
+        _react2.default.createElement(
+            'ol',
+            { className: 'text-list' },
+            _react2.default.createElement(
+                'li',
                 null,
-                _react2.default.createElement(
-                        'h2',
-                        null,
-                        'The Art of Computer Programming: Math Preliminaries'
-                ),
-                _react2.default.createElement(
-                        'h3',
-                        null,
-                        'Mathematical Proofs'
-                ),
-                _react2.default.createElement(
-                        'p',
-                        null,
-                        _react2.default.createElement(
-                                _reactLatex2.default,
-                                null,
-                                'As part of this course polynomical knowledge is expected to be known which may not be the case if students did not have a great maths experience at earlier school years. They come to a specific case $n^2 = (2k)^2$ this is the same as $n^2 = 4k^2$. This is fairly trivial to understand as you take $(2k)\\times(2k) = 2\\times2$ and $k\\times k = 4k^2$.'
-                        )
-                )
-        );
+                'Give a proof that P(1) is true. Simply verify that the method works for the number 1.'
+            ),
+            _react2.default.createElement(
+                'li',
+                null,
+                'Assume that the method works for an arbitrary number, k.'
+            ),
+            _react2.default.createElement(
+                'li',
+                null,
+                'Give a proof that \u201Cif all of P(1), P (2), ..., P (n) are true, then P(n + 1) is also true\u201D; this proof should be valid for any positive integer n. Simply prove that if the method works for an arbitrary number k, then it work for the number k+1, too.'
+            ),
+            _react2.default.createElement(
+                'li',
+                null,
+                'After the 3 steps were completed, then the formula works for any number.'
+            )
+        ),
+        _react2.default.createElement('p', null)
+    );
 };
 
 exports.default = MathPreliminaries;
