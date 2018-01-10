@@ -42,9 +42,9 @@ const MathPrerequisites = () => (
 
         <ul className="text-list">
         <li>Natural Numbers are whole numbers starting from zero toward infinity: <Latex>$0,1,2,3 ... n$ Natural numbers do not include $\infty$ though.</Latex> </li>
-        <li>Integer are all whole numbers including negative ones. <Latex>..., $-3, -2, -1, 0, 1, 2, 3, ...$ positive and negative $\infty$ are not included in Integers.</Latex></li>
-        <li>Real Numbers are all numbers that exist on the number line but again do not include <Latex>postive or negative $\infty$.</Latex></li>
-        <li>Rational numbers is the ratio of two numbers (a number that can be written as one <strong>integer</strong> divided by another <strong>integer</strong>) or in other words A rational number is a number that can be in the form p/q
+        <li>Integers are all whole numbers including negative ones. <Latex>..., $-3, -2, -1, 0, 1, 2, 3, ...$ positive and negative $\infty$ are not included in Integers.</Latex></li>
+        <li>Real Numbers are all of the numbers that exist on the number line but again do not include <Latex>postive or negative $\infty$.</Latex></li>
+        <li>A rational number is the ratio of two numbers (a number that can be written as one <strong>integer</strong> divided by another <strong>integer</strong>) or in other words A rational number is a number that can be in the form p/q
 where p and q are integers and q is not equal to zero.<Latex></Latex></li>
         </ul>
         <h3>Closure Properties</h3>

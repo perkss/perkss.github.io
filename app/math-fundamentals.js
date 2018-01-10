@@ -9,9 +9,8 @@ import MathIntro from './math-fundamentals/math-intro';
 import MathPrerequisites from './math-fundamentals/math-prerequisites';
 import BiteSizeMath from './math-fundamentals/bitesize-maths';
 import ConcreteMathematics from './math-fundamentals/concrete-mathematics';
+import MathPreliminaries from './math-fundamentals/math-preliminaries';
 import { HashLink as Link } from 'react-router-hash-link';
-
-
 import BlogPage from './blog-page.js';
 import "./../css/list-menu.css";
 
@@ -43,8 +42,15 @@ const MathFundamentals = ({ match })  => {
         <Link to={`${match.url}/MathPrerequisites#text-body`}>
           Math<br/>Prerequisites
         </Link>
+               </li>
+  <li className='teal'>
+           <Link to={`${match.url}/MathPreliminaries#text-body`}>
+           The Art of Computer<br/>Programming
+           </Link>
+      
            </li>
-           <li className='teal'>
+           
+           <li className='cyan'>
            <Link to={`${match.url}/ConcreteMathematics#text-body`}>
            Concrete<br/>Mathematics
            </Link>
@@ -63,7 +69,7 @@ const MathFundamentals = ({ match })  => {
              <Route path={`${match.url}/MathPrerequisites`} component={MathPrerequisites}/>   
            <Route path={`${match.url}/BiteSizeMath`} component={BiteSizeMath}/>
 
-
+             <Route path={`${match.url}/MathPreliminaries`} component={MathPreliminaries}/>
         <Route path={`${match.url}/ConcreteMathematics`} component={ConcreteMathematics}/>
        </div>
             }
