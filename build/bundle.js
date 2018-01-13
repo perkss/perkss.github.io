@@ -4456,10 +4456,155 @@ var algorithms = {
   title: 'Algorithms',
   contents: '',
   text: [_react2.default.createElement(
-    'p',
+    'div',
     null,
-    'Hurry up Perks and get this done the suspense is killing me! '
+    _react2.default.createElement(
+      'p',
+      null,
+      'Hurry up Perks and get this done the suspense is killing me! '
+    ),
+    _react2.default.createElement(
+      'h3',
+      null,
+      'Introduction'
+    ),
+    _react2.default.createElement(
+      'h4',
+      null,
+      'Algorithmic Thinking'
+    ),
+    _react2.default.createElement(
+      'h4',
+      null,
+      'Models of Computation'
+    ),
+    _react2.default.createElement(
+      'h3',
+      null,
+      'Sorting and Trees'
+    ),
+    _react2.default.createElement(
+      'h4',
+      null,
+      'Insertion Sort'
+    ),
+    _react2.default.createElement(
+      'h4',
+      null,
+      'Merge Sort'
+    ),
+    _react2.default.createElement(
+      'h4',
+      null,
+      'Heaps and Heap Sort'
+    ),
+    _react2.default.createElement(
+      'h4',
+      null,
+      'Binary Search Tree'
+    ),
+    _react2.default.createElement(
+      'h4',
+      null,
+      'AVL Trees and Sort'
+    ),
+    _react2.default.createElement(
+      'h4',
+      null,
+      'Counting Sort'
+    ),
+    _react2.default.createElement(
+      'h4',
+      null,
+      'Radix Sort'
+    ),
+    _react2.default.createElement(
+      'h4',
+      null,
+      'Lower Bounds'
+    ),
+    _react2.default.createElement(
+      'h3',
+      null,
+      'Hashing'
+    ),
+    _react2.default.createElement(
+      'h4',
+      null,
+      'Hashing with Chaining'
+    ),
+    _react2.default.createElement(
+      'h4',
+      null,
+      'Table Doubling'
+    ),
+    _react2.default.createElement(
+      'h4',
+      null,
+      'Open Addressing'
+    ),
+    _react2.default.createElement(
+      'h3',
+      null,
+      'Numerics'
+    ),
+    _react2.default.createElement(
+      'h4',
+      null,
+      'Integer Arithmetic'
+    ),
+    _react2.default.createElement(
+      'h4',
+      null,
+      'Square Roots'
+    ),
+    _react2.default.createElement(
+      'h3',
+      null,
+      'Graphs'
+    ),
+    _react2.default.createElement(
+      'h4',
+      null,
+      'Breadth First Search'
+    ),
+    _react2.default.createElement(
+      'h4',
+      null,
+      'Depth First Search'
+    ),
+    _react2.default.createElement(
+      'h3',
+      null,
+      'Shortest Paths'
+    ),
+    _react2.default.createElement(
+      'h4',
+      null,
+      'Single Source Shortest Problem'
+    ),
+    _react2.default.createElement(
+      'h4',
+      null,
+      'Dijkstra'
+    ),
+    _react2.default.createElement(
+      'h4',
+      null,
+      'Bellman Ford'
+    ),
+    _react2.default.createElement(
+      'h3',
+      null,
+      'Dynamic Programming'
+    ),
+    _react2.default.createElement(
+      'h3',
+      null,
+      'Advanced Topics'
+    )
   )]
+
 };
 
 var AlgorithmsPage = function AlgorithmsPage(props) {
