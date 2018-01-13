@@ -36241,13 +36241,19 @@ var BiteSizeMath = function BiteSizeMath() {
                 { href: 'https://www.bbc.co.uk/education/guides/zpvgdxs/revision' },
                 'begin'
             ),
-            ' with multiples (A multiple of a number is any integer multiplied by the number) and factors (A factor is an integer that will divide exactly into another number.) for code examples please see ',
+            ' with multiples (A multiple of a number is any integer multiplied by the number and there are an infinite amount) and factors (A factor is an integer that will divide exactly into another number.) for code examples please see ',
             _react2.default.createElement(
                 'a',
                 { href: 'https://github.com/perkss/basic-maths/blob/master/maths-for-computer-science/src/maths_for_computer_science/factors.clj' },
                 'here.'
             ),
-            ' Factor pairs are are two numbers that multiply together to make another number so for example the factor pairs of ',
+            ' An example of a multiple is that 15 is a multiple of 5 because ',
+            _react2.default.createElement(
+                _reactLatex2.default,
+                null,
+                '$ 3 \\times 5 = 15$. Listing multiples of $5$ gives $5, 10, 15, 20, 25$'
+            ),
+            ' and so on. An example, 8 is a factor of 24 because 8 will divide into 24 exactly 3 times with no remainder (Bitesize). Factor pairs are are two numbers that multiply together to make another number so for example the factor pairs of ',
             _react2.default.createElement(
                 _reactLatex2.default,
                 null,
