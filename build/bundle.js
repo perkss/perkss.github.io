@@ -64566,17 +64566,53 @@ var MathPreliminaries = function MathPreliminaries() {
             _react2.default.createElement(
                 'li',
                 null,
-                'Give a proof that P(1) is true. Simply verify that the method works for the number 1.'
+                'Give a proof that ',
+                _react2.default.createElement(
+                    _reactLatex2.default,
+                    null,
+                    '$P(1)$'
+                ),
+                ' is true. Simply verify that the method works for the number ',
+                _react2.default.createElement(
+                    _reactLatex2.default,
+                    null,
+                    '$1$'
+                ),
+                '.'
             ),
             _react2.default.createElement(
                 'li',
                 null,
-                'Assume that the method works for an arbitrary number, k.'
+                'Assume that the method works for an arbitrary number, ',
+                _react2.default.createElement(
+                    _reactLatex2.default,
+                    null,
+                    '$n$ or sometimes $k$ is used but it means the same'
+                ),
+                '.'
             ),
             _react2.default.createElement(
                 'li',
                 null,
-                'Give a proof that \u201Cif all of P(1), P (2), ..., P (n) are true, then P(n + 1) is also true\u201D; this proof should be valid for any positive integer n. Simply prove that if the method works for an arbitrary number k, then it work for the number k+1, too.'
+                'Give a proof that \u201Cif all of ',
+                _react2.default.createElement(
+                    _reactLatex2.default,
+                    null,
+                    '$P(1), P (2), ..., P (n)$'
+                ),
+                ' are true, then ',
+                _react2.default.createElement(
+                    _reactLatex2.default,
+                    null,
+                    '$P(n + 1)$'
+                ),
+                ' is also true\u201D; this proof should be valid for any positive integer ',
+                _react2.default.createElement(
+                    _reactLatex2.default,
+                    null,
+                    '$n$. Simply prove that if the method works for an arbitrary number $k$, then it work for the number $k+1$'
+                ),
+                ', too.'
             ),
             _react2.default.createElement(
                 'li',
@@ -64717,6 +64753,7 @@ var MathPreliminaries = function MathPreliminaries() {
         ),
         '(The left side from above)  ',
         _react2.default.createElement('br', null),
+        _react2.default.createElement('br', null),
         _react2.default.createElement(
             _reactLatex2.default,
             null,
@@ -64724,19 +64761,28 @@ var MathPreliminaries = function MathPreliminaries() {
         ),
         ' (simplify)',
         _react2.default.createElement('br', null),
+        _react2.default.createElement('br', null),
         _react2.default.createElement(
             _reactLatex2.default,
             null,
             '   $= n^2 + (2n + 2 - 1)$'
         ),
-        '  (by assumption)',
+        '  (by assumption Step 2 we can replace the left side of the equation with ',
+        _react2.default.createElement(
+            _reactLatex2.default,
+            null,
+            '$n^2$'
+        ),
+        ')',
+        _react2.default.createElement('br', null),
         _react2.default.createElement('br', null),
         _react2.default.createElement(
             _reactLatex2.default,
             null,
             '   $= n^2 + 2n + 1$'
         ),
-        ' ',
+        '(simplify) ',
+        _react2.default.createElement('br', null),
         _react2.default.createElement('br', null),
         _react2.default.createElement(
             _reactLatex2.default,
@@ -64744,6 +64790,7 @@ var MathPreliminaries = function MathPreliminaries() {
             '   $= (n + 1)^2$'
         ),
         '(See math prerequisites we did this example of simplification from the line above.) ',
+        _react2.default.createElement('br', null),
         _react2.default.createElement('br', null),
         'Brilliant we have simplified the left side to match the right side, by induction, for every positive integer ',
         _react2.default.createElement(
