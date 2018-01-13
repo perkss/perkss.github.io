@@ -29,7 +29,7 @@ ul.menu {
         color:white;
         margin-right:10px;
       
-         min-width: 200px;
+         min-width: 230px;
          min-height: 80px;
           font-weight: bold;
  }
@@ -39,7 +39,7 @@ ul.menu {
      border: 3px solid #FFFFFF;
     border-radius: 10px;
     background-color: #dd417f;
-       min-width: 200px;
+       min-width: 230px;
         min-height: 80px;
 }
 .menu li:hover
@@ -48,7 +48,7 @@ ul.menu {
     border: 3px solid #FFFFFF;
     border-radius: 10px;
     background-color: #dd417f;
-       min-width: 200px;
+       min-width: 230px;
         min-height: 80px;
 }
 .menu li a
@@ -60,7 +60,7 @@ ul.menu {
     text-decoration: none;
     display: inline-block;
     padding: 0.7em 1em 0.7em 1em;
-       min-width: 200px;
+       min-width: 230px;
         min-height: 80px;
 }
 .menu li.active a
@@ -69,7 +69,7 @@ ul.menu {
     color:#FFFFFF;
     text-transform: uppercase;
     text-decoration: none;
-       min-width: 200px;
+       min-width: 230px;
         min-height: 80px;
 }
 .menu li.active
@@ -78,7 +78,7 @@ ul.menu {
     border: 3px solid #FFFFFF;
     border-radius: 10px;
     background-color: #dd417f;
-       min-width: 200px;
+       min-width: 230px;
         min-height: 80px;
 }
 

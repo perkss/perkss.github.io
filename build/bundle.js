@@ -64584,7 +64584,185 @@ var MathPreliminaries = function MathPreliminaries() {
                 'After the 3 steps were completed, then the formula works for any number.'
             )
         ),
-        _react2.default.createElement('p', null)
+        _react2.default.createElement(
+            'p',
+            null,
+            'Mathematical induction is used as a conclusive proof for an infinite number of statements one for each ',
+            _react2.default.createElement(
+                _reactLatex2.default,
+                null,
+                '$n$'
+            ),
+            '. The term induction is used as one must somehow define what is to be proved before one can apply the technique of mathematical induction.'
+        ),
+        _react2.default.createElement(
+            'h4',
+            null,
+            'So Salled Simple Example'
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            'Many books make this seem so easy and skip out a lot of steps so we will try cover this as they say simple, but as we say not so simple example. The example is that the sums of odd numbers is equal to the amount of odd numbers in the sum to the power or 2 for example.'
+        ),
+        ' ',
+        _react2.default.createElement(
+            'p',
+            null,
+            _react2.default.createElement(
+                _reactLatex2.default,
+                null,
+                '$1=1^2, 1+3=2^2, 1+3+5=3^2 . . .$'
+            )
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            'This can be formulated as: ',
+            _react2.default.createElement(
+                _reactLatex2.default,
+                null,
+                '$1 + 3 + 5 . . . + (2n - 1) = n^2$.'
+            )
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            'Now lets do the fun part that looks scary but is actually simple when you understand step 2 and remember this is the sum to prove this by mathematical induction.'
+        ),
+        _react2.default.createElement(
+            'strong',
+            null,
+            'Step 1:'
+        ),
+        ' Firstly we need to prove that the equation is valid when ',
+        _react2.default.createElement(
+            _reactLatex2.default,
+            null,
+            '$n = 1$. So we go ahead and substitute $n$ for $1$. When $n = 1$, instead of $(2n-1)$ we have $(2(1) - 1) = 1$, so the statement holds for $n = 1$ as $2 \\times 1 = 2$ and then $2 - 1 = 1$.'
+        ),
+        _react2.default.createElement('p', null),
+        _react2.default.createElement(
+            'strong',
+            null,
+            ' Step 2:'
+        ),
+        _react2.default.createElement(
+            _reactLatex2.default,
+            null,
+            '  We then need to assume that the equation is true for $n$.'
+        ),
+        ' (This is the part that always tripped me up before as we make the assumption that the proposed equation is true.)',
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+            'strong',
+            null,
+            'Assume: '
+        ),
+        '  ',
+        _react2.default.createElement(
+            _reactLatex2.default,
+            null,
+            ' $1 + 3 + 5 + ... + (2n - 1) = n^2$'
+        ),
+        ' ',
+        _react2.default.createElement('p', null),
+        _react2.default.createElement(
+            'strong',
+            null,
+            'Step 3: '
+        ),
+        ' ',
+        _react2.default.createElement(
+            _reactLatex2.default,
+            null,
+            'And then prove that the equation is true for $n + 1$. So we substitue $n$ on both sides with $n + 1$ giving the below.'
+        ),
+        _react2.default.createElement('p', null),
+        _react2.default.createElement(
+            'strong',
+            null,
+            ' Prove: '
+        ),
+        ' ',
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+            _reactLatex2.default,
+            null,
+            ' $1 + 3 + 5 +...+ (2(n + 1) - 1) = (n + 1)^2$'
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            'So lets now prove this by working on simplifying the left hand side only to match the right hand side to see if the proof is true for ',
+            _react2.default.createElement(
+                _reactLatex2.default,
+                null,
+                '$n + 1$'
+            ),
+            ' values.'
+        ),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+            'strong',
+            null,
+            'Proof: '
+        ),
+        _react2.default.createElement('br', null),
+        ' ',
+        _react2.default.createElement(
+            _reactLatex2.default,
+            null,
+            ' $1 + 3 + 5 +... + (2(n + 1) - 1)$'
+        ),
+        '(The left side from above)  ',
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+            _reactLatex2.default,
+            null,
+            '   $= 1 + 3 + 5 + ... + (2n - 1) + (2n + 2 - 1)$'
+        ),
+        ' (simplify)',
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+            _reactLatex2.default,
+            null,
+            '   $= n^2 + (2n + 2 - 1)$'
+        ),
+        '  (by assumption)',
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+            _reactLatex2.default,
+            null,
+            '   $= n^2 + 2n + 1$'
+        ),
+        ' ',
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+            _reactLatex2.default,
+            null,
+            '   $= (n + 1)^2$'
+        ),
+        '(See math prerequisites we did this example of simplification from the line above.) ',
+        _react2.default.createElement('br', null),
+        'Brilliant we have simplified the left side to match the right side, by induction, for every positive integer ',
+        _react2.default.createElement(
+            _reactLatex2.default,
+            null,
+            '$n, 1 + 3 + 5 + ... + (2n - 1) = n^2$'
+        ),
+        '. This is also proved visually using the square table in the book so please check that out. Some pointers it is the whole numer of squares up to the number so ',
+        _react2.default.createElement(
+            _reactLatex2.default,
+            null,
+            '$3$ is four squares as its the second step so $2 \\times 2 - 1 = 3.$ Then you need to add the extra square from $1$ so that is $4$ which is $n^2$ so $2^2 = 4$ is equal to the added number of squares from the bottom left corner of $4$.'
+        ),
+        _react2.default.createElement('p', null),
+        _react2.default.createElement(
+            'h4',
+            null,
+            'Fiboncacci Example'
+        )
     );
 };
 
@@ -64630,7 +64808,7 @@ exports = module.exports = __webpack_require__(10)(undefined);
 exports.i(__webpack_require__(44), "");
 
 // module
-exports.push([module.i, ".menu\n/* layout main menu */\n{\n   \n    clear:both;\n    margin-top:1em;\n    padding-bottom:1em;\n}\nul.menu {\n    display: table;\n    \tlist-style: none;\n          width:100%;\n        height:20px;\n        text-align:center;\n}\n.menu li\n/* horizontal menu layout */\n {\n    display: inline-block;\n    border: 3px solid white;\n    border-radius: 10px;\n    margin-top: 10px;\n    margin-bottom: 10px;\n            display:inline-block;\n        *display:inline; /*IE7*/\n        *zoom:1; /*IE7*/\n        color:white;\n        margin-right:10px;\n      \n         min-width: 200px;\n         min-height: 80px;\n          font-weight: bold;\n }\n.menu li a:hover\n/* link style on-mouse-over */\n {\n     border: 3px solid #FFFFFF;\n    border-radius: 10px;\n    background-color: #dd417f;\n       min-width: 200px;\n        min-height: 80px;\n}\n.menu li:hover\n/* button style on-mouse-over */\n {\n    border: 3px solid #FFFFFF;\n    border-radius: 10px;\n    background-color: #dd417f;\n       min-width: 200px;\n        min-height: 80px;\n}\n.menu li a\n/* link style */\n {\n    color: white;\n    font-size: 1em;\n    text-transform: uppercase;\n    text-decoration: none;\n    display: inline-block;\n    padding: 0.7em 1em 0.7em 1em;\n       min-width: 200px;\n        min-height: 80px;\n}\n.menu li.active a\n/* active menu item style */\n {\n    color:#FFFFFF;\n    text-transform: uppercase;\n    text-decoration: none;\n       min-width: 200px;\n        min-height: 80px;\n}\n.menu li.active\n/* active menu button style */\n {\n    border: 3px solid #FFFFFF;\n    border-radius: 10px;\n    background-color: #dd417f;\n       min-width: 200px;\n        min-height: 80px;\n}\n\n\n\n\n", ""]);
+exports.push([module.i, ".menu\n/* layout main menu */\n{\n   \n    clear:both;\n    margin-top:1em;\n    padding-bottom:1em;\n}\nul.menu {\n    display: table;\n    \tlist-style: none;\n          width:100%;\n        height:20px;\n        text-align:center;\n}\n.menu li\n/* horizontal menu layout */\n {\n    display: inline-block;\n    border: 3px solid white;\n    border-radius: 10px;\n    margin-top: 10px;\n    margin-bottom: 10px;\n            display:inline-block;\n        *display:inline; /*IE7*/\n        *zoom:1; /*IE7*/\n        color:white;\n        margin-right:10px;\n      \n         min-width: 230px;\n         min-height: 80px;\n          font-weight: bold;\n }\n.menu li a:hover\n/* link style on-mouse-over */\n {\n     border: 3px solid #FFFFFF;\n    border-radius: 10px;\n    background-color: #dd417f;\n       min-width: 230px;\n        min-height: 80px;\n}\n.menu li:hover\n/* button style on-mouse-over */\n {\n    border: 3px solid #FFFFFF;\n    border-radius: 10px;\n    background-color: #dd417f;\n       min-width: 230px;\n        min-height: 80px;\n}\n.menu li a\n/* link style */\n {\n    color: white;\n    font-size: 1em;\n    text-transform: uppercase;\n    text-decoration: none;\n    display: inline-block;\n    padding: 0.7em 1em 0.7em 1em;\n       min-width: 230px;\n        min-height: 80px;\n}\n.menu li.active a\n/* active menu item style */\n {\n    color:#FFFFFF;\n    text-transform: uppercase;\n    text-decoration: none;\n       min-width: 230px;\n        min-height: 80px;\n}\n.menu li.active\n/* active menu button style */\n {\n    border: 3px solid #FFFFFF;\n    border-radius: 10px;\n    background-color: #dd417f;\n       min-width: 230px;\n        min-height: 80px;\n}\n\n\n\n\n", ""]);
 
 // exports
 
@@ -64689,7 +64867,7 @@ exports = module.exports = __webpack_require__(10)(undefined);
 exports.i(__webpack_require__(44), "");
 
 // module
-exports.push([module.i, ".nav-grid\n/* layout main menu */\n{\n   \n    clear:both;\n    margin-top:1em;\n    padding-bottom:1em;\n}\nul.nav-grid {\n    display: table;\n    \tlist-style: none;\n          width:100%;\n        height:20px;\n        text-align:center;\n}\n.nav-grid li\n/* horizontal menu layout */\n {\n    display: inline-block;\n    border: 3px solid white;\n    border-radius: 10px;\n    margin-top: 10px;\n    margin-bottom: 10px;\n    \n            display:inline-block;\n        *display:inline; /*IE7*/\n        *zoom:1; /*IE7*/\n      \n        color:white;\n        margin-right:10px;\n        min-width: 300px;\n        min-height: 80px;\n        vertical-align: middle;\n        font-weight: bold;\n              \n }\n.nav-grid li a:hover\n/* link style on-mouse-over */\n {\n     border: 3px solid #FFFFFF;\n    border-radius: 10px;\n    background-color: #dd417f;\n        min-width: 300px;\n        min-height: 80px;\n}\n.nav-grid li:hover\n/* button style on-mouse-over */\n {\n    border: 3px solid #FFFFFF;\n    border-radius: 10px;\n    background-color: #dd417f;\n        min-width: 300px;\n        min-height: 80px;\n}\n.nav-grid li a\n/* link style */\n {\n    color: white;\n    font-size: 1em;\n    text-transform: uppercase;\n    text-decoration: none;\n    display: inline-block;\n    padding: 0.7em 1em 0.7em 1em;\n        min-width: 300px;\n        min-height: 80px;\n}\n.nav-grid li.active a\n/* active menu item style */\n {\n    color:#FFFFFF;\n    text-transform: uppercase;\n    text-decoration: none;\n        min-width: 300px;\n        min-height: 80px;\n}\n.nav-grid li.active\n/* active menu button style */\n {\n    border: 3px solid #FFFFFF;\n    border-radius: 10px;\n    background-color: #dd417f;\n        min-width: 300px;\n        min-height: 80px;\n}\n\n\n", ""]);
+exports.push([module.i, ".nav-grid\n/* layout main menu */\n{\n   \n    clear:both;\n    margin-top:1em;\n    padding-bottom:1em;\n}\nul.nav-grid {\n    display: table;\n    \tlist-style: none;\n          width:100%;\n        height:20px;\n        text-align:center;\n}\n.nav-grid li\n/* horizontal menu layout */\n {\n    display: inline-block;\n    border: 3px solid white;\n    border-radius: 10px;\n    margin-top: 10px;\n    margin-bottom: 10px;\n    \n            display:inline-block;\n        *display:inline; /*IE7*/\n        *zoom:1; /*IE7*/\n      \n        color:white;\n        margin-right:10px;\n;\n        min-width: 300px;\n        min-height: 80px;\n}\n.nav-grid li a\n/* link style */\n {\n    color: white;\n    font-size: 1em;\n    text-transform: uppercase;\n    text-decoration: none;\n    display: inline-block;\n    padding: 0.7em 1em 0.7em 1em;\n        min-width: 300px;\n        min-height: 80px;\n}\n.nav-grid li.active a\n/* active menu item style */\n {\n    color:#FFFFFF;\n    text-transform: uppercase;\n    text-decoration: none;\n        min-width: 300px;\n        min-height: 80px;\n}\n.nav-grid li.active\n/* active menu button style */\n {\n    border: 3px solid #FFFFFF;\n    border-radius: 10px;\n    background-color: #dd417f;\n        min-width: 300px;\n        min-height: 80px;\n}\n\n\n", ""]);
 
 // exports
 

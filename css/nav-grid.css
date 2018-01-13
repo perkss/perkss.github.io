@@ -30,27 +30,7 @@ ul.nav-grid {
       
         color:white;
         margin-right:10px;
-        min-width: 300px;
-        min-height: 80px;
-        vertical-align: middle;
-        font-weight: bold;
-              
- }
-.nav-grid li a:hover
-/* link style on-mouse-over */
- {
-     border: 3px solid #FFFFFF;
-    border-radius: 10px;
-    background-color: #dd417f;
-        min-width: 300px;
-        min-height: 80px;
-}
-.nav-grid li:hover
-/* button style on-mouse-over */
- {
-    border: 3px solid #FFFFFF;
-    border-radius: 10px;
-    background-color: #dd417f;
+;
         min-width: 300px;
         min-height: 80px;
 }
