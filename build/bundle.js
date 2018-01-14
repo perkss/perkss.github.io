@@ -64553,9 +64553,19 @@ var ConcreteMathematics = function ConcreteMathematics() {
          'Concrete Mathematics'
       ),
       _react2.default.createElement(
+         'p',
+         null,
+         'The introduction chapter of Concrete Mathematics is tough, I have found that with many Computer Science Textbooks, so its sometimes good to revisit the first chapter once you have tried the relevant chapters, as the first usually covers a snapshot from the rest of the book. '
+      ),
+      _react2.default.createElement(
          'h3',
          null,
          'Recurrent Problems'
+      ),
+      _react2.default.createElement(
+         'h4',
+         null,
+         'Tower of Hanoi Problem: The Maths Explained'
       ),
       _react2.default.createElement(
          'p',
@@ -64563,7 +64573,7 @@ var ConcreteMathematics = function ConcreteMathematics() {
          _react2.default.createElement(
             _reactLatex2.default,
             null,
-            'As part of this course polynomical knowledge is expected to be known which may not be the case if students did not have a great maths experience at earlier school years. They come to a specific case $n^2 = (2k)^2$ this is the same as $n^2 = 4k^2$. This is fairly trivial to understand as you take $(2k)\\times(2k) = 2\\times2$ and $k\\times k = 4k^2$.'
+            'The Tower of Hanoi problem is a bit of fun, but the recurrence math behind it is intimidating, I hope we can walk through this and manage to get you to understand it as I have managed too with a lot of effort!'
          )
       ),
       _react2.default.createElement(
@@ -64863,7 +64873,7 @@ var MathPreliminaries = function MathPreliminaries() {
         _react2.default.createElement(
             _reactLatex2.default,
             null,
-            'And then prove that the equation is true for $n + 1$. So we substitue $n$ on both sides with $n + 1$ giving the below.'
+            'And then prove that the equation is true for $n + 1$. So we substitue $n$ on both sides with $n + 1$ giving the below. We are now working on the next in the sequence so the original left side sequence is kept in full including $(2n - 1)$ which is omitted in many texts which I find confusing.'
         ),
         _react2.default.createElement('p', null),
         _react2.default.createElement(
@@ -64910,7 +64920,19 @@ var MathPreliminaries = function MathPreliminaries() {
             null,
             '   $= 1 + 3 + 5 + ... + (2n - 1) + (2n + 2 - 1)$'
         ),
-        ' (simplify)',
+        ' (simplify we can see here the ',
+        _react2.default.createElement(
+            _reactLatex2.default,
+            null,
+            '$(2n - 1)$'
+        ),
+        ' has returned as this is expected as we are working on the next in the sequence ',
+        _react2.default.createElement(
+            _reactLatex2.default,
+            null,
+            '$n + 1$'
+        ),
+        ' so the original remains.)',
         _react2.default.createElement('br', null),
         _react2.default.createElement('br', null),
         _react2.default.createElement(
