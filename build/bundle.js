@@ -29272,6 +29272,17 @@ var MathPrerequisites = function MathPrerequisites() {
             ' is very important and clearly explained. Please read it thoroughly. '
         ),
         _react2.default.createElement(
+            'p',
+            null,
+            'One item to highlight is this formula ',
+            _react2.default.createElement(
+                _reactLatex2.default,
+                null,
+                '2^n+1 $ = 2 \\times 2^n = 2^n + 2^n$'
+            ),
+            ' as it comes up a few times and is a good one to remember.'
+        ),
+        _react2.default.createElement(
             'h3',
             null,
             'Types of Numbers Categorisation'
@@ -29332,6 +29343,27 @@ var MathPrerequisites = function MathPrerequisites() {
                 ),
                 ') or in other words A rational number is a number that can be in the form p/q where p and q are integers and q is not equal to zero.',
                 _react2.default.createElement(_reactLatex2.default, null)
+            )
+        ),
+        _react2.default.createElement(
+            'h3',
+            null,
+            'Logarithms'
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            'One key logarithm law that comes up regularly is ',
+            _react2.default.createElement(
+                _reactLatex2.default,
+                null,
+                '$b^c = x$ is equal to  $\\log _b(x) = c$'
+            ),
+            ' this is common in recursive algorithm time analysis. For example ',
+            _react2.default.createElement(
+                _reactLatex2.default,
+                null,
+                '$2^3 = 8$ and $\\log _2(8) = 3$'
             )
         ),
         _react2.default.createElement(

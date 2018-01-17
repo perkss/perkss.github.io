@@ -37,6 +37,8 @@ const MathPrerequisites = () => (
     
         <h3>Exponents and Roots</h3>
         <p>This section presented by Stanford in the linked <a href="http://web.stanford.edu/class/cs103/handouts/020%20Mathematical%20Prerequisites.pdf">PDF</a> is very important and clearly explained. Please read it thoroughly. </p>
+        <p>One item to highlight is this formula <Latex>2^n+1 $ = 2 \times 2^n
+ = 2^n + 2^n$</Latex> as it comes up a few times and is a good one to remember.</p>
         <h3>Types of Numbers Categorisation</h3>
         <p>Some definitions of numbers required for Mathematics for Computer Science</p>
 
@@ -47,6 +49,9 @@ const MathPrerequisites = () => (
         <li>A rational number is the ratio of two numbers (a number that can be written as one <strong>integer</strong> divided by another <strong>integer</strong>) or in other words A rational number is a number that can be in the form p/q
 where p and q are integers and q is not equal to zero.<Latex></Latex></li>
         </ul>
+
+        <h3>Logarithms</h3>
+        <p>One key logarithm law that comes up regularly is <Latex>$b^c = x$ is equal to  $\log _b(x) = c$</Latex> this is common in recursive algorithm time analysis. For example <Latex>$2^3 = 8$ and $\log _2(8) = 3$</Latex></p>
         <h3>Closure Properties</h3>
         <h3>Manipulating Inequalities</h3>
 
