@@ -47,13 +47,49 @@ const MathPrerequisites = () => (
         <li>Integers are all whole numbers including negative ones. <Latex>..., $-3, -2, -1, 0, 1, 2, 3, ...$ positive and negative $\infty$ are not included in Integers.</Latex></li>
         <li>Real Numbers are all of the numbers that exist on the number line but again do not include <Latex>postive or negative $\infty$.</Latex></li>
         <li>A rational number is the ratio of two numbers (a number that can be written as one <strong>integer</strong> divided by another <strong>integer</strong>) or in other words A rational number is a number that can be in the form p/q
-where p and q are integers and q is not equal to zero.<Latex></Latex></li>
+    where p and q are integers and q is not equal to zero.<Latex></Latex></li>
+        <li>An added definition here is closed form, in maths a closed form expression is one that can be evaluated in a finite number of operations. A nice answer to this is o stack exchange <a href="https://math.stackexchange.com/questions/58502/closed-form-solution-of-recurrence-relation">here</a></li>
         </ul>
 
         <h3>Logarithms</h3>
         <p>One key logarithm law that comes up regularly is <Latex>$b^c = x$ is equal to  $\log _b(x) = c$</Latex> this is common in recursive algorithm time analysis. For example <Latex>$2^3 = 8$ and $\log _2(8) = 3$</Latex></p>
         <h3>Closure Properties</h3>
+        <p>When adding two natural numbers you are guaranteed to get back a natural number. This means that natural numbers are closed under addition. For subtraction of natural numbers it is not closed form as you may have <Latex>$2 - 5 = -3$ which is not a natural number as it is negative. Therefore natural numbers are not closed under subtraction.</Latex> Please see the summary table below as the text mentions these are fundamental it is usually just assumed the reader knows this when reading texts.</p>
+<table>
+        <tr>
+        <th></th>
+         <th>Addition</th>
+    <th>Subtraction</th>
+    <th>Multiplication</th>
+    <th>Division</th>
+  </tr>
+  <tr>
+    <td>Natural Numbers</td>
+    <td>Yes</td>
+        <td>No</td>
+        <td>Yes</td>
+        <td>No</td>
+  </tr>
+  <tr>
+    <td>Integers</td>
+    <td>Yes</td>
+        <td>Yes</td>
+
+   <td>Yes</td><td>No</td>
+  </tr>
+  <tr>
+    <td>Real Numbers</td>
+    <td>Yes</td>
+    <td>Yes</td><td>Yes</td><td>Yes</td>
+  </tr>
+
+</table>
+
+
         <h3>Manipulating Inequalities</h3>
+        <p>An example of an inequality is <Latex>$3$ less than $x \textless 4$ this states that $x$ is strictly great than $3$ and strictly lesss than $4$. Whats interesting to consider here if $x$ is a integer or a natural number then there are no choices for $x$ but if it is a real number it could be $3.1$ or $3.72412$. Another interesting case is that $3 \textless n$ is the same as $3 \leq n$. These are equal because $2$ is strictly less than $n$ so $n$ cannot be two or less it has to be three or more. In general sense this is the formula:</Latex></p>
+        <p><Latex>$m \textless n$</Latex></p>
+        <p><Latex>is the same as $m + 1 \leq n$</Latex></p>
 
     </div>
 

@@ -29343,6 +29343,16 @@ var MathPrerequisites = function MathPrerequisites() {
                 ),
                 ') or in other words A rational number is a number that can be in the form p/q where p and q are integers and q is not equal to zero.',
                 _react2.default.createElement(_reactLatex2.default, null)
+            ),
+            _react2.default.createElement(
+                'li',
+                null,
+                'An added definition here is closed form, in maths a closed form expression is one that can be evaluated in a finite number of operations. A nice answer to this is o stack exchange ',
+                _react2.default.createElement(
+                    'a',
+                    { href: 'https://math.stackexchange.com/questions/58502/closed-form-solution-of-recurrence-relation' },
+                    'here'
+                )
             )
         ),
         _react2.default.createElement(
@@ -29372,9 +29382,164 @@ var MathPrerequisites = function MathPrerequisites() {
             'Closure Properties'
         ),
         _react2.default.createElement(
+            'p',
+            null,
+            'When adding two natural numbers you are guaranteed to get back a natural number. This means that natural numbers are closed under addition. For subtraction of natural numbers it is not closed form as you may have ',
+            _react2.default.createElement(
+                _reactLatex2.default,
+                null,
+                '$2 - 5 = -3$ which is not a natural number as it is negative. Therefore natural numbers are not closed under subtraction.'
+            ),
+            ' Please see the summary table below as the text mentions these are fundamental it is usually just assumed the reader knows this when reading texts.'
+        ),
+        _react2.default.createElement(
+            'table',
+            null,
+            _react2.default.createElement(
+                'tr',
+                null,
+                _react2.default.createElement('th', null),
+                _react2.default.createElement(
+                    'th',
+                    null,
+                    'Addition'
+                ),
+                _react2.default.createElement(
+                    'th',
+                    null,
+                    'Subtraction'
+                ),
+                _react2.default.createElement(
+                    'th',
+                    null,
+                    'Multiplication'
+                ),
+                _react2.default.createElement(
+                    'th',
+                    null,
+                    'Division'
+                )
+            ),
+            _react2.default.createElement(
+                'tr',
+                null,
+                _react2.default.createElement(
+                    'td',
+                    null,
+                    'Natural Numbers'
+                ),
+                _react2.default.createElement(
+                    'td',
+                    null,
+                    'Yes'
+                ),
+                _react2.default.createElement(
+                    'td',
+                    null,
+                    'No'
+                ),
+                _react2.default.createElement(
+                    'td',
+                    null,
+                    'Yes'
+                ),
+                _react2.default.createElement(
+                    'td',
+                    null,
+                    'No'
+                )
+            ),
+            _react2.default.createElement(
+                'tr',
+                null,
+                _react2.default.createElement(
+                    'td',
+                    null,
+                    'Integers'
+                ),
+                _react2.default.createElement(
+                    'td',
+                    null,
+                    'Yes'
+                ),
+                _react2.default.createElement(
+                    'td',
+                    null,
+                    'Yes'
+                ),
+                _react2.default.createElement(
+                    'td',
+                    null,
+                    'Yes'
+                ),
+                _react2.default.createElement(
+                    'td',
+                    null,
+                    'No'
+                )
+            ),
+            _react2.default.createElement(
+                'tr',
+                null,
+                _react2.default.createElement(
+                    'td',
+                    null,
+                    'Real Numbers'
+                ),
+                _react2.default.createElement(
+                    'td',
+                    null,
+                    'Yes'
+                ),
+                _react2.default.createElement(
+                    'td',
+                    null,
+                    'Yes'
+                ),
+                _react2.default.createElement(
+                    'td',
+                    null,
+                    'Yes'
+                ),
+                _react2.default.createElement(
+                    'td',
+                    null,
+                    'Yes'
+                )
+            )
+        ),
+        _react2.default.createElement(
             'h3',
             null,
             'Manipulating Inequalities'
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            'An example of an inequality is ',
+            _react2.default.createElement(
+                _reactLatex2.default,
+                null,
+                '$3$ less than $x \\textless 4$ this states that $x$ is strictly great than $3$ and strictly lesss than $4$. Whats interesting to consider here if $x$ is a integer or a natural number then there are no choices for $x$ but if it is a real number it could be $3.1$ or $3.72412$. Another interesting case is that $3 \\textless n$ is the same as $3 \\leq n$. These are equal because $2$ is strictly less than $n$ so $n$ cannot be two or less it has to be three or more. In general sense this is the formula:'
+            )
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            _react2.default.createElement(
+                _reactLatex2.default,
+                null,
+                '$m \\textless n$'
+            )
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            _react2.default.createElement(
+                _reactLatex2.default,
+                null,
+                'is the same as $m + 1 \\leq n$'
+            )
         )
     );
 };
@@ -64606,6 +64771,56 @@ var ConcreteMathematics = function ConcreteMathematics() {
             _reactLatex2.default,
             null,
             'The Tower of Hanoi problem is a bit of fun, but the recurrence math behind it is intimidating, I hope we can walk through this and manage to get you to understand it as I have managed too with a lot of effort!'
+         )
+      ),
+      _react2.default.createElement(
+         'p',
+         null,
+         'The Tower of Hanoi problem is defined as given three pegs with one peg that has eight disks on it stacked in decreasing order. Transfer the disks to another peg moving only one disk at a time and never having a larger disk on top of a smaller one. There are some great examples of this ',
+         _react2.default.createElement(
+            'a',
+            { href: 'https://www.mathsisfun.com/games/towerofhanoi.html' },
+            'here'
+         ),
+         '. Concrete Mathematics suggests some key points of tackling a problem like this firstly generalise the problem so what would happen if there were ',
+         _react2.default.createElement(
+            _reactLatex2.default,
+            null,
+            '$n$ disks? Then we can scale down the problem and look at small cases first what if there were only one or two disks? Then NAME and CONQUER basically add some notation to the problem. Here they say $T_n$ is the minimum number of moves to transfer $n$ disks from one peg to another peg. For example $T_1 = 1$ is one disk as you are just moving one. Moving $T_2$ disks needs thinking about so we are moving to the $2$ disks to the same peg. Following the rules we will need to move the top disk which is the smallest to a peg, then the next disk to another peg as it cannot go on top of the smallest disk and then the smallest disk on top of the other disk hence this is $3$ moves, $T_2 = 3$. We also can say that $T_0 = 0$ as no disks are moved. Now we need to scale up what if we had a near infinite amount of disks. We have just shown optimally we can move two disks in $3$ moves. To move three optimally we follow the pattern moving the top two disks as mentioned above, to the middle peg and then move the third and then move the top two disks back on top of the third. Here we can say the movement of the smallest disk is $T_n-1$ so the case of two disks it is $2$ disks to move it is one move, in the case of three disks to move the two smallest are two moves and so on. We then move the very bottom disk which is one move $T_1 = 1$. Then we have to move the $T_n-1$ disks back on top.'
+         )
+      ),
+      _react2.default.createElement(
+         'p',
+         null,
+         'Producing the formula for disk movement as at most: '
+      ),
+      _react2.default.createElement(
+         'p',
+         null,
+         _react2.default.createElement(
+            _reactLatex2.default,
+            null,
+            '(for $n > 0$) $2T_n-1 + 1$ moves. So moving all disks $T_n \\leq 2T_n-1 + 1$'
+         )
+      ),
+      _react2.default.createElement(
+         'p',
+         null,
+         'Lets do the actual calculation for three disks. With this formula when having three disks ',
+         _react2.default.createElement(
+            _reactLatex2.default,
+            null,
+            '$n = 3$ so $T_2 = 3$ we multiply that by $2$ giving us $6$ and then plus the constant of moving the largest disk as $1$. Hence we expect to be able to move three disks in $7$ moves.'
+         )
+      ),
+      _react2.default.createElement(
+         'p',
+         null,
+         'Firstly we need to move the smallest disk so',
+         _react2.default.createElement(
+            _reactLatex2.default,
+            null,
+            ' $T_1 = 1$ we then need to move the next disk again $1$ move and then place the smallest disk back onto it so another $1$ move this is the $T_n-1$ part. We now need to move the bottom largest disk with the constant move of $1$ and then move the other two disks back so the smallest onto another peg $1$ move and then the next disk on top of the largest disk which takes $1$ move and then the smallest disk on top again so another $1$ move totalling $3$ again and this all totals $7$ moves so the formula is correct. '
          )
       ),
       _react2.default.createElement(

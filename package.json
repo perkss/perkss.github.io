@@ -29,7 +29,7 @@
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.7",
     "html-webpack-plugin": "^2.30.1",
-    "katex": "^0.9.0-alpha2",
+    "katex": "^0.9.0-beta",
     "react": "^16.2.0",
     "react-burger-menu": "^2.1.11",
     "react-dom": "^16.2.0",
