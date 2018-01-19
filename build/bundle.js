@@ -457,7 +457,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(48);
+var _reactDom = __webpack_require__(50);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -1039,7 +1039,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "BrowserRouter", function() { return __WEBPACK_IMPORTED_MODULE_0__BrowserRouter__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__HashRouter__ = __webpack_require__(92);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "HashRouter", function() { return __WEBPACK_IMPORTED_MODULE_1__HashRouter__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Link__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Link__ = __webpack_require__(61);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Link", function() { return __WEBPACK_IMPORTED_MODULE_2__Link__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__MemoryRouter__ = __webpack_require__(94);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "MemoryRouter", function() { return __WEBPACK_IMPORTED_MODULE_3__MemoryRouter__["a"]; });
@@ -1049,7 +1049,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Prompt", function() { return __WEBPACK_IMPORTED_MODULE_5__Prompt__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Redirect__ = __webpack_require__(102);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Redirect", function() { return __WEBPACK_IMPORTED_MODULE_6__Redirect__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Route__ = __webpack_require__(60);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Route__ = __webpack_require__(62);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Route", function() { return __WEBPACK_IMPORTED_MODULE_7__Route__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Router__ = __webpack_require__(29);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Router", function() { return __WEBPACK_IMPORTED_MODULE_8__Router__["a"]; });
@@ -2423,8 +2423,8 @@ module.exports = warning;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return createLocation; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return locationsAreEqual; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_resolve_pathname__ = __webpack_require__(56);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_value_equal__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_resolve_pathname__ = __webpack_require__(58);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_value_equal__ = __webpack_require__(59);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__PathUtils__ = __webpack_require__(15);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -2645,7 +2645,7 @@ if (module && module.exports) {
  * different kinds of domTree nodes in a consistent manner.
  */
 
-var domTree = __webpack_require__(65);
+var domTree = __webpack_require__(67);
 var fontMetrics = __webpack_require__(18);
 var symbols = __webpack_require__(24);
 var utils = __webpack_require__(6);
@@ -3897,11 +3897,11 @@ exports.locationsAreEqual = exports.createLocation = undefined;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _resolvePathname = __webpack_require__(56);
+var _resolvePathname = __webpack_require__(58);
 
 var _resolvePathname2 = _interopRequireDefault(_resolvePathname);
 
-var _valueEqual = __webpack_require__(57);
+var _valueEqual = __webpack_require__(59);
 
 var _valueEqual2 = _interopRequireDefault(_valueEqual);
 
@@ -4813,1973 +4813,6 @@ module.exports = {
 /* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { "default": __webpack_require__(139), __esModule: true };
-
-/***/ }),
-/* 40 */
-/***/ (function(module, exports) {
-
-// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
-var global = module.exports = typeof window != 'undefined' && window.Math == Math
-  ? window : typeof self != 'undefined' && self.Math == Math ? self
-  // eslint-disable-next-line no-new-func
-  : Function('return this')();
-if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
-
-
-/***/ }),
-/* 41 */
-/***/ (function(module, exports) {
-
-module.exports = function (it) {
-  return typeof it === 'object' ? it !== null : typeof it === 'function';
-};
-
-
-/***/ }),
-/* 42 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// Thank's IE8 for his funny defineProperty
-module.exports = !__webpack_require__(43)(function () {
-  return Object.defineProperty({}, 'a', { get: function () { return 7; } }).a != 7;
-});
-
-
-/***/ }),
-/* 43 */
-/***/ (function(module, exports) {
-
-module.exports = function (exec) {
-  try {
-    return !!exec();
-  } catch (e) {
-    return true;
-  }
-};
-
-
-/***/ }),
-/* 44 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(10)(undefined);
-// imports
-exports.i(__webpack_require__(430), "");
-
-// module
-exports.push([module.i, "html {\n    position: relative;\n    min-height: 100%;\n    margin: 0px;\n    padding: 0px;\n}\nbody {\n    background: #F6F0F0;\n     margin: 0px 0px 58px 0px; /* bottom = footer height */\n     padding: 0px;\n}\nh1, h2, p, ul, li {\n    font-family: 'Open Sans';\n}\n\np {\n    text-align: justify;\n}\n\nul, li {\n    text-align: center;\n}\n\n.text-list li {\n    text-align: left;\n  \n}\n\n.center {\ndisplay: table;   /* Allow the centering to work */\n\tmargin: 0 auto;\n    margin: auto;\n    width: 100%;\n    padding-bottom: 10px;\n}\n\n.home h2 {\n\n     text-align: center;\n  background: #F6F0F0;\n  margin-left: 0px;\n  margin-right: 0px;\n  margin-bottom: 0px;\n  margin-top: 15px;\n  padding-right: 80px;\n  padding-left: 80px;\n  padding-top: 20px;\n  padding-bottom: 10px;\n  font-size: 40px;\n\n}\n\n.Blog-Contents {\n  \n   padding-top: 1px;\n  padding-bottom: 1px;\n  margin-left: 30px;\n  margin-right: 30px;\n  font-size: 17px;\n}\n\n.Blog-Text-Body {\n  background-color: #FFF;\n  padding-top: 20px;\n  padding-left: 20px;\n  padding-bottom: 30px;\n  padding-right: 20px;\n  margin-left: 30px;\n  margin-top: 30px;\n  margin-right: 30px;\n  margin-bottom: 30px;\n  font-size: 17px;\n}\n.Blog-Text-Body h2 {\n  padding-top: 10px;\n    padding-right: 0px;\n    padding-bottom: 15px;\n    padding-left: 0px;\n    margin: 0;\n    text-align: center;\n}\n.content li {\n  margin-bottom: 0px;\n}\n.active {\n/*  background-color: #0099FF;*/\n}\n\n\n/* Position and sizing of burger button */\n.bm-burger-button {\n position: absolute;\n  width: 36px;\n  height: 30px;\n  left: 36px;\n  top: 36px;\n}\n\n/* Color/shape of burger icon bars */\n.bm-burger-bars {\n  background: #FFFFFF;\n}\n\n/* Position and sizing of clickable cross button */\n.bm-cross-button {\n  height: 24px;\n  width: 24px;\n}\n\n/* Color/shape of close button cross */\n.bm-cross {\n  background: #bdc3c7;\n}\n\n/* General sidebar styles */\n.bm-menu {\n  background: #373a47;\n  padding: 2.5em 1.5em 0;\n  font-size: 1.45em;\n}\n\n/* Morph shape necessary with bubble or elastic */\n.bm-morph-shape {\n  fill: #373a47;\n}\n\n/* Wrapper for item list */\n.bm-item-list {\n  color: #b8b7ad;\n  padding: 0.8em;\n}\n\n.bm-item-list a {\n    color: #ffffff;\n\n}\n\n/* Styling of overlay */\n.bm-overlay {\n  background: rgba(0, 0, 0, 0.3);\n}\n\n\n\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 45 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _blogPage = __webpack_require__(11);
-
-var _blogPage2 = _interopRequireDefault(_blogPage);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var mathsForCompSci = {
-
-    title: 'Maths for Computer Science',
-    contents: '',
-    text: [_react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(
-            'p',
-            null,
-            _react2.default.createElement(
-                'strong',
-                null,
-                'Please ensure you check out Math Fundamentals before proceeding into the world of Maths for Computer Science.'
-            )
-        ),
-        _react2.default.createElement(
-            'p',
-            null,
-            'Hitting the blog very soon. Next infact!'
-        ),
-        _react2.default.createElement(
-            'h3',
-            null,
-            'Proofs'
-        ),
-        _react2.default.createElement(
-            'h4',
-            null,
-            'Intro'
-        ),
-        _react2.default.createElement(
-            'h4',
-            null,
-            'Proof Methods'
-        ),
-        _react2.default.createElement(
-            'h4',
-            null,
-            'Well Ordering Principle'
-        ),
-        _react2.default.createElement(
-            'h4',
-            null,
-            'Logic and Propositions'
-        ),
-        _react2.default.createElement(
-            'h4',
-            null,
-            'Quantifiers and Predicate Logic'
-        ),
-        _react2.default.createElement(
-            'h4',
-            null,
-            'Sets'
-        ),
-        _react2.default.createElement(
-            'h4',
-            null,
-            'Binary Relations'
-        ),
-        _react2.default.createElement(
-            'h4',
-            null,
-            'Induction'
-        ),
-        _react2.default.createElement(
-            'h4',
-            null,
-            'State Machines'
-        ),
-        _react2.default.createElement(
-            'h4',
-            null,
-            'Recursive Definition'
-        ),
-        _react2.default.createElement(
-            'h4',
-            null,
-            'Infinite Sets'
-        ),
-        _react2.default.createElement(
-            'h3',
-            null,
-            'Structures'
-        ),
-        _react2.default.createElement(
-            'h3',
-            null,
-            'Counting'
-        ),
-        _react2.default.createElement(
-            'h3',
-            null,
-            'Probability'
-        )
-    )]
-
-};
-
-var MathsForCompSciPage = function MathsForCompSciPage(props) {
-
-    return _react2.default.createElement(_blogPage2.default, {
-        title: mathsForCompSci.title,
-        contents: mathsForCompSci.contents,
-        text: mathsForCompSci.text
-    });
-};
-
-exports.default = MathsForCompSciPage;
-
-/***/ }),
-/* 46 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _blogPage = __webpack_require__(11);
-
-var _blogPage2 = _interopRequireDefault(_blogPage);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var cLanguage = {
-
-    title: 'C Programming',
-    text: 'One day this will arive! 2018 peace',
-    contents: ''
-
-};
-
-var CLanguagePage = function CLanguagePage(props) {
-
-    return _react2.default.createElement(_blogPage2.default, {
-        title: cLanguage.title,
-        contents: cLanguage.contents,
-        text: cLanguage.text
-    });
-};
-
-exports.default = CLanguagePage;
-
-/***/ }),
-/* 47 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactSyntaxHighlighter = __webpack_require__(66);
-
-var _reactSyntaxHighlighter2 = _interopRequireDefault(_reactSyntaxHighlighter);
-
-var _hljs = __webpack_require__(74);
-
-var _blogPage = __webpack_require__(11);
-
-var _blogPage2 = _interopRequireDefault(_blogPage);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var clojure = {
-
-    title: 'Clojure',
-    contents: '',
-    text: [_react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(
-            _reactSyntaxHighlighter2.default,
-            { language: 'clojure', style: _hljs.darcula },
-            '(def a 2)'
-        ),
-        _react2.default.createElement(
-            'p',
-            null,
-            'Your first bit of clojure much more to come! '
-        )
-    )]
-
-};
-
-var ClojurePage = function ClojurePage(props) {
-
-    return _react2.default.createElement(_blogPage2.default, {
-        title: clojure.title,
-        contents: clojure.contents,
-        text: clojure.text
-    });
-};
-
-exports.default = ClojurePage;
-
-/***/ }),
-/* 48 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
-
-function checkDCE() {
-  /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */
-  if (
-    typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === 'undefined' ||
-    typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== 'function'
-  ) {
-    return;
-  }
-  if (process.env.NODE_ENV !== 'production') {
-    // This branch is unreachable because this function is only called
-    // in production, but the condition is true only in development.
-    // Therefore if the branch is still here, dead code elimination wasn't
-    // properly applied.
-    // Don't change the message. React DevTools relies on it. Also make sure
-    // this message doesn't occur elsewhere in this function, or it will cause
-    // a false positive.
-    throw new Error('^_^');
-  }
-  try {
-    // Verify that the code above has been dead code eliminated (DCE'd).
-    __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE(checkDCE);
-  } catch (err) {
-    // DevTools shouldn't crash React, no matter what.
-    // We should still report in case we break this code.
-    console.error(err);
-  }
-}
-
-if (process.env.NODE_ENV === 'production') {
-  // DCE check should happen before ReactDOM bundle executes so that
-  // DevTools can report bad minification during injection.
-  checkDCE();
-  module.exports = __webpack_require__(80);
-} else {
-  module.exports = __webpack_require__(83);
-}
-
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
-
-/***/ }),
-/* 49 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- */
-
-
-
-var canUseDOM = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
-
-/**
- * Simple, lightweight module assisting with the detection and context of
- * Worker. Helps avoid circular dependencies and allows code to reason about
- * whether or not they are in a Worker, even if they never include the main
- * `ReactWorker` dependency.
- */
-var ExecutionEnvironment = {
-
-  canUseDOM: canUseDOM,
-
-  canUseWorkers: typeof Worker !== 'undefined',
-
-  canUseEventListeners: canUseDOM && !!(window.addEventListener || window.attachEvent),
-
-  canUseViewport: canUseDOM && !!window.screen,
-
-  isInWorker: !canUseDOM // For now, this is true - might change in the future.
-
-};
-
-module.exports = ExecutionEnvironment;
-
-/***/ }),
-/* 50 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
-
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * @typechecks
- */
-
-var emptyFunction = __webpack_require__(7);
-
-/**
- * Upstream version of event listener. Does not take into account specific
- * nature of platform.
- */
-var EventListener = {
-  /**
-   * Listen to DOM events during the bubble phase.
-   *
-   * @param {DOMEventTarget} target DOM element to register listener on.
-   * @param {string} eventType Event type, e.g. 'click' or 'mouseover'.
-   * @param {function} callback Callback function.
-   * @return {object} Object with a `remove` method.
-   */
-  listen: function listen(target, eventType, callback) {
-    if (target.addEventListener) {
-      target.addEventListener(eventType, callback, false);
-      return {
-        remove: function remove() {
-          target.removeEventListener(eventType, callback, false);
-        }
-      };
-    } else if (target.attachEvent) {
-      target.attachEvent('on' + eventType, callback);
-      return {
-        remove: function remove() {
-          target.detachEvent('on' + eventType, callback);
-        }
-      };
-    }
-  },
-
-  /**
-   * Listen to DOM events during the capture phase.
-   *
-   * @param {DOMEventTarget} target DOM element to register listener on.
-   * @param {string} eventType Event type, e.g. 'click' or 'mouseover'.
-   * @param {function} callback Callback function.
-   * @return {object} Object with a `remove` method.
-   */
-  capture: function capture(target, eventType, callback) {
-    if (target.addEventListener) {
-      target.addEventListener(eventType, callback, true);
-      return {
-        remove: function remove() {
-          target.removeEventListener(eventType, callback, true);
-        }
-      };
-    } else {
-      if (process.env.NODE_ENV !== 'production') {
-        console.error('Attempted to listen to events during the capture phase on a ' + 'browser that does not support the capture phase. Your application ' + 'will not receive some events.');
-      }
-      return {
-        remove: emptyFunction
-      };
-    }
-  },
-
-  registerDefault: function registerDefault() {}
-};
-
-module.exports = EventListener;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
-
-/***/ }),
-/* 51 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * @typechecks
- */
-
-/* eslint-disable fb-www/typeof-undefined */
-
-/**
- * Same as document.activeElement but wraps in a try-catch block. In IE it is
- * not safe to call document.activeElement if there is nothing focused.
- *
- * The activeElement will be null only if the document or document body is not
- * yet defined.
- *
- * @param {?DOMDocument} doc Defaults to current document.
- * @return {?DOMElement}
- */
-function getActiveElement(doc) /*?DOMElement*/{
-  doc = doc || (typeof document !== 'undefined' ? document : undefined);
-  if (typeof doc === 'undefined') {
-    return null;
-  }
-  try {
-    return doc.activeElement || doc.body;
-  } catch (e) {
-    return doc.body;
-  }
-}
-
-module.exports = getActiveElement;
-
-/***/ }),
-/* 52 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * @typechecks
- * 
- */
-
-/*eslint-disable no-self-compare */
-
-
-
-var hasOwnProperty = Object.prototype.hasOwnProperty;
-
-/**
- * inlined Object.is polyfill to avoid requiring consumers ship their own
- * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
- */
-function is(x, y) {
-  // SameValue algorithm
-  if (x === y) {
-    // Steps 1-5, 7-10
-    // Steps 6.b-6.e: +0 != -0
-    // Added the nonzero y check to make Flow happy, but it is redundant
-    return x !== 0 || y !== 0 || 1 / x === 1 / y;
-  } else {
-    // Step 6.a: NaN == NaN
-    return x !== x && y !== y;
-  }
-}
-
-/**
- * Performs equality by iterating through keys on an object and returning false
- * when any key has values which are not strictly equal between the arguments.
- * Returns true when the values of all keys are strictly equal.
- */
-function shallowEqual(objA, objB) {
-  if (is(objA, objB)) {
-    return true;
-  }
-
-  if (typeof objA !== 'object' || objA === null || typeof objB !== 'object' || objB === null) {
-    return false;
-  }
-
-  var keysA = Object.keys(objA);
-  var keysB = Object.keys(objB);
-
-  if (keysA.length !== keysB.length) {
-    return false;
-  }
-
-  // Test for A's keys different from B.
-  for (var i = 0; i < keysA.length; i++) {
-    if (!hasOwnProperty.call(objB, keysA[i]) || !is(objA[keysA[i]], objB[keysA[i]])) {
-      return false;
-    }
-  }
-
-  return true;
-}
-
-module.exports = shallowEqual;
-
-/***/ }),
-/* 53 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * 
- */
-
-var isTextNode = __webpack_require__(81);
-
-/*eslint-disable no-bitwise */
-
-/**
- * Checks if a given DOM node contains or is another DOM node.
- */
-function containsNode(outerNode, innerNode) {
-  if (!outerNode || !innerNode) {
-    return false;
-  } else if (outerNode === innerNode) {
-    return true;
-  } else if (isTextNode(outerNode)) {
-    return false;
-  } else if (isTextNode(innerNode)) {
-    return containsNode(outerNode, innerNode.parentNode);
-  } else if ('contains' in outerNode) {
-    return outerNode.contains(innerNode);
-  } else if (outerNode.compareDocumentPosition) {
-    return !!(outerNode.compareDocumentPosition(innerNode) & 16);
-  } else {
-    return false;
-  }
-}
-
-module.exports = containsNode;
-
-/***/ }),
-/* 54 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- */
-
-
-
-/**
- * @param {DOMElement} node input/textarea to focus
- */
-
-function focusNode(node) {
-  // IE8 can throw "Can't move focus to the control because it is invisible,
-  // not enabled, or of a type that does not accept the focus." for all kinds of
-  // reasons that are too expensive and fragile to test.
-  try {
-    node.focus();
-  } catch (e) {}
-}
-
-module.exports = focusNode;
-
-/***/ }),
-/* 55 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRouterDom = __webpack_require__(9);
-
-var _home = __webpack_require__(63);
-
-var _home2 = _interopRequireDefault(_home);
-
-var _functionalProgramming = __webpack_require__(34);
-
-var _functionalProgramming2 = _interopRequireDefault(_functionalProgramming);
-
-var _algorithms = __webpack_require__(35);
-
-var _algorithms2 = _interopRequireDefault(_algorithms);
-
-var _mathFundamentals = __webpack_require__(36);
-
-var _mathFundamentals2 = _interopRequireDefault(_mathFundamentals);
-
-var _mathsForCompSci = __webpack_require__(45);
-
-var _mathsForCompSci2 = _interopRequireDefault(_mathsForCompSci);
-
-var _cLanguage = __webpack_require__(46);
-
-var _cLanguage2 = _interopRequireDefault(_cLanguage);
-
-var _clojure = __webpack_require__(47);
-
-var _clojure2 = _interopRequireDefault(_clojure);
-
-var _reactBurgerMenu = __webpack_require__(433);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var SideBar = function (_Component) {
-  _inherits(SideBar, _Component);
-
-  function SideBar(props) {
-    _classCallCheck(this, SideBar);
-
-    var _this = _possibleConstructorReturn(this, (SideBar.__proto__ || Object.getPrototypeOf(SideBar)).call(this, props));
-
-    _this.handleMenuClick = _this.handleMenuClick.bind(_this);
-    return _this;
-  }
-
-  _createClass(SideBar, [{
-    key: "handleMenuClick",
-    value: function handleMenuClick(event) {
-      event.preventDefault();
-      console.log('closing menu');
-      this.setState({ isOpen: false });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return _react2.default.createElement(
-        _reactRouterDom.HashRouter,
-        null,
-        _react2.default.createElement(
-          _reactBurgerMenu.slide,
-          { isOpen: false },
-          _react2.default.createElement(
-            "a",
-            { onClick: this.handleMenuClick },
-            " ",
-            _react2.default.createElement(
-              _reactRouterDom.NavLink,
-              { exact: true, to: "/" },
-              "Home"
-            )
-          ),
-          _react2.default.createElement(
-            "a",
-            { onClick: this.handleMenuClick },
-            " ",
-            _react2.default.createElement(
-              _reactRouterDom.NavLink,
-              { to: "/MathFundamentals" },
-              "Math Fundamentals"
-            )
-          ),
-          _react2.default.createElement(
-            "a",
-            { onClick: this.handleMenuClick },
-            " ",
-            _react2.default.createElement(
-              _reactRouterDom.NavLink,
-              { to: "/MathsForCompSci" },
-              "Maths for Computer Science"
-            )
-          ),
-          _react2.default.createElement(
-            "a",
-            { onClick: this.handleMenuClick },
-            _react2.default.createElement(
-              _reactRouterDom.NavLink,
-              { to: "/Algorithms" },
-              "Algorithm Fun"
-            )
-          ),
-          _react2.default.createElement(
-            "a",
-            { onClick: this.handleMenuClick },
-            _react2.default.createElement(
-              _reactRouterDom.NavLink,
-              { to: "/clojure" },
-              "Hipster Clojure"
-            )
-          ),
-          _react2.default.createElement(
-            "a",
-            { onClick: this.handleMenuClick },
-            _react2.default.createElement(
-              _reactRouterDom.NavLink,
-              { to: "/FunctionalProgramming" },
-              "Functional Programming"
-            )
-          ),
-          _react2.default.createElement(
-            "a",
-            { onClick: this.handleMenuClick },
-            _react2.default.createElement(
-              _reactRouterDom.NavLink,
-              { to: "/CLanguage" },
-              "A Little Bit of C Programming"
-            )
-          ),
-          _react2.default.createElement(
-            "a",
-            { onClick: this.handleMenuClick },
-            _react2.default.createElement(
-              _reactRouterDom.NavLink,
-              { to: "/ProgrammingPearls" },
-              "Programming Pearls"
-            )
-          )
-        )
-      );
-    }
-  }]);
-
-  return SideBar;
-}(_react.Component);
-
-exports.default = SideBar;
-
-/***/ }),
-/* 56 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-function isAbsolute(pathname) {
-  return pathname.charAt(0) === '/';
-}
-
-// About 1.5x faster than the two-arg version of Array#splice()
-function spliceOne(list, index) {
-  for (var i = index, k = i + 1, n = list.length; k < n; i += 1, k += 1) {
-    list[i] = list[k];
-  }
-
-  list.pop();
-}
-
-// This implementation is based heavily on node's url.parse
-function resolvePathname(to) {
-  var from = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-
-  var toParts = to && to.split('/') || [];
-  var fromParts = from && from.split('/') || [];
-
-  var isToAbs = to && isAbsolute(to);
-  var isFromAbs = from && isAbsolute(from);
-  var mustEndAbs = isToAbs || isFromAbs;
-
-  if (to && isAbsolute(to)) {
-    // to is absolute
-    fromParts = toParts;
-  } else if (toParts.length) {
-    // to is relative, drop the filename
-    fromParts.pop();
-    fromParts = fromParts.concat(toParts);
-  }
-
-  if (!fromParts.length) return '/';
-
-  var hasTrailingSlash = void 0;
-  if (fromParts.length) {
-    var last = fromParts[fromParts.length - 1];
-    hasTrailingSlash = last === '.' || last === '..' || last === '';
-  } else {
-    hasTrailingSlash = false;
-  }
-
-  var up = 0;
-  for (var i = fromParts.length; i >= 0; i--) {
-    var part = fromParts[i];
-
-    if (part === '.') {
-      spliceOne(fromParts, i);
-    } else if (part === '..') {
-      spliceOne(fromParts, i);
-      up++;
-    } else if (up) {
-      spliceOne(fromParts, i);
-      up--;
-    }
-  }
-
-  if (!mustEndAbs) for (; up--; up) {
-    fromParts.unshift('..');
-  }if (mustEndAbs && fromParts[0] !== '' && (!fromParts[0] || !isAbsolute(fromParts[0]))) fromParts.unshift('');
-
-  var result = fromParts.join('/');
-
-  if (hasTrailingSlash && result.substr(-1) !== '/') result += '/';
-
-  return result;
-}
-
-/* harmony default export */ __webpack_exports__["default"] = (resolvePathname);
-
-/***/ }),
-/* 57 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-function valueEqual(a, b) {
-  if (a === b) return true;
-
-  if (a == null || b == null) return false;
-
-  if (Array.isArray(a)) {
-    return Array.isArray(b) && a.length === b.length && a.every(function (item, index) {
-      return valueEqual(item, b[index]);
-    });
-  }
-
-  var aType = typeof a === 'undefined' ? 'undefined' : _typeof(a);
-  var bType = typeof b === 'undefined' ? 'undefined' : _typeof(b);
-
-  if (aType !== bType) return false;
-
-  if (aType === 'object') {
-    var aValue = a.valueOf();
-    var bValue = b.valueOf();
-
-    if (aValue !== a || bValue !== b) return valueEqual(aValue, bValue);
-
-    var aKeys = Object.keys(a);
-    var bKeys = Object.keys(b);
-
-    if (aKeys.length !== bKeys.length) return false;
-
-    return aKeys.every(function (key) {
-      return valueEqual(a[key], b[key]);
-    });
-  }
-
-  return false;
-}
-
-/* harmony default export */ __webpack_exports__["default"] = (valueEqual);
-
-/***/ }),
-/* 58 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-exports.__esModule = true;
-var canUseDOM = exports.canUseDOM = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
-
-var addEventListener = exports.addEventListener = function addEventListener(node, event, listener) {
-  return node.addEventListener ? node.addEventListener(event, listener, false) : node.attachEvent('on' + event, listener);
-};
-
-var removeEventListener = exports.removeEventListener = function removeEventListener(node, event, listener) {
-  return node.removeEventListener ? node.removeEventListener(event, listener, false) : node.detachEvent('on' + event, listener);
-};
-
-var getConfirmation = exports.getConfirmation = function getConfirmation(message, callback) {
-  return callback(window.confirm(message));
-}; // eslint-disable-line no-alert
-
-/**
- * Returns true if the HTML5 history API is supported. Taken from Modernizr.
- *
- * https://github.com/Modernizr/Modernizr/blob/master/LICENSE
- * https://github.com/Modernizr/Modernizr/blob/master/feature-detects/history.js
- * changed to avoid false negatives for Windows Phones: https://github.com/reactjs/react-router/issues/586
- */
-var supportsHistory = exports.supportsHistory = function supportsHistory() {
-  var ua = window.navigator.userAgent;
-
-  if ((ua.indexOf('Android 2.') !== -1 || ua.indexOf('Android 4.0') !== -1) && ua.indexOf('Mobile Safari') !== -1 && ua.indexOf('Chrome') === -1 && ua.indexOf('Windows Phone') === -1) return false;
-
-  return window.history && 'pushState' in window.history;
-};
-
-/**
- * Returns true if browser fires popstate on hash change.
- * IE10 and IE11 do not.
- */
-var supportsPopStateOnHashChange = exports.supportsPopStateOnHashChange = function supportsPopStateOnHashChange() {
-  return window.navigator.userAgent.indexOf('Trident') === -1;
-};
-
-/**
- * Returns false if using go(n) with hash history causes a full page reload.
- */
-var supportsGoWithoutReloadUsingHash = exports.supportsGoWithoutReloadUsingHash = function supportsGoWithoutReloadUsingHash() {
-  return window.navigator.userAgent.indexOf('Firefox') === -1;
-};
-
-/**
- * Returns true if a given popstate event is an extraneous WebKit event.
- * Accounts for the fact that Chrome on iOS fires real popstate events
- * containing undefined state when pressing the back button.
- */
-var isExtraneousPopstateEvent = exports.isExtraneousPopstateEvent = function isExtraneousPopstateEvent(event) {
-  return event.state === undefined && navigator.userAgent.indexOf('CriOS') === -1;
-};
-
-/***/ }),
-/* 59 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_invariant__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_invariant__);
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-
-
-
-
-var isModifiedEvent = function isModifiedEvent(event) {
-  return !!(event.metaKey || event.altKey || event.ctrlKey || event.shiftKey);
-};
-
-/**
- * The public API for rendering a history-aware <a>.
- */
-
-var Link = function (_React$Component) {
-  _inherits(Link, _React$Component);
-
-  function Link() {
-    var _temp, _this, _ret;
-
-    _classCallCheck(this, Link);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, _React$Component.call.apply(_React$Component, [this].concat(args))), _this), _this.handleClick = function (event) {
-      if (_this.props.onClick) _this.props.onClick(event);
-
-      if (!event.defaultPrevented && // onClick prevented default
-      event.button === 0 && // ignore right clicks
-      !_this.props.target && // let browser handle "target=_blank" etc.
-      !isModifiedEvent(event) // ignore clicks with modifier keys
-      ) {
-          event.preventDefault();
-
-          var history = _this.context.router.history;
-          var _this$props = _this.props,
-              replace = _this$props.replace,
-              to = _this$props.to;
-
-
-          if (replace) {
-            history.replace(to);
-          } else {
-            history.push(to);
-          }
-        }
-    }, _temp), _possibleConstructorReturn(_this, _ret);
-  }
-
-  Link.prototype.render = function render() {
-    var _props = this.props,
-        replace = _props.replace,
-        to = _props.to,
-        innerRef = _props.innerRef,
-        props = _objectWithoutProperties(_props, ['replace', 'to', 'innerRef']); // eslint-disable-line no-unused-vars
-
-    __WEBPACK_IMPORTED_MODULE_2_invariant___default()(this.context.router, 'You should not use <Link> outside a <Router>');
-
-    var href = this.context.router.history.createHref(typeof to === 'string' ? { pathname: to } : to);
-
-    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('a', _extends({}, props, { onClick: this.handleClick, href: href, ref: innerRef }));
-  };
-
-  return Link;
-}(__WEBPACK_IMPORTED_MODULE_0_react___default.a.Component);
-
-Link.propTypes = {
-  onClick: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.func,
-  target: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.string,
-  replace: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.bool,
-  to: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.oneOfType([__WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.string, __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.object]).isRequired,
-  innerRef: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.oneOfType([__WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.string, __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.func])
-};
-Link.defaultProps = {
-  replace: false
-};
-Link.contextTypes = {
-  router: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.shape({
-    history: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.shape({
-      push: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.func.isRequired,
-      replace: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.func.isRequired,
-      createHref: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.func.isRequired
-    }).isRequired
-  }).isRequired
-};
-
-
-/* harmony default export */ __webpack_exports__["a"] = (Link);
-
-/***/ }),
-/* 60 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_Route__ = __webpack_require__(61);
-// Written in this round about way for babel-transform-imports
-
-
-/* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_Route__["a" /* default */]);
-
-/***/ }),
-/* 61 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_warning__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_invariant__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prop_types__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__matchPath__ = __webpack_require__(31);
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-
-
-
-
-
-
-var isEmptyChildren = function isEmptyChildren(children) {
-  return __WEBPACK_IMPORTED_MODULE_2_react___default.a.Children.count(children) === 0;
-};
-
-/**
- * The public API for matching a single path and rendering.
- */
-
-var Route = function (_React$Component) {
-  _inherits(Route, _React$Component);
-
-  function Route() {
-    var _temp, _this, _ret;
-
-    _classCallCheck(this, Route);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, _React$Component.call.apply(_React$Component, [this].concat(args))), _this), _this.state = {
-      match: _this.computeMatch(_this.props, _this.context.router)
-    }, _temp), _possibleConstructorReturn(_this, _ret);
-  }
-
-  Route.prototype.getChildContext = function getChildContext() {
-    return {
-      router: _extends({}, this.context.router, {
-        route: {
-          location: this.props.location || this.context.router.route.location,
-          match: this.state.match
-        }
-      })
-    };
-  };
-
-  Route.prototype.computeMatch = function computeMatch(_ref, router) {
-    var computedMatch = _ref.computedMatch,
-        location = _ref.location,
-        path = _ref.path,
-        strict = _ref.strict,
-        exact = _ref.exact,
-        sensitive = _ref.sensitive;
-
-    if (computedMatch) return computedMatch; // <Switch> already computed the match for us
-
-    __WEBPACK_IMPORTED_MODULE_1_invariant___default()(router, 'You should not use <Route> or withRouter() outside a <Router>');
-
-    var route = router.route;
-
-    var pathname = (location || route.location).pathname;
-
-    return path ? Object(__WEBPACK_IMPORTED_MODULE_4__matchPath__["a" /* default */])(pathname, { path: path, strict: strict, exact: exact, sensitive: sensitive }) : route.match;
-  };
-
-  Route.prototype.componentWillMount = function componentWillMount() {
-    __WEBPACK_IMPORTED_MODULE_0_warning___default()(!(this.props.component && this.props.render), 'You should not use <Route component> and <Route render> in the same route; <Route render> will be ignored');
-
-    __WEBPACK_IMPORTED_MODULE_0_warning___default()(!(this.props.component && this.props.children && !isEmptyChildren(this.props.children)), 'You should not use <Route component> and <Route children> in the same route; <Route children> will be ignored');
-
-    __WEBPACK_IMPORTED_MODULE_0_warning___default()(!(this.props.render && this.props.children && !isEmptyChildren(this.props.children)), 'You should not use <Route render> and <Route children> in the same route; <Route children> will be ignored');
-  };
-
-  Route.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps, nextContext) {
-    __WEBPACK_IMPORTED_MODULE_0_warning___default()(!(nextProps.location && !this.props.location), '<Route> elements should not change from uncontrolled to controlled (or vice versa). You initially used no "location" prop and then provided one on a subsequent render.');
-
-    __WEBPACK_IMPORTED_MODULE_0_warning___default()(!(!nextProps.location && this.props.location), '<Route> elements should not change from controlled to uncontrolled (or vice versa). You provided a "location" prop initially but omitted it on a subsequent render.');
-
-    this.setState({
-      match: this.computeMatch(nextProps, nextContext.router)
-    });
-  };
-
-  Route.prototype.render = function render() {
-    var match = this.state.match;
-    var _props = this.props,
-        children = _props.children,
-        component = _props.component,
-        render = _props.render;
-    var _context$router = this.context.router,
-        history = _context$router.history,
-        route = _context$router.route,
-        staticContext = _context$router.staticContext;
-
-    var location = this.props.location || route.location;
-    var props = { match: match, location: location, history: history, staticContext: staticContext };
-
-    return component ? // component prop gets first priority, only called if there's a match
-    match ? __WEBPACK_IMPORTED_MODULE_2_react___default.a.createElement(component, props) : null : render ? // render prop is next, only called if there's a match
-    match ? render(props) : null : children ? // children come last, always called
-    typeof children === 'function' ? children(props) : !isEmptyChildren(children) ? __WEBPACK_IMPORTED_MODULE_2_react___default.a.Children.only(children) : null : null;
-  };
-
-  return Route;
-}(__WEBPACK_IMPORTED_MODULE_2_react___default.a.Component);
-
-Route.propTypes = {
-  computedMatch: __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.object, // private, from <Switch>
-  path: __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.string,
-  exact: __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.bool,
-  strict: __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.bool,
-  sensitive: __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.bool,
-  component: __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.func,
-  render: __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.func,
-  children: __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.oneOfType([__WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.func, __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.node]),
-  location: __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.object
-};
-Route.contextTypes = {
-  router: __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.shape({
-    history: __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.object.isRequired,
-    route: __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.object.isRequired,
-    staticContext: __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.object
-  })
-};
-Route.childContextTypes = {
-  router: __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.object.isRequired
-};
-
-
-/* harmony default export */ __webpack_exports__["a"] = (Route);
-
-/***/ }),
-/* 62 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return canUseDOM; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return addEventListener; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return removeEventListener; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return getConfirmation; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return supportsHistory; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return supportsPopStateOnHashChange; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return supportsGoWithoutReloadUsingHash; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return isExtraneousPopstateEvent; });
-var canUseDOM = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
-
-var addEventListener = function addEventListener(node, event, listener) {
-  return node.addEventListener ? node.addEventListener(event, listener, false) : node.attachEvent('on' + event, listener);
-};
-
-var removeEventListener = function removeEventListener(node, event, listener) {
-  return node.removeEventListener ? node.removeEventListener(event, listener, false) : node.detachEvent('on' + event, listener);
-};
-
-var getConfirmation = function getConfirmation(message, callback) {
-  return callback(window.confirm(message));
-}; // eslint-disable-line no-alert
-
-/**
- * Returns true if the HTML5 history API is supported. Taken from Modernizr.
- *
- * https://github.com/Modernizr/Modernizr/blob/master/LICENSE
- * https://github.com/Modernizr/Modernizr/blob/master/feature-detects/history.js
- * changed to avoid false negatives for Windows Phones: https://github.com/reactjs/react-router/issues/586
- */
-var supportsHistory = function supportsHistory() {
-  var ua = window.navigator.userAgent;
-
-  if ((ua.indexOf('Android 2.') !== -1 || ua.indexOf('Android 4.0') !== -1) && ua.indexOf('Mobile Safari') !== -1 && ua.indexOf('Chrome') === -1 && ua.indexOf('Windows Phone') === -1) return false;
-
-  return window.history && 'pushState' in window.history;
-};
-
-/**
- * Returns true if browser fires popstate on hash change.
- * IE10 and IE11 do not.
- */
-var supportsPopStateOnHashChange = function supportsPopStateOnHashChange() {
-  return window.navigator.userAgent.indexOf('Trident') === -1;
-};
-
-/**
- * Returns false if using go(n) with hash history causes a full page reload.
- */
-var supportsGoWithoutReloadUsingHash = function supportsGoWithoutReloadUsingHash() {
-  return window.navigator.userAgent.indexOf('Firefox') === -1;
-};
-
-/**
- * Returns true if a given popstate event is an extraneous WebKit event.
- * Accounts for the fact that Chrome on iOS fires real popstate events
- * containing undefined state when pressing the back button.
- */
-var isExtraneousPopstateEvent = function isExtraneousPopstateEvent(event) {
-  return event.state === undefined && navigator.userAgent.indexOf('CriOS') === -1;
-};
-
-/***/ }),
-/* 63 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRouterDom = __webpack_require__(9);
-
-var _sideBar = __webpack_require__(55);
-
-var _sideBar2 = _interopRequireDefault(_sideBar);
-
-var _header = __webpack_require__(33);
-
-var _header2 = _interopRequireDefault(_header);
-
-var _homePage = __webpack_require__(119);
-
-var _homePage2 = _interopRequireDefault(_homePage);
-
-var _functionalProgramming = __webpack_require__(34);
-
-var _functionalProgramming2 = _interopRequireDefault(_functionalProgramming);
-
-var _algorithms = __webpack_require__(35);
-
-var _algorithms2 = _interopRequireDefault(_algorithms);
-
-var _mathFundamentals = __webpack_require__(36);
-
-var _mathFundamentals2 = _interopRequireDefault(_mathFundamentals);
-
-var _mathsForCompSci = __webpack_require__(45);
-
-var _mathsForCompSci2 = _interopRequireDefault(_mathsForCompSci);
-
-var _cLanguage = __webpack_require__(46);
-
-var _cLanguage2 = _interopRequireDefault(_cLanguage);
-
-var _clojure = __webpack_require__(47);
-
-var _clojure2 = _interopRequireDefault(_clojure);
-
-__webpack_require__(431);
-
-var _reactRouterHashLink = __webpack_require__(75);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var home = {
-
-  title: 'The Perks of Computer Science',
-  contents: [_react2.default.createElement(
-    "div",
-    { className: "center" },
-    _react2.default.createElement(
-      "ul",
-      { className: "nav nav-grid center" },
-      _react2.default.createElement(
-        "li",
-        { className: "amber" },
-        _react2.default.createElement(
-          _reactRouterDom.NavLink,
-          { to: "/MathFundamentals" },
-          "Math",
-          _react2.default.createElement("br", null),
-          "Fundamentals"
-        )
-      ),
-      _react2.default.createElement(
-        "li",
-        { className: "cyan" },
-        _react2.default.createElement(
-          _reactRouterDom.NavLink,
-          { to: "/MathsForCompSci" },
-          "Maths for",
-          _react2.default.createElement("br", null),
-          "Computer Science"
-        )
-      ),
-      _react2.default.createElement(
-        "li",
-        { className: "pink" },
-        _react2.default.createElement(
-          _reactRouterDom.NavLink,
-          { to: "/Algorithms" },
-          "Algorithm",
-          _react2.default.createElement("br", null),
-          "Fun"
-        )
-      ),
-      _react2.default.createElement(
-        "li",
-        { className: "purple" },
-        _react2.default.createElement(
-          _reactRouterDom.NavLink,
-          { to: "/clojure" },
-          "Some Hipster",
-          _react2.default.createElement("br", null),
-          "Clojure"
-        )
-      ),
-      _react2.default.createElement(
-        "li",
-        { className: "sixth-gold" },
-        _react2.default.createElement(
-          _reactRouterDom.NavLink,
-          { to: "/FunctionalProgramming" },
-          "Functional",
-          _react2.default.createElement("br", null),
-          "Programming"
-        )
-      ),
-      _react2.default.createElement(
-        "li",
-        { className: "orange" },
-        _react2.default.createElement(
-          _reactRouterDom.NavLink,
-          { to: "/CLanguage" },
-          "A little bit of",
-          _react2.default.createElement("br", null),
-          "C Programming"
-        )
-      ),
-      _react2.default.createElement(
-        "li",
-        { className: "yellow" },
-        _react2.default.createElement(
-          _reactRouterDom.NavLink,
-          { to: "/ProgrammingPearls" },
-          "Programming",
-          _react2.default.createElement("br", null),
-          "Pearls"
-        )
-      )
-    )
-  )],
-  text: [_react2.default.createElement(
-    "div",
-    null,
-    _react2.default.createElement(
-      "p",
-      null,
-      "Hello and congratulations on finding ",
-      _react2.default.createElement(
-        "strong",
-        null,
-        "The Perks of Computer Science"
-      ),
-      ". This blog will become a treasure chest of technical and mathematical knowledge for all those interested in computer science and programming to use. Suitable for all but especially for those who like to learn with all the details and solid examples, no more algorithm teachers assumptions."
-    ),
-    _react2.default.createElement(
-      "p",
-      null,
-      "Please check the side menu on the top left. We will be covering the ",
-      _react2.default.createElement(
-        "strong",
-        null,
-        "Fundamentals of Mathematics's"
-      ),
-      " starting with some BiteSize Maths a few Prerequisites from Stanford and finally looking in depth at the book Concrete Mathematics. A study of ",
-      _react2.default.createElement(
-        "strong",
-        null,
-        "Mathematics for Computer Science"
-      ),
-      " using course content from ",
-      _react2.default.createElement(
-        "a",
-        { href: "https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-042j-mathematics-for-computer-science-spring-2015/index.htm" },
-        "MIT"
-      ),
-      " and ",
-      _react2.default.createElement(
-        "a",
-        { href: "http://web.stanford.edu/class/cs103/" },
-        "Stanford"
-      ),
-      " follows using the fundamental knowledge. ",
-      _react2.default.createElement(
-        "strong",
-        null,
-        "Algorithms"
-      ),
-      " will then be discussed in detail building them imperatively and functionally using C and Clojure respectively. We will then dig into the world of ",
-      _react2.default.createElement(
-        "strong",
-        null,
-        "Functional Programming"
-      ),
-      " using the text book the ",
-      _react2.default.createElement(
-        "a",
-        { href: "https://mitpress.mit.edu/sicp/" },
-        "Structure and Interpretation of Computer Programs (SICP)"
-      ),
-      " as the basis and Clojure as the main language. Check out ",
-      _react2.default.createElement(
-        "strong",
-        null,
-        "A Little bit of C Programming"
-      ),
-      " for some Pointer Madness. Which will then lead to some ",
-      _react2.default.createElement(
-        "strong",
-        null,
-        "Programming Pearls"
-      ),
-      " for all to learn from a case study of the ",
-      _react2.default.createElement(
-        "a",
-        { href: "https://www.amazon.co.uk/Programming-Pearls-Joe-Bentley/dp/8177588583" },
-        "book"
-      ),
-      "."
-    ),
-    _react2.default.createElement(
-      "p",
-      null,
-      "Build in PROGRESS we will be GROWING quickly!"
-    ),
-    _react2.default.createElement(
-      "p",
-      null,
-      _react2.default.createElement(
-        "strong",
-        null,
-        "Most of all have fun!"
-      )
-    )
-  )]
-
-};
-
-var HomePage = function HomePage(props) {
-  return _react2.default.createElement(_homePage2.default, {
-    title: home.title,
-    contents: home.contents,
-    text: home.text
-  });
-};
-
-exports.default = HomePage;
-
-/***/ }),
-/* 64 */
-/***/ (function(module, exports) {
-
-/**
- * This is a module for storing settings passed into KaTeX. It correctly handles
- * default settings.
- */
-
-/**
- * Helper function for getting a default value if the value is undefined
- */
-function get(option, defaultValue) {
-    return option === undefined ? defaultValue : option;
-}
-
-/**
- * The main Settings object
- *
- * The current options stored are:
- *  - displayMode: Whether the expression should be typeset by default in
- *                 textstyle or displaystyle (default false)
- */
-function Settings(options) {
-    // allow null options
-    options = options || {};
-    this.displayMode = get(options.displayMode, false);
-    this.throwOnError = get(options.throwOnError, true);
-    this.errorColor = get(options.errorColor, "#cc0000");
-    this.macros = options.macros || {};
-}
-
-module.exports = Settings;
-
-
-/***/ }),
-/* 65 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/**
- * These objects store the data about the DOM nodes we create, as well as some
- * extra data. They can then be transformed into real DOM nodes with the
- * `toNode` function or HTML markup using `toMarkup`. They are useful for both
- * storing extra properties on the nodes, as well as providing a way to easily
- * work with the DOM.
- *
- * Similar functions for working with MathML nodes exist in mathMLTree.js.
- */
-var unicodeRegexes = __webpack_require__(37);
-var utils = __webpack_require__(6);
-
-/**
- * Create an HTML className based on a list of classes. In addition to joining
- * with spaces, we also remove null or empty classes.
- */
-var createClass = function(classes) {
-    classes = classes.slice();
-    for (var i = classes.length - 1; i >= 0; i--) {
-        if (!classes[i]) {
-            classes.splice(i, 1);
-        }
-    }
-
-    return classes.join(" ");
-};
-
-/**
- * This node represents a span node, with a className, a list of children, and
- * an inline style. It also contains information about its height, depth, and
- * maxFontSize.
- */
-function span(classes, children, options) {
-    this.classes = classes || [];
-    this.children = children || [];
-    this.height = 0;
-    this.depth = 0;
-    this.maxFontSize = 0;
-    this.style = {};
-    this.attributes = {};
-    if (options) {
-        if (options.style.isTight()) {
-            this.classes.push("mtight");
-        }
-        if (options.getColor()) {
-            this.style.color = options.getColor();
-        }
-    }
-}
-
-/**
- * Sets an arbitrary attribute on the span. Warning: use this wisely. Not all
- * browsers support attributes the same, and having too many custom attributes
- * is probably bad.
- */
-span.prototype.setAttribute = function(attribute, value) {
-    this.attributes[attribute] = value;
-};
-
-span.prototype.tryCombine = function(sibling) {
-    return false;
-};
-
-/**
- * Convert the span into an HTML node
- */
-span.prototype.toNode = function() {
-    var span = document.createElement("span");
-
-    // Apply the class
-    span.className = createClass(this.classes);
-
-    // Apply inline styles
-    for (var style in this.style) {
-        if (Object.prototype.hasOwnProperty.call(this.style, style)) {
-            span.style[style] = this.style[style];
-        }
-    }
-
-    // Apply attributes
-    for (var attr in this.attributes) {
-        if (Object.prototype.hasOwnProperty.call(this.attributes, attr)) {
-            span.setAttribute(attr, this.attributes[attr]);
-        }
-    }
-
-    // Append the children, also as HTML nodes
-    for (var i = 0; i < this.children.length; i++) {
-        span.appendChild(this.children[i].toNode());
-    }
-
-    return span;
-};
-
-/**
- * Convert the span into an HTML markup string
- */
-span.prototype.toMarkup = function() {
-    var markup = "<span";
-
-    // Add the class
-    if (this.classes.length) {
-        markup += " class=\"";
-        markup += utils.escape(createClass(this.classes));
-        markup += "\"";
-    }
-
-    var styles = "";
-
-    // Add the styles, after hyphenation
-    for (var style in this.style) {
-        if (this.style.hasOwnProperty(style)) {
-            styles += utils.hyphenate(style) + ":" + this.style[style] + ";";
-        }
-    }
-
-    if (styles) {
-        markup += " style=\"" + utils.escape(styles) + "\"";
-    }
-
-    // Add the attributes
-    for (var attr in this.attributes) {
-        if (Object.prototype.hasOwnProperty.call(this.attributes, attr)) {
-            markup += " " + attr + "=\"";
-            markup += utils.escape(this.attributes[attr]);
-            markup += "\"";
-        }
-    }
-
-    markup += ">";
-
-    // Add the markup of the children, also as markup
-    for (var i = 0; i < this.children.length; i++) {
-        markup += this.children[i].toMarkup();
-    }
-
-    markup += "</span>";
-
-    return markup;
-};
-
-/**
- * This node represents a document fragment, which contains elements, but when
- * placed into the DOM doesn't have any representation itself. Thus, it only
- * contains children and doesn't have any HTML properties. It also keeps track
- * of a height, depth, and maxFontSize.
- */
-function documentFragment(children) {
-    this.children = children || [];
-    this.height = 0;
-    this.depth = 0;
-    this.maxFontSize = 0;
-}
-
-/**
- * Convert the fragment into a node
- */
-documentFragment.prototype.toNode = function() {
-    // Create a fragment
-    var frag = document.createDocumentFragment();
-
-    // Append the children
-    for (var i = 0; i < this.children.length; i++) {
-        frag.appendChild(this.children[i].toNode());
-    }
-
-    return frag;
-};
-
-/**
- * Convert the fragment into HTML markup
- */
-documentFragment.prototype.toMarkup = function() {
-    var markup = "";
-
-    // Simply concatenate the markup for the children together
-    for (var i = 0; i < this.children.length; i++) {
-        markup += this.children[i].toMarkup();
-    }
-
-    return markup;
-};
-
-var iCombinations = {
-    'î': '\u0131\u0302',
-    'ï': '\u0131\u0308',
-    'í': '\u0131\u0301',
-    // 'ī': '\u0131\u0304', // enable when we add Extended Latin
-    'ì': '\u0131\u0300'
-};
-
-/**
- * A symbol node contains information about a single symbol. It either renders
- * to a single text node, or a span with a single text node in it, depending on
- * whether it has CSS classes, styles, or needs italic correction.
- */
-function symbolNode(value, height, depth, italic, skew, classes, style) {
-    this.value = value || "";
-    this.height = height || 0;
-    this.depth = depth || 0;
-    this.italic = italic || 0;
-    this.skew = skew || 0;
-    this.classes = classes || [];
-    this.style = style || {};
-    this.maxFontSize = 0;
-
-    // Mark CJK characters with specific classes so that we can specify which
-    // fonts to use.  This allows us to render these characters with a serif
-    // font in situations where the browser would either default to a sans serif
-    // or render a placeholder character.
-    if (unicodeRegexes.cjkRegex.test(value)) {
-        // I couldn't find any fonts that contained Hangul as well as all of
-        // the other characters we wanted to test there for it gets its own
-        // CSS class.
-        if (unicodeRegexes.hangulRegex.test(value)) {
-            this.classes.push('hangul_fallback');
-        } else {
-            this.classes.push('cjk_fallback');
-        }
-    }
-
-    if (/[îïíì]/.test(this.value)) {    // add ī when we add Extended Latin
-        this.value = iCombinations[this.value];
-    }
-}
-
-symbolNode.prototype.tryCombine = function(sibling) {
-    if (!sibling
-        || !(sibling instanceof symbolNode)
-        || this.italic > 0
-        || createClass(this.classes) !== createClass(sibling.classes)
-        || this.skew !== sibling.skew
-        || this.maxFontSize !== sibling.maxFontSize) {
-        return false;
-    }
-    for (var style in this.style) {
-        if (this.style.hasOwnProperty(style)
-            && this.style[style] !== sibling.style[style]) {
-            return false;
-        }
-    }
-    for (style in sibling.style) {
-        if (sibling.style.hasOwnProperty(style)
-            && this.style[style] !== sibling.style[style]) {
-            return false;
-        }
-    }
-    this.value += sibling.value;
-    this.height = Math.max(this.height, sibling.height);
-    this.depth = Math.max(this.depth, sibling.depth);
-    this.italic = sibling.italic;
-    return true;
-};
-
-/**
- * Creates a text node or span from a symbol node. Note that a span is only
- * created if it is needed.
- */
-symbolNode.prototype.toNode = function() {
-    var node = document.createTextNode(this.value);
-    var span = null;
-
-    if (this.italic > 0) {
-        span = document.createElement("span");
-        span.style.marginRight = this.italic + "em";
-    }
-
-    if (this.classes.length > 0) {
-        span = span || document.createElement("span");
-        span.className = createClass(this.classes);
-    }
-
-    for (var style in this.style) {
-        if (this.style.hasOwnProperty(style)) {
-            span = span || document.createElement("span");
-            span.style[style] = this.style[style];
-        }
-    }
-
-    if (span) {
-        span.appendChild(node);
-        return span;
-    } else {
-        return node;
-    }
-};
-
-/**
- * Creates markup for a symbol node.
- */
-symbolNode.prototype.toMarkup = function() {
-    // TODO(alpert): More duplication than I'd like from
-    // span.prototype.toMarkup and symbolNode.prototype.toNode...
-    var needsSpan = false;
-
-    var markup = "<span";
-
-    if (this.classes.length) {
-        needsSpan = true;
-        markup += " class=\"";
-        markup += utils.escape(createClass(this.classes));
-        markup += "\"";
-    }
-
-    var styles = "";
-
-    if (this.italic > 0) {
-        styles += "margin-right:" + this.italic + "em;";
-    }
-    for (var style in this.style) {
-        if (this.style.hasOwnProperty(style)) {
-            styles += utils.hyphenate(style) + ":" + this.style[style] + ";";
-        }
-    }
-
-    if (styles) {
-        needsSpan = true;
-        markup += " style=\"" + utils.escape(styles) + "\"";
-    }
-
-    var escaped = utils.escape(this.value);
-    if (needsSpan) {
-        markup += ">";
-        markup += escaped;
-        markup += "</span>";
-        return markup;
-    } else {
-        return escaped;
-    }
-};
-
-module.exports = {
-    span: span,
-    documentFragment: documentFragment,
-    symbolNode: symbolNode
-};
-
-
-/***/ }),
-/* 66 */
-/***/ (function(module, exports, __webpack_require__) {
-
 "use strict";
 
 
@@ -6788,7 +4821,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.createElement = undefined;
 
-var _createElement = __webpack_require__(67);
+var _createElement = __webpack_require__(68);
 
 Object.defineProperty(exports, 'createElement', {
   enumerable: true,
@@ -6801,7 +4834,7 @@ var _highlight = __webpack_require__(167);
 
 var _highlight2 = _interopRequireDefault(_highlight);
 
-var _defaultStyle = __webpack_require__(73);
+var _defaultStyle = __webpack_require__(74);
 
 var _defaultStyle2 = _interopRequireDefault(_defaultStyle);
 
@@ -6814,272 +4847,57 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = (0, _highlight2.default)(_lowlight2.default, _defaultStyle2.default);
 
 /***/ }),
-/* 67 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
+module.exports = { "default": __webpack_require__(139), __esModule: true };
+
+/***/ }),
+/* 41 */
+/***/ (function(module, exports) {
+
+// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
+var global = module.exports = typeof window != 'undefined' && window.Math == Math
+  ? window : typeof self != 'undefined' && self.Math == Math ? self
+  // eslint-disable-next-line no-new-func
+  : Function('return this')();
+if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
+/***/ }),
+/* 42 */
+/***/ (function(module, exports) {
+
+module.exports = function (it) {
+  return typeof it === 'object' ? it !== null : typeof it === 'function';
+};
+
+
+/***/ }),
+/* 43 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// Thank's IE8 for his funny defineProperty
+module.exports = !__webpack_require__(44)(function () {
+  return Object.defineProperty({}, 'a', { get: function () { return 7; } }).a != 7;
 });
 
-var _assign = __webpack_require__(39);
 
-var _assign2 = _interopRequireDefault(_assign);
+/***/ }),
+/* 44 */
+/***/ (function(module, exports) {
 
-var _extends2 = __webpack_require__(166);
-
-var _extends3 = _interopRequireDefault(_extends2);
-
-exports.createStyleObject = createStyleObject;
-exports.createClassNameString = createClassNameString;
-exports.createChildren = createChildren;
-exports.default = createElement;
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function createStyleObject(classNames) {
-  var elementStyle = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  var stylesheet = arguments[2];
-
-  return classNames.reduce(function (styleObject, className) {
-    return (0, _extends3.default)({}, styleObject, stylesheet[className]);
-  }, elementStyle);
-}
-
-function createClassNameString(classNames) {
-  return classNames.join(' ');
-}
-
-function createChildren(stylesheet, useInlineStyles) {
-  var childrenCount = 0;
-  return function (children) {
-    childrenCount += 1;
-    return children.map(function (child, i) {
-      return createElement({
-        node: child,
-        stylesheet: stylesheet,
-        useInlineStyles: useInlineStyles,
-        key: 'code-segment-' + childrenCount + '-' + i
-      });
-    });
-  };
-}
-
-function createElement(_ref) {
-  var node = _ref.node,
-      stylesheet = _ref.stylesheet,
-      _ref$style = _ref.style,
-      style = _ref$style === undefined ? {} : _ref$style,
-      useInlineStyles = _ref.useInlineStyles,
-      key = _ref.key;
-  var properties = node.properties,
-      type = node.type,
-      TagName = node.tagName,
-      value = node.value;
-
-  if (type === 'text') {
-    return value;
-  } else if (TagName) {
-    var childrenCreator = createChildren(stylesheet, useInlineStyles);
-    var props = useInlineStyles ? {
-      style: createStyleObject(properties.className, (0, _assign2.default)({}, properties.style, style), stylesheet)
-    } : { className: createClassNameString(properties.className) };
-    var children = childrenCreator(node.children);
-    return _react2.default.createElement(
-      TagName,
-      (0, _extends3.default)({ key: key }, props),
-      children
-    );
+module.exports = function (exec) {
+  try {
+    return !!exec();
+  } catch (e) {
+    return true;
   }
-}
-
-/***/ }),
-/* 68 */
-/***/ (function(module, exports) {
-
-var core = module.exports = { version: '2.5.1' };
-if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
-
-
-/***/ }),
-/* 69 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// to indexed object, toObject with fallback for non-array-like ES3 strings
-var IObject = __webpack_require__(70);
-var defined = __webpack_require__(71);
-module.exports = function (it) {
-  return IObject(defined(it));
 };
 
 
 /***/ }),
-/* 70 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// fallback for non-array-like ES3 and non-enumerable old V8 strings
-var cof = __webpack_require__(155);
-// eslint-disable-next-line no-prototype-builtins
-module.exports = Object('z').propertyIsEnumerable(0) ? Object : function (it) {
-  return cof(it) == 'String' ? it.split('') : Object(it);
-};
-
-
-/***/ }),
-/* 71 */
-/***/ (function(module, exports) {
-
-// 7.2.1 RequireObjectCoercible(argument)
-module.exports = function (it) {
-  if (it == undefined) throw TypeError("Can't call method on  " + it);
-  return it;
-};
-
-
-/***/ }),
-/* 72 */
-/***/ (function(module, exports) {
-
-// 7.1.4 ToInteger
-var ceil = Math.ceil;
-var floor = Math.floor;
-module.exports = function (it) {
-  return isNaN(it = +it) ? 0 : (it > 0 ? floor : ceil)(it);
-};
-
-
-/***/ }),
-/* 73 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.default = {
-    "hljs": {
-        "display": "block",
-        "overflowX": "auto",
-        "padding": "0.5em",
-        "background": "#F0F0F0",
-        "color": "#444"
-    },
-    "hljs-subst": {
-        "color": "#444"
-    },
-    "hljs-comment": {
-        "color": "#888888"
-    },
-    "hljs-keyword": {
-        "fontWeight": "bold"
-    },
-    "hljs-attribute": {
-        "fontWeight": "bold"
-    },
-    "hljs-selector-tag": {
-        "fontWeight": "bold"
-    },
-    "hljs-meta-keyword": {
-        "fontWeight": "bold"
-    },
-    "hljs-doctag": {
-        "fontWeight": "bold"
-    },
-    "hljs-name": {
-        "fontWeight": "bold"
-    },
-    "hljs-type": {
-        "color": "#880000"
-    },
-    "hljs-string": {
-        "color": "#880000"
-    },
-    "hljs-number": {
-        "color": "#880000"
-    },
-    "hljs-selector-id": {
-        "color": "#880000"
-    },
-    "hljs-selector-class": {
-        "color": "#880000"
-    },
-    "hljs-quote": {
-        "color": "#880000"
-    },
-    "hljs-template-tag": {
-        "color": "#880000"
-    },
-    "hljs-deletion": {
-        "color": "#880000"
-    },
-    "hljs-title": {
-        "color": "#880000",
-        "fontWeight": "bold"
-    },
-    "hljs-section": {
-        "color": "#880000",
-        "fontWeight": "bold"
-    },
-    "hljs-regexp": {
-        "color": "#BC6060"
-    },
-    "hljs-symbol": {
-        "color": "#BC6060"
-    },
-    "hljs-variable": {
-        "color": "#BC6060"
-    },
-    "hljs-template-variable": {
-        "color": "#BC6060"
-    },
-    "hljs-link": {
-        "color": "#BC6060"
-    },
-    "hljs-selector-attr": {
-        "color": "#BC6060"
-    },
-    "hljs-selector-pseudo": {
-        "color": "#BC6060"
-    },
-    "hljs-literal": {
-        "color": "#78A960"
-    },
-    "hljs-built_in": {
-        "color": "#397300"
-    },
-    "hljs-bullet": {
-        "color": "#397300"
-    },
-    "hljs-code": {
-        "color": "#397300"
-    },
-    "hljs-addition": {
-        "color": "#397300"
-    },
-    "hljs-meta": {
-        "color": "#1f7199"
-    },
-    "hljs-meta-string": {
-        "color": "#4d99bf"
-    },
-    "hljs-emphasis": {
-        "fontStyle": "italic"
-    },
-    "hljs-strong": {
-        "fontWeight": "bold"
-    }
-};
-
-/***/ }),
-/* 74 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7386,7 +5204,7 @@ Object.defineProperty(exports, 'darkula', {
   }
 });
 
-var _defaultStyle = __webpack_require__(73);
+var _defaultStyle = __webpack_require__(74);
 
 Object.defineProperty(exports, 'defaultStyle', {
   enumerable: true,
@@ -7803,6 +5621,2329 @@ Object.defineProperty(exports, 'zenburn', {
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
+/* 46 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(10)(undefined);
+// imports
+exports.i(__webpack_require__(430), "");
+
+// module
+exports.push([module.i, "html {\n    position: relative;\n    min-height: 100%;\n    margin: 0px;\n    padding: 0px;\n}\nbody {\n    background: #F6F0F0;\n     margin: 0px 0px 58px 0px; /* bottom = footer height */\n     padding: 0px;\n}\nh1, h2, p, ul, li {\n    font-family: 'Open Sans';\n}\n\np {\n    text-align: justify;\n}\n\nul, li {\n    text-align: center;\n}\n\n.text-list li {\n    text-align: left;\n  \n}\n\n.center {\ndisplay: table;   /* Allow the centering to work */\n\tmargin: 0 auto;\n    margin: auto;\n    width: 100%;\n    padding-bottom: 10px;\n}\n\n.home h2 {\n\n     text-align: center;\n  background: #F6F0F0;\n  margin-left: 0px;\n  margin-right: 0px;\n  margin-bottom: 0px;\n  margin-top: 15px;\n  padding-right: 80px;\n  padding-left: 80px;\n  padding-top: 20px;\n  padding-bottom: 10px;\n  font-size: 40px;\n\n}\n\n.Blog-Contents {\n  \n   padding-top: 1px;\n  padding-bottom: 1px;\n  margin-left: 30px;\n  margin-right: 30px;\n  font-size: 17px;\n}\n\n.Blog-Text-Body {\n  background-color: #FFF;\n  padding-top: 20px;\n  padding-left: 20px;\n  padding-bottom: 30px;\n  padding-right: 20px;\n  margin-left: 30px;\n  margin-top: 30px;\n  margin-right: 30px;\n  margin-bottom: 30px;\n  font-size: 17px;\n}\n.Blog-Text-Body h2 {\n  padding-top: 10px;\n    padding-right: 0px;\n    padding-bottom: 15px;\n    padding-left: 0px;\n    margin: 0;\n    text-align: center;\n}\n.content li {\n  margin-bottom: 0px;\n}\n.active {\n/*  background-color: #0099FF;*/\n}\n\n\n/* Position and sizing of burger button */\n.bm-burger-button {\n position: absolute;\n  width: 36px;\n  height: 30px;\n  left: 36px;\n  top: 36px;\n}\n\n/* Color/shape of burger icon bars */\n.bm-burger-bars {\n  background: #FFFFFF;\n}\n\n/* Position and sizing of clickable cross button */\n.bm-cross-button {\n  height: 24px;\n  width: 24px;\n}\n\n/* Color/shape of close button cross */\n.bm-cross {\n  background: #bdc3c7;\n}\n\n/* General sidebar styles */\n.bm-menu {\n  background: #373a47;\n  padding: 2.5em 1.5em 0;\n  font-size: 1.45em;\n}\n\n/* Morph shape necessary with bubble or elastic */\n.bm-morph-shape {\n  fill: #373a47;\n}\n\n/* Wrapper for item list */\n.bm-item-list {\n  color: #b8b7ad;\n  padding: 0.8em;\n}\n\n.bm-item-list a {\n    color: #ffffff;\n\n}\n\n/* Styling of overlay */\n.bm-overlay {\n  background: rgba(0, 0, 0, 0.3);\n}\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 47 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _blogPage = __webpack_require__(11);
+
+var _blogPage2 = _interopRequireDefault(_blogPage);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mathsForCompSci = {
+
+    title: 'Maths for Computer Science',
+    contents: '',
+    text: [_react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+            'p',
+            null,
+            _react2.default.createElement(
+                'strong',
+                null,
+                'Please ensure you check out Math Fundamentals before proceeding into the world of Maths for Computer Science.'
+            )
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            'Hitting the blog very soon. Next infact!'
+        ),
+        _react2.default.createElement(
+            'h3',
+            null,
+            'Proofs'
+        ),
+        _react2.default.createElement(
+            'h4',
+            null,
+            'Intro'
+        ),
+        _react2.default.createElement(
+            'h4',
+            null,
+            'Proof Methods'
+        ),
+        _react2.default.createElement(
+            'h4',
+            null,
+            'Well Ordering Principle'
+        ),
+        _react2.default.createElement(
+            'h4',
+            null,
+            'Logic and Propositions'
+        ),
+        _react2.default.createElement(
+            'h4',
+            null,
+            'Quantifiers and Predicate Logic'
+        ),
+        _react2.default.createElement(
+            'h4',
+            null,
+            'Sets'
+        ),
+        _react2.default.createElement(
+            'h4',
+            null,
+            'Binary Relations'
+        ),
+        _react2.default.createElement(
+            'h4',
+            null,
+            'Induction'
+        ),
+        _react2.default.createElement(
+            'h4',
+            null,
+            'State Machines'
+        ),
+        _react2.default.createElement(
+            'h4',
+            null,
+            'Recursive Definition'
+        ),
+        _react2.default.createElement(
+            'h4',
+            null,
+            'Infinite Sets'
+        ),
+        _react2.default.createElement(
+            'h3',
+            null,
+            'Structures'
+        ),
+        _react2.default.createElement(
+            'h3',
+            null,
+            'Counting'
+        ),
+        _react2.default.createElement(
+            'h3',
+            null,
+            'Probability'
+        )
+    )]
+
+};
+
+var MathsForCompSciPage = function MathsForCompSciPage(props) {
+
+    return _react2.default.createElement(_blogPage2.default, {
+        title: mathsForCompSci.title,
+        contents: mathsForCompSci.contents,
+        text: mathsForCompSci.text
+    });
+};
+
+exports.default = MathsForCompSciPage;
+
+/***/ }),
+/* 48 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _blogPage = __webpack_require__(11);
+
+var _blogPage2 = _interopRequireDefault(_blogPage);
+
+var _reactSyntaxHighlighter = __webpack_require__(39);
+
+var _reactSyntaxHighlighter2 = _interopRequireDefault(_reactSyntaxHighlighter);
+
+var _hljs = __webpack_require__(45);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var cLanguage = {
+
+    title: 'C Programming',
+    text: _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+            'h3',
+            null,
+            'OS X Mac (High Sierra) glib Tutorial'
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            'To being with you need to install homebrew for following this tutorial. Once setup you we need to install glib and pkg-config.'
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            ' ',
+            _react2.default.createElement(
+                _reactSyntaxHighlighter2.default,
+                { language: 'shell', style: _hljs.darcula },
+                'brew install pkg-config'
+            )
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            ' ',
+            _react2.default.createElement(
+                _reactSyntaxHighlighter2.default,
+                { language: 'shell', style: _hljs.darcula },
+                'brew install glib'
+            )
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            'A found a great ',
+            _react2.default.createElement(
+                'a',
+                { href: 'https://www.ibm.com/developerworks/linux/tutorials/l-glib/' },
+                'IBM Tutorial based on UNIX'
+            ),
+            ' for this so we will follow this and get it working on Mac terminal.'
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            'PKG is a tool make it easier to specify configuration locations and we will use this on Mac to make our lives much easier. To get the code to run I had to replace the quotations from \' to \u0300. The command to runcompile the first example is as follows: '
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            ' ',
+            _react2.default.createElement(
+                _reactSyntaxHighlighter2.default,
+                { language: 'shell', style: _hljs.darcula },
+                'gcc \u0300pkg-config --cflags --libs glib-2.0 \u0300 -o ex-compile ex-compile.c'
+            )
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            'For some reason when compiling you will see a warning so please include <stdio.h> for printf.'
+        ),
+        ' ',
+        _react2.default.createElement(
+            'p',
+            null,
+            'Lets begin with playing around with a single linked list. To define a single linked list and to add an item you can do the following:  '
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            ' ',
+            _react2.default.createElement(
+                _reactSyntaxHighlighter2.default,
+                { language: 'c', style: _hljs.darcula },
+                'GSList* list = NULL;'
+            )
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            ' ',
+            _react2.default.createElement(
+                _reactSyntaxHighlighter2.default,
+                { language: 'c', style: _hljs.darcula },
+                'list = g_slist_append(list, "first");'
+            )
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            'This is C so lets not forget to clean the memory up once done.'
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            ' ',
+            _react2.default.createElement(
+                _reactSyntaxHighlighter2.default,
+                { language: 'c', style: _hljs.darcula },
+                'g_slist_free(list);'
+            )
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            'If we want to remove from the list you can do the following:'
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            ' ',
+            _react2.default.createElement(
+                _reactSyntaxHighlighter2.default,
+                { language: 'c', style: _hljs.darcula },
+                'list = g_slist_remove(list, "first");'
+            )
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            'Now we have seen a few examples we can see that the format for most code using glib is:'
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            ' ',
+            _react2.default.createElement(
+                _reactSyntaxHighlighter2.default,
+                { language: 'c', style: _hljs.darcula },
+                'g_(container name)_(function name)'
+            )
+        )
+    ),
+    contents: ''
+
+};
+
+var CLanguagePage = function CLanguagePage(props) {
+
+    return _react2.default.createElement(_blogPage2.default, {
+        title: cLanguage.title,
+        contents: cLanguage.contents,
+        text: cLanguage.text
+    });
+};
+
+exports.default = CLanguagePage;
+
+/***/ }),
+/* 49 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactSyntaxHighlighter = __webpack_require__(39);
+
+var _reactSyntaxHighlighter2 = _interopRequireDefault(_reactSyntaxHighlighter);
+
+var _hljs = __webpack_require__(45);
+
+var _blogPage = __webpack_require__(11);
+
+var _blogPage2 = _interopRequireDefault(_blogPage);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var clojure = {
+
+    title: 'Clojure',
+    contents: '',
+    text: [_react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+            _reactSyntaxHighlighter2.default,
+            { language: 'clojure', style: _hljs.darcula },
+            '(def a 2)'
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            'Your first bit of clojure much more to come! '
+        )
+    )]
+
+};
+
+var ClojurePage = function ClojurePage(props) {
+
+    return _react2.default.createElement(_blogPage2.default, {
+        title: clojure.title,
+        contents: clojure.contents,
+        text: clojure.text
+    });
+};
+
+exports.default = ClojurePage;
+
+/***/ }),
+/* 50 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
+
+function checkDCE() {
+  /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */
+  if (
+    typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === 'undefined' ||
+    typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== 'function'
+  ) {
+    return;
+  }
+  if (process.env.NODE_ENV !== 'production') {
+    // This branch is unreachable because this function is only called
+    // in production, but the condition is true only in development.
+    // Therefore if the branch is still here, dead code elimination wasn't
+    // properly applied.
+    // Don't change the message. React DevTools relies on it. Also make sure
+    // this message doesn't occur elsewhere in this function, or it will cause
+    // a false positive.
+    throw new Error('^_^');
+  }
+  try {
+    // Verify that the code above has been dead code eliminated (DCE'd).
+    __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE(checkDCE);
+  } catch (err) {
+    // DevTools shouldn't crash React, no matter what.
+    // We should still report in case we break this code.
+    console.error(err);
+  }
+}
+
+if (process.env.NODE_ENV === 'production') {
+  // DCE check should happen before ReactDOM bundle executes so that
+  // DevTools can report bad minification during injection.
+  checkDCE();
+  module.exports = __webpack_require__(80);
+} else {
+  module.exports = __webpack_require__(83);
+}
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
+
+/***/ }),
+/* 51 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+
+
+var canUseDOM = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
+
+/**
+ * Simple, lightweight module assisting with the detection and context of
+ * Worker. Helps avoid circular dependencies and allows code to reason about
+ * whether or not they are in a Worker, even if they never include the main
+ * `ReactWorker` dependency.
+ */
+var ExecutionEnvironment = {
+
+  canUseDOM: canUseDOM,
+
+  canUseWorkers: typeof Worker !== 'undefined',
+
+  canUseEventListeners: canUseDOM && !!(window.addEventListener || window.attachEvent),
+
+  canUseViewport: canUseDOM && !!window.screen,
+
+  isInWorker: !canUseDOM // For now, this is true - might change in the future.
+
+};
+
+module.exports = ExecutionEnvironment;
+
+/***/ }),
+/* 52 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * @typechecks
+ */
+
+var emptyFunction = __webpack_require__(7);
+
+/**
+ * Upstream version of event listener. Does not take into account specific
+ * nature of platform.
+ */
+var EventListener = {
+  /**
+   * Listen to DOM events during the bubble phase.
+   *
+   * @param {DOMEventTarget} target DOM element to register listener on.
+   * @param {string} eventType Event type, e.g. 'click' or 'mouseover'.
+   * @param {function} callback Callback function.
+   * @return {object} Object with a `remove` method.
+   */
+  listen: function listen(target, eventType, callback) {
+    if (target.addEventListener) {
+      target.addEventListener(eventType, callback, false);
+      return {
+        remove: function remove() {
+          target.removeEventListener(eventType, callback, false);
+        }
+      };
+    } else if (target.attachEvent) {
+      target.attachEvent('on' + eventType, callback);
+      return {
+        remove: function remove() {
+          target.detachEvent('on' + eventType, callback);
+        }
+      };
+    }
+  },
+
+  /**
+   * Listen to DOM events during the capture phase.
+   *
+   * @param {DOMEventTarget} target DOM element to register listener on.
+   * @param {string} eventType Event type, e.g. 'click' or 'mouseover'.
+   * @param {function} callback Callback function.
+   * @return {object} Object with a `remove` method.
+   */
+  capture: function capture(target, eventType, callback) {
+    if (target.addEventListener) {
+      target.addEventListener(eventType, callback, true);
+      return {
+        remove: function remove() {
+          target.removeEventListener(eventType, callback, true);
+        }
+      };
+    } else {
+      if (process.env.NODE_ENV !== 'production') {
+        console.error('Attempted to listen to events during the capture phase on a ' + 'browser that does not support the capture phase. Your application ' + 'will not receive some events.');
+      }
+      return {
+        remove: emptyFunction
+      };
+    }
+  },
+
+  registerDefault: function registerDefault() {}
+};
+
+module.exports = EventListener;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
+
+/***/ }),
+/* 53 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * @typechecks
+ */
+
+/* eslint-disable fb-www/typeof-undefined */
+
+/**
+ * Same as document.activeElement but wraps in a try-catch block. In IE it is
+ * not safe to call document.activeElement if there is nothing focused.
+ *
+ * The activeElement will be null only if the document or document body is not
+ * yet defined.
+ *
+ * @param {?DOMDocument} doc Defaults to current document.
+ * @return {?DOMElement}
+ */
+function getActiveElement(doc) /*?DOMElement*/{
+  doc = doc || (typeof document !== 'undefined' ? document : undefined);
+  if (typeof doc === 'undefined') {
+    return null;
+  }
+  try {
+    return doc.activeElement || doc.body;
+  } catch (e) {
+    return doc.body;
+  }
+}
+
+module.exports = getActiveElement;
+
+/***/ }),
+/* 54 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * @typechecks
+ * 
+ */
+
+/*eslint-disable no-self-compare */
+
+
+
+var hasOwnProperty = Object.prototype.hasOwnProperty;
+
+/**
+ * inlined Object.is polyfill to avoid requiring consumers ship their own
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
+ */
+function is(x, y) {
+  // SameValue algorithm
+  if (x === y) {
+    // Steps 1-5, 7-10
+    // Steps 6.b-6.e: +0 != -0
+    // Added the nonzero y check to make Flow happy, but it is redundant
+    return x !== 0 || y !== 0 || 1 / x === 1 / y;
+  } else {
+    // Step 6.a: NaN == NaN
+    return x !== x && y !== y;
+  }
+}
+
+/**
+ * Performs equality by iterating through keys on an object and returning false
+ * when any key has values which are not strictly equal between the arguments.
+ * Returns true when the values of all keys are strictly equal.
+ */
+function shallowEqual(objA, objB) {
+  if (is(objA, objB)) {
+    return true;
+  }
+
+  if (typeof objA !== 'object' || objA === null || typeof objB !== 'object' || objB === null) {
+    return false;
+  }
+
+  var keysA = Object.keys(objA);
+  var keysB = Object.keys(objB);
+
+  if (keysA.length !== keysB.length) {
+    return false;
+  }
+
+  // Test for A's keys different from B.
+  for (var i = 0; i < keysA.length; i++) {
+    if (!hasOwnProperty.call(objB, keysA[i]) || !is(objA[keysA[i]], objB[keysA[i]])) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+module.exports = shallowEqual;
+
+/***/ }),
+/* 55 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * 
+ */
+
+var isTextNode = __webpack_require__(81);
+
+/*eslint-disable no-bitwise */
+
+/**
+ * Checks if a given DOM node contains or is another DOM node.
+ */
+function containsNode(outerNode, innerNode) {
+  if (!outerNode || !innerNode) {
+    return false;
+  } else if (outerNode === innerNode) {
+    return true;
+  } else if (isTextNode(outerNode)) {
+    return false;
+  } else if (isTextNode(innerNode)) {
+    return containsNode(outerNode, innerNode.parentNode);
+  } else if ('contains' in outerNode) {
+    return outerNode.contains(innerNode);
+  } else if (outerNode.compareDocumentPosition) {
+    return !!(outerNode.compareDocumentPosition(innerNode) & 16);
+  } else {
+    return false;
+  }
+}
+
+module.exports = containsNode;
+
+/***/ }),
+/* 56 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+
+
+/**
+ * @param {DOMElement} node input/textarea to focus
+ */
+
+function focusNode(node) {
+  // IE8 can throw "Can't move focus to the control because it is invisible,
+  // not enabled, or of a type that does not accept the focus." for all kinds of
+  // reasons that are too expensive and fragile to test.
+  try {
+    node.focus();
+  } catch (e) {}
+}
+
+module.exports = focusNode;
+
+/***/ }),
+/* 57 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(9);
+
+var _home = __webpack_require__(65);
+
+var _home2 = _interopRequireDefault(_home);
+
+var _functionalProgramming = __webpack_require__(34);
+
+var _functionalProgramming2 = _interopRequireDefault(_functionalProgramming);
+
+var _algorithms = __webpack_require__(35);
+
+var _algorithms2 = _interopRequireDefault(_algorithms);
+
+var _mathFundamentals = __webpack_require__(36);
+
+var _mathFundamentals2 = _interopRequireDefault(_mathFundamentals);
+
+var _mathsForCompSci = __webpack_require__(47);
+
+var _mathsForCompSci2 = _interopRequireDefault(_mathsForCompSci);
+
+var _cLanguage = __webpack_require__(48);
+
+var _cLanguage2 = _interopRequireDefault(_cLanguage);
+
+var _clojure = __webpack_require__(49);
+
+var _clojure2 = _interopRequireDefault(_clojure);
+
+var _reactBurgerMenu = __webpack_require__(433);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var SideBar = function (_Component) {
+  _inherits(SideBar, _Component);
+
+  function SideBar(props) {
+    _classCallCheck(this, SideBar);
+
+    var _this = _possibleConstructorReturn(this, (SideBar.__proto__ || Object.getPrototypeOf(SideBar)).call(this, props));
+
+    _this.handleMenuClick = _this.handleMenuClick.bind(_this);
+    return _this;
+  }
+
+  _createClass(SideBar, [{
+    key: "handleMenuClick",
+    value: function handleMenuClick(event) {
+      event.preventDefault();
+      console.log('closing menu');
+      this.setState({ isOpen: false });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        _reactRouterDom.HashRouter,
+        null,
+        _react2.default.createElement(
+          _reactBurgerMenu.slide,
+          { isOpen: false },
+          _react2.default.createElement(
+            "a",
+            { onClick: this.handleMenuClick },
+            " ",
+            _react2.default.createElement(
+              _reactRouterDom.NavLink,
+              { exact: true, to: "/" },
+              "Home"
+            )
+          ),
+          _react2.default.createElement(
+            "a",
+            { onClick: this.handleMenuClick },
+            " ",
+            _react2.default.createElement(
+              _reactRouterDom.NavLink,
+              { to: "/MathFundamentals" },
+              "Math Fundamentals"
+            )
+          ),
+          _react2.default.createElement(
+            "a",
+            { onClick: this.handleMenuClick },
+            " ",
+            _react2.default.createElement(
+              _reactRouterDom.NavLink,
+              { to: "/MathsForCompSci" },
+              "Maths for Computer Science"
+            )
+          ),
+          _react2.default.createElement(
+            "a",
+            { onClick: this.handleMenuClick },
+            _react2.default.createElement(
+              _reactRouterDom.NavLink,
+              { to: "/Algorithms" },
+              "Algorithm Fun"
+            )
+          ),
+          _react2.default.createElement(
+            "a",
+            { onClick: this.handleMenuClick },
+            _react2.default.createElement(
+              _reactRouterDom.NavLink,
+              { to: "/clojure" },
+              "Hipster Clojure"
+            )
+          ),
+          _react2.default.createElement(
+            "a",
+            { onClick: this.handleMenuClick },
+            _react2.default.createElement(
+              _reactRouterDom.NavLink,
+              { to: "/FunctionalProgramming" },
+              "Functional Programming"
+            )
+          ),
+          _react2.default.createElement(
+            "a",
+            { onClick: this.handleMenuClick },
+            _react2.default.createElement(
+              _reactRouterDom.NavLink,
+              { to: "/CLanguage" },
+              "A Little Bit of C Programming"
+            )
+          ),
+          _react2.default.createElement(
+            "a",
+            { onClick: this.handleMenuClick },
+            _react2.default.createElement(
+              _reactRouterDom.NavLink,
+              { to: "/ProgrammingPearls" },
+              "Programming Pearls"
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return SideBar;
+}(_react.Component);
+
+exports.default = SideBar;
+
+/***/ }),
+/* 58 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+function isAbsolute(pathname) {
+  return pathname.charAt(0) === '/';
+}
+
+// About 1.5x faster than the two-arg version of Array#splice()
+function spliceOne(list, index) {
+  for (var i = index, k = i + 1, n = list.length; k < n; i += 1, k += 1) {
+    list[i] = list[k];
+  }
+
+  list.pop();
+}
+
+// This implementation is based heavily on node's url.parse
+function resolvePathname(to) {
+  var from = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+
+  var toParts = to && to.split('/') || [];
+  var fromParts = from && from.split('/') || [];
+
+  var isToAbs = to && isAbsolute(to);
+  var isFromAbs = from && isAbsolute(from);
+  var mustEndAbs = isToAbs || isFromAbs;
+
+  if (to && isAbsolute(to)) {
+    // to is absolute
+    fromParts = toParts;
+  } else if (toParts.length) {
+    // to is relative, drop the filename
+    fromParts.pop();
+    fromParts = fromParts.concat(toParts);
+  }
+
+  if (!fromParts.length) return '/';
+
+  var hasTrailingSlash = void 0;
+  if (fromParts.length) {
+    var last = fromParts[fromParts.length - 1];
+    hasTrailingSlash = last === '.' || last === '..' || last === '';
+  } else {
+    hasTrailingSlash = false;
+  }
+
+  var up = 0;
+  for (var i = fromParts.length; i >= 0; i--) {
+    var part = fromParts[i];
+
+    if (part === '.') {
+      spliceOne(fromParts, i);
+    } else if (part === '..') {
+      spliceOne(fromParts, i);
+      up++;
+    } else if (up) {
+      spliceOne(fromParts, i);
+      up--;
+    }
+  }
+
+  if (!mustEndAbs) for (; up--; up) {
+    fromParts.unshift('..');
+  }if (mustEndAbs && fromParts[0] !== '' && (!fromParts[0] || !isAbsolute(fromParts[0]))) fromParts.unshift('');
+
+  var result = fromParts.join('/');
+
+  if (hasTrailingSlash && result.substr(-1) !== '/') result += '/';
+
+  return result;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (resolvePathname);
+
+/***/ }),
+/* 59 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+function valueEqual(a, b) {
+  if (a === b) return true;
+
+  if (a == null || b == null) return false;
+
+  if (Array.isArray(a)) {
+    return Array.isArray(b) && a.length === b.length && a.every(function (item, index) {
+      return valueEqual(item, b[index]);
+    });
+  }
+
+  var aType = typeof a === 'undefined' ? 'undefined' : _typeof(a);
+  var bType = typeof b === 'undefined' ? 'undefined' : _typeof(b);
+
+  if (aType !== bType) return false;
+
+  if (aType === 'object') {
+    var aValue = a.valueOf();
+    var bValue = b.valueOf();
+
+    if (aValue !== a || bValue !== b) return valueEqual(aValue, bValue);
+
+    var aKeys = Object.keys(a);
+    var bKeys = Object.keys(b);
+
+    if (aKeys.length !== bKeys.length) return false;
+
+    return aKeys.every(function (key) {
+      return valueEqual(a[key], b[key]);
+    });
+  }
+
+  return false;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (valueEqual);
+
+/***/ }),
+/* 60 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+var canUseDOM = exports.canUseDOM = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
+
+var addEventListener = exports.addEventListener = function addEventListener(node, event, listener) {
+  return node.addEventListener ? node.addEventListener(event, listener, false) : node.attachEvent('on' + event, listener);
+};
+
+var removeEventListener = exports.removeEventListener = function removeEventListener(node, event, listener) {
+  return node.removeEventListener ? node.removeEventListener(event, listener, false) : node.detachEvent('on' + event, listener);
+};
+
+var getConfirmation = exports.getConfirmation = function getConfirmation(message, callback) {
+  return callback(window.confirm(message));
+}; // eslint-disable-line no-alert
+
+/**
+ * Returns true if the HTML5 history API is supported. Taken from Modernizr.
+ *
+ * https://github.com/Modernizr/Modernizr/blob/master/LICENSE
+ * https://github.com/Modernizr/Modernizr/blob/master/feature-detects/history.js
+ * changed to avoid false negatives for Windows Phones: https://github.com/reactjs/react-router/issues/586
+ */
+var supportsHistory = exports.supportsHistory = function supportsHistory() {
+  var ua = window.navigator.userAgent;
+
+  if ((ua.indexOf('Android 2.') !== -1 || ua.indexOf('Android 4.0') !== -1) && ua.indexOf('Mobile Safari') !== -1 && ua.indexOf('Chrome') === -1 && ua.indexOf('Windows Phone') === -1) return false;
+
+  return window.history && 'pushState' in window.history;
+};
+
+/**
+ * Returns true if browser fires popstate on hash change.
+ * IE10 and IE11 do not.
+ */
+var supportsPopStateOnHashChange = exports.supportsPopStateOnHashChange = function supportsPopStateOnHashChange() {
+  return window.navigator.userAgent.indexOf('Trident') === -1;
+};
+
+/**
+ * Returns false if using go(n) with hash history causes a full page reload.
+ */
+var supportsGoWithoutReloadUsingHash = exports.supportsGoWithoutReloadUsingHash = function supportsGoWithoutReloadUsingHash() {
+  return window.navigator.userAgent.indexOf('Firefox') === -1;
+};
+
+/**
+ * Returns true if a given popstate event is an extraneous WebKit event.
+ * Accounts for the fact that Chrome on iOS fires real popstate events
+ * containing undefined state when pressing the back button.
+ */
+var isExtraneousPopstateEvent = exports.isExtraneousPopstateEvent = function isExtraneousPopstateEvent(event) {
+  return event.state === undefined && navigator.userAgent.indexOf('CriOS') === -1;
+};
+
+/***/ }),
+/* 61 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_invariant__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_invariant__);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+var isModifiedEvent = function isModifiedEvent(event) {
+  return !!(event.metaKey || event.altKey || event.ctrlKey || event.shiftKey);
+};
+
+/**
+ * The public API for rendering a history-aware <a>.
+ */
+
+var Link = function (_React$Component) {
+  _inherits(Link, _React$Component);
+
+  function Link() {
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, Link);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, _React$Component.call.apply(_React$Component, [this].concat(args))), _this), _this.handleClick = function (event) {
+      if (_this.props.onClick) _this.props.onClick(event);
+
+      if (!event.defaultPrevented && // onClick prevented default
+      event.button === 0 && // ignore right clicks
+      !_this.props.target && // let browser handle "target=_blank" etc.
+      !isModifiedEvent(event) // ignore clicks with modifier keys
+      ) {
+          event.preventDefault();
+
+          var history = _this.context.router.history;
+          var _this$props = _this.props,
+              replace = _this$props.replace,
+              to = _this$props.to;
+
+
+          if (replace) {
+            history.replace(to);
+          } else {
+            history.push(to);
+          }
+        }
+    }, _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  Link.prototype.render = function render() {
+    var _props = this.props,
+        replace = _props.replace,
+        to = _props.to,
+        innerRef = _props.innerRef,
+        props = _objectWithoutProperties(_props, ['replace', 'to', 'innerRef']); // eslint-disable-line no-unused-vars
+
+    __WEBPACK_IMPORTED_MODULE_2_invariant___default()(this.context.router, 'You should not use <Link> outside a <Router>');
+
+    var href = this.context.router.history.createHref(typeof to === 'string' ? { pathname: to } : to);
+
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('a', _extends({}, props, { onClick: this.handleClick, href: href, ref: innerRef }));
+  };
+
+  return Link;
+}(__WEBPACK_IMPORTED_MODULE_0_react___default.a.Component);
+
+Link.propTypes = {
+  onClick: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.func,
+  target: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.string,
+  replace: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.bool,
+  to: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.oneOfType([__WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.string, __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.object]).isRequired,
+  innerRef: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.oneOfType([__WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.string, __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.func])
+};
+Link.defaultProps = {
+  replace: false
+};
+Link.contextTypes = {
+  router: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.shape({
+    history: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.shape({
+      push: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.func.isRequired,
+      replace: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.func.isRequired,
+      createHref: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.func.isRequired
+    }).isRequired
+  }).isRequired
+};
+
+
+/* harmony default export */ __webpack_exports__["a"] = (Link);
+
+/***/ }),
+/* 62 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_Route__ = __webpack_require__(63);
+// Written in this round about way for babel-transform-imports
+
+
+/* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_Route__["a" /* default */]);
+
+/***/ }),
+/* 63 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_warning__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_invariant__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prop_types__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_prop_types__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__matchPath__ = __webpack_require__(31);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+
+
+var isEmptyChildren = function isEmptyChildren(children) {
+  return __WEBPACK_IMPORTED_MODULE_2_react___default.a.Children.count(children) === 0;
+};
+
+/**
+ * The public API for matching a single path and rendering.
+ */
+
+var Route = function (_React$Component) {
+  _inherits(Route, _React$Component);
+
+  function Route() {
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, Route);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, _React$Component.call.apply(_React$Component, [this].concat(args))), _this), _this.state = {
+      match: _this.computeMatch(_this.props, _this.context.router)
+    }, _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  Route.prototype.getChildContext = function getChildContext() {
+    return {
+      router: _extends({}, this.context.router, {
+        route: {
+          location: this.props.location || this.context.router.route.location,
+          match: this.state.match
+        }
+      })
+    };
+  };
+
+  Route.prototype.computeMatch = function computeMatch(_ref, router) {
+    var computedMatch = _ref.computedMatch,
+        location = _ref.location,
+        path = _ref.path,
+        strict = _ref.strict,
+        exact = _ref.exact,
+        sensitive = _ref.sensitive;
+
+    if (computedMatch) return computedMatch; // <Switch> already computed the match for us
+
+    __WEBPACK_IMPORTED_MODULE_1_invariant___default()(router, 'You should not use <Route> or withRouter() outside a <Router>');
+
+    var route = router.route;
+
+    var pathname = (location || route.location).pathname;
+
+    return path ? Object(__WEBPACK_IMPORTED_MODULE_4__matchPath__["a" /* default */])(pathname, { path: path, strict: strict, exact: exact, sensitive: sensitive }) : route.match;
+  };
+
+  Route.prototype.componentWillMount = function componentWillMount() {
+    __WEBPACK_IMPORTED_MODULE_0_warning___default()(!(this.props.component && this.props.render), 'You should not use <Route component> and <Route render> in the same route; <Route render> will be ignored');
+
+    __WEBPACK_IMPORTED_MODULE_0_warning___default()(!(this.props.component && this.props.children && !isEmptyChildren(this.props.children)), 'You should not use <Route component> and <Route children> in the same route; <Route children> will be ignored');
+
+    __WEBPACK_IMPORTED_MODULE_0_warning___default()(!(this.props.render && this.props.children && !isEmptyChildren(this.props.children)), 'You should not use <Route render> and <Route children> in the same route; <Route children> will be ignored');
+  };
+
+  Route.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps, nextContext) {
+    __WEBPACK_IMPORTED_MODULE_0_warning___default()(!(nextProps.location && !this.props.location), '<Route> elements should not change from uncontrolled to controlled (or vice versa). You initially used no "location" prop and then provided one on a subsequent render.');
+
+    __WEBPACK_IMPORTED_MODULE_0_warning___default()(!(!nextProps.location && this.props.location), '<Route> elements should not change from controlled to uncontrolled (or vice versa). You provided a "location" prop initially but omitted it on a subsequent render.');
+
+    this.setState({
+      match: this.computeMatch(nextProps, nextContext.router)
+    });
+  };
+
+  Route.prototype.render = function render() {
+    var match = this.state.match;
+    var _props = this.props,
+        children = _props.children,
+        component = _props.component,
+        render = _props.render;
+    var _context$router = this.context.router,
+        history = _context$router.history,
+        route = _context$router.route,
+        staticContext = _context$router.staticContext;
+
+    var location = this.props.location || route.location;
+    var props = { match: match, location: location, history: history, staticContext: staticContext };
+
+    return component ? // component prop gets first priority, only called if there's a match
+    match ? __WEBPACK_IMPORTED_MODULE_2_react___default.a.createElement(component, props) : null : render ? // render prop is next, only called if there's a match
+    match ? render(props) : null : children ? // children come last, always called
+    typeof children === 'function' ? children(props) : !isEmptyChildren(children) ? __WEBPACK_IMPORTED_MODULE_2_react___default.a.Children.only(children) : null : null;
+  };
+
+  return Route;
+}(__WEBPACK_IMPORTED_MODULE_2_react___default.a.Component);
+
+Route.propTypes = {
+  computedMatch: __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.object, // private, from <Switch>
+  path: __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.string,
+  exact: __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.bool,
+  strict: __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.bool,
+  sensitive: __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.bool,
+  component: __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.func,
+  render: __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.func,
+  children: __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.oneOfType([__WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.func, __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.node]),
+  location: __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.object
+};
+Route.contextTypes = {
+  router: __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.shape({
+    history: __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.object.isRequired,
+    route: __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.object.isRequired,
+    staticContext: __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.object
+  })
+};
+Route.childContextTypes = {
+  router: __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.object.isRequired
+};
+
+
+/* harmony default export */ __webpack_exports__["a"] = (Route);
+
+/***/ }),
+/* 64 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return canUseDOM; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return addEventListener; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return removeEventListener; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return getConfirmation; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return supportsHistory; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return supportsPopStateOnHashChange; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return supportsGoWithoutReloadUsingHash; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return isExtraneousPopstateEvent; });
+var canUseDOM = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
+
+var addEventListener = function addEventListener(node, event, listener) {
+  return node.addEventListener ? node.addEventListener(event, listener, false) : node.attachEvent('on' + event, listener);
+};
+
+var removeEventListener = function removeEventListener(node, event, listener) {
+  return node.removeEventListener ? node.removeEventListener(event, listener, false) : node.detachEvent('on' + event, listener);
+};
+
+var getConfirmation = function getConfirmation(message, callback) {
+  return callback(window.confirm(message));
+}; // eslint-disable-line no-alert
+
+/**
+ * Returns true if the HTML5 history API is supported. Taken from Modernizr.
+ *
+ * https://github.com/Modernizr/Modernizr/blob/master/LICENSE
+ * https://github.com/Modernizr/Modernizr/blob/master/feature-detects/history.js
+ * changed to avoid false negatives for Windows Phones: https://github.com/reactjs/react-router/issues/586
+ */
+var supportsHistory = function supportsHistory() {
+  var ua = window.navigator.userAgent;
+
+  if ((ua.indexOf('Android 2.') !== -1 || ua.indexOf('Android 4.0') !== -1) && ua.indexOf('Mobile Safari') !== -1 && ua.indexOf('Chrome') === -1 && ua.indexOf('Windows Phone') === -1) return false;
+
+  return window.history && 'pushState' in window.history;
+};
+
+/**
+ * Returns true if browser fires popstate on hash change.
+ * IE10 and IE11 do not.
+ */
+var supportsPopStateOnHashChange = function supportsPopStateOnHashChange() {
+  return window.navigator.userAgent.indexOf('Trident') === -1;
+};
+
+/**
+ * Returns false if using go(n) with hash history causes a full page reload.
+ */
+var supportsGoWithoutReloadUsingHash = function supportsGoWithoutReloadUsingHash() {
+  return window.navigator.userAgent.indexOf('Firefox') === -1;
+};
+
+/**
+ * Returns true if a given popstate event is an extraneous WebKit event.
+ * Accounts for the fact that Chrome on iOS fires real popstate events
+ * containing undefined state when pressing the back button.
+ */
+var isExtraneousPopstateEvent = function isExtraneousPopstateEvent(event) {
+  return event.state === undefined && navigator.userAgent.indexOf('CriOS') === -1;
+};
+
+/***/ }),
+/* 65 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(9);
+
+var _sideBar = __webpack_require__(57);
+
+var _sideBar2 = _interopRequireDefault(_sideBar);
+
+var _header = __webpack_require__(33);
+
+var _header2 = _interopRequireDefault(_header);
+
+var _homePage = __webpack_require__(119);
+
+var _homePage2 = _interopRequireDefault(_homePage);
+
+var _functionalProgramming = __webpack_require__(34);
+
+var _functionalProgramming2 = _interopRequireDefault(_functionalProgramming);
+
+var _algorithms = __webpack_require__(35);
+
+var _algorithms2 = _interopRequireDefault(_algorithms);
+
+var _mathFundamentals = __webpack_require__(36);
+
+var _mathFundamentals2 = _interopRequireDefault(_mathFundamentals);
+
+var _mathsForCompSci = __webpack_require__(47);
+
+var _mathsForCompSci2 = _interopRequireDefault(_mathsForCompSci);
+
+var _cLanguage = __webpack_require__(48);
+
+var _cLanguage2 = _interopRequireDefault(_cLanguage);
+
+var _clojure = __webpack_require__(49);
+
+var _clojure2 = _interopRequireDefault(_clojure);
+
+__webpack_require__(431);
+
+var _reactRouterHashLink = __webpack_require__(75);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var home = {
+
+  title: 'The Perks of Computer Science',
+  contents: [_react2.default.createElement(
+    "div",
+    { className: "center" },
+    _react2.default.createElement(
+      "ul",
+      { className: "nav nav-grid center" },
+      _react2.default.createElement(
+        "li",
+        { className: "amber" },
+        _react2.default.createElement(
+          _reactRouterDom.NavLink,
+          { to: "/MathFundamentals" },
+          "Math",
+          _react2.default.createElement("br", null),
+          "Fundamentals"
+        )
+      ),
+      _react2.default.createElement(
+        "li",
+        { className: "cyan" },
+        _react2.default.createElement(
+          _reactRouterDom.NavLink,
+          { to: "/MathsForCompSci" },
+          "Maths for",
+          _react2.default.createElement("br", null),
+          "Computer Science"
+        )
+      ),
+      _react2.default.createElement(
+        "li",
+        { className: "pink" },
+        _react2.default.createElement(
+          _reactRouterDom.NavLink,
+          { to: "/Algorithms" },
+          "Algorithm",
+          _react2.default.createElement("br", null),
+          "Fun"
+        )
+      ),
+      _react2.default.createElement(
+        "li",
+        { className: "purple" },
+        _react2.default.createElement(
+          _reactRouterDom.NavLink,
+          { to: "/clojure" },
+          "Some Hipster",
+          _react2.default.createElement("br", null),
+          "Clojure"
+        )
+      ),
+      _react2.default.createElement(
+        "li",
+        { className: "sixth-gold" },
+        _react2.default.createElement(
+          _reactRouterDom.NavLink,
+          { to: "/FunctionalProgramming" },
+          "Functional",
+          _react2.default.createElement("br", null),
+          "Programming"
+        )
+      ),
+      _react2.default.createElement(
+        "li",
+        { className: "orange" },
+        _react2.default.createElement(
+          _reactRouterDom.NavLink,
+          { to: "/CLanguage" },
+          "A little bit of",
+          _react2.default.createElement("br", null),
+          "C Programming"
+        )
+      ),
+      _react2.default.createElement(
+        "li",
+        { className: "yellow" },
+        _react2.default.createElement(
+          _reactRouterDom.NavLink,
+          { to: "/ProgrammingPearls" },
+          "Programming",
+          _react2.default.createElement("br", null),
+          "Pearls"
+        )
+      )
+    )
+  )],
+  text: [_react2.default.createElement(
+    "div",
+    null,
+    _react2.default.createElement(
+      "p",
+      null,
+      "Hello and congratulations on finding ",
+      _react2.default.createElement(
+        "strong",
+        null,
+        "The Perks of Computer Science"
+      ),
+      ". This blog will become a treasure chest of technical and mathematical knowledge for all those interested in computer science and programming to use. Suitable for all but especially for those who like to learn with all the details and solid examples, no more algorithm teachers assumptions."
+    ),
+    _react2.default.createElement(
+      "p",
+      null,
+      "Please check the side menu on the top left. We will be covering the ",
+      _react2.default.createElement(
+        "strong",
+        null,
+        "Fundamentals of Mathematics's"
+      ),
+      " starting with some BiteSize Maths a few Prerequisites from Stanford and finally looking in depth at the book Concrete Mathematics. A study of ",
+      _react2.default.createElement(
+        "strong",
+        null,
+        "Mathematics for Computer Science"
+      ),
+      " using course content from ",
+      _react2.default.createElement(
+        "a",
+        { href: "https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-042j-mathematics-for-computer-science-spring-2015/index.htm" },
+        "MIT"
+      ),
+      " and ",
+      _react2.default.createElement(
+        "a",
+        { href: "http://web.stanford.edu/class/cs103/" },
+        "Stanford"
+      ),
+      " follows using the fundamental knowledge. ",
+      _react2.default.createElement(
+        "strong",
+        null,
+        "Algorithms"
+      ),
+      " will then be discussed in detail building them imperatively and functionally using C and Clojure respectively. We will then dig into the world of ",
+      _react2.default.createElement(
+        "strong",
+        null,
+        "Functional Programming"
+      ),
+      " using the text book the ",
+      _react2.default.createElement(
+        "a",
+        { href: "https://mitpress.mit.edu/sicp/" },
+        "Structure and Interpretation of Computer Programs (SICP)"
+      ),
+      " as the basis and Clojure as the main language. Check out ",
+      _react2.default.createElement(
+        "strong",
+        null,
+        "A Little bit of C Programming"
+      ),
+      " for some Pointer Madness. Which will then lead to some ",
+      _react2.default.createElement(
+        "strong",
+        null,
+        "Programming Pearls"
+      ),
+      " for all to learn from a case study of the ",
+      _react2.default.createElement(
+        "a",
+        { href: "https://www.amazon.co.uk/Programming-Pearls-Joe-Bentley/dp/8177588583" },
+        "book"
+      ),
+      "."
+    ),
+    _react2.default.createElement(
+      "p",
+      null,
+      "Build in PROGRESS we will be GROWING quickly!"
+    ),
+    _react2.default.createElement(
+      "p",
+      null,
+      _react2.default.createElement(
+        "strong",
+        null,
+        "Most of all have fun!"
+      )
+    )
+  )]
+
+};
+
+var HomePage = function HomePage(props) {
+  return _react2.default.createElement(_homePage2.default, {
+    title: home.title,
+    contents: home.contents,
+    text: home.text
+  });
+};
+
+exports.default = HomePage;
+
+/***/ }),
+/* 66 */
+/***/ (function(module, exports) {
+
+/**
+ * This is a module for storing settings passed into KaTeX. It correctly handles
+ * default settings.
+ */
+
+/**
+ * Helper function for getting a default value if the value is undefined
+ */
+function get(option, defaultValue) {
+    return option === undefined ? defaultValue : option;
+}
+
+/**
+ * The main Settings object
+ *
+ * The current options stored are:
+ *  - displayMode: Whether the expression should be typeset by default in
+ *                 textstyle or displaystyle (default false)
+ */
+function Settings(options) {
+    // allow null options
+    options = options || {};
+    this.displayMode = get(options.displayMode, false);
+    this.throwOnError = get(options.throwOnError, true);
+    this.errorColor = get(options.errorColor, "#cc0000");
+    this.macros = options.macros || {};
+}
+
+module.exports = Settings;
+
+
+/***/ }),
+/* 67 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * These objects store the data about the DOM nodes we create, as well as some
+ * extra data. They can then be transformed into real DOM nodes with the
+ * `toNode` function or HTML markup using `toMarkup`. They are useful for both
+ * storing extra properties on the nodes, as well as providing a way to easily
+ * work with the DOM.
+ *
+ * Similar functions for working with MathML nodes exist in mathMLTree.js.
+ */
+var unicodeRegexes = __webpack_require__(37);
+var utils = __webpack_require__(6);
+
+/**
+ * Create an HTML className based on a list of classes. In addition to joining
+ * with spaces, we also remove null or empty classes.
+ */
+var createClass = function(classes) {
+    classes = classes.slice();
+    for (var i = classes.length - 1; i >= 0; i--) {
+        if (!classes[i]) {
+            classes.splice(i, 1);
+        }
+    }
+
+    return classes.join(" ");
+};
+
+/**
+ * This node represents a span node, with a className, a list of children, and
+ * an inline style. It also contains information about its height, depth, and
+ * maxFontSize.
+ */
+function span(classes, children, options) {
+    this.classes = classes || [];
+    this.children = children || [];
+    this.height = 0;
+    this.depth = 0;
+    this.maxFontSize = 0;
+    this.style = {};
+    this.attributes = {};
+    if (options) {
+        if (options.style.isTight()) {
+            this.classes.push("mtight");
+        }
+        if (options.getColor()) {
+            this.style.color = options.getColor();
+        }
+    }
+}
+
+/**
+ * Sets an arbitrary attribute on the span. Warning: use this wisely. Not all
+ * browsers support attributes the same, and having too many custom attributes
+ * is probably bad.
+ */
+span.prototype.setAttribute = function(attribute, value) {
+    this.attributes[attribute] = value;
+};
+
+span.prototype.tryCombine = function(sibling) {
+    return false;
+};
+
+/**
+ * Convert the span into an HTML node
+ */
+span.prototype.toNode = function() {
+    var span = document.createElement("span");
+
+    // Apply the class
+    span.className = createClass(this.classes);
+
+    // Apply inline styles
+    for (var style in this.style) {
+        if (Object.prototype.hasOwnProperty.call(this.style, style)) {
+            span.style[style] = this.style[style];
+        }
+    }
+
+    // Apply attributes
+    for (var attr in this.attributes) {
+        if (Object.prototype.hasOwnProperty.call(this.attributes, attr)) {
+            span.setAttribute(attr, this.attributes[attr]);
+        }
+    }
+
+    // Append the children, also as HTML nodes
+    for (var i = 0; i < this.children.length; i++) {
+        span.appendChild(this.children[i].toNode());
+    }
+
+    return span;
+};
+
+/**
+ * Convert the span into an HTML markup string
+ */
+span.prototype.toMarkup = function() {
+    var markup = "<span";
+
+    // Add the class
+    if (this.classes.length) {
+        markup += " class=\"";
+        markup += utils.escape(createClass(this.classes));
+        markup += "\"";
+    }
+
+    var styles = "";
+
+    // Add the styles, after hyphenation
+    for (var style in this.style) {
+        if (this.style.hasOwnProperty(style)) {
+            styles += utils.hyphenate(style) + ":" + this.style[style] + ";";
+        }
+    }
+
+    if (styles) {
+        markup += " style=\"" + utils.escape(styles) + "\"";
+    }
+
+    // Add the attributes
+    for (var attr in this.attributes) {
+        if (Object.prototype.hasOwnProperty.call(this.attributes, attr)) {
+            markup += " " + attr + "=\"";
+            markup += utils.escape(this.attributes[attr]);
+            markup += "\"";
+        }
+    }
+
+    markup += ">";
+
+    // Add the markup of the children, also as markup
+    for (var i = 0; i < this.children.length; i++) {
+        markup += this.children[i].toMarkup();
+    }
+
+    markup += "</span>";
+
+    return markup;
+};
+
+/**
+ * This node represents a document fragment, which contains elements, but when
+ * placed into the DOM doesn't have any representation itself. Thus, it only
+ * contains children and doesn't have any HTML properties. It also keeps track
+ * of a height, depth, and maxFontSize.
+ */
+function documentFragment(children) {
+    this.children = children || [];
+    this.height = 0;
+    this.depth = 0;
+    this.maxFontSize = 0;
+}
+
+/**
+ * Convert the fragment into a node
+ */
+documentFragment.prototype.toNode = function() {
+    // Create a fragment
+    var frag = document.createDocumentFragment();
+
+    // Append the children
+    for (var i = 0; i < this.children.length; i++) {
+        frag.appendChild(this.children[i].toNode());
+    }
+
+    return frag;
+};
+
+/**
+ * Convert the fragment into HTML markup
+ */
+documentFragment.prototype.toMarkup = function() {
+    var markup = "";
+
+    // Simply concatenate the markup for the children together
+    for (var i = 0; i < this.children.length; i++) {
+        markup += this.children[i].toMarkup();
+    }
+
+    return markup;
+};
+
+var iCombinations = {
+    'î': '\u0131\u0302',
+    'ï': '\u0131\u0308',
+    'í': '\u0131\u0301',
+    // 'ī': '\u0131\u0304', // enable when we add Extended Latin
+    'ì': '\u0131\u0300'
+};
+
+/**
+ * A symbol node contains information about a single symbol. It either renders
+ * to a single text node, or a span with a single text node in it, depending on
+ * whether it has CSS classes, styles, or needs italic correction.
+ */
+function symbolNode(value, height, depth, italic, skew, classes, style) {
+    this.value = value || "";
+    this.height = height || 0;
+    this.depth = depth || 0;
+    this.italic = italic || 0;
+    this.skew = skew || 0;
+    this.classes = classes || [];
+    this.style = style || {};
+    this.maxFontSize = 0;
+
+    // Mark CJK characters with specific classes so that we can specify which
+    // fonts to use.  This allows us to render these characters with a serif
+    // font in situations where the browser would either default to a sans serif
+    // or render a placeholder character.
+    if (unicodeRegexes.cjkRegex.test(value)) {
+        // I couldn't find any fonts that contained Hangul as well as all of
+        // the other characters we wanted to test there for it gets its own
+        // CSS class.
+        if (unicodeRegexes.hangulRegex.test(value)) {
+            this.classes.push('hangul_fallback');
+        } else {
+            this.classes.push('cjk_fallback');
+        }
+    }
+
+    if (/[îïíì]/.test(this.value)) {    // add ī when we add Extended Latin
+        this.value = iCombinations[this.value];
+    }
+}
+
+symbolNode.prototype.tryCombine = function(sibling) {
+    if (!sibling
+        || !(sibling instanceof symbolNode)
+        || this.italic > 0
+        || createClass(this.classes) !== createClass(sibling.classes)
+        || this.skew !== sibling.skew
+        || this.maxFontSize !== sibling.maxFontSize) {
+        return false;
+    }
+    for (var style in this.style) {
+        if (this.style.hasOwnProperty(style)
+            && this.style[style] !== sibling.style[style]) {
+            return false;
+        }
+    }
+    for (style in sibling.style) {
+        if (sibling.style.hasOwnProperty(style)
+            && this.style[style] !== sibling.style[style]) {
+            return false;
+        }
+    }
+    this.value += sibling.value;
+    this.height = Math.max(this.height, sibling.height);
+    this.depth = Math.max(this.depth, sibling.depth);
+    this.italic = sibling.italic;
+    return true;
+};
+
+/**
+ * Creates a text node or span from a symbol node. Note that a span is only
+ * created if it is needed.
+ */
+symbolNode.prototype.toNode = function() {
+    var node = document.createTextNode(this.value);
+    var span = null;
+
+    if (this.italic > 0) {
+        span = document.createElement("span");
+        span.style.marginRight = this.italic + "em";
+    }
+
+    if (this.classes.length > 0) {
+        span = span || document.createElement("span");
+        span.className = createClass(this.classes);
+    }
+
+    for (var style in this.style) {
+        if (this.style.hasOwnProperty(style)) {
+            span = span || document.createElement("span");
+            span.style[style] = this.style[style];
+        }
+    }
+
+    if (span) {
+        span.appendChild(node);
+        return span;
+    } else {
+        return node;
+    }
+};
+
+/**
+ * Creates markup for a symbol node.
+ */
+symbolNode.prototype.toMarkup = function() {
+    // TODO(alpert): More duplication than I'd like from
+    // span.prototype.toMarkup and symbolNode.prototype.toNode...
+    var needsSpan = false;
+
+    var markup = "<span";
+
+    if (this.classes.length) {
+        needsSpan = true;
+        markup += " class=\"";
+        markup += utils.escape(createClass(this.classes));
+        markup += "\"";
+    }
+
+    var styles = "";
+
+    if (this.italic > 0) {
+        styles += "margin-right:" + this.italic + "em;";
+    }
+    for (var style in this.style) {
+        if (this.style.hasOwnProperty(style)) {
+            styles += utils.hyphenate(style) + ":" + this.style[style] + ";";
+        }
+    }
+
+    if (styles) {
+        needsSpan = true;
+        markup += " style=\"" + utils.escape(styles) + "\"";
+    }
+
+    var escaped = utils.escape(this.value);
+    if (needsSpan) {
+        markup += ">";
+        markup += escaped;
+        markup += "</span>";
+        return markup;
+    } else {
+        return escaped;
+    }
+};
+
+module.exports = {
+    span: span,
+    documentFragment: documentFragment,
+    symbolNode: symbolNode
+};
+
+
+/***/ }),
+/* 68 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _assign = __webpack_require__(40);
+
+var _assign2 = _interopRequireDefault(_assign);
+
+var _extends2 = __webpack_require__(166);
+
+var _extends3 = _interopRequireDefault(_extends2);
+
+exports.createStyleObject = createStyleObject;
+exports.createClassNameString = createClassNameString;
+exports.createChildren = createChildren;
+exports.default = createElement;
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function createStyleObject(classNames) {
+  var elementStyle = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var stylesheet = arguments[2];
+
+  return classNames.reduce(function (styleObject, className) {
+    return (0, _extends3.default)({}, styleObject, stylesheet[className]);
+  }, elementStyle);
+}
+
+function createClassNameString(classNames) {
+  return classNames.join(' ');
+}
+
+function createChildren(stylesheet, useInlineStyles) {
+  var childrenCount = 0;
+  return function (children) {
+    childrenCount += 1;
+    return children.map(function (child, i) {
+      return createElement({
+        node: child,
+        stylesheet: stylesheet,
+        useInlineStyles: useInlineStyles,
+        key: 'code-segment-' + childrenCount + '-' + i
+      });
+    });
+  };
+}
+
+function createElement(_ref) {
+  var node = _ref.node,
+      stylesheet = _ref.stylesheet,
+      _ref$style = _ref.style,
+      style = _ref$style === undefined ? {} : _ref$style,
+      useInlineStyles = _ref.useInlineStyles,
+      key = _ref.key;
+  var properties = node.properties,
+      type = node.type,
+      TagName = node.tagName,
+      value = node.value;
+
+  if (type === 'text') {
+    return value;
+  } else if (TagName) {
+    var childrenCreator = createChildren(stylesheet, useInlineStyles);
+    var props = useInlineStyles ? {
+      style: createStyleObject(properties.className, (0, _assign2.default)({}, properties.style, style), stylesheet)
+    } : { className: createClassNameString(properties.className) };
+    var children = childrenCreator(node.children);
+    return _react2.default.createElement(
+      TagName,
+      (0, _extends3.default)({ key: key }, props),
+      children
+    );
+  }
+}
+
+/***/ }),
+/* 69 */
+/***/ (function(module, exports) {
+
+var core = module.exports = { version: '2.5.1' };
+if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
+
+
+/***/ }),
+/* 70 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// to indexed object, toObject with fallback for non-array-like ES3 strings
+var IObject = __webpack_require__(71);
+var defined = __webpack_require__(72);
+module.exports = function (it) {
+  return IObject(defined(it));
+};
+
+
+/***/ }),
+/* 71 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// fallback for non-array-like ES3 and non-enumerable old V8 strings
+var cof = __webpack_require__(155);
+// eslint-disable-next-line no-prototype-builtins
+module.exports = Object('z').propertyIsEnumerable(0) ? Object : function (it) {
+  return cof(it) == 'String' ? it.split('') : Object(it);
+};
+
+
+/***/ }),
+/* 72 */
+/***/ (function(module, exports) {
+
+// 7.2.1 RequireObjectCoercible(argument)
+module.exports = function (it) {
+  if (it == undefined) throw TypeError("Can't call method on  " + it);
+  return it;
+};
+
+
+/***/ }),
+/* 73 */
+/***/ (function(module, exports) {
+
+// 7.1.4 ToInteger
+var ceil = Math.ceil;
+var floor = Math.floor;
+module.exports = function (it) {
+  return isNaN(it = +it) ? 0 : (it > 0 ? floor : ceil)(it);
+};
+
+
+/***/ }),
+/* 74 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = {
+    "hljs": {
+        "display": "block",
+        "overflowX": "auto",
+        "padding": "0.5em",
+        "background": "#F0F0F0",
+        "color": "#444"
+    },
+    "hljs-subst": {
+        "color": "#444"
+    },
+    "hljs-comment": {
+        "color": "#888888"
+    },
+    "hljs-keyword": {
+        "fontWeight": "bold"
+    },
+    "hljs-attribute": {
+        "fontWeight": "bold"
+    },
+    "hljs-selector-tag": {
+        "fontWeight": "bold"
+    },
+    "hljs-meta-keyword": {
+        "fontWeight": "bold"
+    },
+    "hljs-doctag": {
+        "fontWeight": "bold"
+    },
+    "hljs-name": {
+        "fontWeight": "bold"
+    },
+    "hljs-type": {
+        "color": "#880000"
+    },
+    "hljs-string": {
+        "color": "#880000"
+    },
+    "hljs-number": {
+        "color": "#880000"
+    },
+    "hljs-selector-id": {
+        "color": "#880000"
+    },
+    "hljs-selector-class": {
+        "color": "#880000"
+    },
+    "hljs-quote": {
+        "color": "#880000"
+    },
+    "hljs-template-tag": {
+        "color": "#880000"
+    },
+    "hljs-deletion": {
+        "color": "#880000"
+    },
+    "hljs-title": {
+        "color": "#880000",
+        "fontWeight": "bold"
+    },
+    "hljs-section": {
+        "color": "#880000",
+        "fontWeight": "bold"
+    },
+    "hljs-regexp": {
+        "color": "#BC6060"
+    },
+    "hljs-symbol": {
+        "color": "#BC6060"
+    },
+    "hljs-variable": {
+        "color": "#BC6060"
+    },
+    "hljs-template-variable": {
+        "color": "#BC6060"
+    },
+    "hljs-link": {
+        "color": "#BC6060"
+    },
+    "hljs-selector-attr": {
+        "color": "#BC6060"
+    },
+    "hljs-selector-pseudo": {
+        "color": "#BC6060"
+    },
+    "hljs-literal": {
+        "color": "#78A960"
+    },
+    "hljs-built_in": {
+        "color": "#397300"
+    },
+    "hljs-bullet": {
+        "color": "#397300"
+    },
+    "hljs-code": {
+        "color": "#397300"
+    },
+    "hljs-addition": {
+        "color": "#397300"
+    },
+    "hljs-meta": {
+        "color": "#1f7199"
+    },
+    "hljs-meta-string": {
+        "color": "#4d99bf"
+    },
+    "hljs-emphasis": {
+        "fontStyle": "italic"
+    },
+    "hljs-strong": {
+        "fontWeight": "bold"
+    }
+};
+
+/***/ }),
 /* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -7929,9 +8070,9 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(48);
+var _reactDom = __webpack_require__(50);
 
-var _sideBar = __webpack_require__(55);
+var _sideBar = __webpack_require__(57);
 
 var _sideBar2 = _interopRequireDefault(_sideBar);
 
@@ -9392,7 +9533,7 @@ module.exports = react;
 /*
  Modernizr 3.0.0pre (Custom Build) | MIT
 */
-var aa=__webpack_require__(0),l=__webpack_require__(49),B=__webpack_require__(12),C=__webpack_require__(7),ba=__webpack_require__(50),da=__webpack_require__(51),ea=__webpack_require__(52),fa=__webpack_require__(53),ia=__webpack_require__(54),D=__webpack_require__(19);
+var aa=__webpack_require__(0),l=__webpack_require__(51),B=__webpack_require__(12),C=__webpack_require__(7),ba=__webpack_require__(52),da=__webpack_require__(53),ea=__webpack_require__(54),fa=__webpack_require__(55),ia=__webpack_require__(56),D=__webpack_require__(19);
 function E(a){for(var b=arguments.length-1,c="Minified React error #"+a+"; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d"+a,d=0;d<b;d++)c+="\x26args[]\x3d"+encodeURIComponent(arguments[d+1]);b=Error(c+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings.");b.name="Invariant Violation";b.framesToPop=1;throw b;}aa?void 0:E("227");
 var oa={children:!0,dangerouslySetInnerHTML:!0,defaultValue:!0,defaultChecked:!0,innerHTML:!0,suppressContentEditableWarning:!0,suppressHydrationWarning:!0,style:!0};function pa(a,b){return(a&b)===b}
 var ta={MUST_USE_PROPERTY:1,HAS_BOOLEAN_VALUE:4,HAS_NUMERIC_VALUE:8,HAS_POSITIVE_NUMERIC_VALUE:24,HAS_OVERLOADED_BOOLEAN_VALUE:32,HAS_STRING_BOOLEAN_VALUE:64,injectDOMPropertyConfig:function(a){var b=ta,c=a.Properties||{},d=a.DOMAttributeNamespaces||{},e=a.DOMAttributeNames||{};a=a.DOMMutationMethods||{};for(var f in c){ua.hasOwnProperty(f)?E("48",f):void 0;var g=f.toLowerCase(),h=c[f];g={attributeName:g,attributeNamespace:null,propertyName:f,mutationMethod:null,mustUseProperty:pa(h,b.MUST_USE_PROPERTY),
@@ -9692,14 +9833,14 @@ if (process.env.NODE_ENV !== "production") {
 var React = __webpack_require__(0);
 var invariant = __webpack_require__(13);
 var warning = __webpack_require__(20);
-var ExecutionEnvironment = __webpack_require__(49);
+var ExecutionEnvironment = __webpack_require__(51);
 var _assign = __webpack_require__(12);
 var emptyFunction = __webpack_require__(7);
-var EventListener = __webpack_require__(50);
-var getActiveElement = __webpack_require__(51);
-var shallowEqual = __webpack_require__(52);
-var containsNode = __webpack_require__(53);
-var focusNode = __webpack_require__(54);
+var EventListener = __webpack_require__(52);
+var getActiveElement = __webpack_require__(53);
+var shallowEqual = __webpack_require__(54);
+var containsNode = __webpack_require__(55);
+var focusNode = __webpack_require__(56);
 var emptyObject = __webpack_require__(19);
 var checkPropTypes = __webpack_require__(25);
 var hyphenateStyleName = __webpack_require__(84);
@@ -25936,7 +26077,7 @@ var _createTransitionManager = __webpack_require__(28);
 
 var _createTransitionManager2 = _interopRequireDefault(_createTransitionManager);
 
-var _DOMUtils = __webpack_require__(58);
+var _DOMUtils = __webpack_require__(60);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -26313,7 +26454,7 @@ var _createTransitionManager = __webpack_require__(28);
 
 var _createTransitionManager2 = _interopRequireDefault(_createTransitionManager);
 
-var _DOMUtils = __webpack_require__(58);
+var _DOMUtils = __webpack_require__(60);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -26879,8 +27020,8 @@ exports.default = createMemoryHistory;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Route__ = __webpack_require__(60);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Link__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Route__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Link__ = __webpack_require__(61);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -27652,7 +27793,7 @@ Redirect.contextTypes = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LocationUtils__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__PathUtils__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__createTransitionManager__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__DOMUtils__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__DOMUtils__ = __webpack_require__(64);
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -27956,7 +28097,7 @@ var createBrowserHistory = function createBrowserHistory() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LocationUtils__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__PathUtils__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__createTransitionManager__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__DOMUtils__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__DOMUtils__ = __webpack_require__(64);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 
@@ -28765,7 +28906,7 @@ Switch.propTypes = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_hoist_non_react_statics__ = __webpack_require__(115);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_hoist_non_react_statics___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_hoist_non_react_statics__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Route__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Route__ = __webpack_require__(63);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
@@ -29520,7 +29661,7 @@ var MathPrerequisites = function MathPrerequisites() {
             _react2.default.createElement(
                 _reactLatex2.default,
                 null,
-                '$3$ less than $x \\textless 4$ this states that $x$ is strictly great than $3$ and strictly lesss than $4$. Whats interesting to consider here if $x$ is a integer or a natural number then there are no choices for $x$ but if it is a real number it could be $3.1$ or $3.72412$. Another interesting case is that $3 \\textless n$ is the same as $3 \\leq n$. These are equal because $2$ is strictly less than $n$ so $n$ cannot be two or less it has to be three or more. In general sense this is the formula:'
+                '$3$ < $x$ < $4$ this states that $x$ is strictly great than $3$ and strictly lesss than $4$. Whats interesting to consider here if $x$ is a integer or a natural number then there are no choices for $x$ but if it is a real number it could be $3.1$ or $3.72412$. Another interesting case is that $3$ < $n$ is the same as $3 \\leq n$. These are equal because $2$ is strictly less than $n$ so $n$ cannot be two or less it has to be three or more. In general sense this is the formula:'
             )
         ),
         _react2.default.createElement(
@@ -29529,7 +29670,7 @@ var MathPrerequisites = function MathPrerequisites() {
             _react2.default.createElement(
                 _reactLatex2.default,
                 null,
-                '$m \\textless n$'
+                '$m$ < $n$'
             )
         ),
         _react2.default.createElement(
@@ -29588,7 +29729,7 @@ module.exports = function(module) {
  */
 
 var ParseError = __webpack_require__(8);
-var Settings = __webpack_require__(64);
+var Settings = __webpack_require__(66);
 
 var buildTree = __webpack_require__(124);
 var parseTree = __webpack_require__(131);
@@ -29662,7 +29803,7 @@ var buildHTML = __webpack_require__(125);
 var buildMathML = __webpack_require__(128);
 var buildCommon = __webpack_require__(23);
 var Options = __webpack_require__(130);
-var Settings = __webpack_require__(64);
+var Settings = __webpack_require__(66);
 var Style = __webpack_require__(17);
 
 var makeSpan = buildCommon.makeSpan;
@@ -29717,7 +29858,7 @@ var Style = __webpack_require__(17);
 
 var buildCommon = __webpack_require__(23);
 var delimiter = __webpack_require__(127);
-var domTree = __webpack_require__(65);
+var domTree = __webpack_require__(67);
 var fontMetrics = __webpack_require__(18);
 var utils = __webpack_require__(6);
 
@@ -36541,11 +36682,11 @@ var _reactLatex = __webpack_require__(22);
 
 var _reactLatex2 = _interopRequireDefault(_reactLatex);
 
-var _reactSyntaxHighlighter = __webpack_require__(66);
+var _reactSyntaxHighlighter = __webpack_require__(39);
 
 var _reactSyntaxHighlighter2 = _interopRequireDefault(_reactSyntaxHighlighter);
 
-var _hljs = __webpack_require__(74);
+var _hljs = __webpack_require__(45);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -36979,7 +37120,7 @@ exports.default = BiteSizeMath;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(140);
-module.exports = __webpack_require__(68).Object.assign;
+module.exports = __webpack_require__(69).Object.assign;
 
 
 /***/ }),
@@ -36996,8 +37137,8 @@ $export($export.S + $export.F, 'Object', { assign: __webpack_require__(151) });
 /* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(40);
-var core = __webpack_require__(68);
+var global = __webpack_require__(41);
+var core = __webpack_require__(69);
 var ctx = __webpack_require__(142);
 var hide = __webpack_require__(144);
 var PROTOTYPE = 'prototype';
@@ -37101,7 +37242,7 @@ module.exports = function (it) {
 
 var dP = __webpack_require__(145);
 var createDesc = __webpack_require__(150);
-module.exports = __webpack_require__(42) ? function (object, key, value) {
+module.exports = __webpack_require__(43) ? function (object, key, value) {
   return dP.f(object, key, createDesc(1, value));
 } : function (object, key, value) {
   object[key] = value;
@@ -37118,7 +37259,7 @@ var IE8_DOM_DEFINE = __webpack_require__(147);
 var toPrimitive = __webpack_require__(149);
 var dP = Object.defineProperty;
 
-exports.f = __webpack_require__(42) ? Object.defineProperty : function defineProperty(O, P, Attributes) {
+exports.f = __webpack_require__(43) ? Object.defineProperty : function defineProperty(O, P, Attributes) {
   anObject(O);
   P = toPrimitive(P, true);
   anObject(Attributes);
@@ -37135,7 +37276,7 @@ exports.f = __webpack_require__(42) ? Object.defineProperty : function definePro
 /* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(41);
+var isObject = __webpack_require__(42);
 module.exports = function (it) {
   if (!isObject(it)) throw TypeError(it + ' is not an object!');
   return it;
@@ -37146,7 +37287,7 @@ module.exports = function (it) {
 /* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = !__webpack_require__(42) && !__webpack_require__(43)(function () {
+module.exports = !__webpack_require__(43) && !__webpack_require__(44)(function () {
   return Object.defineProperty(__webpack_require__(148)('div'), 'a', { get: function () { return 7; } }).a != 7;
 });
 
@@ -37155,8 +37296,8 @@ module.exports = !__webpack_require__(42) && !__webpack_require__(43)(function (
 /* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(41);
-var document = __webpack_require__(40).document;
+var isObject = __webpack_require__(42);
+var document = __webpack_require__(41).document;
 // typeof document.createElement is 'object' in old IE
 var is = isObject(document) && isObject(document.createElement);
 module.exports = function (it) {
@@ -37169,7 +37310,7 @@ module.exports = function (it) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.1.1 ToPrimitive(input [, PreferredType])
-var isObject = __webpack_require__(41);
+var isObject = __webpack_require__(42);
 // instead of the ES6 spec version, we didn't implement @@toPrimitive case
 // and the second argument - flag - preferred type is a string
 module.exports = function (it, S) {
@@ -37207,11 +37348,11 @@ var getKeys = __webpack_require__(152);
 var gOPS = __webpack_require__(163);
 var pIE = __webpack_require__(164);
 var toObject = __webpack_require__(165);
-var IObject = __webpack_require__(70);
+var IObject = __webpack_require__(71);
 var $assign = Object.assign;
 
 // should work with symbols and should have deterministic property order (V8 bug)
-module.exports = !$assign || __webpack_require__(43)(function () {
+module.exports = !$assign || __webpack_require__(44)(function () {
   var A = {};
   var B = {};
   // eslint-disable-next-line no-undef
@@ -37255,7 +37396,7 @@ module.exports = Object.keys || function keys(O) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var has = __webpack_require__(154);
-var toIObject = __webpack_require__(69);
+var toIObject = __webpack_require__(70);
 var arrayIndexOf = __webpack_require__(156)(false);
 var IE_PROTO = __webpack_require__(159)('IE_PROTO');
 
@@ -37300,7 +37441,7 @@ module.exports = function (it) {
 
 // false -> Array#indexOf
 // true  -> Array#includes
-var toIObject = __webpack_require__(69);
+var toIObject = __webpack_require__(70);
 var toLength = __webpack_require__(157);
 var toAbsoluteIndex = __webpack_require__(158);
 module.exports = function (IS_INCLUDES) {
@@ -37328,7 +37469,7 @@ module.exports = function (IS_INCLUDES) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.1.15 ToLength
-var toInteger = __webpack_require__(72);
+var toInteger = __webpack_require__(73);
 var min = Math.min;
 module.exports = function (it) {
   return it > 0 ? min(toInteger(it), 0x1fffffffffffff) : 0; // pow(2, 53) - 1 == 9007199254740991
@@ -37339,7 +37480,7 @@ module.exports = function (it) {
 /* 158 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var toInteger = __webpack_require__(72);
+var toInteger = __webpack_require__(73);
 var max = Math.max;
 var min = Math.min;
 module.exports = function (index, length) {
@@ -37363,7 +37504,7 @@ module.exports = function (key) {
 /* 160 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(40);
+var global = __webpack_require__(41);
 var SHARED = '__core-js_shared__';
 var store = global[SHARED] || (global[SHARED] = {});
 module.exports = function (key) {
@@ -37411,7 +37552,7 @@ exports.f = {}.propertyIsEnumerable;
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.1.13 ToObject(argument)
-var defined = __webpack_require__(71);
+var defined = __webpack_require__(72);
 module.exports = function (it) {
   return Object(defined(it));
 };
@@ -37426,7 +37567,7 @@ module.exports = function (it) {
 
 exports.__esModule = true;
 
-var _assign = __webpack_require__(39);
+var _assign = __webpack_require__(40);
 
 var _assign2 = _interopRequireDefault(_assign);
 
@@ -37461,7 +37602,7 @@ var _objectWithoutProperties2 = __webpack_require__(168);
 
 var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
 
-var _assign = __webpack_require__(39);
+var _assign = __webpack_require__(40);
 
 var _assign2 = _interopRequireDefault(_assign);
 
@@ -37533,7 +37674,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _createElement = __webpack_require__(67);
+var _createElement = __webpack_require__(68);
 
 var _createElement2 = _interopRequireDefault(_createElement);
 
@@ -65272,7 +65413,7 @@ if(false) {
 
 exports = module.exports = __webpack_require__(10)(undefined);
 // imports
-exports.i(__webpack_require__(44), "");
+exports.i(__webpack_require__(46), "");
 
 // module
 exports.push([module.i, ".menu\n/* layout main menu */\n{\n   \n    clear:both;\n    margin-top:1em;\n    padding-bottom:1em;\n}\nul.menu {\n    display: table;\n    \tlist-style: none;\n          width:100%;\n        height:20px;\n        text-align:center;\n}\n.menu li\n/* horizontal menu layout */\n {\n    display: inline-block;\n    border: 3px solid white;\n    border-radius: 10px;\n    margin-top: 10px;\n    margin-bottom: 10px;\n            display:inline-block;\n        *display:inline; /*IE7*/\n        *zoom:1; /*IE7*/\n        color:white;\n        margin-right:10px;\n      \n         min-width: 230px;\n         min-height: 80px;\n          font-weight: bold;\n }\n.menu li a:hover\n/* link style on-mouse-over */\n {\n     border: 3px solid #FFFFFF;\n    border-radius: 10px;\n    background-color: #dd417f;\n       min-width: 230px;\n        min-height: 80px;\n}\n.menu li:hover\n/* button style on-mouse-over */\n {\n    border: 3px solid #FFFFFF;\n    border-radius: 10px;\n    background-color: #dd417f;\n       min-width: 230px;\n        min-height: 80px;\n}\n.menu li a\n/* link style */\n {\n    color: white;\n    font-size: 1em;\n    text-transform: uppercase;\n    text-decoration: none;\n    display: inline-block;\n    padding: 0.7em 1em 0.7em 1em;\n       min-width: 230px;\n        min-height: 80px;\n}\n.menu li.active a\n/* active menu item style */\n {\n    color:#FFFFFF;\n    text-transform: uppercase;\n    text-decoration: none;\n       min-width: 230px;\n        min-height: 80px;\n}\n.menu li.active\n/* active menu button style */\n {\n    border: 3px solid #FFFFFF;\n    border-radius: 10px;\n    background-color: #dd417f;\n       min-width: 230px;\n        min-height: 80px;\n}\n\n\n\n\n", ""]);
@@ -65331,7 +65472,7 @@ if(false) {
 
 exports = module.exports = __webpack_require__(10)(undefined);
 // imports
-exports.i(__webpack_require__(44), "");
+exports.i(__webpack_require__(46), "");
 
 // module
 exports.push([module.i, ".nav-grid\n/* layout main menu */\n{\n   \n    clear:both;\n    margin-top:1em;\n    padding-bottom:1em;\n}\nul.nav-grid {\n    display: table;\n    \tlist-style: none;\n          width:100%;\n        height:20px;\n        text-align:center;\n}\n.nav-grid li\n/* horizontal menu layout */\n {\n    display: inline-block;\n    border: 3px solid white;\n    border-radius: 10px;\n    margin-top: 10px;\n    margin-bottom: 10px;\n    \n            display:inline-block;\n        *display:inline; /*IE7*/\n        *zoom:1; /*IE7*/\n      \n        color:white;\n        margin-right:10px;\n;\n        min-width: 300px;\n        min-height: 80px;\n}\n.nav-grid li a\n/* link style */\n {\n    color: white;\n    font-size: 1em;\n    text-transform: uppercase;\n    text-decoration: none;\n    display: inline-block;\n    padding: 0.7em 1em 0.7em 1em;\n        min-width: 300px;\n        min-height: 80px;\n}\n.nav-grid li.active a\n/* active menu item style */\n {\n    color:#FFFFFF;\n    text-transform: uppercase;\n    text-decoration: none;\n        min-width: 300px;\n        min-height: 80px;\n}\n.nav-grid li.active\n/* active menu button style */\n {\n    border: 3px solid #FFFFFF;\n    border-radius: 10px;\n    background-color: #dd417f;\n        min-width: 300px;\n        min-height: 80px;\n}\n\n\n", ""]);
@@ -74995,7 +75136,7 @@ exports.push([module.i, "footer {\n  background-color: #0288D1;\n  font-family: 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(44);
+var content = __webpack_require__(46);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -75038,7 +75179,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(9);
 
-var _home = __webpack_require__(63);
+var _home = __webpack_require__(65);
 
 var _home2 = _interopRequireDefault(_home);
 
@@ -75054,15 +75195,15 @@ var _mathFundamentals = __webpack_require__(36);
 
 var _mathFundamentals2 = _interopRequireDefault(_mathFundamentals);
 
-var _mathsForCompSci = __webpack_require__(45);
+var _mathsForCompSci = __webpack_require__(47);
 
 var _mathsForCompSci2 = _interopRequireDefault(_mathsForCompSci);
 
-var _cLanguage = __webpack_require__(46);
+var _cLanguage = __webpack_require__(48);
 
 var _cLanguage2 = _interopRequireDefault(_cLanguage);
 
-var _clojure = __webpack_require__(47);
+var _clojure = __webpack_require__(49);
 
 var _clojure2 = _interopRequireDefault(_clojure);
 

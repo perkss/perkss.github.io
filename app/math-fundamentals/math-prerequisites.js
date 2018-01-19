@@ -87,8 +87,8 @@ const MathPrerequisites = () => (
 
 
         <h3>Manipulating Inequalities</h3>
-        <p>An example of an inequality is <Latex>$3$ less than $x \textless 4$ this states that $x$ is strictly great than $3$ and strictly lesss than $4$. Whats interesting to consider here if $x$ is a integer or a natural number then there are no choices for $x$ but if it is a real number it could be $3.1$ or $3.72412$. Another interesting case is that $3 \textless n$ is the same as $3 \leq n$. These are equal because $2$ is strictly less than $n$ so $n$ cannot be two or less it has to be three or more. In general sense this is the formula:</Latex></p>
-        <p><Latex>$m \textless n$</Latex></p>
+        <p>An example of an inequality is <Latex>$3$ &lt; $x$ &lt; $4$ this states that $x$ is strictly great than $3$ and strictly lesss than $4$. Whats interesting to consider here if $x$ is a integer or a natural number then there are no choices for $x$ but if it is a real number it could be $3.1$ or $3.72412$. Another interesting case is that $3$ &lt; $n$ is the same as $3 \leq n$. These are equal because $2$ is strictly less than $n$ so $n$ cannot be two or less it has to be three or more. In general sense this is the formula:</Latex></p>
+        <p><Latex>$m$ &lt; $n$</Latex></p>
         <p><Latex>is the same as $m + 1 \leq n$</Latex></p>
 
     </div>
