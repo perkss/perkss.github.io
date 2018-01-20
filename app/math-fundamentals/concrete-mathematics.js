@@ -47,7 +47,7 @@ const ConcreteMathematics  = () => (
         
         <p><InlineMath math="T_n = 2T_{n-1} + 1"/> so lets replace <Latex>$T_n$ with the proposed solution of </Latex> <InlineMath math="T_n = 2^n - 1, \text{ for } n \geq 0" /> and use <Latex>$n - 1$.</Latex> </p><p>Providing: </p><BlockMath math="2(2^{n-1} - 1) + 1" />
 
-        <p><Latex>Simplify: Firstly distribute parentheses </Latex><InlineMath math="2 \times 2^{n-1} + 2 \times (-1) + 1" />. <Latex>Now we apply that two minus&#39;s result in a plus rule.</Latex> This giving <InlineMath math="2^{n-1} \text{ and } 2^{n-1} = 2^n " /> as the two negatives become a plus so plus one is 0 and then plus another is <Latex>$n$</Latex></p>
+        <p><Latex>Simplify: Firstly distribute parentheses </Latex><InlineMath math="2 \times 2^{n-1} + 2 \times (-1) + 1" />. <Latex>Now we apply that two minus&#39;s result in a plus rule.</Latex> This giving <InlineMath math="2^{n-1} \text{ and } 2^{n-1} = 2^n " /> as the two negatives become a plus so plus one is to the power of 1 and then plus another is to the power of <Latex>$n$</Latex> as shown: <InlineMath math="2 \times 2^{n-1} = 2^{1 + n - 1} = 2^n" /></p>
 
         <p><Latex>Resulting in: $2^n - 2 + 1$. Equalling $2^n - 1$ which is the proposed solution so this proof is correct. Throughout the rest of the book it will mainly focus on the recurrence relation part as the first two steps are provided. A recap 1: Look at small cases 2: Find and prove a mathematcal expression for theses small cases 3: FInd and prove a closed form for our mathematical expression in step 2.</Latex></p>
 
@@ -55,11 +55,19 @@ const ConcreteMathematics  = () => (
 
          <BlockMath math="T_0 + 1 = 0 + 1" />
 
-        <BlockMath math="T_n + 1 = 2T_n -1 + 1 + 1 \text{ for } n > 0"></BlockMath>
+        <BlockMath math="T_n + 1 = 2T_{n - 1} + 1 + 1" /> <BlockMath math="\text{ for } n > 0"></BlockMath>
 
-        <p><Latex>Now we let $U_n = T_n + 1$ giving $U_0 = 1$ and $$</Latex></p>
+        <p><Latex>Now we let $U_n = T_n + 1$ giving $U_0 = 1$</Latex></p>
 
-      
+    
+
+        <BlockMath math="U_{n-1} = T_{n - 1}+1 \text{ and therefore }" />
+        <BlockMath math="2T_{n - 1}+2=2(T_{n - 1}+1)=2U{n-1}" />
+        <BlockMath math="\text{ as we can substitute } U_{n - 1}"></BlockMath>
+        <BlockMath math="\text{We have seen that }" /><BlockMath math="T_n + 1 = 2T_{n - 1} + 2" />
+        <BlockMath math="\text{ and }  U_{n-1} = T_n + 1" />
+        <p>Therefore combining these you see:</p>
+        <BlockMath math="U_n = 2U_{n-1} \text{, with } U_0 = 1"></BlockMath>
         
     
         <h3>Sums</h3>

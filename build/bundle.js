@@ -14168,7 +14168,7 @@ exports = module.exports = __webpack_require__(30)(undefined);
 exports.i(__webpack_require__(602), "");
 
 // module
-exports.push([module.i, "html {\n    position: relative;\n    min-height: 100%;\n    margin: 0px;\n    padding: 0px;\n}\nbody {\n    background: #F6F0F0;\n     margin: 0px 0px 58px 0px; /* bottom = footer height */\n     padding: 0px;\n}\nh1, h2, p, ul, li {\n    font-family: 'Open Sans';\n}\n\np {\n    text-align: justify;\n}\n\nul, li {\n    text-align: center;\n}\n\n.text-list li {\n    text-align: left;\n  \n}\n\n.center {\ndisplay: table;   /* Allow the centering to work */\n\tmargin: 0 auto;\n    margin: auto;\n    width: 100%;\n    padding-bottom: 10px;\n}\n\n.home h2 {\n\n     text-align: center;\n  background: #F6F0F0;\n  margin-left: 0px;\n  margin-right: 0px;\n  margin-bottom: 0px;\n  margin-top: 15px;\n  padding-right: 80px;\n  padding-left: 80px;\n  padding-top: 20px;\n  padding-bottom: 10px;\n  font-size: 40px;\n\n}\n\n.Blog-Contents {\n  \n   padding-top: 1px;\n  padding-bottom: 1px;\n  margin-left: 30px;\n  margin-right: 30px;\n  font-size: 17px;\n}\n\n.Blog-Text-Body {\n  background-color: #FFF;\n  padding-top: 20px;\n  padding-left: 20px;\n  padding-bottom: 30px;\n  padding-right: 20px;\n  margin-left: 30px;\n  margin-top: 30px;\n  margin-right: 30px;\n  margin-bottom: 30px;\n  font-size: 17px;\n}\n.Blog-Text-Body h2 {\n  padding-top: 10px;\n    padding-right: 0px;\n    padding-bottom: 15px;\n    padding-left: 0px;\n    margin: 0;\n    text-align: center;\n}\n.content li {\n  margin-bottom: 0px;\n}\n.active {\n/*  background-color: #0099FF;*/\n}\n\n\n/* Position and sizing of burger button */\n.bm-burger-button {\n position: absolute;\n  width: 36px;\n  height: 30px;\n  left: 36px;\n  top: 36px;\n}\n\n/* Color/shape of burger icon bars */\n.bm-burger-bars {\n  background: #FFFFFF;\n}\n\n/* Position and sizing of clickable cross button */\n.bm-cross-button {\n  height: 24px;\n  width: 24px;\n}\n\n/* Color/shape of close button cross */\n.bm-cross {\n  background: #bdc3c7;\n}\n\n/* General sidebar styles */\n.bm-menu {\n  background: #373a47;\n  padding: 2.5em 1.5em 0;\n  font-size: 1.45em;\n}\n\n/* Morph shape necessary with bubble or elastic */\n.bm-morph-shape {\n  fill: #373a47;\n}\n\n/* Wrapper for item list */\n.bm-item-list {\n  color: #b8b7ad;\n  padding: 0.8em;\n}\n\n.bm-item-list a {\n    color: #ffffff;\n\n}\n\n/* Styling of overlay */\n.bm-overlay {\n  background: rgba(0, 0, 0, 0.3);\n}\n\n\n\n", ""]);
+exports.push([module.i, "html {\n    position: relative;\n    min-height: 100%;\n    margin: 0px;\n    padding: 0px;\n}\nbody {\n    background: #F6F0F0;\n     margin: 0px 0px 58px 0px; /* bottom = footer height */\n     padding: 0px;\n}\nh1, h2, p, ul, li {\n    font-family: 'Open Sans';\n}\n\np {\n    text-align: justify;\n}\n\nul, li {\n    text-align: center;\n}\n\n.text-list li {\n    text-align: left;\n  \n}\n\n\n\n.center {\ndisplay: table;   /* Allow the centering to work */\n\tmargin: 0 auto;\n    margin: auto;\n    width: 100%;\n    padding-bottom: 10px;\n}\n\n.katex-display {\n    text-align: left;\n\n}\n\n.home h2 {\n\n     text-align: center;\n  background: #F6F0F0;\n  margin-left: 0px;\n  margin-right: 0px;\n  margin-bottom: 0px;\n  margin-top: 15px;\n  padding-right: 80px;\n  padding-left: 80px;\n  padding-top: 20px;\n  padding-bottom: 10px;\n  font-size: 40px;\n\n}\n\n.Blog-Contents {\n  \n   padding-top: 1px;\n  padding-bottom: 1px;\n  margin-left: 30px;\n  margin-right: 30px;\n  font-size: 17px;\n}\n\n.Blog-Text-Body {\n  background-color: #FFF;\n  padding-top: 20px;\n  padding-left: 20px;\n  padding-bottom: 30px;\n  padding-right: 20px;\n  margin-left: 30px;\n  margin-top: 30px;\n  margin-right: 30px;\n  margin-bottom: 30px;\n  font-size: 17px;\n}\n.Blog-Text-Body h2 {\n  padding-top: 10px;\n    padding-right: 0px;\n    padding-bottom: 15px;\n    padding-left: 0px;\n    margin: 0;\n    text-align: center;\n}\n.content li {\n  margin-bottom: 0px;\n}\n.active {\n/*  background-color: #0099FF;*/\n}\n\n\n/* Position and sizing of burger button */\n.bm-burger-button {\n position: absolute;\n  width: 36px;\n  height: 30px;\n  left: 36px;\n  top: 36px;\n}\n\n/* Color/shape of burger icon bars */\n.bm-burger-bars {\n  background: #FFFFFF;\n}\n\n/* Position and sizing of clickable cross button */\n.bm-cross-button {\n  height: 24px;\n  width: 24px;\n}\n\n/* Color/shape of close button cross */\n.bm-cross {\n  background: #bdc3c7;\n}\n\n/* General sidebar styles */\n.bm-menu {\n  background: #373a47;\n  padding: 2.5em 1.5em 0;\n  font-size: 1.45em;\n}\n\n/* Morph shape necessary with bubble or elastic */\n.bm-morph-shape {\n  fill: #373a47;\n}\n\n/* Wrapper for item list */\n.bm-item-list {\n  color: #b8b7ad;\n  padding: 0.8em;\n}\n\n.bm-item-list a {\n    color: #ffffff;\n\n}\n\n/* Styling of overlay */\n.bm-overlay {\n  background: rgba(0, 0, 0, 0.3);\n}\n\n\n\n", ""]);
 
 // exports
 
@@ -77919,12 +77919,14 @@ var ConcreteMathematics = function ConcreteMathematics() {
          ),
          ' This giving ',
          _react2.default.createElement(_reactKatex.InlineMath, { math: '2^{n-1} \\text{ and } 2^{n-1} = 2^n ' }),
-         ' as the two negatives become a plus so plus one is 0 and then plus another is ',
+         ' as the two negatives become a plus so plus one is to the power of 1 and then plus another is to the power of ',
          _react2.default.createElement(
             _reactLatex2.default,
             null,
             '$n$'
-         )
+         ),
+         ' as shown: ',
+         _react2.default.createElement(_reactKatex.InlineMath, { math: '2 \\times 2^{n-1} = 2^{1 + n - 1} = 2^n' })
       ),
       _react2.default.createElement(
          'p',
@@ -77945,16 +77947,30 @@ var ConcreteMathematics = function ConcreteMathematics() {
          )
       ),
       _react2.default.createElement(_reactKatex.BlockMath, { math: 'T_0 + 1 = 0 + 1' }),
-      _react2.default.createElement(_reactKatex.BlockMath, { math: 'T_n + 1 = 2T_n -1 + 1 + 1 \\text{ for } n > 0' }),
+      _react2.default.createElement(_reactKatex.BlockMath, { math: 'T_n + 1 = 2T_{n - 1} + 1 + 1' }),
+      ' ',
+      _react2.default.createElement(_reactKatex.BlockMath, { math: '\\text{ for } n > 0' }),
       _react2.default.createElement(
          'p',
          null,
          _react2.default.createElement(
             _reactLatex2.default,
             null,
-            'Now we let $U_n = T_n + 1$ giving $U_0 = 1$ and $$'
+            'Now we let $U_n = T_n + 1$ giving $U_0 = 1$'
          )
       ),
+      _react2.default.createElement(_reactKatex.BlockMath, { math: 'U_{n-1} = T_{n - 1}+1 \\text{ and therefore }' }),
+      _react2.default.createElement(_reactKatex.BlockMath, { math: '2T_{n - 1}+2=2(T_{n - 1}+1)=2U{n-1}' }),
+      _react2.default.createElement(_reactKatex.BlockMath, { math: '\\text{ as we can substitute } U_{n - 1}' }),
+      _react2.default.createElement(_reactKatex.BlockMath, { math: '\\text{We have seen that }' }),
+      _react2.default.createElement(_reactKatex.BlockMath, { math: 'T_n + 1 = 2T_{n - 1} + 2' }),
+      _react2.default.createElement(_reactKatex.BlockMath, { math: '\\text{ and }  U_{n-1} = T_n + 1' }),
+      _react2.default.createElement(
+         'p',
+         null,
+         'Therefore combining these you see:'
+      ),
+      _react2.default.createElement(_reactKatex.BlockMath, { math: 'U_n = 2U_{n-1} \\text{, with } U_0 = 1' }),
       _react2.default.createElement(
          'h3',
          null,
