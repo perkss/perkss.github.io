@@ -38,24 +38,24 @@ const ConcreteMathematics  = () => (
 
         <p><Latex>Firstly we need to make a guess on the correct solution so we take a look at the small cases $T_1 = 0 \times 1 + 1 = 1;$ $T_2 = 2 \times 1 + 1 = 3;$ $T_3 = 2 \times 3 + 1 = 7;$ $T_4 = 2 \times 7 + 1 = 15;$ $T_5 = 2 \times 15 + 1 = 31;$ </Latex></p>
 
-        <p>This pattern appears to be <BlockMath math="T_n = 2^{n - 1}, \text{ for } n \geq 0" /></p> <p><Latex>Mathematical induction is a general way to prove that some statement about the integer $n$ is true for all $n \geq n_0$. Firstly proving when $n$ has its smallest value, $n_0$ called the basis step. Then we prove for the statement $n$ > $n_0$ for all values between $n_0$ and $n-1$. So lets work this out by replacing $n$ by $n - 1$.</Latex></p>
+        <p>This pattern appears to be <BlockMath math="T_n = 2^n - 1, \text{ for } n \geq 0" /> this is our proposed solution.</p> <p><Latex>Mathematical induction is a general way to prove that some statement about the integer $n$ is true for all $n \geq n_0$. Firstly proving when $n$ has its smallest value, $n_0$ called the basis step. Then we prove for the statement $n$ > $n_0$ for all values between $n_0$ and $n-1$.</Latex></p>
 
 
         <p><Latex>Base case: $T_0 = 2^0 - 1 = 0$</Latex></p>
 
         <p><Latex>Inductive Step: Here the book assumes the reader knows rules of indices so we will walk through step by step.</Latex></p>
         
-        <p><InlineMath math="T_n = 2T_{n-1} + 1"/> so lets replace <Latex>$n$ with the proposed solution </Latex><InlineMath math="2(2^{n-1} - 1) + 1" /></p>
+        <p><InlineMath math="T_n = 2T_{n-1} + 1"/> so lets replace <Latex>$T_n$ with the proposed solution of </Latex> <InlineMath math="T_n = 2^n - 1, \text{ for } n \geq 0" /> and use <Latex>$n - 1$.</Latex> </p><p>Providing: </p><BlockMath math="2(2^{n-1} - 1) + 1" />
 
-        <p><Latex>Simplify: Firstly distribute parentheses </Latex><InlineMath math="2 \times 2^{n-1} + 2(-1)" />. <Latex>Now we apply that two minus&#39;s result in a plus rule.</Latex></p>
+        <p><Latex>Simplify: Firstly distribute parentheses </Latex><InlineMath math="2 \times 2^{n-1} + 2 \times (-1) + 1" />. <Latex>Now we apply that two minus&#39;s result in a plus rule.</Latex> This giving <InlineMath math="2^{n-1} \text{ and } 2^{n-1} = 2^n " /> as the two negatives become a plus so plus one is 0 and then plus another is <Latex>$n$</Latex></p>
 
         <p><Latex>Resulting in: $2^n - 2 + 1$. Equalling $2^n - 1$ which is the proposed solution so this proof is correct. Throughout the rest of the book it will mainly focus on the recurrence relation part as the first two steps are provided. A recap 1: Look at small cases 2: Find and prove a mathematcal expression for theses small cases 3: FInd and prove a closed form for our mathematical expression in step 2.</Latex></p>
 
         <p><Latex>The problem with solving like this is that we had to make a guess. Alternatively we could simplify the recurrence by adding $1$ to both sides.</Latex></p>
 
-         <BlockMath math="T_0 + 1 = 1" />
+         <BlockMath math="T_0 + 1 = 0 + 1" />
 
-        <BlockMath math="T_n + 1 = 2T_n -1 + 2 \text{ for } n > 0"></BlockMath><p><Latex>for $n$ > $0$</Latex></p>
+        <BlockMath math="T_n + 1 = 2T_n -1 + 1 + 1 \text{ for } n > 0"></BlockMath>
 
         <p><Latex>Now we let $U_n = T_n + 1$ giving $U_0 = 1$ and $$</Latex></p>
 

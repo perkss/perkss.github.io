@@ -77845,7 +77845,8 @@ var ConcreteMathematics = function ConcreteMathematics() {
          'p',
          null,
          'This pattern appears to be ',
-         _react2.default.createElement(_reactKatex.BlockMath, { math: 'T_n = 2^{n - 1}, \\text{ for } n \\geq 0' })
+         _react2.default.createElement(_reactKatex.BlockMath, { math: 'T_n = 2^n - 1, \\text{ for } n \\geq 0' }),
+         ' this is our proposed solution.'
       ),
       ' ',
       _react2.default.createElement(
@@ -77854,7 +77855,7 @@ var ConcreteMathematics = function ConcreteMathematics() {
          _react2.default.createElement(
             _reactLatex2.default,
             null,
-            'Mathematical induction is a general way to prove that some statement about the integer $n$ is true for all $n \\geq n_0$. Firstly proving when $n$ has its smallest value, $n_0$ called the basis step. Then we prove for the statement $n$ > $n_0$ for all values between $n_0$ and $n-1$. So lets work this out by replacing $n$ by $n - 1$.'
+            'Mathematical induction is a general way to prove that some statement about the integer $n$ is true for all $n \\geq n_0$. Firstly proving when $n$ has its smallest value, $n_0$ called the basis step. Then we prove for the statement $n$ > $n_0$ for all values between $n_0$ and $n-1$.'
          )
       ),
       _react2.default.createElement(
@@ -77883,10 +77884,24 @@ var ConcreteMathematics = function ConcreteMathematics() {
          _react2.default.createElement(
             _reactLatex2.default,
             null,
-            '$n$ with the proposed solution '
+            '$T_n$ with the proposed solution of '
          ),
-         _react2.default.createElement(_reactKatex.InlineMath, { math: '2(2^{n-1} - 1) + 1' })
+         ' ',
+         _react2.default.createElement(_reactKatex.InlineMath, { math: 'T_n = 2^n - 1, \\text{ for } n \\geq 0' }),
+         ' and use ',
+         _react2.default.createElement(
+            _reactLatex2.default,
+            null,
+            '$n - 1$.'
+         ),
+         ' '
       ),
+      _react2.default.createElement(
+         'p',
+         null,
+         'Providing: '
+      ),
+      _react2.default.createElement(_reactKatex.BlockMath, { math: '2(2^{n-1} - 1) + 1' }),
       _react2.default.createElement(
          'p',
          null,
@@ -77895,12 +77910,20 @@ var ConcreteMathematics = function ConcreteMathematics() {
             null,
             'Simplify: Firstly distribute parentheses '
          ),
-         _react2.default.createElement(_reactKatex.InlineMath, { math: '2 \\times 2^{n-1} + 2(-1)' }),
+         _react2.default.createElement(_reactKatex.InlineMath, { math: '2 \\times 2^{n-1} + 2 \\times (-1) + 1' }),
          '. ',
          _react2.default.createElement(
             _reactLatex2.default,
             null,
             'Now we apply that two minus\'s result in a plus rule.'
+         ),
+         ' This giving ',
+         _react2.default.createElement(_reactKatex.InlineMath, { math: '2^{n-1} \\text{ and } 2^{n-1} = 2^n ' }),
+         ' as the two negatives become a plus so plus one is 0 and then plus another is ',
+         _react2.default.createElement(
+            _reactLatex2.default,
+            null,
+            '$n$'
          )
       ),
       _react2.default.createElement(
@@ -77921,17 +77944,8 @@ var ConcreteMathematics = function ConcreteMathematics() {
             'The problem with solving like this is that we had to make a guess. Alternatively we could simplify the recurrence by adding $1$ to both sides.'
          )
       ),
-      _react2.default.createElement(_reactKatex.BlockMath, { math: 'T_0 + 1 = 1' }),
-      _react2.default.createElement(_reactKatex.BlockMath, { math: 'T_n + 1 = 2T_n -1 + 2 \\text{ for } n > 0' }),
-      _react2.default.createElement(
-         'p',
-         null,
-         _react2.default.createElement(
-            _reactLatex2.default,
-            null,
-            'for $n$ > $0$'
-         )
-      ),
+      _react2.default.createElement(_reactKatex.BlockMath, { math: 'T_0 + 1 = 0 + 1' }),
+      _react2.default.createElement(_reactKatex.BlockMath, { math: 'T_n + 1 = 2T_n -1 + 1 + 1 \\text{ for } n > 0' }),
       _react2.default.createElement(
          'p',
          null,
