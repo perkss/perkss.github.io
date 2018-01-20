@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import { BlockMath } from 'react-katex';
 
 
 import BlogPage from './blog-page.js';
@@ -13,7 +13,7 @@ const mathsForCompSci = {
 
         <p><strong>Please ensure you check out Math Fundamentals before proceeding into the world of Maths for Computer Science.</strong></p>
 
-<p>Hitting the blog very soon. Next infact!</p>
+<p>Hitting the blog very soon. Next infact! <BlockMath math="a^m \times a^n = a^{m+n}"></BlockMath> </p>
 
 
                                                                                                            <h3>Proofs</h3>

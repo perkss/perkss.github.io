@@ -84,9 +84,9 @@ const BiteSizeMath = () => (
 </p>
         <p><h5>Examples</h5>
         <ul className="text-list">
-        <li>  <Latex>$3(m + 7) = 3 \times m + 3 \times 7 = 3m + 21$</Latex> </li>
-        <li>  <Latex>$k(k - 2) = k \times k - 2 \times k = k^2 - 2k$</Latex> </li>
-        <li>  <Latex>$3(m + 7) = 3 \times m + 3 \times 7 = 3m + 21$.</Latex> </li>
+        <li>  <Latex>$3(m + 7) = $$3 \times m + 3 \times 7 $$= 3m + 21$</Latex> </li>
+        <li>  <Latex>$k(k - 2) = $$k \times k - 2 \times k $$= k^2 - 2k$</Latex> </li>
+        <li>  <Latex>$3(m + 7) = $$3 \times m + 3 \times 7 $$= 3m + 21$.</Latex> </li>
     
     </ul>
 
@@ -94,31 +94,31 @@ const BiteSizeMath = () => (
 
         <p>When expanding out brackets with powers we must remember the Laws of Indices noted above. For example to expand <Latex>$5p^3q(4pq - 2p^5q^2 + 3p)$ we need to do the following steps:</Latex></p>
  <ol className="text-list">
-        <li>  <Latex>$5p^3q \times 4pq = 20p^4q^2$</Latex> </li>
-        <li>  <Latex>$5p^3q \times - 2p^5q^2 = - 10p^8q^3$</Latex> </li>
-        <li>  <Latex>$5p^3q \times 3p = 15p^4q$</Latex> </li>
-        <li> <Latex>$5p^3q(4pq - 2p^5q^2 + 3p) = 20p^4q^2 - 10p^8q^3 + 15p^4q$</Latex> </li>
+        <li>  <Latex>$5p^3q \times 4pq =$$ 20p^4q^2$</Latex> </li>
+        <li>  <Latex>$5p^3q \times - 2p^5q^2 =$$ - 10p^8q^3$</Latex> </li>
+        <li>  <Latex>$5p^3q \times 3p =$$ 15p^4q$</Latex> </li>
+        <li> <Latex>$5p^3q(4pq - 2p^5q^2 + 3p) =$$ 20p^4q^2 - 10p^8q^3 + 15p^4q$</Latex> </li>
     
     </ol>
 
-        <p>Expanding and then simplifying is another key skill required remember the rules of BIDMAS for this. <Latex>$6g + 2g(3g + 7) = 6g + 2g\times 3g + 2g\times 7 = 6g + 6g^2 + 14g$</Latex>. Here you multiply the bracket equation <Latex>$(3g+7)\times 2g$</Latex> following the rules of BIDMAS. Then you simplify it resulting in <Latex>$6g^2 + 20g$</Latex>. </p>
+        <p>Expanding and then simplifying is another key skill required remember the rules of BIDMAS for this. <Latex>$6g + 2g(3g + 7) = $$6g + 2g\times 3g + 2g\times 7 = $$6g + 6g^2 + 14g$</Latex>. Here you multiply the bracket equation <Latex>$(3g+7)\times 2g$</Latex> following the rules of BIDMAS. Then you simplify it resulting in <Latex>$6g^2 + 20g$</Latex>. </p>
 
         <h4>Expanding Double Brackets</h4>
         <p>To expand double brackets each term needs to be multipled together so the first term in the first bracket needs to be multiplied by the first and second term in the second bracket. And then the second term in the first bracket needs to be multiplied by the first and second term in the second bracket also. An example <Latex>expand the bracket $(2m - 3)(m + 1)$</Latex>: </p>
 
     
  <ol className="text-list">
-        <li>  <Latex>$2m\times m = 2m^2$</Latex> </li>
-        <li>  <Latex>$2m\times 1 = 2m$</Latex> </li>
-        <li>  <Latex>$(-3)\times m = -3m$</Latex> </li>
-        <li> <Latex>$(-3)\times 1 = -3$</Latex> </li>
+        <li>  <Latex>$2m\times m =$$ 2m^2$</Latex> </li>
+        <li>  <Latex>$2m\times 1 =$$ 2m$</Latex> </li>
+        <li>  <Latex>$(-3)\times m =$$ -3m$</Latex> </li>
+        <li> <Latex>$(-3)\times 1 =$$ -3$</Latex> </li>
 
     
     </ol>
 
     <p>Resulting in <Latex>$2m^2 + 2m - 3m - 3$</Latex> which can be simplified down to <Latex>$2m^2 - m - 3$</Latex>.</p>
 
-        <p>This process can be applied to any number of brackets that need expanding. Also if you see something to the power of as brackets such as <Latex>$(2n+1)^2$</Latex> then it is the same as <Latex>$(2n+1)(2n+1)$ which can be expanded doing the same as above to $4n^2 + 2n + 2n + 1= 4n^2 + 4n + 1$</Latex>. Remember this part for Math prerequisites.</p>
+        <p>This process can be applied to any number of brackets that need expanding. Also if you see something to the power of as brackets such as <Latex>$(2n+1)^2$</Latex> then it is the same as <Latex>$(2n+1)(2n+1)$ which can be expanded doing the same as above to $4n^2 + 2n + 2n + 1$ $= 4n^2 + 4n + 1$</Latex>. Remember this part for Math prerequisites.</p>
     </div>
 
     

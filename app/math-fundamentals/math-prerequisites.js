@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Latex from 'react-latex';
+import { InlineMath, BlockMath } from 'react-katex';
 
 const MathPrerequisites = () => (
 
@@ -27,7 +28,7 @@ const MathPrerequisites = () => (
 
         <p>Similar to the above and covered in our BiteSize Maths section manipulating equalities is part of basic Algebra. For example <Latex>$2x + 6 = 10$ can be manipulated so we firstly subtract $5$ from each side to get $2x = 4$ and then divide both sides by $2$ to equal $x=2$. Nice and easy right?!</Latex></p>
 
-        <p>The next example is a little trickier and is chaining equalities the example shown<Latex> is $(2n+1)^2 - (2n)^2 = 4n + 1$ we have to refer back to expanding double brackets and can think of this in the form. $(2n+1)(2n+1) - (2n)(2n)$ so we expand out these brackets by multiplying the first term by the two terms in the second bracket and then the second term by the two terms in the second bracket. This calculation is $2n\times 2n + 2n\times 1 + 1\times 2n + 1\times 1$ followed by $2n\times 2n$ resulting in $4n^2 + 2n + 2n + 1 - 4n^2 = 4n + 1$ once simplified.</Latex></p>
+        <p>The next example is a little trickier and is chaining equalities the example shown<Latex> is $(2n+1)^2 - (2n)^2 =$$ 4n + 1$ we have to refer back to expanding double brackets and can think of this in the form. $(2n+1)(2n+1) - (2n)(2n)$ so we expand out these brackets by multiplying the first term by the two terms in the second bracket and then the second term by the two terms in the second bracket. This calculation is $2n\times 2n + 2n\times 1 + $$ 1\times 2n + 1\times 1$ followed by $2n\times 2n$ resulting in $4n^2 + 2n + 2n + 1 - 4n^2 =$$ 4n + 1$ once simplified.</Latex></p>
 
 
     
@@ -37,8 +38,8 @@ const MathPrerequisites = () => (
     
         <h3>Exponents and Roots</h3>
         <p>This section presented by Stanford in the linked <a href="http://web.stanford.edu/class/cs103/handouts/020%20Mathematical%20Prerequisites.pdf">PDF</a> is very important and clearly explained. Please read it thoroughly. </p>
-        <p>One item to highlight is this formula <Latex>2^n+1 $ = 2 \times 2^n
- = 2^n + 2^n$</Latex> as it comes up a few times and is a good one to remember.</p>
+        <p>One item to highlight is this formula <BlockMath math="2^{n+1} = 2 \times 2^n
+ = 2^n + 2^n"></BlockMath> as it comes up a few times and is a good one to remember.</p>
         <h3>Types of Numbers Categorisation</h3>
         <p>Some definitions of numbers required for Mathematics for Computer Science</p>
 

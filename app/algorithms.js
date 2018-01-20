@@ -14,7 +14,8 @@ const algorithms = {
             <h4>Algorithmic Thinking</h4>
             <h4>Models of Computation</h4>
            
-            
+            <h3>Selections</h3>
+            <h4>Hoare QuickSelect</h4>
             <h3>Sorting and Trees</h3>
              <h4>Insertion Sort</h4>
             <h4>Merge Sort</h4>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Latex from 'react-latex';
+import { InlineMath, BlockMath } from 'react-katex';
 
 const MathPreliminaries  = () => (
 
@@ -20,8 +21,8 @@ const MathPreliminaries  = () => (
 
     <p>Mathematical induction is used as a conclusive proof for an infinite number of statements one for each <Latex>$n$</Latex>. The term induction is used as one must somehow define what is to be proved before one can apply the technique of mathematical induction.</p>
         <h4>So Salled Simple Example</h4>
-        <p>Many books make this seem so easy and skip out a lot of steps so we will try cover this as they say simple, but as we say not so simple example. The example is that the sums of odd numbers is equal to the amount of odd numbers in the sum to the power or 2 for example.</p> <p><Latex>$1=1^2, 1+3=2^2, 1+3+5=3^2 . . .$</Latex></p>
-        <p>This can be formulated as: <Latex>$1 + 3 + 5 . . . + (2n - 1) = n^2$.</Latex></p><p>Now lets do the fun part that looks scary but is actually simple when you understand step 2 and remember this is the sum to prove this by mathematical induction.</p>
+        <p>Many books make this seem so easy and skip out a lot of steps so we will try cover this as they say simple, but as we say not so simple example. The example is that the sums of odd numbers is equal to the amount of odd numbers in the sum to the power or 2 for example.</p> <p><Latex>$1=1^2$$, 1+3=2^2$$, 1+3+5=3^2 . . .$</Latex></p>
+        <p>This can be formulated as: <Latex>$1 + 3 + 5 . . . + $$(2n - 1) = n^2$.</Latex></p><p>Now lets do the fun part that looks scary but is actually simple when you understand step 2 and remember this is the sum to prove this by mathematical induction.</p>
       
        
         <strong>Step 1:</strong> Firstly we need to prove that the equation is valid when <Latex>$n = 1$. So we go ahead and substitute $n$ for $1$. When $n = 1$, instead of $(2n-1)$ we have $(2(1) - 1) = 1$, so the statement holds for $n = 1$ as $2 \times 1 = 2$ and then $2 - 1 = 1$.</Latex>
@@ -31,14 +32,14 @@ const MathPreliminaries  = () => (
      
         <strong> Step 2:</strong><Latex>  We then need to assume that the equation is true for $n$.</Latex> (This is the part that always tripped me up before as we make the assumption that the proposed equation is true.)<br />
  
-             <strong>Assume: </strong>  <Latex> $1 + 3 + 5 + ... + (2n - 1) = n^2$</Latex> <p></p>
+             <strong>Assume: </strong>  <Latex> $1 + 3 + 5 + ... + $$(2n - 1) = n^2$</Latex> <p></p>
    
         <strong>Step 3: </strong> <Latex>And then prove that the equation is true for $n + 1$. So we substitue $n$ on both sides with $n + 1$ giving the below. We are now working on the next in the sequence so the original left side sequence is kept in full including $(2n - 1)$ which is omitted in many texts which I find confusing.</Latex>
          <p></p>
-        <strong> Prove: </strong> <br /><Latex> $1 + 3 + 5 +...+ (2(n + 1) - 1) = (n + 1)^2$</Latex>
+        <strong> Prove: </strong> <br /><Latex> $1 + 3 + 5 +...+ $$(2(n + 1) - 1) = (n + 1)^2$</Latex>
          <p>So lets now prove this by working on simplifying the left hand side only to match the right hand side to see if the proof is true for <Latex>$n + 1$</Latex> values.</p>
  <br />
-        <strong>Proof: </strong><br /> <Latex> $1 + 3 + 5 +... + (2(n + 1) - 1)$</Latex>(The left side from above)  <br /><br />
+        <strong>Proof: </strong><br /> <Latex> $1 + 3 + 5 +... + $$(2(n + 1) - 1)$</Latex>(The left side from above)  <br /><br />
         <Latex>   $= 1 + 3 + 5 + ... + (2n - 1) + (2n + 2 - 1)$</Latex> (simplify we can see here the <Latex>$(2n - 1)$</Latex> has returned as this is expected as we are working on the next in the sequence <Latex>$n + 1$</Latex> so the original remains.)<br /><br />
                             <Latex>   $= n^2 + (2n + 2 - 1)$</Latex>  (by assumption Step 2 we can replace the left side of the equation with <Latex>$n^2$</Latex>)<br /><br />
                             <Latex>   $= n^2 + 2n + 1$</Latex>(simplify) <br /><br />
