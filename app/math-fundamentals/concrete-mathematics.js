@@ -19,7 +19,7 @@ const ConcreteMathematics  = () => (
         <p><Latex>The Tower of Hanoi problem is a bit of fun, but the recurrence math behind it is intimidating, I hope we can walk through this and manage to get you to understand it as I have managed too with a lot of effort!</Latex></p>
 
 
-        <p>The Tower of Hanoi problem is defined as given three pegs with one peg that has eight disks on it stacked in decreasing order. Transfer the disks to another peg moving only one disk at a time and never having a larger disk on top of a smaller one. There are some great examples of this <a href="https://www.mathsisfun.com/games/towerofhanoi.html">here</a>. Concrete Mathematics suggests some key points of tackling a problem like this firstly generalise the problem so what would happen if there were <Latex>$n$ disks? Then we can scale down the problem and look at small cases first what if there were only one or two disks? Then NAME and CONQUER basically add some notation to the problem. Here they say $T_n$ is the minimum number of moves to transfer $n$ disks from one peg to another peg. For example $T_1 = 1$ is one disk as you are just moving one. Moving $T_2$ disks needs thinking about so we are moving to the $2$ disks to the same peg. Following the rules we will need to move the top disk which is the smallest to a peg, then the next disk to another peg as it cannot go on top of the smallest disk and then the smallest disk on top of the other disk hence this is $3$ moves, $T_2 = 3$. We also can say that $T_0 = 0$ as no disks are moved. Now we need to scale up what if we had a near infinite amount of disks. We have just shown optimally we can move two disks in $3$ moves. To move three optimally we follow the pattern moving the top two disks as mentioned above, to the middle peg and then move the third and then move the top two disks back on top of the third. Here we can say the movement of the smallest disk is </Latex><InlineMath math="T_{n-1}"></InlineMath><Latex> so the case of two disks it is $2$ disks to move it is one move, in the case of three disks to move the two smallest are two moves and so on. We then move the very bottom disk which is one move $T_1 = 1$. Then we have to move the </Latex><InlineMath math="T_{n-1}"></InlineMath> disks back on top.</p>
+        <p>The Tower of Hanoi problem is defined as given three pegs with one peg that has eight disks on it stacked in decreasing order. Transfer the disks to another peg moving only one disk at a time and never having a larger disk on top of a smaller one. There are some great examples of this <a href="https://www.mathsisfun.com/games/towerofhanoi.html">here</a>. Concrete Mathematics suggests some key points of tackling a problem like this firstly generalise the problem so what would happen if there were <Latex>$n$ disks? Then we can scale down the problem and look at small cases first what if there were only one or two disks? Then NAME and CONQUER basically add some notation to the problem. </Latex></p> <p><Latex>Here they say $T_n$ is the minimum number of moves to transfer $n$ disks from one peg to another peg. For example $T_1 = 1$ is one disk as you are just moving one. Moving $T_2$ disks needs thinking about so we are moving to the $2$ disks to the same peg. Following the rules we will need to move the top disk which is the smallest to a peg, then the next disk to another peg as it cannot go on top of the smallest disk and then the smallest disk on top of the other disk hence this is $3$ moves, $T_2 = 3$. We also can say that $T_0 = 0$ as no disks are moved.</Latex></p><p><Latex>Now we need to scale up what if we had a near infinite amount of disks. We have just shown optimally we can move two disks in $3$ moves. To move three optimally we follow the pattern moving the top two disks as mentioned above, to the middle peg and then move the third and then move the top two disks back on top of the third. Here we can say the movement of the smallest disk is </Latex><InlineMath math="T_{n-1}"></InlineMath><Latex> so the case of two disks it is $2$ disks to move it is one move, in the case of three disks to move the two smallest are two moves and so on. We then move the very bottom disk which is one move $T_1 = 1$. Then we have to move the </Latex><InlineMath math="T_{n-1}"></InlineMath> disks back on top.</p>
 
         <p>Producing the formula for disk movement as at most: </p>
    
@@ -53,16 +53,13 @@ const ConcreteMathematics  = () => (
 
         <p><Latex>The problem with solving like this is that we had to make a guess. Alternatively we could simplify the recurrence by adding $1$ to both sides.</Latex></p>
 
-        <p><Latex>$T_0 + 1 = 1$</Latex></p>
+         <BlockMath math="T_0 + 1 = 1" />
 
         <BlockMath math="T_n + 1 = 2T_n -1 + 2 \text{ for } n > 0"></BlockMath><p><Latex>for $n$ > $0$</Latex></p>
 
         <p><Latex>Now we let $U_n = T_n + 1$ giving $U_0 = 1$ and $$</Latex></p>
 
-        <p><Latex>$$</Latex></p>
-
-        <p><Latex>$$</Latex></p>
-        <p><Latex>$$</Latex></p>
+      
         
     
         <h3>Sums</h3>

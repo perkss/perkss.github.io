@@ -13,7 +13,7 @@ const mathsForCompSci = {
 
         <p><strong>Please ensure you check out Math Fundamentals before proceeding into the world of Maths for Computer Science.</strong></p>
 
-<p>Hitting the blog very soon. Next infact! <BlockMath math="a^m \times a^n = a^{m+n}"></BlockMath> </p>
+<p>Hitting the blog very soon. Next infact! </p>
 
 
                                                                                                            <h3>Proofs</h3>

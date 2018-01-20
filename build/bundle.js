@@ -14215,9 +14215,7 @@ var mathsForCompSci = {
         _react2.default.createElement(
             'p',
             null,
-            'Hitting the blog very soon. Next infact! ',
-            _react2.default.createElement(_reactKatex.BlockMath, { math: 'a^m \\times a^n = a^{m+n}' }),
-            ' '
+            'Hitting the blog very soon. Next infact! '
         ),
         _react2.default.createElement(
             'h3',
@@ -77743,7 +77741,26 @@ var ConcreteMathematics = function ConcreteMathematics() {
          _react2.default.createElement(
             _reactLatex2.default,
             null,
-            '$n$ disks? Then we can scale down the problem and look at small cases first what if there were only one or two disks? Then NAME and CONQUER basically add some notation to the problem. Here they say $T_n$ is the minimum number of moves to transfer $n$ disks from one peg to another peg. For example $T_1 = 1$ is one disk as you are just moving one. Moving $T_2$ disks needs thinking about so we are moving to the $2$ disks to the same peg. Following the rules we will need to move the top disk which is the smallest to a peg, then the next disk to another peg as it cannot go on top of the smallest disk and then the smallest disk on top of the other disk hence this is $3$ moves, $T_2 = 3$. We also can say that $T_0 = 0$ as no disks are moved. Now we need to scale up what if we had a near infinite amount of disks. We have just shown optimally we can move two disks in $3$ moves. To move three optimally we follow the pattern moving the top two disks as mentioned above, to the middle peg and then move the third and then move the top two disks back on top of the third. Here we can say the movement of the smallest disk is '
+            '$n$ disks? Then we can scale down the problem and look at small cases first what if there were only one or two disks? Then NAME and CONQUER basically add some notation to the problem. '
+         )
+      ),
+      ' ',
+      _react2.default.createElement(
+         'p',
+         null,
+         _react2.default.createElement(
+            _reactLatex2.default,
+            null,
+            'Here they say $T_n$ is the minimum number of moves to transfer $n$ disks from one peg to another peg. For example $T_1 = 1$ is one disk as you are just moving one. Moving $T_2$ disks needs thinking about so we are moving to the $2$ disks to the same peg. Following the rules we will need to move the top disk which is the smallest to a peg, then the next disk to another peg as it cannot go on top of the smallest disk and then the smallest disk on top of the other disk hence this is $3$ moves, $T_2 = 3$. We also can say that $T_0 = 0$ as no disks are moved.'
+         )
+      ),
+      _react2.default.createElement(
+         'p',
+         null,
+         _react2.default.createElement(
+            _reactLatex2.default,
+            null,
+            'Now we need to scale up what if we had a near infinite amount of disks. We have just shown optimally we can move two disks in $3$ moves. To move three optimally we follow the pattern moving the top two disks as mentioned above, to the middle peg and then move the third and then move the top two disks back on top of the third. Here we can say the movement of the smallest disk is '
          ),
          _react2.default.createElement(_reactKatex.InlineMath, { math: 'T_{n-1}' }),
          _react2.default.createElement(
@@ -77828,7 +77845,7 @@ var ConcreteMathematics = function ConcreteMathematics() {
          'p',
          null,
          'This pattern appears to be ',
-         _react2.default.createElement(_reactKatex.BlockMath, { math: 'T_n = 2^n - 1, \\text{ for } n \\geq 0' })
+         _react2.default.createElement(_reactKatex.BlockMath, { math: 'T_n = 2^{n - 1}, \\text{ for } n \\geq 0' })
       ),
       ' ',
       _react2.default.createElement(
@@ -77883,7 +77900,7 @@ var ConcreteMathematics = function ConcreteMathematics() {
          _react2.default.createElement(
             _reactLatex2.default,
             null,
-            'Now we apply the two minus $=$ plus rule.'
+            'Now we apply that two minus\'s result in a plus rule.'
          )
       ),
       _react2.default.createElement(
@@ -77904,15 +77921,7 @@ var ConcreteMathematics = function ConcreteMathematics() {
             'The problem with solving like this is that we had to make a guess. Alternatively we could simplify the recurrence by adding $1$ to both sides.'
          )
       ),
-      _react2.default.createElement(
-         'p',
-         null,
-         _react2.default.createElement(
-            _reactLatex2.default,
-            null,
-            '$T_0 + 1 = 1$'
-         )
-      ),
+      _react2.default.createElement(_reactKatex.BlockMath, { math: 'T_0 + 1 = 1' }),
       _react2.default.createElement(_reactKatex.BlockMath, { math: 'T_n + 1 = 2T_n -1 + 2 \\text{ for } n > 0' }),
       _react2.default.createElement(
          'p',
@@ -77930,33 +77939,6 @@ var ConcreteMathematics = function ConcreteMathematics() {
             _reactLatex2.default,
             null,
             'Now we let $U_n = T_n + 1$ giving $U_0 = 1$ and $$'
-         )
-      ),
-      _react2.default.createElement(
-         'p',
-         null,
-         _react2.default.createElement(
-            _reactLatex2.default,
-            null,
-            '$$'
-         )
-      ),
-      _react2.default.createElement(
-         'p',
-         null,
-         _react2.default.createElement(
-            _reactLatex2.default,
-            null,
-            '$$'
-         )
-      ),
-      _react2.default.createElement(
-         'p',
-         null,
-         _react2.default.createElement(
-            _reactLatex2.default,
-            null,
-            '$$'
          )
       ),
       _react2.default.createElement(
