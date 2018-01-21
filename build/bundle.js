@@ -14181,7 +14181,7 @@ exports.push([module.i, "html {\n    position: relative;\n    min-height: 100%;\
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+                                                                                                              value: true
 });
 
 var _react = __webpack_require__(2);
@@ -14198,111 +14198,161 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var mathsForCompSci = {
 
-    title: 'Maths for Computer Science',
-    contents: '',
-    text: [_react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(
-            'p',
-            null,
-            _react2.default.createElement(
-                'strong',
-                null,
-                'Please ensure you check out Math Fundamentals before proceeding into the world of Maths for Computer Science.'
-            )
-        ),
-        _react2.default.createElement(
-            'p',
-            null,
-            'Hitting the blog very soon. Next infact! '
-        ),
-        _react2.default.createElement(
-            'h3',
-            null,
-            'Proofs'
-        ),
-        _react2.default.createElement(
-            'h4',
-            null,
-            'Intro'
-        ),
-        _react2.default.createElement(
-            'h4',
-            null,
-            'Proof Methods'
-        ),
-        _react2.default.createElement(
-            'h4',
-            null,
-            'Well Ordering Principle'
-        ),
-        _react2.default.createElement(
-            'h4',
-            null,
-            'Logic and Propositions'
-        ),
-        _react2.default.createElement(
-            'h4',
-            null,
-            'Quantifiers and Predicate Logic'
-        ),
-        _react2.default.createElement(
-            'h4',
-            null,
-            'Sets'
-        ),
-        _react2.default.createElement(
-            'h4',
-            null,
-            'Binary Relations'
-        ),
-        _react2.default.createElement(
-            'h4',
-            null,
-            'Induction'
-        ),
-        _react2.default.createElement(
-            'h4',
-            null,
-            'State Machines'
-        ),
-        _react2.default.createElement(
-            'h4',
-            null,
-            'Recursive Definition'
-        ),
-        _react2.default.createElement(
-            'h4',
-            null,
-            'Infinite Sets'
-        ),
-        _react2.default.createElement(
-            'h3',
-            null,
-            'Structures'
-        ),
-        _react2.default.createElement(
-            'h3',
-            null,
-            'Counting'
-        ),
-        _react2.default.createElement(
-            'h3',
-            null,
-            'Probability'
-        )
-    )]
+                                                                                                              title: 'Maths for Computer Science',
+                                                                                                              contents: '',
+                                                                                                              text: [_react2.default.createElement(
+                                                                                                                                                                                                                            'div',
+                                                                                                                                                                                                                            null,
+                                                                                                                                                                                                                            _react2.default.createElement(
+                                                                                                                                                                                                                                                                                                                                          'p',
+                                                                                                                                                                                                                                                                                                                                          null,
+                                                                                                                                                                                                                                                                                                                                          _react2.default.createElement(
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        'strong',
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        null,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        'Please ensure you check out Math Fundamentals before proceeding into the world of Maths for Computer Science.'
+                                                                                                                                                                                                                                                                                                                                          )
+                                                                                                                                                                                                                            ),
+                                                                                                                                                                                                                            _react2.default.createElement(
+                                                                                                                                                                                                                                                                                                                                          'p',
+                                                                                                                                                                                                                                                                                                                                          null,
+                                                                                                                                                                                                                                                                                                                                          'Hitting the blog very soon. Next infact! '
+                                                                                                                                                                                                                            ),
+                                                                                                                                                                                                                            _react2.default.createElement(
+                                                                                                                                                                                                                                                                                                                                          'h3',
+                                                                                                                                                                                                                                                                                                                                          null,
+                                                                                                                                                                                                                                                                                                                                          'Proofs'
+                                                                                                                                                                                                                            ),
+                                                                                                                                                                                                                            _react2.default.createElement(
+                                                                                                                                                                                                                                                                                                                                          'h4',
+                                                                                                                                                                                                                                                                                                                                          null,
+                                                                                                                                                                                                                                                                                                                                          'Intro'
+                                                                                                                                                                                                                            ),
+                                                                                                                                                                                                                            _react2.default.createElement(
+                                                                                                                                                                                                                                                                                                                                          'p',
+                                                                                                                                                                                                                                                                                                                                          null,
+                                                                                                                                                                                                                                                                                                                                          'To begin with proofs we will list some key defintions. A proposition is a statement that can either be true or false. This adds limitations to statements but it is difficult to know if the statement is true or false. This relates to computer programming as developers we need to ensure correctness of our programs. Similarly a ',
+                                                                                                                                                                                                                                                                                                                                          _react2.default.createElement(
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        'strong',
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        null,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        'predicate'
+                                                                                                                                                                                                                                                                                                                                          ),
+                                                                                                                                                                                                                                                                                                                                          ' is a proposition whose truth depends on the value of one or more variables. ',
+                                                                                                                                                                                                                                                                                                                                          _react2.default.createElement(
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        'strong',
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        null,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        'Axioms'
+                                                                                                                                                                                                                                                                                                                                          ),
+                                                                                                                                                                                                                                                                                                                                          ' are propositions that are accepted as true. A ',
+                                                                                                                                                                                                                                                                                                                                          _react2.default.createElement(
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        'strong',
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        null,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        'proof'
+                                                                                                                                                                                                                                                                                                                                          ),
+                                                                                                                                                                                                                                                                                                                                          ' is a sequence of logical deductions found from axioms and previously proved statements that concludes with the porposition in question (Lehman et al ...). A ',
+                                                                                                                                                                                                                                                                                                                                          _react2.default.createElement(
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        'strong',
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        null,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        'theorem'
+                                                                                                                                                                                                                                                                                                                                          ),
+                                                                                                                                                                                                                                                                                                                                          ' is a result that has been proved true and a ',
+                                                                                                                                                                                                                                                                                                                                          _react2.default.createElement(
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        'strong',
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        null,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        'lemma'
+                                                                                                                                                                                                                                                                                                                                          ),
+                                                                                                                                                                                                                                                                                                                                          ' is a preliminary proposition proved true. '
+                                                                                                                                                                                                                            ),
+                                                                                                                                                                                                                            _react2.default.createElement(
+                                                                                                                                                                                                                                                                                                                                          'h4',
+                                                                                                                                                                                                                                                                                                                                          null,
+                                                                                                                                                                                                                                                                                                                                          'Proof Methods'
+                                                                                                                                                                                                                            ),
+                                                                                                                                                                                                                            _react2.default.createElement('p', null),
+                                                                                                                                                                                                                            _react2.default.createElement(
+                                                                                                                                                                                                                                                                                                                                          'h4',
+                                                                                                                                                                                                                                                                                                                                          null,
+                                                                                                                                                                                                                                                                                                                                          'Well Ordering Principle'
+                                                                                                                                                                                                                            ),
+                                                                                                                                                                                                                            _react2.default.createElement('p', null),
+                                                                                                                                                                                                                            _react2.default.createElement(
+                                                                                                                                                                                                                                                                                                                                          'h4',
+                                                                                                                                                                                                                                                                                                                                          null,
+                                                                                                                                                                                                                                                                                                                                          'Logic and Propositions'
+                                                                                                                                                                                                                            ),
+                                                                                                                                                                                                                            _react2.default.createElement('p', null),
+                                                                                                                                                                                                                            _react2.default.createElement(
+                                                                                                                                                                                                                                                                                                                                          'h4',
+                                                                                                                                                                                                                                                                                                                                          null,
+                                                                                                                                                                                                                                                                                                                                          'Quantifiers and Predicate Logic'
+                                                                                                                                                                                                                            ),
+                                                                                                                                                                                                                            _react2.default.createElement('p', null),
+                                                                                                                                                                                                                            '                                                                                                        ',
+                                                                                                                                                                                                                            _react2.default.createElement('p', null),
+                                                                                                                                                                                                                            _react2.default.createElement(
+                                                                                                                                                                                                                                                                                                                                          'h4',
+                                                                                                                                                                                                                                                                                                                                          null,
+                                                                                                                                                                                                                                                                                                                                          'Sets'
+                                                                                                                                                                                                                            ),
+                                                                                                                                                                                                                            _react2.default.createElement('p', null),
+                                                                                                                                                                                                                            _react2.default.createElement(
+                                                                                                                                                                                                                                                                                                                                          'h4',
+                                                                                                                                                                                                                                                                                                                                          null,
+                                                                                                                                                                                                                                                                                                                                          'Binary Relations'
+                                                                                                                                                                                                                            ),
+                                                                                                                                                                                                                            _react2.default.createElement('p', null),
+                                                                                                                                                                                                                            _react2.default.createElement(
+                                                                                                                                                                                                                                                                                                                                          'h4',
+                                                                                                                                                                                                                                                                                                                                          null,
+                                                                                                                                                                                                                                                                                                                                          'Induction'
+                                                                                                                                                                                                                            ),
+                                                                                                                                                                                                                            _react2.default.createElement('p', null),
+                                                                                                                                                                                                                            _react2.default.createElement(
+                                                                                                                                                                                                                                                                                                                                          'h4',
+                                                                                                                                                                                                                                                                                                                                          null,
+                                                                                                                                                                                                                                                                                                                                          'State Machines'
+                                                                                                                                                                                                                            ),
+                                                                                                                                                                                                                            _react2.default.createElement('p', null),
+                                                                                                                                                                                                                            _react2.default.createElement(
+                                                                                                                                                                                                                                                                                                                                          'h4',
+                                                                                                                                                                                                                                                                                                                                          null,
+                                                                                                                                                                                                                                                                                                                                          'Recursive Definition'
+                                                                                                                                                                                                                            ),
+                                                                                                                                                                                                                            _react2.default.createElement('p', null),
+                                                                                                                                                                                                                            _react2.default.createElement(
+                                                                                                                                                                                                                                                                                                                                          'h4',
+                                                                                                                                                                                                                                                                                                                                          null,
+                                                                                                                                                                                                                                                                                                                                          'Infinite Sets'
+                                                                                                                                                                                                                            ),
+                                                                                                                                                                                                                            _react2.default.createElement('p', null),
+                                                                                                                                                                                                                            _react2.default.createElement(
+                                                                                                                                                                                                                                                                                                                                          'h3',
+                                                                                                                                                                                                                                                                                                                                          null,
+                                                                                                                                                                                                                                                                                                                                          'Structures'
+                                                                                                                                                                                                                            ),
+                                                                                                                                                                                                                            _react2.default.createElement('p', null),
+                                                                                                                                                                                                                            _react2.default.createElement(
+                                                                                                                                                                                                                                                                                                                                          'h3',
+                                                                                                                                                                                                                                                                                                                                          null,
+                                                                                                                                                                                                                                                                                                                                          'Counting'
+                                                                                                                                                                                                                            ),
+                                                                                                                                                                                                                            _react2.default.createElement('p', null),
+                                                                                                                                                                                                                            _react2.default.createElement(
+                                                                                                                                                                                                                                                                                                                                          'h3',
+                                                                                                                                                                                                                                                                                                                                          null,
+                                                                                                                                                                                                                                                                                                                                          'Probability'
+                                                                                                                                                                                                                            ),
+                                                                                                                                                                                                                            _react2.default.createElement('p', null)
+                                                                                                              )]
 
 };
 
 var MathsForCompSciPage = function MathsForCompSciPage(props) {
 
-    return _react2.default.createElement(_blogPage2.default, {
-        title: mathsForCompSci.title,
-        contents: mathsForCompSci.contents,
-        text: mathsForCompSci.text
-    });
+                                                                                                              return _react2.default.createElement(_blogPage2.default, {
+                                                                                                                                                                                                                            title: mathsForCompSci.title,
+                                                                                                                                                                                                                            contents: mathsForCompSci.contents,
+                                                                                                                                                                                                                            text: mathsForCompSci.text
+                                                                                                              });
 };
 
 exports.default = MathsForCompSciPage;
