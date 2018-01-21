@@ -63,11 +63,22 @@ const ConcreteMathematics  = () => (
 
         <BlockMath math="U_{n-1} = T_{n - 1}+1 \text{ and therefore }" />
         <BlockMath math="2T_{n - 1}+2=2(T_{n - 1}+1)=2U{n-1}" />
-        <BlockMath math="\text{ as we can substitute } U_{n - 1}"></BlockMath>
+        <BlockMath math="\text{As we can substitute } U_{n - 1}"></BlockMath>
         <BlockMath math="\text{We have seen that }" /><BlockMath math="T_n + 1 = 2T_{n - 1} + 2" />
         <BlockMath math="\text{ and }  U_{n-1} = T_n + 1" />
         <p>Therefore combining these you see:</p>
         <BlockMath math="U_n = 2U_{n-1} \text{, with } U_0 = 1"></BlockMath>
+
+        <p>Now we can see that from our definition of <InlineMath math="U_n"/> it is simply doubling each time <InlineMath math="n"/> is increased. </p>
+
+        <BlockMath math="U_1 = 2U_0" />
+        <BlockMath math="U_2 = 2U_1 = 2^2U_0" />
+        <BlockMath math="U_3 = 2U_2 = 2^3U_0" />
+        <BlockMath math="U_4 = 2U_3 = 2^4U_0" />
+
+        <p>We can now conjecture (form an opinion based on the information) that <InlineMath math="U_n = 2^nU_0" /> for each  <InlineMath math="n" /> >  <InlineMath math="0" />. This is true for  <InlineMath math="n = 0" /> lets use induction to check for when <InlineMath math="n \geq 0" /> then <InlineMath math=" U_{n+1} = 2U_n = 2 \times 2^nU_0 = 2^{n+1}U_0" />.</p>
+
+       <p>Now we can look back at the fact we found <InlineMath math="U_0 = 1" /> to say that <InlineMath math="U_n = 2^n" /> for each <InlineMath math="n \geq 0" /> and hence from our proposed definition of <InlineMath math="T_n = U_n - 1 = 2^n - 1" /> it has come back true.</p>
         
     
         <h3>Sums</h3>
