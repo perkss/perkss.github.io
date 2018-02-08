@@ -14546,7 +14546,7 @@ exports.default = CLanguagePage;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+				value: true
 });
 
 var _react = __webpack_require__(2);
@@ -14567,32 +14567,124 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var clojure = {
 
-    title: 'Clojure',
-    contents: '',
-    text: [_react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(
-            _reactSyntaxHighlighter2.default,
-            { language: 'clojure', style: _hljs.darcula },
-            '(def a 2)'
-        ),
-        _react2.default.createElement(
-            'p',
-            null,
-            'Your first bit of clojure much more to come! '
-        )
-    )]
+				title: 'Hipster Clojure',
+				contents: '',
+				text: [_react2.default.createElement(
+								'div',
+								null,
+								_react2.default.createElement(
+												_reactSyntaxHighlighter2.default,
+												{ language: 'clojure', style: _hljs.darcula, showLineNumbers: true, wrapLines: true },
+												'(def a 2)\n(def b 3)'
+								),
+								_react2.default.createElement(
+												'p',
+												null,
+												'Your first bit of clojure much more to come! '
+								),
+								_react2.default.createElement(
+												'h2',
+												null,
+												'Eggplant Behaviour Driven Development (BDD) in Clojure'
+								),
+								_react2.default.createElement(
+												'h3',
+												null,
+												'What is BDD?'
+								),
+								_react2.default.createElement(
+												'p',
+												null,
+												'Behaviour driven development or simply BDD is a methodology for software development and testing. BDD enables specifications for testing in a much more human readable format commonly Give, When, Then a great blog on this is ',
+												_react2.default.createElement(
+																'a',
+																{ href: 'https://martinfowler.com/bliki/GivenWhenThen.html' },
+																'here'
+												),
+												' by the legendary Martin Fowler. This simplicity is what we wanted to bring to Clojure! However tooling is not explicitly required for it but has come about such as ',
+												_react2.default.createElement(
+																'a',
+																{ href: 'https://github.com/spockframework/spock' },
+																'Spock'
+												),
+												' and ',
+												_react2.default.createElement(
+																'a',
+																{ href: 'https://cucumber.io/' },
+																'Cucumber'
+												),
+												' are very popular in the Java space.'
+								),
+								_react2.default.createElement(
+												'h3',
+												null,
+												'What is already available for BDD in Clojure?'
+								),
+								_react2.default.createElement(
+												'p',
+												null,
+												'The major player in the Clojure space is ',
+												_react2.default.createElement(
+																'a',
+																{ href: 'https://github.com/slagyr/speclj' },
+																'Speclj'
+												),
+												' which is a great framework and does what is required but uses slightly different terminology to my Java background! '
+								),
+								_react2.default.createElement(
+												'h3',
+												null,
+												'Motivation?'
+								),
+								_react2.default.createElement(
+												'p',
+												null,
+												'Speclj is a great framework, but does not seem to have a table based data driven testing approach like Spock. Hence I wanted to learn some Clojure further and write a testing framework for BDD that enabled me to do this ',
+												_react2.default.createElement(
+																'a',
+																{ href: 'http://spockframework.org/spock/docs/1.0/data_driven_testing.html' },
+																'data driven'
+												),
+												' approach. Also I wanted to use the standard test runner that comes with clojure.test to run these with my unit tests. Eventually enable different runner would be nice also another TODO. '
+								),
+								_react2.default.createElement(
+												'h3',
+												null,
+												'Our Solution Eggplant'
+								),
+								_react2.default.createElement(
+												'p',
+												null,
+												'Firstly please check out ',
+												_react2.default.createElement(
+																'a',
+																{ href: 'https://github.com/perkss/eggplant' },
+																'Eggplant'
+												),
+												' and see the README to see examples and how to start using, we will cover a tutorial here also. Eggplant is simplistic and that is it\'s motto, which is a great motto as a developer and a product owner you do not want to be bogged down learning another syntax in the case of Cucumber and you want to conform to the popular human readable Given, When and Then as stated above.',
+												_react2.default.createElement(
+																_reactSyntaxHighlighter2.default,
+																{ language: 'clojure', style: _hljs.darcula, showLineNumbers: true, wrapLines: true },
+																'(defspec example-specification-true\n  (testing "A full length example specification which is true 4 * 2 = 8"\n    (given 4 test-data\n           (then-we-expect 8 (when-we-process * 2 test-data)))))'
+												),
+												'As you can see this is readable format, its still in a basic Clojure file and runs with your usual Clojure test suite. Eggplant also offers data driven development which is our favourite feature of Spock! Here you can see we are testing the function + and asserting the esults are equals. Each test-data-row is the parameters passed and the expected result!',
+												_react2.default.createElement(
+																_reactSyntaxHighlighter2.default,
+																{ language: 'clojure', style: _hljs.darcula, showLineNumbers: true, wrapLines: true },
+																'(defspec example-table-test\n  (testing "Example table testing + with assertion of ="\n    (-> (expect (function-under-test +) (assertion =))\n        (where\n         (test-data-row [3 3] 6)\n         (test-data-row [4 4] 8)\n         (test-data-row [2 3] 5)))))'
+												)
+								)
+				)]
 
 };
 
 var ClojurePage = function ClojurePage(props) {
 
-    return _react2.default.createElement(_blogPage2.default, {
-        title: clojure.title,
-        contents: clojure.contents,
-        text: clojure.text
-    });
+				return _react2.default.createElement(_blogPage2.default, {
+								title: clojure.title,
+								contents: clojure.contents,
+								text: clojure.text
+				});
 };
 
 exports.default = ClojurePage;
