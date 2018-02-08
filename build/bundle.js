@@ -14603,7 +14603,7 @@ var clojure = {
 																{ href: 'https://cucumber.io/' },
 																'Cucumber'
 												),
-												' are very popular in the Java space.'
+												' are very popular in the Java space. BDD is much more top down approach to testing where we start from high level requirements rather than the bottom up approach of TDD where we start at the bottom with our smallest unit of functionality a single function in Clojure.'
 								),
 								_react2.default.createElement(
 												'h3',
@@ -14635,7 +14635,7 @@ var clojure = {
 																{ href: 'http://spockframework.org/spock/docs/1.0/data_driven_testing.html' },
 																'data driven'
 												),
-												' approach. Also I wanted to use the standard test runner that comes with clojure.test to run these with my unit tests. Eventually enable different runner would be nice also another TODO. '
+												' approach. Also I wanted to use the standard test runner that comes with clojure.test to run these with my unit tests. Eventually enabling a different runner to run our specs would be nice; another TODO. '
 								),
 								_react2.default.createElement(
 												'h3',
