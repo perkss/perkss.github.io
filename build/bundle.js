@@ -14629,7 +14629,7 @@ var clojure = {
 																{ href: 'https://github.com/slagyr/speclj' },
 																'Speclj'
 												),
-												' which is a great framework and does what is required but uses slightly different terminology to my Java background! '
+												' which is a great framework and does what is required but uses slightly different terminology to our Java background! '
 								),
 								_react2.default.createElement(
 												'h3',
@@ -14639,7 +14639,7 @@ var clojure = {
 								_react2.default.createElement(
 												'p',
 												null,
-												'Speclj is a great framework, but does not seem to have a table based data driven testing approach like Spock. Hence I wanted to learn some Clojure further and write a testing framework for BDD that enabled me to do this ',
+												'Speclj is a great framework, but does not seem to have a table based data driven testing approach like Spock. Hence I wanted to learn some Clojure further and write a testing framework for BDD that enabled us to do this ',
 												_react2.default.createElement(
 																'a',
 																{ href: 'http://spockframework.org/spock/docs/1.0/data_driven_testing.html' },

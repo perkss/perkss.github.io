@@ -17,10 +17,10 @@ const clojure = {
 		  
 		  <p>Behaviour driven development or simply BDD is a methodology for software development and testing. BDD enables specifications for testing in a much more human readable format commonly Give, When, Then a great blog on this is <a href="https://martinfowler.com/bliki/GivenWhenThen.html">here</a> by the legendary Martin Fowler. This simplicity is what we wanted to bring to Clojure! However tooling is not explicitly required for it but has come about such as <a href="https://github.com/spockframework/spock">Spock</a> and <a href="https://cucumber.io/">Cucumber</a> are very popular in the Java space.</p>
 																		 <h3>What is already available for BDD in Clojure?</h3>
-																		 <p>The major player in the Clojure space is <a href="https://github.com/slagyr/speclj">Speclj</a> which is a great framework and does what is required but uses slightly different terminology to my Java background! </p> 
+																		 <p>The major player in the Clojure space is <a href="https://github.com/slagyr/speclj">Speclj</a> which is a great framework and does what is required but uses slightly different terminology to our Java background! </p> 
 																		 
 																		 <h3>Motivation?</h3>
-																		 <p>Speclj is a great framework, but does not seem to have a table based data driven testing approach like Spock. Hence I wanted to learn some Clojure further and write a testing framework for BDD that enabled me to do this <a href="http://spockframework.org/spock/docs/1.0/data_driven_testing.html">data driven</a> approach. Also I wanted to use the standard test runner that comes with clojure.test to run these with my unit tests. Eventually enable different runner would be nice also another TODO. </p>
+																		 <p>Speclj is a great framework, but does not seem to have a table based data driven testing approach like Spock. Hence I wanted to learn some Clojure further and write a testing framework for BDD that enabled us to do this <a href="http://spockframework.org/spock/docs/1.0/data_driven_testing.html">data driven</a> approach. Also I wanted to use the standard test runner that comes with clojure.test to run these with my unit tests. Eventually enable different runner would be nice also another TODO. </p>
 																		 <h3>Our Solution Eggplant</h3>
 																		 <p>Firstly please check out <a href="https://github.com/perkss/eggplant">Eggplant</a> and see the README to see examples and how to start using, we will cover a tutorial here also.
 
