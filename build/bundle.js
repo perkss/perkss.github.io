@@ -19537,7 +19537,13 @@ var home = {
         { href: "https://mitpress.mit.edu/sicp/" },
         "Structure and Interpretation of Computer Programs (SICP)"
       ),
-      " as the basis and Clojure as the main language. Check out ",
+      " as the basis and Clojure as the main language. ",
+      _react2.default.createElement(
+        "strong",
+        null,
+        "Hipster Clojure"
+      ),
+      " will contain some great insight into our Clojure projects as well as some blog posts on interesting work going on in that space! The trendy language round these parts we believe. Check out ",
       _react2.default.createElement(
         "strong",
         null,
