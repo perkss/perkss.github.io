@@ -14573,16 +14573,6 @@ var clojure = {
 								'div',
 								null,
 								_react2.default.createElement(
-												_reactSyntaxHighlighter2.default,
-												{ language: 'clojure', style: _hljs.darcula, showLineNumbers: true, wrapLines: true },
-												'(def a 2)\n(def b 3)'
-								),
-								_react2.default.createElement(
-												'p',
-												null,
-												'Your first bit of clojure much more to come! '
-								),
-								_react2.default.createElement(
 												'h2',
 												null,
 												'Eggplant Behaviour Driven Development (BDD) in Clojure'

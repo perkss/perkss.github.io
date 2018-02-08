@@ -8,10 +8,9 @@ const clojure = {
     title: 'Hipster Clojure',
     contents: '',
     text:[<div>
-          <SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={true} wrapLines={true}>{`(def a 2)\n(def b 3)`}</SyntaxHighlighter>
 
-		  <p>Your first bit of clojure much more to come! </p>
-
+	
+		  
 		  <h2>Eggplant Behaviour Driven Development (BDD) in Clojure</h2>
 		  <h3>What is BDD?</h3>
 		  
