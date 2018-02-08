@@ -81,7 +81,9 @@ const home = {
 
                                                                                                                                                                                        <p>Build in PROGRESS we will be GROWING quickly!</p>
 
-                                                                                                                                                                                       <p><strong>Most of all have fun!</strong></p></div>]
+                                                                                                                                                                                       <p><strong>Most of all have fun!</strong></p>
+
+																																													   <p><a href="https://github.com/perkss">Our github page: perkss</a></p></div>																																											   ]
     
 };
 

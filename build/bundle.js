@@ -19570,6 +19570,15 @@ var home = {
         null,
         "Most of all have fun!"
       )
+    ),
+    _react2.default.createElement(
+      "p",
+      null,
+      _react2.default.createElement(
+        "a",
+        { href: "https://github.com/perkss" },
+        "Our github page: perkss"
+      )
     )
   )]
 
