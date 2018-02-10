@@ -45,6 +45,19 @@ const algorithms = {
 
 }`}</SyntaxHighlighter>
 
+		As Clojure is also awesome lets see it in a functional language style, you can see how much shorter it is granted we have not added the exception handling! 
+		<SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={true} wrapLines={true}>{`(defn find-peak [data]
+  (let [midpoint (Math/floor (/ (count data) 2))]
+    (if (= 1 (count data)) (nth data 0)
+        (cond
+          (< (nth data midpoint) (nth data (- midpoint 1)))
+          (recur
+           (nth  (split-at (-  midpoint 1) data) 0))
+          (<  (nth data midpoint) (nth data (+ midpoint 1)))
+          (recur
+           (nth (split-at (+ midpoint 1) data) 1))
+          :else (nth data midpoint)))))\n\n(find-peak [6,7,4,3,2,1,4,5])\n;; => 7`																					  }</SyntaxHighlighter>
+
 
 		</p>
 
