@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import BlogPage from './blog-page.js';
-  
+import { InlineMath, BlockMath } from 'react-katex';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { darcula, docco } from 'react-syntax-highlighter/styles/hljs';
 
 const algorithms = {
     title: 'Algorithms',
@@ -8,10 +10,46 @@ const algorithms = {
     '',
     text: [
 <div>
-            <p>Hurry up Perks and get this done the suspense is killing me! </p>
+            
 
             <h3>Introduction</h3>
             <h4>Algorithmic Thinking</h4>
+			<p>Lets start with our first and very simple algorithm that finds peaks in a list of numbers. To define this in mathematical form lets have a list of items [a b c d e f g h i] position 2 in the list of items is only a peak if <InlineMath math="b \geq a"></InlineMath> and <InlineMath math="b \geq c"></InlineMath>. Position 9 is a peak if <InlineMath math="i \geq h"></InlineMath>. In plain english basically if either side of a point are smaller than the point it is a peak. Potentially all values in a list maybe equal so they are all peaks. A simple algorithm to find this would be to start at the begging and check each item in the list. Alternatively the course by MIT states an approach using a divide and conquer algorithm similar to Binary Search. Where it takes the middle point of the list checks the left side if samller than left find mid point of left list, else check if smaller than right side check right side list, else it is a peak. This algorithm will not necessarily find the max peak but will find a peak in the list. Lets write some Java code to see this.</p>
+<p>
+<SyntaxHighlighter language='java' style={darcula} showLineNumbers={true} wrapLines={true}>{`public static int findPeak(int[] data) {
+
+        if(data == null || data.length == 0) {
+            throw new IllegalArgumentException("Invalid data");
+        }
+
+        if(data.length == 1) {
+            return data[0];
+        }
+
+        int midpoint = data.length/2;
+
+        if(data[midpoint] < data[midpoint-1]) {
+            
+            int[] leftSide = new int[midpoint-1];
+            System.arraycopy(data, 0,leftSide, 0, midpoint-1);
+            return findPeak(leftSide);
+
+        } else if( data[midpoint] < data[midpoint + 1]){
+  
+            int[] rightSide = new int[data.length - midpoint+1];
+            System.arraycopy(data, midpoint+1,rightSide, 0, data.length - midpoint+1);
+            return findPeak(rightSide);
+        } else {
+            return data[midpoint];
+        }
+
+}`}</SyntaxHighlighter>
+
+
+		</p>
+
+
+		
             <h4>Models of Computation</h4>
            
             <h3>Selections</h3>
