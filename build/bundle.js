@@ -554,7 +554,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 var _prodInvariant = __webpack_require__(4);
 
-var DOMProperty = __webpack_require__(26);
+var DOMProperty = __webpack_require__(29);
 var ReactDOMComponentFlags = __webpack_require__(117);
 
 var invariant = __webpack_require__(2);
@@ -1726,7 +1726,7 @@ var _prodInvariant = __webpack_require__(4),
     _assign = __webpack_require__(5);
 
 var CallbackQueue = __webpack_require__(121);
-var PooledClass = __webpack_require__(22);
+var PooledClass = __webpack_require__(25);
 var ReactFeatureFlags = __webpack_require__(122);
 var ReactReconciler = __webpack_require__(31);
 var Transaction = __webpack_require__(38);
@@ -1997,15 +1997,15 @@ var _propTypes = __webpack_require__(8);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _baseStyles = __webpack_require__(610);
+var _baseStyles = __webpack_require__(612);
 
 var _baseStyles2 = _interopRequireDefault(_baseStyles);
 
-var _BurgerIcon = __webpack_require__(611);
+var _BurgerIcon = __webpack_require__(613);
 
 var _BurgerIcon2 = _interopRequireDefault(_BurgerIcon);
 
-var _CrossIcon = __webpack_require__(612);
+var _CrossIcon = __webpack_require__(614);
 
 var _CrossIcon2 = _interopRequireDefault(_CrossIcon);
 
@@ -2497,7 +2497,7 @@ module.exports = EventConstants;
 
 var _assign = __webpack_require__(5);
 
-var PooledClass = __webpack_require__(22);
+var PooledClass = __webpack_require__(25);
 
 var emptyFunction = __webpack_require__(10);
 var warning = __webpack_require__(3);
@@ -2866,696 +2866,6 @@ module.exports = {
 
 /***/ }),
 /* 21 */
-/***/ (function(module, exports) {
-
-/**
- * This file contains a list of utility functions which are useful in other
- * files.
- */
-
-/**
- * Provide an `indexOf` function which works in IE8, but defers to native if
- * possible.
- */
-var nativeIndexOf = Array.prototype.indexOf;
-var indexOf = function(list, elem) {
-    if (list == null) {
-        return -1;
-    }
-    if (nativeIndexOf && list.indexOf === nativeIndexOf) {
-        return list.indexOf(elem);
-    }
-    var i = 0;
-    var l = list.length;
-    for (; i < l; i++) {
-        if (list[i] === elem) {
-            return i;
-        }
-    }
-    return -1;
-};
-
-/**
- * Return whether an element is contained in a list
- */
-var contains = function(list, elem) {
-    return indexOf(list, elem) !== -1;
-};
-
-/**
- * Provide a default value if a setting is undefined
- */
-var deflt = function(setting, defaultIfUndefined) {
-    return setting === undefined ? defaultIfUndefined : setting;
-};
-
-// hyphenate and escape adapted from Facebook's React under Apache 2 license
-
-var uppercase = /([A-Z])/g;
-var hyphenate = function(str) {
-    return str.replace(uppercase, "-$1").toLowerCase();
-};
-
-var ESCAPE_LOOKUP = {
-    "&": "&amp;",
-    ">": "&gt;",
-    "<": "&lt;",
-    "\"": "&quot;",
-    "'": "&#x27;"
-};
-
-var ESCAPE_REGEX = /[&><"']/g;
-
-function escaper(match) {
-    return ESCAPE_LOOKUP[match];
-}
-
-/**
- * Escapes text to prevent scripting attacks.
- *
- * @param {*} text Text value to escape.
- * @return {string} An escaped string.
- */
-function escape(text) {
-    return ("" + text).replace(ESCAPE_REGEX, escaper);
-}
-
-/**
- * A function to set the text content of a DOM element in all supported
- * browsers. Note that we don't define this if there is no document.
- */
-var setTextContent;
-if (typeof document !== "undefined") {
-    var testNode = document.createElement("span");
-    if ("textContent" in testNode) {
-        setTextContent = function(node, text) {
-            node.textContent = text;
-        };
-    } else {
-        setTextContent = function(node, text) {
-            node.innerText = text;
-        };
-    }
-}
-
-/**
- * A function to clear a node.
- */
-function clearNode(node) {
-    setTextContent(node, "");
-}
-
-module.exports = {
-    contains: contains,
-    deflt: deflt,
-    escape: escape,
-    hyphenate: hyphenate,
-    indexOf: indexOf,
-    setTextContent: setTextContent,
-    clearNode: clearNode
-};
-
-
-/***/ }),
-/* 22 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- *
- * @providesModule PooledClass
- */
-
-
-
-var _prodInvariant = __webpack_require__(4);
-
-var invariant = __webpack_require__(2);
-
-/**
- * Static poolers. Several custom versions for each potential number of
- * arguments. A completely generic pooler is easy to implement, but would
- * require accessing the `arguments` object. In each of these, `this` refers to
- * the Class itself, not an instance. If any others are needed, simply add them
- * here, or in their own files.
- */
-var oneArgumentPooler = function (copyFieldsFrom) {
-  var Klass = this;
-  if (Klass.instancePool.length) {
-    var instance = Klass.instancePool.pop();
-    Klass.call(instance, copyFieldsFrom);
-    return instance;
-  } else {
-    return new Klass(copyFieldsFrom);
-  }
-};
-
-var twoArgumentPooler = function (a1, a2) {
-  var Klass = this;
-  if (Klass.instancePool.length) {
-    var instance = Klass.instancePool.pop();
-    Klass.call(instance, a1, a2);
-    return instance;
-  } else {
-    return new Klass(a1, a2);
-  }
-};
-
-var threeArgumentPooler = function (a1, a2, a3) {
-  var Klass = this;
-  if (Klass.instancePool.length) {
-    var instance = Klass.instancePool.pop();
-    Klass.call(instance, a1, a2, a3);
-    return instance;
-  } else {
-    return new Klass(a1, a2, a3);
-  }
-};
-
-var fourArgumentPooler = function (a1, a2, a3, a4) {
-  var Klass = this;
-  if (Klass.instancePool.length) {
-    var instance = Klass.instancePool.pop();
-    Klass.call(instance, a1, a2, a3, a4);
-    return instance;
-  } else {
-    return new Klass(a1, a2, a3, a4);
-  }
-};
-
-var fiveArgumentPooler = function (a1, a2, a3, a4, a5) {
-  var Klass = this;
-  if (Klass.instancePool.length) {
-    var instance = Klass.instancePool.pop();
-    Klass.call(instance, a1, a2, a3, a4, a5);
-    return instance;
-  } else {
-    return new Klass(a1, a2, a3, a4, a5);
-  }
-};
-
-var standardReleaser = function (instance) {
-  var Klass = this;
-  !(instance instanceof Klass) ? process.env.NODE_ENV !== 'production' ? invariant(false, 'Trying to release an instance into a pool of a different type.') : _prodInvariant('25') : void 0;
-  instance.destructor();
-  if (Klass.instancePool.length < Klass.poolSize) {
-    Klass.instancePool.push(instance);
-  }
-};
-
-var DEFAULT_POOL_SIZE = 10;
-var DEFAULT_POOLER = oneArgumentPooler;
-
-/**
- * Augments `CopyConstructor` to be a poolable class, augmenting only the class
- * itself (statically) not adding any prototypical fields. Any CopyConstructor
- * you give this may have a `poolSize` property, and will look for a
- * prototypical `destructor` on instances.
- *
- * @param {Function} CopyConstructor Constructor that can be used to reset.
- * @param {Function} pooler Customizable pooler.
- */
-var addPoolingTo = function (CopyConstructor, pooler) {
-  var NewKlass = CopyConstructor;
-  NewKlass.instancePool = [];
-  NewKlass.getPooled = pooler || DEFAULT_POOLER;
-  if (!NewKlass.poolSize) {
-    NewKlass.poolSize = DEFAULT_POOL_SIZE;
-  }
-  NewKlass.release = standardReleaser;
-  return NewKlass;
-};
-
-var PooledClass = {
-  addPoolingTo: addPoolingTo,
-  oneArgumentPooler: oneArgumentPooler,
-  twoArgumentPooler: twoArgumentPooler,
-  threeArgumentPooler: threeArgumentPooler,
-  fourArgumentPooler: fourArgumentPooler,
-  fiveArgumentPooler: fiveArgumentPooler
-};
-
-module.exports = PooledClass;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
-
-/***/ }),
-/* 23 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- */
-
-/**
- * Allows extraction of a minified key. Let's the build system minify keys
- * without losing the ability to dynamically use key strings as values
- * themselves. Pass in an object with a single key/val pair and it will return
- * you the string key of that single record. Suppose you want to grab the
- * value for a key 'className' inside of an object. Key/val minification may
- * have aliased that key to be 'xa12'. keyOf({className: null}) will return
- * 'xa12' in that case. Resolve keys you want to use once at startup time, then
- * reuse those resolutions.
- */
-var keyOf = function keyOf(oneKeyObj) {
-  var key;
-  for (key in oneKeyObj) {
-    if (!oneKeyObj.hasOwnProperty(key)) {
-      continue;
-    }
-    return key;
-  }
-  return null;
-};
-
-module.exports = keyOf;
-
-/***/ }),
-/* 24 */
-/***/ (function(module, exports) {
-
-/**
- * This is the ParseError class, which is the main error thrown by KaTeX
- * functions when something has gone wrong. This is used to distinguish internal
- * errors from errors in the expression that the user provided.
- *
- * If possible, a caller should provide a Token or ParseNode with information
- * about where in the source string the problem occurred.
- *
- * @param {string} message  The error message
- * @param {(Token|ParseNode)=} token  An object providing position information
- */
-function ParseError(message, token) {
-    var error = "KaTeX parse error: " + message;
-    var start;
-    var end;
-
-    if (token && token.lexer && token.start <= token.end) {
-        // If we have the input and a position, make the error a bit fancier
-
-        // Get the input
-        var input = token.lexer.input;
-
-        // Prepend some information
-        start = token.start;
-        end = token.end;
-        if (start === input.length) {
-            error += " at end of input: ";
-        } else {
-            error += " at position " + (start + 1) + ": ";
-        }
-
-        // Underline token in question using combining underscores
-        var underlined = input.slice(start, end).replace(/[^]/g, "$&\u0332");
-
-        // Extract some context from the input and add it to the error
-        var left;
-        if (start > 15) {
-            left = "…" + input.slice(start - 15, start);
-        } else {
-            left = input.slice(0, start);
-        }
-        var right;
-        if (end + 15 < input.length) {
-            right = input.slice(end, end + 15) + "…";
-        } else {
-            right = input.slice(end);
-        }
-        error += left + underlined + right;
-    }
-
-    // Some hackery to make ParseError a prototype of Error
-    // See http://stackoverflow.com/a/8460753
-    var self = new Error(error);
-    self.name = "ParseError";
-    self.__proto__ = ParseError.prototype;
-
-    self.position = start;
-    return self;
-}
-
-// More hackery
-ParseError.prototype.__proto__ = Error.prototype;
-
-module.exports = ParseError;
-
-
-/***/ }),
-/* 25 */
-/***/ (function(module, exports) {
-
-/**
- * This is the ParseError class, which is the main error thrown by KaTeX
- * functions when something has gone wrong. This is used to distinguish internal
- * errors from errors in the expression that the user provided.
- *
- * If possible, a caller should provide a Token or ParseNode with information
- * about where in the source string the problem occurred.
- *
- * @param {string} message  The error message
- * @param {(Token|ParseNode)=} token  An object providing position information
- */
-function ParseError(message, token) {
-    var error = "KaTeX parse error: " + message;
-    var start;
-    var end;
-
-    if (token && token.lexer && token.start <= token.end) {
-        // If we have the input and a position, make the error a bit fancier
-
-        // Get the input
-        var input = token.lexer.input;
-
-        // Prepend some information
-        start = token.start;
-        end = token.end;
-        if (start === input.length) {
-            error += " at end of input: ";
-        } else {
-            error += " at position " + (start + 1) + ": ";
-        }
-
-        // Underline token in question using combining underscores
-        var underlined = input.slice(start, end).replace(/[^]/g, "$&\u0332");
-
-        // Extract some context from the input and add it to the error
-        var left;
-        if (start > 15) {
-            left = "…" + input.slice(start - 15, start);
-        } else {
-            left = input.slice(0, start);
-        }
-        var right;
-        if (end + 15 < input.length) {
-            right = input.slice(end, end + 15) + "…";
-        } else {
-            right = input.slice(end);
-        }
-        error += left + underlined + right;
-    }
-
-    // Some hackery to make ParseError a prototype of Error
-    // See http://stackoverflow.com/a/8460753
-    var self = new Error(error);
-    self.name = "ParseError";
-    self.__proto__ = ParseError.prototype;
-
-    self.position = start;
-    return self;
-}
-
-// More hackery
-ParseError.prototype.__proto__ = Error.prototype;
-
-module.exports = ParseError;
-
-
-/***/ }),
-/* 26 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- *
- * @providesModule DOMProperty
- */
-
-
-
-var _prodInvariant = __webpack_require__(4);
-
-var invariant = __webpack_require__(2);
-
-function checkMask(value, bitmask) {
-  return (value & bitmask) === bitmask;
-}
-
-var DOMPropertyInjection = {
-  /**
-   * Mapping from normalized, camelcased property names to a configuration that
-   * specifies how the associated DOM property should be accessed or rendered.
-   */
-  MUST_USE_PROPERTY: 0x1,
-  HAS_BOOLEAN_VALUE: 0x4,
-  HAS_NUMERIC_VALUE: 0x8,
-  HAS_POSITIVE_NUMERIC_VALUE: 0x10 | 0x8,
-  HAS_OVERLOADED_BOOLEAN_VALUE: 0x20,
-
-  /**
-   * Inject some specialized knowledge about the DOM. This takes a config object
-   * with the following properties:
-   *
-   * isCustomAttribute: function that given an attribute name will return true
-   * if it can be inserted into the DOM verbatim. Useful for data-* or aria-*
-   * attributes where it's impossible to enumerate all of the possible
-   * attribute names,
-   *
-   * Properties: object mapping DOM property name to one of the
-   * DOMPropertyInjection constants or null. If your attribute isn't in here,
-   * it won't get written to the DOM.
-   *
-   * DOMAttributeNames: object mapping React attribute name to the DOM
-   * attribute name. Attribute names not specified use the **lowercase**
-   * normalized name.
-   *
-   * DOMAttributeNamespaces: object mapping React attribute name to the DOM
-   * attribute namespace URL. (Attribute names not specified use no namespace.)
-   *
-   * DOMPropertyNames: similar to DOMAttributeNames but for DOM properties.
-   * Property names not specified use the normalized name.
-   *
-   * DOMMutationMethods: Properties that require special mutation methods. If
-   * `value` is undefined, the mutation method should unset the property.
-   *
-   * @param {object} domPropertyConfig the config as described above.
-   */
-  injectDOMPropertyConfig: function (domPropertyConfig) {
-    var Injection = DOMPropertyInjection;
-    var Properties = domPropertyConfig.Properties || {};
-    var DOMAttributeNamespaces = domPropertyConfig.DOMAttributeNamespaces || {};
-    var DOMAttributeNames = domPropertyConfig.DOMAttributeNames || {};
-    var DOMPropertyNames = domPropertyConfig.DOMPropertyNames || {};
-    var DOMMutationMethods = domPropertyConfig.DOMMutationMethods || {};
-
-    if (domPropertyConfig.isCustomAttribute) {
-      DOMProperty._isCustomAttributeFunctions.push(domPropertyConfig.isCustomAttribute);
-    }
-
-    for (var propName in Properties) {
-      !!DOMProperty.properties.hasOwnProperty(propName) ? process.env.NODE_ENV !== 'production' ? invariant(false, 'injectDOMPropertyConfig(...): You\'re trying to inject DOM property \'%s\' which has already been injected. You may be accidentally injecting the same DOM property config twice, or you may be injecting two configs that have conflicting property names.', propName) : _prodInvariant('48', propName) : void 0;
-
-      var lowerCased = propName.toLowerCase();
-      var propConfig = Properties[propName];
-
-      var propertyInfo = {
-        attributeName: lowerCased,
-        attributeNamespace: null,
-        propertyName: propName,
-        mutationMethod: null,
-
-        mustUseProperty: checkMask(propConfig, Injection.MUST_USE_PROPERTY),
-        hasBooleanValue: checkMask(propConfig, Injection.HAS_BOOLEAN_VALUE),
-        hasNumericValue: checkMask(propConfig, Injection.HAS_NUMERIC_VALUE),
-        hasPositiveNumericValue: checkMask(propConfig, Injection.HAS_POSITIVE_NUMERIC_VALUE),
-        hasOverloadedBooleanValue: checkMask(propConfig, Injection.HAS_OVERLOADED_BOOLEAN_VALUE)
-      };
-      !(propertyInfo.hasBooleanValue + propertyInfo.hasNumericValue + propertyInfo.hasOverloadedBooleanValue <= 1) ? process.env.NODE_ENV !== 'production' ? invariant(false, 'DOMProperty: Value can be one of boolean, overloaded boolean, or numeric value, but not a combination: %s', propName) : _prodInvariant('50', propName) : void 0;
-
-      if (process.env.NODE_ENV !== 'production') {
-        DOMProperty.getPossibleStandardName[lowerCased] = propName;
-      }
-
-      if (DOMAttributeNames.hasOwnProperty(propName)) {
-        var attributeName = DOMAttributeNames[propName];
-        propertyInfo.attributeName = attributeName;
-        if (process.env.NODE_ENV !== 'production') {
-          DOMProperty.getPossibleStandardName[attributeName] = propName;
-        }
-      }
-
-      if (DOMAttributeNamespaces.hasOwnProperty(propName)) {
-        propertyInfo.attributeNamespace = DOMAttributeNamespaces[propName];
-      }
-
-      if (DOMPropertyNames.hasOwnProperty(propName)) {
-        propertyInfo.propertyName = DOMPropertyNames[propName];
-      }
-
-      if (DOMMutationMethods.hasOwnProperty(propName)) {
-        propertyInfo.mutationMethod = DOMMutationMethods[propName];
-      }
-
-      DOMProperty.properties[propName] = propertyInfo;
-    }
-  }
-};
-
-/* eslint-disable max-len */
-var ATTRIBUTE_NAME_START_CHAR = ':A-Z_a-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD';
-/* eslint-enable max-len */
-
-/**
- * DOMProperty exports lookup objects that can be used like functions:
- *
- *   > DOMProperty.isValid['id']
- *   true
- *   > DOMProperty.isValid['foobar']
- *   undefined
- *
- * Although this may be confusing, it performs better in general.
- *
- * @see http://jsperf.com/key-exists
- * @see http://jsperf.com/key-missing
- */
-var DOMProperty = {
-
-  ID_ATTRIBUTE_NAME: 'data-reactid',
-  ROOT_ATTRIBUTE_NAME: 'data-reactroot',
-
-  ATTRIBUTE_NAME_START_CHAR: ATTRIBUTE_NAME_START_CHAR,
-  ATTRIBUTE_NAME_CHAR: ATTRIBUTE_NAME_START_CHAR + '\\-.0-9\\u00B7\\u0300-\\u036F\\u203F-\\u2040',
-
-  /**
-   * Map from property "standard name" to an object with info about how to set
-   * the property in the DOM. Each object contains:
-   *
-   * attributeName:
-   *   Used when rendering markup or with `*Attribute()`.
-   * attributeNamespace
-   * propertyName:
-   *   Used on DOM node instances. (This includes properties that mutate due to
-   *   external factors.)
-   * mutationMethod:
-   *   If non-null, used instead of the property or `setAttribute()` after
-   *   initial render.
-   * mustUseProperty:
-   *   Whether the property must be accessed and mutated as an object property.
-   * hasBooleanValue:
-   *   Whether the property should be removed when set to a falsey value.
-   * hasNumericValue:
-   *   Whether the property must be numeric or parse as a numeric and should be
-   *   removed when set to a falsey value.
-   * hasPositiveNumericValue:
-   *   Whether the property must be positive numeric or parse as a positive
-   *   numeric and should be removed when set to a falsey value.
-   * hasOverloadedBooleanValue:
-   *   Whether the property can be used as a flag as well as with a value.
-   *   Removed when strictly equal to false; present without a value when
-   *   strictly equal to true; present with a value otherwise.
-   */
-  properties: {},
-
-  /**
-   * Mapping from lowercase property names to the properly cased version, used
-   * to warn in the case of missing properties. Available only in __DEV__.
-   * @type {Object}
-   */
-  getPossibleStandardName: process.env.NODE_ENV !== 'production' ? {} : null,
-
-  /**
-   * All of the isCustomAttribute() functions that have been injected.
-   */
-  _isCustomAttributeFunctions: [],
-
-  /**
-   * Checks whether a property name is a custom attribute.
-   * @method
-   */
-  isCustomAttribute: function (attributeName) {
-    for (var i = 0; i < DOMProperty._isCustomAttributeFunctions.length; i++) {
-      var isCustomAttributeFn = DOMProperty._isCustomAttributeFunctions[i];
-      if (isCustomAttributeFn(attributeName)) {
-        return true;
-      }
-    }
-    return false;
-  },
-
-  injection: DOMPropertyInjection
-};
-
-module.exports = DOMProperty;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
-
-/***/ }),
-/* 27 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__BrowserRouter__ = __webpack_require__(246);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "BrowserRouter", function() { return __WEBPACK_IMPORTED_MODULE_0__BrowserRouter__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__HashRouter__ = __webpack_require__(251);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "HashRouter", function() { return __WEBPACK_IMPORTED_MODULE_1__HashRouter__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Link__ = __webpack_require__(144);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Link", function() { return __WEBPACK_IMPORTED_MODULE_2__Link__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__MemoryRouter__ = __webpack_require__(253);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "MemoryRouter", function() { return __WEBPACK_IMPORTED_MODULE_3__MemoryRouter__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__NavLink__ = __webpack_require__(256);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "NavLink", function() { return __WEBPACK_IMPORTED_MODULE_4__NavLink__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Prompt__ = __webpack_require__(259);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Prompt", function() { return __WEBPACK_IMPORTED_MODULE_5__Prompt__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Redirect__ = __webpack_require__(261);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Redirect", function() { return __WEBPACK_IMPORTED_MODULE_6__Redirect__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Route__ = __webpack_require__(145);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Route", function() { return __WEBPACK_IMPORTED_MODULE_7__Route__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Router__ = __webpack_require__(88);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Router", function() { return __WEBPACK_IMPORTED_MODULE_8__Router__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__StaticRouter__ = __webpack_require__(267);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "StaticRouter", function() { return __WEBPACK_IMPORTED_MODULE_9__StaticRouter__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__Switch__ = __webpack_require__(269);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Switch", function() { return __WEBPACK_IMPORTED_MODULE_10__Switch__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__matchPath__ = __webpack_require__(271);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "matchPath", function() { return __WEBPACK_IMPORTED_MODULE_11__matchPath__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__withRouter__ = __webpack_require__(272);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "withRouter", function() { return __WEBPACK_IMPORTED_MODULE_12__withRouter__["a"]; });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/***/ }),
-/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3592,7 +2902,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = (0, _highlight2.default)(_lowlight2.default, _defaultStyle2.default);
 
 /***/ }),
-/* 29 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4316,7 +3626,7 @@ Object.defineProperty(exports, 'zenburn', {
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 30 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4457,6 +3767,696 @@ if (module && module.exports) {
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(582)(module)))
+
+/***/ }),
+/* 24 */
+/***/ (function(module, exports) {
+
+/**
+ * This file contains a list of utility functions which are useful in other
+ * files.
+ */
+
+/**
+ * Provide an `indexOf` function which works in IE8, but defers to native if
+ * possible.
+ */
+var nativeIndexOf = Array.prototype.indexOf;
+var indexOf = function(list, elem) {
+    if (list == null) {
+        return -1;
+    }
+    if (nativeIndexOf && list.indexOf === nativeIndexOf) {
+        return list.indexOf(elem);
+    }
+    var i = 0;
+    var l = list.length;
+    for (; i < l; i++) {
+        if (list[i] === elem) {
+            return i;
+        }
+    }
+    return -1;
+};
+
+/**
+ * Return whether an element is contained in a list
+ */
+var contains = function(list, elem) {
+    return indexOf(list, elem) !== -1;
+};
+
+/**
+ * Provide a default value if a setting is undefined
+ */
+var deflt = function(setting, defaultIfUndefined) {
+    return setting === undefined ? defaultIfUndefined : setting;
+};
+
+// hyphenate and escape adapted from Facebook's React under Apache 2 license
+
+var uppercase = /([A-Z])/g;
+var hyphenate = function(str) {
+    return str.replace(uppercase, "-$1").toLowerCase();
+};
+
+var ESCAPE_LOOKUP = {
+    "&": "&amp;",
+    ">": "&gt;",
+    "<": "&lt;",
+    "\"": "&quot;",
+    "'": "&#x27;"
+};
+
+var ESCAPE_REGEX = /[&><"']/g;
+
+function escaper(match) {
+    return ESCAPE_LOOKUP[match];
+}
+
+/**
+ * Escapes text to prevent scripting attacks.
+ *
+ * @param {*} text Text value to escape.
+ * @return {string} An escaped string.
+ */
+function escape(text) {
+    return ("" + text).replace(ESCAPE_REGEX, escaper);
+}
+
+/**
+ * A function to set the text content of a DOM element in all supported
+ * browsers. Note that we don't define this if there is no document.
+ */
+var setTextContent;
+if (typeof document !== "undefined") {
+    var testNode = document.createElement("span");
+    if ("textContent" in testNode) {
+        setTextContent = function(node, text) {
+            node.textContent = text;
+        };
+    } else {
+        setTextContent = function(node, text) {
+            node.innerText = text;
+        };
+    }
+}
+
+/**
+ * A function to clear a node.
+ */
+function clearNode(node) {
+    setTextContent(node, "");
+}
+
+module.exports = {
+    contains: contains,
+    deflt: deflt,
+    escape: escape,
+    hyphenate: hyphenate,
+    indexOf: indexOf,
+    setTextContent: setTextContent,
+    clearNode: clearNode
+};
+
+
+/***/ }),
+/* 25 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * @providesModule PooledClass
+ */
+
+
+
+var _prodInvariant = __webpack_require__(4);
+
+var invariant = __webpack_require__(2);
+
+/**
+ * Static poolers. Several custom versions for each potential number of
+ * arguments. A completely generic pooler is easy to implement, but would
+ * require accessing the `arguments` object. In each of these, `this` refers to
+ * the Class itself, not an instance. If any others are needed, simply add them
+ * here, or in their own files.
+ */
+var oneArgumentPooler = function (copyFieldsFrom) {
+  var Klass = this;
+  if (Klass.instancePool.length) {
+    var instance = Klass.instancePool.pop();
+    Klass.call(instance, copyFieldsFrom);
+    return instance;
+  } else {
+    return new Klass(copyFieldsFrom);
+  }
+};
+
+var twoArgumentPooler = function (a1, a2) {
+  var Klass = this;
+  if (Klass.instancePool.length) {
+    var instance = Klass.instancePool.pop();
+    Klass.call(instance, a1, a2);
+    return instance;
+  } else {
+    return new Klass(a1, a2);
+  }
+};
+
+var threeArgumentPooler = function (a1, a2, a3) {
+  var Klass = this;
+  if (Klass.instancePool.length) {
+    var instance = Klass.instancePool.pop();
+    Klass.call(instance, a1, a2, a3);
+    return instance;
+  } else {
+    return new Klass(a1, a2, a3);
+  }
+};
+
+var fourArgumentPooler = function (a1, a2, a3, a4) {
+  var Klass = this;
+  if (Klass.instancePool.length) {
+    var instance = Klass.instancePool.pop();
+    Klass.call(instance, a1, a2, a3, a4);
+    return instance;
+  } else {
+    return new Klass(a1, a2, a3, a4);
+  }
+};
+
+var fiveArgumentPooler = function (a1, a2, a3, a4, a5) {
+  var Klass = this;
+  if (Klass.instancePool.length) {
+    var instance = Klass.instancePool.pop();
+    Klass.call(instance, a1, a2, a3, a4, a5);
+    return instance;
+  } else {
+    return new Klass(a1, a2, a3, a4, a5);
+  }
+};
+
+var standardReleaser = function (instance) {
+  var Klass = this;
+  !(instance instanceof Klass) ? process.env.NODE_ENV !== 'production' ? invariant(false, 'Trying to release an instance into a pool of a different type.') : _prodInvariant('25') : void 0;
+  instance.destructor();
+  if (Klass.instancePool.length < Klass.poolSize) {
+    Klass.instancePool.push(instance);
+  }
+};
+
+var DEFAULT_POOL_SIZE = 10;
+var DEFAULT_POOLER = oneArgumentPooler;
+
+/**
+ * Augments `CopyConstructor` to be a poolable class, augmenting only the class
+ * itself (statically) not adding any prototypical fields. Any CopyConstructor
+ * you give this may have a `poolSize` property, and will look for a
+ * prototypical `destructor` on instances.
+ *
+ * @param {Function} CopyConstructor Constructor that can be used to reset.
+ * @param {Function} pooler Customizable pooler.
+ */
+var addPoolingTo = function (CopyConstructor, pooler) {
+  var NewKlass = CopyConstructor;
+  NewKlass.instancePool = [];
+  NewKlass.getPooled = pooler || DEFAULT_POOLER;
+  if (!NewKlass.poolSize) {
+    NewKlass.poolSize = DEFAULT_POOL_SIZE;
+  }
+  NewKlass.release = standardReleaser;
+  return NewKlass;
+};
+
+var PooledClass = {
+  addPoolingTo: addPoolingTo,
+  oneArgumentPooler: oneArgumentPooler,
+  twoArgumentPooler: twoArgumentPooler,
+  threeArgumentPooler: threeArgumentPooler,
+  fourArgumentPooler: fourArgumentPooler,
+  fiveArgumentPooler: fiveArgumentPooler
+};
+
+module.exports = PooledClass;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 26 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+/**
+ * Allows extraction of a minified key. Let's the build system minify keys
+ * without losing the ability to dynamically use key strings as values
+ * themselves. Pass in an object with a single key/val pair and it will return
+ * you the string key of that single record. Suppose you want to grab the
+ * value for a key 'className' inside of an object. Key/val minification may
+ * have aliased that key to be 'xa12'. keyOf({className: null}) will return
+ * 'xa12' in that case. Resolve keys you want to use once at startup time, then
+ * reuse those resolutions.
+ */
+var keyOf = function keyOf(oneKeyObj) {
+  var key;
+  for (key in oneKeyObj) {
+    if (!oneKeyObj.hasOwnProperty(key)) {
+      continue;
+    }
+    return key;
+  }
+  return null;
+};
+
+module.exports = keyOf;
+
+/***/ }),
+/* 27 */
+/***/ (function(module, exports) {
+
+/**
+ * This is the ParseError class, which is the main error thrown by KaTeX
+ * functions when something has gone wrong. This is used to distinguish internal
+ * errors from errors in the expression that the user provided.
+ *
+ * If possible, a caller should provide a Token or ParseNode with information
+ * about where in the source string the problem occurred.
+ *
+ * @param {string} message  The error message
+ * @param {(Token|ParseNode)=} token  An object providing position information
+ */
+function ParseError(message, token) {
+    var error = "KaTeX parse error: " + message;
+    var start;
+    var end;
+
+    if (token && token.lexer && token.start <= token.end) {
+        // If we have the input and a position, make the error a bit fancier
+
+        // Get the input
+        var input = token.lexer.input;
+
+        // Prepend some information
+        start = token.start;
+        end = token.end;
+        if (start === input.length) {
+            error += " at end of input: ";
+        } else {
+            error += " at position " + (start + 1) + ": ";
+        }
+
+        // Underline token in question using combining underscores
+        var underlined = input.slice(start, end).replace(/[^]/g, "$&\u0332");
+
+        // Extract some context from the input and add it to the error
+        var left;
+        if (start > 15) {
+            left = "…" + input.slice(start - 15, start);
+        } else {
+            left = input.slice(0, start);
+        }
+        var right;
+        if (end + 15 < input.length) {
+            right = input.slice(end, end + 15) + "…";
+        } else {
+            right = input.slice(end);
+        }
+        error += left + underlined + right;
+    }
+
+    // Some hackery to make ParseError a prototype of Error
+    // See http://stackoverflow.com/a/8460753
+    var self = new Error(error);
+    self.name = "ParseError";
+    self.__proto__ = ParseError.prototype;
+
+    self.position = start;
+    return self;
+}
+
+// More hackery
+ParseError.prototype.__proto__ = Error.prototype;
+
+module.exports = ParseError;
+
+
+/***/ }),
+/* 28 */
+/***/ (function(module, exports) {
+
+/**
+ * This is the ParseError class, which is the main error thrown by KaTeX
+ * functions when something has gone wrong. This is used to distinguish internal
+ * errors from errors in the expression that the user provided.
+ *
+ * If possible, a caller should provide a Token or ParseNode with information
+ * about where in the source string the problem occurred.
+ *
+ * @param {string} message  The error message
+ * @param {(Token|ParseNode)=} token  An object providing position information
+ */
+function ParseError(message, token) {
+    var error = "KaTeX parse error: " + message;
+    var start;
+    var end;
+
+    if (token && token.lexer && token.start <= token.end) {
+        // If we have the input and a position, make the error a bit fancier
+
+        // Get the input
+        var input = token.lexer.input;
+
+        // Prepend some information
+        start = token.start;
+        end = token.end;
+        if (start === input.length) {
+            error += " at end of input: ";
+        } else {
+            error += " at position " + (start + 1) + ": ";
+        }
+
+        // Underline token in question using combining underscores
+        var underlined = input.slice(start, end).replace(/[^]/g, "$&\u0332");
+
+        // Extract some context from the input and add it to the error
+        var left;
+        if (start > 15) {
+            left = "…" + input.slice(start - 15, start);
+        } else {
+            left = input.slice(0, start);
+        }
+        var right;
+        if (end + 15 < input.length) {
+            right = input.slice(end, end + 15) + "…";
+        } else {
+            right = input.slice(end);
+        }
+        error += left + underlined + right;
+    }
+
+    // Some hackery to make ParseError a prototype of Error
+    // See http://stackoverflow.com/a/8460753
+    var self = new Error(error);
+    self.name = "ParseError";
+    self.__proto__ = ParseError.prototype;
+
+    self.position = start;
+    return self;
+}
+
+// More hackery
+ParseError.prototype.__proto__ = Error.prototype;
+
+module.exports = ParseError;
+
+
+/***/ }),
+/* 29 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * @providesModule DOMProperty
+ */
+
+
+
+var _prodInvariant = __webpack_require__(4);
+
+var invariant = __webpack_require__(2);
+
+function checkMask(value, bitmask) {
+  return (value & bitmask) === bitmask;
+}
+
+var DOMPropertyInjection = {
+  /**
+   * Mapping from normalized, camelcased property names to a configuration that
+   * specifies how the associated DOM property should be accessed or rendered.
+   */
+  MUST_USE_PROPERTY: 0x1,
+  HAS_BOOLEAN_VALUE: 0x4,
+  HAS_NUMERIC_VALUE: 0x8,
+  HAS_POSITIVE_NUMERIC_VALUE: 0x10 | 0x8,
+  HAS_OVERLOADED_BOOLEAN_VALUE: 0x20,
+
+  /**
+   * Inject some specialized knowledge about the DOM. This takes a config object
+   * with the following properties:
+   *
+   * isCustomAttribute: function that given an attribute name will return true
+   * if it can be inserted into the DOM verbatim. Useful for data-* or aria-*
+   * attributes where it's impossible to enumerate all of the possible
+   * attribute names,
+   *
+   * Properties: object mapping DOM property name to one of the
+   * DOMPropertyInjection constants or null. If your attribute isn't in here,
+   * it won't get written to the DOM.
+   *
+   * DOMAttributeNames: object mapping React attribute name to the DOM
+   * attribute name. Attribute names not specified use the **lowercase**
+   * normalized name.
+   *
+   * DOMAttributeNamespaces: object mapping React attribute name to the DOM
+   * attribute namespace URL. (Attribute names not specified use no namespace.)
+   *
+   * DOMPropertyNames: similar to DOMAttributeNames but for DOM properties.
+   * Property names not specified use the normalized name.
+   *
+   * DOMMutationMethods: Properties that require special mutation methods. If
+   * `value` is undefined, the mutation method should unset the property.
+   *
+   * @param {object} domPropertyConfig the config as described above.
+   */
+  injectDOMPropertyConfig: function (domPropertyConfig) {
+    var Injection = DOMPropertyInjection;
+    var Properties = domPropertyConfig.Properties || {};
+    var DOMAttributeNamespaces = domPropertyConfig.DOMAttributeNamespaces || {};
+    var DOMAttributeNames = domPropertyConfig.DOMAttributeNames || {};
+    var DOMPropertyNames = domPropertyConfig.DOMPropertyNames || {};
+    var DOMMutationMethods = domPropertyConfig.DOMMutationMethods || {};
+
+    if (domPropertyConfig.isCustomAttribute) {
+      DOMProperty._isCustomAttributeFunctions.push(domPropertyConfig.isCustomAttribute);
+    }
+
+    for (var propName in Properties) {
+      !!DOMProperty.properties.hasOwnProperty(propName) ? process.env.NODE_ENV !== 'production' ? invariant(false, 'injectDOMPropertyConfig(...): You\'re trying to inject DOM property \'%s\' which has already been injected. You may be accidentally injecting the same DOM property config twice, or you may be injecting two configs that have conflicting property names.', propName) : _prodInvariant('48', propName) : void 0;
+
+      var lowerCased = propName.toLowerCase();
+      var propConfig = Properties[propName];
+
+      var propertyInfo = {
+        attributeName: lowerCased,
+        attributeNamespace: null,
+        propertyName: propName,
+        mutationMethod: null,
+
+        mustUseProperty: checkMask(propConfig, Injection.MUST_USE_PROPERTY),
+        hasBooleanValue: checkMask(propConfig, Injection.HAS_BOOLEAN_VALUE),
+        hasNumericValue: checkMask(propConfig, Injection.HAS_NUMERIC_VALUE),
+        hasPositiveNumericValue: checkMask(propConfig, Injection.HAS_POSITIVE_NUMERIC_VALUE),
+        hasOverloadedBooleanValue: checkMask(propConfig, Injection.HAS_OVERLOADED_BOOLEAN_VALUE)
+      };
+      !(propertyInfo.hasBooleanValue + propertyInfo.hasNumericValue + propertyInfo.hasOverloadedBooleanValue <= 1) ? process.env.NODE_ENV !== 'production' ? invariant(false, 'DOMProperty: Value can be one of boolean, overloaded boolean, or numeric value, but not a combination: %s', propName) : _prodInvariant('50', propName) : void 0;
+
+      if (process.env.NODE_ENV !== 'production') {
+        DOMProperty.getPossibleStandardName[lowerCased] = propName;
+      }
+
+      if (DOMAttributeNames.hasOwnProperty(propName)) {
+        var attributeName = DOMAttributeNames[propName];
+        propertyInfo.attributeName = attributeName;
+        if (process.env.NODE_ENV !== 'production') {
+          DOMProperty.getPossibleStandardName[attributeName] = propName;
+        }
+      }
+
+      if (DOMAttributeNamespaces.hasOwnProperty(propName)) {
+        propertyInfo.attributeNamespace = DOMAttributeNamespaces[propName];
+      }
+
+      if (DOMPropertyNames.hasOwnProperty(propName)) {
+        propertyInfo.propertyName = DOMPropertyNames[propName];
+      }
+
+      if (DOMMutationMethods.hasOwnProperty(propName)) {
+        propertyInfo.mutationMethod = DOMMutationMethods[propName];
+      }
+
+      DOMProperty.properties[propName] = propertyInfo;
+    }
+  }
+};
+
+/* eslint-disable max-len */
+var ATTRIBUTE_NAME_START_CHAR = ':A-Z_a-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD';
+/* eslint-enable max-len */
+
+/**
+ * DOMProperty exports lookup objects that can be used like functions:
+ *
+ *   > DOMProperty.isValid['id']
+ *   true
+ *   > DOMProperty.isValid['foobar']
+ *   undefined
+ *
+ * Although this may be confusing, it performs better in general.
+ *
+ * @see http://jsperf.com/key-exists
+ * @see http://jsperf.com/key-missing
+ */
+var DOMProperty = {
+
+  ID_ATTRIBUTE_NAME: 'data-reactid',
+  ROOT_ATTRIBUTE_NAME: 'data-reactroot',
+
+  ATTRIBUTE_NAME_START_CHAR: ATTRIBUTE_NAME_START_CHAR,
+  ATTRIBUTE_NAME_CHAR: ATTRIBUTE_NAME_START_CHAR + '\\-.0-9\\u00B7\\u0300-\\u036F\\u203F-\\u2040',
+
+  /**
+   * Map from property "standard name" to an object with info about how to set
+   * the property in the DOM. Each object contains:
+   *
+   * attributeName:
+   *   Used when rendering markup or with `*Attribute()`.
+   * attributeNamespace
+   * propertyName:
+   *   Used on DOM node instances. (This includes properties that mutate due to
+   *   external factors.)
+   * mutationMethod:
+   *   If non-null, used instead of the property or `setAttribute()` after
+   *   initial render.
+   * mustUseProperty:
+   *   Whether the property must be accessed and mutated as an object property.
+   * hasBooleanValue:
+   *   Whether the property should be removed when set to a falsey value.
+   * hasNumericValue:
+   *   Whether the property must be numeric or parse as a numeric and should be
+   *   removed when set to a falsey value.
+   * hasPositiveNumericValue:
+   *   Whether the property must be positive numeric or parse as a positive
+   *   numeric and should be removed when set to a falsey value.
+   * hasOverloadedBooleanValue:
+   *   Whether the property can be used as a flag as well as with a value.
+   *   Removed when strictly equal to false; present without a value when
+   *   strictly equal to true; present with a value otherwise.
+   */
+  properties: {},
+
+  /**
+   * Mapping from lowercase property names to the properly cased version, used
+   * to warn in the case of missing properties. Available only in __DEV__.
+   * @type {Object}
+   */
+  getPossibleStandardName: process.env.NODE_ENV !== 'production' ? {} : null,
+
+  /**
+   * All of the isCustomAttribute() functions that have been injected.
+   */
+  _isCustomAttributeFunctions: [],
+
+  /**
+   * Checks whether a property name is a custom attribute.
+   * @method
+   */
+  isCustomAttribute: function (attributeName) {
+    for (var i = 0; i < DOMProperty._isCustomAttributeFunctions.length; i++) {
+      var isCustomAttributeFn = DOMProperty._isCustomAttributeFunctions[i];
+      if (isCustomAttributeFn(attributeName)) {
+        return true;
+      }
+    }
+    return false;
+  },
+
+  injection: DOMPropertyInjection
+};
+
+module.exports = DOMProperty;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 30 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__BrowserRouter__ = __webpack_require__(246);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "BrowserRouter", function() { return __WEBPACK_IMPORTED_MODULE_0__BrowserRouter__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__HashRouter__ = __webpack_require__(251);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "HashRouter", function() { return __WEBPACK_IMPORTED_MODULE_1__HashRouter__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Link__ = __webpack_require__(144);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Link", function() { return __WEBPACK_IMPORTED_MODULE_2__Link__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__MemoryRouter__ = __webpack_require__(253);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "MemoryRouter", function() { return __WEBPACK_IMPORTED_MODULE_3__MemoryRouter__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__NavLink__ = __webpack_require__(256);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "NavLink", function() { return __WEBPACK_IMPORTED_MODULE_4__NavLink__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Prompt__ = __webpack_require__(259);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Prompt", function() { return __WEBPACK_IMPORTED_MODULE_5__Prompt__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Redirect__ = __webpack_require__(261);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Redirect", function() { return __WEBPACK_IMPORTED_MODULE_6__Redirect__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Route__ = __webpack_require__(145);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Route", function() { return __WEBPACK_IMPORTED_MODULE_7__Route__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Router__ = __webpack_require__(88);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Router", function() { return __WEBPACK_IMPORTED_MODULE_8__Router__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__StaticRouter__ = __webpack_require__(267);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "StaticRouter", function() { return __WEBPACK_IMPORTED_MODULE_9__StaticRouter__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__Switch__ = __webpack_require__(269);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Switch", function() { return __WEBPACK_IMPORTED_MODULE_10__Switch__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__matchPath__ = __webpack_require__(271);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "matchPath", function() { return __WEBPACK_IMPORTED_MODULE_11__matchPath__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__withRouter__ = __webpack_require__(272);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "withRouter", function() { return __WEBPACK_IMPORTED_MODULE_12__withRouter__["a"]; });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /***/ }),
 /* 31 */
@@ -9616,7 +9616,7 @@ defineSymbol(text, main, textord, "\u201d", "”");
 var domTree = __webpack_require__(160);
 var fontMetrics = __webpack_require__(48);
 var symbols = __webpack_require__(61);
-var utils = __webpack_require__(21);
+var utils = __webpack_require__(24);
 
 var greekCapitals = [
     "\\Gamma",
@@ -13683,11 +13683,11 @@ var _blogPage2 = _interopRequireDefault(_blogPage);
 
 var _reactKatex = __webpack_require__(44);
 
-var _reactSyntaxHighlighter = __webpack_require__(28);
+var _reactSyntaxHighlighter = __webpack_require__(21);
 
 var _reactSyntaxHighlighter2 = _interopRequireDefault(_reactSyntaxHighlighter);
 
-var _hljs = __webpack_require__(29);
+var _hljs = __webpack_require__(22);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -14011,7 +14011,7 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(27);
+var _reactRouterDom = __webpack_require__(30);
 
 var _mathIntro = __webpack_require__(580);
 
@@ -14213,7 +14213,7 @@ var _propTypes = __webpack_require__(8);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactRouterDom = __webpack_require__(27);
+var _reactRouterDom = __webpack_require__(30);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -14497,11 +14497,11 @@ var _blogPage = __webpack_require__(34);
 
 var _blogPage2 = _interopRequireDefault(_blogPage);
 
-var _reactSyntaxHighlighter = __webpack_require__(28);
+var _reactSyntaxHighlighter = __webpack_require__(21);
 
 var _reactSyntaxHighlighter2 = _interopRequireDefault(_reactSyntaxHighlighter);
 
-var _hljs = __webpack_require__(29);
+var _hljs = __webpack_require__(22);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -14674,17 +14674,17 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactSyntaxHighlighter = __webpack_require__(28);
+var _reactSyntaxHighlighter = __webpack_require__(21);
 
 var _reactSyntaxHighlighter2 = _interopRequireDefault(_reactSyntaxHighlighter);
 
-var _hljs = __webpack_require__(29);
+var _hljs = __webpack_require__(22);
 
 var _blogPage = __webpack_require__(34);
 
 var _blogPage2 = _interopRequireDefault(_blogPage);
 
-var _reactRouterDom = __webpack_require__(27);
+var _reactRouterDom = __webpack_require__(30);
 
 var _reactRouterHashLink = __webpack_require__(105);
 
@@ -14699,6 +14699,14 @@ var _cassandra2 = _interopRequireDefault(_cassandra);
 var _kafka = __webpack_require__(605);
 
 var _kafka2 = _interopRequireDefault(_kafka);
+
+var _concurrency = __webpack_require__(606);
+
+var _concurrency2 = _interopRequireDefault(_concurrency);
+
+var _dataStructures = __webpack_require__(607);
+
+var _dataStructures2 = _interopRequireDefault(_dataStructures);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -14740,6 +14748,24 @@ var ClojurePage = function ClojurePage(_ref) {
 						{ to: match.url + '/KafkaClojure#text-body' },
 						'Kafka'
 					)
+				),
+				_react2.default.createElement(
+					'li',
+					{ className: 'teal' },
+					_react2.default.createElement(
+						_reactRouterHashLink.HashLink,
+						{ to: match.url + '/ConcurrencyClojure#text-body' },
+						'Concurrency'
+					)
+				),
+				_react2.default.createElement(
+					'li',
+					{ className: 'yellow' },
+					_react2.default.createElement(
+						_reactRouterHashLink.HashLink,
+						{ to: match.url + '/DataStructuresClojure#text-body' },
+						'Data Structures'
+					)
 				)
 			)
 		),
@@ -14749,7 +14775,9 @@ var ClojurePage = function ClojurePage(_ref) {
 			null,
 			_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '' + match.url, component: _eggplant2.default }),
 			_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: match.url + '/CassandraClojure', component: _cassandra2.default }),
-			_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: match.url + '/KafkaClojure', component: _kafka2.default })
+			_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: match.url + '/KafkaClojure', component: _kafka2.default }),
+			_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: match.url + '/ConcurrencyClojure', component: _concurrency2.default }),
+			_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: match.url + '/DataStructuresClojure', component: _dataStructures2.default })
 		)
 	});
 };
@@ -14774,7 +14802,7 @@ exports.default = ClojurePage;
 
 
 
-var PooledClass = __webpack_require__(22);
+var PooledClass = __webpack_require__(25);
 var ReactElement = __webpack_require__(12);
 
 var emptyFunction = __webpack_require__(10);
@@ -14983,7 +15011,7 @@ var ReactNoopUpdateQueue = __webpack_require__(67);
 var emptyObject = __webpack_require__(35);
 var invariant = __webpack_require__(2);
 var keyMirror = __webpack_require__(50);
-var keyOf = __webpack_require__(23);
+var keyOf = __webpack_require__(26);
 var warning = __webpack_require__(3);
 
 var MIXINS_KEY = keyOf({ mixins: null });
@@ -16675,7 +16703,7 @@ module.exports = getTextContentAccessor;
 var _prodInvariant = __webpack_require__(4),
     _assign = __webpack_require__(5);
 
-var PooledClass = __webpack_require__(22);
+var PooledClass = __webpack_require__(25);
 
 var invariant = __webpack_require__(2);
 
@@ -17179,7 +17207,7 @@ module.exports = CSSProperty;
 
 
 
-var DOMProperty = __webpack_require__(26);
+var DOMProperty = __webpack_require__(29);
 var ReactDOMComponentTree = __webpack_require__(6);
 var ReactInstrumentation = __webpack_require__(11);
 
@@ -18163,7 +18191,7 @@ module.exports = getActiveElement;
 var _prodInvariant = __webpack_require__(4);
 
 var DOMLazyTree = __webpack_require__(32);
-var DOMProperty = __webpack_require__(26);
+var DOMProperty = __webpack_require__(29);
 var ReactBrowserEventEmitter = __webpack_require__(55);
 var ReactCurrentOwner = __webpack_require__(17);
 var ReactDOMComponentTree = __webpack_require__(6);
@@ -18736,7 +18764,7 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(27);
+var _reactRouterDom = __webpack_require__(30);
 
 var _home = __webpack_require__(148);
 
@@ -18766,7 +18794,7 @@ var _clojure = __webpack_require__(109);
 
 var _clojure2 = _interopRequireDefault(_clojure);
 
-var _reactBurgerMenu = __webpack_require__(608);
+var _reactBurgerMenu = __webpack_require__(610);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -19423,7 +19451,7 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(27);
+var _reactRouterDom = __webpack_require__(30);
 
 var _sideBar = __webpack_require__(140);
 
@@ -19461,7 +19489,7 @@ var _clojure = __webpack_require__(109);
 
 var _clojure2 = _interopRequireDefault(_clojure);
 
-__webpack_require__(606);
+__webpack_require__(608);
 
 var _reactRouterHashLink = __webpack_require__(105);
 
@@ -20411,7 +20439,7 @@ module.exports = Settings;
  * Similar functions for working with MathML nodes exist in mathMLTree.js.
  */
 var unicodeRegexes = __webpack_require__(103);
-var utils = __webpack_require__(21);
+var utils = __webpack_require__(24);
 
 /**
  * Create an HTML className based on a list of classes. In addition to joining
@@ -20753,7 +20781,7 @@ Object.defineProperty(exports, '__esModule', {
 exports['default'] = function () {
   var Snap = undefined;
   try {
-    Snap = __webpack_require__(615);
+    Snap = __webpack_require__(617);
   } finally {
     return Snap;
   }
@@ -20780,13 +20808,13 @@ var _sideBar = __webpack_require__(140);
 
 var _sideBar2 = _interopRequireDefault(_sideBar);
 
-var _footer = __webpack_require__(624);
+var _footer = __webpack_require__(626);
 
 var _footer2 = _interopRequireDefault(_footer);
 
-__webpack_require__(627);
+__webpack_require__(629);
 
-var _blogContent = __webpack_require__(628);
+var _blogContent = __webpack_require__(630);
 
 var _blogContent2 = _interopRequireDefault(_blogContent);
 
@@ -21425,7 +21453,7 @@ var FallbackCompositionState = __webpack_require__(170);
 var SyntheticCompositionEvent = __webpack_require__(171);
 var SyntheticInputEvent = __webpack_require__(172);
 
-var keyOf = __webpack_require__(23);
+var keyOf = __webpack_require__(26);
 
 var END_KEYCODES = [9, 13, 27, 32]; // Tab, Return, Esc, Space
 var START_KEYCODE = 229;
@@ -21816,7 +21844,7 @@ module.exports = BeforeInputEventPlugin;
 
 var _assign = __webpack_require__(5);
 
-var PooledClass = __webpack_require__(22);
+var PooledClass = __webpack_require__(25);
 
 var getTextContentAccessor = __webpack_require__(120);
 
@@ -22011,7 +22039,7 @@ var SyntheticEvent = __webpack_require__(19);
 var getEventTarget = __webpack_require__(72);
 var isEventSupported = __webpack_require__(73);
 var isTextInputElement = __webpack_require__(123);
-var keyOf = __webpack_require__(23);
+var keyOf = __webpack_require__(26);
 
 var topLevelTypes = EventConstants.topLevelTypes;
 
@@ -23036,7 +23064,7 @@ module.exports = performance || {};
 
 
 
-var keyOf = __webpack_require__(23);
+var keyOf = __webpack_require__(26);
 
 /**
  * Module that is injectable into `EventPluginHub`, that specifies a
@@ -23074,7 +23102,7 @@ var EventPropagators = __webpack_require__(36);
 var ReactDOMComponentTree = __webpack_require__(6);
 var SyntheticMouseEvent = __webpack_require__(52);
 
-var keyOf = __webpack_require__(23);
+var keyOf = __webpack_require__(26);
 
 var topLevelTypes = EventConstants.topLevelTypes;
 
@@ -23180,7 +23208,7 @@ module.exports = EnterLeaveEventPlugin;
 
 
 
-var DOMProperty = __webpack_require__(26);
+var DOMProperty = __webpack_require__(29);
 
 var MUST_USE_PROPERTY = DOMProperty.injection.MUST_USE_PROPERTY;
 var HAS_BOOLEAN_VALUE = DOMProperty.injection.HAS_BOOLEAN_VALUE;
@@ -23856,7 +23884,7 @@ var AutoFocusUtils = __webpack_require__(192);
 var CSSPropertyOperations = __webpack_require__(193);
 var DOMLazyTree = __webpack_require__(32);
 var DOMNamespaces = __webpack_require__(76);
-var DOMProperty = __webpack_require__(26);
+var DOMProperty = __webpack_require__(29);
 var DOMPropertyOperations = __webpack_require__(129);
 var EventConstants = __webpack_require__(18);
 var EventPluginHub = __webpack_require__(37);
@@ -23877,7 +23905,7 @@ var emptyFunction = __webpack_require__(10);
 var escapeTextContentForBrowser = __webpack_require__(54);
 var invariant = __webpack_require__(2);
 var isEventSupported = __webpack_require__(73);
-var keyOf = __webpack_require__(23);
+var keyOf = __webpack_require__(26);
 var shallowEqual = __webpack_require__(80);
 var validateDOMNesting = __webpack_require__(83);
 var warning = __webpack_require__(3);
@@ -27768,7 +27796,7 @@ module.exports = flattenChildren;
 
 var _assign = __webpack_require__(5);
 
-var PooledClass = __webpack_require__(22);
+var PooledClass = __webpack_require__(25);
 var Transaction = __webpack_require__(38);
 var ReactInstrumentation = __webpack_require__(11);
 var ReactServerUpdateQueue = __webpack_require__(212);
@@ -28469,7 +28497,7 @@ var _assign = __webpack_require__(5);
 
 var EventListener = __webpack_require__(135);
 var ExecutionEnvironment = __webpack_require__(7);
-var PooledClass = __webpack_require__(22);
+var PooledClass = __webpack_require__(25);
 var ReactDOMComponentTree = __webpack_require__(6);
 var ReactUpdates = __webpack_require__(15);
 
@@ -28670,7 +28698,7 @@ module.exports = getUnboundedScrollPosition;
 
 
 
-var DOMProperty = __webpack_require__(26);
+var DOMProperty = __webpack_require__(29);
 var EventPluginHub = __webpack_require__(37);
 var EventPluginUtils = __webpack_require__(70);
 var ReactComponentEnvironment = __webpack_require__(79);
@@ -28715,7 +28743,7 @@ module.exports = ReactInjection;
 var _assign = __webpack_require__(5);
 
 var CallbackQueue = __webpack_require__(121);
-var PooledClass = __webpack_require__(22);
+var PooledClass = __webpack_require__(25);
 var ReactBrowserEventEmitter = __webpack_require__(55);
 var ReactInputSelection = __webpack_require__(136);
 var ReactInstrumentation = __webpack_require__(11);
@@ -29611,7 +29639,7 @@ var SyntheticEvent = __webpack_require__(19);
 
 var getActiveElement = __webpack_require__(137);
 var isTextInputElement = __webpack_require__(123);
-var keyOf = __webpack_require__(23);
+var keyOf = __webpack_require__(26);
 var shallowEqual = __webpack_require__(80);
 
 var topLevelTypes = EventConstants.topLevelTypes;
@@ -29825,7 +29853,7 @@ var SyntheticWheelEvent = __webpack_require__(237);
 var emptyFunction = __webpack_require__(10);
 var getEventCharCode = __webpack_require__(84);
 var invariant = __webpack_require__(2);
-var keyOf = __webpack_require__(23);
+var keyOf = __webpack_require__(26);
 
 var topLevelTypes = EventConstants.topLevelTypes;
 
@@ -31232,7 +31260,7 @@ module.exports = ReactMount.renderSubtreeIntoContainer;
 
 
 
-var DOMProperty = __webpack_require__(26);
+var DOMProperty = __webpack_require__(29);
 var EventPluginRegistry = __webpack_require__(51);
 var ReactComponentTreeHook = __webpack_require__(13);
 
@@ -35290,7 +35318,7 @@ exports.default = HomeTemplate;
  * errors in the expression, or errors in javascript handling.
  */
 
-var ParseError = __webpack_require__(24);
+var ParseError = __webpack_require__(27);
 var Settings = __webpack_require__(149);
 
 var buildTree = __webpack_require__(280);
@@ -35415,7 +35443,7 @@ module.exports = buildTree;
  * called, to produce a final HTML tree.
  */
 
-var ParseError = __webpack_require__(24);
+var ParseError = __webpack_require__(27);
 var Style = __webpack_require__(45);
 
 var buildCommon = __webpack_require__(58);
@@ -38762,7 +38790,7 @@ module.exports = {
  * used in `\left` and `\right`.
  */
 
-var ParseError = __webpack_require__(24);
+var ParseError = __webpack_require__(27);
 var Style = __webpack_require__(45);
 
 var buildCommon = __webpack_require__(58);
@@ -39305,7 +39333,7 @@ module.exports = {
 var buildCommon = __webpack_require__(58);
 var fontMetrics = __webpack_require__(46);
 var mathMLTree = __webpack_require__(285);
-var ParseError = __webpack_require__(24);
+var ParseError = __webpack_require__(27);
 var symbols = __webpack_require__(59);
 var utils = __webpack_require__(20);
 
@@ -40221,7 +40249,7 @@ var utils = __webpack_require__(20);
 var cjkRegex = __webpack_require__(95).cjkRegex;
 
 var parseData = __webpack_require__(96);
-var ParseError = __webpack_require__(24);
+var ParseError = __webpack_require__(27);
 
 /**
  * This file contains the parser used to parse out a TeX expression from the
@@ -41068,7 +41096,7 @@ module.exports = Parser;
 /***/ (function(module, exports, __webpack_require__) {
 
 var utils = __webpack_require__(20);
-var ParseError = __webpack_require__(24);
+var ParseError = __webpack_require__(27);
 var parseData = __webpack_require__(96);
 var ParseNode = parseData.ParseNode;
 
@@ -41768,7 +41796,7 @@ defineFunction(["\\begin", "\\end"], {
 
 /* eslint no-constant-condition:0 */
 var parseData = __webpack_require__(96);
-var ParseError = __webpack_require__(24);
+var ParseError = __webpack_require__(27);
 var Style = __webpack_require__(45);
 
 var ParseNode = parseData.ParseNode;
@@ -42086,7 +42114,7 @@ module.exports = MacroExpander;
 
 var matchAt = __webpack_require__(151);
 
-var ParseError = __webpack_require__(24);
+var ParseError = __webpack_require__(27);
 
 // The main lexer class
 function Lexer(input) {
@@ -69996,7 +70024,7 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactLatex = __webpack_require__(30);
+var _reactLatex = __webpack_require__(23);
 
 var _reactLatex2 = _interopRequireDefault(_reactLatex);
 
@@ -70460,12 +70488,12 @@ module.exports = function(module) {
  * errors in the expression, or errors in javascript handling.
  */
 
-var ParseError = __webpack_require__(25);
+var ParseError = __webpack_require__(28);
 var Settings = __webpack_require__(159);
 
 var buildTree = __webpack_require__(584);
 var parseTree = __webpack_require__(591);
-var utils = __webpack_require__(21);
+var utils = __webpack_require__(24);
 
 /**
  * Parse and build an expression, and place that expression in the DOM node
@@ -70585,14 +70613,14 @@ module.exports = buildTree;
  * called, to produce a final HTML tree.
  */
 
-var ParseError = __webpack_require__(25);
+var ParseError = __webpack_require__(28);
 var Style = __webpack_require__(47);
 
 var buildCommon = __webpack_require__(60);
 var delimiter = __webpack_require__(587);
 var domTree = __webpack_require__(160);
 var fontMetrics = __webpack_require__(48);
-var utils = __webpack_require__(21);
+var utils = __webpack_require__(24);
 
 var makeSpan = buildCommon.makeSpan;
 
@@ -73932,13 +73960,13 @@ module.exports = {
  * used in `\left` and `\right`.
  */
 
-var ParseError = __webpack_require__(25);
+var ParseError = __webpack_require__(28);
 var Style = __webpack_require__(47);
 
 var buildCommon = __webpack_require__(60);
 var fontMetrics = __webpack_require__(48);
 var symbols = __webpack_require__(61);
-var utils = __webpack_require__(21);
+var utils = __webpack_require__(24);
 
 var makeSpan = buildCommon.makeSpan;
 
@@ -74475,9 +74503,9 @@ module.exports = {
 var buildCommon = __webpack_require__(60);
 var fontMetrics = __webpack_require__(48);
 var mathMLTree = __webpack_require__(589);
-var ParseError = __webpack_require__(25);
+var ParseError = __webpack_require__(28);
 var symbols = __webpack_require__(61);
-var utils = __webpack_require__(21);
+var utils = __webpack_require__(24);
 
 var makeSpan = buildCommon.makeSpan;
 var fontMap = buildCommon.fontMap;
@@ -75063,7 +75091,7 @@ module.exports = buildMathML;
  * domTree.js, creating namespaced DOM nodes and HTML text markup respectively.
  */
 
-var utils = __webpack_require__(21);
+var utils = __webpack_require__(24);
 
 /**
  * This node represents a general purpose MathML node of any type. The
@@ -75387,11 +75415,11 @@ var functions = __webpack_require__(593);
 var environments = __webpack_require__(594);
 var MacroExpander = __webpack_require__(595);
 var symbols = __webpack_require__(61);
-var utils = __webpack_require__(21);
+var utils = __webpack_require__(24);
 var cjkRegex = __webpack_require__(103).cjkRegex;
 
 var parseData = __webpack_require__(104);
-var ParseError = __webpack_require__(25);
+var ParseError = __webpack_require__(28);
 
 /**
  * This file contains the parser used to parse out a TeX expression from the
@@ -76237,8 +76265,8 @@ module.exports = Parser;
 /* 593 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var utils = __webpack_require__(21);
-var ParseError = __webpack_require__(25);
+var utils = __webpack_require__(24);
+var ParseError = __webpack_require__(28);
 var parseData = __webpack_require__(104);
 var ParseNode = parseData.ParseNode;
 
@@ -76938,7 +76966,7 @@ defineFunction(["\\begin", "\\end"], {
 
 /* eslint no-constant-condition:0 */
 var parseData = __webpack_require__(104);
-var ParseError = __webpack_require__(25);
+var ParseError = __webpack_require__(28);
 var Style = __webpack_require__(47);
 
 var ParseNode = parseData.ParseNode;
@@ -77256,7 +77284,7 @@ module.exports = MacroExpander;
 
 var matchAt = __webpack_require__(151);
 
-var ParseError = __webpack_require__(25);
+var ParseError = __webpack_require__(28);
 
 // The main lexer class
 function Lexer(input) {
@@ -77367,15 +77395,15 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactLatex = __webpack_require__(30);
+var _reactLatex = __webpack_require__(23);
 
 var _reactLatex2 = _interopRequireDefault(_reactLatex);
 
-var _reactSyntaxHighlighter = __webpack_require__(28);
+var _reactSyntaxHighlighter = __webpack_require__(21);
 
 var _reactSyntaxHighlighter2 = _interopRequireDefault(_reactSyntaxHighlighter);
 
-var _hljs = __webpack_require__(29);
+var _hljs = __webpack_require__(22);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -77819,7 +77847,7 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactLatex = __webpack_require__(30);
+var _reactLatex = __webpack_require__(23);
 
 var _reactLatex2 = _interopRequireDefault(_reactLatex);
 
@@ -78236,7 +78264,7 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactLatex = __webpack_require__(30);
+var _reactLatex = __webpack_require__(23);
 
 var _reactLatex2 = _interopRequireDefault(_reactLatex);
 
@@ -78610,15 +78638,15 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactLatex = __webpack_require__(30);
+var _reactLatex = __webpack_require__(23);
 
 var _reactLatex2 = _interopRequireDefault(_reactLatex);
 
-var _reactSyntaxHighlighter = __webpack_require__(28);
+var _reactSyntaxHighlighter = __webpack_require__(21);
 
 var _reactSyntaxHighlighter2 = _interopRequireDefault(_reactSyntaxHighlighter);
 
-var _hljs = __webpack_require__(29);
+var _hljs = __webpack_require__(22);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -78738,15 +78766,15 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactLatex = __webpack_require__(30);
+var _reactLatex = __webpack_require__(23);
 
 var _reactLatex2 = _interopRequireDefault(_reactLatex);
 
-var _reactSyntaxHighlighter = __webpack_require__(28);
+var _reactSyntaxHighlighter = __webpack_require__(21);
 
 var _reactSyntaxHighlighter2 = _interopRequireDefault(_reactSyntaxHighlighter);
 
-var _hljs = __webpack_require__(29);
+var _hljs = __webpack_require__(22);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -78873,15 +78901,15 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactLatex = __webpack_require__(30);
+var _reactLatex = __webpack_require__(23);
 
 var _reactLatex2 = _interopRequireDefault(_reactLatex);
 
-var _reactSyntaxHighlighter = __webpack_require__(28);
+var _reactSyntaxHighlighter = __webpack_require__(21);
 
 var _reactSyntaxHighlighter2 = _interopRequireDefault(_reactSyntaxHighlighter);
 
-var _hljs = __webpack_require__(29);
+var _hljs = __webpack_require__(22);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -78931,10 +78959,468 @@ exports.default = KafkaClojure;
 /* 606 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactLatex = __webpack_require__(23);
+
+var _reactLatex2 = _interopRequireDefault(_reactLatex);
+
+var _reactSyntaxHighlighter = __webpack_require__(21);
+
+var _reactSyntaxHighlighter2 = _interopRequireDefault(_reactSyntaxHighlighter);
+
+var _hljs = __webpack_require__(22);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var ConcurrencyClojure = function ConcurrencyClojure() {
+	return _react2.default.createElement(
+		'div',
+		null,
+		_react2.default.createElement(
+			'h2',
+			null,
+			'Concurrency Clojure vs Java'
+		),
+		_react2.default.createElement(
+			'h3',
+			null,
+			'Introduction'
+		),
+		_react2.default.createElement(
+			'p',
+			null,
+			'Concurrency enables the parallel execution of concurrent units. The benefits of being able to run operations in parallel is the performance improvements when used with multi core processing architecture. Java uses a threading model for this. However this major benefit does come with some problems due to the complexities of working with concurrent units of executions and ensuring the output remains the same as if the program would run sequentially. The complexity increases when using mutable data as different threads can read and write to the data and you can have dirty reads of the data. '
+		),
+		_react2.default.createElement(
+			'h3',
+			null,
+			'Risks of Threads'
+		),
+		_react2.default.createElement(
+			'h4',
+			null,
+			'Safety Hazards'
+		),
+		_react2.default.createElement(
+			'p',
+			null,
+			'Thread safety is key because without it code can run with subtle differences in the ordering of operations. For example mutable data that is not protected and modified for example incrementing a field counter with a method can result in the same result being returned for two different threads as they can execute the code in parallel read the current value before the other has updated incremement and then return the same value. This type of issue is referred to as a race condition. '
+		),
+		_react2.default.createElement(
+			'h4',
+			null,
+			'Liveness Hazards'
+		),
+		_react2.default.createElement(
+			'p',
+			null,
+			'A liveness failure is one where the process will get into a state it cannot get out of. This can happen in single threaded processes if the program enters a infinite loop. The risk of liveness failures increases with multi threaded programs these include ',
+			_react2.default.createElement(
+				'strong',
+				null,
+				'deadlock'
+			),
+			' where Thread A waits for a resource that Thread B holds exclusively andnever releases it Thread A will wait forever unless it has a timeout. Another liveness failure is ',
+			_react2.default.createElement(
+				'strong',
+				null,
+				'starvation'
+			),
+			' where a Thread A cannot access a shared resource regularly because it for example is locked by another greedy Thread B. Finally ',
+			_react2.default.createElement(
+				'strong',
+				null,
+				'livelock'
+			),
+			' can happen when Thread A responds to a Thread B action but Thread B has also responded to Thread A action. For example walking down the corrider person A moves left to walk passed, but person B moves right to walk pass they block each other, then they move the opposite direction again blocking each other and continually do this.'
+		),
+		_react2.default.createElement(
+			'h4',
+			null,
+			'Performance Hazards'
+		),
+		_react2.default.createElement(
+			'p',
+			null,
+			'Multithreaded features have overhead so this balance needs to be weighed up with the potential gains. For example context switching, acquiring locks, synchronized method calls all have overheads and you need to be careful not to actually make your programs performance worse.'
+		),
+		_react2.default.createElement(
+			'h3',
+			null,
+			'Java Fundamentals'
+		),
+		_react2.default.createElement(
+			'h4',
+			null,
+			'Thread Safety'
+		),
+		_react2.default.createElement(
+			'p',
+			null,
+			'In Java there are many instances of objects and within these objects there is mutable data that can be modified concurrently by Threads, this data needs protecting. Thread safety comes into play here and the decision is made simply if a class is going to be accessed by multiple threads. For Java synchronzation is a key method of forming thread safety of a class. This mutable data is one reason why Functional Programming is powerful for concurrent processing because of its focus on immutable data.'
+		),
+		_react2.default.createElement(
+			'p',
+			null,
+			'Locking enables single access to data and parts of code in Java. Reentrant locks are important as they enable a thread that has acquired a lock to acquire the same lock again if required by code, it does this by the JVM keeping a counter for the owner of the lock and increments each time it acquires and decrements each time it exits. If Java locks were not reentrant then it can easily lock itself up for example calling a synchronized method that calls the super synchronized method. For locking to work correctly not only are writes required to be locked but also reads and there can only be a single lock per shared data variable. Synchronizing methods leads to poor performance and inflexibility using locks should be done on the smallest possible concurrent unit to allow thread safety and keep performance as good as possible. Always consider the overhead of acquiring and releasing a lock when breaking down into small concurrent units of work.'
+		),
+		_react2.default.createElement(
+			'p',
+			null,
+			'The ',
+			_react2.default.createElement(
+				'strong',
+				null,
+				'volatile'
+			),
+			' keyword ensures that each read will have the latest write by enforcing the happens before relation as data is not cached. The use of volatile is essential for doubles and longs as they are 64bit operations that happen in two 32bit operations. Volatile is commonly used when a variable is read or written too, but a compound action (involve more than one discrete operation) like increment the variable becomes more complex so using Atomic variables is usually preferable.'
+		),
+		_react2.default.createElement(
+			'p',
+			null,
+			'Sharing objects also needs to be considered for example returning a getter of a Set means the Set is shared but then also all of the Objects held within the Set.'
+		),
+		_react2.default.createElement(
+			'h4',
+			null,
+			'Thread Confinement'
+		),
+		_react2.default.createElement(
+			'p',
+			null,
+			'If you make an Object available and it has shared mutable data then synchronization is required, but instead if data is only accessed from a single thread then you do not, this is thread confinement. An example of this is JDBC Connection objects they are not required to be thread safe as most requests for example a servlet request are run synchronously and the Connection pool will not return the same connection thread until it has fullly processed making it thread safe. '
+		),
+		_react2.default.createElement(
+			'p',
+			null,
+			'Stack confinement is a special case where local variables are only used and they are confined to the Stack. Thread confinement can be achieved formally by using the ThreadLocal class that provides get and set accessors and maintains a copy of the value for each thread.'
+		),
+		_react2.default.createElement(
+			'h4',
+			null,
+			'Immutability'
+		),
+		' ',
+		_react2.default.createElement(
+			'p',
+			null,
+			'If a object is truly immutable it is always thread safe a big winner for functional style programming and Clojure. Defining an object with the final keyword does not make it immutable as the data in the object maybe still mutable. To make immutable objects useful the object reference is mutable so to update the state of an immutable object you have to create a new version of it.'
+		),
+		_react2.default.createElement(
+			'h4',
+			null,
+			'Safe Publication'
+		),
+		_react2.default.createElement(
+			'p',
+			null,
+			'At certain times objects will be required to be shared across threads in these cases we need protective techniques. Creating objects that are shared as a field a common idiom is to use static initalization as the JVM will publish these at class initialization time causing them to be thread safe. For mutable objects to be shared safely they must be safely published and either be thread safe or guarded by a lock.'
+		),
+		_react2.default.createElement(
+			'h4',
+			null,
+			'Designing a Thread Safe Class'
+		),
+		_react2.default.createElement('p', null),
+		_react2.default.createElement(
+			'h3',
+			null,
+			'Clojure Fundamentals'
+		),
+		_react2.default.createElement(
+			'p',
+			null,
+			' '
+		),
+		_react2.default.createElement(
+			'h3',
+			null,
+			'Summary'
+		),
+		_react2.default.createElement('p', null)
+	);
+};
+
+exports.default = ConcurrencyClojure;
+
+/***/ }),
+/* 607 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactLatex = __webpack_require__(23);
+
+var _reactLatex2 = _interopRequireDefault(_reactLatex);
+
+var _reactSyntaxHighlighter = __webpack_require__(21);
+
+var _reactSyntaxHighlighter2 = _interopRequireDefault(_reactSyntaxHighlighter);
+
+var _hljs = __webpack_require__(22);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var DataStructuresClojure = function DataStructuresClojure() {
+	return _react2.default.createElement(
+		'div',
+		null,
+		_react2.default.createElement(
+			'h2',
+			null,
+			'Data Structures'
+		),
+		_react2.default.createElement(
+			'h3',
+			null,
+			'Some Background'
+		),
+		_react2.default.createElement(
+			'p',
+			null,
+			'Clojure data structures are immutable and peristent and are used in abstractions rather than the concrete implementations. Small and widely supported abstractions are one of Clojures main principles. There are seven primary abstractions for Clojure data structures and we will detail these below.'
+		),
+		_react2.default.createElement(
+			'h3',
+			null,
+			'Abstractions'
+		),
+		_react2.default.createElement(
+			'h4',
+			null,
+			'Collection'
+		),
+		_react2.default.createElement(
+			'p',
+			null,
+			'All data structures in Clojure participate in the common collection abstraction. This abstraction has a common set of core functions. Lets have a look at these operations on a Vector.'
+		),
+		_react2.default.createElement(
+			_reactSyntaxHighlighter2.default,
+			{ language: 'clojure', style: _hljs.darcula, showLineNumbers: true, wrapLines: true },
+			'(def my-vector [1 2 3])\n;; => #\'user/my-vector\n(conj my-vector 4)\n;; => [1 2 3 4]\n(seq my-vector)\n;; => (1 2 3)\n(count my-vector)\n;; => 3\n(empty my-vector)\n;; => []\n(= my-vector [1 2 3])\n;; => true\n'
+		),
+		_react2.default.createElement(
+			'p',
+			null,
+			'These standard set of functions are all pretty self explanatory.'
+		),
+		_react2.default.createElement(
+			'h4',
+			null,
+			'Sequence'
+		),
+		_react2.default.createElement(
+			'p',
+			null,
+			'Sequences are an abstraction of a way to obtain and traverse sequential views over some sources of values. They can be produced lazily and can be consumed using first, rest and next. Sequences are not lists they are similar in the fact they can be empty or have a head and tail value, but they are different because they can be lazy so getting the count in the list has a cost associated too it.'
+		),
+		_react2.default.createElement(
+			'h4',
+			null,
+			'Associative'
+		),
+		_react2.default.createElement(
+			'p',
+			null,
+			'The associative abstraction is canonical to the Map data structure. It  defined by four definitions assoc which builds new associates between keys and values within the given collection. dissoc taht drops associations, get that looks up a value for a partcular key and contains? that returns true only if the collection has a value associated with a given key.'
+		),
+		_react2.default.createElement(
+			'h4',
+			null,
+			'Indexed'
+		),
+		_react2.default.createElement(
+			'p',
+			null,
+			'Indexed abstractions allows accessing data in Vectors by the index. It has two ways ',
+			_react2.default.createElement(
+				'strong',
+				null,
+				'nth'
+			),
+			' or ',
+			_react2.default.createElement(
+				'strong',
+				null,
+				'get'
+			),
+			' nth will throw an exception if the index is not found while get will return nil. Lets have a look:'
+		),
+		_react2.default.createElement(
+			_reactSyntaxHighlighter2.default,
+			{ language: 'clojure', style: _hljs.darcula, showLineNumbers: true, wrapLines: true },
+			'(get my-vector 0)\n;; => 1\n (nth my-vector 0)\n;; => 1\n(get my-vector 4)\n;; => nil\n(nth my-vector 4)\nIndexOutOfBoundsException   clojure.lang.PersistentVector.arrayFor (PersistentVector.java:158'
+		),
+		_react2.default.createElement(
+			'h4',
+			null,
+			'Stack'
+		),
+		_react2.default.createElement(
+			'p',
+			null,
+			'Stacks are a common data structure in Computer Science I am sure we all know well. There is not a particular implementation of them but there are three abstractions. ',
+			_react2.default.createElement(
+				'strong',
+				null,
+				'conj'
+			),
+			' for pushing a value onto the stack. ',
+			_react2.default.createElement(
+				'strong',
+				null,
+				'pop'
+			),
+			' for obtaining the stack with its top value removed and ',
+			_react2.default.createElement(
+				'strong',
+				null,
+				'peek'
+			),
+			' for obtaining the value on the top of the stack. Both lists and vectors can be used as stacks.'
+		),
+		_react2.default.createElement(
+			'h4',
+			null,
+			'Set'
+		),
+		_react2.default.createElement(
+			'p',
+			null,
+			'The sets abstraction is minimal as there is a standard libaray providing a suite of further operations in ',
+			_react2.default.createElement(
+				'strong',
+				null,
+				'clojure.set'
+			),
+			'. The abstraction for set contains ',
+			_react2.default.createElement(
+				'strong',
+				null,
+				'disj'
+			),
+			' that allows the removal of values from a set.'
+		),
+		_react2.default.createElement(
+			'h4',
+			null,
+			'Sorted'
+		),
+		_react2.default.createElement(
+			'p',
+			null,
+			'Collections that have the sorted abstraction are guaranteed to maintain stable ordering. Operations available include reverse, subsequence and reverse subsequence.'
+		),
+		_react2.default.createElement(
+			'h3',
+			null,
+			'Data Structure Types'
+		),
+		_react2.default.createElement(
+			'h4',
+			null,
+			'Lists'
+		),
+		_react2.default.createElement(
+			'p',
+			null,
+			'A list in Clojure is a simple data type but not commonly used because they are only efficient at data access at the head of the list. The data structrue behind Clojure lists are a single linked list. Hence they do not support efficient random access. This has benefits of being persistent data structure and more memory efficient. ',
+			_react2.default.createElement(
+				'strong',
+				null,
+				'conj'
+			),
+			' adds to the beginning of the list due to this data structure. Finding the count of a list is O(1)'
+		),
+		_react2.default.createElement(
+			'h4',
+			null,
+			'Vectors'
+		),
+		_react2.default.createElement(
+			'p',
+			null,
+			'From previous example we saw that Vector is synonymous with an ArrayList in java. Using conj add to the end of the list and return as a new structure, and it supports access to the list by index values. Finding the count is O(1).'
+		),
+		_react2.default.createElement(
+			'h4',
+			null,
+			'Sets'
+		),
+		_react2.default.createElement(
+			'p',
+			null,
+			'Sets are data structures that only allow unique values. Clojure offers hashset or sorted set which is sorted by natural order. '
+		),
+		_react2.default.createElement(
+			_reactSyntaxHighlighter2.default,
+			{ language: 'clojure', style: _hljs.darcula, showLineNumbers: true, wrapLines: true },
+			'(sorted-set 1 4 2 1)\n;; => #{1 2 4}\n (sorted-set "a" "c" "d")\n;; => #{"a" "c" "d"}\n(sorted-set "a" "c" "b")\n;; => #{"a" "b" "c"}'
+		),
+		_react2.default.createElement(
+			'h4',
+			null,
+			'Maps'
+		),
+		_react2.default.createElement(
+			'p',
+			null,
+			'Map is one of the main collections you will use and it has two flavours hash and sorted. Hashmap requires keys that properly implement equals and hashcode. Sorted maps require keys that implement comparable. Maps can be defined in numerous ways lets have a look.'
+		),
+		_react2.default.createElement(
+			_reactSyntaxHighlighter2.default,
+			{ language: 'clojure', style: _hljs.darcula, showLineNumbers: true, wrapLines: true },
+			'(def person {:name "perkss" :hobby "clojure" })\n(def person (hash-map :name "perkss" :hobby "clojure"))\n(keys person)\n;; => (:name :hobby)'
+		),
+		_react2.default.createElement(
+			'h3',
+			null,
+			'Persistence'
+		),
+		_react2.default.createElement('p', null),
+		_react2.default.createElement(
+			'h3',
+			null,
+			'Summary'
+		),
+		_react2.default.createElement(
+			'p',
+			null,
+			'This topic is fundamental to Clojure and is only a very basic overview we recommend reading further on this. As you can see the abstraction of Collection in Clojure is powerful making it very easy to use these structures and the operations available on running them.'
+		)
+	);
+};
+
+exports.default = DataStructuresClojure;
+
+/***/ }),
+/* 608 */
+/***/ (function(module, exports, __webpack_require__) {
+
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(607);
+var content = __webpack_require__(609);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -78959,7 +79445,7 @@ if(false) {
 }
 
 /***/ }),
-/* 607 */
+/* 609 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(33)(undefined);
@@ -78973,7 +79459,7 @@ exports.push([module.i, ".nav-grid\n/* layout main menu */\n{\n   \n    clear:bo
 
 
 /***/ }),
-/* 608 */
+/* 610 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -78983,21 +79469,21 @@ Object.defineProperty(exports, '__esModule', {
   value: true
 });
 exports['default'] = {
-  slide: __webpack_require__(609),
-  stack: __webpack_require__(613),
-  elastic: __webpack_require__(614),
-  bubble: __webpack_require__(617),
-  push: __webpack_require__(618),
-  pushRotate: __webpack_require__(619),
-  scaleDown: __webpack_require__(620),
-  scaleRotate: __webpack_require__(621),
-  fallDown: __webpack_require__(622),
-  reveal: __webpack_require__(623)
+  slide: __webpack_require__(611),
+  stack: __webpack_require__(615),
+  elastic: __webpack_require__(616),
+  bubble: __webpack_require__(619),
+  push: __webpack_require__(620),
+  pushRotate: __webpack_require__(621),
+  scaleDown: __webpack_require__(622),
+  scaleRotate: __webpack_require__(623),
+  fallDown: __webpack_require__(624),
+  reveal: __webpack_require__(625)
 };
 module.exports = exports['default'];
 
 /***/ }),
-/* 609 */
+/* 611 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -79019,7 +79505,7 @@ exports['default'] = (0, _menuFactory2['default'])(styles);
 module.exports = exports['default'];
 
 /***/ }),
-/* 610 */
+/* 612 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -79094,7 +79580,7 @@ exports['default'] = styles;
 module.exports = exports['default'];
 
 /***/ }),
-/* 611 */
+/* 613 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -79232,7 +79718,7 @@ BurgerIcon.defaultProps = {
 module.exports = exports['default'];
 
 /***/ }),
-/* 612 */
+/* 614 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -79364,7 +79850,7 @@ CrossIcon.defaultProps = {
 module.exports = exports['default'];
 
 /***/ }),
-/* 613 */
+/* 615 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -79409,7 +79895,7 @@ exports['default'] = (0, _menuFactory2['default'])(styles);
 module.exports = exports['default'];
 
 /***/ }),
-/* 614 */
+/* 616 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -79510,10 +79996,10 @@ exports['default'] = (0, _menuFactory2['default'])(styles);
 module.exports = exports['default'];
 
 /***/ }),
-/* 615 */
+/* 617 */
 /***/ (function(module, exports, __webpack_require__) {
 
-window.eve = __webpack_require__(616)
+window.eve = __webpack_require__(618)
 
 // Copyright (c) 2017 Adobe Systems Incorporated. All rights reserved.
 //
@@ -87661,7 +88147,7 @@ module.exports = Snap
 
 
 /***/ }),
-/* 616 */
+/* 618 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;// Copyright (c) 2017 Adobe Systems Incorporated. All rights reserved.
@@ -88103,7 +88589,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;// Copyright (c)
 
 
 /***/ }),
-/* 617 */
+/* 619 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -88220,7 +88706,7 @@ exports['default'] = (0, _menuFactory2['default'])(styles);
 module.exports = exports['default'];
 
 /***/ }),
-/* 618 */
+/* 620 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -88260,7 +88746,7 @@ exports['default'] = (0, _menuFactory2['default'])(styles);
 module.exports = exports['default'];
 
 /***/ }),
-/* 619 */
+/* 621 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -88303,7 +88789,7 @@ exports['default'] = (0, _menuFactory2['default'])(styles);
 module.exports = exports['default'];
 
 /***/ }),
-/* 620 */
+/* 622 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -88345,7 +88831,7 @@ exports['default'] = (0, _menuFactory2['default'])(styles);
 module.exports = exports['default'];
 
 /***/ }),
-/* 621 */
+/* 623 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -88388,7 +88874,7 @@ exports['default'] = (0, _menuFactory2['default'])(styles);
 module.exports = exports['default'];
 
 /***/ }),
-/* 622 */
+/* 624 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -88441,7 +88927,7 @@ exports['default'] = (0, _menuFactory2['default'])(styles);
 module.exports = exports['default'];
 
 /***/ }),
-/* 623 */
+/* 625 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -88521,7 +89007,7 @@ exports['default'] = (0, _menuFactory2['default'])(styles);
 module.exports = exports['default'];
 
 /***/ }),
-/* 624 */
+/* 626 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -88537,7 +89023,7 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-__webpack_require__(625);
+__webpack_require__(627);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -88577,13 +89063,13 @@ var Footer = function (_React$Component) {
 exports.default = Footer;
 
 /***/ }),
-/* 625 */
+/* 627 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(626);
+var content = __webpack_require__(628);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -88608,7 +89094,7 @@ if(false) {
 }
 
 /***/ }),
-/* 626 */
+/* 628 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(33)(undefined);
@@ -88622,7 +89108,7 @@ exports.push([module.i, "footer {\n  background-color: #0288D1;\n  font-family: 
 
 
 /***/ }),
-/* 627 */
+/* 629 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
@@ -88653,7 +89139,7 @@ if(false) {
 }
 
 /***/ }),
-/* 628 */
+/* 630 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -88669,7 +89155,7 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(27);
+var _reactRouterDom = __webpack_require__(30);
 
 var _home = __webpack_require__(148);
 
@@ -88699,7 +89185,7 @@ var _clojure = __webpack_require__(109);
 
 var _clojure2 = _interopRequireDefault(_clojure);
 
-var _scrollToTopRoute = __webpack_require__(629);
+var _scrollToTopRoute = __webpack_require__(631);
 
 var _scrollToTopRoute2 = _interopRequireDefault(_scrollToTopRoute);
 
@@ -88755,7 +89241,7 @@ var Content = function (_Component) {
 exports.default = Content;
 
 /***/ }),
-/* 629 */
+/* 631 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -88771,7 +89257,7 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(27);
+var _reactRouterDom = __webpack_require__(30);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
