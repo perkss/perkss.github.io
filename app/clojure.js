@@ -14,6 +14,7 @@ import CassandraClojure from './clojure-posts/cassandra';
 import KafkaClojure from './clojure-posts/kafka';
 import ConcurrencyClojure from './clojure-posts/concurrency';
 import DataStructuresClojure from './clojure-posts/data-structures';
+import GarbageCollection from './clojure-posts/garbage-collection';
 
 const ClojurePage = ({ match }) =>  {
 
@@ -24,23 +25,27 @@ const ClojurePage = ({ match }) =>  {
 			<ul className='nav menu center'>
 			<li className='gray'>
 			<Link to={`${match.url}#text-body`}>
-			Eggplant</Link>
+			Eggplant<br/>BDD</Link>
 				  </li>
 				    <li className='quay-pink'>
 				  	<Link to={`${match.url}/CassandraClojure#text-body`}>
-			Cassandra</Link>
+			Cassandra<br/>API</Link>
 				  </li>
 				   <li className='dark-blue'>
 				  	<Link to={`${match.url}/KafkaClojure#text-body`}>
-			Kafka</Link>
+			Kafka<br/>API</Link>
 				  </li>
 				   <li className='teal'>
 				  	<Link to={`${match.url}/ConcurrencyClojure#text-body`}>
-			Concurrency</Link>
+			Concurrency<br/>Clojure</Link>
 				  </li>
 				   <li className='yellow'>
 				  	<Link to={`${match.url}/DataStructuresClojure#text-body`}>
-			Data Structures</Link>
+			Data<br/>Structures</Link>
+				  </li>
+				    <li className='orange'>
+				  	<Link to={`${match.url}/GarbageCollection#text-body`}>
+			Garbage<br/>Collection</Link>
 				  </li>
 				  </ul>
 				 </div>}
@@ -50,7 +55,8 @@ const ClojurePage = ({ match }) =>  {
 			  <Route exact path={`${match.url}/CassandraClojure`} component={CassandraClojure} />
 			  <Route exact path={`${match.url}/KafkaClojure`} component={KafkaClojure} />
 			  <Route exact path={`${match.url}/ConcurrencyClojure`} component={ConcurrencyClojure} />
-			  	<Route exact path={`${match.url}/DataStructuresClojure`} component={DataStructuresClojure} />
+			  <Route exact path={`${match.url}/DataStructuresClojure`} component={DataStructuresClojure} />
+			  	<Route exact path={`${match.url}/GarbageCollection`} component={GarbageCollection} />
 			</div>
 			 }
 		/>
