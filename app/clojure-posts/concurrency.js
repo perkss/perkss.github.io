@@ -41,8 +41,24 @@ const ConcurrencyClojure = () => (
 		<p></p>
 		
 																		 <h3>Clojure Fundamentals</h3>
-																	
-																		 <p> </p>
+
+		<h4>Introduction</h4>
+		<p>Functional programming leads itself well to concurrent programming because of immutable data and pure functions. Clojure aims to minmise mutability, when you do need to manage mutable data you can use Clojure reference types to isolate that state and constrain its modification methods. Java interop means you can always fallback to the Java methods of Thread safety discussed above.</p>
+		<h4>Delays</h4>
+		<p>Delays enable the suspension of some body of code and evaluating it on demand. This body will only be evalauted once so its result is cached for fast future responses. This enables delaying some potential costly function call until its absolutely necessary to call.</p>
+		<SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={true} wrapLines={true}>{`(def load-slow-optional-data (delay (println "Loading ...") :done!))\nLoading ...\n;; => :done!`}</SyntaxHighlighter>
+
+		<h4>Futures</h4>
+		<p>To actually run a operation in another thread in Clojure you can use futures which execute immediately and return and then you can deference the future to get the result once completed. When dereferencing it will block as well. For example a long calculation you may want to run in a background thread. The @ symbol is shorthand for dere function call. You can also provide a timeout value for the dereference.</p>
+		<SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={true} wrapLines={true}>{`(def long-calculation (future (reduce + (range 10000))))\n@long-calculation\n;; => 49995000`}</SyntaxHighlighter>
+		<h4>Promises</h4>
+		<p>Promises are like delays and futures as they can be dereferenced with an optional timeout and a promise will only ever have one value. They are different though because they do not have any code of function when defined. A promise at some point in time maybe fulfilled by having a value passed to it. This is similar to a one time single value pipe where data is inserted at one end via <strong>deliver</strong> and retrieved at the other end via <strong>realized?</strong></p>
+		<SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={true} wrapLines={true}>{`(def p (promise))\n (realized? p)\n;; => false\n (deliver p 32)\n;; => #<Promise@4d32a052: 32>\n (realized? p)\n;; => true\n@p\n;; => 32`}</SyntaxHighlighter>
+		<h4>Clojure Reference Types</h4>
+		<p>Lets say for example you define a class Person in Java this has the fields such as DOB, Last Name, First Name, Address. Lets define a Person instance Perks who has the identity of a Person which is the logical representation throughout time. This identity of Perks can have different states at any given point in time such as a different address.</p>
+		<p>Atoms are the most basic reference type and operations that modify a atom block until the modification is done. Lets see this case where the Age of Perks is updated and modified in the Atom. Making this state mutable of the Atom person.</p>
+		<SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={true} wrapLines={true}>{`(def perks (atom {:name "perks" :address "London" :age 27}))\n;; => #'user/perks\n(swap! perks update-in [:age] + 1)\n;; => {:name "perks", :address "London", :age 28\n@perks\n;; =>{:name "perks", :address "London", :age 28}`}</SyntaxHighlighter>
+		<p>Refs are Clojures form of coordinated reference type. You can use them to ensure that multiple identities can participate in overlapping, concurrently applied operations.</p>
 
 																		 <h3>Summary</h3><p></p>
 		</div>
