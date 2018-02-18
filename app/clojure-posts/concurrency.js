@@ -43,7 +43,7 @@ const ConcurrencyClojure = () => (
 																		 <h3>Clojure Fundamentals</h3>
 
 		<h4>Introduction</h4>
-		<p>Functional programming leads itself well to concurrent programming because of immutable data and pure functions. Clojure aims to minmise mutability, when you do need to manage mutable data you can use Clojure reference types to isolate that state and constrain its modification methods. Java interop means you can always fallback to the Java methods of Thread safety discussed above.</p>
+		<p>Functional programming leads itself well to concurrent programming because of immutable data and pure functions. Clojure aims to minmise mutability, when you do need to manage mutable data you can use Clojure reference types to isolate that state and constrain its modification methods. Java interop means you can always fallback to the Java methods of Thread safety discussed above. The Clojure and functional approach to immutable data structures enables much better concurrency features, in Java world you have mutable state which in the words of Rich Hickey is the new spaghetti code. In Clojure we deal with immutable data structures. In Java we have indirect references to immutable data in Clojure we create a new version called a persistent edit and then point the user (Ref: implemented using the ref types below) of the data structure atomically we can point to the new immutable data which is the new version. This atomic operation is enabled by using the features (Vars -isolate changes within threads, Refs - share synchronous coordinated changes between threads, Agents - share asynchronous independent changes between threads, Atoms) explained below in the reference type section.</p>
 		<h4>Delays</h4>
 		<p>Delays enable the suspension of some body of code and evaluating it on demand. This body will only be evalauted once so its result is cached for fast future responses. This enables delaying some potential costly function call until its absolutely necessary to call.</p>
 		<SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={true} wrapLines={true}>{`(def load-slow-optional-data (delay (println "Loading ...") :done!))\nLoading ...\n;; => :done!`}</SyntaxHighlighter>
@@ -55,12 +55,51 @@ const ConcurrencyClojure = () => (
 		<p>Promises are like delays and futures as they can be dereferenced with an optional timeout and a promise will only ever have one value. They are different though because they do not have any code of function when defined. A promise at some point in time maybe fulfilled by having a value passed to it. This is similar to a one time single value pipe where data is inserted at one end via <strong>deliver</strong> and retrieved at the other end via <strong>realized?</strong></p>
 		<SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={true} wrapLines={true}>{`(def p (promise))\n (realized? p)\n;; => false\n (deliver p 32)\n;; => #<Promise@4d32a052: 32>\n (realized? p)\n;; => true\n@p\n;; => 32`}</SyntaxHighlighter>
 		<h4>Clojure Reference Types</h4>
-		<p>Lets say for example you define a class Person in Java this has the fields such as DOB, Last Name, First Name, Address. Lets define a Person instance Perks who has the identity of a Person which is the logical representation throughout time. This identity of Perks can have different states at any given point in time such as a different address.</p>
-		<p>Atoms are the most basic reference type and operations that modify a atom block until the modification is done. Lets see this case where the Age of Perks is updated and modified in the Atom. Making this state mutable of the Atom person.</p>
-		<SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={true} wrapLines={true}>{`(def perks (atom {:name "perks" :address "London" :age 27}))\n;; => #'user/perks\n(swap! perks update-in [:age] + 1)\n;; => {:name "perks", :address "London", :age 28\n@perks\n;; =>{:name "perks", :address "London", :age 28}`}</SyntaxHighlighter>
-		<p>Refs are Clojures form of coordinated reference type. You can use them to ensure that multiple identities can participate in overlapping, concurrently applied operations.</p>
+		<p>Lets say for example you define a class Person in Java this has the fields such as DOB, Last Name, First Name, Address. Lets define a Person instance Perks who has the identity of a Person which is the logical representation throughout time. This identity of Perks can have different states at any given point in time such as a different address. Here we go into details mentioned above of Vars, Atoms, Refs and Agents.</p>
+		<p><strong>Vars</strong> enable reference to a mutable storage location that can be dynamically rebound but only on a per thread basis. Vars are defined using def and ^:dynamic. Then values can be rebinded per thread locally using the function binding.</p>
 
-																		 <h3>Summary</h3><p></p>
+	<SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={true} wrapLines={true}>{`(def ^:dynamic item-a 1)
+(def ^:dynamic item-b 3)
+(+ item-a item-b)
+;; => 4
+(binding [item-a 5 item-b 6] 
+  (+ item-a item-b))
+;; => 11
+(+ item-a item-b)
+;; => 4`}</SyntaxHighlighter>
+	
+		<p><strong>Atoms</strong> are the most basic reference type and operations that modify a atom block until the modification is done. Lets see this case where the Age of Perks is updated and modified in the Atom. Making this state mutable of the Atom person.</p>
+		<SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={true} wrapLines={true}>{`(def perks (atom {:name "perks" :address "London" :age 27}))\n;; => #'user/perks\n(swap! perks update-in [:age] + 1)\n;; => {:name "perks", :address "London", :age 28\n@perks\n;; =>{:name "perks", :address "London", :age 28}`}</SyntaxHighlighter>
+		<p><strong>Refs</strong> are Clojures form of coordinated reference type. You can use them to ensure that multiple identities can participate in overlapping, concurrently applied operations. Refs use software transactional memory (STM) to enable this coordinated mutability. Refs are bound to a single storage location for their lifetime and can only change this by being within a transaction. These transactions follow the atomic consistent and isolated principles. Within these transactions side effects must be avoided so please avoid any printlns. Transactions are speculative and will retry automatically if a conflict is seen.</p>
+
+		<SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={true} wrapLines={true}>{`(def my-simple-ref (ref [1 5 3]))
+(deref my-simple-ref)
+;; => [1 5 3]
+;; Here we replace fully the vector with another immutable object of list
+;; Required to use dosync for STM to be in effect. Else throws No transaction running.
+(dosync (ref-set a '(3 2 1)))
+;; => (3 2 1)
+(deref my-simple-ref)
+;; => (3 2 1)
+;; We can also alter the current immutable data structure. 
+(dosync (alter my-simple-ref conj 2))
+;; => (2 3 2 1)`}</SyntaxHighlighter>
+
+		<p><strong>Agents</strong> differ to refs by independent asynchronous change of individual locations. Agents are bound to a single storage location for their lifetimes and only allow changes to that location as a result of actions. Actions are functions that are asynchronously applied to the state of the agent and then set the state to the result of the action.</p>
+
+	<SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={true} wrapLines={true}>{`(def star-wars (agent {}))
+(send star-wars assoc :episode-4 "A New Hope")
+;; => #<Agent@5e779a1e: {:episode-4 "A New Hope"}>
+;; Deref it to get the value
+@star-wars
+;; => {:episode-4 "A New Hope"}
+(send star-wars assoc :episode-5 "The Empire Strikes Back")
+;; => #<Agent@5e779a1e: 
+  {:episode-4 "A New Hope", :episode-5 "The Empire Strikes Back"}>
+@star-wars
+;; => {:episode-4 "A New Hope", :episode-5 "The Empire Strikes Back"}`}</SyntaxHighlighter>
+
+		<h3>Summary</h3><p>Clojure ref types are key to understand and the fact they point to immutable data that enables our applications to safely update state, simple yes. In comparison to Java who has the reference update state directly losing the original state and anyone could be updating it without primitive locking strategies.</p>
 		</div>
 
 );
