@@ -76,14 +76,38 @@ const ConcurrencyClojure = () => (
 (deref my-simple-ref)
 ;; => [1 5 3]
 ;; Here we replace fully the vector with another immutable object of list
-;; Required to use dosync for STM to be in effect. Else throws No transaction running.
+;; Required to use dosync for STM to be in effect.
+;; Else throws No transaction running.
 (dosync (ref-set a '(3 2 1)))
 ;; => (3 2 1)
 (deref my-simple-ref)
 ;; => (3 2 1)
 ;; We can also alter the current immutable data structure. 
 (dosync (alter my-simple-ref conj 2))
-;; => (2 3 2 1)`}</SyntaxHighlighter>
+;; => (2 3 2 1)
+;; Lets consider a map of accounts where the Key is the 
+;;unique ID and the value is a fake account record. 
+;;How can we update that?
+(def accounts (ref {}))
+;; => #'accounting.core/accounts
+@accounts
+;; => {}
+(dosync (alter accounts assoc  :1202 "Account Record"))
+;; => {:1202 "Account Record"}
+(dosync (alter accounts assoc  :1203 "Account Record"))
+;; => {:1202 "Account Record", :1203 "Account Record"}
+(dosync (alter accounts assoc  :1205 "Account Record"))
+;; => {:1202 "Account Record",
+ :1203 "Account Record",
+ :1205 "Account Record"}
+;; Lets update a value in the Map
+(dosync (alter accounts assoc  :1202 "New Account Record"))
+;; => {:1202 "New Account Record",
+ :1203 "Account Record",
+ :1205 "Account Record"}
+;; Lets remove a record
+(dosync (alter accounts dissoc :1202 "New Account Record"))
+;; => {:1203 "Account Record", :1205 "Account Record"}`}</SyntaxHighlighter>
 
 		<p><strong>Agents</strong> differ to refs by independent asynchronous change of individual locations. Agents are bound to a single storage location for their lifetimes and only allow changes to that location as a result of actions. Actions are functions that are asynchronously applied to the state of the agent and then set the state to the result of the action.</p>
 
