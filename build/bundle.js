@@ -79314,12 +79314,12 @@ var ConcurrencyClojure = function ConcurrencyClojure() {
 				_react2.default.createElement(
 						'p',
 						null,
-						'Delays enable the suspension of some body of code and evaluating it on demand. This body will only be evalauted once so its result is cached for fast future responses. This enables delaying some potential costly function call until its absolutely necessary to call.'
+						'Delays enable the suspension of some body of code and evaluating it on demand so when deref is called or force. This body will only be evalauted once so its result is cached for fast future responses. This enables delaying some potential costly function call until its absolutely necessary to call.'
 				),
 				_react2.default.createElement(
 						_reactSyntaxHighlighter2.default,
 						{ language: 'clojure', style: _hljs.darcula, showLineNumbers: true, wrapLines: true },
-						'(def load-slow-optional-data (delay (println "Loading ...") :done!))\nLoading ...\n;; => :done!'
+						'(def load-slow-optional-data (delay (println "Loading ...") :done!))\n@load-slow-optional-data\nLoading ...\n;; => :done!\n@load-slow-optional-data\n;; => :done!'
 				),
 				_react2.default.createElement(
 						'h4',
