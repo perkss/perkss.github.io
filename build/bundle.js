@@ -79370,7 +79370,7 @@ var ConcurrencyClojure = function ConcurrencyClojure() {
 				_react2.default.createElement(
 						'p',
 						null,
-						'Lets say for example you define a class Person in Java this has the fields such as DOB, Last Name, First Name, Address. Lets define a Person instance Perks who has the identity of a Person which is the logical representation throughout time. This identity of Perks can have different states at any given point in time such as a different address. Here we go into details mentioned above of Vars, Atoms, Refs and Agents.'
+						'Lets say for example you define a class Person in Java this has the fields such as DOB, Last Name, First Name, Address. Lets define a Person instance Perks who has the identity of a Person which is the logical representation throughout time. This identity of Perks can have different states at any given point in time such as a different address. Here we go into details mentioned above of Vars, Atoms, Refs and Agents. These techniques enables the Reference to the Person Perks to repoint to a new state of Perks which is also immutable if the address of Perks changes for example.'
 				),
 				_react2.default.createElement(
 						'p',
