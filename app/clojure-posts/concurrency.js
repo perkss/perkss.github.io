@@ -98,13 +98,13 @@ const ConcurrencyClojure = () => (
 ;; => {:1202 "Account Record", :1203 "Account Record"}
 (dosync (alter accounts assoc  :1205 "Account Record"))
 ;; => {:1202 "Account Record",
- :1203 "Account Record",
- :1205 "Account Record"}
+;; :1203 "Account Record",
+;; :1205 "Account Record"}
 ;; Lets update a value in the Map
 (dosync (alter accounts assoc  :1202 "New Account Record"))
 ;; => {:1202 "New Account Record",
- :1203 "Account Record",
- :1205 "Account Record"}
+;; :1203 "Account Record",
+;; :1205 "Account Record"}
 ;; Lets remove a record
 (dosync (alter accounts dissoc :1202 "New Account Record"))
 ;; => {:1203 "Account Record", :1205 "Account Record"}`}</SyntaxHighlighter>
