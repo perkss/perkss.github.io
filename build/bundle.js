@@ -79314,7 +79314,7 @@ var ConcurrencyClojure = function ConcurrencyClojure() {
 				_react2.default.createElement(
 						'p',
 						null,
-						'Delays enable the suspension of some body of code and evaluating it on demand so when deref is called or force. This body will only be evalauted once so its result is cached for fast future responses. This enables delaying some potential costly function call until its absolutely necessary to call.'
+						'Delays enable the suspension of some body of code and evaluating it on demand so when deref is called or force. This body will only be evalauted once so its result is cached for fast future responses. This enables delaying some potential costly function call until its absolutely necessary to call. Here println is only called once as the result is cached of :done.'
 				),
 				_react2.default.createElement(
 						_reactSyntaxHighlighter2.default,
