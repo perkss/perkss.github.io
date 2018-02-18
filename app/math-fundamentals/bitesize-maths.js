@@ -47,7 +47,7 @@ const BiteSizeMath = () => (
    (not-any? #(zero? (mod n %)) (cons 2 (range 3 (inc (Math/sqrt n)) 2)))))</SyntaxHighlighter>
 </div>
     </p>
-
+<p>Further explanation of efficiencies. You are only required to test up to the square root of n as if n is not prime it can be factored by a * b and if a and b were greater than the square root of n tthen a * b would be greater than n. Hence we only need to check factors that are less than or equal to the square root of n.</p>
         <p>
 
     Prime Factors are factors of a number that are also prime. The method is to look for two factors, check if they are prime if they are not break them down until they are. 
