@@ -79079,34 +79079,130 @@ var KafkaClojure = function KafkaClojure() {
 		_react2.default.createElement(
 			'h2',
 			null,
-			'Kafka API Clojure vs Java'
+			'Kafka Examples in Clojure'
 		),
 		_react2.default.createElement(
 			'h3',
 			null,
 			'Some Background'
 		),
-		_react2.default.createElement('p', null),
 		_react2.default.createElement(
-			'h3',
+			'p',
 			null,
-			'API Java'
+			'This section will look at two great technologies Kafka and Kafka Streams using Clojure. At the time of writing this there is not much around on the web about using the Java API of Kafka with Clojure. There are numerous wrappers around that we will look at shortly, but I wanted to investigate and share using the Java API with Clojure and provide tutorials on how to do this with Kafka and Kafka Streams to produce useful applications. First up we have a tutorial on creating a app that consumers from a topic and outputs to another topic in Clojure using Kafka. All example code can be found ',
+			_react2.default.createElement(
+				'a',
+				{ href: 'https://github.com/perkss/clj-kafka-examples' },
+				'here'
+			),
+			'.'
 		),
-		_react2.default.createElement('p', null),
 		_react2.default.createElement(
 			'h3',
 			null,
-			'API Clojure'
+			'#Post 1: Simple Producer and Consumer in Kafka with Java API Interop'
 		),
 		_react2.default.createElement(
 			'p',
 			null,
-			' '
+			'Lets see the most basic use of Kafka where we can consume messages off a Kafka topic and then produce messages to another Kafka topic in Clojure. The code for this example is available ',
+			_react2.default.createElement(
+				'a',
+				{ href: 'https://github.com/perkss/clj-kafka-examples/tree/master/kafka-producer-consumer-example' },
+				'here'
+			),
+			'. To begin using the Kafka clients in a Clojure project we need to import the dependency of kafka-clients as shown.'
+		),
+		_react2.default.createElement(
+			_reactSyntaxHighlighter2.default,
+			{ language: 'clojure', style: _hljs.darcula, showLineNumbers: false, wrapLines: true },
+			'[org.apache.kafka/kafka-clients "1.0.1"]'
+		),
+		_react2.default.createElement(
+			'p',
+			null,
+			'You then have the dependencies required for the example we need to import them into our .clj file to be used this is done as follows. This provides access to create an instance of the KafkaConsumer and the KafkaProducer along with the serializers required to serialize and deserialize messages to and from the Kafka topics here we just use the string versions.'
+		),
+		_react2.default.createElement(
+			_reactSyntaxHighlighter2.default,
+			{ language: 'clojure', style: _hljs.darcula, showLineNumbers: true, wrapLines: true },
+			'(:import\n            (org.apache.kafka.clients.consumer ConsumerConfig KafkaConsumer)\n            (org.apache.kafka.common.serialization StringSerializer StringDeserializer)\n            (org.apache.kafka.clients.producer KafkaProducer ProducerRecord)'
+		),
+		_react2.default.createElement(
+			'p',
+			null,
+			'Lets now look at how we can build a consumer instance to be used to consume messages from our example-topic.'
+		),
+		_react2.default.createElement(
+			_reactSyntaxHighlighter2.default,
+			{ language: 'clojure', style: _hljs.darcula, showLineNumbers: true, wrapLines: true },
+			'(defn- build-consumer\n  "Create the consumer instance to consume\nfrom the provided kafka topic name"\n  [consumer-topic bootstrap-server]\n  (let [consumer-props\n        {"bootstrap.servers", bootstrap-server\n         "group.id",          "My-Group"\n         "key.deserializer",  StringDeserializer\n         "value.deserializer", StringDeserializer\n         "auto.offset.reset", "earliest"\n         "enable.auto.commit", "true"}]\n\n    (doto (KafkaConsumer. consumer-props)\n      (.subscribe [consumer-topic]))))'
+		),
+		_react2.default.createElement(
+			'p',
+			null,
+			'In the example I have created a function to build the consumer fully to make it clearer. The function accepts the bootstrap server list which is the kafka brokers and port numbers. This example uses just a single kafka broker instance. We first define the properties of the Kafka consumer which is simply a map of key value pairs of configuration. The key part is where we define the instance of the Consumer this is created with: '
+		),
+		_react2.default.createElement(
+			_reactSyntaxHighlighter2.default,
+			{ language: 'clojure', style: _hljs.darcula, showLineNumbers: false, wrapLines: true },
+			'(KafkaConsumer. consumer-props)'
+		),
+		_react2.default.createElement(
+			'p',
+			null,
+			'The instance method subscribe is then called on the consumer instance and provided the list of topics to subscribe too here its just the single topic.'
+		),
+		_react2.default.createElement(
+			_reactSyntaxHighlighter2.default,
+			{ language: 'clojure', style: _hljs.darcula, showLineNumbers: false, wrapLines: true },
+			'(.subscribe [consumer-topic])'
+		),
+		_react2.default.createElement(
+			'p',
+			null,
+			'We can then use the following function to bind the consumer to a name value'
+		),
+		_react2.default.createElement(
+			_reactSyntaxHighlighter2.default,
+			{ language: 'clojure', style: _hljs.darcula, showLineNumbers: false, wrapLines: true },
+			'(def consumer (build-consumer topic bootstrap-server))'
+		),
+		_react2.default.createElement(
+			'p',
+			null,
+			'Defining the Kafka producer is very similiar we provide the map of properties and pass them to the constructor of the KafkaProducer and return that instance which can be bound to a value name.'
+		),
+		_react2.default.createElement(
+			_reactSyntaxHighlighter2.default,
+			{ language: 'clojure', style: _hljs.darcula, showLineNumbers: true, wrapLines: true },
+			'(defn- build-producer\n  "Create the kafka producer to send on messages received"\n  [bootstrap-server]\n  (let [producer-props {"value.serializer" StringSerializer\n                        "key.serializer" StringSerializer\n                        "bootstrap.servers" bootstrap-server}]\n    (KafkaProducer. producer-props)))'
+		),
+		_react2.default.createElement(
+			'p',
+			null,
+			'Now that the producer and consumer have been created we can actually use the simple common pattern of having a while loop that continously polls the consumer a list of records is found and if populated this code iterates over them and logs out the information and then sends the message received prepended with Value: to the output topic. We then commitAsync to say we have processed these messages to commit the offset.'
+		),
+		_react2.default.createElement(
+			_reactSyntaxHighlighter2.default,
+			{ language: 'clojure', style: _hljs.darcula, showLineNumbers: true, wrapLines: true },
+			'(while true\n\n    (let [records (.poll consumer 100)]\n      (doseq [record records]\n        (log/info "Sending on value" (str "Value: " (.value record)))\n        (.send producer (ProducerRecord. producer-topic (str "Value: " (.value record))))))\n\n    (.commitAsync consumer)))'
 		),
 		_react2.default.createElement(
 			'h3',
 			null,
 			'Summary'
+		),
+		_react2.default.createElement(
+			'p',
+			null,
+			'Thats about it the full program can be found in our ',
+			_react2.default.createElement(
+				'a',
+				{ href: 'https://github.com/perkss/clj-kafka-examples/blob/master/kafka-producer-consumer-example/src/kafka_example/core.clj' },
+				'kafka-examples'
+			),
+			' project on github. We have seen how to use the Kafka message broker to consume and produce messages using the raw Java API in Clojure which is still fairly elegant. Coming from a Java background and being used to the API I was interested in seeing how it looked in Clojure which was the motivation behind this post, using one of the wrapper classes for the API is probably wise and we will look at some of the available options in another post. To run this project look at the start.sh script to see about setting up the Zookeeper and Kafka instances and topics and then build a uberjar using lein and run the jar.'
 		),
 		_react2.default.createElement('p', null)
 	);
