@@ -19754,7 +19754,7 @@ var home = {
     _react2.default.createElement(
       "p",
       null,
-      "Please check the side menu on the top left. We will be covering the ",
+      "Please check the side menu on the top left or the rather fancy buttons at the bottom to link to the sections. We cover the ",
       _react2.default.createElement(
         "strong",
         null,
@@ -19784,7 +19784,7 @@ var home = {
         null,
         "Algorithms"
       ),
-      " will then be discussed in detail building them imperatively and functionally using C and Clojure respectively. We will then dig into the world of ",
+      " will then be discussed in detail building them imperatively and functionally using C and Clojure respectively. We then have a dig into the world of ",
       _react2.default.createElement(
         "strong",
         null,
@@ -19802,7 +19802,7 @@ var home = {
         null,
         "Hipster Clojure"
       ),
-      " will contain some great insight into our Clojure projects as well as some blog posts on interesting work going on in that space! The trendy language round these parts we believe. Check out ",
+      " contains some great insight into our Clojure projects as well as some blog posts on interesting work going on in that space and frameworks used such as Kafka and Cassandra! The trendy language round these parts we believe. Check out ",
       _react2.default.createElement(
         "strong",
         null,
@@ -19821,11 +19821,6 @@ var home = {
         "book"
       ),
       "."
-    ),
-    _react2.default.createElement(
-      "p",
-      null,
-      "Build in PROGRESS we will be GROWING quickly!"
     ),
     _react2.default.createElement(
       "p",
