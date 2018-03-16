@@ -19839,7 +19839,17 @@ var home = {
         { href: "https://github.com/perkss" },
         "Our github page: perkss"
       )
-    )
+    ),
+    _react2.default.createElement(
+      "p",
+      null,
+      _react2.default.createElement(
+        "a",
+        { href: "../rss/clojure-rss.xml" },
+        "RSS"
+      )
+    ),
+    "                                            "
   )]
 
 };

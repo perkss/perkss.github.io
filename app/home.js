@@ -81,7 +81,10 @@ const home = {
 
                                                                                                                                                                                                                                                                                                                                                                             <p><strong>Most of all have fun!</strong></p>
 
-																																													   <p><a href="https://github.com/perkss">Our github page: perkss</a></p></div>																																											   ]
+																																													   <p><a href="https://github.com/perkss">Our github page: perkss</a></p>
+
+
+				 <p><a href="../rss/clojure-rss.xml">RSS</a></p>																																									   </div>																																											   ]
     
 };
 
