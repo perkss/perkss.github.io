@@ -80,7 +80,7 @@ from the provided kafka topic name"
 
 	<h3>#Post 2: A basic Kafka Stream example of a Uppercase Topology built using the raw Java API for version 1.0.1 of Kafka Streams Library</h3>
     
-	<p>Lets begin our second post and having the great opportunity to work with Kafka Streams. This first example is very basic <a href="https://kafka.apache.org/documentation/streams/">Kafka Streams</a> Topology that converts the input words into uppercase. Again you are expected to be familiar with Kafka message broker and the example above to get this up and running but the commands are provided in the example code found <a href="https://github.com/perkss/clj-kafka-examples/blob/master/kafka-streams-example/src/kafka_streams_example/core.clj">here</a>. Credit to Jason Bell for this great starting <a href="https://dataissexy.wordpress.com/2016/12/06/quick-recipe-for-kafka-streams-in-clojure/">resource</a>. We are going to take use the newer version of the streaming library than this so will see some differences in the API calls, also we are sending on output to another topic so its very different flow and topology.
+	<p>Lets begin our second post where we have the great opportunity to work with Kafka Streams. This first example is very basic <a href="https://kafka.apache.org/documentation/streams/">Kafka Streams</a> Topology that converts the input words into uppercase. Again you are expected to be familiar with Kafka message broker and the example above to get this up and running but the commands are provided in the example code found <a href="https://github.com/perkss/clj-kafka-examples/blob/master/kafka-streams-example/src/kafka_streams_example/core.clj">here</a>. Credit to Jason Bell for this great starting <a href="https://dataissexy.wordpress.com/2016/12/06/quick-recipe-for-kafka-streams-in-clojure/">resource</a>. We are going to take use the newer version of the streaming library than this so will see some differences in the API calls, also we are sending on output to another topic so its very different flow and topology. The focus of this section is to use the higher level DSL rather than then lower level Processor API that Kafka provides.
         </p>
 
     <p>To begin we require the dependency on Kafka Streams this is added to our project.clj file. </p>
@@ -119,8 +119,25 @@ from the provided kafka topic name"
     (KafkaStreams. (.build builder) config))
   (.start streams)`}</SyntaxHighlighter>
 
-    <p>Brilliant we have discovered how to make a simple kafka stream topology using the new API and can see it running if you check out this code build it run the jar and start the input and output topics. Check the README for more details!</p>
-        
+		<p>Brilliant we have discovered how to make a simple kafka stream topology using the new API and can see it running if you check out this code build it run the jar and start the input and output topics. Check the README for more details!</p>
+
+		<p>Instead of using the macro threading style I have also built an alternate style using let and the .. macro for Java interop. This alternate method is called like so by replacing the contents on line 50. </p>
+
+	 <SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={true} wrapLines={true}>{`(def streams
+    (KafkaStreams. (.build (to-uppercase-topology)) config))`}</SyntaxHighlighter>
+
+		<p>The code style is defined in a method to-uppercase-toplogy as so, you can see it is very similar and maybe clearer as you can see the bindings of streams to local names of builder and words. It is up to you to decide you preference on a case by case basis.</p>
+
+<SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={true} wrapLines={true}>{`(defn to-uppercase-topology []
+  (let [builder (StreamsBuilder.)
+        words (.stream builder "plaintext-input")]
+    (.. words
+        (mapValues (reify
+                     ValueMapper (apply [_ v]
+                                   (clojure.string/upper-case v))))
+        (to "uppercase"))
+    builder))`}</SyntaxHighlighter>
+	
 		</div>
 
 );

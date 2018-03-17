@@ -79217,7 +79217,7 @@ var KafkaClojure = function KafkaClojure() {
     _react2.default.createElement(
       'p',
       null,
-      'Lets begin our second post and having the great opportunity to work with Kafka Streams. This first example is very basic ',
+      'Lets begin our second post where we have the great opportunity to work with Kafka Streams. This first example is very basic ',
       _react2.default.createElement(
         'a',
         { href: 'https://kafka.apache.org/documentation/streams/' },
@@ -79235,7 +79235,7 @@ var KafkaClojure = function KafkaClojure() {
         { href: 'https://dataissexy.wordpress.com/2016/12/06/quick-recipe-for-kafka-streams-in-clojure/' },
         'resource'
       ),
-      '. We are going to take use the newer version of the streaming library than this so will see some differences in the API calls, also we are sending on output to another topic so its very different flow and topology.'
+      '. We are going to take use the newer version of the streaming library than this so will see some differences in the API calls, also we are sending on output to another topic so its very different flow and topology. The focus of this section is to use the higher level DSL rather than then lower level Processor API that Kafka provides.'
     ),
     _react2.default.createElement(
       'p',
@@ -79281,6 +79281,26 @@ var KafkaClojure = function KafkaClojure() {
       'p',
       null,
       'Brilliant we have discovered how to make a simple kafka stream topology using the new API and can see it running if you check out this code build it run the jar and start the input and output topics. Check the README for more details!'
+    ),
+    _react2.default.createElement(
+      'p',
+      null,
+      'Instead of using the macro threading style I have also built an alternate style using let and the .. macro for Java interop. This alternate method is called like so by replacing the contents on line 50. '
+    ),
+    _react2.default.createElement(
+      _reactSyntaxHighlighter2.default,
+      { language: 'clojure', style: _hljs.darcula, showLineNumbers: true, wrapLines: true },
+      '(def streams\n    (KafkaStreams. (.build (to-uppercase-topology)) config))'
+    ),
+    _react2.default.createElement(
+      'p',
+      null,
+      'The code style is defined in a method to-uppercase-toplogy as so, you can see it is very similar and maybe clearer as you can see the bindings of streams to local names of builder and words. It is up to you to decide you preference on a case by case basis.'
+    ),
+    _react2.default.createElement(
+      _reactSyntaxHighlighter2.default,
+      { language: 'clojure', style: _hljs.darcula, showLineNumbers: true, wrapLines: true },
+      '(defn to-uppercase-topology []\n  (let [builder (StreamsBuilder.)\n        words (.stream builder "plaintext-input")]\n    (.. words\n        (mapValues (reify\n                     ValueMapper (apply [_ v]\n                                   (clojure.string/upper-case v))))\n        (to "uppercase"))\n    builder))'
     )
   );
 };
