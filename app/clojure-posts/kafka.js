@@ -65,8 +65,11 @@ from the provided kafka topic name"
 
     (let [records (.poll consumer 100)]
       (doseq [record records]
-        (log/info "Sending on value" (str "Value: " (.value record)))
-        (.send producer (ProducerRecord. producer-topic (str "Value: " (.value record))))))
+        (log/info "Sending on value" 
+          (str "Value: " (.value record)))
+        (.send producer 
+          (ProducerRecord. producer-topic    
+            (str "Value: " (.value record))))))
 
     (.commitAsync consumer)))`}</SyntaxHighlighter>
 																		 
@@ -100,9 +103,14 @@ from the provided kafka topic name"
   (def output-topic "uppercase")
  
   (->
-   (.stream builder input-topic) ;; Create the source node of the stream
-   (.mapValues (reify ValueMapper (apply [_ v] (clojure.string/upper-case v)))) ;; map the strings to uppercase
-   (.to output-topic)) ;; Send the repsonse onto an output topic`}</SyntaxHighlighter>
+   ;; Create the source node of the stream
+   (.stream builder input-topic) 
+   ;; map the strings to uppercase
+   (.mapValues (reify ValueMapper 
+     (apply [_ v] 
+       (clojure.string/upper-case v)))) 
+   ;; Send the repsonse onto an output topic
+   (.to output-topic))`}</SyntaxHighlighter>
 
         <p>Here we can see the main topology being built with the builder having .stream called on it with the source topic defined as input-topic and the comments show the Java equivalent. We then take the resultant stream and map the values applying upper case to each value and finally send to the output topic the results to be used by another application. This is the very simple topology. We now need to build the stream as shown below and then start it. </p>
 

@@ -78795,7 +78795,7 @@ exports.push([module.i, ".quay-gold {\n    background-color: #e6cf8b;\n}\n.quay-
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+		value: true
 });
 
 var _react = __webpack_require__(1);
@@ -78815,102 +78815,102 @@ var _hljs = __webpack_require__(16);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var CassandraClojure = function CassandraClojure() {
-	return _react2.default.createElement(
-		'div',
-		null,
-		_react2.default.createElement(
-			'h2',
-			{ id: 'eggplant' },
-			'Eggplant Behaviour Driven Development (BDD) in Clojure'
-		),
-		_react2.default.createElement(
-			'h3',
-			null,
-			'What is BDD?'
-		),
-		_react2.default.createElement(
-			'p',
-			null,
-			'Behaviour driven development or simply BDD is a methodology for software development and testing. BDD enables specifications for testing in a much more human readable format commonly Give, When, Then a great blog on this is ',
-			_react2.default.createElement(
-				'a',
-				{ href: 'https://martinfowler.com/bliki/GivenWhenThen.html' },
-				'here'
-			),
-			' by the legendary Martin Fowler. This simplicity is what we wanted to bring to Clojure! However tooling is not explicitly required for it but has come about such as ',
-			_react2.default.createElement(
-				'a',
-				{ href: 'https://github.com/spockframework/spock' },
-				'Spock'
-			),
-			' and ',
-			_react2.default.createElement(
-				'a',
-				{ href: 'https://cucumber.io/' },
-				'Cucumber'
-			),
-			' are very popular in the Java space. BDD is much more top down approach to testing where we start from high level requirements rather than the bottom up approach of TDD where we start at the bottom with our smallest unit of functionality a single function in Clojure.'
-		),
-		_react2.default.createElement(
-			'h3',
-			null,
-			'What is already available for BDD in Clojure?'
-		),
-		_react2.default.createElement(
-			'p',
-			null,
-			'The major player in the Clojure space is ',
-			_react2.default.createElement(
-				'a',
-				{ href: 'https://github.com/slagyr/speclj' },
-				'Speclj'
-			),
-			' which is a great framework and does what is required but uses slightly different terminology to our Java background! '
-		),
-		_react2.default.createElement(
-			'h3',
-			null,
-			'Motivation?'
-		),
-		_react2.default.createElement(
-			'p',
-			null,
-			'Speclj is a great framework, but does not seem to have a table based data driven testing approach like Spock. Hence I wanted to learn some Clojure further and write a testing framework for BDD that enabled us to do this ',
-			_react2.default.createElement(
-				'a',
-				{ href: 'http://spockframework.org/spock/docs/1.0/data_driven_testing.html' },
-				'data driven'
-			),
-			' approach. Also I wanted to use the standard test runner that comes with clojure.test to run these with my unit tests. Eventually enabling a different runner to run our specs would be nice; another TODO. '
-		),
-		_react2.default.createElement(
-			'h3',
-			null,
-			'Our Solution Eggplant'
-		),
-		_react2.default.createElement(
-			'p',
-			null,
-			'Firstly please check out ',
-			_react2.default.createElement(
-				'a',
-				{ href: 'https://github.com/perkss/eggplant' },
-				'Eggplant'
-			),
-			' and see the README to see examples and how to start using, we will cover a tutorial here also. Eggplant is simplistic and that is it\'s motto, which is a great motto as a developer and a product owner you do not want to be bogged down learning another syntax in the case of Cucumber and you want to conform to the popular human readable Given, When and Then as stated above.',
-			_react2.default.createElement(
-				_reactSyntaxHighlighter2.default,
-				{ language: 'clojure', style: _hljs.darcula, showLineNumbers: true, wrapLines: true },
-				'(defspec example-specification-true\n  (testing "A full length example specification which is true 4 * 2 = 8"\n    (given 4 test-data\n           (then-we-expect 8 (when-we-process * 2 test-data)))))'
-			),
-			'As you can see this is readable format, its still in a basic Clojure file and runs with your usual Clojure test suite. Eggplant also offers data driven development which is our favourite feature of Spock! Here you can see we are testing the function + and asserting the esults are equals. Each test-data-row is the parameters passed and the expected result!',
-			_react2.default.createElement(
-				_reactSyntaxHighlighter2.default,
-				{ language: 'clojure', style: _hljs.darcula, showLineNumbers: true, wrapLines: true },
-				'(defspec example-table-test\n  (testing "Example table testing + with assertion of ="\n    (-> (expect (function-under-test +) (assertion =))\n        (where\n         (test-data-row [3 3] 6)\n         (test-data-row [4 4] 8)\n         (test-data-row [2 3] 5)))))'
-			)
-		)
-	);
+		return _react2.default.createElement(
+				'div',
+				null,
+				_react2.default.createElement(
+						'h2',
+						{ id: 'eggplant' },
+						'Eggplant Behaviour Driven Development (BDD) in Clojure'
+				),
+				_react2.default.createElement(
+						'h3',
+						null,
+						'What is BDD?'
+				),
+				_react2.default.createElement(
+						'p',
+						null,
+						'Behaviour driven development or simply BDD is a methodology for software development and testing. BDD enables specifications for testing in a much more human readable format commonly Give, When, Then a great blog on this is ',
+						_react2.default.createElement(
+								'a',
+								{ href: 'https://martinfowler.com/bliki/GivenWhenThen.html' },
+								'here'
+						),
+						' by the legendary Martin Fowler. This simplicity is what we wanted to bring to Clojure! However tooling is not explicitly required for it but has come about such as ',
+						_react2.default.createElement(
+								'a',
+								{ href: 'https://github.com/spockframework/spock' },
+								'Spock'
+						),
+						' and ',
+						_react2.default.createElement(
+								'a',
+								{ href: 'https://cucumber.io/' },
+								'Cucumber'
+						),
+						' are very popular in the Java space. BDD is much more top down approach to testing where we start from high level requirements rather than the bottom up approach of TDD where we start at the bottom with our smallest unit of functionality a single function in Clojure.'
+				),
+				_react2.default.createElement(
+						'h3',
+						null,
+						'What is already available for BDD in Clojure?'
+				),
+				_react2.default.createElement(
+						'p',
+						null,
+						'The major player in the Clojure space is ',
+						_react2.default.createElement(
+								'a',
+								{ href: 'https://github.com/slagyr/speclj' },
+								'Speclj'
+						),
+						' which is a great framework and does what is required but uses slightly different terminology to our Java background! '
+				),
+				_react2.default.createElement(
+						'h3',
+						null,
+						'Motivation?'
+				),
+				_react2.default.createElement(
+						'p',
+						null,
+						'Speclj is a great framework, but does not seem to have a table based data driven testing approach like Spock. Hence I wanted to learn some Clojure further and write a testing framework for BDD that enabled us to do this ',
+						_react2.default.createElement(
+								'a',
+								{ href: 'http://spockframework.org/spock/docs/1.0/data_driven_testing.html' },
+								'data driven'
+						),
+						' approach. Also I wanted to use the standard test runner that comes with clojure.test to run these with my unit tests. Eventually enabling a different runner to run our specs would be nice; another TODO. '
+				),
+				_react2.default.createElement(
+						'h3',
+						null,
+						'Our Solution Eggplant'
+				),
+				_react2.default.createElement(
+						'p',
+						null,
+						'Firstly please check out ',
+						_react2.default.createElement(
+								'a',
+								{ href: 'https://github.com/perkss/eggplant' },
+								'Eggplant'
+						),
+						' and see the README to see examples and how to start using, we will cover a tutorial here also. Eggplant is simplistic and that is it\'s motto, which is a great motto as a developer and a product owner you do not want to be bogged down learning another syntax in the case of Cucumber and you want to conform to the popular human readable Given, When and Then as stated above.',
+						_react2.default.createElement(
+								_reactSyntaxHighlighter2.default,
+								{ language: 'clojure', style: _hljs.darcula, showLineNumbers: true, wrapLines: true },
+								'(defspec example-specification-true\n  (testing \n    "A full length example specification which is true 4 * 2 = 8"   \n      (given 4 test-data          \n        (then-we-expect 8 \n          (when-we-process * 2 test-data)))))'
+						),
+						'As you can see this is readable format, its still in a basic Clojure file and runs with your usual Clojure test suite. Eggplant also offers data driven development which is our favourite feature of Spock! Here you can see we are testing the function + and asserting the esults are equals. Each test-data-row is the parameters passed and the expected result!',
+						_react2.default.createElement(
+								_reactSyntaxHighlighter2.default,
+								{ language: 'clojure', style: _hljs.darcula, showLineNumbers: true, wrapLines: true },
+								'(defspec example-table-test\n  (testing "Example table testing + with assertion of ="\n    (-> (expect (function-under-test +) (assertion =))\n        (where\n         (test-data-row [3 3] 6)\n         (test-data-row [4 4] 8)\n         (test-data-row [2 3] 5)))))'
+						)
+				)
+		);
 };
 
 exports.default = CassandraClojure;
@@ -79191,7 +79191,7 @@ var KafkaClojure = function KafkaClojure() {
     _react2.default.createElement(
       _reactSyntaxHighlighter2.default,
       { language: 'clojure', style: _hljs.darcula, showLineNumbers: true, wrapLines: true },
-      '(while true\n\n    (let [records (.poll consumer 100)]\n      (doseq [record records]\n        (log/info "Sending on value" (str "Value: " (.value record)))\n        (.send producer (ProducerRecord. producer-topic (str "Value: " (.value record))))))\n\n    (.commitAsync consumer)))'
+      '(while true\n\n    (let [records (.poll consumer 100)]\n      (doseq [record records]\n        (log/info "Sending on value" \n          (str "Value: " (.value record)))\n        (.send producer \n          (ProducerRecord. producer-topic    \n            (str "Value: " (.value record))))))\n\n    (.commitAsync consumer)))'
     ),
     _react2.default.createElement(
       'h3',
@@ -79265,7 +79265,7 @@ var KafkaClojure = function KafkaClojure() {
     _react2.default.createElement(
       _reactSyntaxHighlighter2.default,
       { language: 'clojure', style: _hljs.darcula, showLineNumbers: true, wrapLines: true },
-      '(def builder\n    (StreamsBuilder.))\n\n  (def input-topic "plaintext-input")\n  (def output-topic "uppercase")\n \n  (->\n   (.stream builder input-topic) ;; Create the source node of the stream\n   (.mapValues (reify ValueMapper (apply [_ v] (clojure.string/upper-case v)))) ;; map the strings to uppercase\n   (.to output-topic)) ;; Send the repsonse onto an output topic'
+      '(def builder\n    (StreamsBuilder.))\n\n  (def input-topic "plaintext-input")\n  (def output-topic "uppercase")\n \n  (->\n   ;; Create the source node of the stream\n   (.stream builder input-topic) \n   ;; map the strings to uppercase\n   (.mapValues (reify ValueMapper \n     (apply [_ v] \n       (clojure.string/upper-case v)))) \n   ;; Send the repsonse onto an output topic\n   (.to output-topic))'
     ),
     _react2.default.createElement(
       'p',

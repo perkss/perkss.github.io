@@ -21,7 +21,11 @@ const CassandraClojure = () => (
 																		 Eggplant is simplistic and that is it&#39;s motto, which is a great motto as a developer and a product owner you do not want to be bogged down learning another syntax in the case of Cucumber and you want to conform to the popular human readable Given, When and Then as stated above. 
 
 
-																		 <SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={true} wrapLines={true}>{`(defspec example-specification-true\n  (testing "A full length example specification which is true 4 * 2 = 8"\n    (given 4 test-data\n           (then-we-expect 8 (when-we-process * 2 test-data)))))`}</SyntaxHighlighter>
+																		 <SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={true} wrapLines={true}>{`(defspec example-specification-true\n  (testing 
+    "A full length example specification which is true 4 * 2 = 8"   
+      (given 4 test-data          
+        (then-we-expect 8 
+          (when-we-process * 2 test-data)))))`}</SyntaxHighlighter>
 
 																		 As you can see this is readable format, its still in a basic Clojure file and runs with your usual Clojure test suite. Eggplant also offers data driven development which is our favourite feature of Spock! Here you can see we are testing the function + and asserting the esults are equals. Each test-data-row is the parameters passed and the expected result!
 
