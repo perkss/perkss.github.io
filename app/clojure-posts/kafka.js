@@ -74,7 +74,45 @@ from the provided kafka topic name"
 																																		
 		<p>Thats about it the full program can be found in our <a href="https://github.com/perkss/clj-kafka-examples/blob/master/kafka-producer-consumer-example/src/kafka_example/core.clj">kafka-examples</a> project on github. We have seen how to use the Kafka message broker to consume and produce messages using the raw Java API in Clojure which is still fairly elegant. Coming from a Java background and being used to the API I was interested in seeing how it looked in Clojure which was the motivation behind this post, using one of the wrapper classes for the API is probably wise and we will look at some of the available options in another post. To run this project look at the start.sh script to see about setting up the Zookeeper and Kafka instances and topics and then build a uberjar using lein and run the jar.</p>
 
-																		<p></p>
+
+	<h3>#Post 2: A basic Kafka Stream example of a Uppercase Topology built using the raw Java API for version 1.0.1 of Kafka Streams Library</h3>
+    
+	<p>Lets begin our second post and having the great opportunity to work with Kafka Streams. This first example is very basic <a href="https://kafka.apache.org/documentation/streams/">Kafka Streams</a> Topology that converts the input words into uppercase. Again you are expected to be familiar with Kafka message broker and the example above to get this up and running but the commands are provided in the example code found <a href="https://github.com/perkss/clj-kafka-examples/blob/master/kafka-streams-example/src/kafka_streams_example/core.clj">here</a>. Credit to Jason Bell for this great starting <a href="https://dataissexy.wordpress.com/2016/12/06/quick-recipe-for-kafka-streams-in-clojure/">resource</a>. We are going to take use the newer version of the streaming library than this so will see some differences in the API calls, also we are sending on output to another topic so its very different flow and topology.
+        </p>
+
+    <p>To begin we require the dependency on Kafka Streams this is added to our project.clj file. </p>
+
+        <SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={false} wrapLines={true}>{`[org.apache.kafka/kafka-streams "1.0.1"]`}</SyntaxHighlighter>
+
+        <p>Now that the dependency on Kafka Streams is available we need to import them into our Clojure file so they can be used.</p>
+
+     <SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={true} wrapLines={true}>{`(:import
+   (org.apache.kafka.streams StreamsConfig KafkaStreams StreamsBuilder)
+   (org.apache.kafka.common.serialization Serde Serdes Serializer)
+   (org.apache.kafka.streams.kstream ValueMapper))`}</SyntaxHighlighter>
+
+        <p>As in the Consumer Producer we need to define properties such as the brokers and the serdes these should be familiar to you. To start with Kafka Streams we need a Source node in the topology to read data into the stream processing topology here we read from a input of plaintext-input defined as our input topic which is then provided to the StreamsBuilder new in Version 1.0.1 instead of the deprecated KStreamBuilder. The StreamBuilders role is to build up the actual topology and each call returns a new KStream.</p>
+
+     <SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={true} wrapLines={true}>{`(def builder
+    (StreamsBuilder.))
+
+  (def input-topic "plaintext-input")
+  (def output-topic "uppercase")
+ 
+  (->
+   (.stream builder input-topic) ;; Create the source node of the stream
+   (.mapValues (reify ValueMapper (apply [_ v] (clojure.string/upper-case v)))) ;; map the strings to uppercase
+   (.to output-topic)) ;; Send the repsonse onto an output topic`}</SyntaxHighlighter>
+
+        <p>Here we can see the main topology being built with the builder having .stream called on it with the source topic defined as input-topic and the comments show the Java equivalent. We then take the resultant stream and map the values applying upper case to each value and finally send to the output topic the results to be used by another application. This is the very simple topology. We now need to build the stream as shown below and then start it. </p>
+
+    
+     <SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={true} wrapLines={true}>{`(def streams
+    (KafkaStreams. (.build builder) config))
+  (.start streams)`}</SyntaxHighlighter>
+
+    <p>Brilliant we have discovered how to make a simple kafka stream topology using the new API and can see it running if you check out this code build it run the jar and start the input and output topics. Check the README for more details!</p>
+        
 		</div>
 
 );
