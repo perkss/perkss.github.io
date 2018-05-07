@@ -45,7 +45,7 @@ from the provided kafka topic name"
 	<SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={false} wrapLines={true}>{`(KafkaConsumer. consumer-props)`}</SyntaxHighlighter>
 
 		<p>The instance method subscribe is then called on the consumer instance and provided the list of topics to subscribe too here its just the single topic.</p>
-	
+
 		<SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={false} wrapLines={true}>{`(.subscribe [consumer-topic])`}</SyntaxHighlighter>
 		<p>We can then use the following function to bind the consumer to a name value</p>
 
@@ -65,21 +65,21 @@ from the provided kafka topic name"
 
     (let [records (.poll consumer 100)]
       (doseq [record records]
-        (log/info "Sending on value" 
+        (log/info "Sending on value"
           (str "Value: " (.value record)))
-        (.send producer 
-          (ProducerRecord. producer-topic    
+        (.send producer
+          (ProducerRecord. producer-topic
             (str "Value: " (.value record))))))
 
     (.commitAsync consumer)))`}</SyntaxHighlighter>
-																		 
-				 <h3>Summary</h3>													
-																																		
+
+				 <h3>Summary</h3>
+
 		<p>Thats about it the full program can be found in our <a href="https://github.com/perkss/clj-kafka-examples/blob/master/kafka-producer-consumer-example/src/kafka_example/core.clj">kafka-examples</a> project on github. We have seen how to use the Kafka message broker to consume and produce messages using the raw Java API in Clojure which is still fairly elegant. Coming from a Java background and being used to the API I was interested in seeing how it looked in Clojure which was the motivation behind this post, using one of the wrapper classes for the API is probably wise and we will look at some of the available options in another post. To run this project look at the start.sh script to see about setting up the Zookeeper and Kafka instances and topics and then build a uberjar using lein and run the jar.</p>
 
 
-	<h3>#Post 2: A basic Kafka Stream example of a Uppercase Topology built using the raw Java API for version 1.0.1 of Kafka Streams Library</h3>
-    
+	<h3>#Post 2: A basic Kafka Stream example of a Uppercase Topology built using the raw Java API for version 1.1.0 of Kafka Streams Library</h3>
+
 	<p>Lets begin our second post where we have the great opportunity to work with Kafka Streams. This first example is very basic <a href="https://kafka.apache.org/documentation/streams/">Kafka Streams</a> Topology that converts the input words into uppercase. Again you are expected to be familiar with Kafka message broker and the example above to get this up and running but the commands are provided in the example code found <a href="https://github.com/perkss/clj-kafka-examples/blob/master/kafka-streams-example/src/kafka_streams_example/core.clj">here</a>. Credit to Jason Bell for this great starting <a href="https://dataissexy.wordpress.com/2016/12/06/quick-recipe-for-kafka-streams-in-clojure/">resource</a>. We are going to take use the newer version of the streaming library than this so will see some differences in the API calls, also we are sending on output to another topic so its very different flow and topology. The focus of this section is to use the higher level DSL rather than then lower level Processor API that Kafka provides.
         </p>
 
@@ -101,20 +101,20 @@ from the provided kafka topic name"
 
   (def input-topic "plaintext-input")
   (def output-topic "uppercase")
- 
+
   (->
    ;; Create the source node of the stream
-   (.stream builder input-topic) 
+   (.stream builder input-topic)
    ;; map the strings to uppercase
-   (.mapValues (reify ValueMapper 
-     (apply [_ v] 
-       (clojure.string/upper-case v)))) 
+   (.mapValues (reify ValueMapper
+     (apply [_ v]
+       (clojure.string/upper-case v))))
    ;; Send the repsonse onto an output topic
    (.to output-topic))`}</SyntaxHighlighter>
 
         <p>Here we can see the main topology being built with the builder having .stream called on it with the source topic defined as input-topic and the comments show the Java equivalent. We then take the resultant stream and map the values applying upper case to each value and finally send to the output topic the results to be used by another application. This is the very simple topology. We now need to build the stream as shown below and then start it. </p>
 
-    
+
      <SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={true} wrapLines={true}>{`(def streams
     (KafkaStreams. (.build builder) config))
   (.start streams)`}</SyntaxHighlighter>
@@ -137,7 +137,41 @@ from the provided kafka topic name"
                                    (clojure.string/upper-case v))))
         (to "uppercase"))
     builder))`}</SyntaxHighlighter>
-	
+
+
+        <h3>#Post 3: Testing Kafka Streams using the TopologyTestDriver</h3>
+
+        <p>Kafka has made it super easy to build fast decoupled tests from the framework (something Storm really lacked when I used that). The library TopologyTestDriver continually fetches from input topics and processes them via the connected streaming topology and it works with both DSL and Processor API. Allow you to capture the resultant output for asserting against. Firstly you need to have the following imports in Clojure which bring the required TopologyTestDriver and other dependencies.</p>
+
+    <SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={true} wrapLines={true}>{`(:import org.apache.kafka.common.serialization.Serdes
+           [org.apache.kafka.streams StreamsConfig TopologyTestDriver]
+           org.apache.kafka.streams.test.ConsumerRecordFactory)`}</SyntaxHighlighter>
+
+        <p>You then need to define the properties of the test topology to get it to run here it required the java.util.properties so I broke it out into its own definition. </p>
+
+      <SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={true} wrapLines={true}>{`(def properties
+  (let [properties (java.util.Properties.)]
+    (.put properties StreamsConfig/APPLICATION_ID_CONFIG "uppercase-processing-application")
+    (.put properties StreamsConfig/BOOTSTRAP_SERVERS_CONFIG "dummy:9092")
+    (.put properties StreamsConfig/KEY_SERDE_CLASS_CONFIG (.getName (.getClass (Serdes/String))))
+    (.put properties StreamsConfig/VALUE_SERDE_CLASS_CONFIG (.getName (.getClass (Serdes/String))))
+    properties))`}</SyntaxHighlighter>
+
+        <p>You can then simply define the serializer and deserializer, careful note of using the static call and then the instace on the Java API interop. Define the topology under test here simply call the method to build the topology from the core file and define the TopologyTestDriver. You can then simply pipe the input and read the output from the topology-test-driver and do some asserts and here is your test simples!! Thank you Kafka.</p>
+
+
+      <SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={true} wrapLines={true}>{`(deftest kafka-streams-to-uppercase-test
+  (testing "Kafka Stream example one to test the uppercase topology"
+    (let [topology (.build (sut/to-uppercase-topology))
+          topology-test-driver (TopologyTestDriver. topology properties)
+          serializer  (.serializer (. Serdes String))
+          deserializer (.deserializer (. Serdes String))
+          factory (ConsumerRecordFactory. serializer serializer)
+          input "Hello my first stream testing to uppercase"
+          expected "HELLO MY FIRST STREAM TESTING TO UPPERCASE"]
+      (.pipeInput topology-test-driver (.create factory  "plaintext-input" "key" input))
+      (is (= expected (.value (.readOutput topology-test-driver "uppercase"  deserializer deserializer)))))))`}</SyntaxHighlighter>
+
 		</div>
 
 );
