@@ -79317,7 +79317,7 @@ var KafkaClojure = function KafkaClojure() {
     _react2.default.createElement(
       _reactSyntaxHighlighter2.default,
       { language: 'clojure', style: _hljs.darcula, showLineNumbers: true, wrapLines: true },
-      '(while true\n\n    (let [records (.poll consumer 100)]\n      (doseq [record records]\n        (log/info "Sending on value" \n          (str "Value: " (.value record)))\n        (.send producer \n          (ProducerRecord. producer-topic    \n            (str "Value: " (.value record))))))\n\n    (.commitAsync consumer)))'
+      '(while true\n\n    (let [records (.poll consumer 100)]\n      (doseq [record records]\n        (log/info "Sending on value"\n          (str "Value: " (.value record)))\n        (.send producer\n          (ProducerRecord. producer-topic\n            (str "Value: " (.value record))))))\n\n    (.commitAsync consumer)))'
     ),
     _react2.default.createElement(
       'h3',
@@ -79338,7 +79338,7 @@ var KafkaClojure = function KafkaClojure() {
     _react2.default.createElement(
       'h3',
       null,
-      '#Post 2: A basic Kafka Stream example of a Uppercase Topology built using the raw Java API for version 1.0.1 of Kafka Streams Library'
+      '#Post 2: A basic Kafka Stream example of a Uppercase Topology built using the raw Java API for version 1.1.0 of Kafka Streams Library'
     ),
     _react2.default.createElement(
       'p',
@@ -79391,7 +79391,7 @@ var KafkaClojure = function KafkaClojure() {
     _react2.default.createElement(
       _reactSyntaxHighlighter2.default,
       { language: 'clojure', style: _hljs.darcula, showLineNumbers: true, wrapLines: true },
-      '(def builder\n    (StreamsBuilder.))\n\n  (def input-topic "plaintext-input")\n  (def output-topic "uppercase")\n \n  (->\n   ;; Create the source node of the stream\n   (.stream builder input-topic) \n   ;; map the strings to uppercase\n   (.mapValues (reify ValueMapper \n     (apply [_ v] \n       (clojure.string/upper-case v)))) \n   ;; Send the repsonse onto an output topic\n   (.to output-topic))'
+      '(def builder\n    (StreamsBuilder.))\n\n  (def input-topic "plaintext-input")\n  (def output-topic "uppercase")\n\n  (->\n   ;; Create the source node of the stream\n   (.stream builder input-topic)\n   ;; map the strings to uppercase\n   (.mapValues (reify ValueMapper\n     (apply [_ v]\n       (clojure.string/upper-case v))))\n   ;; Send the repsonse onto an output topic\n   (.to output-topic))'
     ),
     _react2.default.createElement(
       'p',
@@ -79427,6 +79427,41 @@ var KafkaClojure = function KafkaClojure() {
       _reactSyntaxHighlighter2.default,
       { language: 'clojure', style: _hljs.darcula, showLineNumbers: true, wrapLines: true },
       '(defn to-uppercase-topology []\n  (let [builder (StreamsBuilder.)\n        words (.stream builder "plaintext-input")]\n    (.. words\n        (mapValues (reify\n                     ValueMapper (apply [_ v]\n                                   (clojure.string/upper-case v))))\n        (to "uppercase"))\n    builder))'
+    ),
+    _react2.default.createElement(
+      'h3',
+      null,
+      '#Post 3: Testing Kafka Streams using the TopologyTestDriver'
+    ),
+    _react2.default.createElement(
+      'p',
+      null,
+      'Kafka has made it super easy to build fast decoupled tests from the framework (something Storm really lacked when I used that). The library TopologyTestDriver continually fetches from input topics and processes them via the connected streaming topology and it works with both DSL and Processor API. Allow you to capture the resultant output for asserting against. Firstly you need to have the following imports in Clojure which bring the required TopologyTestDriver and other dependencies.'
+    ),
+    _react2.default.createElement(
+      _reactSyntaxHighlighter2.default,
+      { language: 'clojure', style: _hljs.darcula, showLineNumbers: true, wrapLines: true },
+      '(:import org.apache.kafka.common.serialization.Serdes\n           [org.apache.kafka.streams StreamsConfig TopologyTestDriver]\n           org.apache.kafka.streams.test.ConsumerRecordFactory)'
+    ),
+    _react2.default.createElement(
+      'p',
+      null,
+      'You then need to define the properties of the test topology to get it to run here it required the java.util.properties so I broke it out into its own definition. '
+    ),
+    _react2.default.createElement(
+      _reactSyntaxHighlighter2.default,
+      { language: 'clojure', style: _hljs.darcula, showLineNumbers: true, wrapLines: true },
+      '(def properties\n  (let [properties (java.util.Properties.)]\n    (.put properties StreamsConfig/APPLICATION_ID_CONFIG "uppercase-processing-application")\n    (.put properties StreamsConfig/BOOTSTRAP_SERVERS_CONFIG "dummy:9092")\n    (.put properties StreamsConfig/KEY_SERDE_CLASS_CONFIG (.getName (.getClass (Serdes/String))))\n    (.put properties StreamsConfig/VALUE_SERDE_CLASS_CONFIG (.getName (.getClass (Serdes/String))))\n    properties))'
+    ),
+    _react2.default.createElement(
+      'p',
+      null,
+      'You can then simply define the serializer and deserializer, careful note of using the static call and then the instace on the Java API interop. Define the topology under test here simply call the method to build the topology from the core file and define the TopologyTestDriver. You can then simply pipe the input and read the output from the topology-test-driver and do some asserts and here is your test simples!! Thank you Kafka.'
+    ),
+    _react2.default.createElement(
+      _reactSyntaxHighlighter2.default,
+      { language: 'clojure', style: _hljs.darcula, showLineNumbers: true, wrapLines: true },
+      '(deftest kafka-streams-to-uppercase-test\n  (testing "Kafka Stream example one to test the uppercase topology"\n    (let [topology (.build (sut/to-uppercase-topology))\n          topology-test-driver (TopologyTestDriver. topology properties)\n          serializer  (.serializer (. Serdes String))\n          deserializer (.deserializer (. Serdes String))\n          factory (ConsumerRecordFactory. serializer serializer)\n          input "Hello my first stream testing to uppercase"\n          expected "HELLO MY FIRST STREAM TESTING TO UPPERCASE"]\n      (.pipeInput topology-test-driver (.create factory  "plaintext-input" "key" input))\n      (is (= expected (.value (.readOutput topology-test-driver "uppercase"  deserializer deserializer)))))))'
     )
   );
 };
