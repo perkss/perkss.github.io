@@ -79462,6 +79462,54 @@ var KafkaClojure = function KafkaClojure() {
       _reactSyntaxHighlighter2.default,
       { language: 'clojure', style: _hljs.darcula, showLineNumbers: true, wrapLines: true },
       '(deftest kafka-streams-to-uppercase-test\n  (testing "Kafka Stream example one to test the uppercase topology"\n    (let [topology (.build (sut/to-uppercase-topology))\n          topology-test-driver (TopologyTestDriver. topology properties)\n          serializer  (.serializer (. Serdes String))\n          deserializer (.deserializer (. Serdes String))\n          factory (ConsumerRecordFactory. serializer serializer)\n          input "Hello my first stream testing to uppercase"\n          expected "HELLO MY FIRST STREAM TESTING TO UPPERCASE"]\n      (.pipeInput topology-test-driver (.create factory  "plaintext-input" "key" input))\n      (is (= expected (.value (.readOutput topology-test-driver "uppercase"  deserializer deserializer)))))))'
+    ),
+    _react2.default.createElement(
+      'h3',
+      null,
+      '#Post 4: Kafka Streaming Joins KStream -> KTable'
+    ),
+    _react2.default.createElement(
+      'p',
+      null,
+      'Kafka provide the ability to join two streams of data together in this example I have converted a great example from Michael Knoll at Confluent post ',
+      _react2.default.createElement(
+        'a',
+        { href: 'https://www.confluent.io/blog/distributed-real-time-joins-and-aggregations-on-user-activity-events-using-kafka-streams/' },
+        ' example.'
+      ),
+      ' Here we take two topics one of the data of user click events and another topic of user geo location. The user clicks is considered a stream of individual records where each data item is a individual event the geo location stream is going to be conisdered as a changelog where each event is an update this will be backed by a KTable. Record streams use KStream and Changelogs use KTable interface. The code for this example can be found ',
+      _react2.default.createElement(
+        'a',
+        { href: 'https://github.com/perkss/clojure-kafka-examples/blob/master/kafka-streams-example/src/kafka_streams_example/ktable_example.clj' },
+        'here.'
+      ),
+      ' The code builds a KStream of user clicks and an KTable of users by location. Basically we want to take some click information for a user, join it to data about where the user is located and then reduce this so we can see the total number of clicks per region.'
+    ),
+    _react2.default.createElement(
+      _reactSyntaxHighlighter2.default,
+      { language: 'clojure', style: _hljs.darcula, showLineNumbers: true, wrapLines: true },
+      'user-clicks (user-click-stream builder input-topic-clicks)\nuser-regions (user-region-table builder input-topic-regions)'
+    ),
+    _react2.default.createElement(
+      'p',
+      null,
+      'These are built up using the table and streams builder API from Kafka. We define the stream as follows firstly we do a leftJoin on the stream of user-clicks with the geo location KTable. The key is the name of the user and this joins user and clicks. We then map the resultant map and take the values of the clicks and the region and return a new stream keyed by the region and the number of new clicks. This is then reduced by adding the previous number of clicks by that region and the new number of clicks and then writing to the output topic of clicks-per-region.'
+    ),
+    _react2.default.createElement(
+      _reactSyntaxHighlighter2.default,
+      { language: 'clojure', style: _hljs.darcula, showLineNumbers: true, wrapLines: true },
+      '(defn clicks-per-region\n  [^KStream user-clicks-stream ^KTable user-regions-table output-topic]\n  (-> user-clicks-stream\n      ;; Joins on the Key which is the name\n      (.leftJoin user-regions-table\n                 (reify ValueJoiner\n                   (apply [_ left right]\n                     ((fn [clicks region]\n                        {:region region :clicks clicks})\n                      left right))))\n      (.map (reify KeyValueMapper\n              (apply [_ k v]\n                ((fn [user clicks-with-regions]\n                   (let [value (KeyValue.\n                                (:region clicks-with-regions)\n                                (:clicks clicks-with-regions))]\n                     value)) k v))))\n      (.groupByKey)\n      (.reduce (reify Reducer\n                 (apply [_ left right]\n                   ((fn [first-clicks second-clicks]\n                      (str (+ (Integer. first-clicks) (Integer. second-clicks)))) left right))))))'
+    ),
+    _react2.default.createElement(
+      'p',
+      null,
+      'The use of reify here may seem confusing to those not so familiar with Clojure a great stack overflow post on this is ',
+      _react2.default.createElement(
+        'a',
+        { heref: 'https://stackoverflow.com/questions/37058268/what-is-reify-in-clojure' },
+        'here.'
+      ),
+      ' Simply it is being used here to implement the interface with a function defined body.'
     )
   );
 };
