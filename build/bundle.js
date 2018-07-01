@@ -19717,7 +19717,7 @@ var home = {
         null,
         "Hipster Clojure"
       ),
-      " contains some great insight into our Clojure projects as well as some blog posts on interesting work going on in that space and frameworks used such as Kafka and Cassandra! The trendy language round these parts we believe. Check out ",
+      " contains some great insight into our Clojure projects as well as some blog posts on interesting work going on in that space and frameworks used such as Kafka and Cassandra! The Kafka section is super interesting and is very full would definitely recommend it! The trendy language round these parts we believe. Check out ",
       _react2.default.createElement(
         "strong",
         null,
@@ -79506,10 +79506,10 @@ var KafkaClojure = function KafkaClojure() {
       'The use of reify here may seem confusing to those not so familiar with Clojure a great stack overflow post on this is ',
       _react2.default.createElement(
         'a',
-        { heref: 'https://stackoverflow.com/questions/37058268/what-is-reify-in-clojure' },
+        { href: 'https://stackoverflow.com/questions/37058268/what-is-reify-in-clojure' },
         'here.'
       ),
-      ' Simply it is being used here to implement the interface with a function defined body.'
+      ' Simply it is being used here to implement the interface with a function defined body. There we have it checkout the test code to see the example running!'
     )
   );
 };

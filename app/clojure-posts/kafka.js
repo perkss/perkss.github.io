@@ -204,7 +204,7 @@ user-regions (user-region-table builder input-topic-regions)`}</SyntaxHighlighte
                    ((fn [first-clicks second-clicks]
                       (str (+ (Integer. first-clicks) (Integer. second-clicks)))) left right))))))`}</SyntaxHighlighter>
 
-    <p>The use of reify here may seem confusing to those not so familiar with Clojure a great stack overflow post on this is <a heref="https://stackoverflow.com/questions/37058268/what-is-reify-in-clojure">here.</a> Simply it is being used here to implement the interface with a function defined body. There we have it checkout the test code to see the example running!</p>
+    <p>The use of reify here may seem confusing to those not so familiar with Clojure a great stack overflow post on this is <a href="https://stackoverflow.com/questions/37058268/what-is-reify-in-clojure">here.</a> Simply it is being used here to implement the interface with a function defined body. There we have it checkout the test code to see the example running!</p>
 
 		</div>
 
