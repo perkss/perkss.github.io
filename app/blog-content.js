@@ -12,6 +12,7 @@ import MathFundamentalsPage from "./math-fundamentals";
 import MathsForCompSciPage from "./maths-for-comp-sci.js";
 import CLanguagePage from "./c-language.js";
 import ClojurePage from "./clojure.js";
+import DevOpsPage from "./devops.js";
 import ScrollToTopRoute from './scroll-to-top-route';
 
 
@@ -31,7 +32,8 @@ class Content extends Component {
  <Route path="/FunctionalProgramming" component={FunctionalProgrammingPage}/>
             <Route path="/MathFundamentals" component={MathFundamentalsPage}/>
           <Route path="/CLanguage" component={CLanguagePage}/>
-          <Route path="/Clojure" component={ClojurePage}/>
+                <Route path="/Clojure" component={ClojurePage}/>
+                <Route path="/Devops" component={DevOpsPage}/>
             </div>
 
 
@@ -41,7 +43,7 @@ class Content extends Component {
         );
     }
 
-    
+
 }
 
 export default Content;

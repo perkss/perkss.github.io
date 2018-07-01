@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import {
   Route,
@@ -12,6 +11,7 @@ import MathFundamentalsPage from "./math-fundamentals";
 import MathsForCompSciPage from "./maths-for-comp-sci.js";
 import CLanguagePage from "./c-language.js";
 import ClojurePage from "./clojure.js";
+import DevOpsPage from "./devops.js";
 import { slide as Menu } from 'react-burger-menu';
 
 
@@ -21,7 +21,7 @@ class SideBar extends Component {
     this.handleMenuClick =  this.handleMenuClick.bind(this);
   }
 
-    
+
    handleMenuClick (event) {
        event.preventDefault();
          console.log('closing menu');
@@ -29,7 +29,7 @@ class SideBar extends Component {
      }
 
 
-    
+
   render() {
     return (
        <HashRouter>
@@ -43,7 +43,9 @@ class SideBar extends Component {
             <a onClick={ this.handleMenuClick } ><NavLink to="/FunctionalProgramming">Functional Programming</NavLink></a>
             <a onClick={ this.handleMenuClick } ><NavLink to="/CLanguage">A Little Bit of C Programming</NavLink></a>
             <a onClick={ this.handleMenuClick } ><NavLink to="/ProgrammingPearls">Programming Pearls</NavLink></a>
-                    
+
+  <a onClick={ this.handleMenuClick } ><NavLink to="/DevOps">Devops Time</NavLink></a>
+
             </Menu>
 
 
@@ -52,5 +54,5 @@ class SideBar extends Component {
   }
 
 }
- 
+
 export default SideBar;

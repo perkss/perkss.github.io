@@ -13,7 +13,9 @@ import MathFundamentalsPage from "./math-fundamentals";
 import MathsForCompSciPage from "./maths-for-comp-sci.js";
 import CLanguagePage from "./c-language.js";
 import ClojurePage from "./clojure.js";
+import DevOpsPage from "./devops.js";
 import './../css/nav-grid.css';
+import './../css/colours.css';
 import { HashLink as Link } from 'react-router-hash-link';
 
 
@@ -66,6 +68,13 @@ const home = {
                  <li className='yellow'>
            <NavLink to={"/ProgrammingPearls"}>
            Programming<br/>Pearls
+           </NavLink>
+
+                </li>
+
+                 <li className='dark-blue'>
+           <NavLink to={"/DevOps"}>
+                DevOps<br/>Time
            </NavLink>
 
            </li>
