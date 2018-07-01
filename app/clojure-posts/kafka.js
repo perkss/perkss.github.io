@@ -172,6 +172,40 @@ from the provided kafka topic name"
       (.pipeInput topology-test-driver (.create factory  "plaintext-input" "key" input))
       (is (= expected (.value (.readOutput topology-test-driver "uppercase"  deserializer deserializer)))))))`}</SyntaxHighlighter>
 
+        <h3>#Post 4: Kafka Streaming Joins KStream -> KTable</h3>
+
+        <p>Kafka provide the ability to join two streams of data together in this example I have converted a great example from Michael Knoll at Confluent post <a href="https://www.confluent.io/blog/distributed-real-time-joins-and-aggregations-on-user-activity-events-using-kafka-streams/"> example.</a> Here we take two topics one of the data of user click events and another topic of user geo location. The user clicks is considered a stream of individual records where each data item is a individual event the geo location stream is going to be conisdered as a changelog where each event is an update this will be backed by a KTable. Record streams use KStream and Changelogs use KTable interface. The code for this example can be found <a href="https://github.com/perkss/clojure-kafka-examples/blob/master/kafka-streams-example/src/kafka_streams_example/ktable_example.clj">here.</a> The code builds a KStream of user clicks and an KTable of users by location. Basically we want to take some click information for a user, join it to data about where the user is located and then reduce this so we can see the total number of clicks per region.</p>
+
+     <SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={true} wrapLines={true}>{`user-clicks (user-click-stream builder input-topic-clicks)
+user-regions (user-region-table builder input-topic-regions)`}</SyntaxHighlighter>
+
+    <p>These are built up using the table and streams builder API from Kafka. We define the stream as follows firstly we do a leftJoin on the stream of user-clicks with the geo location KTable. The key is the name of the user and this joins user and clicks. We then map the resultant map and take the values of the clicks and the region and return a new stream keyed by the region and the number of new clicks. This is then reduced by adding the previous number of clicks by that region and the new number of clicks and then writing to the output topic of clicks-per-region.</p>
+
+  <SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={true} wrapLines={true}>{`(defn clicks-per-region
+  [^KStream user-clicks-stream ^KTable user-regions-table output-topic]
+  (-> user-clicks-stream
+      ;; Joins on the Key which is the name
+      (.leftJoin user-regions-table
+                 (reify ValueJoiner
+                   (apply [_ left right]
+                     ((fn [clicks region]
+                        {:region region :clicks clicks})
+                      left right))))
+      (.map (reify KeyValueMapper
+              (apply [_ k v]
+                ((fn [user clicks-with-regions]
+                   (let [value (KeyValue.
+                                (:region clicks-with-regions)
+                                (:clicks clicks-with-regions))]
+                     value)) k v))))
+      (.groupByKey)
+      (.reduce (reify Reducer
+                 (apply [_ left right]
+                   ((fn [first-clicks second-clicks]
+                      (str (+ (Integer. first-clicks) (Integer. second-clicks)))) left right))))))`}</SyntaxHighlighter>
+
+    <p>The use of reify here may seem confusing to those not so familiar with Clojure a great stack overflow post on this is <a heref="https://stackoverflow.com/questions/37058268/what-is-reify-in-clojure">here.</a> Simply it is being used here to implement the interface with a function defined body. There we have it checkout the test code to see the example running!</p>
+
 		</div>
 
 );
