@@ -79506,10 +79506,10 @@ var KafkaClojure = function KafkaClojure() {
       'The use of reify here may seem confusing to those not so familiar with Clojure a great stack overflow post on this is ',
       _react2.default.createElement(
         'a',
-        { heref: 'https://stackoverflow.com/questions/37058268/what-is-reify-in-clojure' },
+        { href: 'https://stackoverflow.com/questions/37058268/what-is-reify-in-clojure' },
         'here.'
       ),
-      ' Simply it is being used here to implement the interface with a function defined body.'
+      ' Simply it is being used here to implement the interface with a function defined body. There we have it checkout the test code to see the example running!'
     )
   );
 };
