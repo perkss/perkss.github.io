@@ -19717,7 +19717,7 @@ var home = {
         null,
         "Hipster Clojure"
       ),
-      " contains some great insight into our Clojure projects as well as some blog posts on interesting work going on in that space and frameworks used such as Kafka and Cassandra! The trendy language round these parts we believe. Check out ",
+      " contains some great insight into our Clojure projects as well as some blog posts on interesting work going on in that space and frameworks used such as Kafka and Cassandra! The Kafka section is super interesting and is very full would definitely recommend it! The trendy language round these parts we believe. Check out ",
       _react2.default.createElement(
         "strong",
         null,
