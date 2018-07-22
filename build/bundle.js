@@ -2470,6 +2470,149 @@ module.exports = invariant;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+/* WEBPACK VAR INJECTION */(function(module) {
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _katex = __webpack_require__(587);
+
+var _katex2 = _interopRequireDefault(_katex);
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(8);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* eslint react/no-danger: 0 */
+
+// Eslint doesn't like react being in peerDependencies
+//eslint-disable-line
+
+
+var latexString = function latexString(string, options) {
+    // Remove potential HTML
+    string = string.replace(/(<([^>]+)>)/gi, "");
+    var regularExpression = /\$\$[\s\S]+?\$\$|\$[\s\S]+?\$/g;
+
+    var stripDollars = function stripDollars(stringToStrip) {
+        if (stringToStrip[1] === "$") {
+            stringToStrip = stringToStrip.slice(2, -2);
+        } else {
+            stringToStrip = stringToStrip.slice(1, -1);
+        }
+
+        return stringToStrip;
+    };
+
+    var renderLatexString = function renderLatexString(s) {
+        var renderedString = void 0;
+        try {
+            renderedString = _katex2.default.renderToString(s, options);
+        } catch (err) {
+            console.error("couldn`t convert string", s);
+            return s;
+        }
+        return renderedString;
+    };
+
+    var result = [];
+
+    var latexMatch = string.match(regularExpression);
+    var stringWithoutLatex = string.split(regularExpression);
+
+    if (latexMatch) {
+        stringWithoutLatex.forEach(function (s, index) {
+            result.push({
+                string: s,
+                type: "text"
+            });
+            if (latexMatch[index]) {
+                result.push({
+                    string: stripDollars(latexMatch[index]),
+                    type: "latex"
+                });
+            }
+        });
+    } else {
+        result.push({
+            string: string,
+            type: "text"
+        });
+    }
+
+    var processResult = function processResult(resultToProcess) {
+        var newResult = resultToProcess.map(function (r) {
+            if (r.type === "text") {
+                return r.string;
+            }
+            return renderLatexString(r.string);
+        });
+
+        return newResult.join(" ");
+    };
+
+    return processResult(result);
+};
+
+var Latex = function (_React$Component) {
+    _inherits(Latex, _React$Component);
+
+    function Latex() {
+        _classCallCheck(this, Latex);
+
+        return _possibleConstructorReturn(this, (Latex.__proto__ || Object.getPrototypeOf(Latex)).apply(this, arguments));
+    }
+
+    _createClass(Latex, [{
+        key: "render",
+        value: function render() {
+            var _props = this.props,
+                children = _props.children,
+                displayMode = _props.displayMode;
+
+            return _react2.default.createElement("span", {
+                dangerouslySetInnerHTML: {
+                    __html: latexString(children, { displayMode: displayMode })
+                }
+            });
+        }
+    }]);
+
+    return Latex;
+}(_react2.default.Component);
+
+Latex.propTypes = {
+    children: _propTypes2.default.string,
+    displayMode: _propTypes2.default.bool
+};
+Latex.defaultProps = {
+    children: "",
+    displayMode: false
+};
+
+
+if (module && module.exports) {
+    module.exports = Latex;
+} else {
+    window.Latex = Latex;
+}
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(586)(module)))
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -2724,149 +2867,6 @@ module.exports = ReactUpdates;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 18 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(module) {
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _katex = __webpack_require__(587);
-
-var _katex2 = _interopRequireDefault(_katex);
-
-var _react = __webpack_require__(1);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = __webpack_require__(8);
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* eslint react/no-danger: 0 */
-
-// Eslint doesn't like react being in peerDependencies
-//eslint-disable-line
-
-
-var latexString = function latexString(string, options) {
-    // Remove potential HTML
-    string = string.replace(/(<([^>]+)>)/gi, "");
-    var regularExpression = /\$\$[\s\S]+?\$\$|\$[\s\S]+?\$/g;
-
-    var stripDollars = function stripDollars(stringToStrip) {
-        if (stringToStrip[1] === "$") {
-            stringToStrip = stringToStrip.slice(2, -2);
-        } else {
-            stringToStrip = stringToStrip.slice(1, -1);
-        }
-
-        return stringToStrip;
-    };
-
-    var renderLatexString = function renderLatexString(s) {
-        var renderedString = void 0;
-        try {
-            renderedString = _katex2.default.renderToString(s, options);
-        } catch (err) {
-            console.error("couldn`t convert string", s);
-            return s;
-        }
-        return renderedString;
-    };
-
-    var result = [];
-
-    var latexMatch = string.match(regularExpression);
-    var stringWithoutLatex = string.split(regularExpression);
-
-    if (latexMatch) {
-        stringWithoutLatex.forEach(function (s, index) {
-            result.push({
-                string: s,
-                type: "text"
-            });
-            if (latexMatch[index]) {
-                result.push({
-                    string: stripDollars(latexMatch[index]),
-                    type: "latex"
-                });
-            }
-        });
-    } else {
-        result.push({
-            string: string,
-            type: "text"
-        });
-    }
-
-    var processResult = function processResult(resultToProcess) {
-        var newResult = resultToProcess.map(function (r) {
-            if (r.type === "text") {
-                return r.string;
-            }
-            return renderLatexString(r.string);
-        });
-
-        return newResult.join(" ");
-    };
-
-    return processResult(result);
-};
-
-var Latex = function (_React$Component) {
-    _inherits(Latex, _React$Component);
-
-    function Latex() {
-        _classCallCheck(this, Latex);
-
-        return _possibleConstructorReturn(this, (Latex.__proto__ || Object.getPrototypeOf(Latex)).apply(this, arguments));
-    }
-
-    _createClass(Latex, [{
-        key: "render",
-        value: function render() {
-            var _props = this.props,
-                children = _props.children,
-                displayMode = _props.displayMode;
-
-            return _react2.default.createElement("span", {
-                dangerouslySetInnerHTML: {
-                    __html: latexString(children, { displayMode: displayMode })
-                }
-            });
-        }
-    }]);
-
-    return Latex;
-}(_react2.default.Component);
-
-Latex.propTypes = {
-    children: _propTypes2.default.string,
-    displayMode: _propTypes2.default.bool
-};
-Latex.defaultProps = {
-    children: "",
-    displayMode: false
-};
-
-
-if (module && module.exports) {
-    module.exports = Latex;
-} else {
-    window.Latex = Latex;
-}
-
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(586)(module)))
-
-/***/ }),
 /* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2901,15 +2901,15 @@ var _propTypes = __webpack_require__(8);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _baseStyles = __webpack_require__(617);
+var _baseStyles = __webpack_require__(618);
 
 var _baseStyles2 = _interopRequireDefault(_baseStyles);
 
-var _BurgerIcon = __webpack_require__(618);
+var _BurgerIcon = __webpack_require__(619);
 
 var _BurgerIcon2 = _interopRequireDefault(_BurgerIcon);
 
-var _CrossIcon = __webpack_require__(619);
+var _CrossIcon = __webpack_require__(620);
 
 var _CrossIcon2 = _interopRequireDefault(_CrossIcon);
 
@@ -12534,7 +12534,7 @@ var _prodInvariant = __webpack_require__(4);
 var ReactCurrentOwner = __webpack_require__(20);
 var ReactInstanceMap = __webpack_require__(42);
 var ReactInstrumentation = __webpack_require__(13);
-var ReactUpdates = __webpack_require__(17);
+var ReactUpdates = __webpack_require__(18);
 
 var invariant = __webpack_require__(2);
 var warning = __webpack_require__(3);
@@ -14755,6 +14755,10 @@ var _garbageCollection = __webpack_require__(611);
 
 var _garbageCollection2 = _interopRequireDefault(_garbageCollection);
 
+var _specs = __webpack_require__(612);
+
+var _specs2 = _interopRequireDefault(_specs);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var ClojurePage = function ClojurePage(_ref) {
@@ -14834,6 +14838,17 @@ var ClojurePage = function ClojurePage(_ref) {
 						_react2.default.createElement('br', null),
 						'Collection'
 					)
+				),
+				_react2.default.createElement(
+					'li',
+					{ className: 'gray' },
+					_react2.default.createElement(
+						_reactRouterHashLink.HashLink,
+						{ to: match.url + '/Specs#text-body' },
+						'Skateboards',
+						_react2.default.createElement('br', null),
+						'and Specs'
+					)
 				)
 			)
 		),
@@ -14846,7 +14861,8 @@ var ClojurePage = function ClojurePage(_ref) {
 			_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: match.url + '/KafkaClojure', component: _kafka2.default }),
 			_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: match.url + '/ConcurrencyClojure', component: _concurrency2.default }),
 			_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: match.url + '/DataStructuresClojure', component: _dataStructures2.default }),
-			_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: match.url + '/GarbageCollection', component: _garbageCollection2.default })
+			_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: match.url + '/GarbageCollection', component: _garbageCollection2.default }),
+			_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: match.url + '/Specs', component: _specs2.default })
 		)
 	});
 };
@@ -17590,7 +17606,7 @@ var _assign = __webpack_require__(5);
 var DisabledInputUtils = __webpack_require__(56);
 var LinkedValueUtils = __webpack_require__(79);
 var ReactDOMComponentTree = __webpack_require__(6);
-var ReactUpdates = __webpack_require__(17);
+var ReactUpdates = __webpack_require__(18);
 
 var warning = __webpack_require__(3);
 
@@ -18354,7 +18370,7 @@ var ReactInstrumentation = __webpack_require__(13);
 var ReactMarkupChecksum = __webpack_require__(242);
 var ReactReconciler = __webpack_require__(33);
 var ReactUpdateQueue = __webpack_require__(83);
-var ReactUpdates = __webpack_require__(17);
+var ReactUpdates = __webpack_require__(18);
 
 var emptyObject = __webpack_require__(37);
 var instantiateReactComponent = __webpack_require__(132);
@@ -18948,7 +18964,7 @@ var _devops = __webpack_require__(110);
 
 var _devops2 = _interopRequireDefault(_devops);
 
-var _reactBurgerMenu = __webpack_require__(615);
+var _reactBurgerMenu = __webpack_require__(616);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -19656,9 +19672,9 @@ var _devops = __webpack_require__(110);
 
 var _devops2 = _interopRequireDefault(_devops);
 
-__webpack_require__(612);
+__webpack_require__(613);
 
-__webpack_require__(614);
+__webpack_require__(615);
 
 var _reactRouterHashLink = __webpack_require__(58);
 
@@ -20980,7 +20996,7 @@ Object.defineProperty(exports, '__esModule', {
 exports['default'] = function () {
   var Snap = undefined;
   try {
-    Snap = __webpack_require__(622);
+    Snap = __webpack_require__(623);
   } finally {
     return Snap;
   }
@@ -21007,13 +21023,13 @@ var _sideBar = __webpack_require__(141);
 
 var _sideBar2 = _interopRequireDefault(_sideBar);
 
-var _footer = __webpack_require__(631);
+var _footer = __webpack_require__(632);
 
 var _footer2 = _interopRequireDefault(_footer);
 
-__webpack_require__(634);
+__webpack_require__(635);
 
-var _blogContent = __webpack_require__(635);
+var _blogContent = __webpack_require__(636);
 
 var _blogContent2 = _interopRequireDefault(_blogContent);
 
@@ -21444,7 +21460,7 @@ var ReactDOMComponentTree = __webpack_require__(6);
 var ReactDefaultInjection = __webpack_require__(170);
 var ReactMount = __webpack_require__(139);
 var ReactReconciler = __webpack_require__(33);
-var ReactUpdates = __webpack_require__(17);
+var ReactUpdates = __webpack_require__(18);
 var ReactVersion = __webpack_require__(116);
 
 var findDOMNode = __webpack_require__(244);
@@ -22232,7 +22248,7 @@ var EventPluginHub = __webpack_require__(39);
 var EventPropagators = __webpack_require__(38);
 var ExecutionEnvironment = __webpack_require__(7);
 var ReactDOMComponentTree = __webpack_require__(6);
-var ReactUpdates = __webpack_require__(17);
+var ReactUpdates = __webpack_require__(18);
 var SyntheticEvent = __webpack_require__(22);
 
 var getEventTarget = __webpack_require__(73);
@@ -25819,7 +25835,7 @@ var DisabledInputUtils = __webpack_require__(56);
 var DOMPropertyOperations = __webpack_require__(130);
 var LinkedValueUtils = __webpack_require__(79);
 var ReactDOMComponentTree = __webpack_require__(6);
-var ReactUpdates = __webpack_require__(17);
+var ReactUpdates = __webpack_require__(18);
 
 var invariant = __webpack_require__(2);
 var warning = __webpack_require__(3);
@@ -26224,7 +26240,7 @@ var _prodInvariant = __webpack_require__(4),
 var DisabledInputUtils = __webpack_require__(56);
 var LinkedValueUtils = __webpack_require__(79);
 var ReactDOMComponentTree = __webpack_require__(6);
-var ReactUpdates = __webpack_require__(17);
+var ReactUpdates = __webpack_require__(18);
 
 var invariant = __webpack_require__(2);
 var warning = __webpack_require__(3);
@@ -28620,7 +28636,7 @@ module.exports = ReactDOMTextComponent;
 
 var _assign = __webpack_require__(5);
 
-var ReactUpdates = __webpack_require__(17);
+var ReactUpdates = __webpack_require__(18);
 var Transaction = __webpack_require__(40);
 
 var emptyFunction = __webpack_require__(12);
@@ -28698,7 +28714,7 @@ var EventListener = __webpack_require__(136);
 var ExecutionEnvironment = __webpack_require__(7);
 var PooledClass = __webpack_require__(25);
 var ReactDOMComponentTree = __webpack_require__(6);
-var ReactUpdates = __webpack_require__(17);
+var ReactUpdates = __webpack_require__(18);
 
 var getEventTarget = __webpack_require__(73);
 var getUnboundedScrollPosition = __webpack_require__(220);
@@ -28905,7 +28921,7 @@ var ReactClass = __webpack_require__(112);
 var ReactEmptyComponent = __webpack_require__(134);
 var ReactBrowserEventEmitter = __webpack_require__(55);
 var ReactHostComponent = __webpack_require__(135);
-var ReactUpdates = __webpack_require__(17);
+var ReactUpdates = __webpack_require__(18);
 
 var ReactInjection = {
   Component: ReactComponentEnvironment.injection,
@@ -70434,7 +70450,7 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactLatex = __webpack_require__(18);
+var _reactLatex = __webpack_require__(17);
 
 var _reactLatex2 = _interopRequireDefault(_reactLatex);
 
@@ -77805,7 +77821,7 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactLatex = __webpack_require__(18);
+var _reactLatex = __webpack_require__(17);
 
 var _reactLatex2 = _interopRequireDefault(_reactLatex);
 
@@ -78262,7 +78278,7 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactLatex = __webpack_require__(18);
+var _reactLatex = __webpack_require__(17);
 
 var _reactLatex2 = _interopRequireDefault(_reactLatex);
 
@@ -78679,7 +78695,7 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactLatex = __webpack_require__(18);
+var _reactLatex = __webpack_require__(17);
 
 var _reactLatex2 = _interopRequireDefault(_reactLatex);
 
@@ -79039,7 +79055,7 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactLatex = __webpack_require__(18);
+var _reactLatex = __webpack_require__(17);
 
 var _reactLatex2 = _interopRequireDefault(_reactLatex);
 
@@ -79167,7 +79183,7 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactLatex = __webpack_require__(18);
+var _reactLatex = __webpack_require__(17);
 
 var _reactLatex2 = _interopRequireDefault(_reactLatex);
 
@@ -79302,7 +79318,7 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactLatex = __webpack_require__(18);
+var _reactLatex = __webpack_require__(17);
 
 var _reactLatex2 = _interopRequireDefault(_reactLatex);
 
@@ -79642,7 +79658,7 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactLatex = __webpack_require__(18);
+var _reactLatex = __webpack_require__(17);
 
 var _reactLatex2 = _interopRequireDefault(_reactLatex);
 
@@ -79975,7 +79991,7 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactLatex = __webpack_require__(18);
+var _reactLatex = __webpack_require__(17);
 
 var _reactLatex2 = _interopRequireDefault(_reactLatex);
 
@@ -80235,7 +80251,7 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactLatex = __webpack_require__(18);
+var _reactLatex = __webpack_require__(17);
 
 var _reactLatex2 = _interopRequireDefault(_reactLatex);
 
@@ -80356,10 +80372,93 @@ exports.default = GarbageCollection;
 /* 612 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+        value: true
+});
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactLatex = __webpack_require__(17);
+
+var _reactLatex2 = _interopRequireDefault(_reactLatex);
+
+var _reactSyntaxHighlighter = __webpack_require__(10);
+
+var _reactSyntaxHighlighter2 = _interopRequireDefault(_reactSyntaxHighlighter);
+
+var _hljs = __webpack_require__(11);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Specs = function Specs() {
+        return _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(
+                        'h2',
+                        null,
+                        'Skateboards and Specs'
+                ),
+                _react2.default.createElement(
+                        'p',
+                        null,
+                        'Coming from a background of Java a statically typed language using Clojures dynamically typed language was a stark change. A few generic collections can be used for representing data but this does make code harder to understand on what type of data is flowing through this code in Clojure 1.9 Specs was released that enables developers to describe the structure of data and validate it.In this post we are going to walk through one of my favourite hobbies in my younger years skateboarding using Clojure Specs! Big shout out to ',
+                        _react2.default.createElement(
+                                'a',
+                                { href: 'https://www.athirdfoot.co.uk/' },
+                                'A Third Foot'
+                        ),
+                        ' for still making boards in the UK and going strong! Lets get started with our scenario for Specs we want to build skateboards from different components the Deck, Wheels, Trucks and Bearings. We have a selection of brands to choose from for each of these components. To get this started we will define the possible values for each of these. We will need to require clojure.spec.alpha :as s. We will then define specs using a set of possible values for each component of a skateboard.'
+                ),
+                _react2.default.createElement(
+                        _reactSyntaxHighlighter2.default,
+                        { language: 'clojure', style: _hljs.darcula, showLineNumbers: true, wrapLines: true },
+                        ';; Spec definition for components\n(s/def ::deck #{"A Third Foot" "Baker" "Flip"})\n(s/def ::trucks #{"Independent" "Thunder" "Venture"})\n(s/def ::wheels #{"Spitfire" "Ricta" "Bones"})\n(s/def ::bearings #{"Bones Reds" "Bones Swiss"})\n\n;; Lets check the validity of these types\n(s/valid? ::deck "A Third Foot")  ;; => true\n(s/valid? ::trucks "Independent")  ;; => true\n(s/valid? ::wheels "Spitfire")  ;; => true\n(s/valid? ::bearings "Bones Swiss")  ;; => true\n\n;; Use required spec keys to defined a skateboard\n(s/def ::skateboard (s/keys :req-un [::deck ::trucks ::wheels ::bearings]))\n;; Is this a valid Skateboard? Yes\n(s/valid? ::skateboard {:deck "A Third Foot" :trucks "Independent" :wheels "Spitfire" :bearings "Bones Swiss"}) ;; => true\n\n;; This will explain what is wrong with this map can you check?\n(s/explain ::skateboard {:decks "A Third Foot" :trucks "Independent" :wheels "Spitfire" :bearings "Bones Swiss"})\n',
+                        ' '
+                ),
+                _react2.default.createElement(
+                        'p',
+                        null,
+                        'That short amount of code is doing some impressive stuff that is super easy to read. We have defined some brands of Skateboards we can choose from then checked validity of some examples, and then built up a skateboard spec for a map and its keys. We then used s/explain to work out what is wrong with our final map representation of a skateboard. If you are not familiar with Specs you may wonder about the :: and the :req-un. When you define a Spec it put it into a global registry where the Specs are namespaced so you could have ::deck in a namespace foo and ::deck in a namespace ::bar. If you do not want to use the registry it Spec valid can be used directly for example: '
+                ),
+                _react2.default.createElement(
+                        _reactSyntaxHighlighter2.default,
+                        { language: 'clojure', style: _hljs.darcula, showLineNumbers: true, wrapLines: true },
+                        '(s/valid? string? "A Third Foot")'
+                ),
+                _react2.default.createElement(
+                        'p',
+                        null,
+                        'Now if we want to generate random examples of skateboards built from our component for example to decide on your next setup or to generate test cases. We can simply require in clojure.spec.gen.alpha :as gen and do the following its pretty awesome.'
+                ),
+                _react2.default.createElement(
+                        _reactSyntaxHighlighter2.default,
+                        { language: 'clojure', style: _hljs.darcula, showLineNumbers: true, wrapLines: true },
+                        '(gen/generate (s/gen ::skateboard))\n;; => {:deck "Flip", :trucks "Thunder", :wheels "Ricta", :bearings "Bones Swiss"}'
+                ),
+                _react2.default.createElement(
+                        'p',
+                        null,
+                        'Hope you enjoyed this introduction of Clojure Specs via some pretty neat skateboard brands.'
+                )
+        );
+};
+
+exports.default = Specs;
+
+/***/ }),
+/* 613 */
+/***/ (function(module, exports, __webpack_require__) {
+
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(613);
+var content = __webpack_require__(614);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -80384,7 +80483,7 @@ if(false) {
 }
 
 /***/ }),
-/* 613 */
+/* 614 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(35)(undefined);
@@ -80398,7 +80497,7 @@ exports.push([module.i, ".nav-grid\n/* layout main menu */\n{\n   \n    clear:bo
 
 
 /***/ }),
-/* 614 */
+/* 615 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
@@ -80429,7 +80528,7 @@ if(false) {
 }
 
 /***/ }),
-/* 615 */
+/* 616 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -80439,21 +80538,21 @@ Object.defineProperty(exports, '__esModule', {
   value: true
 });
 exports['default'] = {
-  slide: __webpack_require__(616),
-  stack: __webpack_require__(620),
-  elastic: __webpack_require__(621),
-  bubble: __webpack_require__(624),
-  push: __webpack_require__(625),
-  pushRotate: __webpack_require__(626),
-  scaleDown: __webpack_require__(627),
-  scaleRotate: __webpack_require__(628),
-  fallDown: __webpack_require__(629),
-  reveal: __webpack_require__(630)
+  slide: __webpack_require__(617),
+  stack: __webpack_require__(621),
+  elastic: __webpack_require__(622),
+  bubble: __webpack_require__(625),
+  push: __webpack_require__(626),
+  pushRotate: __webpack_require__(627),
+  scaleDown: __webpack_require__(628),
+  scaleRotate: __webpack_require__(629),
+  fallDown: __webpack_require__(630),
+  reveal: __webpack_require__(631)
 };
 module.exports = exports['default'];
 
 /***/ }),
-/* 616 */
+/* 617 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -80475,7 +80574,7 @@ exports['default'] = (0, _menuFactory2['default'])(styles);
 module.exports = exports['default'];
 
 /***/ }),
-/* 617 */
+/* 618 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -80550,7 +80649,7 @@ exports['default'] = styles;
 module.exports = exports['default'];
 
 /***/ }),
-/* 618 */
+/* 619 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -80688,7 +80787,7 @@ BurgerIcon.defaultProps = {
 module.exports = exports['default'];
 
 /***/ }),
-/* 619 */
+/* 620 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -80820,7 +80919,7 @@ CrossIcon.defaultProps = {
 module.exports = exports['default'];
 
 /***/ }),
-/* 620 */
+/* 621 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -80865,7 +80964,7 @@ exports['default'] = (0, _menuFactory2['default'])(styles);
 module.exports = exports['default'];
 
 /***/ }),
-/* 621 */
+/* 622 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -80966,10 +81065,10 @@ exports['default'] = (0, _menuFactory2['default'])(styles);
 module.exports = exports['default'];
 
 /***/ }),
-/* 622 */
+/* 623 */
 /***/ (function(module, exports, __webpack_require__) {
 
-window.eve = __webpack_require__(623)
+window.eve = __webpack_require__(624)
 
 // Copyright (c) 2017 Adobe Systems Incorporated. All rights reserved.
 //
@@ -89117,7 +89216,7 @@ module.exports = Snap
 
 
 /***/ }),
-/* 623 */
+/* 624 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;// Copyright (c) 2017 Adobe Systems Incorporated. All rights reserved.
@@ -89559,7 +89658,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;// Copyright (c)
 
 
 /***/ }),
-/* 624 */
+/* 625 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -89676,7 +89775,7 @@ exports['default'] = (0, _menuFactory2['default'])(styles);
 module.exports = exports['default'];
 
 /***/ }),
-/* 625 */
+/* 626 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -89716,7 +89815,7 @@ exports['default'] = (0, _menuFactory2['default'])(styles);
 module.exports = exports['default'];
 
 /***/ }),
-/* 626 */
+/* 627 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -89759,7 +89858,7 @@ exports['default'] = (0, _menuFactory2['default'])(styles);
 module.exports = exports['default'];
 
 /***/ }),
-/* 627 */
+/* 628 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -89801,7 +89900,7 @@ exports['default'] = (0, _menuFactory2['default'])(styles);
 module.exports = exports['default'];
 
 /***/ }),
-/* 628 */
+/* 629 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -89844,7 +89943,7 @@ exports['default'] = (0, _menuFactory2['default'])(styles);
 module.exports = exports['default'];
 
 /***/ }),
-/* 629 */
+/* 630 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -89897,7 +89996,7 @@ exports['default'] = (0, _menuFactory2['default'])(styles);
 module.exports = exports['default'];
 
 /***/ }),
-/* 630 */
+/* 631 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -89977,7 +90076,7 @@ exports['default'] = (0, _menuFactory2['default'])(styles);
 module.exports = exports['default'];
 
 /***/ }),
-/* 631 */
+/* 632 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -89993,7 +90092,7 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-__webpack_require__(632);
+__webpack_require__(633);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -90033,13 +90132,13 @@ var Footer = function (_React$Component) {
 exports.default = Footer;
 
 /***/ }),
-/* 632 */
+/* 633 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(633);
+var content = __webpack_require__(634);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -90064,7 +90163,7 @@ if(false) {
 }
 
 /***/ }),
-/* 633 */
+/* 634 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(35)(undefined);
@@ -90078,7 +90177,7 @@ exports.push([module.i, "footer {\n  background-color: #0288D1;\n  font-family: 
 
 
 /***/ }),
-/* 634 */
+/* 635 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
@@ -90109,7 +90208,7 @@ if(false) {
 }
 
 /***/ }),
-/* 635 */
+/* 636 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -90159,7 +90258,7 @@ var _devops = __webpack_require__(110);
 
 var _devops2 = _interopRequireDefault(_devops);
 
-var _scrollToTopRoute = __webpack_require__(636);
+var _scrollToTopRoute = __webpack_require__(637);
 
 var _scrollToTopRoute2 = _interopRequireDefault(_scrollToTopRoute);
 
@@ -90216,7 +90315,7 @@ var Content = function (_Component) {
 exports.default = Content;
 
 /***/ }),
-/* 636 */
+/* 637 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
