@@ -15,6 +15,7 @@ import KafkaClojure from './clojure-posts/kafka';
 import ConcurrencyClojure from './clojure-posts/concurrency';
 import DataStructuresClojure from './clojure-posts/data-structures';
 import GarbageCollection from './clojure-posts/garbage-collection';
+import Specs from './clojure-posts/specs.js';
 
 const ClojurePage = ({ match }) =>  {
 
@@ -46,17 +47,24 @@ const ClojurePage = ({ match }) =>  {
 				    <li className='orange'>
 				  	<Link to={`${match.url}/GarbageCollection#text-body`}>
 			Garbage<br/>Collection</Link>
-				  </li>
+		  </li>
+                   <li className='gray'>
+				  	<Link to={`${match.url}/Specs#text-body`}>
+			Skateboards<br/>and Specs</Link>
+		  </li>
+
 				  </ul>
 				 </div>}
-		
+
         text={<div>
 			  <Route exact path={`${match.url}`} component={Eggplant} />
 			  <Route exact path={`${match.url}/CassandraClojure`} component={CassandraClojure} />
 			  <Route exact path={`${match.url}/KafkaClojure`} component={KafkaClojure} />
 			  <Route exact path={`${match.url}/ConcurrencyClojure`} component={ConcurrencyClojure} />
 			  <Route exact path={`${match.url}/DataStructuresClojure`} component={DataStructuresClojure} />
-			  	<Route exact path={`${match.url}/GarbageCollection`} component={GarbageCollection} />
+	      <Route exact path={`${match.url}/GarbageCollection`} component={GarbageCollection} />
+
+              	<Route exact path={`${match.url}/Specs`} component={Specs} />
 			</div>
 			 }
 		/>
