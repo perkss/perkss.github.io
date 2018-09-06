@@ -13914,7 +13914,7 @@ module.exports = {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 
 var _react = __webpack_require__(1);
@@ -13936,197 +13936,197 @@ var _hljs = __webpack_require__(11);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var algorithms = {
-  title: 'Algorithms',
-  contents: '',
-  text: [_react2.default.createElement(
-    'div',
-    null,
-    _react2.default.createElement(
-      'h3',
-      null,
-      'Introduction'
-    ),
-    _react2.default.createElement(
-      'h4',
-      null,
-      'Algorithmic Thinking'
-    ),
-    _react2.default.createElement(
-      'p',
-      null,
-      'Lets start with our first and very simple algorithm that finds peaks in a list of numbers. To define this in mathematical form lets have a list of items [a b c d e f g h i] position 2 in the list of items is only a peak if ',
-      _react2.default.createElement(_reactKatex.InlineMath, { math: 'b \\geq a' }),
-      ' and ',
-      _react2.default.createElement(_reactKatex.InlineMath, { math: 'b \\geq c' }),
-      '. Position 9 is a peak if ',
-      _react2.default.createElement(_reactKatex.InlineMath, { math: 'i \\geq h' }),
-      '. In plain english basically if either side of a point are smaller than the point it is a peak. Potentially all values in a list maybe equal so they are all peaks. A simple algorithm to find this would be to start at the begging and check each item in the list. Alternatively the course by MIT states an approach using a divide and conquer algorithm similar to Binary Search. Where it takes the middle point of the list checks the left side if samller than left find mid point of left list, else check if smaller than right side check right side list, else it is a peak. This algorithm will not necessarily find the max peak but will find a peak in the list. Lets write some Java code to see this.'
-    ),
-    _react2.default.createElement(
-      'p',
-      null,
-      _react2.default.createElement(
-        _reactSyntaxHighlighter2.default,
-        { language: 'java', style: _hljs.darcula, showLineNumbers: true, wrapLines: true },
-        'public static int findPeak(int[] data) {\n\n        if(data == null || data.length == 0) {\n            throw new IllegalArgumentException("Invalid data");\n        }\n\n        if(data.length == 1) {\n            return data[0];\n        }\n\n        int midpoint = data.length/2;\n\n        if(data[midpoint] < data[midpoint-1]) {\n            \n            int[] leftSide = new int[midpoint-1];\n            System.arraycopy(data, 0,leftSide, 0, midpoint-1);\n            return findPeak(leftSide);\n\n        } else if( data[midpoint] < data[midpoint + 1]){\n  \n            int[] rightSide = new int[data.length - midpoint+1];\n            System.arraycopy(data, midpoint+1,rightSide, 0, data.length - midpoint+1);\n            return findPeak(rightSide);\n        } else {\n            return data[midpoint];\n        }\n\n}'
-      ),
-      'As Clojure is also awesome lets see it in a functional language style, you can see how much shorter it is granted we have not added the exception handling!',
-      _react2.default.createElement(
-        _reactSyntaxHighlighter2.default,
-        { language: 'clojure', style: _hljs.darcula, showLineNumbers: true, wrapLines: true },
-        '(defn find-peak [data]\n  (let [midpoint (Math/floor (/ (count data) 2))]\n    (if (= 1 (count data)) (nth data 0)\n        (cond\n          (< (nth data midpoint) (nth data (- midpoint 1)))\n          (recur\n           (nth  (split-at (-  midpoint 1) data) 0))\n          (<  (nth data midpoint) (nth data (+ midpoint 1)))\n          (recur\n           (nth (split-at (+ midpoint 1) data) 1))\n          :else (nth data midpoint)))))\n\n(find-peak [6,7,4,3,2,1,4,5])\n;; => 7'
-      )
-    ),
-    _react2.default.createElement(
-      'h4',
-      null,
-      'Models of Computation'
-    ),
-    _react2.default.createElement(
-      'h3',
-      null,
-      'Selections'
-    ),
-    _react2.default.createElement(
-      'h4',
-      null,
-      'Hoare QuickSelect'
-    ),
-    _react2.default.createElement(
-      'h3',
-      null,
-      'Sorting and Trees'
-    ),
-    _react2.default.createElement(
-      'h4',
-      null,
-      'Insertion Sort'
-    ),
-    _react2.default.createElement(
-      'h4',
-      null,
-      'Merge Sort'
-    ),
-    _react2.default.createElement(
-      'h4',
-      null,
-      'Heaps and Heap Sort'
-    ),
-    _react2.default.createElement(
-      'h4',
-      null,
-      'Binary Search Tree'
-    ),
-    _react2.default.createElement(
-      'h4',
-      null,
-      'AVL Trees and Sort'
-    ),
-    _react2.default.createElement(
-      'h4',
-      null,
-      'Counting Sort'
-    ),
-    _react2.default.createElement(
-      'h4',
-      null,
-      'Radix Sort'
-    ),
-    _react2.default.createElement(
-      'h4',
-      null,
-      'Lower Bounds'
-    ),
-    _react2.default.createElement(
-      'h3',
-      null,
-      'Hashing'
-    ),
-    _react2.default.createElement(
-      'h4',
-      null,
-      'Hashing with Chaining'
-    ),
-    _react2.default.createElement(
-      'h4',
-      null,
-      'Table Doubling'
-    ),
-    _react2.default.createElement(
-      'h4',
-      null,
-      'Open Addressing'
-    ),
-    _react2.default.createElement(
-      'h3',
-      null,
-      'Numerics'
-    ),
-    _react2.default.createElement(
-      'h4',
-      null,
-      'Integer Arithmetic'
-    ),
-    _react2.default.createElement(
-      'h4',
-      null,
-      'Square Roots'
-    ),
-    _react2.default.createElement(
-      'h3',
-      null,
-      'Graphs'
-    ),
-    _react2.default.createElement(
-      'h4',
-      null,
-      'Breadth First Search'
-    ),
-    _react2.default.createElement(
-      'h4',
-      null,
-      'Depth First Search'
-    ),
-    _react2.default.createElement(
-      'h3',
-      null,
-      'Shortest Paths'
-    ),
-    _react2.default.createElement(
-      'h4',
-      null,
-      'Single Source Shortest Problem'
-    ),
-    _react2.default.createElement(
-      'h4',
-      null,
-      'Dijkstra'
-    ),
-    _react2.default.createElement(
-      'h4',
-      null,
-      'Bellman Ford'
-    ),
-    _react2.default.createElement(
-      'h3',
-      null,
-      'Dynamic Programming'
-    ),
-    _react2.default.createElement(
-      'h3',
-      null,
-      'Advanced Topics'
-    )
-  )]
+    title: 'Algorithms',
+    contents: '',
+    text: [_react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+            'h3',
+            null,
+            'Introduction'
+        ),
+        _react2.default.createElement(
+            'h4',
+            null,
+            'Algorithmic Thinking'
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            'Lets start with our first and very simple algorithm that finds peaks in a list of numbers. To define this in mathematical form lets have a list of items [a b c d e f g h i] position 2 in the list of items is only a peak if ',
+            _react2.default.createElement(_reactKatex.InlineMath, { math: 'b \\geq a' }),
+            ' and ',
+            _react2.default.createElement(_reactKatex.InlineMath, { math: 'b \\geq c' }),
+            '. Position 9 is a peak if ',
+            _react2.default.createElement(_reactKatex.InlineMath, { math: 'i \\geq h' }),
+            '. In plain english basically if either side of a point are smaller than the point it is a peak. Potentially all values in a list maybe equal so they are all peaks. A simple algorithm to find this would be to start at the begging and check each item in the list. Alternatively the course by MIT states an approach using a divide and conquer algorithm similar to Binary Search. Where it takes the middle point of the list checks the left side if samller than left find mid point of left list, else check if smaller than right side check right side list, else it is a peak. This algorithm will not necessarily find the max peak but will find a peak in the list. Lets write some Java code to see this.'
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            _react2.default.createElement(
+                _reactSyntaxHighlighter2.default,
+                { language: 'java', style: _hljs.darcula, showLineNumbers: true, wrapLines: true },
+                'public static int findPeak(int[] data) {\n\n        if(data == null || data.length == 0) {\n            throw new IllegalArgumentException("Invalid data");\n        }\n\n        if(data.length == 1) {\n            return data[0];\n        }\n\n        int midpoint = data.length/2;\n\n        if(data[midpoint] < data[midpoint-1]) {\n\n            int[] leftSide = new int[midpoint-1];\n            System.arraycopy(data, 0,leftSide, 0, midpoint-1);\n            return findPeak(leftSide);\n\n        } else if( data[midpoint] < data[midpoint + 1]){\n\n            int[] rightSide = new int[data.length - midpoint+1];\n            System.arraycopy(data, midpoint+1,rightSide, 0, data.length - midpoint+1);\n            return findPeak(rightSide);\n        } else {\n            return data[midpoint];\n        }\n\n}'
+            ),
+            'As Clojure is also awesome lets see it in a functional language style, you can see how much shorter it is granted we have not added the exception handling!',
+            _react2.default.createElement(
+                _reactSyntaxHighlighter2.default,
+                { language: 'clojure', style: _hljs.darcula, showLineNumbers: true, wrapLines: true },
+                '(defn find-peak [data]\n  (let [midpoint (Math/floor (/ (count data) 2))]\n    (if (= 1 (count data)) (nth data 0)\n        (cond\n          (< (nth data midpoint) (nth data (- midpoint 1)))\n          (recur\n           (nth  (split-at (-  midpoint 1) data) 0))\n          (<  (nth data midpoint) (nth data (+ midpoint 1)))\n          (recur\n           (nth (split-at (+ midpoint 1) data) 1))\n          :else (nth data midpoint)))))\n\n(find-peak [6,7,4,3,2,1,4,5])\n;; => 7'
+            )
+        ),
+        _react2.default.createElement(
+            'h4',
+            null,
+            'Models of Computation'
+        ),
+        _react2.default.createElement(
+            'h3',
+            null,
+            'Selections'
+        ),
+        _react2.default.createElement(
+            'h4',
+            null,
+            'Hoare QuickSelect'
+        ),
+        _react2.default.createElement(
+            'h3',
+            null,
+            'Sorting and Trees'
+        ),
+        _react2.default.createElement(
+            'h4',
+            null,
+            'Insertion Sort'
+        ),
+        _react2.default.createElement(
+            'h4',
+            null,
+            'Merge Sort'
+        ),
+        _react2.default.createElement(
+            'h4',
+            null,
+            'Heaps and Heap Sort'
+        ),
+        _react2.default.createElement(
+            'h4',
+            null,
+            'Binary Search Tree'
+        ),
+        _react2.default.createElement(
+            'h4',
+            null,
+            'AVL Trees and Sort'
+        ),
+        _react2.default.createElement(
+            'h4',
+            null,
+            'Counting Sort'
+        ),
+        _react2.default.createElement(
+            'h4',
+            null,
+            'Radix Sort'
+        ),
+        _react2.default.createElement(
+            'h4',
+            null,
+            'Lower Bounds'
+        ),
+        _react2.default.createElement(
+            'h3',
+            null,
+            'Hashing'
+        ),
+        _react2.default.createElement(
+            'h4',
+            null,
+            'Hashing with Chaining'
+        ),
+        _react2.default.createElement(
+            'h4',
+            null,
+            'Table Doubling'
+        ),
+        _react2.default.createElement(
+            'h4',
+            null,
+            'Open Addressing'
+        ),
+        _react2.default.createElement(
+            'h3',
+            null,
+            'Numerics'
+        ),
+        _react2.default.createElement(
+            'h4',
+            null,
+            'Integer Arithmetic'
+        ),
+        _react2.default.createElement(
+            'h4',
+            null,
+            'Square Roots'
+        ),
+        _react2.default.createElement(
+            'h3',
+            null,
+            'Graphs'
+        ),
+        _react2.default.createElement(
+            'h4',
+            null,
+            'Breadth First Search'
+        ),
+        _react2.default.createElement(
+            'h4',
+            null,
+            'Depth First Search'
+        ),
+        _react2.default.createElement(
+            'h3',
+            null,
+            'Shortest Paths'
+        ),
+        _react2.default.createElement(
+            'h4',
+            null,
+            'Single Source Shortest Problem'
+        ),
+        _react2.default.createElement(
+            'h4',
+            null,
+            'Dijkstra'
+        ),
+        _react2.default.createElement(
+            'h4',
+            null,
+            'Bellman Ford'
+        ),
+        _react2.default.createElement(
+            'h3',
+            null,
+            'Dynamic Programming'
+        ),
+        _react2.default.createElement(
+            'h3',
+            null,
+            'Advanced Topics'
+        )
+    )]
 
 };
 
 var AlgorithmsPage = function AlgorithmsPage(props) {
-  return _react2.default.createElement(_blogPage2.default, {
-    title: algorithms.title,
-    contents: algorithms.contents,
-    text: algorithms.text
-  });
+    return _react2.default.createElement(_blogPage2.default, {
+        title: algorithms.title,
+        contents: algorithms.contents,
+        text: algorithms.text
+    });
 };
 
 exports.default = AlgorithmsPage;
@@ -19796,7 +19796,7 @@ var home = {
     _react2.default.createElement(
       "p",
       null,
-      "Please check the side menu on the top left or the rather fancy buttons at the bottom to link to the sections. We cover the ",
+      "Please check the side menu on the top left or the rather fancy buttons at the bottom to link to the sections. I cover the ",
       _react2.default.createElement(
         "strong",
         null,
@@ -19826,7 +19826,7 @@ var home = {
         null,
         "Algorithms"
       ),
-      " will then be discussed in detail building them imperatively and functionally using C and Clojure respectively. We then have a dig into the world of ",
+      " will then be discussed in detail building them imperatively and functionally using some C, Java, Python and Clojure. We then have a dig into the world of ",
       _react2.default.createElement(
         "strong",
         null,
@@ -19862,7 +19862,7 @@ var home = {
         { href: "https://www.amazon.co.uk/Programming-Pearls-Joe-Bentley/dp/8177588583" },
         "book"
       ),
-      "."
+      ". Finally a section on the overused term DevOps which will cover a large range of items."
     ),
     _react2.default.createElement(
       "p",
@@ -19879,7 +19879,7 @@ var home = {
       _react2.default.createElement(
         "a",
         { href: "https://github.com/perkss" },
-        "Our github page: perkss"
+        "Please cheeck out my and feel free to contibute to any of my projects github page: perkss"
       )
     ),
     _react2.default.createElement(
@@ -19890,8 +19890,7 @@ var home = {
         { href: "../rss/clojure-rss.xml" },
         "RSS"
       )
-    ),
-    "                                            "
+    )
   )]
 
 };
