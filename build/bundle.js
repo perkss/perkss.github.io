@@ -79092,6 +79092,11 @@ var DiscreteMaths = function DiscreteMaths() {
                 ),
                 _react2.default.createElement(_reactKatex.BlockMath, { math: '\\frac{1}{1},\\frac{1}{2},\\frac{1}{3} .... ,' }),
                 _react2.default.createElement(
+                        'p',
+                        null,
+                        'Two other important definitions are geometric progression and arithmetic progression I will leave it up to the reader to investigate these.'
+                ),
+                _react2.default.createElement(
                         'h4',
                         null,
                         'Recurrence Relation'
@@ -79110,6 +79115,38 @@ var DiscreteMaths = function DiscreteMaths() {
                         _react2.default.createElement(_reactKatex.InlineMath, { math: 'n = 1,2,3 ... ' }),
                         ' for the initial term of ',
                         _react2.default.createElement(_reactKatex.InlineMath, { math: 'a_0 = 2' })
+                ),
+                _react2.default.createElement(
+                        'h4',
+                        null,
+                        'Special Integer Sequences'
+                ),
+                _react2.default.createElement(
+                        'p',
+                        null,
+                        'With the above we were given the closed formula (the pattern the sequence is running in forumla) a recurrence relation or other type of general rule. What if this is not provided, well given the firt few values of the sequence then we have to make an educated conjecture (guess) about the identity of the sequence. Some common things to look for are there runs of the same value inthe sequence, are terms made from previous terms by adding, subtracting, multiplying or manipulting them in some way. Or are there specific cycles. '
+                ),
+                _react2.default.createElement(
+                        'h4',
+                        null,
+                        'Summations'
+                ),
+                _react2.default.createElement(
+                        'p',
+                        null,
+                        'Summations are simply sequences that are the additions of terms of a sequence. These expressions are expressed using the sigma notation.'
+                ),
+                _react2.default.createElement(_reactKatex.BlockMath, { math: '\\sum_{j=m}^n a_j' }),
+                _react2.default.createElement(
+                        'p',
+                        null,
+                        'This is read as the sum from  ',
+                        _react2.default.createElement(_reactKatex.InlineMath, { math: 'j = m' }),
+                        ', to  ',
+                        _react2.default.createElement(_reactKatex.InlineMath, { math: 'j = n' }),
+                        ' of  ',
+                        _react2.default.createElement(_reactKatex.InlineMath, { math: 'a_j' }),
+                        ' We have used the variable j to be used as the index of the summation but any variable can be used. We start with a lower limit m and a upper limit of n.'
                 )
         );
 };
