@@ -39,6 +39,19 @@ const DiscreteMaths = () => (
         <p>This is read as the sum from  <InlineMath math="j = m"/>, to  <InlineMath math="j = n"/> of  <InlineMath math="a_j"/> We have used the variable j to be used as the index of the summation but any variable can be used. We start with a lower limit m and a upper limit of n.</p>
 
 
+        <h3>Number Theory</h3>
+
+        <h4>Division</h4>
+        <p>When <i>a</i> divides <i>b</i> we say that <i>a</i> is a facotr or divisor of <i>b</i> and that <i>b</i> is a multiple of <i>a</i>. When dividing we gave the quotient as q, a as the dividend, d as the divisor and r as the remainder. It follows this formula.</p>
+
+        <BlockMath math="q = a/d"></BlockMath>
+        <BlockMath math="r = a \mod d"></BlockMath>
+
+        <p>Lets see an example of this definition above. We have 113 divided by 12:</p>
+
+        <BlockMath math="113 = 12*9+5"></BlockMath>
+
+        <p>Hence, the quotient when 113 is divided by 12 is 9 = 113 div 12 and the remainder is 5 = 113 mod 12.</p>
 
     </div>
 );

@@ -79147,6 +79147,70 @@ var DiscreteMaths = function DiscreteMaths() {
                         ' of  ',
                         _react2.default.createElement(_reactKatex.InlineMath, { math: 'a_j' }),
                         ' We have used the variable j to be used as the index of the summation but any variable can be used. We start with a lower limit m and a upper limit of n.'
+                ),
+                _react2.default.createElement(
+                        'h3',
+                        null,
+                        'Number Theory'
+                ),
+                _react2.default.createElement(
+                        'h4',
+                        null,
+                        'Division'
+                ),
+                _react2.default.createElement(
+                        'p',
+                        null,
+                        'When ',
+                        _react2.default.createElement(
+                                'i',
+                                null,
+                                'a'
+                        ),
+                        ' divides ',
+                        _react2.default.createElement(
+                                'i',
+                                null,
+                                'b'
+                        ),
+                        ' we say that ',
+                        _react2.default.createElement(
+                                'i',
+                                null,
+                                'a'
+                        ),
+                        ' is a facotr or divisor of ',
+                        _react2.default.createElement(
+                                'i',
+                                null,
+                                'b'
+                        ),
+                        ' and that ',
+                        _react2.default.createElement(
+                                'i',
+                                null,
+                                'b'
+                        ),
+                        ' is a multiple of ',
+                        _react2.default.createElement(
+                                'i',
+                                null,
+                                'a'
+                        ),
+                        '. When dividing we gave the quotient as q, a as the dividend, d as the divisor and r as the remainder. It follows this formula.'
+                ),
+                _react2.default.createElement(_reactKatex.BlockMath, { math: 'q = a/d' }),
+                _react2.default.createElement(_reactKatex.BlockMath, { math: 'r = a \\mod d' }),
+                _react2.default.createElement(
+                        'p',
+                        null,
+                        'Lets see an example of this definition above. We have 113 divided by 12:'
+                ),
+                _react2.default.createElement(_reactKatex.BlockMath, { math: '113 = 12*9+5' }),
+                _react2.default.createElement(
+                        'p',
+                        null,
+                        'Hence, the quotient when 113 is divided by 12 is 9 = 113 div 12 and the remainder is 5 = 113 mod 12.'
                 )
         );
 };
