@@ -554,7 +554,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 var _prodInvariant = __webpack_require__(4);
 
-var DOMProperty = __webpack_require__(30);
+var DOMProperty = __webpack_require__(31);
 var ReactDOMComponentFlags = __webpack_require__(118);
 
 var invariant = __webpack_require__(2);
@@ -1707,6 +1707,149 @@ module.exports = { debugTool: debugTool };
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+/* WEBPACK VAR INJECTION */(function(module) {
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _katex = __webpack_require__(587);
+
+var _katex2 = _interopRequireDefault(_katex);
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(8);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* eslint react/no-danger: 0 */
+
+// Eslint doesn't like react being in peerDependencies
+//eslint-disable-line
+
+
+var latexString = function latexString(string, options) {
+    // Remove potential HTML
+    string = string.replace(/(<([^>]+)>)/gi, "");
+    var regularExpression = /\$\$[\s\S]+?\$\$|\$[\s\S]+?\$/g;
+
+    var stripDollars = function stripDollars(stringToStrip) {
+        if (stringToStrip[1] === "$") {
+            stringToStrip = stringToStrip.slice(2, -2);
+        } else {
+            stringToStrip = stringToStrip.slice(1, -1);
+        }
+
+        return stringToStrip;
+    };
+
+    var renderLatexString = function renderLatexString(s) {
+        var renderedString = void 0;
+        try {
+            renderedString = _katex2.default.renderToString(s, options);
+        } catch (err) {
+            console.error("couldn`t convert string", s);
+            return s;
+        }
+        return renderedString;
+    };
+
+    var result = [];
+
+    var latexMatch = string.match(regularExpression);
+    var stringWithoutLatex = string.split(regularExpression);
+
+    if (latexMatch) {
+        stringWithoutLatex.forEach(function (s, index) {
+            result.push({
+                string: s,
+                type: "text"
+            });
+            if (latexMatch[index]) {
+                result.push({
+                    string: stripDollars(latexMatch[index]),
+                    type: "latex"
+                });
+            }
+        });
+    } else {
+        result.push({
+            string: string,
+            type: "text"
+        });
+    }
+
+    var processResult = function processResult(resultToProcess) {
+        var newResult = resultToProcess.map(function (r) {
+            if (r.type === "text") {
+                return r.string;
+            }
+            return renderLatexString(r.string);
+        });
+
+        return newResult.join(" ");
+    };
+
+    return processResult(result);
+};
+
+var Latex = function (_React$Component) {
+    _inherits(Latex, _React$Component);
+
+    function Latex() {
+        _classCallCheck(this, Latex);
+
+        return _possibleConstructorReturn(this, (Latex.__proto__ || Object.getPrototypeOf(Latex)).apply(this, arguments));
+    }
+
+    _createClass(Latex, [{
+        key: "render",
+        value: function render() {
+            var _props = this.props,
+                children = _props.children,
+                displayMode = _props.displayMode;
+
+            return _react2.default.createElement("span", {
+                dangerouslySetInnerHTML: {
+                    __html: latexString(children, { displayMode: displayMode })
+                }
+            });
+        }
+    }]);
+
+    return Latex;
+}(_react2.default.Component);
+
+Latex.propTypes = {
+    children: _propTypes2.default.string,
+    displayMode: _propTypes2.default.bool
+};
+Latex.defaultProps = {
+    children: "",
+    displayMode: false
+};
+
+
+if (module && module.exports) {
+    module.exports = Latex;
+} else {
+    window.Latex = Latex;
+}
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(586)(module)))
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
  * Copyright 2014-present, Facebook, Inc.
  * All rights reserved.
@@ -2058,7 +2201,7 @@ module.exports = ReactElement;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2407,7 +2550,7 @@ module.exports = ReactComponentTreeHook;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2464,149 +2607,6 @@ var invariant = function(condition, format, a, b, c, d, e, f) {
 module.exports = invariant;
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
-
-/***/ }),
-/* 17 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(module) {
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _katex = __webpack_require__(587);
-
-var _katex2 = _interopRequireDefault(_katex);
-
-var _react = __webpack_require__(1);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = __webpack_require__(8);
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* eslint react/no-danger: 0 */
-
-// Eslint doesn't like react being in peerDependencies
-//eslint-disable-line
-
-
-var latexString = function latexString(string, options) {
-    // Remove potential HTML
-    string = string.replace(/(<([^>]+)>)/gi, "");
-    var regularExpression = /\$\$[\s\S]+?\$\$|\$[\s\S]+?\$/g;
-
-    var stripDollars = function stripDollars(stringToStrip) {
-        if (stringToStrip[1] === "$") {
-            stringToStrip = stringToStrip.slice(2, -2);
-        } else {
-            stringToStrip = stringToStrip.slice(1, -1);
-        }
-
-        return stringToStrip;
-    };
-
-    var renderLatexString = function renderLatexString(s) {
-        var renderedString = void 0;
-        try {
-            renderedString = _katex2.default.renderToString(s, options);
-        } catch (err) {
-            console.error("couldn`t convert string", s);
-            return s;
-        }
-        return renderedString;
-    };
-
-    var result = [];
-
-    var latexMatch = string.match(regularExpression);
-    var stringWithoutLatex = string.split(regularExpression);
-
-    if (latexMatch) {
-        stringWithoutLatex.forEach(function (s, index) {
-            result.push({
-                string: s,
-                type: "text"
-            });
-            if (latexMatch[index]) {
-                result.push({
-                    string: stripDollars(latexMatch[index]),
-                    type: "latex"
-                });
-            }
-        });
-    } else {
-        result.push({
-            string: string,
-            type: "text"
-        });
-    }
-
-    var processResult = function processResult(resultToProcess) {
-        var newResult = resultToProcess.map(function (r) {
-            if (r.type === "text") {
-                return r.string;
-            }
-            return renderLatexString(r.string);
-        });
-
-        return newResult.join(" ");
-    };
-
-    return processResult(result);
-};
-
-var Latex = function (_React$Component) {
-    _inherits(Latex, _React$Component);
-
-    function Latex() {
-        _classCallCheck(this, Latex);
-
-        return _possibleConstructorReturn(this, (Latex.__proto__ || Object.getPrototypeOf(Latex)).apply(this, arguments));
-    }
-
-    _createClass(Latex, [{
-        key: "render",
-        value: function render() {
-            var _props = this.props,
-                children = _props.children,
-                displayMode = _props.displayMode;
-
-            return _react2.default.createElement("span", {
-                dangerouslySetInnerHTML: {
-                    __html: latexString(children, { displayMode: displayMode })
-                }
-            });
-        }
-    }]);
-
-    return Latex;
-}(_react2.default.Component);
-
-Latex.propTypes = {
-    children: _propTypes2.default.string,
-    displayMode: _propTypes2.default.bool
-};
-Latex.defaultProps = {
-    children: "",
-    displayMode: false
-};
-
-
-if (module && module.exports) {
-    module.exports = Latex;
-} else {
-    window.Latex = Latex;
-}
-
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(586)(module)))
 
 /***/ }),
 /* 18 */
@@ -2901,15 +2901,15 @@ var _propTypes = __webpack_require__(8);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _baseStyles = __webpack_require__(618);
+var _baseStyles = __webpack_require__(619);
 
 var _baseStyles2 = _interopRequireDefault(_baseStyles);
 
-var _BurgerIcon = __webpack_require__(619);
+var _BurgerIcon = __webpack_require__(620);
 
 var _BurgerIcon2 = _interopRequireDefault(_BurgerIcon);
 
-var _CrossIcon = __webpack_require__(620);
+var _CrossIcon = __webpack_require__(621);
 
 var _CrossIcon2 = _interopRequireDefault(_CrossIcon);
 
@@ -4107,406 +4107,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 /* 28 */
-/***/ (function(module, exports) {
-
-/**
- * This is the ParseError class, which is the main error thrown by KaTeX
- * functions when something has gone wrong. This is used to distinguish internal
- * errors from errors in the expression that the user provided.
- *
- * If possible, a caller should provide a Token or ParseNode with information
- * about where in the source string the problem occurred.
- *
- * @param {string} message  The error message
- * @param {(Token|ParseNode)=} token  An object providing position information
- */
-function ParseError(message, token) {
-    var error = "KaTeX parse error: " + message;
-    var start;
-    var end;
-
-    if (token && token.lexer && token.start <= token.end) {
-        // If we have the input and a position, make the error a bit fancier
-
-        // Get the input
-        var input = token.lexer.input;
-
-        // Prepend some information
-        start = token.start;
-        end = token.end;
-        if (start === input.length) {
-            error += " at end of input: ";
-        } else {
-            error += " at position " + (start + 1) + ": ";
-        }
-
-        // Underline token in question using combining underscores
-        var underlined = input.slice(start, end).replace(/[^]/g, "$&\u0332");
-
-        // Extract some context from the input and add it to the error
-        var left;
-        if (start > 15) {
-            left = "…" + input.slice(start - 15, start);
-        } else {
-            left = input.slice(0, start);
-        }
-        var right;
-        if (end + 15 < input.length) {
-            right = input.slice(end, end + 15) + "…";
-        } else {
-            right = input.slice(end);
-        }
-        error += left + underlined + right;
-    }
-
-    // Some hackery to make ParseError a prototype of Error
-    // See http://stackoverflow.com/a/8460753
-    var self = new Error(error);
-    self.name = "ParseError";
-    self.__proto__ = ParseError.prototype;
-
-    self.position = start;
-    return self;
-}
-
-// More hackery
-ParseError.prototype.__proto__ = Error.prototype;
-
-module.exports = ParseError;
-
-
-/***/ }),
-/* 29 */
-/***/ (function(module, exports) {
-
-/**
- * This is the ParseError class, which is the main error thrown by KaTeX
- * functions when something has gone wrong. This is used to distinguish internal
- * errors from errors in the expression that the user provided.
- *
- * If possible, a caller should provide a Token or ParseNode with information
- * about where in the source string the problem occurred.
- *
- * @param {string} message  The error message
- * @param {(Token|ParseNode)=} token  An object providing position information
- */
-function ParseError(message, token) {
-    var error = "KaTeX parse error: " + message;
-    var start;
-    var end;
-
-    if (token && token.lexer && token.start <= token.end) {
-        // If we have the input and a position, make the error a bit fancier
-
-        // Get the input
-        var input = token.lexer.input;
-
-        // Prepend some information
-        start = token.start;
-        end = token.end;
-        if (start === input.length) {
-            error += " at end of input: ";
-        } else {
-            error += " at position " + (start + 1) + ": ";
-        }
-
-        // Underline token in question using combining underscores
-        var underlined = input.slice(start, end).replace(/[^]/g, "$&\u0332");
-
-        // Extract some context from the input and add it to the error
-        var left;
-        if (start > 15) {
-            left = "…" + input.slice(start - 15, start);
-        } else {
-            left = input.slice(0, start);
-        }
-        var right;
-        if (end + 15 < input.length) {
-            right = input.slice(end, end + 15) + "…";
-        } else {
-            right = input.slice(end);
-        }
-        error += left + underlined + right;
-    }
-
-    // Some hackery to make ParseError a prototype of Error
-    // See http://stackoverflow.com/a/8460753
-    var self = new Error(error);
-    self.name = "ParseError";
-    self.__proto__ = ParseError.prototype;
-
-    self.position = start;
-    return self;
-}
-
-// More hackery
-ParseError.prototype.__proto__ = Error.prototype;
-
-module.exports = ParseError;
-
-
-/***/ }),
-/* 30 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- *
- * @providesModule DOMProperty
- */
-
-
-
-var _prodInvariant = __webpack_require__(4);
-
-var invariant = __webpack_require__(2);
-
-function checkMask(value, bitmask) {
-  return (value & bitmask) === bitmask;
-}
-
-var DOMPropertyInjection = {
-  /**
-   * Mapping from normalized, camelcased property names to a configuration that
-   * specifies how the associated DOM property should be accessed or rendered.
-   */
-  MUST_USE_PROPERTY: 0x1,
-  HAS_BOOLEAN_VALUE: 0x4,
-  HAS_NUMERIC_VALUE: 0x8,
-  HAS_POSITIVE_NUMERIC_VALUE: 0x10 | 0x8,
-  HAS_OVERLOADED_BOOLEAN_VALUE: 0x20,
-
-  /**
-   * Inject some specialized knowledge about the DOM. This takes a config object
-   * with the following properties:
-   *
-   * isCustomAttribute: function that given an attribute name will return true
-   * if it can be inserted into the DOM verbatim. Useful for data-* or aria-*
-   * attributes where it's impossible to enumerate all of the possible
-   * attribute names,
-   *
-   * Properties: object mapping DOM property name to one of the
-   * DOMPropertyInjection constants or null. If your attribute isn't in here,
-   * it won't get written to the DOM.
-   *
-   * DOMAttributeNames: object mapping React attribute name to the DOM
-   * attribute name. Attribute names not specified use the **lowercase**
-   * normalized name.
-   *
-   * DOMAttributeNamespaces: object mapping React attribute name to the DOM
-   * attribute namespace URL. (Attribute names not specified use no namespace.)
-   *
-   * DOMPropertyNames: similar to DOMAttributeNames but for DOM properties.
-   * Property names not specified use the normalized name.
-   *
-   * DOMMutationMethods: Properties that require special mutation methods. If
-   * `value` is undefined, the mutation method should unset the property.
-   *
-   * @param {object} domPropertyConfig the config as described above.
-   */
-  injectDOMPropertyConfig: function (domPropertyConfig) {
-    var Injection = DOMPropertyInjection;
-    var Properties = domPropertyConfig.Properties || {};
-    var DOMAttributeNamespaces = domPropertyConfig.DOMAttributeNamespaces || {};
-    var DOMAttributeNames = domPropertyConfig.DOMAttributeNames || {};
-    var DOMPropertyNames = domPropertyConfig.DOMPropertyNames || {};
-    var DOMMutationMethods = domPropertyConfig.DOMMutationMethods || {};
-
-    if (domPropertyConfig.isCustomAttribute) {
-      DOMProperty._isCustomAttributeFunctions.push(domPropertyConfig.isCustomAttribute);
-    }
-
-    for (var propName in Properties) {
-      !!DOMProperty.properties.hasOwnProperty(propName) ? process.env.NODE_ENV !== 'production' ? invariant(false, 'injectDOMPropertyConfig(...): You\'re trying to inject DOM property \'%s\' which has already been injected. You may be accidentally injecting the same DOM property config twice, or you may be injecting two configs that have conflicting property names.', propName) : _prodInvariant('48', propName) : void 0;
-
-      var lowerCased = propName.toLowerCase();
-      var propConfig = Properties[propName];
-
-      var propertyInfo = {
-        attributeName: lowerCased,
-        attributeNamespace: null,
-        propertyName: propName,
-        mutationMethod: null,
-
-        mustUseProperty: checkMask(propConfig, Injection.MUST_USE_PROPERTY),
-        hasBooleanValue: checkMask(propConfig, Injection.HAS_BOOLEAN_VALUE),
-        hasNumericValue: checkMask(propConfig, Injection.HAS_NUMERIC_VALUE),
-        hasPositiveNumericValue: checkMask(propConfig, Injection.HAS_POSITIVE_NUMERIC_VALUE),
-        hasOverloadedBooleanValue: checkMask(propConfig, Injection.HAS_OVERLOADED_BOOLEAN_VALUE)
-      };
-      !(propertyInfo.hasBooleanValue + propertyInfo.hasNumericValue + propertyInfo.hasOverloadedBooleanValue <= 1) ? process.env.NODE_ENV !== 'production' ? invariant(false, 'DOMProperty: Value can be one of boolean, overloaded boolean, or numeric value, but not a combination: %s', propName) : _prodInvariant('50', propName) : void 0;
-
-      if (process.env.NODE_ENV !== 'production') {
-        DOMProperty.getPossibleStandardName[lowerCased] = propName;
-      }
-
-      if (DOMAttributeNames.hasOwnProperty(propName)) {
-        var attributeName = DOMAttributeNames[propName];
-        propertyInfo.attributeName = attributeName;
-        if (process.env.NODE_ENV !== 'production') {
-          DOMProperty.getPossibleStandardName[attributeName] = propName;
-        }
-      }
-
-      if (DOMAttributeNamespaces.hasOwnProperty(propName)) {
-        propertyInfo.attributeNamespace = DOMAttributeNamespaces[propName];
-      }
-
-      if (DOMPropertyNames.hasOwnProperty(propName)) {
-        propertyInfo.propertyName = DOMPropertyNames[propName];
-      }
-
-      if (DOMMutationMethods.hasOwnProperty(propName)) {
-        propertyInfo.mutationMethod = DOMMutationMethods[propName];
-      }
-
-      DOMProperty.properties[propName] = propertyInfo;
-    }
-  }
-};
-
-/* eslint-disable max-len */
-var ATTRIBUTE_NAME_START_CHAR = ':A-Z_a-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD';
-/* eslint-enable max-len */
-
-/**
- * DOMProperty exports lookup objects that can be used like functions:
- *
- *   > DOMProperty.isValid['id']
- *   true
- *   > DOMProperty.isValid['foobar']
- *   undefined
- *
- * Although this may be confusing, it performs better in general.
- *
- * @see http://jsperf.com/key-exists
- * @see http://jsperf.com/key-missing
- */
-var DOMProperty = {
-
-  ID_ATTRIBUTE_NAME: 'data-reactid',
-  ROOT_ATTRIBUTE_NAME: 'data-reactroot',
-
-  ATTRIBUTE_NAME_START_CHAR: ATTRIBUTE_NAME_START_CHAR,
-  ATTRIBUTE_NAME_CHAR: ATTRIBUTE_NAME_START_CHAR + '\\-.0-9\\u00B7\\u0300-\\u036F\\u203F-\\u2040',
-
-  /**
-   * Map from property "standard name" to an object with info about how to set
-   * the property in the DOM. Each object contains:
-   *
-   * attributeName:
-   *   Used when rendering markup or with `*Attribute()`.
-   * attributeNamespace
-   * propertyName:
-   *   Used on DOM node instances. (This includes properties that mutate due to
-   *   external factors.)
-   * mutationMethod:
-   *   If non-null, used instead of the property or `setAttribute()` after
-   *   initial render.
-   * mustUseProperty:
-   *   Whether the property must be accessed and mutated as an object property.
-   * hasBooleanValue:
-   *   Whether the property should be removed when set to a falsey value.
-   * hasNumericValue:
-   *   Whether the property must be numeric or parse as a numeric and should be
-   *   removed when set to a falsey value.
-   * hasPositiveNumericValue:
-   *   Whether the property must be positive numeric or parse as a positive
-   *   numeric and should be removed when set to a falsey value.
-   * hasOverloadedBooleanValue:
-   *   Whether the property can be used as a flag as well as with a value.
-   *   Removed when strictly equal to false; present without a value when
-   *   strictly equal to true; present with a value otherwise.
-   */
-  properties: {},
-
-  /**
-   * Mapping from lowercase property names to the properly cased version, used
-   * to warn in the case of missing properties. Available only in __DEV__.
-   * @type {Object}
-   */
-  getPossibleStandardName: process.env.NODE_ENV !== 'production' ? {} : null,
-
-  /**
-   * All of the isCustomAttribute() functions that have been injected.
-   */
-  _isCustomAttributeFunctions: [],
-
-  /**
-   * Checks whether a property name is a custom attribute.
-   * @method
-   */
-  isCustomAttribute: function (attributeName) {
-    for (var i = 0; i < DOMProperty._isCustomAttributeFunctions.length; i++) {
-      var isCustomAttributeFn = DOMProperty._isCustomAttributeFunctions[i];
-      if (isCustomAttributeFn(attributeName)) {
-        return true;
-      }
-    }
-    return false;
-  },
-
-  injection: DOMPropertyInjection
-};
-
-module.exports = DOMProperty;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
-
-/***/ }),
-/* 31 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react = __webpack_require__(1);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _header = __webpack_require__(93);
-
-var _header2 = _interopRequireDefault(_header);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function BlogPage(props) {
-  return _react2.default.createElement(
-    'div',
-    null,
-    _react2.default.createElement(_header2.default, { id: 'header', title: props.title }),
-    _react2.default.createElement(
-      'div',
-      { id: 'text-contents', className: 'Blog-Contents' },
-      props.contents
-    ),
-    _react2.default.createElement(
-      'div',
-      { id: 'text-body', className: 'Blog-Text-Body' },
-      props.text
-    ),
-    _react2.default.createElement(
-      'div',
-      { className: 'break' },
-      _react2.default.createElement('br', null),
-      _react2.default.createElement('br', null)
-    )
-  );
-}
-
-exports.default = BlogPage;
-
-/***/ }),
-/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -4771,6 +4371,406 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ ])
 });
 ;
+
+/***/ }),
+/* 29 */
+/***/ (function(module, exports) {
+
+/**
+ * This is the ParseError class, which is the main error thrown by KaTeX
+ * functions when something has gone wrong. This is used to distinguish internal
+ * errors from errors in the expression that the user provided.
+ *
+ * If possible, a caller should provide a Token or ParseNode with information
+ * about where in the source string the problem occurred.
+ *
+ * @param {string} message  The error message
+ * @param {(Token|ParseNode)=} token  An object providing position information
+ */
+function ParseError(message, token) {
+    var error = "KaTeX parse error: " + message;
+    var start;
+    var end;
+
+    if (token && token.lexer && token.start <= token.end) {
+        // If we have the input and a position, make the error a bit fancier
+
+        // Get the input
+        var input = token.lexer.input;
+
+        // Prepend some information
+        start = token.start;
+        end = token.end;
+        if (start === input.length) {
+            error += " at end of input: ";
+        } else {
+            error += " at position " + (start + 1) + ": ";
+        }
+
+        // Underline token in question using combining underscores
+        var underlined = input.slice(start, end).replace(/[^]/g, "$&\u0332");
+
+        // Extract some context from the input and add it to the error
+        var left;
+        if (start > 15) {
+            left = "…" + input.slice(start - 15, start);
+        } else {
+            left = input.slice(0, start);
+        }
+        var right;
+        if (end + 15 < input.length) {
+            right = input.slice(end, end + 15) + "…";
+        } else {
+            right = input.slice(end);
+        }
+        error += left + underlined + right;
+    }
+
+    // Some hackery to make ParseError a prototype of Error
+    // See http://stackoverflow.com/a/8460753
+    var self = new Error(error);
+    self.name = "ParseError";
+    self.__proto__ = ParseError.prototype;
+
+    self.position = start;
+    return self;
+}
+
+// More hackery
+ParseError.prototype.__proto__ = Error.prototype;
+
+module.exports = ParseError;
+
+
+/***/ }),
+/* 30 */
+/***/ (function(module, exports) {
+
+/**
+ * This is the ParseError class, which is the main error thrown by KaTeX
+ * functions when something has gone wrong. This is used to distinguish internal
+ * errors from errors in the expression that the user provided.
+ *
+ * If possible, a caller should provide a Token or ParseNode with information
+ * about where in the source string the problem occurred.
+ *
+ * @param {string} message  The error message
+ * @param {(Token|ParseNode)=} token  An object providing position information
+ */
+function ParseError(message, token) {
+    var error = "KaTeX parse error: " + message;
+    var start;
+    var end;
+
+    if (token && token.lexer && token.start <= token.end) {
+        // If we have the input and a position, make the error a bit fancier
+
+        // Get the input
+        var input = token.lexer.input;
+
+        // Prepend some information
+        start = token.start;
+        end = token.end;
+        if (start === input.length) {
+            error += " at end of input: ";
+        } else {
+            error += " at position " + (start + 1) + ": ";
+        }
+
+        // Underline token in question using combining underscores
+        var underlined = input.slice(start, end).replace(/[^]/g, "$&\u0332");
+
+        // Extract some context from the input and add it to the error
+        var left;
+        if (start > 15) {
+            left = "…" + input.slice(start - 15, start);
+        } else {
+            left = input.slice(0, start);
+        }
+        var right;
+        if (end + 15 < input.length) {
+            right = input.slice(end, end + 15) + "…";
+        } else {
+            right = input.slice(end);
+        }
+        error += left + underlined + right;
+    }
+
+    // Some hackery to make ParseError a prototype of Error
+    // See http://stackoverflow.com/a/8460753
+    var self = new Error(error);
+    self.name = "ParseError";
+    self.__proto__ = ParseError.prototype;
+
+    self.position = start;
+    return self;
+}
+
+// More hackery
+ParseError.prototype.__proto__ = Error.prototype;
+
+module.exports = ParseError;
+
+
+/***/ }),
+/* 31 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * @providesModule DOMProperty
+ */
+
+
+
+var _prodInvariant = __webpack_require__(4);
+
+var invariant = __webpack_require__(2);
+
+function checkMask(value, bitmask) {
+  return (value & bitmask) === bitmask;
+}
+
+var DOMPropertyInjection = {
+  /**
+   * Mapping from normalized, camelcased property names to a configuration that
+   * specifies how the associated DOM property should be accessed or rendered.
+   */
+  MUST_USE_PROPERTY: 0x1,
+  HAS_BOOLEAN_VALUE: 0x4,
+  HAS_NUMERIC_VALUE: 0x8,
+  HAS_POSITIVE_NUMERIC_VALUE: 0x10 | 0x8,
+  HAS_OVERLOADED_BOOLEAN_VALUE: 0x20,
+
+  /**
+   * Inject some specialized knowledge about the DOM. This takes a config object
+   * with the following properties:
+   *
+   * isCustomAttribute: function that given an attribute name will return true
+   * if it can be inserted into the DOM verbatim. Useful for data-* or aria-*
+   * attributes where it's impossible to enumerate all of the possible
+   * attribute names,
+   *
+   * Properties: object mapping DOM property name to one of the
+   * DOMPropertyInjection constants or null. If your attribute isn't in here,
+   * it won't get written to the DOM.
+   *
+   * DOMAttributeNames: object mapping React attribute name to the DOM
+   * attribute name. Attribute names not specified use the **lowercase**
+   * normalized name.
+   *
+   * DOMAttributeNamespaces: object mapping React attribute name to the DOM
+   * attribute namespace URL. (Attribute names not specified use no namespace.)
+   *
+   * DOMPropertyNames: similar to DOMAttributeNames but for DOM properties.
+   * Property names not specified use the normalized name.
+   *
+   * DOMMutationMethods: Properties that require special mutation methods. If
+   * `value` is undefined, the mutation method should unset the property.
+   *
+   * @param {object} domPropertyConfig the config as described above.
+   */
+  injectDOMPropertyConfig: function (domPropertyConfig) {
+    var Injection = DOMPropertyInjection;
+    var Properties = domPropertyConfig.Properties || {};
+    var DOMAttributeNamespaces = domPropertyConfig.DOMAttributeNamespaces || {};
+    var DOMAttributeNames = domPropertyConfig.DOMAttributeNames || {};
+    var DOMPropertyNames = domPropertyConfig.DOMPropertyNames || {};
+    var DOMMutationMethods = domPropertyConfig.DOMMutationMethods || {};
+
+    if (domPropertyConfig.isCustomAttribute) {
+      DOMProperty._isCustomAttributeFunctions.push(domPropertyConfig.isCustomAttribute);
+    }
+
+    for (var propName in Properties) {
+      !!DOMProperty.properties.hasOwnProperty(propName) ? process.env.NODE_ENV !== 'production' ? invariant(false, 'injectDOMPropertyConfig(...): You\'re trying to inject DOM property \'%s\' which has already been injected. You may be accidentally injecting the same DOM property config twice, or you may be injecting two configs that have conflicting property names.', propName) : _prodInvariant('48', propName) : void 0;
+
+      var lowerCased = propName.toLowerCase();
+      var propConfig = Properties[propName];
+
+      var propertyInfo = {
+        attributeName: lowerCased,
+        attributeNamespace: null,
+        propertyName: propName,
+        mutationMethod: null,
+
+        mustUseProperty: checkMask(propConfig, Injection.MUST_USE_PROPERTY),
+        hasBooleanValue: checkMask(propConfig, Injection.HAS_BOOLEAN_VALUE),
+        hasNumericValue: checkMask(propConfig, Injection.HAS_NUMERIC_VALUE),
+        hasPositiveNumericValue: checkMask(propConfig, Injection.HAS_POSITIVE_NUMERIC_VALUE),
+        hasOverloadedBooleanValue: checkMask(propConfig, Injection.HAS_OVERLOADED_BOOLEAN_VALUE)
+      };
+      !(propertyInfo.hasBooleanValue + propertyInfo.hasNumericValue + propertyInfo.hasOverloadedBooleanValue <= 1) ? process.env.NODE_ENV !== 'production' ? invariant(false, 'DOMProperty: Value can be one of boolean, overloaded boolean, or numeric value, but not a combination: %s', propName) : _prodInvariant('50', propName) : void 0;
+
+      if (process.env.NODE_ENV !== 'production') {
+        DOMProperty.getPossibleStandardName[lowerCased] = propName;
+      }
+
+      if (DOMAttributeNames.hasOwnProperty(propName)) {
+        var attributeName = DOMAttributeNames[propName];
+        propertyInfo.attributeName = attributeName;
+        if (process.env.NODE_ENV !== 'production') {
+          DOMProperty.getPossibleStandardName[attributeName] = propName;
+        }
+      }
+
+      if (DOMAttributeNamespaces.hasOwnProperty(propName)) {
+        propertyInfo.attributeNamespace = DOMAttributeNamespaces[propName];
+      }
+
+      if (DOMPropertyNames.hasOwnProperty(propName)) {
+        propertyInfo.propertyName = DOMPropertyNames[propName];
+      }
+
+      if (DOMMutationMethods.hasOwnProperty(propName)) {
+        propertyInfo.mutationMethod = DOMMutationMethods[propName];
+      }
+
+      DOMProperty.properties[propName] = propertyInfo;
+    }
+  }
+};
+
+/* eslint-disable max-len */
+var ATTRIBUTE_NAME_START_CHAR = ':A-Z_a-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD';
+/* eslint-enable max-len */
+
+/**
+ * DOMProperty exports lookup objects that can be used like functions:
+ *
+ *   > DOMProperty.isValid['id']
+ *   true
+ *   > DOMProperty.isValid['foobar']
+ *   undefined
+ *
+ * Although this may be confusing, it performs better in general.
+ *
+ * @see http://jsperf.com/key-exists
+ * @see http://jsperf.com/key-missing
+ */
+var DOMProperty = {
+
+  ID_ATTRIBUTE_NAME: 'data-reactid',
+  ROOT_ATTRIBUTE_NAME: 'data-reactroot',
+
+  ATTRIBUTE_NAME_START_CHAR: ATTRIBUTE_NAME_START_CHAR,
+  ATTRIBUTE_NAME_CHAR: ATTRIBUTE_NAME_START_CHAR + '\\-.0-9\\u00B7\\u0300-\\u036F\\u203F-\\u2040',
+
+  /**
+   * Map from property "standard name" to an object with info about how to set
+   * the property in the DOM. Each object contains:
+   *
+   * attributeName:
+   *   Used when rendering markup or with `*Attribute()`.
+   * attributeNamespace
+   * propertyName:
+   *   Used on DOM node instances. (This includes properties that mutate due to
+   *   external factors.)
+   * mutationMethod:
+   *   If non-null, used instead of the property or `setAttribute()` after
+   *   initial render.
+   * mustUseProperty:
+   *   Whether the property must be accessed and mutated as an object property.
+   * hasBooleanValue:
+   *   Whether the property should be removed when set to a falsey value.
+   * hasNumericValue:
+   *   Whether the property must be numeric or parse as a numeric and should be
+   *   removed when set to a falsey value.
+   * hasPositiveNumericValue:
+   *   Whether the property must be positive numeric or parse as a positive
+   *   numeric and should be removed when set to a falsey value.
+   * hasOverloadedBooleanValue:
+   *   Whether the property can be used as a flag as well as with a value.
+   *   Removed when strictly equal to false; present without a value when
+   *   strictly equal to true; present with a value otherwise.
+   */
+  properties: {},
+
+  /**
+   * Mapping from lowercase property names to the properly cased version, used
+   * to warn in the case of missing properties. Available only in __DEV__.
+   * @type {Object}
+   */
+  getPossibleStandardName: process.env.NODE_ENV !== 'production' ? {} : null,
+
+  /**
+   * All of the isCustomAttribute() functions that have been injected.
+   */
+  _isCustomAttributeFunctions: [],
+
+  /**
+   * Checks whether a property name is a custom attribute.
+   * @method
+   */
+  isCustomAttribute: function (attributeName) {
+    for (var i = 0; i < DOMProperty._isCustomAttributeFunctions.length; i++) {
+      var isCustomAttributeFn = DOMProperty._isCustomAttributeFunctions[i];
+      if (isCustomAttributeFn(attributeName)) {
+        return true;
+      }
+    }
+    return false;
+  },
+
+  injection: DOMPropertyInjection
+};
+
+module.exports = DOMProperty;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 32 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _header = __webpack_require__(93);
+
+var _header2 = _interopRequireDefault(_header);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function BlogPage(props) {
+  return _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(_header2.default, { id: 'header', title: props.title }),
+    _react2.default.createElement(
+      'div',
+      { id: 'text-contents', className: 'Blog-Contents' },
+      props.contents
+    ),
+    _react2.default.createElement(
+      'div',
+      { id: 'text-body', className: 'Blog-Text-Body' },
+      props.text
+    ),
+    _react2.default.createElement(
+      'div',
+      { className: 'break' },
+      _react2.default.createElement('br', null),
+      _react2.default.createElement('br', null)
+    )
+  );
+}
+
+exports.default = BlogPage;
 
 /***/ }),
 /* 33 */
@@ -10911,7 +10911,7 @@ module.exports = canDefineProperty;
 var _prodInvariant = __webpack_require__(4);
 
 var ReactCurrentOwner = __webpack_require__(20);
-var ReactElement = __webpack_require__(14);
+var ReactElement = __webpack_require__(15);
 
 var getIteratorFn = __webpack_require__(65);
 var invariant = __webpack_require__(2);
@@ -13401,7 +13401,7 @@ exports.default = createTransitionManager;
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_warning__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_invariant__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react__);
@@ -13727,7 +13727,7 @@ var _reactRouterDom = __webpack_require__(27);
 
 var _reactRouterHashLink = __webpack_require__(58);
 
-var _blogPage = __webpack_require__(31);
+var _blogPage = __webpack_require__(32);
 
 var _blogPage2 = _interopRequireDefault(_blogPage);
 
@@ -13921,11 +13921,11 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _blogPage = __webpack_require__(31);
+var _blogPage = __webpack_require__(32);
 
 var _blogPage2 = _interopRequireDefault(_blogPage);
 
-var _reactKatex = __webpack_require__(32);
+var _reactKatex = __webpack_require__(28);
 
 var _reactSyntaxHighlighter = __webpack_require__(10);
 
@@ -14139,7 +14139,7 @@ exports.default = AlgorithmsPage;
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 
 var _react = __webpack_require__(1);
@@ -14168,98 +14168,114 @@ var _mathPreliminaries = __webpack_require__(603);
 
 var _mathPreliminaries2 = _interopRequireDefault(_mathPreliminaries);
 
+var _discreteMaths = __webpack_require__(604);
+
+var _discreteMaths2 = _interopRequireDefault(_discreteMaths);
+
 var _reactRouterHashLink = __webpack_require__(58);
 
-var _blogPage = __webpack_require__(31);
+var _blogPage = __webpack_require__(32);
 
 var _blogPage2 = _interopRequireDefault(_blogPage);
 
-__webpack_require__(604);
+__webpack_require__(605);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var MathFundamentals = function MathFundamentals(_ref) {
-  var match = _ref.match;
+    var match = _ref.match;
 
 
-  return _react2.default.createElement(_blogPage2.default, {
-    title: "Math Fundamentals",
+    return _react2.default.createElement(_blogPage2.default, {
+        title: "Math Fundamentals",
 
-    contents: _react2.default.createElement(
-      "div",
-      { className: "center" },
-      _react2.default.createElement(
-        "ul",
-        { className: "nav menu center" },
-        _react2.default.createElement(
-          "li",
-          { className: "gray" },
-          _react2.default.createElement(
-            _reactRouterHashLink.HashLink,
-            { to: match.url + "#text-body" },
-            "Welcome to",
-            _react2.default.createElement("br", null),
-            "Maths"
-          )
+        contents: _react2.default.createElement(
+            "div",
+            { className: "center" },
+            _react2.default.createElement(
+                "ul",
+                { className: "nav menu center" },
+                _react2.default.createElement(
+                    "li",
+                    { className: "gray" },
+                    _react2.default.createElement(
+                        _reactRouterHashLink.HashLink,
+                        { to: match.url + "#text-body" },
+                        "Welcome to",
+                        _react2.default.createElement("br", null),
+                        "Maths"
+                    )
+                ),
+                _react2.default.createElement(
+                    "li",
+                    { className: "quay-pink" },
+                    _react2.default.createElement(
+                        _reactRouterHashLink.HashLink,
+                        { to: match.url + "/BiteSizeMath#text-body" },
+                        "Bitesize",
+                        _react2.default.createElement("br", null),
+                        "Math"
+                    )
+                ),
+                _react2.default.createElement(
+                    "li",
+                    { className: "dark-blue" },
+                    _react2.default.createElement(
+                        _reactRouterHashLink.HashLink,
+                        { to: match.url + "/MathPrerequisites#text-body" },
+                        "Math",
+                        _react2.default.createElement("br", null),
+                        "Prerequisites"
+                    )
+                ),
+                _react2.default.createElement(
+                    "li",
+                    { className: "blue" },
+                    _react2.default.createElement(
+                        _reactRouterHashLink.HashLink,
+                        { to: match.url + "/DiscreteMaths#text-body" },
+                        "Discrete",
+                        _react2.default.createElement("br", null),
+                        "Maths"
+                    )
+                ),
+                _react2.default.createElement(
+                    "li",
+                    { className: "teal" },
+                    _react2.default.createElement(
+                        _reactRouterHashLink.HashLink,
+                        { to: match.url + "/MathPreliminaries#text-body" },
+                        "The Art of Computer",
+                        _react2.default.createElement("br", null),
+                        "Programming"
+                    )
+                ),
+                _react2.default.createElement(
+                    "li",
+                    { className: "cyan" },
+                    _react2.default.createElement(
+                        _reactRouterHashLink.HashLink,
+                        { to: match.url + "/ConcreteMathematics#text-body" },
+                        "Concrete",
+                        _react2.default.createElement("br", null),
+                        "Mathematics"
+                    )
+                )
+            )
         ),
-        _react2.default.createElement(
-          "li",
-          { className: "quay-pink" },
-          _react2.default.createElement(
-            _reactRouterHashLink.HashLink,
-            { to: match.url + "/BiteSizeMath#text-body" },
-            "Bitesize",
-            _react2.default.createElement("br", null),
-            "Math"
-          )
-        ),
-        _react2.default.createElement(
-          "li",
-          { className: "dark-blue" },
-          _react2.default.createElement(
-            _reactRouterHashLink.HashLink,
-            { to: match.url + "/MathPrerequisites#text-body" },
-            "Math",
-            _react2.default.createElement("br", null),
-            "Prerequisites"
-          )
-        ),
-        _react2.default.createElement(
-          "li",
-          { className: "teal" },
-          _react2.default.createElement(
-            _reactRouterHashLink.HashLink,
-            { to: match.url + "/MathPreliminaries#text-body" },
-            "The Art of Computer",
-            _react2.default.createElement("br", null),
-            "Programming"
-          )
-        ),
-        _react2.default.createElement(
-          "li",
-          { className: "cyan" },
-          _react2.default.createElement(
-            _reactRouterHashLink.HashLink,
-            { to: match.url + "/ConcreteMathematics#text-body" },
-            "Concrete",
-            _react2.default.createElement("br", null),
-            "Mathematics"
-          )
+
+        text: _react2.default.createElement(
+            "div",
+            null,
+            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "" + match.url, component: _mathIntro2.default }),
+            _react2.default.createElement(_reactRouterDom.Route, { path: match.url + "/MathPrerequisites", component: _mathPrerequisites2.default }),
+            _react2.default.createElement(_reactRouterDom.Route, { path: match.url + "/BiteSizeMath", component: _bitesizeMaths2.default }),
+            _react2.default.createElement(_reactRouterDom.Route, { path: match.url + "/DiscreteMaths", component: _discreteMaths2.default }),
+            _react2.default.createElement(_reactRouterDom.Route, { path: match.url + "/MathPreliminaries", component: _mathPreliminaries2.default }),
+            _react2.default.createElement(_reactRouterDom.Route, { path: match.url + "/ConcreteMathematics", component: _concreteMathematics2.default })
         )
-      )
-    ),
 
-    text: _react2.default.createElement(
-      "div",
-      null,
-      _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "" + match.url, component: _mathIntro2.default }),
-      _react2.default.createElement(_reactRouterDom.Route, { path: match.url + "/MathPrerequisites", component: _mathPrerequisites2.default }),
-      _react2.default.createElement(_reactRouterDom.Route, { path: match.url + "/BiteSizeMath", component: _bitesizeMaths2.default }),
-      _react2.default.createElement(_reactRouterDom.Route, { path: match.url + "/MathPreliminaries", component: _mathPreliminaries2.default }),
-      _react2.default.createElement(_reactRouterDom.Route, { path: match.url + "/ConcreteMathematics", component: _concreteMathematics2.default })
-    )
-
-  });
+    });
 };
 
 exports.default = MathFundamentals;
@@ -14352,9 +14368,9 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactKatex = __webpack_require__(32);
+var _reactKatex = __webpack_require__(28);
 
-var _blogPage = __webpack_require__(31);
+var _blogPage = __webpack_require__(32);
 
 var _blogPage2 = _interopRequireDefault(_blogPage);
 
@@ -14536,7 +14552,7 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _blogPage = __webpack_require__(31);
+var _blogPage = __webpack_require__(32);
 
 var _blogPage2 = _interopRequireDefault(_blogPage);
 
@@ -14723,7 +14739,7 @@ var _reactSyntaxHighlighter2 = _interopRequireDefault(_reactSyntaxHighlighter);
 
 var _hljs = __webpack_require__(11);
 
-var _blogPage = __webpack_require__(31);
+var _blogPage = __webpack_require__(32);
 
 var _blogPage2 = _interopRequireDefault(_blogPage);
 
@@ -14731,31 +14747,31 @@ var _reactRouterDom = __webpack_require__(27);
 
 var _reactRouterHashLink = __webpack_require__(58);
 
-var _eggplant = __webpack_require__(606);
+var _eggplant = __webpack_require__(607);
 
 var _eggplant2 = _interopRequireDefault(_eggplant);
 
-var _cassandra = __webpack_require__(607);
+var _cassandra = __webpack_require__(608);
 
 var _cassandra2 = _interopRequireDefault(_cassandra);
 
-var _kafka = __webpack_require__(608);
+var _kafka = __webpack_require__(609);
 
 var _kafka2 = _interopRequireDefault(_kafka);
 
-var _concurrency = __webpack_require__(609);
+var _concurrency = __webpack_require__(610);
 
 var _concurrency2 = _interopRequireDefault(_concurrency);
 
-var _dataStructures = __webpack_require__(610);
+var _dataStructures = __webpack_require__(611);
 
 var _dataStructures2 = _interopRequireDefault(_dataStructures);
 
-var _garbageCollection = __webpack_require__(611);
+var _garbageCollection = __webpack_require__(612);
 
 var _garbageCollection2 = _interopRequireDefault(_garbageCollection);
 
-var _specs = __webpack_require__(612);
+var _specs = __webpack_require__(613);
 
 var _specs2 = _interopRequireDefault(_specs);
 
@@ -14884,11 +14900,11 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _blogPage = __webpack_require__(31);
+var _blogPage = __webpack_require__(32);
 
 var _blogPage2 = _interopRequireDefault(_blogPage);
 
-var _reactKatex = __webpack_require__(32);
+var _reactKatex = __webpack_require__(28);
 
 var _reactSyntaxHighlighter = __webpack_require__(10);
 
@@ -14969,7 +14985,7 @@ exports.default = DevOpsPage;
 
 
 var PooledClass = __webpack_require__(25);
-var ReactElement = __webpack_require__(14);
+var ReactElement = __webpack_require__(15);
 
 var emptyFunction = __webpack_require__(12);
 var traverseAllChildren = __webpack_require__(64);
@@ -15169,7 +15185,7 @@ var _prodInvariant = __webpack_require__(4),
     _assign = __webpack_require__(5);
 
 var ReactComponent = __webpack_require__(67);
-var ReactElement = __webpack_require__(14);
+var ReactElement = __webpack_require__(15);
 var ReactPropTypeLocations = __webpack_require__(49);
 var ReactPropTypeLocationNames = __webpack_require__(69);
 var ReactNoopUpdateQueue = __webpack_require__(68);
@@ -15912,8 +15928,8 @@ module.exports = ReactClass;
 
 
 var ReactCurrentOwner = __webpack_require__(20);
-var ReactComponentTreeHook = __webpack_require__(15);
-var ReactElement = __webpack_require__(14);
+var ReactComponentTreeHook = __webpack_require__(16);
+var ReactElement = __webpack_require__(15);
 var ReactPropTypeLocations = __webpack_require__(49);
 
 var checkReactTypeSpec = __webpack_require__(114);
@@ -16155,7 +16171,7 @@ if (typeof process !== 'undefined' && process.env && process.env.NODE_ENV === 't
   // https://github.com/facebook/react/issues/7240
   // Remove the inline requires when we don't need them anymore:
   // https://github.com/facebook/react/pull/7178
-  ReactComponentTreeHook = __webpack_require__(15);
+  ReactComponentTreeHook = __webpack_require__(16);
 }
 
 var loggedTypeFailures = {};
@@ -16197,7 +16213,7 @@ function checkReactTypeSpec(typeSpecs, values, location, componentName, element,
 
         if (process.env.NODE_ENV !== 'production') {
           if (!ReactComponentTreeHook) {
-            ReactComponentTreeHook = __webpack_require__(15);
+            ReactComponentTreeHook = __webpack_require__(16);
           }
           if (debugID !== null) {
             componentStackInfo = ReactComponentTreeHook.getStackAddendumByID(debugID);
@@ -16233,7 +16249,7 @@ module.exports = checkReactTypeSpec;
 
 
 
-var ReactElement = __webpack_require__(14);
+var ReactElement = __webpack_require__(15);
 var ReactPropTypeLocationNames = __webpack_require__(69);
 var ReactPropTypesSecret = __webpack_require__(70);
 
@@ -17373,7 +17389,7 @@ module.exports = CSSProperty;
 
 
 
-var DOMProperty = __webpack_require__(30);
+var DOMProperty = __webpack_require__(31);
 var ReactDOMComponentTree = __webpack_require__(6);
 var ReactInstrumentation = __webpack_require__(13);
 
@@ -17938,7 +17954,7 @@ module.exports = instantiateReactComponent;
 
 var _prodInvariant = __webpack_require__(4);
 
-var ReactElement = __webpack_require__(14);
+var ReactElement = __webpack_require__(15);
 
 var invariant = __webpack_require__(2);
 
@@ -18357,13 +18373,13 @@ module.exports = getActiveElement;
 var _prodInvariant = __webpack_require__(4);
 
 var DOMLazyTree = __webpack_require__(34);
-var DOMProperty = __webpack_require__(30);
+var DOMProperty = __webpack_require__(31);
 var ReactBrowserEventEmitter = __webpack_require__(55);
 var ReactCurrentOwner = __webpack_require__(20);
 var ReactDOMComponentTree = __webpack_require__(6);
 var ReactDOMContainerInfo = __webpack_require__(240);
 var ReactDOMFeatureFlags = __webpack_require__(241);
-var ReactElement = __webpack_require__(14);
+var ReactElement = __webpack_require__(15);
 var ReactFeatureFlags = __webpack_require__(123);
 var ReactInstanceMap = __webpack_require__(42);
 var ReactInstrumentation = __webpack_require__(13);
@@ -18964,7 +18980,7 @@ var _devops = __webpack_require__(110);
 
 var _devops2 = _interopRequireDefault(_devops);
 
-var _reactBurgerMenu = __webpack_require__(616);
+var _reactBurgerMenu = __webpack_require__(617);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -19288,7 +19304,7 @@ var isExtraneousPopstateEvent = exports.isExtraneousPopstateEvent = function isE
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_invariant__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_invariant__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_invariant__);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -19407,7 +19423,7 @@ Link.contextTypes = {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_warning__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_invariant__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react__);
@@ -19672,9 +19688,9 @@ var _devops = __webpack_require__(110);
 
 var _devops2 = _interopRequireDefault(_devops);
 
-__webpack_require__(613);
+__webpack_require__(614);
 
-__webpack_require__(615);
+__webpack_require__(616);
 
 var _reactRouterHashLink = __webpack_require__(58);
 
@@ -20995,7 +21011,7 @@ Object.defineProperty(exports, '__esModule', {
 exports['default'] = function () {
   var Snap = undefined;
   try {
-    Snap = __webpack_require__(623);
+    Snap = __webpack_require__(624);
   } finally {
     return Snap;
   }
@@ -21022,13 +21038,13 @@ var _sideBar = __webpack_require__(141);
 
 var _sideBar2 = _interopRequireDefault(_sideBar);
 
-var _footer = __webpack_require__(632);
+var _footer = __webpack_require__(633);
 
 var _footer2 = _interopRequireDefault(_footer);
 
-__webpack_require__(635);
+__webpack_require__(636);
 
-var _blogContent = __webpack_require__(636);
+var _blogContent = __webpack_require__(637);
 
 var _blogContent2 = _interopRequireDefault(_blogContent);
 
@@ -21094,7 +21110,7 @@ var ReactComponent = __webpack_require__(67);
 var ReactPureComponent = __webpack_require__(166);
 var ReactClass = __webpack_require__(112);
 var ReactDOMFactories = __webpack_require__(167);
-var ReactElement = __webpack_require__(14);
+var ReactElement = __webpack_require__(15);
 var ReactPropTypes = __webpack_require__(115);
 var ReactVersion = __webpack_require__(116);
 
@@ -21231,7 +21247,7 @@ module.exports = ReactPureComponent;
 
 
 
-var ReactElement = __webpack_require__(14);
+var ReactElement = __webpack_require__(15);
 
 /**
  * Create a factory that creates HTML tag elements.
@@ -21409,7 +21425,7 @@ module.exports = ReactDOMFactories;
 
 var _prodInvariant = __webpack_require__(4);
 
-var ReactElement = __webpack_require__(14);
+var ReactElement = __webpack_require__(15);
 
 var invariant = __webpack_require__(2);
 
@@ -22762,7 +22778,7 @@ module.exports = ReactOwner;
 
 var ReactInvalidSetStateWarningHook = __webpack_require__(179);
 var ReactHostOperationHistoryHook = __webpack_require__(180);
-var ReactComponentTreeHook = __webpack_require__(15);
+var ReactComponentTreeHook = __webpack_require__(16);
 var ReactChildrenMutationWarningHook = __webpack_require__(181);
 var ExecutionEnvironment = __webpack_require__(7);
 
@@ -23154,7 +23170,7 @@ module.exports = ReactHostOperationHistoryHook;
 
 
 
-var ReactComponentTreeHook = __webpack_require__(15);
+var ReactComponentTreeHook = __webpack_require__(16);
 
 var warning = __webpack_require__(3);
 
@@ -23422,7 +23438,7 @@ module.exports = EnterLeaveEventPlugin;
 
 
 
-var DOMProperty = __webpack_require__(30);
+var DOMProperty = __webpack_require__(31);
 
 var MUST_USE_PROPERTY = DOMProperty.injection.MUST_USE_PROPERTY;
 var HAS_BOOLEAN_VALUE = DOMProperty.injection.HAS_BOOLEAN_VALUE;
@@ -24098,7 +24114,7 @@ var AutoFocusUtils = __webpack_require__(194);
 var CSSPropertyOperations = __webpack_require__(195);
 var DOMLazyTree = __webpack_require__(34);
 var DOMNamespaces = __webpack_require__(77);
-var DOMProperty = __webpack_require__(30);
+var DOMProperty = __webpack_require__(31);
 var DOMPropertyOperations = __webpack_require__(130);
 var EventConstants = __webpack_require__(21);
 var EventPluginHub = __webpack_require__(39);
@@ -26869,7 +26885,7 @@ if (typeof process !== 'undefined' && process.env && process.env.NODE_ENV === 't
   // https://github.com/facebook/react/issues/7240
   // Remove the inline requires when we don't need them anymore:
   // https://github.com/facebook/react/pull/7178
-  ReactComponentTreeHook = __webpack_require__(15);
+  ReactComponentTreeHook = __webpack_require__(16);
 }
 
 function instantiateChild(childInstances, child, name, selfDebugID) {
@@ -26877,7 +26893,7 @@ function instantiateChild(childInstances, child, name, selfDebugID) {
   var keyUnique = childInstances[name] === undefined;
   if (process.env.NODE_ENV !== 'production') {
     if (!ReactComponentTreeHook) {
-      ReactComponentTreeHook = __webpack_require__(15);
+      ReactComponentTreeHook = __webpack_require__(16);
     }
     if (!keyUnique) {
       process.env.NODE_ENV !== 'production' ? warning(false, 'flattenChildren(...): Encountered two children with the same key, ' + '`%s`. Child keys must be unique; when two children share a key, only ' + 'the first child will be used.%s', KeyEscapeUtils.unescape(name), ReactComponentTreeHook.getStackAddendumByID(selfDebugID)) : void 0;
@@ -27019,7 +27035,7 @@ var _prodInvariant = __webpack_require__(4),
 
 var ReactComponentEnvironment = __webpack_require__(80);
 var ReactCurrentOwner = __webpack_require__(20);
-var ReactElement = __webpack_require__(14);
+var ReactElement = __webpack_require__(15);
 var ReactErrorUtils = __webpack_require__(72);
 var ReactInstanceMap = __webpack_require__(42);
 var ReactInstrumentation = __webpack_require__(13);
@@ -27938,7 +27954,7 @@ if (typeof process !== 'undefined' && process.env && process.env.NODE_ENV === 't
   // https://github.com/facebook/react/issues/7240
   // Remove the inline requires when we don't need them anymore:
   // https://github.com/facebook/react/pull/7178
-  ReactComponentTreeHook = __webpack_require__(15);
+  ReactComponentTreeHook = __webpack_require__(16);
 }
 
 /**
@@ -27954,7 +27970,7 @@ function flattenSingleChildIntoContext(traverseContext, child, name, selfDebugID
     var keyUnique = result[name] === undefined;
     if (process.env.NODE_ENV !== 'production') {
       if (!ReactComponentTreeHook) {
-        ReactComponentTreeHook = __webpack_require__(15);
+        ReactComponentTreeHook = __webpack_require__(16);
       }
       if (!keyUnique) {
         process.env.NODE_ENV !== 'production' ? warning(false, 'flattenChildren(...): Encountered two children with the same key, ' + '`%s`. Child keys must be unique; when two children share a key, only ' + 'the first child will be used.%s', KeyEscapeUtils.unescape(name), ReactComponentTreeHook.getStackAddendumByID(selfDebugID)) : void 0;
@@ -28912,7 +28928,7 @@ module.exports = getUnboundedScrollPosition;
 
 
 
-var DOMProperty = __webpack_require__(30);
+var DOMProperty = __webpack_require__(31);
 var EventPluginHub = __webpack_require__(39);
 var EventPluginUtils = __webpack_require__(71);
 var ReactComponentEnvironment = __webpack_require__(80);
@@ -31474,9 +31490,9 @@ module.exports = ReactMount.renderSubtreeIntoContainer;
 
 
 
-var DOMProperty = __webpack_require__(30);
+var DOMProperty = __webpack_require__(31);
 var EventPluginRegistry = __webpack_require__(51);
-var ReactComponentTreeHook = __webpack_require__(15);
+var ReactComponentTreeHook = __webpack_require__(16);
 
 var warning = __webpack_require__(3);
 
@@ -31593,7 +31609,7 @@ module.exports = ReactDOMUnknownPropertyHook;
 
 
 
-var ReactComponentTreeHook = __webpack_require__(15);
+var ReactComponentTreeHook = __webpack_require__(16);
 
 var warning = __webpack_require__(3);
 
@@ -32391,7 +32407,7 @@ var _warning = __webpack_require__(9);
 
 var _warning2 = _interopRequireDefault(_warning);
 
-var _invariant = __webpack_require__(16);
+var _invariant = __webpack_require__(17);
 
 var _invariant2 = _interopRequireDefault(_invariant);
 
@@ -32768,7 +32784,7 @@ var _warning = __webpack_require__(9);
 
 var _warning2 = _interopRequireDefault(_warning);
 
-var _invariant = __webpack_require__(16);
+var _invariant = __webpack_require__(17);
 
 var _invariant2 = _interopRequireDefault(_invariant);
 
@@ -33879,7 +33895,7 @@ module.exports = Array.isArray || function (arr) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_invariant__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_invariant__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_invariant__);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -33983,7 +33999,7 @@ Prompt.contextTypes = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_warning__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_warning__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_invariant__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_invariant__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_invariant__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_history__ = __webpack_require__(265);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -34114,7 +34130,7 @@ Redirect.contextTypes = {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_warning__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_invariant__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LocationUtils__ = __webpack_require__(57);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__PathUtils__ = __webpack_require__(44);
@@ -34418,7 +34434,7 @@ var createBrowserHistory = function createBrowserHistory() {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_warning__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_invariant__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LocationUtils__ = __webpack_require__(57);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__PathUtils__ = __webpack_require__(44);
@@ -34918,7 +34934,7 @@ var createMemoryHistory = function createMemoryHistory() {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_warning__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_invariant__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react__);
@@ -35116,7 +35132,7 @@ StaticRouter.childContextTypes = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_warning__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_warning__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_invariant__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_invariant__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_invariant__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__matchPath__ = __webpack_require__(91);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -63444,7 +63460,7 @@ var _reactSyntaxHighlighter2 = _interopRequireDefault(_reactSyntaxHighlighter);
 
 var _hljs = __webpack_require__(11);
 
-var _reactKatex = __webpack_require__(32);
+var _reactKatex = __webpack_require__(28);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -63488,7 +63504,7 @@ exports.default = LambdaCalculus;
  * errors in the expression, or errors in javascript handling.
  */
 
-var ParseError = __webpack_require__(28);
+var ParseError = __webpack_require__(29);
 var Settings = __webpack_require__(157);
 
 var buildTree = __webpack_require__(571);
@@ -63613,7 +63629,7 @@ module.exports = buildTree;
  * called, to produce a final HTML tree.
  */
 
-var ParseError = __webpack_require__(28);
+var ParseError = __webpack_require__(29);
 var Style = __webpack_require__(45);
 
 var buildCommon = __webpack_require__(59);
@@ -66960,7 +66976,7 @@ module.exports = {
  * used in `\left` and `\right`.
  */
 
-var ParseError = __webpack_require__(28);
+var ParseError = __webpack_require__(29);
 var Style = __webpack_require__(45);
 
 var buildCommon = __webpack_require__(59);
@@ -67503,7 +67519,7 @@ module.exports = {
 var buildCommon = __webpack_require__(59);
 var fontMetrics = __webpack_require__(46);
 var mathMLTree = __webpack_require__(576);
-var ParseError = __webpack_require__(28);
+var ParseError = __webpack_require__(29);
 var symbols = __webpack_require__(60);
 var utils = __webpack_require__(23);
 
@@ -68419,7 +68435,7 @@ var utils = __webpack_require__(23);
 var cjkRegex = __webpack_require__(100).cjkRegex;
 
 var parseData = __webpack_require__(101);
-var ParseError = __webpack_require__(28);
+var ParseError = __webpack_require__(29);
 
 /**
  * This file contains the parser used to parse out a TeX expression from the
@@ -69266,7 +69282,7 @@ module.exports = Parser;
 /***/ (function(module, exports, __webpack_require__) {
 
 var utils = __webpack_require__(23);
-var ParseError = __webpack_require__(28);
+var ParseError = __webpack_require__(29);
 var parseData = __webpack_require__(101);
 var ParseNode = parseData.ParseNode;
 
@@ -69966,7 +69982,7 @@ defineFunction(["\\begin", "\\end"], {
 
 /* eslint no-constant-condition:0 */
 var parseData = __webpack_require__(101);
-var ParseError = __webpack_require__(28);
+var ParseError = __webpack_require__(29);
 var Style = __webpack_require__(45);
 
 var ParseNode = parseData.ParseNode;
@@ -70284,7 +70300,7 @@ module.exports = MacroExpander;
 
 var matchAt = __webpack_require__(159);
 
-var ParseError = __webpack_require__(28);
+var ParseError = __webpack_require__(29);
 
 // The main lexer class
 function Lexer(input) {
@@ -70449,11 +70465,11 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactLatex = __webpack_require__(17);
+var _reactLatex = __webpack_require__(14);
 
 var _reactLatex2 = _interopRequireDefault(_reactLatex);
 
-var _reactKatex = __webpack_require__(32);
+var _reactKatex = __webpack_require__(28);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -70913,7 +70929,7 @@ module.exports = function(module) {
  * errors in the expression, or errors in javascript handling.
  */
 
-var ParseError = __webpack_require__(29);
+var ParseError = __webpack_require__(30);
 var Settings = __webpack_require__(160);
 
 var buildTree = __webpack_require__(588);
@@ -71038,7 +71054,7 @@ module.exports = buildTree;
  * called, to produce a final HTML tree.
  */
 
-var ParseError = __webpack_require__(29);
+var ParseError = __webpack_require__(30);
 var Style = __webpack_require__(47);
 
 var buildCommon = __webpack_require__(61);
@@ -74385,7 +74401,7 @@ module.exports = {
  * used in `\left` and `\right`.
  */
 
-var ParseError = __webpack_require__(29);
+var ParseError = __webpack_require__(30);
 var Style = __webpack_require__(47);
 
 var buildCommon = __webpack_require__(61);
@@ -74928,7 +74944,7 @@ module.exports = {
 var buildCommon = __webpack_require__(61);
 var fontMetrics = __webpack_require__(48);
 var mathMLTree = __webpack_require__(593);
-var ParseError = __webpack_require__(29);
+var ParseError = __webpack_require__(30);
 var symbols = __webpack_require__(62);
 var utils = __webpack_require__(24);
 
@@ -75844,7 +75860,7 @@ var utils = __webpack_require__(24);
 var cjkRegex = __webpack_require__(104).cjkRegex;
 
 var parseData = __webpack_require__(105);
-var ParseError = __webpack_require__(29);
+var ParseError = __webpack_require__(30);
 
 /**
  * This file contains the parser used to parse out a TeX expression from the
@@ -76691,7 +76707,7 @@ module.exports = Parser;
 /***/ (function(module, exports, __webpack_require__) {
 
 var utils = __webpack_require__(24);
-var ParseError = __webpack_require__(29);
+var ParseError = __webpack_require__(30);
 var parseData = __webpack_require__(105);
 var ParseNode = parseData.ParseNode;
 
@@ -77391,7 +77407,7 @@ defineFunction(["\\begin", "\\end"], {
 
 /* eslint no-constant-condition:0 */
 var parseData = __webpack_require__(105);
-var ParseError = __webpack_require__(29);
+var ParseError = __webpack_require__(30);
 var Style = __webpack_require__(47);
 
 var ParseNode = parseData.ParseNode;
@@ -77709,7 +77725,7 @@ module.exports = MacroExpander;
 
 var matchAt = __webpack_require__(159);
 
-var ParseError = __webpack_require__(29);
+var ParseError = __webpack_require__(30);
 
 // The main lexer class
 function Lexer(input) {
@@ -77820,7 +77836,7 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactLatex = __webpack_require__(17);
+var _reactLatex = __webpack_require__(14);
 
 var _reactLatex2 = _interopRequireDefault(_reactLatex);
 
@@ -78277,11 +78293,11 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactLatex = __webpack_require__(17);
+var _reactLatex = __webpack_require__(14);
 
 var _reactLatex2 = _interopRequireDefault(_reactLatex);
 
-var _reactKatex = __webpack_require__(32);
+var _reactKatex = __webpack_require__(28);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -78694,11 +78710,11 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactLatex = __webpack_require__(17);
+var _reactLatex = __webpack_require__(14);
 
 var _reactLatex2 = _interopRequireDefault(_reactLatex);
 
-var _reactKatex = __webpack_require__(32);
+var _reactKatex = __webpack_require__(28);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -78801,7 +78817,7 @@ var MathPreliminaries = function MathPreliminaries() {
         _react2.default.createElement(
             'h4',
             null,
-            'So Salled Simple Example'
+            'So Called Simple Example'
         ),
         _react2.default.createElement(
             'p',
@@ -78998,10 +79014,153 @@ exports.default = MathPreliminaries;
 /* 604 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+        value: true
+});
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactLatex = __webpack_require__(14);
+
+var _reactLatex2 = _interopRequireDefault(_reactLatex);
+
+var _reactKatex = __webpack_require__(28);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var DiscreteMaths = function DiscreteMaths() {
+        return _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(
+                        'h2',
+                        null,
+                        'Discrete Mathematics'
+                ),
+                _react2.default.createElement(
+                        'p',
+                        null,
+                        'Discrete Mathematics is taught on most Computer Science courses and is going to be required reading for when we move onto the Art of Computer Programming and Concrete Mathematics. Two great books on this subject are ',
+                        _react2.default.createElement(
+                                'a',
+                                { href: 'https://www.amazon.co.uk/Discrete-Mathematics-Elementary-Beyond-Undergraduate/dp/0387955852/ref=sr_1_2?ie=UTF8&qid=1537684223&sr=8-2&keywords=discrete+mathematics+springer' },
+                                'Discrete Mathematics: Elementary and Beyond'
+                        ),
+                        ' and ',
+                        _react2.default.createElement(
+                                'a',
+                                { href: 'https://www.amazon.co.uk/DISCRETE-MATHEMATICS-ITS-APPLN-GE/dp/9814670138/ref=sr_1_2?ie=UTF8&qid=1537684203&sr=8-2&keywords=discrete+mathematics' },
+                                'Discrete Mathematics and it Applications'
+                        ),
+                        '. I would recommend studying these two books if time permits, I have studied one of them and this section will be the parts I missed or need to recap on rather than the whole text.'
+                ),
+                _react2.default.createElement(
+                        'h3',
+                        null,
+                        'Sequences and Summations'
+                ),
+                _react2.default.createElement(
+                        'h4',
+                        null,
+                        'Sequence'
+                ),
+                _react2.default.createElement(
+                        'p',
+                        null,
+                        'A sequence is a structure used to represent an ordered list it can be finite or infinite. For example ',
+                        _react2.default.createElement(_reactKatex.InlineMath, { math: '1, 2, 3, 4, 5, \\text{ is an example of a finite sequence with five terms and } 1, 3, 9, ... 3^n' }),
+                        ' is an infinite sequence. The notation ',
+                        _react2.default.createElement(_reactKatex.InlineMath, { math: 'a_n' }),
+                        ' is used to denote a single entry in the sequence and is called a term./> '
+                ),
+                _react2.default.createElement(
+                        'p',
+                        null,
+                        'Now lets take a simple example of a sequence.'
+                ),
+                _react2.default.createElement(_reactKatex.BlockMath, { math: 'a_n = \\frac{1}{n}' }),
+                _react2.default.createElement(_reactKatex.BlockMath, { math: 'a_1,a_2,a_3 .... ,' }),
+                _react2.default.createElement(
+                        'p',
+                        null,
+                        'This sequence will start with the following:'
+                ),
+                _react2.default.createElement(_reactKatex.BlockMath, { math: '\\frac{1}{1},\\frac{1}{2},\\frac{1}{3} .... ,' }),
+                _react2.default.createElement(
+                        'p',
+                        null,
+                        'Two other important definitions are geometric progression and arithmetic progression I will leave it up to the reader to investigate these.'
+                ),
+                _react2.default.createElement(
+                        'h4',
+                        null,
+                        'Recurrence Relation'
+                ),
+                _react2.default.createElement(
+                        'p',
+                        null,
+                        'When we defined the sequence above we provided explicit formulas for the terms. Another way is to provide the initial terms and a rule for defining later terms. This is a recurrence relation. A sequence is said to be a solution of a recurrence relation if its terms satisfy the recurrence relation.'
+                ),
+                _react2.default.createElement(
+                        'p',
+                        null,
+                        'Lets check a nice and easy example. This example provides a rule of ',
+                        _react2.default.createElement(_reactKatex.InlineMath, { math: 'a_n = a_{n-1} + 3' }),
+                        ' for ',
+                        _react2.default.createElement(_reactKatex.InlineMath, { math: 'n = 1,2,3 ... ' }),
+                        ' for the initial term of ',
+                        _react2.default.createElement(_reactKatex.InlineMath, { math: 'a_0 = 2' })
+                ),
+                _react2.default.createElement(
+                        'h4',
+                        null,
+                        'Special Integer Sequences'
+                ),
+                _react2.default.createElement(
+                        'p',
+                        null,
+                        'With the above we were given the closed formula (the pattern the sequence is running in forumla) a recurrence relation or other type of general rule. What if this is not provided, well given the firt few values of the sequence then we have to make an educated conjecture (guess) about the identity of the sequence. Some common things to look for are there runs of the same value inthe sequence, are terms made from previous terms by adding, subtracting, multiplying or manipulting them in some way. Or are there specific cycles. '
+                ),
+                _react2.default.createElement(
+                        'h4',
+                        null,
+                        'Summations'
+                ),
+                _react2.default.createElement(
+                        'p',
+                        null,
+                        'Summations are simply sequences that are the additions of terms of a sequence. These expressions are expressed using the sigma notation.'
+                ),
+                _react2.default.createElement(_reactKatex.BlockMath, { math: '\\sum_{j=m}^n a_j' }),
+                _react2.default.createElement(
+                        'p',
+                        null,
+                        'This is read as the sum from  ',
+                        _react2.default.createElement(_reactKatex.InlineMath, { math: 'j = m' }),
+                        ', to  ',
+                        _react2.default.createElement(_reactKatex.InlineMath, { math: 'j = n' }),
+                        ' of  ',
+                        _react2.default.createElement(_reactKatex.InlineMath, { math: 'a_j' }),
+                        ' We have used the variable j to be used as the index of the summation but any variable can be used. We start with a lower limit m and a upper limit of n.'
+                )
+        );
+};
+
+exports.default = DiscreteMaths;
+
+/***/ }),
+/* 605 */
+/***/ (function(module, exports, __webpack_require__) {
+
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(605);
+var content = __webpack_require__(606);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -79026,7 +79185,7 @@ if(false) {
 }
 
 /***/ }),
-/* 605 */
+/* 606 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(35)(undefined);
@@ -79040,7 +79199,7 @@ exports.push([module.i, ".menu\n/* layout main menu */\n{\n   \n    clear:both;\
 
 
 /***/ }),
-/* 606 */
+/* 607 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -79054,7 +79213,7 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactLatex = __webpack_require__(17);
+var _reactLatex = __webpack_require__(14);
 
 var _reactLatex2 = _interopRequireDefault(_reactLatex);
 
@@ -79168,7 +79327,7 @@ var CassandraClojure = function CassandraClojure() {
 exports.default = CassandraClojure;
 
 /***/ }),
-/* 607 */
+/* 608 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -79182,7 +79341,7 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactLatex = __webpack_require__(17);
+var _reactLatex = __webpack_require__(14);
 
 var _reactLatex2 = _interopRequireDefault(_reactLatex);
 
@@ -79303,7 +79462,7 @@ var CassandraClojure = function CassandraClojure() {
 exports.default = CassandraClojure;
 
 /***/ }),
-/* 608 */
+/* 609 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -79317,7 +79476,7 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactLatex = __webpack_require__(17);
+var _reactLatex = __webpack_require__(14);
 
 var _reactLatex2 = _interopRequireDefault(_reactLatex);
 
@@ -79643,7 +79802,7 @@ var KafkaClojure = function KafkaClojure() {
 exports.default = KafkaClojure;
 
 /***/ }),
-/* 609 */
+/* 610 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -79657,7 +79816,7 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactLatex = __webpack_require__(17);
+var _reactLatex = __webpack_require__(14);
 
 var _reactLatex2 = _interopRequireDefault(_reactLatex);
 
@@ -79976,7 +80135,7 @@ var ConcurrencyClojure = function ConcurrencyClojure() {
 exports.default = ConcurrencyClojure;
 
 /***/ }),
-/* 610 */
+/* 611 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -79990,7 +80149,7 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactLatex = __webpack_require__(17);
+var _reactLatex = __webpack_require__(14);
 
 var _reactLatex2 = _interopRequireDefault(_reactLatex);
 
@@ -80236,7 +80395,7 @@ var DataStructuresClojure = function DataStructuresClojure() {
 exports.default = DataStructuresClojure;
 
 /***/ }),
-/* 611 */
+/* 612 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -80250,7 +80409,7 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactLatex = __webpack_require__(17);
+var _reactLatex = __webpack_require__(14);
 
 var _reactLatex2 = _interopRequireDefault(_reactLatex);
 
@@ -80368,7 +80527,7 @@ var GarbageCollection = function GarbageCollection() {
 exports.default = GarbageCollection;
 
 /***/ }),
-/* 612 */
+/* 613 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -80382,7 +80541,7 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactLatex = __webpack_require__(17);
+var _reactLatex = __webpack_require__(14);
 
 var _reactLatex2 = _interopRequireDefault(_reactLatex);
 
@@ -80451,13 +80610,13 @@ var Specs = function Specs() {
 exports.default = Specs;
 
 /***/ }),
-/* 613 */
+/* 614 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(614);
+var content = __webpack_require__(615);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -80482,7 +80641,7 @@ if(false) {
 }
 
 /***/ }),
-/* 614 */
+/* 615 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(35)(undefined);
@@ -80496,7 +80655,7 @@ exports.push([module.i, ".nav-grid\n/* layout main menu */\n{\n   \n    clear:bo
 
 
 /***/ }),
-/* 615 */
+/* 616 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
@@ -80527,7 +80686,7 @@ if(false) {
 }
 
 /***/ }),
-/* 616 */
+/* 617 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -80537,21 +80696,21 @@ Object.defineProperty(exports, '__esModule', {
   value: true
 });
 exports['default'] = {
-  slide: __webpack_require__(617),
-  stack: __webpack_require__(621),
-  elastic: __webpack_require__(622),
-  bubble: __webpack_require__(625),
-  push: __webpack_require__(626),
-  pushRotate: __webpack_require__(627),
-  scaleDown: __webpack_require__(628),
-  scaleRotate: __webpack_require__(629),
-  fallDown: __webpack_require__(630),
-  reveal: __webpack_require__(631)
+  slide: __webpack_require__(618),
+  stack: __webpack_require__(622),
+  elastic: __webpack_require__(623),
+  bubble: __webpack_require__(626),
+  push: __webpack_require__(627),
+  pushRotate: __webpack_require__(628),
+  scaleDown: __webpack_require__(629),
+  scaleRotate: __webpack_require__(630),
+  fallDown: __webpack_require__(631),
+  reveal: __webpack_require__(632)
 };
 module.exports = exports['default'];
 
 /***/ }),
-/* 617 */
+/* 618 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -80573,7 +80732,7 @@ exports['default'] = (0, _menuFactory2['default'])(styles);
 module.exports = exports['default'];
 
 /***/ }),
-/* 618 */
+/* 619 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -80648,7 +80807,7 @@ exports['default'] = styles;
 module.exports = exports['default'];
 
 /***/ }),
-/* 619 */
+/* 620 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -80786,7 +80945,7 @@ BurgerIcon.defaultProps = {
 module.exports = exports['default'];
 
 /***/ }),
-/* 620 */
+/* 621 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -80918,7 +81077,7 @@ CrossIcon.defaultProps = {
 module.exports = exports['default'];
 
 /***/ }),
-/* 621 */
+/* 622 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -80963,7 +81122,7 @@ exports['default'] = (0, _menuFactory2['default'])(styles);
 module.exports = exports['default'];
 
 /***/ }),
-/* 622 */
+/* 623 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -81064,10 +81223,10 @@ exports['default'] = (0, _menuFactory2['default'])(styles);
 module.exports = exports['default'];
 
 /***/ }),
-/* 623 */
+/* 624 */
 /***/ (function(module, exports, __webpack_require__) {
 
-window.eve = __webpack_require__(624)
+window.eve = __webpack_require__(625)
 
 // Copyright (c) 2017 Adobe Systems Incorporated. All rights reserved.
 //
@@ -89215,7 +89374,7 @@ module.exports = Snap
 
 
 /***/ }),
-/* 624 */
+/* 625 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;// Copyright (c) 2017 Adobe Systems Incorporated. All rights reserved.
@@ -89657,7 +89816,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;// Copyright (c)
 
 
 /***/ }),
-/* 625 */
+/* 626 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -89774,7 +89933,7 @@ exports['default'] = (0, _menuFactory2['default'])(styles);
 module.exports = exports['default'];
 
 /***/ }),
-/* 626 */
+/* 627 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -89814,7 +89973,7 @@ exports['default'] = (0, _menuFactory2['default'])(styles);
 module.exports = exports['default'];
 
 /***/ }),
-/* 627 */
+/* 628 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -89857,7 +90016,7 @@ exports['default'] = (0, _menuFactory2['default'])(styles);
 module.exports = exports['default'];
 
 /***/ }),
-/* 628 */
+/* 629 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -89899,7 +90058,7 @@ exports['default'] = (0, _menuFactory2['default'])(styles);
 module.exports = exports['default'];
 
 /***/ }),
-/* 629 */
+/* 630 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -89942,7 +90101,7 @@ exports['default'] = (0, _menuFactory2['default'])(styles);
 module.exports = exports['default'];
 
 /***/ }),
-/* 630 */
+/* 631 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -89995,7 +90154,7 @@ exports['default'] = (0, _menuFactory2['default'])(styles);
 module.exports = exports['default'];
 
 /***/ }),
-/* 631 */
+/* 632 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -90075,7 +90234,7 @@ exports['default'] = (0, _menuFactory2['default'])(styles);
 module.exports = exports['default'];
 
 /***/ }),
-/* 632 */
+/* 633 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -90091,7 +90250,7 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-__webpack_require__(633);
+__webpack_require__(634);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -90131,13 +90290,13 @@ var Footer = function (_React$Component) {
 exports.default = Footer;
 
 /***/ }),
-/* 633 */
+/* 634 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(634);
+var content = __webpack_require__(635);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -90162,7 +90321,7 @@ if(false) {
 }
 
 /***/ }),
-/* 634 */
+/* 635 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(35)(undefined);
@@ -90176,7 +90335,7 @@ exports.push([module.i, "footer {\n  background-color: #0288D1;\n  font-family: 
 
 
 /***/ }),
-/* 635 */
+/* 636 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
@@ -90207,7 +90366,7 @@ if(false) {
 }
 
 /***/ }),
-/* 636 */
+/* 637 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -90257,7 +90416,7 @@ var _devops = __webpack_require__(110);
 
 var _devops2 = _interopRequireDefault(_devops);
 
-var _scrollToTopRoute = __webpack_require__(637);
+var _scrollToTopRoute = __webpack_require__(638);
 
 var _scrollToTopRoute2 = _interopRequireDefault(_scrollToTopRoute);
 
@@ -90314,7 +90473,7 @@ var Content = function (_Component) {
 exports.default = Content;
 
 /***/ }),
-/* 637 */
+/* 638 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
