@@ -79073,10 +79073,12 @@ var DiscreteMaths = function DiscreteMaths() {
                         'p',
                         null,
                         'A sequence is a structure used to represent an ordered list it can be finite or infinite. For example ',
-                        _react2.default.createElement(_reactKatex.InlineMath, { math: '1, 2, 3, 4, 5, \\text{ is an example of a finite sequence with five terms and } 1, 3, 9, ... 3^n' }),
+                        _react2.default.createElement(_reactKatex.InlineMath, { math: '1, 2, 3, 4, 5' }),
+                        ' is an example of a finite sequence with five terms and ',
+                        _react2.default.createElement(_reactKatex.InlineMath, { math: '1, 3, 9, ... 3^n' }),
                         ' is an infinite sequence. The notation ',
                         _react2.default.createElement(_reactKatex.InlineMath, { math: 'a_n' }),
-                        ' is used to denote a single entry in the sequence and is called a term./> '
+                        ' is used to denote a single entry in the sequence and is called a term.'
                 ),
                 _react2.default.createElement(
                         'p',
@@ -79114,7 +79116,13 @@ var DiscreteMaths = function DiscreteMaths() {
                         ' for ',
                         _react2.default.createElement(_reactKatex.InlineMath, { math: 'n = 1,2,3 ... ' }),
                         ' for the initial term of ',
-                        _react2.default.createElement(_reactKatex.InlineMath, { math: 'a_0 = 2' })
+                        _react2.default.createElement(_reactKatex.InlineMath, { math: 'a_0 = 2' }),
+                        ' This then produces the sequence ',
+                        _react2.default.createElement(_reactKatex.InlineMath, { math: 'a_1 = a_0 + 3 = 2 + 3 = 5' }),
+                        ' then followed by ',
+                        _react2.default.createElement(_reactKatex.InlineMath, { math: 'a_2 = 5 + 3 = 8' }),
+                        ' and ',
+                        _react2.default.createElement(_reactKatex.InlineMath, { math: 'a_3 = 8 + 3 = 11' })
                 ),
                 _react2.default.createElement(
                         'h4',

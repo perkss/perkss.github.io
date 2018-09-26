@@ -12,7 +12,7 @@ const DiscreteMaths = () => (
 
         <h3>Sequences and Summations</h3>
         <h4>Sequence</h4>
-        <p>A sequence is a structure used to represent an ordered list it can be finite or infinite. For example <InlineMath math="1, 2, 3, 4, 5, \text{ is an example of a finite sequence with five terms and } 1, 3, 9, ... 3^n"/> is an infinite sequence. The notation <InlineMath math="a_n"/> is used to denote a single entry in the sequence and is called a term./> </p>
+        <p>A sequence is a structure used to represent an ordered list it can be finite or infinite. For example <InlineMath math="1, 2, 3, 4, 5"/> is an example of a finite sequence with five terms and <InlineMath math="1, 3, 9, ... 3^n"/> is an infinite sequence. The notation <InlineMath math="a_n"/> is used to denote a single entry in the sequence and is called a term.</p>
 
         <p>Now lets take a simple example of a sequence.</p>
 
@@ -26,7 +26,7 @@ const DiscreteMaths = () => (
 
         <h4>Recurrence Relation</h4>
         <p>When we defined the sequence above we provided explicit formulas for the terms. Another way is to provide the initial terms and a rule for defining later terms. This is a recurrence relation. A sequence is said to be a solution of a recurrence relation if its terms satisfy the recurrence relation.</p>
-        <p>Lets check a nice and easy example. This example provides a rule of <InlineMath math="a_n = a_{n-1} + 3"/> for <InlineMath math="n = 1,2,3 ... "/> for the initial term of <InlineMath math="a_0 = 2"/></p>
+        <p>Lets check a nice and easy example. This example provides a rule of <InlineMath math="a_n = a_{n-1} + 3"/> for <InlineMath math="n = 1,2,3 ... "/> for the initial term of <InlineMath math="a_0 = 2"/> This then produces the sequence <InlineMath math="a_1 = a_0 + 3 = 2 + 3 = 5"/> then followed by <InlineMath math="a_2 = 5 + 3 = 8"/> and <InlineMath math="a_3 = 8 + 3 = 11"/></p>
 
         <h4>Special Integer Sequences</h4>
         <p>With the above we were given the closed formula (the pattern the sequence is running in forumla) a recurrence relation or other type of general rule. What if this is not provided, well given the firt few values of the sequence then we have to make an educated conjecture (guess) about the identity of the sequence. Some common things to look for are there runs of the same value inthe sequence, are terms made from previous terms by adding, subtracting, multiplying or manipulting them in some way. Or are there specific cycles. </p>
