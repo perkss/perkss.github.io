@@ -79073,10 +79073,12 @@ var DiscreteMaths = function DiscreteMaths() {
                         'p',
                         null,
                         'A sequence is a structure used to represent an ordered list it can be finite or infinite. For example ',
-                        _react2.default.createElement(_reactKatex.InlineMath, { math: '1, 2, 3, 4, 5, \\text{ is an example of a finite sequence with five terms and } 1, 3, 9, ... 3^n' }),
+                        _react2.default.createElement(_reactKatex.InlineMath, { math: '1, 2, 3, 4, 5' }),
+                        ' is an example of a finite sequence with five terms and ',
+                        _react2.default.createElement(_reactKatex.InlineMath, { math: '1, 3, 9, ... 3^n' }),
                         ' is an infinite sequence. The notation ',
                         _react2.default.createElement(_reactKatex.InlineMath, { math: 'a_n' }),
-                        ' is used to denote a single entry in the sequence and is called a term./> '
+                        ' is used to denote a single entry in the sequence and is called a term.'
                 ),
                 _react2.default.createElement(
                         'p',
@@ -79114,7 +79116,13 @@ var DiscreteMaths = function DiscreteMaths() {
                         ' for ',
                         _react2.default.createElement(_reactKatex.InlineMath, { math: 'n = 1,2,3 ... ' }),
                         ' for the initial term of ',
-                        _react2.default.createElement(_reactKatex.InlineMath, { math: 'a_0 = 2' })
+                        _react2.default.createElement(_reactKatex.InlineMath, { math: 'a_0 = 2' }),
+                        ' This then produces the sequence ',
+                        _react2.default.createElement(_reactKatex.InlineMath, { math: 'a_1 = a_0 + 3 = 2 + 3 = 5' }),
+                        ' then followed by ',
+                        _react2.default.createElement(_reactKatex.InlineMath, { math: 'a_2 = 5 + 3 = 8' }),
+                        ' and ',
+                        _react2.default.createElement(_reactKatex.InlineMath, { math: 'a_3 = 8 + 3 = 11' })
                 ),
                 _react2.default.createElement(
                         'h4',
@@ -79147,6 +79155,83 @@ var DiscreteMaths = function DiscreteMaths() {
                         ' of  ',
                         _react2.default.createElement(_reactKatex.InlineMath, { math: 'a_j' }),
                         ' We have used the variable j to be used as the index of the summation but any variable can be used. We start with a lower limit m and a upper limit of n.'
+                ),
+                _react2.default.createElement(
+                        'h3',
+                        null,
+                        'Number Theory'
+                ),
+                _react2.default.createElement(
+                        'h4',
+                        null,
+                        'Division'
+                ),
+                _react2.default.createElement(
+                        'p',
+                        null,
+                        'When ',
+                        _react2.default.createElement(
+                                'i',
+                                null,
+                                'a'
+                        ),
+                        ' divides ',
+                        _react2.default.createElement(
+                                'i',
+                                null,
+                                'b'
+                        ),
+                        ' we say that ',
+                        _react2.default.createElement(
+                                'i',
+                                null,
+                                'a'
+                        ),
+                        ' is a facotr or divisor of ',
+                        _react2.default.createElement(
+                                'i',
+                                null,
+                                'b'
+                        ),
+                        ' and that ',
+                        _react2.default.createElement(
+                                'i',
+                                null,
+                                'b'
+                        ),
+                        ' is a multiple of ',
+                        _react2.default.createElement(
+                                'i',
+                                null,
+                                'a'
+                        ),
+                        '. When dividing we gave the quotient as q, a as the dividend, d as the divisor and r as the remainder. It follows this formula.'
+                ),
+                _react2.default.createElement(_reactKatex.BlockMath, { math: 'q = a/d' }),
+                _react2.default.createElement(_reactKatex.BlockMath, { math: 'r = a \\mod d' }),
+                _react2.default.createElement(
+                        'p',
+                        null,
+                        'Lets see an example of this definition above. We have 113 divided by 12:'
+                ),
+                _react2.default.createElement(_reactKatex.BlockMath, { math: '113 = 12*9+5' }),
+                _react2.default.createElement(
+                        'p',
+                        null,
+                        'Hence, the quotient when 113 is divided by 12 is 9 = 113 div 12 and the remainder is 5 = 113 mod 12. Simply you divide the 113 by 12 and floor to get the quotient and then you do the modulo on the 113 by 12 to get the remainder of 5.'
+                ),
+                _react2.default.createElement(_reactKatex.BlockMath, { math: 'quotient = a \\div d' }),
+                _react2.default.createElement(_reactKatex.BlockMath, { math: 'remainder = a\\mod n' }),
+                _react2.default.createElement(
+                        'p',
+                        null,
+                        'If you get stuck a great reference is ',
+                        _react2.default.createElement(
+                                'a',
+                                { href: 'https://www.khanacademy.org/computing/computer-science/cryptography/modarithmetic/a/what-is-modular-arithmetic' },
+                                'here'
+                        ),
+                        ' that discusses the clock method for dealing with mods. Just remember its mod 3 then you have a clock of 0,1,2 and you count clockwise the number of times the value of a or if a is negative you count counter clockwise. For exmple -11 mod 3. You count 2,1,0,2,1,0,2,1,0,2,1 so the answer of -11 mod 3 = 1. For negative numbers you round down when taking the floor for the quotient for example -3.6 is floored to -4.'
                 )
         );
 };
