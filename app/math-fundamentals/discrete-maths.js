@@ -51,7 +51,14 @@ const DiscreteMaths = () => (
 
         <BlockMath math="113 = 12*9+5"></BlockMath>
 
-        <p>Hence, the quotient when 113 is divided by 12 is 9 = 113 div 12 and the remainder is 5 = 113 mod 12.</p>
+        <p>Hence, the quotient when 113 is divided by 12 is 9 = 113 div 12 and the remainder is 5 = 113 mod 12. Simply you divide the 113 by 12 and floor to get the quotient and then you do the modulo on the 113 by 12 to get the remainder of 5.</p>
+
+
+        <BlockMath math="quotient = a \div d"></BlockMath>
+        <BlockMath math="remainder = a\mod n"></BlockMath>
+
+        <p>If you get stuck a great reference is <a href="https://www.khanacademy.org/computing/computer-science/cryptography/modarithmetic/a/what-is-modular-arithmetic">here</a> that discusses the clock method for dealing with mods. Just remember its mod 3 then you have a clock of 0,1,2 and you count clockwise the number of times the value of a or if a is negative you count counter clockwise. For exmple -11 mod 3. You count 2,1,0,2,1,0,2,1,0,2,1 so the answer of -11 mod 3 = 1. For negative numbers you round down when taking the floor for the quotient for example -3.6 is floored to -4.</p>
+
 
     </div>
 );
