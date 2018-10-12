@@ -79841,7 +79841,7 @@ var KafkaClojure = function KafkaClojure() {
     _react2.default.createElement(
       'p',
       null,
-      'Kafka provide the ability to join two streams of data together in this example I have converted a great example from Michael Knoll at Confluent post ',
+      'Kafka provide the ability to join two streams of data together between ktream to kstream, ktable to ktable and ktable to kstream. Here we look at KStream KTable joins and only inner and left joins are allowed here and are non windowed they basically allow one stream to look up from a table of another stream. In this example I have converted a great example from Michael Knoll at Confluent post ',
       _react2.default.createElement(
         'a',
         { href: 'https://www.confluent.io/blog/distributed-real-time-joins-and-aggregations-on-user-activity-events-using-kafka-streams/' },
@@ -79880,6 +79880,122 @@ var KafkaClojure = function KafkaClojure() {
         'here.'
       ),
       ' Simply it is being used here to implement the interface with a function defined body. There we have it checkout the test code to see the example running!'
+    ),
+    _react2.default.createElement(
+      'h3',
+      null,
+      '#Post 5: Kafka Streaming Joins KStream -> KStream (Inner, Outer, Left)'
+    ),
+    _react2.default.createElement(
+      'p',
+      null,
+      'Kafka provides the ability to join two streams either using a inner, outer or leftjoin with a window type. This is super cool! It is important to highlight that a new input on one side of the join will emit and output for each matching record on the other side of the join during the window. This will be clearer wih examples but two inputs could result in three outputs depending on join types and ordering. The matching of record happens by matching the keys of the two input streams. The test cases are a great way to understand the different types of joins and are based on a click stream on adverts.'
+    ),
+    _react2.default.createElement(
+      'h4',
+      null,
+      'Inner Join'
+    ),
+    _react2.default.createElement(
+      'p',
+      null,
+      'Kafka joins are inner joins and there semantics are that both sides of the join must be there before it outputs. So a record from the left stream and a record from the right stream will cause a output that are in the same join windows. To use this simply call join on stream and provide the other stream it joins too, a window and the joining function that implemnts ValueJoiner ensure that the keys match!'
+    ),
+    _react2.default.createElement(
+      _reactSyntaxHighlighter2.default,
+      { language: 'clojure', style: _hljs.darcula, showLineNumbers: true, wrapLines: true },
+      '(.join clicks\n             (reify ValueJoiner\n               (apply [_ left right]\n                 ((fn [impression-value click-value]\n                    (str impression-value "/" click-value))\n                  left right)))\n             (. JoinWindows of 5000)))'
+    ),
+    _react2.default.createElement(
+      'h4',
+      null,
+      'Left Join'
+    ),
+    _react2.default.createElement(
+      'p',
+      null,
+      'The left join will output a record if in the left side record is present it will always output even if the right side is not present. If only the right side record is present then it will wait untl a left side is present for the length of the join window.'
+    ),
+    _react2.default.createElement(
+      _reactSyntaxHighlighter2.default,
+      { language: 'clojure', style: _hljs.darcula, showLineNumbers: true, wrapLines: true },
+      '(.leftJoin clicks\n                 (reify ValueJoiner\n                   (apply [_ left right]\n                     ((fn [impression-value click-value]\n                        (log/infof "Received values impression value: %s click: %s" impression-value click-value)\n                        (str impression-value "/" click-value))\n                      left right)))\n                 (. JoinWindows of (* 50 60 10000))))'
+    ),
+    _react2.default.createElement(
+      'h4',
+      null,
+      'Outer Join'
+    ),
+    _react2.default.createElement(
+      'p',
+      null,
+      'The outer join will emit a result if either side a record comes via the left side stream or the righ side stream and always emit, it will join if the other side is present and send them joined. For example if the left side record is recieved it is sent, then if the right side arrives in the same join window it is then joined to the left side record and sent together. If the window expires and new record appears on the right side then it is output.'
+    ),
+    _react2.default.createElement(
+      _reactSyntaxHighlighter2.default,
+      { language: 'clojure', style: _hljs.darcula, showLineNumbers: true, wrapLines: true },
+      '(.outerJoin clicks\n                  (reify ValueJoiner\n                    (apply [_ left right]\n                      ((fn [impression-value click-value]\n                         (str impression-value "/" click-value))\n                       left right)))\n                  (. JoinWindows of 5000)))'
+    ),
+    _react2.default.createElement('p', null),
+    _react2.default.createElement(
+      'h3',
+      null,
+      '#Post 6: Kafka Streams Processor API'
+    ),
+    _react2.default.createElement(
+      'p',
+      null,
+      'What we have seen so far is the Kafka Streams DSL API which is the recommended way to write Kafka Streaming applications. There is a lower level API the processor API. Anyone from a Apache Storm background will be much more familar with this type of API well I was! I have taken the Kafka example and transformed it into Clojure using the interop. As you can see there is much more code and is not as clean especially in Clojure as implementing a fair few interfaces.'
+    ),
+    _react2.default.createElement(
+      'p',
+      null,
+      'The main processing happens in the Processor implementation of the Kafka Processor Interface. Here we set a schedule to forward the word counts that are stored in th state store in the process method implementation.'
+    ),
+    _react2.default.createElement(
+      _reactSyntaxHighlighter2.default,
+      { language: 'clojure', style: _hljs.darcula, showLineNumbers: true, wrapLines: true },
+      '(defn word-processor\n  "The first argument to reify method if this. Impleemt the Processor Java API"\n  [store-name]\n  (let [store (atom {})\n        context (atom nil)\n        timestamp 10]\n    (reify\n      Processor\n      (close [_])\n      (init [this processor-context]\n        (reset! context processor-context)\n        (reset! store (.getStateStore @context store-name)) ;; Assign the state store to the atom\n\n        (.schedule @context\n                   timestamp\n                   PunctuationType/STREAM_TIME\n                   (punctuator-forward-message timestamp store context)))\n      (process [_ key line]\n        (log/infof "Process has been called with %s %s" key line)\n        (let [words\n              (-> (str line)\n                  (str/lower-case)\n                  (str/split #" "))]\n\n          (log/infof "Words is: %s" words)\n          ;; Update the word count in the state store\n          (dorun (map #(add-word-count % store) words))\n\n          (log/infof "Current word value for %s word is :%s"\n                     (first words)\n                     (.get @store (first words))))))))'
+    ),
+    _react2.default.createElement(
+      'p',
+      null,
+      'The scheduled forward message iterates over the store and forwards the words stored and there counts via the context onto the sink of the stream.'
+    ),
+    _react2.default.createElement(
+      _reactSyntaxHighlighter2.default,
+      { language: 'clojure', style: _hljs.darcula, showLineNumbers: true, wrapLines: true },
+      '(defn punctuator-forward-message\n  [timestamp kvstore context]\n  (reify\n    Punctuator\n    (punctuate [_ timestamp]\n      (let [iter (iterator-seq (.all @kvstore))]\n        (log/infof "Iter %s" (pr-str iter))\n        (dorun (map #(.forward @context (.key %) (str (.value %))) iter))\n        (.commit @context)))))'
+    ),
+    _react2.default.createElement(
+      'p',
+      null,
+      'The procssor is wrapped in a ProcessorSupplier so the definition for that is here.'
+    ),
+    _react2.default.createElement(
+      _reactSyntaxHighlighter2.default,
+      { language: 'clojure', style: _hljs.darcula, showLineNumbers: true, wrapLines: true },
+      '(defn word-processor-supplier\n  [store-name]\n  (reify\n    ProcessorSupplier\n    (get [_] (word-processor store-name))))\n'
+    ),
+    _react2.default.createElement(
+      'p',
+      null,
+      'Here is the actual stream topology definition where we add a source topic, add the processor node to do the work and a store to save the work counts and a sink to send on the data to another topic.'
+    ),
+    _react2.default.createElement(
+      _reactSyntaxHighlighter2.default,
+      { language: 'clojure', style: _hljs.darcula, showLineNumbers: true, wrapLines: true },
+      '(defn word-processor-topology\n  []\n  (log/info "Word Processor API Streaming Topology")\n  (let [builder (Topology.)\n        store-name "Counts"\n        store (Stores/keyValueStoreBuilder\n               (Stores/persistentKeyValueStore store-name)\n               (Serdes/String)\n               (Serdes/String))]\n    (-> builder\n        (.addSource "Source" (into-array String ["source-topic"]))\n        (.addProcessor "Process"\n                       (word-processor-supplier store-name)\n                       (into-array String ["Source"]))\n        ;; Remove the add state store and you will see my contribution to Kafka:\n        ;; https://issues.apache.org/jira/browse/KAFKA-6659\n        (.addStateStore store (into-array String ["Process"]))\n        (.addSink "Sink" "sink-topic" (into-array String ["Process"])))))'
+    ),
+    _react2.default.createElement(
+      'h4',
+      null,
+      'Processor API Summary'
+    ),
+    _react2.default.createElement(
+      'p',
+      null,
+      'As you can see the Processor API is more low level and more code but it is much more flexbile and is sometimes required to be used.'
     )
   );
 };

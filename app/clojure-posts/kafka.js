@@ -174,7 +174,7 @@ from the provided kafka topic name"
 
         <h3>#Post 4: Kafka Streaming Joins KStream -> KTable</h3>
 
-        <p>Kafka provide the ability to join two streams of data together in this example I have converted a great example from Michael Knoll at Confluent post <a href="https://www.confluent.io/blog/distributed-real-time-joins-and-aggregations-on-user-activity-events-using-kafka-streams/"> example.</a> Here we take two topics one of the data of user click events and another topic of user geo location. The user clicks is considered a stream of individual records where each data item is a individual event the geo location stream is going to be conisdered as a changelog where each event is an update this will be backed by a KTable. Record streams use KStream and Changelogs use KTable interface. The code for this example can be found <a href="https://github.com/perkss/clojure-kafka-examples/blob/master/kafka-streams-example/src/kafka_streams_example/ktable_example.clj">here.</a> The code builds a KStream of user clicks and an KTable of users by location. Basically we want to take some click information for a user, join it to data about where the user is located and then reduce this so we can see the total number of clicks per region.</p>
+        <p>Kafka provide the ability to join two streams of data together between ktream to kstream, ktable to ktable and ktable to kstream. Here we look at KStream KTable joins and only inner and left joins are allowed here and are non windowed they basically allow one stream to look up from a table of another stream. In this example I have converted a great example from Michael Knoll at Confluent post <a href="https://www.confluent.io/blog/distributed-real-time-joins-and-aggregations-on-user-activity-events-using-kafka-streams/"> example.</a> Here we take two topics one of the data of user click events and another topic of user geo location. The user clicks is considered a stream of individual records where each data item is a individual event the geo location stream is going to be conisdered as a changelog where each event is an update this will be backed by a KTable. Record streams use KStream and Changelogs use KTable interface. The code for this example can be found <a href="https://github.com/perkss/clojure-kafka-examples/blob/master/kafka-streams-example/src/kafka_streams_example/ktable_example.clj">here.</a> The code builds a KStream of user clicks and an KTable of users by location. Basically we want to take some click information for a user, join it to data about where the user is located and then reduce this so we can see the total number of clicks per region.</p>
 
         <SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={true} wrapLines={true}>{`user-clicks (user-click-stream builder input-topic-clicks)
 user-regions (user-region-table builder input-topic-regions)`}</SyntaxHighlighter>
@@ -206,11 +206,135 @@ user-regions (user-region-table builder input-topic-regions)`}</SyntaxHighlighte
 
         <p>The use of reify here may seem confusing to those not so familiar with Clojure a great stack overflow post on this is <a href="https://stackoverflow.com/questions/37058268/what-is-reify-in-clojure">here.</a> Simply it is being used here to implement the interface with a function defined body. There we have it checkout the test code to see the example running!</p>
 
-    </div>
+
 
         <h3>#Post 5: Kafka Streaming Joins KStream -> KStream (Inner, Outer, Left)</h3>
 
+        <p>Kafka provides the ability to join two streams either using a inner, outer or leftjoin with a window type. This is super cool! It is important to highlight that a new input on one side of the join will emit and output for each matching record on the other side of the join during the window. This will be clearer wih examples but two inputs could result in three outputs depending on join types and ordering. The matching of record happens by matching the keys of the two input streams. The test cases are a great way to understand the different types of joins and are based on a click stream on adverts.</p>
+
+        <h4>Inner Join</h4>
+        <p>Kafka joins are inner joins and there semantics are that both sides of the join must be there before it outputs. So a record from the left stream and a record from the right stream will cause a output that are in the same join windows. To use this simply call join on stream and provide the other stream it joins too, a window and the joining function that implemnts ValueJoiner ensure that the keys match!</p>
+
+        <SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={true} wrapLines={true}>{`(.join clicks
+             (reify ValueJoiner
+               (apply [_ left right]
+                 ((fn [impression-value click-value]
+                    (str impression-value "/" click-value))
+                  left right)))
+             (. JoinWindows of 5000)))`}</SyntaxHighlighter>
+
+        <h4>Left Join</h4>
+
+        <p>The left join will output a record if in the left side record is present it will always output even if the right side is not present. If only the right side record is present then it will wait untl a left side is present for the length of the join window.</p>
+
+        <SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={true} wrapLines={true}>{`(.leftJoin clicks
+                 (reify ValueJoiner
+                   (apply [_ left right]
+                     ((fn [impression-value click-value]
+                        (log/infof "Received values impression value: %s click: %s" impression-value click-value)
+                        (str impression-value "/" click-value))
+                      left right)))
+                 (. JoinWindows of (* 50 60 10000))))`}</SyntaxHighlighter>
+
+        <h4>Outer Join</h4>
+
+        <p>The outer join will emit a result if either side a record comes via the left side stream or the righ side stream and always emit, it will join if the other side is present and send them joined. For example if the left side record is recieved it is sent, then if the right side arrives in the same join window it is then joined to the left side record and sent together. If the window expires and new record appears on the right side then it is output.</p>
+
+        <SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={true} wrapLines={true}>{`(.outerJoin clicks
+                  (reify ValueJoiner
+                    (apply [_ left right]
+                      ((fn [impression-value click-value]
+                         (str impression-value "/" click-value))
+                       left right)))
+                  (. JoinWindows of 5000)))`}</SyntaxHighlighter>
+
+        <p></p>
+
         <h3>#Post 6: Kafka Streams Processor API</h3>
+
+        <p>What we have seen so far is the Kafka Streams DSL API which is the recommended way to write Kafka Streaming applications. There is a lower level API the processor API. Anyone from a Apache Storm background will be much more familar with this type of API well I was! I have taken the Kafka example and transformed it into Clojure using the interop. As you can see there is much more code and is not as clean especially in Clojure as implementing a fair few interfaces.</p>
+
+        <p>The main processing happens in the Processor implementation of the Kafka Processor Interface. Here we set a schedule to forward the word counts that are stored in th state store in the process method implementation.</p>
+
+
+        <SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={true} wrapLines={true}>{`(defn word-processor
+  "The first argument to reify method if this. Impleemt the Processor Java API"
+  [store-name]
+  (let [store (atom {})
+        context (atom nil)
+        timestamp 10]
+    (reify
+      Processor
+      (close [_])
+      (init [this processor-context]
+        (reset! context processor-context)
+        (reset! store (.getStateStore @context store-name)) ;; Assign the state store to the atom
+
+        (.schedule @context
+                   timestamp
+                   PunctuationType/STREAM_TIME
+                   (punctuator-forward-message timestamp store context)))
+      (process [_ key line]
+        (log/infof "Process has been called with %s %s" key line)
+        (let [words
+              (-> (str line)
+                  (str/lower-case)
+                  (str/split #" "))]
+
+          (log/infof "Words is: %s" words)
+          ;; Update the word count in the state store
+          (dorun (map #(add-word-count % store) words))
+
+          (log/infof "Current word value for %s word is :%s"
+                     (first words)
+                     (.get @store (first words))))))))`}</SyntaxHighlighter>
+
+        <p>The scheduled forward message iterates over the store and forwards the words stored and there counts via the context onto the sink of the stream.</p>
+
+        <SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={true} wrapLines={true}>{`(defn punctuator-forward-message
+  [timestamp kvstore context]
+  (reify
+    Punctuator
+    (punctuate [_ timestamp]
+      (let [iter (iterator-seq (.all @kvstore))]
+        (log/infof "Iter %s" (pr-str iter))
+        (dorun (map #(.forward @context (.key %) (str (.value %))) iter))
+        (.commit @context)))))`}</SyntaxHighlighter>
+
+        <p>The procssor is wrapped in a ProcessorSupplier so the definition for that is here.</p>
+
+        <SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={true} wrapLines={true}>{`(defn word-processor-supplier
+  [store-name]
+  (reify
+    ProcessorSupplier
+    (get [_] (word-processor store-name))))
+`}</SyntaxHighlighter>
+
+        <p>Here is the actual stream topology definition where we add a source topic, add the processor node to do the work and a store to save the work counts and a sink to send on the data to another topic.</p>
+
+        <SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={true} wrapLines={true}>{`(defn word-processor-topology
+  []
+  (log/info "Word Processor API Streaming Topology")
+  (let [builder (Topology.)
+        store-name "Counts"
+        store (Stores/keyValueStoreBuilder
+               (Stores/persistentKeyValueStore store-name)
+               (Serdes/String)
+               (Serdes/String))]
+    (-> builder
+        (.addSource "Source" (into-array String ["source-topic"]))
+        (.addProcessor "Process"
+                       (word-processor-supplier store-name)
+                       (into-array String ["Source"]))
+        ;; Remove the add state store and you will see my contribution to Kafka:
+        ;; https://issues.apache.org/jira/browse/KAFKA-6659
+        (.addStateStore store (into-array String ["Process"]))
+        (.addSink "Sink" "sink-topic" (into-array String ["Process"])))))`}</SyntaxHighlighter>
+
+        <h4>Processor API Summary</h4>
+        <p>As you can see the Processor API is more low level and more code but it is much more flexbile and is sometimes required to be used.</p>
+
+    </div>
 
 );
 
