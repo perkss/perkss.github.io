@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
 import {
-  Route,
-  NavLink,
-  HashRouter
+    Route,
+    NavLink,
+    HashRouter
 } from "react-router-dom";
 import HomePage from "./home";
 import FunctionalProgrammingPage from "./functional-programming.js";
@@ -16,30 +16,29 @@ import DevOpsPage from "./devops.js";
 import ScrollToTopRoute from './scroll-to-top-route';
 
 
-
 class Content extends Component {
 
     render() {
         return (
-              <HashRouter>
+            <HashRouter>
                 <div>
-                <ScrollToTopRoute>
+                    <ScrollToTopRoute>
 
- <div className="content">
-                   <Route exact path="/" component={HomePage}/>
-            <Route path="/MathsForCompSci" component={MathsForCompSciPage}/>
-                <Route path="/Algorithms" component={AlgorithmsPage}/>
- <Route path="/FunctionalProgramming" component={FunctionalProgrammingPage}/>
-            <Route path="/MathFundamentals" component={MathFundamentalsPage}/>
-          <Route path="/CLanguage" component={CLanguagePage}/>
-                <Route path="/Clojure" component={ClojurePage}/>
-                <Route path="/Devops" component={DevOpsPage}/>
-            </div>
+                        <div className="content">
+                            <Route exact path="/" component={HomePage}/>
+                            <Route path="/MathsForCompSci" component={MathsForCompSciPage}/>
+                            <Route path="/Algorithms" component={AlgorithmsPage}/>
+                            <Route path="/FunctionalProgramming" component={FunctionalProgrammingPage}/>
+                            <Route path="/MathFundamentals" component={MathFundamentalsPage}/>
+                            <Route path="/CLanguage" component={CLanguagePage}/>
+                            <Route path="/Clojure" component={ClojurePage}/>
+                            <Route path="/Devops" component={DevOpsPage}/>
+                        </div>
 
 
-        </ScrollToTopRoute>
-        </div>
- </HashRouter>
+                    </ScrollToTopRoute>
+                </div>
+            </HashRouter>
         );
     }
 
