@@ -7,19 +7,20 @@ import Content from './blog-content.js';
 
 
 console.log('Testing version 4');
+
 class App extends React.Component {
 
-    
-  render () {
-    return (
+
+    render() {
+        return (
             <div>
-             <SideBar />
-            
-            <Content /> 
-              <Footer />
+                <SideBar/>
+
+                <Content/>
+                <Footer/>
             </div>
-);
-}
+        );
+    }
 }
 
 

@@ -1,15 +1,15 @@
 h1 {
-  text-align: center;
-  background:#03A9F4;
-  margin-left: 0px;
-  margin-right: 0px;
-  margin-bottom: 0px;
-  margin-top: 0px;
-  padding-right: 80px;
-  padding-left: 80px;
-  padding-top: 30px;
-  padding-bottom: 40px;
- 
-  color: white;
-  /* Have the padding instead of margin on the left for the colour*/
+    text-align: center;
+    background: #03A9F4;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    padding-right: 80px;
+    padding-left: 80px;
+    padding-top: 30px;
+    padding-bottom: 40px;
+
+    color: white;
+    /* Have the padding instead of margin on the left for the colour*/
 }
