@@ -14,7 +14,7 @@ const KafkaClojure = () => (
 	<h3>#Post 1: Simple Producer and Consumer in Kafka with Java API Interop</h3>
 	<p>Lets see the most basic use of Kafka where we can consume messages off a Kafka topic and then produce messages to another Kafka topic in Clojure. The code for this example is available <a href="https://github.com/perkss/clj-kafka-examples/tree/master/kafka-producer-consumer-example">here</a>. To begin using the Kafka clients in a Clojure project we need to import the dependency of kafka-clients as shown.</p>
 
-	<SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={false} wrapLines={true}>{`[org.apache.kafka/kafka-clients "1.0.1"]`}</SyntaxHighlighter>
+	<SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={false} wrapLines={true}>{`[org.apache.kafka/kafka-clients "2.0.0"]`}</SyntaxHighlighter>
 
 	<p>You then have the dependencies required for the example we need to import them into our .clj file to be used this is done as follows. This provides access to create an instance of the KafkaConsumer and the KafkaProducer along with the serializers required to serialize and deserialize messages to and from the Kafka topics here we just use the string versions.</p>
 
