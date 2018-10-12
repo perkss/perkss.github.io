@@ -79617,7 +79617,7 @@ var KafkaClojure = function KafkaClojure() {
     _react2.default.createElement(
       _reactSyntaxHighlighter2.default,
       { language: 'clojure', style: _hljs.darcula, showLineNumbers: false, wrapLines: true },
-      '[org.apache.kafka/kafka-clients "1.0.1"]'
+      '[org.apache.kafka/kafka-clients "2.0.0"]'
     ),
     _react2.default.createElement(
       'p',
