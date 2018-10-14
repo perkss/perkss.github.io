@@ -88393,7 +88393,24 @@ var DiscreteMaths = function DiscreteMaths() {
                 'here'
             ),
             ' that discusses the clock method for dealing with mods. Just remember its mod 3 then you have a clock of 0,1,2 and you count clockwise the number of times the value of a or if a is negative you count counter clockwise. For exmple -11 mod 3. You count 2,1,0,2,1,0,2,1,0,2,1 so the answer of -11 mod 3 = 1. For negative numbers you round down when taking the floor for the quotient for example -3.6 is floored to -4.'
-        )
+        ),
+        _react2.default.createElement(
+            'h4',
+            null,
+            'Modular Arithmetic'
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            'Sometimes we only care about the remainder for example when looking at a 24hour clock what time is it 40 hour from now, we add 40 hours plus to the current hour and divide by 24. A closely related notation indicates that two integers have the same remainder by both divided by positive m. The congruence is defined as follows: '
+        ),
+        _react2.default.createElement(_reactKatex.BlockMath, { math: 'a \\equiv b  \\text{ (mod  m) is a congruence and m is its modulus}' }),
+        _react2.default.createElement(
+            'p',
+            null,
+            'Lets see an example determine if 16 is congruent to 4 modulo 6.'
+        ),
+        _react2.default.createElement(_reactKatex.BlockMath, { math: '6 \\div 17 - 5 = 12  \\text{ shows that } 17 \\equiv 5 \\text{ mod } 6' })
     );
 };
 

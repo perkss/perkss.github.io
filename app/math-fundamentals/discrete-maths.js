@@ -90,7 +90,20 @@ const DiscreteMaths = () => (
             discusses the clock method for dealing with mods. Just remember its mod 3 then you have a clock of 0,1,2 and
             you count clockwise the number of times the value of a or if a is negative you count counter clockwise. For
             exmple -11 mod 3. You count 2,1,0,2,1,0,2,1,0,2,1 so the answer of -11 mod 3 = 1. For negative numbers you
-            round down when taking the floor for the quotient for example -3.6 is floored to -4.</p>
+    round down when taking the floor for the quotient for example -3.6 is floored to -4.</p>
+
+        <h4>Modular Arithmetic</h4>
+        <p>Sometimes we only care about the remainder for example when looking at a 24hour clock what time is it 40 hour from now, we add 40 hours plus to the current hour and divide by 24. A closely related notation indicates that two integers say a and b, have the same remainder when both divided ((a - b)/m) by positive m. The congruence is defined as follows: </p>
+
+        <BlockMath math="a \equiv b  \text{ (mod  m) is a congruence and m is its modulus}"></BlockMath>
+
+        <p>Lets see an example determine if 16 is congruent to 4 modulo 6.</p>
+
+        <BlockMath math="6 \div 17 - 5 = 12  \text{ shows that } 17 \equiv 5 \text{ mod } 6"></BlockMath>
+
+        <h4>Arithmetic Modulo</h4>
+        <p>Arithmetic mod is simple just follow the formula and either add or multiply two numbers and then mod it. Simples.</p>
+
 
 
     </div>
