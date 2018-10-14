@@ -88402,7 +88402,7 @@ var DiscreteMaths = function DiscreteMaths() {
         _react2.default.createElement(
             'p',
             null,
-            'Sometimes we only care about the remainder for example when looking at a 24hour clock what time is it 40 hour from now, we add 40 hours plus to the current hour and divide by 24. A closely related notation indicates that two integers have the same remainder by both divided by positive m. The congruence is defined as follows: '
+            'Sometimes we only care about the remainder for example when looking at a 24hour clock what time is it 40 hour from now, we add 40 hours plus to the current hour and divide by 24. A closely related notation indicates that two integers say a and b, have the same remainder when both divided ((a - b)/m) by positive m. The congruence is defined as follows: '
         ),
         _react2.default.createElement(_reactKatex.BlockMath, { math: 'a \\equiv b  \\text{ (mod  m) is a congruence and m is its modulus}' }),
         _react2.default.createElement(
@@ -88410,7 +88410,17 @@ var DiscreteMaths = function DiscreteMaths() {
             null,
             'Lets see an example determine if 16 is congruent to 4 modulo 6.'
         ),
-        _react2.default.createElement(_reactKatex.BlockMath, { math: '6 \\div 17 - 5 = 12  \\text{ shows that } 17 \\equiv 5 \\text{ mod } 6' })
+        _react2.default.createElement(_reactKatex.BlockMath, { math: '6 \\div 16 - 4 = 12  \\text{ shows that } 17 \\equiv 5 \\text{ mod } 6' }),
+        _react2.default.createElement(
+            'h4',
+            null,
+            'Arithmetic Modulo'
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            'Arithmetic mod is simple just follow the formula and either add or multiply two numbers and then mod it. Simples.'
+        )
     );
 };
 

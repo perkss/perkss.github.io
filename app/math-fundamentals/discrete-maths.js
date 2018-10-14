@@ -99,7 +99,7 @@ const DiscreteMaths = () => (
 
         <p>Lets see an example determine if 16 is congruent to 4 modulo 6.</p>
 
-        <BlockMath math="6 \div 17 - 5 = 12  \text{ shows that } 17 \equiv 5 \text{ mod } 6"></BlockMath>
+        <BlockMath math="6 \div 16 - 4 = 12  \text{ shows that } 17 \equiv 5 \text{ mod } 6"></BlockMath>
 
         <h4>Arithmetic Modulo</h4>
         <p>Arithmetic mod is simple just follow the formula and either add or multiply two numbers and then mod it. Simples.</p>
