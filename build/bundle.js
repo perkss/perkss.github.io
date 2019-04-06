@@ -89096,17 +89096,17 @@ var CassandraClojure = function CassandraClojure() {
                 { href: 'https://github.com/perkss/eggplant' },
                 'Eggplant'
             ),
-            ' and see the README to see examples and how to start using, we will cover a tutorial here also. Eggplant is simplistic and that is it\'s motto, which is a great motto as a developer and a product owner you do not want to be bogged down learning another syntax in the case of Cucumber and you want to conform to the popular human readable Given, When and Then as stated above.',
+            ' and see the README to see examples and how to start using, we will cover a tutorial here also. Eggplant is simplistic and that is it\'s motto, which is a great motto as a developer and a product owner you do not want to be bogged down learning another syntax in the case of Cucumber and you want to conform to the popular human readable Given, When and Then as stated above. Developers do not need to learn another language or test runner they can quickly write these tests and run anywhere that clojure.test does. After a refinement meeting come up with some maps of data and then can easily translate them to code.',
             _react2.default.createElement(
                 _reactSyntaxHighlighter2.default,
                 { language: 'clojure', style: _hljs.darcula, showLineNumbers: true, wrapLines: true },
-                '(defspec example-specification-true\n  (testing\n    "A full length example specification which is true 4 * 2 = 8"   \n      (given 4 test-data          \n        (then-we-expect 8 \n          (when-we-process * 2 test-data)))))'
+                '(defspec multiplying-two-numbers\n             (specification\n              {:given "a input of :a and :b"\n               :when  "we #* :c"\n               :then  "we expect :result"\n               :data {:a 3 :b 4 :result 12}}))\n             (defspec change-a-string-to-uppercase\n              (specification\n               {:given "a input of :a"\n                :when  "we #clojure.string/upper-case"\n                :then  "we expect :result"\n                :data {:a "hello" :result "HELLO"}}))'
             ),
             'As you can see this is readable format, its still in a basic Clojure file and runs with your usual Clojure test suite. Eggplant also offers data driven development which is our favourite feature of Spock! Here you can see we are testing the function + and asserting the esults are equals. Each test-data-row is the parameters passed and the expected result!',
             _react2.default.createElement(
                 _reactSyntaxHighlighter2.default,
                 { language: 'clojure', style: _hljs.darcula, showLineNumbers: true, wrapLines: true },
-                '(defspec example-table-test\n  (testing "Example table testing + with assertion of ="\n    (-> (expect (function-under-test +) (assertion =))\n        (where\n         (test-data-row [3 3] 6)\n         (test-data-row [4 4] 8)\n         (test-data-row [2 3] 5)))))'
+                '(defspec finding-the-max-of-two-numbers\n            (specification\n              {:expect "the #max of :a and :b"\n               :where  {:a 2 :b 3 :expected 3}}))'
             )
         )
     );
