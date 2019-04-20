@@ -73,7 +73,32 @@ CMD ["/usr/bin/java", "-jar", "/kafka-example.jar"]`}</SyntaxHighlighter>
                 <p>Every program that runs on a linux machine has a unique PID number. A PID namespace is a unique set of numbers that identify processes. Without PID namespace
                 processes running inside containers would share the same ID space as other containers running on the same host. Isolation. </p>
 
-                <h5>Building to run in any Environment</h5>
+                <h5>Lets not couple our apps to a specific environment</h5>
+
+                <h6>Read only filesystem</h6>
+                <p>The reason that a docker container that is read only is good is because it will not write files that make this container unique to the running
+                 instance. To achieve this you can use the <i>--read-only</i> flag. </p>
+                 <h6>Environment Variable Injection</h6>
+                 <p>To provide environment variables at runtime to a container the <i>--env</i> or simply <i>e</i> flag can be used that will inject the following variables into the
+                 container environment. For example a referenced database HOST, PORT, USERNAME, PASSWORD could be injected into a running application inside a container to reference
+                 unique database.</p>
+
+                 <h5>Durable Containers</h5>
+                 <p>Docker containers can be in four states Running, Paused, Restarting, Exited. Docker allows automatic restarts using the <i>--restart</i> flag
+                  This can be combined with backoff strategies to only restart a number of times and with a period between.</p>
+
+                  <h5>Cleaning up after yourself</h5>
+                  <p>To see a list of all containers in the docker instance you run <i>docker ps -a</i>. To remove a container simply run <i>docker rm</i> followed by
+                  the name of the container id. If you are running short lived containers for example ryane/kafkacat just for some tooling purposes then you can set the flag
+                   <i>--rm</i> on start up which will clean up when the container exits.</p>
+
+                   <h5>Docker Repositories</h5>
+                   <p>Named repositories in Docker are a named bucket of images. This name is similar to a url for example you have the registry host, user_name and the repository short name.
+                    <i>quay.io/perkss/my_app_registry</i> where a unique app sits in the my_app_registry. Each repository can hold multiple versions of an image where they are tagged differently. Tags are
+                    important on Docker and can be very specific so for example each minor version of Java 8, or can be just a high level Java 8 version that will take the latest minor version. Or simply you can refer
+                    too java:latest to always get the latest version on downloads. Docker registries are where images are hosted, and they can be public or private. Its easy to point to different registries
+                    and docker enables you to login and logout of private ones. </p>
+
 
 
 

@@ -90726,7 +90726,105 @@ var devops = {
         _react2.default.createElement(
             'h5',
             null,
-            'Building to run in any Environment'
+            'Lets not couple our apps to a specific environment'
+        ),
+        _react2.default.createElement(
+            'h6',
+            null,
+            'Read only filesystem'
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            'The reason that a docker container that is read only is good is because it will not write files that make this container unique to the running instance. To achieve this you can use the ',
+            _react2.default.createElement(
+                'i',
+                null,
+                '--read-only'
+            ),
+            ' flag. '
+        ),
+        _react2.default.createElement(
+            'h6',
+            null,
+            'Environment Variable Injection'
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            'To provide environment variables at runtime to a container the ',
+            _react2.default.createElement(
+                'i',
+                null,
+                '--env'
+            ),
+            ' or simply ',
+            _react2.default.createElement(
+                'i',
+                null,
+                'e'
+            ),
+            ' flag can be used that will inject the following variables into the container environment. For example a referenced database HOST, PORT, USERNAME, PASSWORD could be injected into a running application inside a container to reference unique database.'
+        ),
+        _react2.default.createElement(
+            'h5',
+            null,
+            'Durable Containers'
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            'Docker containers can be in four states Running, Paused, Restarting, Exited. Docker allows automatic restarts using the ',
+            _react2.default.createElement(
+                'i',
+                null,
+                '--restart'
+            ),
+            ' flag This can be combined with backoff strategies to only restart a number of times and with a period between.'
+        ),
+        _react2.default.createElement(
+            'h5',
+            null,
+            'Cleaning up after yourself'
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            'To see a list of all containers in the docker instance you run ',
+            _react2.default.createElement(
+                'i',
+                null,
+                'docker ps -a'
+            ),
+            '. To remove a container simply run ',
+            _react2.default.createElement(
+                'i',
+                null,
+                'docker rm'
+            ),
+            ' followed by the name of the container id. If you are running short lived containers for example ryane/kafkacat just for some tooling purposes then you can set the flag',
+            _react2.default.createElement(
+                'i',
+                null,
+                '--rm'
+            ),
+            ' on start up which will clean up when the container exits.'
+        ),
+        _react2.default.createElement(
+            'h5',
+            null,
+            'Docker Repositories'
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            'Named repositories in Docker are a named bucket of images. This name is similar to a url for example you have the registry host, user_name and the repository short name.',
+            _react2.default.createElement(
+                'i',
+                null,
+                'quay.io/perkss/my_app_registry'
+            ),
+            ' where a unique app sits in the my_app_registry. Each repository can hold multiple versions of an image where they are tagged differently. Tags are important on Docker and can be very specific so for example each minor version of Java 8, or can be just a high level Java 8 version that will take the latest minor version. Or simply you can refer too java:latest to always get the latest version on downloads. Docker registries are where images are hosted, and they can be public or private. Its easy to point to different registries and docker enables you to login and logout of private ones. '
         )
     )]
 
