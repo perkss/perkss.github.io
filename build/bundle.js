@@ -90869,6 +90869,11 @@ var devops = {
         _react2.default.createElement(
             _reactSyntaxHighlighter2.default,
             { language: 'bash', style: _hljs.darcula, showLineNumbers: false, wrapLines: true },
+            'docker volume create --driver local --label example=cassandra cass-shared'
+        ),
+        _react2.default.createElement(
+            _reactSyntaxHighlighter2.default,
+            { language: 'bash', style: _hljs.darcula, showLineNumbers: false, wrapLines: true },
             'docker run -d --mount source=my-cass,target=/var/lib/cassandra/data --name cassandra1 cassandra:2.2'
         ),
         _react2.default.createElement(
@@ -90884,8 +90889,35 @@ var devops = {
         _react2.default.createElement(
             'p',
             null,
-            'So to make containers really useful we want to share the same set of files between multiple containers. '
-        )
+            'So to make containers really useful we want to share the same set of files between multiple containers. We can simply do this by mounting different containers to the same volume we have created. For example we could share a volume for logging where we have a container that writes to the log directory and another that reads from it. Docker run or create commands will create anonymous volumes if required. We need to clean up these containers to list the volumes that we have created we can run ',
+            _react2.default.createElement(
+                'i',
+                null,
+                'docker volume ls'
+            ),
+            ' that will list the named and the anonymous volumes created. They are removed when the containers that created them are removed or can manually be removed with',
+            _react2.default.createElement(
+                'i',
+                null,
+                'docker volume remove'
+            )
+        ),
+        _react2.default.createElement(
+            'h6',
+            null,
+            'Problems with Local Volumes'
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            'Local volumes are great but they are not perfect what if you want to move your containers to run on a different host, then the volume will no longer be on that host. The docker plugins available for volumes can help overcome this for example in cloud services space.'
+        ),
+        _react2.default.createElement(
+            'h5',
+            null,
+            'Docker Networking'
+        ),
+        _react2.default.createElement('p', null)
     )]
 
 };

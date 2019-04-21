@@ -115,6 +115,8 @@ CMD ["/usr/bin/java", "-jar", "/kafka-example.jar"]`}</SyntaxHighlighter>
                   <p>Docker volumes are named file system trees managed by Docker. Docker volumes allow you to state I just need some space to add data I need to work with. This enables docker files to easily be cleaned up
                   once they have been used. For example you can bind a cassandra image to a particular created volume named my-cass:</p>
 
+                   <SyntaxHighlighter language='bash' style={darcula} showLineNumbers={false} wrapLines={true}>{`docker volume create --driver local --label example=cassandra cass-shared`}</SyntaxHighlighter>
+
 
 
             <SyntaxHighlighter language='bash' style={darcula} showLineNumbers={false} wrapLines={true}>{`docker run -d --mount source=my-cass,target=/var/lib/cassandra/data --name cassandra1 cassandra:2.2`}</SyntaxHighlighter>
@@ -126,9 +128,17 @@ CMD ["/usr/bin/java", "-jar", "/kafka-example.jar"]`}</SyntaxHighlighter>
 
 
 
-<p>So to make containers really useful we want to share the same set of files between multiple containers. </p>
+<p>So to make containers really useful we want to share the same set of files between multiple containers. We can simply do this by mounting different containers to the same volume we have created. For example we could share a volume
+for logging where we have a container that writes to the log directory and another that reads from it. Docker run or create commands will create anonymous volumes if required. We need to clean up these containers to list the volumes
+that we have created we can run <i>docker volume ls</i> that will list the named and the anonymous volumes created. They are removed when the containers that created them are removed or can manually be removed with
+ <i>docker volume remove</i></p>
+
+ <h6>Problems with Local Volumes</h6>
+ <p>Local volumes are great but they are not perfect what if you want to move your containers to run on a different host, then the volume will no longer be on that host. The docker plugins available for volumes can help overcome this for example in cloud services space.</p>
 
 
+<h5>Docker Networking</h5>
+<p></p>
         </div>
 
     ]
