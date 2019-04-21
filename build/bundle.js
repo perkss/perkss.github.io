@@ -90825,6 +90825,66 @@ var devops = {
                 'quay.io/perkss/my_app_registry'
             ),
             ' where a unique app sits in the my_app_registry. Each repository can hold multiple versions of an image where they are tagged differently. Tags are important on Docker and can be very specific so for example each minor version of Java 8, or can be just a high level Java 8 version that will take the latest minor version. Or simply you can refer too java:latest to always get the latest version on downloads. Docker registries are where images are hosted, and they can be public or private. Its easy to point to different registries and docker enables you to login and logout of private ones. '
+        ),
+        _react2.default.createElement(
+            'h5',
+            null,
+            'Storage Volumes'
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            'A volume is a tool to segment and share data that has a scope of lifecycle, independent of a single container. Every container has a MNT namespace where and the image that a container is created from is mounted at root. Docker has three mount types: Bind Mounts, In-memory Storage and Docker Volumes.'
+        ),
+        _react2.default.createElement(
+            'h6',
+            null,
+            'Bind Mounts'
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            'Bind mounts are used to remount parts of the file tree system onto other locations for example from a specific part of the host file system to a specific file tree in the container. For example if you need to send your container logs to some specific location they can be bind mounted to some specific host directory. As you can probably tell there is a major concern with Bind Mounts, as they couple the container to the specific host filesystem.'
+        ),
+        _react2.default.createElement(
+            'h6',
+            null,
+            'In-memory Storage'
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            'In memory storage should be used for private files, keys, passwords amongst other things as these secret files do not want to be stored and shipped within a container.'
+        ),
+        _react2.default.createElement(
+            'h6',
+            null,
+            'Docker Volumes'
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            'Docker volumes are named file system trees managed by Docker. Docker volumes allow you to state I just need some space to add data I need to work with. This enables docker files to easily be cleaned up once they have been used. For example you can bind a cassandra image to a particular created volume named my-cass:'
+        ),
+        _react2.default.createElement(
+            _reactSyntaxHighlighter2.default,
+            { language: 'bash', style: _hljs.darcula, showLineNumbers: false, wrapLines: true },
+            'docker run -d --mount source=my-cass,target=/var/lib/cassandra/data --name cassandra1 cassandra:2.2'
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            'If you want to interact with this cassandra image and mount space then you can run:'
+        ),
+        _react2.default.createElement(
+            _reactSyntaxHighlighter2.default,
+            { language: 'bash', style: _hljs.darcula, showLineNumbers: false, wrapLines: true },
+            'docker run -it --rm --link cassandra1:cass cassandra:2.2 cqlsh cass'
+        ),
+        _react2.default.createElement(
+            'p',
+            null,
+            'So to make containers really useful we want to share the same set of files between multiple containers. '
         )
     )]
 
