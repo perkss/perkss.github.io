@@ -11,11 +11,15 @@ var config = {
     filename: 'bundle.js'
   },
   module : {
-    loaders : [
+    rules : [
       {
         test : /\.jsx?/,
         include : APP_DIR,
-        loader : 'babel-loader'
+        exclude:/(node_modules|bower_components)/,
+        loader : 'babel-loader',
+        query: {
+                            presets: ['es2015', 'react']
+                        }
       },
       {
       test: /\.css$/,  

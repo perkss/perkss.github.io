@@ -138,7 +138,8 @@ that we have created we can run <i>docker volume ls</i> that will list the named
 
 
 <h5>Docker Networking</h5>
-<p></p>
+<p>Each container has its own private loopback interface and separate virtual ethernet interface that is linked to a virtual interface in the hosts namespace. Each container has its own unique IP address that is internal to the host as all connections
+ are routed through the Docker bridge virtual interface. You can build your own docker network using <i>docker network create</i></p>
         </div>
 
     ]
