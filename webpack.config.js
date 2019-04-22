@@ -22,21 +22,9 @@ var config = {
                         }
       },
       {
-      test: /\.css$/,
+      test: /\.css$/,  
       loaders: ['style-loader', 'css-loader'],
-      },
-      {
-      					test: /\.(png|jpg|gif|ttf|eot|woff|woff2)$/,
-      					use: [
-      						{
-      							loader: 'file-loader',
-      							options: {
-      								name: '[name].[ext]',
-      								outputPath: 'images/'
-      							}
-      						}
-      					]
-      				},
+      }
     ]
   }
 
