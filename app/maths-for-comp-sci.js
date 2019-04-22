@@ -1,5 +1,6 @@
 import React from "react";
-
+import Latex from 'react-latex';
+import {InlineMath, BlockMath} from 'react-katex';
 
 import BlogPage from './blog-page.js';
 
@@ -29,7 +30,12 @@ const mathsForCompSci = {
 
 
         <h4>Proof Methods</h4>
-        <p></p>
+        <h6>Proof by Direct Implication</h6>
+        <p>Running through the example provided in <a href="https://jeremykun.com/2013/02/16/methods-of-proof-direct-implication/">Jeremy Kun awesome primers! </a>
+        lets prove that <i>that one set is a subset of another</i>. Obviously if the sets are finite then you could manually check each value, computer could do this fairly fast,
+        but it would not be efficient! Lets define two sets:</p>
+
+         <BlockMath math="\text{X = } \{ n^2 \text{: n} \in \natnums \}"  errorColor={'#cc0000'}></BlockMath>
         <h4>Well Ordering Principle</h4>
         <p></p>
         <h4>Logic and Propositions</h4>
