@@ -140,6 +140,30 @@ const MathPrerequisites = () => (
         <p><Latex>$m$ &lt; $n$</Latex></p>
         <p><Latex>is the same as $m + 1 \leq n$</Latex></p>
 
+
+        <h3>Laws for Sums</h3>
+
+        <p>Please check Maths is Fun for a great explanation <a href="https://www.mathsisfun.com/associative-commutative-distributive.html">here</a>.</p>
+        <table>
+                   <tr>
+                       <th>Law</th>
+                       <th>Meaning</th>
+                   </tr>
+                   <tr>
+                       <td>Distributive Law</td>
+                       <td>When we <b>multiply</b> a number by a group of numbers <b>added</b> together or do each <b>multiply</b> separately and <b>add</b> them we get the same result. </td>
+                   </tr>
+                   <tr>
+                       <td>Associative Law</td>
+                       <td>When we group numbers it does not matter to the result when we <b>add</b> or <b>multiply</b></td>
+                   </tr>
+                   <tr>
+                       <td>Commutative Law</td>
+                       <td>When we swap numbers over we still get the same answer for <b>add</b> or <b>multiply</b> and even percentages.</td>
+                   </tr>
+
+               </table>
+
     </div>
 
 );
