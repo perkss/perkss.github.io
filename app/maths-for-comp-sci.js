@@ -11,15 +11,25 @@ const mathsForCompSci = {
     text: [<div>
 
 
+
         <p><strong>Please ensure you check out Math Fundamentals before proceeding into the world of Maths for Computer
             Science.</strong></p>
 
-        <p>Hitting the blog very soon. Next infact! </p>
+
+        <h3>Polynomial</h3>
+
+        <p>I was reading the great book by Jeremy Kun <a href="https://pimbook.org/">A programmers introduction to mathematics</a>, I recommend
+        highly taking a read of this. Polynomials are discussed here and I just wanted record my notes. Degree is used a lot and a clear definition of this is defined
+        <a href="https://www.mathsisfun.com/algebra/degree-expression.html"> here</a>. It is also critical to remember that polynomials can be displayed as <a href="https://www.mathsisfun.com/algebra/polynomials-behave.html">graphs</a>.
+
+
+        </p>
+
 
 
         <h3>Proofs</h3>
         <h4>Intro</h4>
-        <p>To begin with proofs we will list some key defintions. A proposition is a statement that can either be true
+        <p>To begin with proofs we will list some key definitions. A proposition is a statement that can either be true
             or false. This adds limitations to statements but it is difficult to know if the statement is true or false.
             This relates to computer programming as developers we need to ensure correctness of our programs. Similarly
             a <strong>predicate</strong> is a proposition whose truth depends on the value of one or more

@@ -14,7 +14,8 @@ const MathPrerequisites = () => (
                 prerequisites</a> for the course. I felt straight away this was a great small sample of the required
             maths for any maths for computer science or algorithm course in a short form, I still recommend Concrete
             Mathematics and the Math Preliminaries section in Art of Computer Programming vol1 by Knuth to add a fuller
-            picture. Coming from the UK GCSE Bitesize maths is also great for really basic recap of High School maths.
+            picture. Coming from the UK GCSE Bitesize maths is also great for really basic recap of High School maths. Also I would recommend recapping basic Algebra with
+            <a href="https://www.mathsisfun.com/algebra/index.html"> Maths is Fun</a> and then the <a href="https://www.mathsisfun.com/algebra/index-2.html">further algebra course.</a>
         </p>
 
 
@@ -63,7 +64,7 @@ const MathPrerequisites = () => (
 
         <h3>Exponents and Roots</h3>
         <p>This section presented by Stanford in the linked <a
-            href="http://web.stanford.edu/class/cs103/handouts/020%20Mathematical%20Prerequisites.pdf">PDF</a> is very
+            href="https://www.mathsisfun.com/algebra/exponent-laws.html">PDF</a> is very
             important and clearly explained. Please read it thoroughly. </p>
         <p>One item to highlight is this formula <BlockMath math="2^{n+1} = 2 \times 2^n
  = 2^n + 2^n"></BlockMath> as it comes up a few times and is a good one to remember.</p>
@@ -82,7 +83,7 @@ const MathPrerequisites = () => (
                 number is a number that can be in the form p/q
                 where p and q are integers and q is not equal to zero.<Latex></Latex></li>
             <li>An added definition here is closed form, in maths a closed form expression is one that can be evaluated
-                in a finite number of operations. A nice answer to this is o stack exchange <a
+                in a finite number of operations. A nice answer to this is on stack exchange <a
                     href="https://math.stackexchange.com/questions/58502/closed-form-solution-of-recurrence-relation">here</a>
             </li>
         </ul>
