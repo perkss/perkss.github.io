@@ -40,7 +40,7 @@ const mathsForCompSci = {
 
         </p>
 
-        <BlockMath math="f(x)= 109 + random \times x + random \times x^2"></BlockMath>
+        <BlockMath math="f(x)= 109 + random \times x + random \times x^2"/>
 
         <p>We then need to create the values for the three data points so the secret is data point <i>0</i> obviously as
             it will just equal 109. Then the data points for <i>1,2,3</i> are as follows simply replace x by the wanted
@@ -51,46 +51,46 @@ const mathsForCompSci = {
         <p>Now the tricky (honestly fairly easy just a little concentration required) Lagrange polynomial to form the
             answer:</p>
 
-        <BlockMath math="x_1 = 1, y_1 = 325"></BlockMath>
+        <BlockMath math="x_1 = 1, y_1 = 325"/>
 
-        <BlockMath math="x_2 = 1, y_2 = 1083"></BlockMath>
+        <BlockMath math="x_2 = 1, y_2 = 1083"/>
 
-        <BlockMath math="x_3 = 1, y_3 = 2383"></BlockMath>
+        <BlockMath math="x_3 = 1, y_3 = 2383"/>
 
 
         <p>So plugging in the values in the <a href="https://en.wikipedia.org/wiki/Lagrange_polynomial">Lagrange
             Formula</a> data point 1 ....</p>
 
-        <BlockMath math="325 \times \frac{(x-2)(x-3)}{(1-2)(1-3)}"></BlockMath>
+        <BlockMath math="325 \times \frac{(x-2)(x-3)}{(1-2)(1-3)}"/>
 
         <p>Lagrange Theorem data point 2 ....</p>
 
-        <BlockMath math="1083 \times \frac{(x-1)(x-3)}{(2-1)(2-3)}"></BlockMath>
+        <BlockMath math="1083 \times \frac{(x-1)(x-3)}{(2-1)(2-3)}"/>
 
         <p>Lagrange Theorem data point 3 ....</p>
 
-        <BlockMath math="2383 \times \frac{(x-1)(x-2)}{(3-1)(3-2)}"></BlockMath>
+        <BlockMath math="2383 \times \frac{(x-1)(x-2)}{(3-1)(3-2)}"/>
 
         <p>So now we want to plug in the value of <i>x = 0</i> so that we can see the value of the constant which is the
             secret value of 109. Hopefully you guess here that if we plug in 1 we get the result 325, plug in 2 we get
             the result 1083 and so forth. So lets work it out for the secret value (data point) when <i>x = 0</i></p>
 
-        <BlockMath math="325 \times \frac{(0-2)(0-3)}{(1-2)(1-3)}"></BlockMath>
+        <BlockMath math="325 \times \frac{(0-2)(0-3)}{(1-2)(1-3)}"/>
 
-        <BlockMath math="325 \times \frac{6}{2} = 325 \times 3 = 975"></BlockMath>
+        <BlockMath math="325 \times \frac{6}{2} = 325 \times 3 = 975"/>
 
-        <BlockMath math="1083 \times \frac{(0-1)(0-3)}{(2-1)(2-3)}"></BlockMath>
+        <BlockMath math="1083 \times \frac{(0-1)(0-3)}{(2-1)(2-3)}"/>
 
-        <BlockMath math="1083 \times \frac{-3}{-1} = 1083 \times -3 = -3249"></BlockMath>
+        <BlockMath math="1083 \times \frac{-3}{-1} = 1083 \times -3 = -3249"/>
 
-        <BlockMath math="2383 \times \frac{(0-1)(0-2)}{(3-1)(3-2)}"></BlockMath>
+        <BlockMath math="2383 \times \frac{(0-1)(0-2)}{(3-1)(3-2)}"/>
 
-        <BlockMath math="2383 \times \frac{2}{2} = 2383 \times 1 = 2383"></BlockMath>
+        <BlockMath math="2383 \times \frac{2}{2} = 2383 \times 1 = 2383"/>
 
         <p>Now to get our secret we simply add up the values returned from each line and it should equal the secret of
             109. </p>
 
-        <BlockMath math="975 - 3249 + 2383 = 109"></BlockMath>
+        <BlockMath math="975 - 3249 + 2383 = 109"/>
 
         <p>Hooray!! We have cracked this secret sharing business. Now lets see how we can make this formula become the
             original polynomial equation form, taking things further than the book.</p>
@@ -141,15 +141,15 @@ const mathsForCompSci = {
 
 
         <BlockMath
-            math="\frac{325(\frac{x^2 - 5x + 6}{2})-2166(\frac{x^2 - 4x + 3}{2}) + 2383(\frac{x^2 - 3x + 2}{2})} {2}"></BlockMath>
+            math="\frac{325(\frac{x^2 - 5x + 6}{2})-2166(\frac{x^2 - 4x + 3}{2}) + 2383(\frac{x^2 - 3x + 2}{2})} {2}"/>
 
         <p>And then simplify that by multiplying out the brackets and bring the common like terms together</p>
 
-        <BlockMath math="\frac{542x^2 - 110x + 218}{2}"></BlockMath>
+        <BlockMath math="\frac{542x^2 - 110x + 218}{2}"/>
 
         <p>Finally divide by 2 to result back in the original formula!</p>
 
-        <BlockMath math="271x^2 - 55x + 109"></BlockMath>
+        <BlockMath math="271x^2 - 55x + 109"/>
 
         <p>Brilliant work we have gone full circle!! A big help for this was I answered the other example from <a
             href="https://math.dartmouth.edu/~ddeford/Lagrange_Interpolation.pdf">Dartmouth</a> and got some help on
@@ -222,7 +222,7 @@ const mathsForCompSci = {
 };
 
 
-const MathsForCompSciPage = (props) => {
+const MathsForCompSciPage = () => {
 
     return (
 
@@ -234,6 +234,6 @@ const MathsForCompSciPage = (props) => {
         />
     );
 
-}
+};
 
 export default MathsForCompSciPage;

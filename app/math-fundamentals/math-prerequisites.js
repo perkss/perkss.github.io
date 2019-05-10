@@ -14,8 +14,10 @@ const MathPrerequisites = () => (
                 prerequisites</a> for the course. I felt straight away this was a great small sample of the required
             maths for any maths for computer science or algorithm course in a short form, I still recommend Concrete
             Mathematics and the Math Preliminaries section in Art of Computer Programming vol1 by Knuth to add a fuller
-            picture. Coming from the UK GCSE Bitesize maths is also great for really basic recap of High School maths. Also I would recommend recapping basic Algebra with
-            <a href="https://www.mathsisfun.com/algebra/index.html"> Maths is Fun</a> and then the <a href="https://www.mathsisfun.com/algebra/index-2.html">further algebra course.</a>
+            picture. Coming from the UK GCSE Bitesize maths is also great for really basic recap of High School maths.
+            Also I would recommend recapping basic Algebra with
+            <a href="https://www.mathsisfun.com/algebra/index.html"> Maths is Fun</a> and then the <a
+                href="https://www.mathsisfun.com/algebra/index-2.html">further algebra course.</a>
         </p>
 
 
@@ -81,7 +83,7 @@ const MathPrerequisites = () => (
             <li>A rational number is the ratio of two numbers (a number that can be written as
                 one <strong>integer</strong> divided by another <strong>integer</strong>) or in other words A rational
                 number is a number that can be in the form p/q
-                where p and q are integers and q is not equal to zero.<Latex></Latex></li>
+                where p and q are integers and q is not equal to zero.</li>
             <li>An added definition here is closed form, in maths a closed form expression is one that can be evaluated
                 in a finite number of operations. A nice answer to this is on stack exchange <a
                     href="https://math.stackexchange.com/questions/58502/closed-form-solution-of-recurrence-relation">here</a>
@@ -144,26 +146,31 @@ const MathPrerequisites = () => (
 
         <h3>Laws for Sums</h3>
 
-        <p>Please check Maths is Fun for a great explanation <a href="https://www.mathsisfun.com/associative-commutative-distributive.html">here</a>.</p>
+        <p>Please check Maths is Fun for a great explanation <a
+            href="https://www.mathsisfun.com/associative-commutative-distributive.html">here</a>.</p>
         <table>
-                   <tr>
-                       <th>Law</th>
-                       <th>Meaning</th>
-                   </tr>
-                   <tr>
-                       <td>Distributive Law</td>
-                       <td>When we <b>multiply</b> a number by a group of numbers <b>added</b> together or do each <b>multiply</b> separately and <b>add</b> them we get the same result. </td>
-                   </tr>
-                   <tr>
-                       <td>Associative Law</td>
-                       <td>When we group numbers it does not matter to the result when we <b>add</b> or <b>multiply</b></td>
-                   </tr>
-                   <tr>
-                       <td>Commutative Law</td>
-                       <td>When we swap numbers over we still get the same answer for <b>add</b> or <b>multiply</b> and even percentages.</td>
-                   </tr>
+            <tr>
+                <th>Law</th>
+                <th>Meaning</th>
+            </tr>
+            <tr>
+                <td>Distributive Law</td>
+                <td>When we <b>multiply</b> a number by a group of numbers <b>added</b> together or do
+                    each <b>multiply</b> separately and <b>add</b> them we get the same result.
+                </td>
+            </tr>
+            <tr>
+                <td>Associative Law</td>
+                <td>When we group numbers it does not matter to the result when we <b>add</b> or <b>multiply</b></td>
+            </tr>
+            <tr>
+                <td>Commutative Law</td>
+                <td>When we swap numbers over we still get the same answer for <b>add</b> or <b>multiply</b> and even
+                    percentages.
+                </td>
+            </tr>
 
-               </table>
+        </table>
 
     </div>
 

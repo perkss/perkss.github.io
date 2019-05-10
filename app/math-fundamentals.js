@@ -79,7 +79,7 @@ const MathFundamentals = ({match}) => {
 
         />
     );
-}
+};
 
 
 export default MathFundamentals;

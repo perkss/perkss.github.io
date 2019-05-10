@@ -93,13 +93,14 @@ const home = {
                 href="https://www.amazon.co.uk/Programming-Pearls-Joe-Bentley/dp/8177588583">book</a>. Finally a section
             on the overused term DevOps which will cover a large range of items.</p>
         <p><strong>Most of all have fun!</strong></p>
-        <p><a href="https://github.com/perkss">Please check out my Github page and feel free to contribute to any of my projects.</a></p>
+        <p><a href="https://github.com/perkss">Please check out my Github page and feel free to contribute to any of my
+            projects.</a></p>
         <p><a href="../rss/clojure-rss.xml">RSS</a></p>
     </div>]
 
 };
 
-const HomePage = (props) => {
+const HomePage = () => {
     return (
         <HomeTemplate
             title={home.title}
@@ -107,7 +108,7 @@ const HomePage = (props) => {
             text={home.text}
         />
     );
-}
+};
 
 
 export default HomePage;

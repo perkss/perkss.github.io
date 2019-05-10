@@ -33,8 +33,10 @@ const CassandraClojure = () => (
 
             Eggplant is simplistic and that is it&#39;s motto, which is a great motto as a developer and a product owner
             you do not want to be bogged down learning another syntax in the case of Cucumber and you want to conform to
-            the popular human readable Given, When and Then as stated above. Developers do not need to learn another language
-            or test runner they can quickly write these tests and run anywhere that clojure.test does. After a refinement meeting
+            the popular human readable Given, When and Then as stated above. Developers do not need to learn another
+            language
+            or test runner they can quickly write these tests and run anywhere that clojure.test does. After a
+            refinement meeting
             come up with some maps of data and then can easily translate them to code.
 
 

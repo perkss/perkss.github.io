@@ -38,21 +38,21 @@ const ConcreteMathematics = () => (
         amount of disks. We have just shown optimally we can move two disks in $3$ moves. To move three optimally we
         follow the pattern moving the top two disks as mentioned above, to the middle peg and then move the third and
         then move the top two disks back on top of the third. Here we can say the movement of the smallest disk
-        is </Latex><InlineMath math="T_{n-1}"></InlineMath><Latex> so the case of two disks it is $2$ disks to move it
+        is </Latex><InlineMath math="T_{n-1}"/><Latex> so the case of two disks it is $2$ disks to move it
         is one move, in the case of three disks to move the two smallest are two moves and so on. We then move the very
         bottom disk which is one move $T_1 = 1$. Then we have to move the </Latex><InlineMath
-        math="T_{n-1}"></InlineMath> disks back on top.</p>
+        math="T_{n-1}"/> disks back on top.</p>
 
         <p>Producing the formula for disk movement as at most: </p>
 
-        <BlockMath math="T_n \leq 2T_{n-1} + 1 \text{       for } (n > 0)"></BlockMath>
+        <BlockMath math="T_n \leq 2T_{n-1} + 1 \text{       for } (n > 0)"/>
 
         <p>Lets do the actual calculation for three disks. With this formula when having three disks <Latex>$n = 3$ so
             $T_2 = 3$ we multiply that by $2$ giving us $6$ and then plus the constant of moving the largest disk as
             $1$. Hence we expect to be able to move three disks in $7$ moves.</Latex></p>
         <p>Firstly we need to move the smallest disk so<Latex> $T_1 = 1$ we then need to move the next disk again $1$
             move and then place the smallest disk back onto it so another $1$ move this is the </Latex><InlineMath
-            math="T_{n-1}"></InlineMath> part. We now need to move the bottom largest disk with the constant move
+            math="T_{n-1}"/> part. We now need to move the bottom largest disk with the constant move
             of <Latex> $1$ and then move the other two disks back so the smallest onto another peg $1$ move and then the
                 next disk on top of the largest disk which takes $1$ move and then the smallest disk on top again so
                 another $1$ move totalling $3$ again and this all totals $7$ moves so the formula is correct.</Latex>
@@ -60,9 +60,9 @@ const ConcreteMathematics = () => (
 
         <p><Latex>This has produced the following inequality and base case for $n = 0$:</Latex></p>
 
-        <p><BlockMath math="T_0 = 0;"></BlockMath></p>
+        <p><BlockMath math="T_0 = 0;"/></p>
 
-        <p><BlockMath math="T_n = 2T_{n-1} + 1"></BlockMath></p>
+        <p><BlockMath math="T_n = 2T_{n-1} + 1"/></p>
 
         <p><Latex>A set of equalities like this are called a recurrence (recurrence relation or recursion relation). It
             gives a boundary value and an equation for general value terms. The problem with this recurrence is that it
@@ -91,8 +91,11 @@ const ConcreteMathematics = () => (
         <p>Providing: </p><BlockMath math="2(2^{n-1} - 1) + 1"/>
 
         <p><Latex>Simplify: Firstly distribute parentheses </Latex><InlineMath
-            math="2 \times 2^{n-1} + 2 \times (-1) + 1"/>. <Latex></Latex> Now we can use the product rule of exponents that states
-             if two powers have the same base they can simply be added, remember that <Latex>$2$ is the same as $2^1$</Latex>. So shown here we simply using the product rule: <InlineMath math="2^{1} \times 2^{n-1} = 2^{1 + n - 1} = 2^n"/></p>
+            math="2 \times 2^{n-1} + 2 \times (-1) + 1"/>. Now we can use the product rule of exponents
+            that states
+            if two powers have the same base they can simply be added, remember that <Latex>$2$ is the same as
+                $2^1$</Latex>. So shown here we simply using the product rule: <InlineMath
+                math="2^{1} \times 2^{n-1} = 2^{1 + n - 1} = 2^n"/></p>
 
         <p><Latex>Resulting in: $2^n - 2 + 1$. Equalling $2^n - 1$ which is the proposed solution so this proof is
             correct. Throughout the rest of the book it will mainly focus on the recurrence relation part as the first
@@ -104,18 +107,18 @@ const ConcreteMathematics = () => (
 
         <BlockMath math="T_0 + 1 = 0 + 1"/>
 
-        <BlockMath math="T_n + 1 = 2T_{n - 1} + 1 + 1"/> <BlockMath math="\text{ for } n > 0"></BlockMath>
+        <BlockMath math="T_n + 1 = 2T_{n - 1} + 1 + 1"/> <BlockMath math="\text{ for } n > 0"/>
 
         <p><Latex>Now we let $U_n = T_n + 1$ giving $U_0 = 1$</Latex></p>
 
 
         <BlockMath math="U_{n-1} = T_{n - 1}+1 \text{ and therefore }"/>
         <BlockMath math="2T_{n - 1}+2=2(T_{n - 1}+1)=2U{n-1}"/>
-        <BlockMath math="\text{As we can substitute } U_{n - 1}"></BlockMath>
+        <BlockMath math="\text{As we can substitute } U_{n - 1}"/>
         <BlockMath math="\text{We have seen that }"/><BlockMath math="T_n + 1 = 2T_{n - 1} + 2"/>
         <BlockMath math="\text{ and }  U_{n-1} = T_n + 1"/>
         <p>Therefore combining these you see:</p>
-        <BlockMath math="U_n = 2U_{n-1} \text{, with } U_0 = 1"></BlockMath>
+        <BlockMath math="U_n = 2U_{n-1} \text{, with } U_0 = 1"/>
 
         <p>Now we can see that from our definition of <InlineMath math="U_n"/> it is simply doubling each
             time <InlineMath math="n"/> is increased. </p>

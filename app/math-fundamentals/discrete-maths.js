@@ -26,11 +26,11 @@ const DiscreteMaths = () => (
 
         <p>Now lets take a simple example of a sequence.</p>
 
-        <BlockMath math="a_n = \frac{1}{n}"></BlockMath>
+        <BlockMath math="a_n = \frac{1}{n}"/>
 
-        <BlockMath math="a_1,a_2,a_3 .... ,"></BlockMath>
+        <BlockMath math="a_1,a_2,a_3 .... ,"/>
         <p>This sequence will start with the following:</p>
-        <BlockMath math="\frac{1}{1},\frac{1}{2},\frac{1}{3} .... ,"></BlockMath>
+        <BlockMath math="\frac{1}{1},\frac{1}{2},\frac{1}{3} .... ,"/>
 
         <p>Two other important definitions are geometric progression and arithmetic progression I will leave it up to
             the reader to investigate these.</p>
@@ -55,7 +55,7 @@ const DiscreteMaths = () => (
         <p>Summations are simply sequences that are the additions of terms of a sequence. These expressions are
             expressed using the sigma notation.</p>
 
-        <BlockMath math="\sum_{j=m}^n a_j"></BlockMath>
+        <BlockMath math="\sum_{j=m}^n a_j"/>
 
         <p>This is read as the sum from <InlineMath math="j = m"/>, to <InlineMath math="j = n"/> of <InlineMath
             math="a_j"/> We have used the variable j to be used as the index of the summation but any variable can be
@@ -69,40 +69,43 @@ const DiscreteMaths = () => (
             multiple of <i>a</i>. When dividing we gave the quotient as q, a as the dividend, d as the divisor and r as
             the remainder. It follows this formula.</p>
 
-        <BlockMath math="q = a/d"></BlockMath>
-        <BlockMath math="r = a \mod d"></BlockMath>
+        <BlockMath math="q = a/d"/>
+        <BlockMath math="r = a \mod d"/>
 
         <p>Lets see an example of this definition above. We have 113 divided by 12:</p>
 
-        <BlockMath math="113 = 12*9+5"></BlockMath>
+        <BlockMath math="113 = 12*9+5"/>
 
         <p>Hence, the quotient when 113 is divided by 12 is 9 = 113 div 12 and the remainder is 5 = 113 mod 12. Simply
             you divide the 113 by 12 and floor to get the quotient and then you do the modulo on the 113 by 12 to get
             the remainder of 5.</p>
 
 
-        <BlockMath math="quotient = a \div d"></BlockMath>
-        <BlockMath math="remainder = a\mod n"></BlockMath>
+        <BlockMath math="quotient = a \div d"/>
+        <BlockMath math="remainder = a\mod n"/>
 
         <p>If you get stuck a great reference is <a
             href="https://www.khanacademy.org/computing/computer-science/cryptography/modarithmetic/a/what-is-modular-arithmetic">here</a> that
             discusses the clock method for dealing with mods. Just remember its mod 3 then you have a clock of 0,1,2 and
             you count clockwise the number of times the value of a or if a is negative you count counter clockwise. For
             exmple -11 mod 3. You count 2,1,0,2,1,0,2,1,0,2,1 so the answer of -11 mod 3 = 1. For negative numbers you
-    round down when taking the floor for the quotient for example -3.6 is floored to -4.</p>
+            round down when taking the floor for the quotient for example -3.6 is floored to -4.</p>
 
         <h4>Modular Arithmetic</h4>
-        <p>Sometimes we only care about the remainder for example when looking at a 24hour clock what time is it 40 hour from now, we add 40 hours plus to the current hour and divide by 24. A closely related notation indicates that two integers say a and b, have the same remainder when both divided ((a - b)/m) by positive m. The congruence is defined as follows: </p>
+        <p>Sometimes we only care about the remainder for example when looking at a 24hour clock what time is it 40 hour
+            from now, we add 40 hours plus to the current hour and divide by 24. A closely related notation indicates
+            that two integers say a and b, have the same remainder when both divided ((a - b)/m) by positive m. The
+            congruence is defined as follows: </p>
 
-        <BlockMath math="a \equiv b  \text{ (mod  m) is a congruence and m is its modulus}"></BlockMath>
+        <BlockMath math="a \equiv b  \text{ (mod  m) is a congruence and m is its modulus}"/>
 
         <p>Lets see an example determine if 16 is congruent to 4 modulo 6.</p>
 
-        <BlockMath math="6 \div 16 - 4 = 12  \text{ shows that } 16 \equiv 4 \text{ mod } 6"></BlockMath>
+        <BlockMath math="6 \div 16 - 4 = 12  \text{ shows that } 16 \equiv 4 \text{ mod } 6"/>
 
         <h4>Arithmetic Modulo</h4>
-        <p>Arithmetic mod is simple just follow the formula and either add or multiply two numbers and then mod it. Simples.</p>
-
+        <p>Arithmetic mod is simple just follow the formula and either add or multiply two numbers and then mod it.
+            Simples.</p>
 
 
     </div>
