@@ -1,7 +1,6 @@
-import React, {Component} from 'react';
-import Latex from 'react-latex';
+import React from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import {darcula, docco} from 'react-syntax-highlighter/styles/hljs';
+import {darcula} from 'react-syntax-highlighter/styles/hljs';
 
 
 const KafkaClojure = () => (

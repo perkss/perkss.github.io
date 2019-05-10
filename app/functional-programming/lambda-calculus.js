@@ -1,7 +1,5 @@
-import React, {Component} from 'react';
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import {darcula, docco} from 'react-syntax-highlighter/styles/hljs';
-import {InlineMath, BlockMath} from 'react-katex';
+import React from 'react';
+import {BlockMath, InlineMath} from 'react-katex';
 
 const LambdaCalculus = () => (
 

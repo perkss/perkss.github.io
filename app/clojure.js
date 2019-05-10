@@ -1,8 +1,6 @@
-import React, {Component} from "react";
+import React from "react";
 import BlogPage from './blog-page.js';
-import {
-    Route
-} from "react-router-dom";
+import {Route} from "react-router-dom";
 
 import {HashLink as Link} from 'react-router-hash-link';
 import Eggplant from './clojure-posts/eggplant';

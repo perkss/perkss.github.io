@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from 'react-dom';
+import {render} from 'react-dom';
 import SideBar from './side-bar';
 import Footer from './footer.js';
 import "./../css/index.css";

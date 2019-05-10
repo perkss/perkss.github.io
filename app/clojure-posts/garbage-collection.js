@@ -1,7 +1,4 @@
-import React, {Component} from 'react';
-import Latex from 'react-latex';
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import {darcula, docco} from 'react-syntax-highlighter/styles/hljs';
+import React from 'react';
 
 
 const GarbageCollection = () => (

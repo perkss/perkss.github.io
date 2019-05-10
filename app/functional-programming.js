@@ -1,7 +1,5 @@
 import React from "react";
-import {
-    Route
-} from "react-router-dom";
+import {Route} from "react-router-dom";
 import {HashLink as Link} from 'react-router-hash-link';
 import BlogPage from './blog-page.js';
 import SICP from './functional-programming/sicp';

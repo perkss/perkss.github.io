@@ -1,10 +1,6 @@
 import React, {Component} from 'react';
 
-import {
-    Route,
-    NavLink,
-    HashRouter
-} from "react-router-dom";
+import {HashRouter, Route} from "react-router-dom";
 import HomePage from "./home";
 import FunctionalProgrammingPage from "./functional-programming.js";
 import AlgorithmsPage from "./algorithms.js";

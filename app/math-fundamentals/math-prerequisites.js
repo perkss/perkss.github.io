@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Latex from 'react-latex';
-import {InlineMath, BlockMath} from 'react-katex';
+import {BlockMath} from 'react-katex';
 
 const MathPrerequisites = () => (
 

@@ -1,6 +1,5 @@
-import React, {Component} from 'react';
-import Latex from 'react-latex';
-import {InlineMath, BlockMath} from 'react-katex';
+import React from 'react';
+import {BlockMath, InlineMath} from 'react-katex';
 
 const DiscreteMaths = () => (
 

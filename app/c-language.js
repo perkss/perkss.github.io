@@ -1,7 +1,7 @@
-import React, {Component} from "react";
+import React from "react";
 import BlogPage from './blog-page.js';
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import {darcula, docco} from 'react-syntax-highlighter/styles/hljs';
+import {darcula} from 'react-syntax-highlighter/styles/hljs';
 
 
 const cLanguage = {

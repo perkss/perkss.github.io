@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { HashRouter, NavLink } from "react-router-dom";
-import { slide as Menu } from 'react-burger-menu';
+import React, {Component} from 'react';
+import {HashRouter, NavLink} from "react-router-dom";
+import {slide as Menu} from 'react-burger-menu';
 
 
 class SideBar extends Component {
