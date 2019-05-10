@@ -91,10 +91,8 @@ const ConcreteMathematics = () => (
         <p>Providing: </p><BlockMath math="2(2^{n-1} - 1) + 1"/>
 
         <p><Latex>Simplify: Firstly distribute parentheses </Latex><InlineMath
-            math="2 \times 2^{n-1} + 2 \times (-1) + 1"/>. <Latex>Now we apply that two minus&#39;s result in a plus
-            rule.</Latex> This giving <InlineMath math="2^{n-1} \text{ and } 2^{n-1} = 2^n "/> as the two negatives
-            become a plus so plus one is to the power of 1 and then plus another is to the power
-            of <Latex>$n$</Latex> as shown: <InlineMath math="2 \times 2^{n-1} = 2^{1 + n - 1} = 2^n"/></p>
+            math="2 \times 2^{n-1} + 2 \times (-1) + 1"/>. <Latex></Latex> Now we can use the product rule of exponents that states
+             if two powers have the same base they can simply be added, remember that <Latex>$2$ is the same as $2^1$</Latex>. So shown here we simply using the product rule: <InlineMath math="2^{1} \times 2^{n-1} = 2^{1 + n - 1} = 2^n"/></p>
 
         <p><Latex>Resulting in: $2^n - 2 + 1$. Equalling $2^n - 1$ which is the proposed solution so this proof is
             correct. Throughout the rest of the book it will mainly focus on the recurrence relation part as the first
