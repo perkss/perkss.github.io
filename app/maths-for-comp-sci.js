@@ -42,6 +42,10 @@ const mathsForCompSci = {
 
         <BlockMath math="f(x)= 109 + random \times x + random \times x^2"/>
 
+        <p>So as the example states</p>
+
+        <BlockMath math="271x^2 - 55x + 109"/>
+
         <p>We then need to create the values for the three data points so the secret is data point <i>0</i> obviously as
             it will just equal 109. Then the data points for <i>1,2,3</i> are as follows simply replace x by the wanted
             value.</p>
