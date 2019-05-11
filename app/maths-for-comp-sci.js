@@ -38,8 +38,10 @@ const mathsForCompSci = {
             This is a pretty straightforward chapter but I would like to share the example he walked through briefly and
             how I solved it using the <a href="https://math.dartmouth.edu/~ddeford/Lagrange_Interpolation.pdf">Lagrange
                 polynomial</a> and then reversing back the polynomial to
-            its original form. <b>Secret Sharing</b> this is cool right we can use a polynomial equation to encrypt data
-            for data point 0 and then share data points 1,2,3 and these can all be combined
+            its original form. You maybe wondering the relationship between polynomial and secret sharing but basically
+            as the chapter proves polynomials are unique and exist so that for a given set of points a unique polynomial
+            exists, ideal for secret sharing! <b>Secret Sharing</b> this is cool right we can use a polynomial equation
+            to encrypt data for data point 0 and then share data points 1,2,3 and these can all be combined
             to reveal the original answer for point 0, using the Lagrange Theorem as one method or solving using
             variable elimination as done in this great <a
                 href="https://www.youtube.com/watch?v=rWPZoz0aux4&list=FLRp9sg-Zq5VRihj_CsdAPow&index=1">video</a>. As
