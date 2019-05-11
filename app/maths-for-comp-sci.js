@@ -103,49 +103,49 @@ const mathsForCompSci = {
         <p>So back too plugging in the values in the <a href="https://en.wikipedia.org/wiki/Lagrange_polynomial">Lagrange
             Formula</a> data point we can also factorise these points</p>
 
-        <BlockMath math="325 \times \frac{(x-2)(x-3)}{(1-2)(1-3}"></BlockMath>
+        <BlockMath math="325 \times \frac{(x-2)(x-3)}{(1-2)(1-3}"/>
 
         <p>This factored is .. </p>
 
-        <BlockMath math="325(\frac{x^2 - 5x + 6}{2})"></BlockMath>
+        <BlockMath math="325(\frac{x^2 - 5x + 6}{2})"/>
 
         <p>Lagrange Theorem data point 2 ....</p>
 
-        <BlockMath math="1083(\frac{(x-1)(x-3)}{(2-1)(2-3)})"></BlockMath>
+        <BlockMath math="1083(\frac{(x-1)(x-3)}{(2-1)(2-3)})"/>
 
         <p>This factored is .. </p>
 
-        <BlockMath math="1083 \times \frac{x^2 - x - 3x + 3}{-1}"></BlockMath>
+        <BlockMath math="1083 \times \frac{x^2 - x - 3x + 3}{-1}"/>
 
         <p>Further factored is .. </p>
 
-        <BlockMath math="1083(\frac{x^2 - 4x + 3}{-1})"></BlockMath>
+        <BlockMath math="1083(\frac{x^2 - 4x + 3}{-1})"/>
 
         <p>Lagrange Theorem data point 3 ....</p>
 
-        <BlockMath math="2383 \times \frac{(x-1)(x-2)}{(3-1)(3-2)}"></BlockMath>
+        <BlockMath math="2383 \times \frac{(x-1)(x-2)}{(3-1)(3-2)}"/>
 
         <p>This factored is .. </p>
 
-        <BlockMath math="2383(\frac{x^2 - x - 2x + 2}{2})"></BlockMath>
+        <BlockMath math="2383(\frac{x^2 - x - 2x + 2}{2})"/>
 
-        <BlockMath math="2383(\frac{x^2 - 3x + 2}{2})"></BlockMath>
+        <BlockMath math="2383(\frac{x^2 - 3x + 2}{2})"/>
 
         <p>Now a vital part is to simplify this is getting all the parts over the same base denomiator so here we can
             get them all over 2 by multiplying <i>-1 by -2</i></p>
 
 
-        <BlockMath math="1083(\frac{x^2 - 4x + 3}{-1})"></BlockMath>
+        <BlockMath math="1083(\frac{x^2 - 4x + 3}{-1})"/>
 
         <p>Making this become:</p>
 
-        <BlockMath math="-2166(\frac{x^2 - 4x + 3}{2})"></BlockMath>
+        <BlockMath math="-2166(\frac{x^2 - 4x + 3}{2})"/>
 
         <p>Now we need to sum up each factorised part and can put them all over the base of 2 as shown:</p>
 
 
         <BlockMath
-            math="\frac{325(\frac{x^2 - 5x + 6}{2})-2166(\frac{x^2 - 4x + 3}{2}) + 2383(\frac{x^2 - 3x + 2}{2})} {2}"/>
+            math="\frac{325(x^2 - 5x + 6)-2166(x^2 - 4x + 3) + 2383(x^2 - 3x + 2)} {2}"/>
 
         <p>And then simplify that by multiplying out the brackets and bring the common like terms together</p>
 
