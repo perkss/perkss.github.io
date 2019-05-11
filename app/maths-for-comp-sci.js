@@ -1,6 +1,7 @@
 import React from "react";
 import {BlockMath} from 'react-katex';
 import Latex from 'react-latex';
+import {HashLink as Link} from 'react-router-hash-link';
 
 import BlogPage from './blog-page.js';
 
@@ -11,9 +12,21 @@ const mathsForCompSci = {
     text: [<div>
 
         <p><strong>Please ensure you check out Math Fundamentals before proceeding into the world of Maths for Computer
-            Science.</strong></p>
+            Science.</strong> Where we make many references too Discrete Mathematics (Biggs), Mathematics for
+            Programmers (Kun) and the courses by <a
+                href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-042j-mathematics-for-computer-science-spring-2015/index.htm">MIT</a> and <a
+                href="http://web.stanford.edu/class/cs103/">Stanford</a> .</p>
 
-        <h3>Polynomials and Secret Sharing</h3>
+        <h3>Topics</h3>
+        <ul className="text-list">
+            <li><Link to="#Polynomials">Polynomials</Link></li>
+            <li><Link to="#Proofs">Proofs</Link></li>
+            <li><Link to={"#Structures"}>Structures</Link></li>
+            <li><Link to={"#Counting"}>Counting</Link></li>
+            <li><Link to={"#Probability"}>Probability</Link></li>
+        </ul>
+
+        <h3 id={"Polynomials"}>Polynomials and Secret Sharing</h3>
 
         <p>I was reading the great book by Jeremy Kun <a href="https://pimbook.org/">A programmers introduction to
             mathematics</a>, I recommend
@@ -60,7 +73,6 @@ const mathsForCompSci = {
         <BlockMath math="x_2 = 1, y_2 = 1083"/>
 
         <BlockMath math="x_3 = 1, y_3 = 2383"/>
-
 
         <p>So plugging in the values in the <a href="https://en.wikipedia.org/wiki/Lagrange_polynomial">Lagrange
             Formula</a> data point 1 ....</p>
@@ -165,14 +177,14 @@ const mathsForCompSci = {
 
         <p>Good spot and yes it is and this is based on Shamirs Secret sharing which is explained very well <a
             href="https://medium.com/@apogiatzis/shamirs-secret-sharing-a-numeric-example-walkthrough-a59b288c34c4">here</a>.
-            The only tricky bit is the final part <Latex>$Finite Field Z₉₁₉₉₄₃₈₈₃₆₄₉₇₉$</Latex> basically its overflowed
+            The only tricky bit is the final part <Latex>$Finite Field Z91994388364979$</Latex> basically its overflowed
             so
             we need to subtract the negative from the max as so <Latex>$91994388364979-300000000319$</Latex>. But
             basically you would use modular arithmetic to come up with the coefficients for the polynomial equation.
             Remember you can read about Modular Arithmetic in our Discrete Maths Section!!</p>
 
 
-        <h3>Proofs</h3>
+        <h3 id={"Proofs"}>Proofs</h3>
         <h4>Intro</h4>
         <p>To begin with proofs we will list some key definitions. A proposition is a statement that can either be true
             or false. This adds limitations to statements but it is difficult to know if the statement is true or false.
@@ -180,8 +192,42 @@ const mathsForCompSci = {
             a <strong>predicate</strong> is a proposition whose truth depends on the value of one or more
             variables. <strong>Axioms</strong> are propositions that are accepted as true. A <strong>proof</strong> is a
             sequence of logical deductions found from axioms and previously proved statements that concludes with the
-            porposition in question (Lehman et al ...). A <strong>theorem</strong> is a result that has been proved true
+            proposition in question (Lehman et al ...). A <strong>theorem</strong> is a statement that has been proved
+            true
             and a <strong>lemma</strong> is a preliminary proposition proved true. </p>
+
+
+        <p>Simply put we could have the Theorem:</p>
+
+        <p><Latex>Theorem: $25$ is a multiple of $5$</Latex></p>
+
+        <p><Latex>Proof: $5 \times 5 = 25$</Latex></p>
+
+        <p>A a Theorem is a statement that is proved true how do we use a Theorem to represent a non true statement,
+            easy we inverse it with not, just like coding.</p>
+
+        <p><Latex>Theorem: $21$ is </Latex><b>not</b><Latex> a multiple of $5$</Latex></p>
+
+        <p><Latex>Proof: If $21$ were a multiple of $5$ there would be a natural number $n \times 5 = 21$ since $5
+            \times 5 = 25 n$ must be less than $5$ but none of the values $1,2,3,4$ work.</Latex></p>
+
+
+        <p>A <b>Existential Statement</b> says that something is true if there exists at least one variable that is true
+            in the domain. A <b>Universal Statement</b> makes a statement
+            about all numbers and every predicate variable must be true for all these numbers in the given domain.
+            Therefore a Universal Statement is false if it is false for a single value and this is a counter example.
+        </p>
+
+        <p>In the Book Discrete Mathematics (Biggs) one of the exercises in section 1.5 shows an example of proving a
+            Universal Statement.</p>
+
+        <p>Theorem: For all natural numbers <Latex>$n, n^2 + n$</Latex> is an even number.</p>
+
+        <p>Proof: Well the book explains the proof but what it doesnt really state is that if you have a factor of 2
+            then it is even. In the odd case they add 1 for n to make it odd. The result for both then have a factor of
+            2 so they are even a very similar example is very well explained <a
+                href={"https://math.stackexchange.com/questions/2865609/for-all-natural-numbers-n-n2-n-is-even"}>here.</a>
+        </p>
 
 
         <h4>Proof Methods</h4>
@@ -214,11 +260,11 @@ const mathsForCompSci = {
         <p></p>
         <h4>Infinite Sets</h4>
         <p></p>
-        <h3>Structures</h3>
+        <h3 id={"Structures"}>Structures</h3>
         <p></p>
-        <h3>Counting</h3>
+        <h3 id={"Counting"}>Counting</h3>
         <p></p>
-        <h3>Probability</h3>
+        <h3 id={"Probability"}>Probability</h3>
         <p></p>
 
     </div>]

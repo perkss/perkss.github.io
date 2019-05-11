@@ -8,13 +8,13 @@ const DiscreteMaths = () => (
         <h2>Discrete Mathematics</h2>
 
         <p>Discrete Mathematics is taught on most Computer Science courses and is going to be required reading for when
-            we move onto the Art of Computer Programming and Concrete Mathematics. Two great books on this subject
+            we move onto the Art of Computer Programming and Concrete Mathematics. Three great books on this subject
             are <a
                 href="https://www.amazon.co.uk/Discrete-Mathematics-Elementary-Beyond-Undergraduate/dp/0387955852/ref=sr_1_2?ie=UTF8&qid=1537684223&sr=8-2&keywords=discrete+mathematics+springer">Discrete
                 Mathematics: Elementary and Beyond</a> and <a
                 href="https://www.amazon.co.uk/DISCRETE-MATHEMATICS-ITS-APPLN-GE/dp/9814670138/ref=sr_1_2?ie=UTF8&qid=1537684203&sr=8-2&keywords=discrete+mathematics">Discrete
-                Mathematics and it Applications</a>. I would recommend studying these two books if time permits, I have
-            studied one of them and this section will be the parts I missed or need to recap on rather than the whole
+                Mathematics and it Applications</a> and <a href="https://www.amazon.co.uk/gp/product/0198507178/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1">Discrete Mathematics</a>. I would recommend studying these three books if time permits, I have
+            studied them and this section will be the parts I missed or need to recap on rather than the whole
             text.</p>
 
         <h3>Sequences and Summations</h3>
