@@ -1,5 +1,6 @@
 import React from 'react';
 import {BlockMath, InlineMath} from 'react-katex';
+import {HashLink as Link} from 'react-router-hash-link';
 
 const DiscreteMaths = () => (
 
@@ -17,7 +18,15 @@ const DiscreteMaths = () => (
             studied them and this section will be the parts I missed or need to recap on rather than the whole
             text.</p>
 
-        <h3>Sequences and Summations</h3>
+        <h3>Topics</h3>
+        <ul className="text-list">
+            <li><Link to="#sequences">Sequences and Summations</Link></li>
+            <li><Link to="#Recurrence">Recurrence Relation</Link></li>
+            <li><Link to={"#Summations"}>Summations</Link></li>
+            <li><Link to={"#numbertheory"}>Number Theory</Link></li>
+        </ul>
+
+        <h3 id={"sequences"}>Sequences and Summations</h3>
         <h4>Sequence</h4>
         <p>A sequence is a structure used to represent an ordered list it can be finite or infinite. For
             example <InlineMath math="1, 2, 3, 4, 5"/> is an example of a finite sequence with five terms
@@ -35,7 +44,7 @@ const DiscreteMaths = () => (
         <p>Two other important definitions are geometric progression and arithmetic progression I will leave it up to
             the reader to investigate these.</p>
 
-        <h4>Recurrence Relation</h4>
+        <h4 id={"Recurrence"}>Recurrence Relation</h4>
         <p>When we defined the sequence above we provided explicit formulas for the terms. Another way is to provide the
             initial terms and a rule for defining later terms. This is a recurrence relation. A sequence is said to be a
             solution of a recurrence relation if its terms satisfy the recurrence relation.</p>
@@ -51,7 +60,7 @@ const DiscreteMaths = () => (
             things to look for are there runs of the same value inthe sequence, are terms made from previous terms by
             adding, subtracting, multiplying or manipulting them in some way. Or are there specific cycles. </p>
 
-        <h4>Summations</h4>
+        <h4 id={"Summations"}>Summations</h4>
         <p>Summations are simply sequences that are the additions of terms of a sequence. These expressions are
             expressed using the sigma notation.</p>
 
@@ -62,7 +71,7 @@ const DiscreteMaths = () => (
             used. We start with a lower limit m and a upper limit of n.</p>
 
 
-        <h3>Number Theory</h3>
+        <h3 id={"numbertheory"}>Number Theory</h3>
 
         <h4>Division</h4>
         <p>When <i>a</i> divides <i>b</i> we say that <i>a</i> is a facotr or divisor of <i>b</i> and that <i>b</i> is a
