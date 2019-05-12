@@ -1,5 +1,6 @@
 import React from 'react';
 import Latex from 'react-latex';
+import {InlineMath} from 'react-katex';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import {darcula} from 'react-syntax-highlighter/styles/hljs';
 
@@ -45,9 +46,7 @@ const BiteSizeMath = () => (
             <li><Latex>$1$ is not a prime number as it does not have two factors only one factor itself.</Latex></li>
             <li><Latex>$2$ is the only even prime number as all other even numbers have $2$ as a factor.</Latex></li>
             <li>There are a infinite number of prime numbers</li>
-
         </ol>
-        <br/>
 
         <p>Prime numbers an example: Given <Latex>$33, 34, 35, 36, 37$</Latex> which numbers are prime? </p> <p>Well
         from the key facts we can ignore even numbers of <Latex>$34$ and $36$ straight away. Now to work out $33$ we can
@@ -70,19 +69,33 @@ const BiteSizeMath = () => (
             </div>
         </p>
         <p>Further explanation of efficiencies. You are only required to test up to the square root of n as if n is not
-            prime it can be factored by a * b and if a and b were greater than the square root of n tthen a * b would be
-            greater than n. Hence we only need to check factors that are less than or equal to the square root of n.</p>
+            prime it can be factored by a * b and if a and b were greater than the square root of <Latex>$n$ then $a
+                \times b$ would be
+                greater than $n$</Latex>. Hence we only need to check factors that are less than or equal to the square
+            root of n.</p>
+
+        <p>Another interesting way to prove that a number is not prime is to show it in the difference of squares form.
+            A question in Discrete Mathematics (Biggs) asks this and a great answer is written <a
+                href={"https://www.quora.com/How-can-I-prove-that-2-66-1-is-not-a-prime-number-What-is-the-thought-process-or-rather-how-to-approach-a-problem-like-this-I-have-trouble-with-knowing-where-to-start-on-a-proof"}>here. </a>
+            But basically if you can get the form <Latex>$(m+1)(m-1)$</Latex> you know a number is not prime
+            unless <Latex>$(m-1) = 1$</Latex> as <Latex>$(m+1)$</Latex> can never equal 1 as m will always be greater
+            than 0 as 0 is not a <a href={"http://curiouscheetah.com/BlogMath/is-zero-a-factor-of-zero/"}>factor</a>. In
+            the example question having <i>m</i> as <InlineMath math="2^{33}"/> is not going to be zero so it is not prime!
+            You maybe wondering about 1 being prime again well no as our definition says two factors for prime 1 and itself
+            therefore 1 only has itself so it is <b>NOT PRIME.</b>
+        </p>
+
         <p>
 
             Prime Factors are factors of a number that are also prime. The method is to look for two factors, check if
-            they are prime if they are not break them down until they are.
+            they are prime if they are not break them down until they are. Then to get back to the original you multiply
+            together all the prime factors. A nice reference is <a href={"https://study.com/academy/lesson/how-to-find-the-prime-factorization-of-a-number.html"}>here.</a>
         </p>
 
         <p>Highest common factor is a factor shared by two or more numbers for example 8 and 12 have the common factors
             of 1,2 and 4. The highest common factor here is 4. </p>
         <p>Lowest common multiple is a number that is shared multiple of two or more numbers. For example the lowest
             common multiple of 3 and 4 is 12.</p>
-
 
         <h3>Indices</h3>
         <p>The law of indices are important to know as a reference so please refer back to these when required: <a
