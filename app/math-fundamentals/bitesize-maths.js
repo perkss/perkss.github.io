@@ -23,10 +23,11 @@ const BiteSizeMath = () => (
         <h3>Multiples and Factors</h3>
 
         <p>Lets <a href="https://www.bbc.co.uk/education/guides/zpvgdxs/revision">begin</a> with multiples (A multiple
-            of a number is any integer multiplied by the number and there are an infinite amount) and factors (A factor
+            of a number is that number multiplied by an integer and there are an infinite amount) and factors (A factor
             is an integer that will divide exactly into another number.) for code examples please see <a
                 href="https://github.com/perkss/basic-maths/blob/master/maths-for-computer-science/src/maths_for_computer_science/factors.clj">here.</a> An
-            example of a multiple is that 15 is a multiple of 5 because <Latex>$ 3 \times 5 = 15$. Listing multiples of
+            example of a multiple is that 15 is a multiple of 5 because <Latex>$ 3 \times 5 = 15$. So you multiplied 5
+                by 3 to get 15. But 16 would not be a multiple of 5. Listing multiples of
                 $5$ gives $5, 10, 15, 20, 25$</Latex> and so on. An example, 8 is a factor of 24 because 8 will divide
             into 24 exactly 3 times with no remainder (Bitesize). Factor pairs are are two numbers that multiply
             together to make another number so for example the factor pairs of <Latex>$24$ are $(1,24), (2,12), (3,8),
@@ -80,8 +81,10 @@ const BiteSizeMath = () => (
             But basically if you can get the form <Latex>$(m+1)(m-1)$</Latex> you know a number is not prime
             unless <Latex>$(m-1) = 1$</Latex> as <Latex>$(m+1)$</Latex> can never equal 1 as m will always be greater
             than 0 as 0 is not a <a href={"http://curiouscheetah.com/BlogMath/is-zero-a-factor-of-zero/"}>factor</a>. In
-            the example question having <i>m</i> as <InlineMath math="2^{33}"/> is not going to be zero so it is not prime!
-            You maybe wondering about 1 being prime again well no as our definition says two factors for prime 1 and itself
+            the example question having <i>m</i> as <InlineMath math="2^{33}"/> is not going to be zero so it is not
+            prime!
+            You maybe wondering about 1 being prime again well no as our definition says two factors for prime 1 and
+            itself
             therefore 1 only has itself so it is <b>NOT PRIME.</b>
         </p>
 
@@ -89,7 +92,8 @@ const BiteSizeMath = () => (
 
             Prime Factors are factors of a number that are also prime. The method is to look for two factors, check if
             they are prime if they are not break them down until they are. Then to get back to the original you multiply
-            together all the prime factors. A nice reference is <a href={"https://study.com/academy/lesson/how-to-find-the-prime-factorization-of-a-number.html"}>here.</a>
+            together all the prime factors. A nice reference is <a
+            href={"https://study.com/academy/lesson/how-to-find-the-prime-factorization-of-a-number.html"}>here.</a>
         </p>
 
         <p>Highest common factor is a factor shared by two or more numbers for example 8 and 12 have the common factors
