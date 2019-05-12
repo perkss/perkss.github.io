@@ -14,7 +14,9 @@ const DiscreteMaths = () => (
                 href="https://www.amazon.co.uk/Discrete-Mathematics-Elementary-Beyond-Undergraduate/dp/0387955852/ref=sr_1_2?ie=UTF8&qid=1537684223&sr=8-2&keywords=discrete+mathematics+springer">Discrete
                 Mathematics: Elementary and Beyond</a> and <a
                 href="https://www.amazon.co.uk/DISCRETE-MATHEMATICS-ITS-APPLN-GE/dp/9814670138/ref=sr_1_2?ie=UTF8&qid=1537684203&sr=8-2&keywords=discrete+mathematics">Discrete
-                Mathematics and it Applications</a> and <a href="https://www.amazon.co.uk/gp/product/0198507178/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1">Discrete Mathematics</a>. I would recommend studying these three books if time permits, I have
+                Mathematics and it Applications</a> and <a
+                href="https://www.amazon.co.uk/gp/product/0198507178/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1">Discrete
+                Mathematics</a>. I would recommend studying these three books if time permits, I have
             studied them and this section will be the parts I missed or need to recap on rather than the whole
             text.</p>
 
@@ -97,8 +99,10 @@ const DiscreteMaths = () => (
             href="https://www.khanacademy.org/computing/computer-science/cryptography/modarithmetic/a/what-is-modular-arithmetic">here</a> that
             discusses the clock method for dealing with mods. Just remember its mod 3 then you have a clock of 0,1,2 and
             you count clockwise the number of times the value of a or if a is negative you count counter clockwise. For
-            exmple -11 mod 3. You count 2,1,0,2,1,0,2,1,0,2,1 so the answer of -11 mod 3 = 1. For negative numbers you
-            round down when taking the floor for the quotient for example -3.6 is floored to -4.</p>
+            example -11 mod 3. You count 2,1,0,2,1,0,2,1,0,2,1 so the answer of -11 mod 3 = 1. For negative numbers you
+            round down when taking the floor for the quotient for example -3.6 is floored to -4. That is why the answer
+            is 1 above as its <InlineMath math="-11 \div 3 = (floor) -4"/> so this is <InlineMath
+                math="-4 \times 3 + 1 = -11"/></p>
 
         <h4>Modular Arithmetic</h4>
         <p>Sometimes we only care about the remainder for example when looking at a 24hour clock what time is it 40 hour
