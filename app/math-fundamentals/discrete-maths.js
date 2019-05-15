@@ -1,6 +1,7 @@
 import React from 'react';
 import {BlockMath, InlineMath} from 'react-katex';
 import {HashLink as Link} from 'react-router-hash-link';
+import Latex from 'react-latex';
 
 const DiscreteMaths = () => (
 
@@ -24,8 +25,8 @@ const DiscreteMaths = () => (
         <ul className="text-list">
             <li><Link to="#sequences">Sequences and Summations</Link></li>
             <li><Link to="#Recurrence">Recurrence Relation</Link></li>
-            <li><Link to={"#Summations"}>Summations</Link></li>
-            <li><Link to={"#numbertheory"}>Number Theory</Link></li>
+            <li><Link to={"#logic"}>Logical Framework</Link></li>
+            <li><Link to={"#naturalnumbers"}>Natural Numbers</Link></li>
         </ul>
 
         <h3 id={"sequences"}>Sequences and Summations</h3>
@@ -119,6 +120,48 @@ const DiscreteMaths = () => (
         <h4>Arithmetic Modulo</h4>
         <p>Arithmetic mod is simple just follow the formula and either add or multiply two numbers and then mod it.
             Simples.</p>
+
+        <h3 id={"logic"}>Logical Framework</h3>
+
+        <h4>Contrapositive Statement</h4>
+        <p><b>Contrapositive statement</b> is when you negate both values of a implies statement and swap the order as
+            follows: <Latex>$p \Longrightarrow q$</Latex> then the contrapositive statement is <Latex>$\neg q \Longrightarrow \neg
+                p$</Latex> and these are logically equivalent as the truth table will be identical.</p>
+
+        <p>Now for some examples taken from the exercise in Discrete Mathematics (Biggs). Write down the contrapositive
+            statement of &quot; if n is a multiple of 7 then n is not a multiple of 3&quot;, where the contrapositive
+            is &quot; if n is a multiple of 3 then n is not a multiple of 7&quot;.
+        </p>
+
+        <h5>Example</h5>
+
+        <p>An example from the same book given is closely related to proof by contradiction. <i>&quot;The number 3 is a
+            prime, and 3+1 = 4 is a perfect square. Show that there are no other prime numbers n such that n+1 is a
+            perfect square.&quot;</i></p>
+
+        <h5>Solution</h5>
+        <p>So this question is dealing with the universe of all natural numbers greater than 4. We are asked to prove
+            the statement.</p>
+
+        <p><Latex>$n$ is a prime $\Longrightarrow n + 1$</Latex> is not a perfect square.</p>
+
+        <p>Lets prove this as the contrapositive.</p>
+
+        <p><Latex>$n + 1$ is a perfect square $\Longrightarrow n$</Latex> is not a prime.</p>
+
+        <h6>Proof</h6>
+
+        <p>If <Latex>$n + 1 = m^2$ then $n = m^2 -1 = (m+1)(m-1)$</Latex>. So we have moved the +1 to the other side to
+            the square and then factorised it. Therefore as prime needs a single factor of m the only prime that can be
+            made from the product of numbers is when <Latex>$m = 2$ then $n$ is $3$</Latex>. As stated the only prime so
+            we have proved it.</p>
+
+        <p>Nice things are starting to come together remember all of this for the Proofs section in Maths for Computer
+            Science.</p>
+
+        <h3 id={"naturalnumbers"}>Natural Numbers</h3>
+
+        <p></p>
 
 
     </div>
