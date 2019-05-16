@@ -23,11 +23,20 @@ const DiscreteMaths = () => (
 
         <h3>Topics</h3>
         <ul className="text-list">
+            <li><Link to="#sets">Sets</Link></li>
             <li><Link to="#sequences">Sequences and Summations</Link></li>
             <li><Link to="#Recurrence">Recurrence Relation</Link></li>
             <li><Link to={"#logic"}>Logical Framework</Link></li>
             <li><Link to={"#naturalnumbers"}>Natural Numbers</Link></li>
         </ul>
+
+        <h3 id={"sets"}>Sets</h3>
+
+        <p>The <a href={"https://en.wikipedia.org/wiki/Cardinality"}>cardinality</a> of a set is the number of elements
+            in the set for example in coding we say length. This is
+            represented using the cardinality symbol, for example for set <Latex>$X$</Latex> the cardinality of this set is denoted
+            with <Latex>$|X|$</Latex>. If two sets have the same cardinality we say there is a one to one correspondence
+            from set A to set B <Latex>$|A| = |B|$</Latex>.</p>
 
         <h3 id={"sequences"}>Sequences and Summations</h3>
         <h4>Sequence</h4>
@@ -125,7 +134,8 @@ const DiscreteMaths = () => (
 
         <h4>Contrapositive Statement</h4>
         <p><b>Contrapositive statement</b> is when you negate both values of a implies statement and swap the order as
-            follows: <Latex>$p \Longrightarrow q$</Latex> then the contrapositive statement is <Latex>$\neg q \Longrightarrow \neg
+            follows: <Latex>$p \Longrightarrow q$</Latex> then the contrapositive statement is <Latex>$\neg q
+                \Longrightarrow \neg
                 p$</Latex> and these are logically equivalent as the truth table will be identical.</p>
 
         <p>Now for some examples taken from the exercise in Discrete Mathematics (Biggs). Write down the contrapositive
