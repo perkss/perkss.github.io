@@ -24,6 +24,7 @@ const DiscreteMaths = () => (
         <h3>Topics</h3>
         <ul className="text-list">
             <li><Link to="#sets">Sets</Link></li>
+            <li><Link to="#functions">Functions</Link></li>
             <li><Link to="#sequences">Sequences and Summations</Link></li>
             <li><Link to="#Recurrence">Recurrence Relation</Link></li>
             <li><Link to={"#logic"}>Logical Framework</Link></li>
@@ -34,9 +35,70 @@ const DiscreteMaths = () => (
 
         <p>The <a href={"https://en.wikipedia.org/wiki/Cardinality"}>cardinality</a> of a set is the number of elements
             in the set for example in coding we say length. This is
-            represented using the cardinality symbol, for example for set <Latex>$X$</Latex> the cardinality of this set is denoted
+            represented using the cardinality symbol, for example for set <Latex>$X$</Latex> the cardinality of this set
+            is denoted
             with <Latex>$|X|$</Latex>. If two sets have the same cardinality we say there is a one to one correspondence
             from set A to set B <Latex>$|A| = |B|$</Latex>.</p>
+
+        <h3 id={"functions"}>Functions</h3>
+
+        <p>Functions in the context of Discrete mathematics are very similar to functions in programming. In Discrete
+            maths they are when we want to assign an element of a first set to a particular element of a second set. A
+            common example is a function that assigns grades to students. Some further terminology is <b>Domain</b> is
+            the set of students, <b>Codomain</b> is the set of grades and the <b>Range</b> is the members of the grades
+            set that are used, in plain english the grades that students have received. If all the students did not
+            receive for example a grade F, then that is in the codomain but not in the range.</p>
+
+        <h5>One to One (Injective) Function</h5>
+        <p>A one to one function also known as an injective function never assigns the same value to two
+            different <b>domain</b> elements.</p>
+
+        <h5>Onto (Surjective) Function</h5>
+        <p>A surjective function ensures that for every element in the codomain set B there is at least one or maybe
+            more elements matching from the Domain in Set A. If you have a set A <InlineMath math="\{a,b,c\}"/> and
+            set
+            B <InlineMath math="\{4,5\}"/> then a surjective function could be <Latex>$f(a) = 4, f(b) = 5, f(c) =
+                4$</Latex></p>
+
+        <h5>Injective and Surjective thats a Bijective Function</h5>
+        <p>Can you see above how a function can be injective and surjective which would make it Bijective? Well if the
+            Domain only maps 1-1 to the codomain and the codomain is fully assigned then it is! Simple. If the codomain
+            is not fully assigned from the domain and two images from the preimage point to the same image in the
+            codomain then it is neither One to One or Onto.</p>
+
+        <h5>Not a Function and the Identity Function</h5>
+        <p>It is not a function if it maps one element in the domain to two elements in the codomain.</p>
+        <p>The identity function is when the function maps the domain to the codomain as itself own value so <Latex>$f(x)
+            = x$</Latex></p>
+
+        <h5>Inverse Function</h5>
+
+        <p>If the function <Latex>$f$</Latex> is Injective then it can have a inverse
+            function <InlineMath math="f^{-1}"/> which reverts back for example <Latex>$f(a) = b$</Latex> then the
+            inverse is <InlineMath math="f^{-1}(b) = a"/></p>
+
+        <h5>Function Composition</h5>
+
+        <p>Function composition is probably familiar to those who use a functional language like Clojure or Haskell. It
+            enables one function to be called and that result to be immediately called by another combined in a single
+            function. If we have a function <b><i>g</i></b> and a function <b><i>f</i></b> then the composed function
+            is <InlineMath math="(f \circ g)(a) = f(g(a))"/></p>
+
+
+        <h5>Floor and Ceiling Function</h5>
+
+        <p>The floor function of real number <InlineMath math="x"/> assigns the largest integer that is less than or
+            equal to <Latex>$x$</Latex>. The floor of <InlineMath math="\frac{1}{2}"/> is <InlineMath math="0"/>. Then
+            the floor of <InlineMath math="-\frac{1}{2}"/> is <InlineMath math="-1"/>. The ceiling function assigns the
+            the smallest integer that is greater than or equal to <InlineMath math="x"/>. The ceiling of <InlineMath
+                math="\frac{1}{2}"/> is <InlineMath math="1"/>. Then the ceiling of <InlineMath
+                math="-\frac{1}{2}"/> is <InlineMath math="0"/>. Groovy nice work making it through this all very
+            interesting stuff and you can see the relation to functions in programming.</p>
+
+        <h5>Partial Function</h5>
+        <p>A partial function allows a undefined mapping for some elements in the domain set to the codomain such as a
+            youngest child function for parents with no childen. When domain
+            of <Latex>$f$</Latex> equals <Latex>$A$</Latex> we say that <Latex>$f$</Latex> is a total function.</p>
 
         <h3 id={"sequences"}>Sequences and Summations</h3>
         <h4>Sequence</h4>
