@@ -26,10 +26,12 @@ const DiscreteMaths = () => (
             <li><Link to="#sets">Sets</Link></li>
             <li><Link to="#functions">Functions</Link></li>
             <li><Link to="#sequences">Sequences and Summations</Link></li>
-            <li><Link to="#Recurrence">Recurrence Relation</Link></li>
+            <li><Link to={"#numbertheory"}>Number Theory</Link></li>
             <li><Link to={"#logic"}>Logical Framework</Link></li>
             <li><Link to={"#naturalnumbers"}>Natural Numbers</Link></li>
         </ul>
+
+        <br/>
 
         <h3 id={"sets"}>Sets</h3>
 
@@ -39,6 +41,10 @@ const DiscreteMaths = () => (
             is denoted
             with <Latex>$|X|$</Latex>. If two sets have the same cardinality we say there is a one to one correspondence
             from set A to set B <Latex>$|A| = |B|$</Latex>.</p>
+
+        <br/>
+        <hr/>
+        <br/>
 
         <h3 id={"functions"}>Functions</h3>
 
@@ -99,6 +105,10 @@ const DiscreteMaths = () => (
         <p>A partial function allows a undefined mapping for some elements in the domain set to the codomain such as a
             youngest child function for parents with no childen. When domain
             of <Latex>$f$</Latex> equals <Latex>$A$</Latex> we say that <Latex>$f$</Latex> is a total function.</p>
+
+        <br/>
+        <hr/>
+        <br/>
 
         <h3 id={"sequences"}>Sequences and Summations</h3>
         <h4>Sequence</h4>
@@ -236,8 +246,12 @@ const DiscreteMaths = () => (
 
         <h4>Summary</h4>
         <p>Please note again that this section is critical and we will cover it again in later sections. Also note that
-            common summations occur in maths and have a known closed form such as the sum of natural numbers, the sum of squares.</p>
+            common summations occur in maths and have a known closed form such as the sum of natural numbers, the sum of
+            squares.</p>
 
+        <br/>
+        <hr/>
+        <br/>
 
         <h3 id={"numbertheory"}>Number Theory</h3>
 
@@ -286,6 +300,10 @@ const DiscreteMaths = () => (
         <p>Arithmetic mod is simple just follow the formula and either add or multiply two numbers and then mod it.
             Simples.</p>
 
+        <br/>
+        <hr/>
+        <br/>
+
         <h3 id={"logic"}>Logical Framework</h3>
 
         <h4>Contrapositive Statement</h4>
@@ -324,6 +342,10 @@ const DiscreteMaths = () => (
 
         <p>Nice things are starting to come together remember all of this for the Proofs section in Maths for Computer
             Science.</p>
+
+        <br/>
+        <hr/>
+        <br/>
 
         <h3 id={"naturalnumbers"}>Natural Numbers</h3>
 
