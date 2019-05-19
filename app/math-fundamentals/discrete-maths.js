@@ -42,6 +42,11 @@ const DiscreteMaths = () => (
             with <Latex>$|X|$</Latex>. If two sets have the same cardinality we say there is a one to one correspondence
             from set A to set B <Latex>$|A| = |B|$</Latex>.</p>
 
+        <h5>Countable Sets</h5>
+
+        <p>Sets can be broken into two types countable sets have the same cardinality of natural numbers or are finite
+            and those that do not.</p>
+
         <br/>
         <hr/>
         <br/>
@@ -130,10 +135,16 @@ const DiscreteMaths = () => (
         <p>Arithmetic sequence is made by adding the same value each time. The value added each time is called the
             common difference, this can also be negative.</p>
 
+        <p>It is in the form: <InlineMath math="a,a + d,a + 2d ... a + nd, ..."/></p>
+
         <h5>Geometric Sequence</h5>
 
         <p>A Geometric sequence is formed by multiplying by the same value each time. The value that is multiplied by
-            each time is called the common ratio.</p>
+            each time is called the common ratio. When trying to determine the sequence you can take the n+1 term and
+            divide by the nth term for example term 1 is 3 and term 2 is 9 do <InlineMath math="\frac{9}{3} = 3"/> and
+            can see this common ratio is 3.</p>
+
+        <p>It is in the form: <InlineMath math="a,ar,ar^2 ... ar^n, ..."/></p>
 
         <p>In both of these sequences we always start with a value and its before we have added or multiplied it
             anything.</p>
@@ -247,7 +258,9 @@ const DiscreteMaths = () => (
         <h4>Summary</h4>
         <p>Please note again that this section is critical and we will cover it again in later sections. Also note that
             common summations occur in maths and have a known closed form such as the sum of natural numbers, the sum of
-            squares.</p>
+            squares. Whats important to remember that these are closed form of the entire sum not each step to the sum
+            so always think n as the total count of the sum you will have and its that final result added to the
+            previous n items.</p>
 
         <br/>
         <hr/>
