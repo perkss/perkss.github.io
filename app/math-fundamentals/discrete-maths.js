@@ -115,24 +115,110 @@ const DiscreteMaths = () => (
         <p>This sequence will start with the following:</p>
         <BlockMath math="\frac{1}{1},\frac{1}{2},\frac{1}{3} .... ,"/>
 
-        <p>Two other important definitions are geometric progression and arithmetic progression I will leave it up to
-            the reader to investigate these.</p>
+        <h5>Arithmetic Sequence</h5>
+
+        <p>Arithmetic sequence is made by adding the same value each time. The value added each time is called the
+            common difference, this can also be negative.</p>
+
+        <h5>Geometric Sequence</h5>
+
+        <p>A Geometric sequence is formed by multiplying by the same value each time. The value that is multiplied by
+            each time is called the common ratio.</p>
+
+        <p>In both of these sequences we always start with a value and its before we have added or multiplied it
+            anything.</p>
 
         <h4 id={"Recurrence"}>Recurrence Relation</h4>
+
         <p>When we defined the sequence above we provided explicit formulas for the terms. Another way is to provide the
             initial terms and a rule for defining later terms. This is a recurrence relation. A sequence is said to be a
             solution of a recurrence relation if its terms satisfy the recurrence relation.</p>
+
         <p>Lets check a nice and easy example. This example provides a rule of <InlineMath
             math="a_n = a_{n-1} + 3"/> for <InlineMath math="n = 1,2,3 ... "/> for the initial term of <InlineMath
             math="a_0 = 2"/> This then produces the sequence <InlineMath math="a_1 = a_0 + 3 = 2 + 3 = 5"/> then
             followed by <InlineMath math="a_2 = 5 + 3 = 8"/> and <InlineMath math="a_3 = 8 + 3 = 11"/></p>
 
+        <p>The Fibonacci sequence is commonly defined as a recurrence relation as the initial terms are provided and the
+            formula to provide the next is also provided. <InlineMath math="f_0 = 0, f_1 = 1"/> with the
+            formula <InlineMath math="f_n = f_{n-1} + f_{n-2}"/> for all of <InlineMath math="n = 2,3,4 ... "/></p>
+
+        <h5>Solving Recurrence Relations</h5>
+        <p>A recurrence relation is said to have been solved when we find a explicit formula said to be a <b>closed
+            formula</b> for the terms of the sequence. But how do we go about finding this explicit formula to put it
+            into closed form? <b>Iteration</b> can be used this can be <b>forward substitution</b> where we began with
+            the initial term ending with <InlineMath math="a_n"/>. Or we can use <b>backward substitution</b> where we
+            start with <InlineMath math="a_n"/> and go back to the initial term.</p>
+
+        <h6>Calculating Compound Interest Example</h6>
+
+        <p>Compound interest can be viewed as a recurrence relation and we can solve this. Say we have the loan start
+            amount of £100. With interest of 10%. This can be viewed as the loan start amount added with the interest
+            amount. The interest is turned into decimal form by moving it two decimal places to the right have a read on
+            decimals and percentages unclear.</p>
+
+        <BlockMath math="100 + 100 \times 10\%"/>
+
+        <BlockMath math="100 \times 1 + 100 \times 0.10"/>
+
+        <BlockMath math="100 \times (1 + 0.10)"/>
+
+        <BlockMath math="100 \times (1.10)"/>
+
+        <BlockMath math="= 110"/>
+
+        <p>Now the great step is that we worked this out for a single year but this same formula can be done for every
+            year! We just take the previous years amount in this case 110 and then apply the same formula.</p>
+
+        <BlockMath math="110 + 110 \times 10\%"/>
+
+        <BlockMath math="110 \times 1 + 110 \times 0.10"/>
+
+        <BlockMath math="110 \times (1 + 0.10)"/>
+
+        <BlockMath math="110 \times (1.10)"/>
+
+        <BlockMath math="= 121"/>
+
+        <p>Whats so great is that we can go straight to year 3 if we multiply the interest 3 times.</p>
+
+        <BlockMath math="100 \times 1.10 \times 1.10 \times 1.10"/>
+
+        <p>But it is far easier to write this down using exponents which in this case would be:</p>
+
+        <BlockMath math="100 \times 1.10^3 "/>
+
+        <p>Which leaves us with the formula to work out compound interest as:</p>
+
+        <BlockMath math="Present Value \times (1 + Interest Rate)^{number of years} = Future Value"/>
+
         <h4>Special Integer Sequences</h4>
+
         <p>With the above we were given the closed formula (the pattern the sequence is running in forumla) a recurrence
-            relation or other type of general rule. What if this is not provided, well given the firt few values of the
+            relation or other type of general rule. What if this is not provided, well given the first few values of the
             sequence then we have to make an educated conjecture (guess) about the identity of the sequence. Some common
-            things to look for are there runs of the same value inthe sequence, are terms made from previous terms by
-            adding, subtracting, multiplying or manipulting them in some way. Or are there specific cycles. </p>
+            things to look for; are there runs of the same value in the sequence?, are terms made from previous terms by
+            adding, subtracting, multiplying or manipulating them in some way? Or are there specific cycles?</p>
+
+        <p>An interesting point from one of the Rosen examples is the way to display the sequence forms as a
+            mathematician in the example below I immediately thought add 2 to the previous value in the sequence. But
+            its much better to find the form from the value of n.</p>
+
+        <BlockMath math="1,3,5,7,9 ..."/>
+
+        <p>Simple this sequence is just add 2 to the last value and this is a arithmetic progression where <InlineMath
+            math="a = 1"/> and <InlineMath math="d = 2"/>. But how does the initial value work? Its not closed
+            form that is a recurrence relation as we have the initial term and some formula. To make it closed form we
+            have to think about not requiring the initial term so the following seems like it would work:</p>
+
+        <BlockMath math="a_n = 2n + 1"/>
+
+        <h4>Summary</h4>
+        <p>This section is again critical to many later parts of mathematics that arise. So please read and understand
+            it!! We have stated a few useful ways to find rules for generating terms of a sequence. Another way is to
+            compare them to common sequence patterns such as arithmetic progression, geometric progression, perfect
+            squares, perfect cubes, factorial, fibonacci and to the power of n (where we are multiplying by some term,
+            as for example multiply by 3 would be n times in the sequence <InlineMath math="3^n"/>).</p>
 
         <h4 id={"Summations"}>Summations</h4>
         <p>Summations are simply sequences that are the additions of terms of a sequence. These expressions are
@@ -143,6 +229,14 @@ const DiscreteMaths = () => (
         <p>This is read as the sum from <InlineMath math="j = m"/>, to <InlineMath math="j = n"/> of <InlineMath
             math="a_j"/> We have used the variable j to be used as the index of the summation but any variable can be
             used. We start with a lower limit m and a upper limit of n.</p>
+
+        <p>Double summations occur frequently in mathematics and computing such as a nested for loop. So just approach
+            them like you do with computing, work out the nested loop first for the first value and the second value,
+            then SUM up the values for the outer loop indexes.</p>
+
+        <h4>Summary</h4>
+        <p>Please note again that this section is critical and we will cover it again in later sections. Also note that
+            common summations occur in maths and have a known closed form such as the sum of natural numbers, the sum of squares.</p>
 
 
         <h3 id={"numbertheory"}>Number Theory</h3>
