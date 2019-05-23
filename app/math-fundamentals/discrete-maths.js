@@ -362,7 +362,11 @@ const DiscreteMaths = () => (
 
         <h3 id={"naturalnumbers"}>Natural Numbers</h3>
 
-        <p></p>
+        <h5>Recursive Definitions</h5>
+
+        <p>When I started reading about recursive definitions I did wonder how they differed to Recurrence Relations.
+            Recurrence relations are used to create a sequence where as recursion is not limited to only creating a
+            sequence.</p>
 
 
     </div>
