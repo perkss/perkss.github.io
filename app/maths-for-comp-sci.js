@@ -224,9 +224,9 @@ const mathsForCompSci = {
 
         <BlockMath math="x_1 = 1, y_1 = 325"/>
 
-        <BlockMath math="x_2 = 1, y_2 = 1083"/>
+        <BlockMath math="x_2 = 2, y_2 = 1083"/>
 
-        <BlockMath math="x_3 = 1, y_3 = 2383"/>
+        <BlockMath math="x_3 = 3, y_3 = 2383"/>
 
         <p>So plugging in the values in the <a href="https://en.wikipedia.org/wiki/Lagrange_polynomial">Lagrange
             Formula</a> data point 1 ....</p>
