@@ -228,6 +228,11 @@ const mathsForCompSci = {
 
         <BlockMath math="x_3 = 3, y_3 = 2383"/>
 
+        <p>A reminder of Lagrange Polynomial formula but please read the reference below.</p>
+
+        <BlockMath math="l(x)= \sum_{i=0}^n y_i \cdot \Bigg (\prod_{j \neq i} \frac{(x-x_j)}{(x_i-x_j)} \Bigg)"/>
+
+
         <p>So plugging in the values in the <a href="https://en.wikipedia.org/wiki/Lagrange_polynomial">Lagrange
             Formula</a> data point 1 ....</p>
 
@@ -297,7 +302,7 @@ const mathsForCompSci = {
 
         <BlockMath math="2383(\frac{x^2 - 3x + 2}{2})"/>
 
-        <p>Now a vital part is to simplify this is getting all the parts over the same base denomiator so here we can
+        <p>Now a vital part is to simplify this is getting all the parts over the same base denominator so here we can
             get them all over 2 by multiplying <i>-1 by -2</i></p>
 
 
@@ -336,6 +341,98 @@ const mathsForCompSci = {
             we need to subtract the negative from the max as so <Latex>$91994388364979-300000000319$</Latex>. But
             basically you would use modular arithmetic to come up with the coefficients for the polynomial equation.
             Remember you can read about Modular Arithmetic in our Discrete Maths Section!!</p>
+
+        <h5>Another example</h5>
+
+        <p>For completeness lets try our own example with smaller numbers to make it easier, say we want to share
+            secretly the number 3. Remember this polynomial needs to be in its simpliest form for this to work which
+            threw me.</p>
+
+        <BlockMath math="f(x)= 3 + random \times x + random \times x^2"/>
+
+        <BlockMath math="2x^2 + x + 3"/>
+
+        <p>Now we need to calculate the points for 1,2,3 or it could actually be any number of points.</p>
+
+        <p><Latex>$(1, 6),(2, 13),(3, 24)$</Latex></p>
+
+        <BlockMath math="x_1 = 1, y_1 = 6"/>
+
+        <BlockMath math="x_2 = 2, y_2 = 13"/>
+
+        <BlockMath math="x_3 = 3, y_3 = 24"/>
+
+        <p>So plugging in the values in the <a href="https://en.wikipedia.org/wiki/Lagrange_polynomial">Lagrange
+            Formula</a> again data point 1 ....</p>
+
+        <BlockMath math="6 \times \frac{(x-2)(x-3)}{(1-2)(1-3)}"/>
+
+        <p>Lagrange Theorem data point 2 ....</p>
+
+        <BlockMath math="13 \times \frac{(x-1)(x-3)}{(2-1)(2-3)}"/>
+
+        <p>Lagrange Theorem data point 3 ....</p>
+
+        <BlockMath math="24 \times \frac{(x-1)(x-2)}{(3-1)(3-2)}"/>
+
+        <p>Now lets calculate this out, you will notice again the formula values actually equal the same as above and
+            always will for these three values of <i>x</i>.</p>
+
+        <BlockMath math="6 \times \frac{(0-2)(0-3)}{(1-2)(1-3)}"/>
+
+        <BlockMath math="6 \times \frac{6}{2} = 6 \times 3 = 18"/>
+
+        <BlockMath math="13 \times \frac{(0-1)(0-3)}{(2-1)(2-3)}"/>
+
+        <BlockMath math="13 \times \frac{-3}{-1} = 13 \times -3 = -39"/>
+
+        <BlockMath math="24 \times \frac{(0-1)(0-2)}{(3-1)(3-2)}"/>
+
+        <BlockMath math="24 \times \frac{2}{2} = 24 \times 1 = 24"/>
+
+        <p>Hooray!! Again we have cracked this secret sharing business.</p>
+
+        <p>Now to get our secret we simply add up the values returned from each line and it should equal the secret of
+            3. </p>
+
+        <BlockMath math="18 - 39 + 24 = 3"/>
+
+        <p>As before lets factor this back to the polynomial see above for the clearer details I have simplified it here
+            to stop the duplication.</p>
+
+        <BlockMath math="6(\frac{x^2 - 5x + 6}{2})"/>
+
+        <p>Lagrange Theorem data point 2 ....</p>
+
+        <BlockMath math="13(\frac{x^2 - 4x + 3}{-1})"/>
+
+        <p>Lagrange Theorem data point 3 ....</p>
+
+        <BlockMath math="24(\frac{x^2 - 3x + 2}{2})"/>
+
+
+        <p>Again now a vital part is to simplify this is getting all the parts over the same base denominator so here we can
+            get them all over 2 by multiplying <i>-1 by -2</i></p>
+
+
+        <BlockMath math="13(\frac{x^2 - 4x + 3}{-1})"/>
+
+        <p>Making this become:</p>
+
+        <BlockMath math="-26(\frac{x^2 - 4x + 3}{2})"/>
+
+        <p>Now we need to sum up each factorised part and can put them all over the base of 2 as shown:</p>
+
+        <BlockMath
+            math="\frac{6(x^2 - 5x + 6)-26(x^2 - 4x + 3) + 24(x^2 - 3x + 2)} {2}"/>
+
+        <p>And then simplify that by multiplying out the brackets and bring the common like terms together</p>
+
+        <BlockMath math="\frac{4x^2 - 2 + 6}{2}"/>
+
+        <p>Finally divide by 2 to result back in the original formula!</p>
+
+        <BlockMath math="x^2 - x + 3"/>
 
         <br/>
         <hr/>
