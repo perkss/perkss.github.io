@@ -52,8 +52,8 @@ const home = {
                 </li>
 
                 <li className='yellow'>
-                    <NavLink to={"/ProgrammingPearls"}>
-                        Programming<br/>Pearls
+                    <NavLink to={"/DataScience"}>
+                        Data<br/>Science
                     </NavLink>
 
                 </li>
@@ -89,8 +89,7 @@ const home = {
             interesting work going on in that space and frameworks used such as Kafka and Cassandra! The Kafka section
             is super interesting and is very full would definitely recommend it! The trendy language round these parts
             we believe. Check out <strong>A Little bit of C Programming</strong> for some Pointer Madness. Which will
-            then lead to some <strong>Programming Pearls</strong> for all to learn from a case study of the <a
-                href="https://www.amazon.co.uk/Programming-Pearls-Joe-Bentley/dp/8177588583">book</a>. Finally a section
+            then lead to some <strong>Data Science</strong>. Finally a section
             on the overused term DevOps which will cover a large range of items.</p>
         <p><strong>Most of all have fun!</strong></p>
         <p><a href="https://github.com/perkss">Please check out my Github page and feel free to contribute to any of my

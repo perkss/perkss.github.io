@@ -32,7 +32,7 @@ class SideBar extends Component {
                         Programming</NavLink></a>
                     <a onClick={this.handleMenuClick}><NavLink to="/CLanguage">A Little Bit of C
                         Programming</NavLink></a>
-                    <a onClick={this.handleMenuClick}><NavLink to="/ProgrammingPearls">Programming Pearls</NavLink></a>
+                    <a onClick={this.handleMenuClick}><NavLink to="/DataScience">Data Science</NavLink></a>
 
                     <a onClick={this.handleMenuClick}><NavLink to="/DevOps">Devops Time</NavLink></a>
 
