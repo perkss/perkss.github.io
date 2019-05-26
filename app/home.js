@@ -90,7 +90,7 @@ const home = {
             is super interesting and is very full would definitely recommend it! The trendy language round these parts
             we believe. Check out <strong>A Little bit of C Programming</strong> for some Pointer Madness. Which will
             then lead to some <strong>Data Science</strong>. Finally a section
-            on the overused term DevOps which will cover a large range of items.</p>
+            on the overused term <strong>DevOps</strong> which will cover a large range of items.</p>
         <p><strong>Most of all have fun!</strong></p>
         <p><a href="https://github.com/perkss">Please check out my Github page and feel free to contribute to any of my
             projects.</a></p>

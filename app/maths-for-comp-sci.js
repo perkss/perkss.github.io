@@ -140,11 +140,39 @@ const mathsForCompSci = {
 
         <p>Right so representing proofs in this implied format makes them much easier to reason with. And all proofs are
             is a hypothesis and a conclusion and the tricky part is identifying those but it is the vital first
-            step. Later on we will see that this common pattern is used in Induction where we know the base case is
-            correct then the inductive step is correct it implies that it is a correct proof.</p>
+            step. Later on we will see that this common pattern is used in the Forward-Backward method as we
+            assume <i>A</i> is true and induction.</p>
 
 
         <h4>The Forward-Backward Method</h4>
+
+        <p>This section will describe the fundamental ideas which all future proof techniques stem from so please read
+            carefully and take it in. Previously we were working with <Latex>$A \Longrightarrow B$</Latex>. Here we can
+            use information from <i>A</i> to work forward <b>the forward process</b> to come to a conclusion. Or you can
+            use <i>B</i> and work backward <b>the backward process</b>.</p>
+
+        <p>We want to create a forward statement that is the same as the last backward statement.</p>
+
+        <h5>The Backward Process</h5>
+        <p>The backward process you create from <Latex>$B$</Latex> a statement <Latex>$B1$</Latex> with the property
+            that if <Latex>$B1$</Latex> is true then so is <Latex>$B$</Latex>. You start by looking
+            at <Latex>$B$</Latex> and asking yourself how can I show this is true? When asking this question avoid using
+            mathematical symbols or notation from the asked question as they get in the way. It commonly begins with <i>How
+                can I show that ...</i>. When you have worked your way back as far as possible then you can move to the
+            forward process.</p>
+
+        <h5>The Forward Process</h5>
+
+        <p>The forward process simply assumes that <Latex>$A$</Latex> is true and you work forward creating new true
+            statements from <Latex>$A$</Latex>of <Latex>$A1$</Latex> then <Latex>$A2$</Latex> and further. The goal of
+            this is to find a statement that precisely matches the final statement formed from the backward process.
+            Look to eliminate any symbols you have to match the last backward statement from the forward statement.</p>
+
+
+        <h5>Reading Proofs</h5>
+        <p>What makes modern proof reading hard is that mathematicians write proofs in condensed formats skipping out
+            lots of information. They also do not state what proof technique they are using. They also combine steps and
+            may not have them in the correct order.</p>
 
 
         <h4>Proof Methods</h4>
