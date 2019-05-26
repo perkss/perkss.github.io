@@ -1,6 +1,6 @@
 import React from 'react';
 
-const DeepLearning = () => (
+const DsIntro = () => (
 
     <div>
 
@@ -9,4 +9,4 @@ const DeepLearning = () => (
 
 );
 
-export default DeepLearning;
+export default DsIntro;

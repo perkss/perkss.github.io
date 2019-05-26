@@ -2,8 +2,8 @@ import React from "react";
 import {Route} from "react-router-dom";
 
 import MachineLearning from './data-science/machine-learning';
-import DataScienceInfo from './data-science/data-science';
-import Home from './data-science/home'
+import DataScienceInfo from './data-science/data-science-info';
+import DsIntro from './data-science/ds-intro'
 import LinearRegression from './data-science/linear-regression';
 import DeepLearning from './data-science/deep-learning';
 import NLP from './data-science/nlp';
@@ -45,7 +45,7 @@ const DataSciencePage = ({match}) => {
                             </Link>
                         </li>
                         <li className='teal'>
-                            <Link to={`${match.url}/DataScience#text-body`}>
+                            <Link to={`${match.url}/DataScienceInfo#text-body`}>
                                 Data<br/>Science
                             </Link>
 
@@ -64,13 +64,13 @@ const DataSciencePage = ({match}) => {
 
 
             text={<div>
-                <Route exact path={`${match.url}`} component={Home}/>
+                <Route exact path={`${match.url}`} component={DsIntro}/>
 
                 <Route path={`${match.url}/MachineLearning`} component={MachineLearning}/>
                 <Route path={`${match.url}/DeepLearning`} component={DeepLearning}/>
                 <Route path={`${match.url}/LinearRegression`} component={LinearRegression}/>
 
-                <Route path={`${match.url}/DataScience`} component={DataScienceInfo}/>
+                <Route path={`${match.url}/DataScienceInfo`} component={DataScienceInfo}/>
                 <Route path={`${match.url}/NLP`} component={NLP}/>
             </div>
             }

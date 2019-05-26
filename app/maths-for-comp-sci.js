@@ -140,7 +140,11 @@ const mathsForCompSci = {
 
         <p>Right so representing proofs in this implied format makes them much easier to reason with. And all proofs are
             is a hypothesis and a conclusion and the tricky part is identifying those but it is the vital first
-            step.</p>
+            step. Later on we will see that this common pattern is used in Induction where we know the base case is
+            correct then the inductive step is correct it implies that it is a correct proof.</p>
+
+
+        <h4>The Forward-Backward Method</h4>
 
 
         <h4>Proof Methods</h4>
@@ -411,7 +415,8 @@ const mathsForCompSci = {
         <BlockMath math="24(\frac{x^2 - 3x + 2}{2})"/>
 
 
-        <p>Again now a vital part is to simplify this is getting all the parts over the same base denominator so here we can
+        <p>Again now a vital part is to simplify this is getting all the parts over the same base denominator so here we
+            can
             get them all over 2 by multiplying <i>-1 by -2</i></p>
 
 
