@@ -36,10 +36,14 @@ const mathsForCompSci = {
             if the statement is true or false.
             This relates to computer programming as developers we need to ensure correctness of our programs. Similarly
             a <strong>predicate</strong> is a proposition whose truth depends on the value of one or more
-            variables. <strong>Axioms</strong> are propositions that are accepted as true. A <strong>proof</strong> is a
-            sequence of logical deductions found from axioms and previously proved statements that concludes with the
-            proposition in question (Lehman et al ...). A <strong>theorem</strong> is a statement that has been proved
-            true and a <strong>lemma</strong> is a preliminary proposition proved true. </p>
+            variables. <strong>Axioms</strong> are propositions that are accepted as true without the need for a proof.
+            A <strong>proof</strong> is a sequence of logical deductions found from axioms and previously proved
+            statements that concludes with the proposition in question (Lehman et al ...). A <strong>theorem</strong> is
+            a statement that has been proved true and a <strong>lemma</strong> is a preliminary proposition proved true.
+            When the proof of a theorem is long it can be broken into pieces that are proved and these pieces are
+            lemmas. A <strong>corollary</strong> is a proposition that follows almost immediately from a
+            theorem. <strong>Definitions</strong> in mathematics are the meaning of a term agreed by all parties
+            concerned.</p>
 
 
         <p>Simply put we could have the Theorem:</p>
@@ -135,7 +139,9 @@ const mathsForCompSci = {
             determine if they are true or false we can reason the likely result, so we only care on the final true of
             the implies so the last two rows can be ignored as it is true. Therefore we focus on the first two rows and
             for this to be the case we need B to be true so we focus on proving B to be true and make the assumption
-            that A is true which results in the first two of <i>True,True,True</i>.
+            that A is true which results in the first two of <i>True,True,True</i>. When thinking of proofs this
+            shows <strong>very important</strong> that we can assume <i>A</i> is true and only have to prove
+            that <i>B</i> is true.
         </p>
 
         <p>Right so representing proofs in this implied format makes them much easier to reason with. And all proofs are
@@ -151,6 +157,8 @@ const mathsForCompSci = {
             use information from <i>A</i> to work forward <b>the forward process</b> to come to a conclusion. Or you can
             use <i>B</i> and work backward <b>the backward process</b>.</p>
 
+        <p>Remember still the first step to answering proofs is to extract the hypothesis and the conclusion.</p>
+
         <p>We want to create a forward statement that is the same as the last backward statement.</p>
 
         <h5>The Backward Process</h5>
@@ -158,22 +166,110 @@ const mathsForCompSci = {
             that if <Latex>$B1$</Latex> is true then so is <Latex>$B$</Latex>. You start by looking
             at <Latex>$B$</Latex> and asking yourself how can I show this is true? When asking this question avoid using
             mathematical symbols or notation from the asked question as they get in the way. It commonly begins with <i>How
-                can I show that ...</i>. When you have worked your way back as far as possible then you can move to the
-            forward process.</p>
+                can I show that ...</i>. A common method for answering these key questions is to use definitions such as
+            how can I show a triangle is isosceles, with the answer check it has two sides the same length. When
+            thinking of questions try and show the easier ones to answer first. When you have worked your way back as
+            far as possible then you can move to the forward process.</p>
 
         <h5>The Forward Process</h5>
 
         <p>The forward process simply assumes that <Latex>$A$</Latex> is true and you work forward creating new true
-            statements from <Latex>$A$</Latex>of <Latex>$A1$</Latex> then <Latex>$A2$</Latex> and further. The goal of
-            this is to find a statement that precisely matches the final statement formed from the backward process.
+            statements from <Latex>$A$</Latex>of <Latex>$A1$</Latex> then <Latex>$A2$</Latex> and further. Again
+            definitions are commonly used to work forward from a given statement to give new true statements. The goal
+            of this is to find a statement that precisely matches the final statement formed from the backward process.
             Look to eliminate any symbols you have to match the last backward statement from the forward statement.</p>
-
 
         <h5>Reading Proofs</h5>
         <p>What makes modern proof reading hard is that mathematicians write proofs in condensed formats skipping out
             lots of information. They also do not state what proof technique they are using. They also combine steps and
             may not have them in the correct order.</p>
 
+        <h5>Overlapping Symbols</h5>
+        <p>It is common to find cases where definitions have symbols that overlap with the statement to prove symbols.
+            To overcome this rewrite the definition with different non overlapping symbols.</p>
+
+        <h5>Using Definitions in Proofs</h5>
+        <p>Definitions as stated in the processes can commonly be used to progress forward and backward. A list of
+            common definitions can be found in the Math Prerequisite section.</p>
+
+        <h5>Using Previous Knowledge</h5>
+        <p>We mentioned using definitions to solve steps in the forward and backward process, previous knowledge of
+            proved statements that match exactly. You use the symbol notation from the current statement trying to be
+            proven. Going back to a definitions at the start this can be referred to as a <strong>Lemma</strong>. The
+            basic steps to use previous knowledge in the forward process are to look for a previously defined statement
+            that is true where <Latex>$A \Longrightarrow C$</Latex> to solve the form <Latex>$A \Longrightarrow
+                B$</Latex> which is a proposition of the same hypothesis. This applied to the backward process is to
+            prove <Latex>$A \Longrightarrow B$</Latex> is true, look for a previously proved term <Latex>$C
+                \Longrightarrow B$</Latex>. Then match up the notation between the two using the notation in the
+            statement you are proving. Then write a forward statement that C is true. Then complete the proof
+            that <Latex>$A \Longrightarrow B$</Latex> by working forward from <Latex>$C$</Latex> and backward
+            from <Latex>$B$</Latex>.</p>
+
+        <br/>
+        <hr/>
+        <br/>
+
+        <table>
+            <tr>
+                <th>Statement</th>
+                <th>Name of Statement</th>
+            </tr>
+            <tr>
+                <td><Latex>$A \Longrightarrow B$</Latex></td>
+                <td><i>Original statement</i></td>
+            </tr>
+            <tr>
+                <td><Latex>$B \Longrightarrow A$</Latex></td>
+                <td><i>converse</i></td>
+            </tr>
+            <tr>
+                <td><Latex>$\neg A \Longrightarrow \neg B$</Latex></td>
+                <td><i>inverse</i></td>
+            </tr>
+            <tr>
+                <td><Latex>$\neg B \Longrightarrow \neg A$</Latex></td>
+                <td><i>contrapositive</i> (note this truth table is the same as <Latex>$A \Longrightarrow B$</Latex>)
+                </td>
+            </tr>
+        </table>
+
+        <br/>
+        <hr/>
+        <br/>
+
+        <h5>Examples</h5>
+
+        <p>Now to the exciting part lets take our knowledge we have learned from these first three sections and create
+            some proofs of our own.</p>
+
+        <p>If <i>n</i> is an odd integer, then <Latex>$n^2$</Latex> is an odd integer</p>
+
+        <p><strong>Hypothesis</strong> If <i>n</i> is an odd integer</p>
+
+        <p><strong>Conclusion</strong> <Latex>$n^2$</Latex> is an odd integer</p>
+
+        <p><strong>Step One:</strong> Starting with the backward process show can I show that a integer is odd, easy we
+            have it in our table of definitions in prerequisites.</p>
+
+        <p>
+            <strong><i>B1: </i></strong>so <Latex>$n^2$</Latex> can be expressed as 2 times plus 1 of some other
+            integer. Which integer though? Now we turn to the forward process.
+        </p>
+
+        <p>Because <i>n</i> is a odd integer we can use the definition for odd integer as 2 times some other integer.
+        </p>
+
+        <p><strong><i>A1: </i></strong>
+            <Latex>$n = 2k + 1$</Latex>
+        </p>
+
+        <p>Now we can square both sides of <strong><i>A1</i></strong> and rewrite using the rules of algebra.</p>
+
+        <BlockMath math="n^2 = (n)(n) = (2k)(2k) + 1^2 = 4k^2 + 4k + 1 = 2(2k^2 + 2k) + 1"/>
+
+        <p>Therefore by the definition of an odd integer, we can conclude that <Latex>$n^2$</Latex> is an odd integer (as
+            it is one more than twice the integer <Latex>$2k^2 + 2k$</Latex>).
+        </p>
 
         <h4>Proof Methods</h4>
         <h6>Proof by Direct Implication</h6>

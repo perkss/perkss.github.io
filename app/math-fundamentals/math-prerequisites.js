@@ -83,7 +83,8 @@ const MathPrerequisites = () => (
             <li>A rational number is the ratio of two numbers (a number that can be written as
                 one <strong>integer</strong> divided by another <strong>integer</strong>) or in other words A rational
                 number is a number that can be in the form p/q
-                where p and q are integers and q is not equal to zero.</li>
+                where p and q are integers and q is not equal to zero.
+            </li>
             <li>An added definition here is closed form, in maths a closed form expression is one that can be evaluated
                 in a finite number of operations. A nice answer to this is on stack exchange <a
                     href="https://math.stackexchange.com/questions/58502/closed-form-solution-of-recurrence-relation">here</a>
@@ -170,6 +171,62 @@ const MathPrerequisites = () => (
                 </td>
             </tr>
 
+        </table>
+
+        <h3>Definitions commonly seen for proofs (Solow)</h3>
+
+        <table>
+            <tr>
+                <th>Definition</th>
+                <th>Meaning</th>
+            </tr>
+            <tr>
+                <td>Divide</td>
+                <td><i>An integer n divides an integer m (written n|m) if m = kn, for some integer k.</i></td>
+            </tr>
+            <tr>
+                <td>Prime</td>
+                <td><i>An integer p > 1 is prime if the only positive integers that divide p are 1 and p.</i></td>
+            </tr>
+            <tr>
+                <td>Isosceles</td>
+                <td><i>A triangle is isosceles if two of its sides have equal length</i></td>
+            </tr>
+            <tr>
+                <td>Equal</td>
+                <td><i>Two ordered pairs of real numbers (x1, x2) and (y1, y2) are equal if x1 =y1 and x2 =y2.</i></td>
+            </tr>
+            <tr>
+                <td>Even</td>
+                <td><i>An integer is even if and only if the remainder is 0 when dividing n by 2.</i></td>
+            </tr>
+            <tr>
+                <td>Odd</td>
+                <td><i>An integer n is odd if and only if n = 2k+1 for some integer k.</i></td>
+            </tr>
+            <tr>
+                <td>Rational</td>
+                <td><i>A real number is rational if and only if r can be expressed as the ratio of two integers p and q
+                    in which the denominator q is not 0.</i></td>
+            </tr>
+            <tr>
+                <td>Equivalent</td>
+                <td><i>Two statements A and B are equivalent if and only if “A implies B” and “B implies A.”</i></td>
+            </tr>
+            <tr>
+                <td>AND</td>
+                <td><i>The statement A AND B is true only if A is true and B is true.</i></td>
+            </tr>
+            <tr>
+                <td>OR</td>
+                <td><i>The statement A OR B is always true unless A is false and B is false.</i></td>
+            </tr>
+            <tr>
+                <td>Pythagoras Theorem</td>
+                <td><i>In a right angled triangle the square of the hypotenuse is equal to the sum of the squares of the
+                    other two sides. Used to find the length of a side of a triangle when only know two sides
+                    lengths.</i></td>
+            </tr>
         </table>
 
     </div>
