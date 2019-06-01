@@ -61,10 +61,15 @@ const mathsForCompSci = {
             \times 5 = 25 n$ must be less than $5$ but none of the values $1,2,3,4$ work.</Latex></p>
 
 
+        <p>Two particular statements occur many times in mathematics and these are referred to
+            as <strong>quantifiers</strong>.</p>
+
         <p>A <b>Existential Statement</b> says that something is true if there exists at least one variable that is true
-            in the domain. A <b>Universal Statement</b> makes a statement
+            in the domain. These statements tend to begin with <i>there is</i> and this is the <strong>existential
+                quantifier.</strong> A <b>Universal Statement</b> makes a statement
             about all numbers and every predicate variable must be true for all these numbers in the given domain.
             Therefore a Universal Statement is false if it is false for a single value and this is a counter example.
+            The universal quantifier <i>for all</i> usually begins these statements.
         </p>
 
         <p>In the Book Discrete Mathematics (Biggs) one of the exercises in section 1.5 shows an example of proving a
@@ -154,8 +159,9 @@ const mathsForCompSci = {
 
         <p>This section will describe the fundamental ideas which all future proof techniques stem from so please read
             carefully and take it in. Previously we were working with <Latex>$A \Longrightarrow B$</Latex>. Here we can
-            use information from <i>A</i> to work forward <b>the forward process</b> to come to a conclusion. Or you can
-            use <i>B</i> and work backward <b>the backward process</b>.</p>
+            use information from <i>A</i> the hypothesis to work forward <b>the forward process</b> to come to a
+            conclusion. Or you can
+            use <i>B</i> the conclusion and work backward <b>the backward process</b>.</p>
 
         <p>Remember still the first step to answering proofs is to extract the hypothesis and the conclusion.</p>
 
@@ -181,8 +187,10 @@ const mathsForCompSci = {
 
         <h5>Reading Proofs</h5>
         <p>What makes modern proof reading hard is that mathematicians write proofs in condensed formats skipping out
-            lots of information. They also do not state what proof technique they are using. They also combine steps and
-            may not have them in the correct order.</p>
+            lots of information. They also do not state what proof technique they are using such as the construction
+            method or the forward backward method and is most likely using multiple techniques. You need to ask yourself
+            what technique they are using and why? And is it correct. They also combine steps
+            and may not have them in the correct order.</p>
 
         <h5>Overlapping Symbols</h5>
         <p>It is common to find cases where definitions have symbols that overlap with the statement to prove symbols.
@@ -267,12 +275,30 @@ const mathsForCompSci = {
 
         <BlockMath math="n^2 = (n)(n) = (2k)(2k) + 1^2 = 4k^2 + 4k + 1 = 2(2k^2 + 2k) + 1"/>
 
-        <p>Therefore by the definition of an odd integer, we can conclude that <Latex>$n^2$</Latex> is an odd integer (as
-            it is one more than twice the integer <Latex>$2k^2 + 2k$</Latex>).
+        <p>Therefore by the definition of an odd integer, we can conclude that <Latex>$n^2$</Latex> is an odd integer
+            (as it is one more than twice the integer <Latex>$2k^2 + 2k$</Latex>).
         </p>
 
         <h4>Proof Methods</h4>
-        <h6>Proof by Direct Implication</h6>
+
+        <h5>Construction Method</h5>
+
+        <p>If encountering existential statements you need to make sure they clearly define the object, the certain
+            property and the something happens. If you see existential statement in the forward process you should able
+            to solve it using the object you have been provided. In the backward process you need to show that there is
+            such an object. To do this you can use the construction method either by guessing it, using an algorithm or
+            guessing
+            it somehow. In general if you see the keywords there is in the forwards backwards process then you can use
+            the construction method. You may not particularly see the keywords for the existential statement so may need
+            to conclude them yourself. In the construction method you need to construct the object and show they are
+            true. The three steps to using the construction method is firstly identify the object, type, certain
+            property and the something that happens in the backward statement containing there is. Then use the forward
+            process and the hypothesis to create the desired object. It may also be useful to work backward from here
+            too. Then finally confirm the object you construct does satisfy the certain property and the something that
+            happens.</p>
+
+
+        <h5>Proof by Direct Implication</h5>
         <p>Running through the example provided in <a
             href="https://jeremykun.com/2013/02/16/methods-of-proof-direct-implication/">Jeremy Kun awesome
             primers! </a>
