@@ -1,7 +1,8 @@
 import React from "react";
-import {BlockMath} from 'react-katex';
+import {BlockMath, InlineMath} from 'react-katex';
 import Latex from 'react-latex';
 import {HashLink as Link} from 'react-router-hash-link';
+import CountingTower from '../images/counting_tower.JPG'
 
 import BlogPage from './blog-page.js';
 
@@ -598,7 +599,100 @@ const mathsForCompSci = {
         <hr/>
         <br/>
         <h3 id={"Counting"}>Counting</h3>
-        <p></p>
+
+        <h4>How many ways to choose two items from a Set</h4>
+
+        <p>In Kuns book he covers an example of the number of ways to choose two objects from a set of <i>n</i> objects.
+            He provides a diagram that shows how many ways there where you count the number of balls to give the number
+            of ways. Each ball will have two different diagonals. And you count from the first item in row <i>X</i> at
+            the bottom and depending on how the height of the tree is you then draw a diagonal the same distance to the
+            next ball so the ground row is height 0 so you only draw a difference of zero between the two items in
+            row <i>X</i> for each <i>X</i>. Then move up a row and the height is 1 so draw a distance of 1 between the
+            two items in row <i>X</i>. Starting always from the left side until no more diagonal down on the right side.
+            So when see the attached picture for a example when n is 4.
+        </p>
+
+
+        <p>When height is 0 and difference between diagonals is 0.</p>
+        <BlockMath math="(1,2)(2,3)(3,4)"/>
+
+        <p>When height is 1 and difference between diagonals is 1.</p>
+        <BlockMath math="(1,3)(2,4)"/>
+
+        <p>When height is 2 and difference between diagonals is 2.</p>
+        <BlockMath math="(1,4)"/>
+
+        <p>Totally 6 different ways to choose from a set of size 4. 4 objects.</p>
+
+        <img width="30%" height="30%" src={CountingTower} alt="Counting Tower Image"/>
+
+        <p>Lets define the example in a more structured form. <i>X</i> is a finite set of size <InlineMath
+            math="n = |X|"/>. So in this case lets set <i>X</i> to be the set of <InlineMath
+            math="{1 2 3 4}"/> then <i>n</i> would be 6. Back to the image in this case we can see the bottom row of
+            balls if 3 so <InlineMath math="n - 1"/> and next subsequent row up is <InlineMath math="n - 2"/> or stating
+            from the top you have <InlineMath math="1,2,n-1"/> This formula can be seen as: <InlineMath
+                math="\frac{n(n-1)}{2}"/></p>
+
+        <p>Lets prove this by induction so the base case is that when <InlineMath math="n = 4"/>.</p>
+
+        <p><strong>Base case</strong> <InlineMath math="p(4) = 1 + 2 + 3 + ... + (n - 1) = \frac{4(4-1)}{2} = 6"/> which
+            holds true as shown in the diagram and counting the sum of <InlineMath math="1 + 2 + 3"/>. </p>
+
+        <p><strong>Inductive step</strong> <InlineMath
+            math="p(4 + 1) =  1 + 2 + 3 + ... + (n - 1) + n = \frac{4 + 1(4 + 1 -1)}{2} = 10"/></p>
+
+        <BlockMath math="X = \{1,2,3,4,5\}"/>
+
+        <p>Now <i>X</i> is the size of choosing two from <BlockMath math="n + 1 = 4 + 1"/> Where the size of choosing
+            two from this is <InlineMath math="1 + 2+ ... + n-1"/> so <InlineMath math="1 + 2 + 3 + 4"/></p>
+
+        <p>Now pick any element from X say in this case we choose the fifth element which is the <InlineMath
+            math="n + 1"/> element and define <i>Y</i> as the set that remains when removing it from <i>X</i>.</p>
+
+        <BlockMath math="Y= X - \{5\} = \{1,2,3,4\}"/>
+
+        <p>Now we want to split the sets into two parts.</p>
+
+        <p>Part 1: Is where all the elements except the chosen element is so its size to choose two from is the same
+            as <i>Y</i> which in this case is <i>n</i> so it is 4 elements to choose from. Which has a choosing size of <InlineMath
+                math="n = 1 + 2 ... + (n-1) = 1 + 2 + 3"/> so it is 6.</p>
+
+        <p>Part 2: Is the choice element is this case the <InlineMath math="n+1"/> which is <InlineMath math="5"/>.
+            Which has the choices of the other elements only as we have selected one element of the two already so it is
+            either going to be <InlineMath math="1"/>, or <InlineMath math="2"/> or <InlineMath
+                math="3"/> or <InlineMath math="4"/> as they are the elements in <i>X</i>. Which means that we have four
+            choices available to match with our selected element which in this case was <InlineMath math="n + 1"/> which
+            is <InlineMath math="5"/>. Therefore we have no remaining choices or overlaps between the two options so we
+            can add the sizes of choosing of both parts 1 and 2 together which is <InlineMath math="6 + 4"/> which is
+            the expected <InlineMath math="10"/> for <InlineMath math="n + 1"/>. As adding them is the same
+            as <InlineMath
+                math="n + 1 = 1 + 2 + 3 + ... + (n - 1) + n = 1 + 2 + 3 + 4 = 10"/>. So the expected answer
+            for <i>5</i> as it is <InlineMath math="n + 1"/> of 10 with the same formula we set out to prove in the
+            inductive step.</p>
+
+        <p>To extend this as I included the formula form of <InlineMath math="\frac{4(4-1)}{2} = 6"/>. How do we prove
+            this so for example we can show this by a lot of ways but a concrete way is. </p>
+
+        <BlockMath math="X = 1 + 2 + (n-1) = 1 + 2 + 3"/>
+
+        <BlockMath math="2X = (1 + 2 + 3) + (1 + 2 + 3)"/>
+
+        <p>This can then be rearranged to:</p>
+
+        <BlockMath math="2X = (1 + 2 + 3) + (3 + 2 + 1)"/>
+
+        <p>then add term by term to get</p>
+
+        <BlockMath math="2X = (1 + 3) + (2 + 2) + (3 + 1)"/>
+
+        <p>to get </p>
+
+        <BlockMath math="2X = 4 + 4 + 4 = 4 \times 3 = 12"/>
+
+        <p>Then divide it by 2 again to get back the expected answer of <InlineMath math="6"/></p>
+
+        <BlockMath math="X = 6"/>
+
         <br/>
         <hr/>
         <br/>

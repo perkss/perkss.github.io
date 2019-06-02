@@ -26,7 +26,7 @@ var config = {
                 loaders: ['style-loader', 'css-loader'],
             },
             {
-                test: /\.(png|jpg|gif|ttf|eot|woff|woff2)$/,
+                test: /\.(png|jpg|JPG|gif|ttf|eot|woff|woff2)$/,
                 use: [
                     {
                         loader: 'file-loader',
