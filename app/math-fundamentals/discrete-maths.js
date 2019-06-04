@@ -290,12 +290,30 @@ const DiscreteMaths = () => (
 
         <p>If you get stuck a great reference is <a
             href="https://www.khanacademy.org/computing/computer-science/cryptography/modarithmetic/a/what-is-modular-arithmetic">here</a> that
-            discusses the clock method for dealing with mods. Just remember its mod 3 then you have a clock of 0,1,2 and
-            you count clockwise the number of times the value of a or if a is negative you count counter clockwise. For
-            example -11 mod 3. You count 2,1,0,2,1,0,2,1,0,2,1 so the answer of -11 mod 3 = 1. For negative numbers you
-            round down when taking the floor for the quotient for example -3.6 is floored to -4. That is why the answer
-            is 1 above as its <InlineMath math="-11 \div 3 = (floor) -4"/> so this is <InlineMath
-                math="-4 \times 3 + 1 = -11"/></p>
+            discusses the clock method for dealing with mods. </p>
+
+        <p>So for example <InlineMath math="6 \div 4 =  1.5 = floor(1.5) = 1"/> then the remainder is
+            calculated <InlineMath math="6 \mod 4 = 2"/> which can then be viewed as fractional form of <InlineMath
+                math="\frac{2}{4} = \frac{1}{2} = 0.5"/> which makes perfect sense if you check the division above with
+            the fractional form before we floor it.</p>
+
+        <p>Just remember if its mod 4 then you have a clock of <InlineMath math="0,1,2,3"/> and
+            you count clockwise so here you have <InlineMath math="0,1,2,3,0,1,2"/> and <strong>remember</strong> you
+            start at 0 for the number of times the value of <i>a</i> round the clock for the size of <i>n</i>.</p>
+
+        <BlockMath math="\frac{0}{4} = 0 \text{ remainder } 0"/>
+        <BlockMath math="\frac{1}{4} = 0 \text{ remainder } 1"/>
+        <BlockMath math="\frac{2}{4} = 0 \text{ remainder } 2"/>
+        <BlockMath math="\frac{3}{4} = 0 \text{ remainder } 3"/>
+        <BlockMath math="\frac{4}{4} = 1 \text{ remainder } 0"/>
+        <BlockMath math="\frac{5}{4} = 1 \text{ remainder } 1"/>
+        <BlockMath math="\frac{6}{4} = 1 \text{ remainder } 2"/>
+
+
+        <p>If a is negative you count counter clockwise. For example <InlineMath math="-11\mod 3"/>. You count <InlineMath math="2,1,0,2,1,0,2,1,0,2,1"/> so
+            the answer of  <InlineMath math="-11\mod 3 = 1"/>. For negative numbers you round down when taking the floor for the quotient for
+            example -3.6 is floored to -4. That is why the answer is 1 above as its <InlineMath
+                math="-11 \div 3 = (floor) -4"/> so this is <InlineMath math="-4 \times 3 + 1 = -11"/></p>
 
         <h4>Modular Arithmetic</h4>
         <p>Sometimes we only care about the remainder for example when looking at a 24hour clock what time is it 40 hour
