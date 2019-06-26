@@ -628,47 +628,14 @@ const mathsForCompSci = {
 
         <p>Lets define the example in a more structured form. <i>X</i> is a finite set of size <InlineMath
             math="n = |X|"/>. So in this case lets set <i>X</i> to be the set of <InlineMath
-            math="{1 2 3 4}"/> then <i>n</i> would be 6. Back to the image in this case we can see the bottom row of
-            balls if 3 so <InlineMath math="n - 1"/> and next subsequent row up is <InlineMath math="n - 2"/> or stating
+            math="\{1, 2, 3, 4\}"/> then <i>n</i> would be 4. Back to the image in this case we can see the bottom row
+            of
+            balls is count of 3 so <InlineMath math="n - 1"/> and next subsequent row up is <InlineMath
+                math="n - 2"/> or stating
             from the top you have <InlineMath math="1,2,n-1"/> This formula can be seen as: <InlineMath
-                math="\frac{n(n-1)}{2}"/></p>
-
-        <p>Lets prove this by induction so the base case is that when <InlineMath math="n = 4"/>.</p>
-
-        <p><strong>Base case</strong> <InlineMath math="p(4) = 1 + 2 + 3 + ... + (n - 1) = \frac{4(4-1)}{2} = 6"/> which
-            holds true as shown in the diagram and counting the sum of <InlineMath math="1 + 2 + 3"/>. </p>
-
-        <p><strong>Inductive step</strong> <InlineMath
-            math="p(4 + 1) =  1 + 2 + 3 + ... + (n - 1) + n = \frac{4 + 1(4 + 1 -1)}{2} = 10"/></p>
-
-        <BlockMath math="X = \{1,2,3,4,5\}"/>
-
-        <p>Now <i>X</i> is the size of choosing two from <BlockMath math="n + 1 = 4 + 1"/> Where the size of choosing
-            two from this is <InlineMath math="1 + 2+ ... + n-1"/> so <InlineMath math="1 + 2 + 3 + 4"/></p>
-
-        <p>Now pick any element from X say in this case we choose the fifth element which is the <InlineMath
-            math="n + 1"/> element and define <i>Y</i> as the set that remains when removing it from <i>X</i>.</p>
-
-        <BlockMath math="Y= X - \{5\} = \{1,2,3,4\}"/>
-
-        <p>Now we want to split the sets into two parts.</p>
-
-        <p>Part 1: Is where all the elements except the chosen element is so its size to choose two from is the same
-            as <i>Y</i> which in this case is <i>n</i> so it is 4 elements to choose from. Which has a choosing size of <InlineMath
-                math="n = 1 + 2 ... + (n-1) = 1 + 2 + 3"/> so it is 6.</p>
-
-        <p>Part 2: Is the choice element is this case the <InlineMath math="n+1"/> which is <InlineMath math="5"/>.
-            Which has the choices of the other elements only as we have selected one element of the two already so it is
-            either going to be <InlineMath math="1"/>, or <InlineMath math="2"/> or <InlineMath
-                math="3"/> or <InlineMath math="4"/> as they are the elements in <i>X</i>. Which means that we have four
-            choices available to match with our selected element which in this case was <InlineMath math="n + 1"/> which
-            is <InlineMath math="5"/>. Therefore we have no remaining choices or overlaps between the two options so we
-            can add the sizes of choosing of both parts 1 and 2 together which is <InlineMath math="6 + 4"/> which is
-            the expected <InlineMath math="10"/> for <InlineMath math="n + 1"/>. As adding them is the same
-            as <InlineMath
-                math="n + 1 = 1 + 2 + 3 + ... + (n - 1) + n = 1 + 2 + 3 + 4 = 10"/>. So the expected answer
-            for <i>5</i> as it is <InlineMath math="n + 1"/> of 10 with the same formula we set out to prove in the
-            inductive step.</p>
+                math="\frac{n(n-1)}{2}"/>. Which is the <i>nth</i> triangular number a lovely proof of this can be
+            seen <a href={"http://www.maths.surrey.ac.uk/hosted-sites/R.Knott/runsums/triNbProof.html"}>here. Or now
+                briefly explained below.</a></p>
 
         <p>To extend this as I included the formula form of <InlineMath math="\frac{4(4-1)}{2} = 6"/>. How do we prove
             this so for example we can show this by a lot of ways but a concrete way is. </p>
@@ -692,6 +659,46 @@ const mathsForCompSci = {
         <p>Then divide it by 2 again to get back the expected answer of <InlineMath math="6"/></p>
 
         <BlockMath math="X = 6"/>
+
+        <p>Lets prove this by induction so the base case is that when <InlineMath math="n = 4"/>.</p>
+
+        <p><strong>Base case</strong> <InlineMath math="p(4) = 1 + 2 + 3 + ... + (n - 1) = \frac{4(4-1)}{2} = 6"/> which
+            holds true as shown in the diagram and counting the sum of <InlineMath math="1 + 2 + 3"/>. </p>
+
+        <p><strong>Inductive step</strong> <InlineMath
+            math="p(4 + 1) =  1 + 2 + 3 + ... + (n - 1) + n = \frac{4 + 1(4 + 1 -1)}{2} = 10"/></p>
+
+        <BlockMath math="X = \{1,2,3,4,5\}"/>
+
+        <p>Now <i>X</i> is the size of choosing two from <BlockMath math="n + 1 = 4 + 1"/> Where the size of choosing
+            two from this is <InlineMath math="1 + 2+ ... + n-1"/> so <InlineMath math="1 + 2 + 3 + 4"/></p>
+
+        <p>Now pick any element from X say in this case we choose the fifth element which is the <InlineMath
+            math="n + 1"/> element and define <i>Y</i> as the set that remains when removing it from <i>X</i>.</p>
+
+        <BlockMath math="Y= X - \{5\} = \{1,2,3,4\}"/>
+
+        <p>Now we want to split the sets into two parts.</p>
+
+        <p>Part 1: Is where all the elements except the chosen element is so its size to choose two from is the same
+            as <i>Y</i> which in this case is <i>n</i> so it is 4 elements to choose from. Which has a choosing size
+            of <InlineMath
+                math="n = 1 + 2 ... + (n-1) = 1 + 2 + 3"/> so it is 6.</p>
+
+        <p>Part 2: Is the choice element is this case we choose the single <InlineMath math="n+1"/> which is the
+            value <InlineMath math="5"/> from the new set of <InlineMath math={"X"}/>.
+            Which now for the second ball to be chosen only has the choices of the other elements reaming only as we have
+            selected one element of the two already so it is either going to be <InlineMath math="1"/>, or <InlineMath math="2"/> or <InlineMath
+                math="3"/> or <InlineMath math="4"/> as they are the elements in <i>X</i>. Which means that we have four
+            choices available to match with our selected element which in this case was <InlineMath math="n + 1"/> which
+            is <InlineMath math="5"/>. Therefore we have no remaining choices or overlaps between the two options so we
+            can add the sizes of choosing of both parts 1 and 2 together which is <InlineMath math="6 + 4"/> which is
+            the expected <InlineMath math="10"/> for <InlineMath math="n + 1"/>. As adding them is the same
+            as <InlineMath
+                math="n + 1 = 1 + 2 + 3 + ... + (n - 1) + n = 1 + 2 + 3 + 4 = 10"/>. So the expected answer
+            for <i>5</i> as it is <InlineMath math="n + 1"/> of 10 with the same formula we set out to prove in the
+            inductive step.</p>
+
 
         <br/>
         <hr/>
