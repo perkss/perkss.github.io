@@ -29,6 +29,7 @@ const DiscreteMaths = () => (
             <li><Link to={"#numbertheory"}>Number Theory</Link></li>
             <li><Link to={"#logic"}>Logical Framework</Link></li>
             <li><Link to={"#naturalnumbers"}>Natural Numbers</Link></li>
+            <li><Link to={"#integers"}>Integers</Link></li>
         </ul>
 
         <br/>
@@ -310,8 +311,10 @@ const DiscreteMaths = () => (
         <BlockMath math="\frac{6}{4} = 1 \text{ remainder } 2"/>
 
 
-        <p>If a is negative you count counter clockwise. For example <InlineMath math="-11\mod 3"/>. You count <InlineMath math="2,1,0,2,1,0,2,1,0,2,1"/> so
-            the answer of  <InlineMath math="-11\mod 3 = 1"/>. For negative numbers you round down when taking the floor for the quotient for
+        <p>If a is negative you count counter clockwise. For example <InlineMath math="-11\mod 3"/>. You
+            count <InlineMath math="2,1,0,2,1,0,2,1,0,2,1"/> so
+            the answer of <InlineMath math="-11\mod 3 = 1"/>. For negative numbers you round down when taking the floor
+            for the quotient for
             example -3.6 is floored to -4. That is why the answer is 1 above as its <InlineMath
                 math="-11 \div 3 = (floor) -4"/> so this is <InlineMath math="-4 \times 3 + 1 = -11"/></p>
 
@@ -385,6 +388,22 @@ const DiscreteMaths = () => (
         <p>When I started reading about recursive definitions I did wonder how they differed to Recurrence Relations.
             Recurrence relations are used to create a sequence where as recursion is not limited to only creating a
             sequence.</p>
+
+        <h3 id={"integers"}>Integers</h3>
+
+        <h5>Equivalence Relations</h5>
+
+        <p>A <strong>relation R</strong> on a set X is a set of ordered pairs of members of X. Or informally when two
+            members of a set X, say x and y are realted in a particular way. Such as xy = 12</p>
+
+        <p>A further definition that is stricter is <strong>equivalence relation</strong> is a relation where it is <i>reflexive,
+            symmetric and transitive</i>. Reflexive is <Latex>$xRx$</Latex> for example <Latex>$xy=24$</Latex> is not
+            reflexive because <Latex>$xx = x^2$</Latex> the square of x is not always equal to 24.</p>
+
+        <p>It is however <i>symmetric</i> as <Latex>$xy = 24$</Latex> does imply that <Latex>$yx = 24$</Latex>, however
+            it is not <i>transitive</i> as <Latex>$xy = 24$</Latex> and <Latex>$yz = 24$</Latex> does not imply
+            that <Latex>$xz = 24$</Latex>
+        </p>
 
 
     </div>
