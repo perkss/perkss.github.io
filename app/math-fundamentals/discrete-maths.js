@@ -394,7 +394,7 @@ const DiscreteMaths = () => (
         <h5>Equivalence Relations</h5>
 
         <p>A <strong>relation R</strong> on a set X is a set of ordered pairs of members of X. Or informally when two
-            members of a set X, say x and y are realted in a particular way. Such as xy = 12</p>
+            members of a set X, say x and y are related in a particular way. Such as xy = 12</p>
 
         <p>A further definition that is stricter is <strong>equivalence relation</strong> is a relation where it is <i>reflexive,
             symmetric and transitive</i>. Reflexive is <Latex>$xRx$</Latex> for example <Latex>$xy=24$</Latex> is not
@@ -404,6 +404,12 @@ const DiscreteMaths = () => (
             it is not <i>transitive</i> as <Latex>$xy = 24$</Latex> and <Latex>$yz = 24$</Latex> does not imply
             that <Latex>$xz = 24$</Latex>
         </p>
+
+        <p>The construction of Integers in Discrete Maths (Biggs) shows an interesting diagram 7.2. Its important to
+            remember these pairs are being subtracted from each other to make the negative number on the left side and
+            the positive version on the right side. In the explicit example for <i>-2</i> remember to subtract the right
+            side from the left of the pair. For example <Latex>$(1,3) = -2 = 1 - 3$. Then the formula holds true for the
+                relation of the pairs provided neat stuff.</Latex></p>
 
 
     </div>
