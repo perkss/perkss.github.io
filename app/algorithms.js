@@ -78,9 +78,14 @@ const algorithms = {
 
             </p>
             <p>The time complexity of this approach is very similar to any divide and conquer algorithm we break the
-                problem down and down again until size of the elements is 1 and get the base case. This is a constant time <InlineMath math="O(1)"></InlineMath> which is for
-                the comparison checks looking at left comparison and right comparison. We then gather back up the single elements that have been divided which was for
-                example <InlineMath math="T(n) = T(n/2) + 1 then T(n) = T(n/4) + 1"></InlineMath> this pattern continues which can be reverted from <InlineMath math="T(n/2^k) + 1"></InlineMath> to be <InlineMath math="O (log 2 n)"></InlineMath></p>
+                problem down and down again until size of the elements is 1 and get the base case. This is a constant
+                time <InlineMath math="O(1)"></InlineMath> which is for
+                the comparison checks looking at left comparison and right comparison. We then gather back up the single
+                elements that have been divided which was for
+                example <InlineMath math="T(n) = T(n/2) + 1"></InlineMath> then <InlineMath
+                    math="T(n) = T(n/4) + 1"></InlineMath> this pattern continues which can be reverted from <InlineMath
+                    math="T(n/2^k) + 1"></InlineMath> to be <InlineMath math="O (log 2 n)"></InlineMath>. Similar to
+                this post <a href="https://stackoverflow.com/questions/2307283/what-does-olog-n-mean-exactly/13093274#13093274">here</a>.</p>
 
 
             <h4>Models of Computation</h4>
