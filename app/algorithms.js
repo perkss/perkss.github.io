@@ -14,16 +14,22 @@ const algorithms = {
 
             <h3>Introduction</h3>
             <h4>Algorithmic Thinking</h4>
-            <p>Lets start with our first and very simple algorithm that finds peaks in a list of numbers. To define this
-                in mathematical form lets have a list of items [a b c d e f g h i] position 2 in the list of items is
-                only a peak if <InlineMath math="b \geq a"></InlineMath> and <InlineMath math="b \geq c"></InlineMath>.
+            <h5>Finding a peak in a list of numbers</h5>
+            <p>Lets start with our first and very simple algorithm that finds peaks if one exists in a list of numbers.
+                To define this in mathematical form lets have a list of items [a b c d e f g h i] position 2 in the list
+                of items is only a peak if <InlineMath math="b \geq a"></InlineMath> and <InlineMath
+                    math="b \geq c"></InlineMath>.
                 Position 9 is a peak if <InlineMath math="i \geq h"></InlineMath>. In plain english basically if either
-                side of a point are smaller than the point it is a peak. Potentially all values in a list maybe equal so
-                they are all peaks. A simple algorithm to find this would be to start at the begging and check each item
-                in the list. Alternatively the course by MIT states an approach using a divide and conquer algorithm
-                similar to Binary Search. Where it takes the middle point of the list checks the left side if samller
-                than left find mid point of left list, else check if smaller than right side check right side list, else
-                it is a peak. This algorithm will not necessarily find the max peak but will find a peak in the list.
+                side of a point are smaller or equal too the point it is a peak. Note the equal too as we can still find
+                a peak if all items are equal. Potentially all values in a list maybe equal so they are all peaks.
+                A simple algorithm to find this would be to start at the beginning and check each item
+                in the list. The problem with this approach is that it is slow. We have to check through each item in a
+                list and for large lists this is very slow. It would be linear time <i>O(n)</i>. Alternatively the
+                course by MIT states an approach using a divide and conquer algorithm similar to Binary Search. Where it
+                takes the middle point of the list checks the left side if it is smaller
+                than left find mid point of left list, else check if smaller than right side check right side list for a
+                peak, else it is a peak. This algorithm will not necessarily find the max peak but will find a peak in
+                the list.
                 Lets write some Java code to see this.</p>
             <p>
                 <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true} wrapLines={true}>{`public static int findPeak(int[] data) {
@@ -71,6 +77,10 @@ const algorithms = {
 
 
             </p>
+            <p>The time complexity of this approach is very similar to any divide and conquer algorithm we break the
+                problem down and down again until size of the elements is 1 and get the base case. This is a constant time <InlineMath math="O(1)"></InlineMath> which is for
+                the comparison checks looking at left comparison and right comparison. We then gather back up the single elements that have been divided which was for
+                example <InlineMath math="T(n) = T(n/2) + 1 then T(n) = T(n/4) + 1"></InlineMath> this pattern continues which can be reverted from <InlineMath math="T(n/2^k) + 1"></InlineMath> to be <InlineMath math="O (log 2 n)"></InlineMath></p>
 
 
             <h4>Models of Computation</h4>
