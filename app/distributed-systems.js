@@ -1,8 +1,8 @@
 import React from "react";
 import {Route} from "react-router-dom";
 
-import Architecture from './distributed-systems/architecture';
-import Databases from './distributed-systems/databases';
+import DistributedData from './distributed-systems/distributed-data';
+import Storage from './distributed-systems/storage';
 import DistSIntro from './distributed-systems/dist-s-intro';
 import DistributedAlgorithms from './distributed-systems/distributed-algorithms';
 import FaultTolerance from './distributed-systems/fault-tolerance';
@@ -35,13 +35,13 @@ const DataSciencePage = ({match}) => {
                             </Link>
                         </li>
                         <li className='dark-blue'>
-                            <Link to={`${match.url}/Architecture#text-body`}>
-                                Architecture<br/>Patterns
+                            <Link to={`${match.url}/DistributedData#text-body`}>
+                                Distributed<br/>Data
                             </Link>
                         </li>
                         <li className='blue'>
-                            <Link to={`${match.url}/Databases#text-body`}>
-                                Distributed<br/>Databases
+                            <Link to={`${match.url}/DistributedStorage#text-body`}>
+                                Distributed<br/>Storage
                             </Link>
                         </li>
                         <li className='teal'>
@@ -67,8 +67,8 @@ const DataSciencePage = ({match}) => {
                 <Route exact path={`${match.url}`} component={DistSIntro}/>
 
                 <Route path={`${match.url}/DistributedAlgorithms`} component={DistributedAlgorithms}/>
-                <Route path={`${match.url}/Architecture`} component={Architecture}/>
-                <Route path={`${match.url}/Databases`} component={Databases}/>
+                <Route path={`${match.url}/DistributedData`} component={DistributedData}/>
+                <Route path={`${match.url}/DistributedStorage`} component={Storage}/>
 
                 <Route path={`${match.url}/Streaming`} component={Streaming}/>
                 <Route path={`${match.url}/FaultTolerance`} component={FaultTolerance}/>

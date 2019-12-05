@@ -11,6 +11,8 @@ const DistSIntro = () => (
             the CAP Theorem. The fun of streaming joins, leader election, replication and node failure detection and
             many other
             things. Enjoy!!</p>
+
+        <h3>The CAP Theorem</h3>
     </div>
 
 
