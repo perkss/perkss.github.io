@@ -52,8 +52,8 @@ const home = {
                 </li>
 
                 <li className='yellow'>
-                    <NavLink to={"/DataScience"}>
-                        Data<br/>Science
+                    <NavLink to={"/DistributedSystems"}>
+                        Distributed<br/>Systems
                     </NavLink>
 
                 </li>

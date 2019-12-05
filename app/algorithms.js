@@ -85,8 +85,19 @@ const algorithms = {
                 example <InlineMath math="T(n) = T(n/2) + 1"></InlineMath> then <InlineMath
                     math="T(n) = T(n/4) + 1"></InlineMath> this pattern continues which can be reverted from <InlineMath
                     math="T(n/2^k) + 1"></InlineMath> to be <InlineMath math="O (log 2 n)"></InlineMath>. Similar to
-                this post <a href="https://stackoverflow.com/questions/2307283/what-does-olog-n-mean-exactly/13093274#13093274">here</a>.</p>
+                this post <a
+                    href="https://stackoverflow.com/questions/2307283/what-does-olog-n-mean-exactly/13093274#13093274">here</a>.
+            </p>
 
+
+            <h4>Bridge Crossing Problem Solving</h4>
+
+            <p>A logical problem that commonly appears and is asked is scenarios of crossing a bridge in the shortest
+                time. Please read a nice <a
+                    href={"https://en.wikipedia.org/wiki/Bridge_and_torch_problem#Solution"}>here</a> and further
+                explanation <a
+                    href={"https://www.codeproject.com/Articles/804991/Bridge-Crossing-Puzzles-Optimal-Strategy"}>here.</a>
+            </p>
 
             <h4>Models of Computation</h4>
 

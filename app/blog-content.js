@@ -8,7 +8,7 @@ import MathFundamentalsPage from "./math-fundamentals";
 import MathsForCompSciPage from "./maths-for-comp-sci.js";
 import CLanguagePage from "./c-language.js";
 import ClojurePage from "./clojure.js";
-import DataSciencePage from "./data-science.js";
+import DistributedSystemsPage from "./distributed-systems.js";
 import DevOpsPage from "./devops.js";
 import ScrollToTopRoute from './scroll-to-top-route';
 
@@ -29,7 +29,7 @@ class Content extends Component {
                             <Route path="/MathFundamentals" component={MathFundamentalsPage}/>
                             <Route path="/CLanguage" component={CLanguagePage}/>
                             <Route path="/Clojure" component={ClojurePage}/>
-                            <Route path="/DataScience" component={DataSciencePage}/>
+                            <Route path="/DistributedSystems" component={DistributedSystemsPage}/>
                             <Route path="/Devops" component={DevOpsPage}/>
                         </div>
 
