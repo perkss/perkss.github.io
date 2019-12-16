@@ -4,7 +4,6 @@ import HomeTemplate from './home-page.js';
 import './../css/nav-grid.css';
 import './../css/colours.css';
 
-
 const home = {
 
     title: 'The Perks of Computer Science',
@@ -81,8 +80,8 @@ const home = {
             of <strong>Mathematics for Computer Science</strong> using course content from <a
                 href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-042j-mathematics-for-computer-science-spring-2015/index.htm">MIT</a> and <a
                 href="http://web.stanford.edu/class/cs103/">Stanford</a> follows using the fundamental
-            knowledge. <strong>Algorithms</strong> will then be discussed in detail building them imperatively and
-            functionally using some C, Java, Python and Clojure. We then have a dig into the world of <strong>Functional
+            knowledge. <strong>Algorithms</strong> will then be discussed in detail building them using a variety of
+            languages such as C, Java, Python and Clojure. We then have a dig into the world of <strong>Functional
                 Programming</strong> using the text book the <a href="https://mitpress.mit.edu/sicp/">Structure and
                 Interpretation of Computer Programs (SICP)</a> as the basis and Clojure as the main language. <strong>Hipster
                 Clojure</strong> contains some great insight into our Clojure projects as well as some blog posts on
