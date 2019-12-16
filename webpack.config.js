@@ -1,10 +1,9 @@
-var webpack = require('webpack');
-var path = require('path');
+const path = require('path');
 
-var BUILD_DIR = path.resolve(__dirname, 'build');
-var APP_DIR = path.resolve(__dirname, 'app');
+const BUILD_DIR = path.resolve(__dirname, 'build');
+const APP_DIR = path.resolve(__dirname, 'app');
 
-var config = {
+const config = {
     entry: APP_DIR + '/index.js',
     output: {
         path: BUILD_DIR,
