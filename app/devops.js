@@ -190,6 +190,120 @@ CMD ["/usr/bin/java", "-jar", "/kafka-example.jar"]`}</SyntaxHighlighter>
                 is internal to the host as all connections
                 are routed through the Docker bridge virtual interface. You can build your own docker network using <i>docker
                     network create</i></p>
+
+
+            <h2>Terraform and Azure</h2>
+
+            <p>Lets get started with IAM in Azure a nice link is <a
+                href={"https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/add-users-azure-active-directory"}>here</a>.
+                You can install Terraform on your Mac using Brew and the command <i>brew install terraform</i>.
+                Lets now get started have a read of this <a
+                    href={"https://learn.hashicorp.com/terraform/azure/intro_az"}>guide.</a>
+                To get started you will need the <a
+                    href={"https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-macos?view=azure-cli-latest"}>Azure
+                    CLI</a>. You will need your <a
+                    href={"https://docs.netapp.com/us-en/kubernetes-service/create-auth-credentials-on-azure.html"}> Subscription
+                    ID</a> for the tutorial.
+            </p>
+
+            <h4>Some key commands</h4>
+
+            <p>
+
+            <SyntaxHighlighter language='bash' style={darcula} showLineNumbers={false}
+                               wrapLines={true}>{`brew install azurecli`}</SyntaxHighlighter>
+
+            <SyntaxHighlighter language='bash' style={darcula} showLineNumbers={false}
+                               wrapLines={true}>{`brew install terraform`}</SyntaxHighlighter>
+
+            <SyntaxHighlighter language='bash' style={darcula} showLineNumbers={false}
+                               wrapLines={true}>{`az login`}</SyntaxHighlighter>
+            <SyntaxHighlighter language='bash' style={darcula} showLineNumbers={false}
+                               wrapLines={true}>{`terraform init`}</SyntaxHighlighter>
+            <SyntaxHighlighter language='bash' style={darcula} showLineNumbers={false}
+                               wrapLines={true}>{`terraform plan`}</SyntaxHighlighter>
+            <SyntaxHighlighter language='bash' style={darcula} showLineNumbers={false}
+                               wrapLines={true}>{`terraform apply`}</SyntaxHighlighter>
+            <SyntaxHighlighter language='bash' style={darcula} showLineNumbers={false}
+                               wrapLines={true}>{`terraform destroy`}</SyntaxHighlighter>
+
+            </p>
+            <h3>Deploying a Single Server</h3>
+
+            <a href={"https://docs.microsoft.com/en-us/azure/virtual-machines/linux/terraform-create-complete-vm"}>Windows
+                reference</a>
+
+            <h4>Making a Resource Group</h4>
+            <p>A resource group is a container for a set of configuration for example for a particular application or
+                team.</p>
+
+            <h4>Making a Virtual Network</h4>
+
+            <h4>Variables</h4>
+
+
+            <h4>Connecting via SSH</h4>
+            <p>Once the script is run you can connect by going to the UI in Azure clicking the VM you just created and
+                clicking on connect at the top. Once you SSH in you can install something for example Java.
+                <SyntaxHighlighter language='bash' style={darcula} showLineNumbers={false}
+                                   wrapLines={true}>{`sudo apt install default-jre`}</SyntaxHighlighter></p>
+
+            <p>As you defined a public IP in your config you can connect against the listed IP
+                <SyntaxHighlighter language='bash' style={darcula} showLineNumbers={false}
+                                   wrapLines={true}>{`ssh plankton@my-server-public-ip.uksouth.cloudapp.azure.com`}</SyntaxHighlighter> this
+                is shown as the DNS name </p>
+
+
+            <h3>Terraform State</h3>
+
+            <p>Every time you run Terraform it records the information of that run and stores this state down into state
+                files. The state file is a private API and changes with every change and is meant only for internal
+                use. <strong>you should never really need to update it manually</strong>. When working as a global team
+                some considerations need to be made about storing the Terraform files and in particular state.</p>
+            <p><strong>Storing files so all can access them.</strong> Usually version control is used for this scenario
+                but its
+                risky here as you may forget to pull remote changes down. Also secrets are currently stored in
+                plaintext in Terraform state files. A future change may fix this. Hashicorp the creator of Terraform
+                do offer paid services to store this state so that is the ideal option if you can pay. This uses the
+                Terraform <strong>remote storage config feature</strong> and this can be backed by any storage
+                medium, for example S3.
+                <strong>Locking state files</strong> when changes are made to stop conflicts. A neat option to get
+                around this is to
+                only allow changes to be made via a build server and run a suite of tests before applying the
+                changes.
+                <strong>Isolating state files</strong> for example Dev and Prod so you do not accidentally make changes
+                to production. This is simple set up your directory layout to segregate between environments and you
+                reduce this risk greatly. Terraform modules also provide a way to reduce the duplication here.</p>
+
+            <h4>Read Only State</h4>
+
+            <p>Terraform remote state allows you to access Terraform state files used by other Terraform configurations
+                in a read only manner.</p>
+
+            <h4>Conclusion</h4>
+            <p>Looking after your Terraform configuration code is critical as impacts to an environment can make you
+                lose data, or take down all your apps with a minor problem. Therefore this is very serious stuff and
+                should not be taken lightly.</p>
+
+            <h4>Modules</h4>
+
+            <p>When writing code in common language like Java if you have a reusable section of code you would place it
+                into a method. With Terraform you commonly get reusable sections of code shared between environments as
+                the setups are ideally identical. Step forward <strong>Terraform modules</strong> these provide the
+                solution to this problem.</p>
+
+            <p>Lets get started with <a href={"https://learn.hashicorp.com/terraform/azure/modules_az"}>Modules</a>. Any
+                set of Terraform configuration files in a folder is a module. Modules can then be referenced with the
+                following code.</p>
+
+            <SyntaxHighlighter language='bash' style={darcula} showLineNumbers={false}
+                               wrapLines={true}>{`module "NAME" { source = "SOURCE-file-directory-path" my_variable_name = "hello"}`}</SyntaxHighlighter>
+
+
+            <p>So how do we configure this module per environment to actually make it useful? Well you can use variables
+                as Module inputs. In the same way we saw variables used before. For example.</p>
+
+
         </div>
 
     ]
