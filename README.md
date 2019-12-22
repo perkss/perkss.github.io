@@ -4,3 +4,10 @@
 
 [The Blog](https://perkss.github.io/#/)
 
+##
+
+To run in dev mode with watch simply run 
+
+`npm run start`
+
+

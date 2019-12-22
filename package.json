@@ -4,10 +4,8 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "start": "webpack-dev-server --env development",
-    "start-watch": "webpack-dev-server --progress --colors --watch",
+    "start": "webpack-dev-server --open",
     "build": "webpack --env production",
-    "build-watch": "webpack --progress --colors --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -29,7 +27,8 @@
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.7",
     "file-loader": "3.0.1",
-    "html-webpack-plugin": "^2.30.1",
+    "clean-webpack-plugin": "^3.0.0",
+    "html-webpack-plugin": "^3.2.0",
     "katex": "^0.7.0",
     "react": "15.3.2",
     "react-burger-menu": "^2.1.11",
@@ -41,7 +40,7 @@
     "style-loader": "^0.19.1",
     "webpack": "^4.30.0",
     "webpack-dev-server": "^3.1.11",
-    "webpack-cli": "3.3.0"
+    "webpack-cli": "3.3.10"
   },
   "dependencies": {
     "prop-types": "^15.6.0",

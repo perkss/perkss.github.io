@@ -301,7 +301,7 @@ CMD ["/usr/bin/java", "-jar", "/kafka-example.jar"]`}</SyntaxHighlighter>
 
 
             <p>So how do we configure this module per environment to actually make it useful? Well you can use variables
-                as Module inputs. In the same way we saw variables used before. For example.</p>
+                as Module inputs. In the same way we saw variables used before. For example:</p>
 
 
         </div>

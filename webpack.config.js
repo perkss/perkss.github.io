@@ -1,4 +1,5 @@
 const path = require('path');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 
 const BUILD_DIR = path.resolve(__dirname, 'build');
 const APP_DIR = path.resolve(__dirname, 'app');
@@ -7,8 +8,16 @@ const config = {
     entry: APP_DIR + '/index.js',
     output: {
         path: BUILD_DIR,
+        publicPath: '/',
         filename: 'bundle.js'
     },
+    devServer: {
+        contentBase: './',
+        writeToDisk: true
+    },
+    plugins: [
+        new CleanWebpackPlugin()
+    ],
     module: {
         rules: [
             {
