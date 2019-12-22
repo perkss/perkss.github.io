@@ -8,7 +8,6 @@ const config = {
     entry: APP_DIR + '/index.js',
     output: {
         path: BUILD_DIR,
-        publicPath: '/',
         filename: 'bundle.js'
     },
     devServer: {
