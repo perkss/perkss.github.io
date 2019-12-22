@@ -1,5 +1,4 @@
 const path = require('path');
-const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 
 const BUILD_DIR = path.resolve(__dirname, 'build');
 const APP_DIR = path.resolve(__dirname, 'app');
@@ -14,9 +13,6 @@ const config = {
         contentBase: './',
         writeToDisk: true
     },
-    plugins: [
-        new CleanWebpackPlugin()
-    ],
     module: {
         rules: [
             {

@@ -194,6 +194,11 @@ CMD ["/usr/bin/java", "-jar", "/kafka-example.jar"]`}</SyntaxHighlighter>
 
             <h2>Terraform and Azure</h2>
 
+            <p>This section begins to look at deploying infrastructure sustainably using Infrastructure as Code. It is
+                my notes from the great book <a
+                    href={"https://www.amazon.co.uk/Terraform-Running-Writing-Infrastructure-Code/dp/1492046906/ref=dp_ob_title_bk"}>Terraform:
+                    Up and Running</a> by Yevgeniy Brikman. With a few extras from around the web.</p>
+
             <p>Lets get started with IAM in Azure a nice link is <a
                 href={"https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/add-users-azure-active-directory"}>here</a>.
                 You can install Terraform on your Mac using Brew and the command <i>brew install terraform</i>.
@@ -210,22 +215,22 @@ CMD ["/usr/bin/java", "-jar", "/kafka-example.jar"]`}</SyntaxHighlighter>
 
             <p>
 
-            <SyntaxHighlighter language='bash' style={darcula} showLineNumbers={false}
-                               wrapLines={true}>{`brew install azurecli`}</SyntaxHighlighter>
+                <SyntaxHighlighter language='bash' style={darcula} showLineNumbers={false}
+                                   wrapLines={true}>{`brew install azurecli`}</SyntaxHighlighter>
 
-            <SyntaxHighlighter language='bash' style={darcula} showLineNumbers={false}
-                               wrapLines={true}>{`brew install terraform`}</SyntaxHighlighter>
+                <SyntaxHighlighter language='bash' style={darcula} showLineNumbers={false}
+                                   wrapLines={true}>{`brew install terraform`}</SyntaxHighlighter>
 
-            <SyntaxHighlighter language='bash' style={darcula} showLineNumbers={false}
-                               wrapLines={true}>{`az login`}</SyntaxHighlighter>
-            <SyntaxHighlighter language='bash' style={darcula} showLineNumbers={false}
-                               wrapLines={true}>{`terraform init`}</SyntaxHighlighter>
-            <SyntaxHighlighter language='bash' style={darcula} showLineNumbers={false}
-                               wrapLines={true}>{`terraform plan`}</SyntaxHighlighter>
-            <SyntaxHighlighter language='bash' style={darcula} showLineNumbers={false}
-                               wrapLines={true}>{`terraform apply`}</SyntaxHighlighter>
-            <SyntaxHighlighter language='bash' style={darcula} showLineNumbers={false}
-                               wrapLines={true}>{`terraform destroy`}</SyntaxHighlighter>
+                <SyntaxHighlighter language='bash' style={darcula} showLineNumbers={false}
+                                   wrapLines={true}>{`az login`}</SyntaxHighlighter>
+                <SyntaxHighlighter language='bash' style={darcula} showLineNumbers={false}
+                                   wrapLines={true}>{`terraform init`}</SyntaxHighlighter>
+                <SyntaxHighlighter language='bash' style={darcula} showLineNumbers={false}
+                                   wrapLines={true}>{`terraform plan`}</SyntaxHighlighter>
+                <SyntaxHighlighter language='bash' style={darcula} showLineNumbers={false}
+                                   wrapLines={true}>{`terraform apply`}</SyntaxHighlighter>
+                <SyntaxHighlighter language='bash' style={darcula} showLineNumbers={false}
+                                   wrapLines={true}>{`terraform destroy`}</SyntaxHighlighter>
 
             </p>
             <h3>Deploying a Single Server</h3>
