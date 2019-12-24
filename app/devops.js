@@ -342,6 +342,11 @@ CMD ["/usr/bin/java", "-jar", "/kafka-example.jar"]`}</SyntaxHighlighter>
             <SyntaxHighlighter language='bash' style={darcula} showLineNumbers={false}
                                wrapLines={true}>{`brew install minikube`}</SyntaxHighlighter>
 
+            <p>You can then find the URL for the K8s dashboard by running:</p>
+
+            <SyntaxHighlighter language='bash' style={darcula} showLineNumbers={false}
+                               wrapLines={true}>{`minikube dashboard`}</SyntaxHighlighter>
+
             <h4>Kubectl</h4>
 
             <p>Kubectl is the official Kubernetes client on the command line. Allowing you to interact directly with the
@@ -352,8 +357,46 @@ CMD ["/usr/bin/java", "-jar", "/kafka-example.jar"]`}</SyntaxHighlighter>
 
             <h4>Playing with Minikube and Kubectl</h4>
 
-            <p></p>
+            <p><i>Namespaces</i> kubernetes uses namespaces to organise objects in the cluster.</p>
 
+            <SyntaxHighlighter language='bash' style={darcula} showLineNumbers={false}
+                               wrapLines={true}>{`kubectl --namespace=mystuff`}</SyntaxHighlighter>
+
+            <p><i>Contexts</i> are used to change the default namespace and can be set in the kubectl configuration
+                file. They can also be used to manage different clusters to users for authnticating to the clusters.</p>
+
+            <p><strong>Everything contained in K8s is represented by a Restful Resource.</strong> A very key point and
+                these can be referred to as objects. Where every object has a unique HTTP URL. The kubectl basically
+                makes rest API calls to these objects. A nice command when deploying a pod of containers is the ability
+                to see each containers logs. This can be done with the following:</p>
+
+            <SyntaxHighlighter language='bash' style={darcula} showLineNumbers={false}
+                               wrapLines={true}>{`kubectl logs pod-name -c container-name -f`}</SyntaxHighlighter>
+
+            <p>You can also exec the usual docker commands on a pod such as creating a bash shell into a container.</p>
+
+            <SyntaxHighlighter language='bash' style={darcula} showLineNumbers={false}
+                               wrapLines={true}>{`kubectl exec -it pod-name -- bash`}</SyntaxHighlighter>
+
+            <p>Another neat command is the ability to copy files to and from a running container in a K8s POD.</p>
+
+
+            <SyntaxHighlighter language='bash' style={darcula} showLineNumbers={false}
+                               wrapLines={true}>{`kubectl cp pod-name:/path/to/remote/file /path/to/local/file`}</SyntaxHighlighter>
+
+            <p>If you wish to port forward with a container in K8s you can run the following command. This opens a port
+                on the local machine and forwards traffic to the port on the remote Pod.</p>
+
+            <SyntaxHighlighter language='bash' style={darcula} showLineNumbers={false}
+                               wrapLines={true}>{`kubectl port-forward pod-name 8081:81`}</SyntaxHighlighter>
+
+            <h4>Pods</h4>
+
+            <p>A Pod in K8s is a representation of multiple containers and volumes that are related. Interestingly
+                applications in the same Pod,
+                share the same IP Address and port space. They can communicate with each other using interprocess
+                communication. On deciding if containers belong in the same Pod you should ask if they would work on
+                different machines fine if so they should be placed into different pods.</p>
 
         </div>
 
