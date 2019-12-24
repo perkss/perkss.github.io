@@ -308,6 +308,52 @@ CMD ["/usr/bin/java", "-jar", "/kafka-example.jar"]`}</SyntaxHighlighter>
             <p>So how do we configure this module per environment to actually make it useful? Well you can use variables
                 as Module inputs. In the same way we saw variables used before. For example:</p>
 
+            <h2>Kubernetes</h2>
+
+            <h3>An Introduction</h3>
+
+            <p>What is Kubernetes? There is a are a lot of technologies now around cloud native, Infrastructure as code,
+                containers and orchestration, but where does Kubernetes fit in? Well it is a orchestrator for deploying
+                containers developed by Google. Some of the features of Kubernetes are: </p>
+
+            <ul>
+                <li>Pods (groups of containers) which can group together container images into a single deployable
+                    unit
+                </li>
+                <li>Load balancing, naming and discovery</li>
+                <li>Namespaces for isolation and access control</li>
+                <li><a href={"https://kubernetes.io/docs/concepts/services-networking/ingress/"}>Ingress
+                    objects</a> that combine multiple services into a single external API
+                </li>
+            </ul>
+
+            <h3>Getting Started</h3>
+
+            <p>There are numerous ways to get a Kubernetes cluster up and running run it yourseful on bare metal, use a
+                cloud based provider such as Azure, or use development tooling such as minikube (single node cluster
+                only) or run it via docker.</p>
+
+            <h4>Setting Kubernetes on Azure with Terraform</h4>
+
+            <h4>Minikube and Mac</h4>
+            <p>To install <a href={"https://kubernetes.io/docs/tasks/tools/install-minikube/"}>minikube</a> on a Mac it
+                is super simple if you use Brew.</p>
+
+            <SyntaxHighlighter language='bash' style={darcula} showLineNumbers={false}
+                               wrapLines={true}>{`brew install minikube`}</SyntaxHighlighter>
+
+            <h4>Kubectl</h4>
+
+            <p>Kubectl is the official Kubernetes client on the command line. Allowing you to interact directly with the
+                Kubernetes API. If using minikube it can be configured to work with kubectl.</p>
+
+            <SyntaxHighlighter language='bash' style={darcula} showLineNumbers={false}
+                               wrapLines={true}>{`brew install kubectl`}</SyntaxHighlighter>
+
+            <h4>Playing with Minikube and Kubectl</h4>
+
+            <p></p>
+
 
         </div>
 
