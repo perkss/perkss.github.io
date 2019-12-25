@@ -1,6 +1,6 @@
 import React from "react";
 import BlogPage from './blog-page.js';
-import {InlineMath} from 'react-katex';
+import Latex from 'react-latex';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import {darcula} from 'react-syntax-highlighter/styles/hljs';
 
@@ -16,10 +16,10 @@ const algorithms = {
             <h4>Algorithmic Thinking</h4>
             <h5>Finding a peak in a list of numbers</h5>
             <p>Lets start with our first and very simple algorithm that finds peaks if one exists in a list of numbers.
-                To define this in mathematical form lets have a list of items [a b c d e f g h i] position 2 in the list
-                of items is only a peak if <InlineMath math="b \geq a"></InlineMath> and <InlineMath
-                    math="b \geq c"></InlineMath>.
-                Position 9 is a peak if <InlineMath math="i \geq h"></InlineMath>. In plain english basically if either
+                To define this in mathematical form lets have a list of items <Latex>$[a b c d e f g h
+                    i]$</Latex> position 2 in the list
+                of items is only a peak if <Latex>$b \geq a$</Latex> and <Latex>$b \geq c$</Latex>.
+                Position 9 is a peak if <Latex>$i \geq h$</Latex>. In plain english basically if either
                 side of a point are smaller or equal too the point it is a peak. Note the equal too as we can still find
                 a peak if all items are equal. Potentially all values in a list maybe equal so they are all peaks.
                 A simple algorithm to find this would be to start at the beginning and check each item
@@ -79,13 +79,12 @@ const algorithms = {
             </p>
             <p>The time complexity of this approach is very similar to any divide and conquer algorithm we break the
                 problem down and down again until size of the elements is 1 and get the base case. This is a constant
-                time <InlineMath math="O(1)"></InlineMath> which is for
+                time <Latex>$O(1)$</Latex> which is for
                 the comparison checks looking at left comparison and right comparison. We then gather back up the single
-                elements that have been divided which was for
-                example <InlineMath math="T(n) = T(n/2) + 1"></InlineMath> then <InlineMath
-                    math="T(n) = T(n/4) + 1"></InlineMath> this pattern continues which can be reverted from <InlineMath
-                    math="T(n/2^k) + 1"></InlineMath> to be <InlineMath math="O (log 2 n)"></InlineMath>. Similar to
-                this post <a
+                elements that have been divided which was for example <Latex>$T(n) = T(n/2) + 1$</Latex> then <Latex>$T(n)
+                    = T(n/4) + 1$</Latex> this pattern continues which can be reverted from <Latex>$T(n/2^k) +
+                    1$</Latex>
+                to be <Latex>$O (log 2 n)$</Latex>. Similar to this post <a
                     href="https://stackoverflow.com/questions/2307283/what-does-olog-n-mean-exactly/13093274#13093274">here</a>.
             </p>
 
@@ -112,7 +111,39 @@ const algorithms = {
             <h4>Counting Sort</h4>
             <h4>Radix Sort</h4>
             <h4>Lower Bounds</h4>
-            <h3>Hashing</h3>
+
+
+            <h3>Data Structures</h3>
+
+            <h4>Introduction</h4>
+            <p>Sets have already been covered in the Discrete Maths where they were usually fixed but sets that are
+                manipulated by Algorithms
+                can change by growing and shrinking over time, these sets are call dynamic. Algorithm may require the
+                ability to insert, delete and test if items are contained in sets and we refer to these structures
+                as <strong>dictionaries</strong>. Most dynamic sets assume that one of the objects attributes can
+                uniquely identify it and this is referred to as a <strong>key</strong>. The object may also contain what
+                is referred to as <strong>satellite data</strong>. Satellite data is the payload of the data which is
+                not part of the structure of the data structure. If the key is unique then they can be ordered.</p>
+
+            <h5>Stacks</h5>
+
+            <p>Stacks are <i>last in first out</i> (LIFO) meaning the most recently added element to a stack is deleted.
+                Insert is usually referred to as Push and deletion is referred to as Pop on a stack, much like with GIT
+                if you are familiar with the stash feature. Stacks are also used as the <i>Execution Stack</i> to
+                execute program code. This execution stack contains what are referred to as stack frames;
+                subroutine calls in the order of the subroutine arguments as the first stack frame, then
+                return address back to the routines caller, and the stack frame for the local variables of the
+                subroutine. When a subroutine completes and executes the return statement it is popped off the stack. If
+                an exception is thrown (c++ behaviour) it will walk the stack until it finds a handler, unwind the stack
+                to to the handler and let it handle it. Back to the plain data structure, if we pop an empty stack it
+                underflows, if we push to a full stack it overflows. Stacks are usually implemented with a linked list
+                node as the <a href={"https://introcs.cs.princeton.edu/java/43stack/Stack.java.html"}>structure</a>.</p>
+
+            <h5>Queues</h5>
+
+            <p>Queues follow a <i>first in first out</i> (FIFO) policy meaning the meaning the one deleted is the one
+                that has spent the longest time in the set.</p>
+
             <h4>Hashing with Chaining</h4>
             <h4>Table Doubling</h4>
             <h4>Open Addressing</h4>
