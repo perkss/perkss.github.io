@@ -141,8 +141,88 @@ const algorithms = {
 
             <h5>Queues</h5>
 
-            <p>Queues follow a <i>first in first out</i> (FIFO) policy meaning the meaning the one deleted is the one
-                that has spent the longest time in the set.</p>
+            <p>Queues follow a <i>first in first out</i> (FIFO) policy meaning the one deleted is the one
+                that has spent the longest time in the set. Where insert are referred to as ENQUEUE and delete DEQUEUE.
+                Items are enqueued at the <strong>tail</strong> and elements are dequeued at the <strong>head</strong>.
+            </p>
+
+            <h5>Linked Lists</h5>
+
+            <p>Linked lists are a data structure arranged in linear orders. Unlike a array the order is not determined
+                by indices but a pointer in each object to the next item. <strong>Doubly linked lists</strong> nodes not
+                only contain the
+                key and satellite data but also pointers to next and previous objects in the linked lists. If the node
+                property previous is nil then it is at the start of the list which is the <strong>head</strong>. If the
+                node property next is nil then it has no next element so is the <strong>tail</strong> last element of
+                the linked list. If the head element is nil then it is an empty list.</p>
+
+            <h5>Linked List Types</h5>
+
+            <table>
+                <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td><strong>Single Linked</strong></td>
+                    <td>Each node has no previous link only next</td>
+                </tr>
+                <tr>
+                    <td><strong>Doubly Linked</strong></td>
+                    <td>Each node has previous pointer and next pointer</td>
+                </tr>
+                <tr>
+                    <td><strong>Sorted</strong></td>
+                    <td>The linear order of the list corresponds to each items key in natural order</td>
+                </tr>
+                <tr>
+                    <td><strong>Unsorted</strong></td>
+                    <td>Items in the list can appear in any order</td>
+                </tr>
+                <tr>
+                    <td><strong>Circular List</strong></td>
+                    <td>The previous pointer of the head points to the tail, and the next pointer of the tail points to
+                        the head. Like a ring of elements.
+                    </td>
+                </tr>
+            </table>
+
+            <h5>Searching a Linked List</h5>
+
+            <p>To search a linked list you do a linear search through the objects starting at the head and checking if
+                the key matches the item being searched for. If it does you break and return the item, else you move
+                onto the next item pointed too by that item. This mean searching a linear list can be slow as you have
+                to search potentially through all items so the search time is worst case is linear <Latex>$O(n)$</Latex>.
+            </p>
+
+            <h5>Inserting into a Linked List</h5>
+
+            <p>Inserting into an unsorted linked list is easy if inserting item <Latex>x</Latex>, you take the current
+                head of the list and then set <Latex>x.next=head</Latex> if it is a doubly linked list and not empty
+                you set the head previous to <Latex>x</Latex> like so <Latex>if List.head</Latex><Latex>$!=$</Latex>
+                <Latex>List.head.prev = x</Latex>. If inserting item into <strong>unsorted</strong> linked list the time
+                complexity is <Latex>$O(1)$</Latex>, if inserting into linked list that is sorted and to keep the sort
+                the time complexity is linear as you need to find the items position by checking each item in the list
+                up to the correct position <Latex>$O(n)$</Latex>. A neat <a
+                    href={"https://www.geeksforgeeks.org/given-a-linked-list-which-is-sorted-how-will-you-insert-in-sorted-way/"}>reference</a>.
+            </p>
+
+            <h5>Deleting from a Linked List</h5>
+
+            <p>Simply deleting an element from a linked list is a case of updating pointers, you set the deleted
+                nodes <Latex>$X$</Latex> next item to its own previous items next pointer, and you
+                set <Latex>$X$</Latex> nexts item it pointers too previous value to <Latex>$X$</Latex> previous value. A
+                simple delete time complexity is <Latex>$O(1)$</Latex> but a specific key delete you need to search
+                first so its worst case time is <Latex>$O(n)$</Latex> as it maybe the tail of the list you are deleting.
+            </p>
+
+            <h5>Sentinel Node</h5>
+
+            <p>A sentinel node in a linked list is a dummy node with all the attributes of the other objects in the
+                list, and if a nil is referenced in the linked list then it points to the sentinel node. Adding a
+                sentinel node between the head and tail of a list can simplify the code due to not requiring so many
+                checks. Adding a sentinel to a doubly linked list makes it a circular linked list with a sentinel
+                node.</p>
 
             <h4>Hashing with Chaining</h4>
             <h4>Table Doubling</h4>
