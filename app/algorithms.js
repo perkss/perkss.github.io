@@ -82,9 +82,8 @@ const algorithms = {
                 time <Latex>$O(1)$</Latex> which is for
                 the comparison checks looking at left comparison and right comparison. We then gather back up the single
                 elements that have been divided which was for example <Latex>$T(n) = T(n/2) + 1$</Latex> then <Latex>$T(n)
-                    = T(n/4) + 1$</Latex> this pattern continues which can be reverted from <Latex>$T(n/2^k) +
-                    1$</Latex>
-                to be <Latex>$O (log 2 n)$</Latex>. Similar to this post <a
+                    = T(n/4) + 1$</Latex> this pattern continues which can be reverted from <Latex>$T(n \div 2^k) +
+                    1$</Latex>to be <Latex>$O (\log 2 n)$</Latex>. Similar to this post <a
                     href="https://stackoverflow.com/questions/2307283/what-does-olog-n-mean-exactly/13093274#13093274">here</a>.
             </p>
 
@@ -102,16 +101,6 @@ const algorithms = {
 
             <h3>Selections</h3>
             <h4>Hoare QuickSelect</h4>
-            <h3>Sorting and Trees</h3>
-            <h4>Insertion Sort</h4>
-            <h4>Merge Sort</h4>
-            <h4>Heaps and Heap Sort</h4>
-            <h4>Binary Search Tree</h4>
-            <h4>AVL Trees and Sort</h4>
-            <h4>Counting Sort</h4>
-            <h4>Radix Sort</h4>
-            <h4>Lower Bounds</h4>
-
 
             <h3>Data Structures</h3>
 
@@ -224,24 +213,37 @@ const algorithms = {
                 checks. Adding a sentinel to a doubly linked list makes it a circular linked list with a sentinel
                 node.</p>
 
+            <h5>Pointers and Objects</h5>
+
+            <p>What happens if a language does not provide pointers how can we implement a Linked List? Well there are
+                two main ways.</p>
+
+            <h7>Multiple Array Representation</h7>
+
+            <p>To represent a node of a linked list using arrays you can have three arrays one that stores the keys, one
+                that stores the next address and one that stores the previous address. <i>key[i],next[i],prev[i]</i>. To
+                represent the head or tail you usually use a negative index as it cannot exist such as <i>-1</i>.</p>
+
+            <h7>A Single Array Representation</h7>
+
+            <p>A single array representation of a linked list is done by having contiguous blocks in the array, so you
+                use offsets to get to the key, next and prev for example. <i>list[i]</i> returns the
+                key <i>list[i+1]</i> returns the next value array index key and <i>list[i+2]</i> returns the previous
+                array index key it points too.</p>
+
+            <h7>Allocating and Freeing Objects</h7>
+
+            <p>To allocate and free objects when representing them with arrays you have a free list of the array that
+                stores points to the next free index. This free list acts like a stack as you push and pop off it when
+                allocating and freeing objects from it. If you have a total list of size <i>M</i> and it
+                contains <i>N</i> items then the free space is <Latex>$M - N$</Latex></p>
+
+            <h5>Representing Rooted Trees</h5>
+            <p></p>
+
             <h4>Hashing with Chaining</h4>
             <h4>Table Doubling</h4>
             <h4>Open Addressing</h4>
-
-            <h3>Numerics</h3>
-            <h4>Integer Arithmetic</h4>
-            <h4>Square Roots</h4>
-            <h3>Graphs</h3>
-            <h4>Breadth First Search</h4>
-            <h4>Depth First Search</h4>
-            <h3>Shortest Paths</h3>
-            <h4>Single Source Shortest Problem</h4>
-            <h4>Dijkstra</h4>
-            <h4>Bellman Ford</h4>
-
-            <h3>Dynamic Programming</h3>
-            <h3>Advanced Topics</h3>
-
 
         </div>
     ]
@@ -250,7 +252,7 @@ const algorithms = {
 };
 
 
-const AlgorithmsPage = (props) => {
+const AlgorithmsPage = () => {
     return (
         <BlogPage
             title={algorithms.title}
