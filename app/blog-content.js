@@ -6,7 +6,7 @@ import FunctionalProgrammingPage from "./functional-programming.js";
 import AlgorithmsPage from "./algorithms.js";
 import MathFundamentalsPage from "./math-fundamentals";
 import MathsForCompSciPage from "./maths-for-comp-sci.js";
-import CLanguagePage from "./c-language.js";
+import lowlevellanguagePage from "./low-level-language.js";
 import ClojurePage from "./clojure.js";
 import DistributedSystemsPage from "./distributed-systems.js";
 import DevOpsPage from "./devops.js";
@@ -27,7 +27,7 @@ class Content extends Component {
                             <Route path="/Algorithms" component={AlgorithmsPage}/>
                             <Route path="/FunctionalProgramming" component={FunctionalProgrammingPage}/>
                             <Route path="/MathFundamentals" component={MathFundamentalsPage}/>
-                            <Route path="/CLanguage" component={CLanguagePage}/>
+                            <Route path="/lowlevellanguage" component={lowlevellanguagePage}/>
                             <Route path="/Clojure" component={ClojurePage}/>
                             <Route path="/DistributedSystems" component={DistributedSystemsPage}/>
                             <Route path="/Devops" component={DevOpsPage}/>

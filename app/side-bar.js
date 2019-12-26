@@ -30,7 +30,7 @@ class SideBar extends Component {
                     <a onClick={this.handleMenuClick}><NavLink to="/clojure">Hipster Clojure</NavLink></a>
                     <a onClick={this.handleMenuClick}><NavLink to="/FunctionalProgramming">Functional
                         Programming</NavLink></a>
-                    <a onClick={this.handleMenuClick}><NavLink to="/CLanguage">A Little Bit of C
+                    <a onClick={this.handleMenuClick}><NavLink to="/lowlevellanguage">Low Level
                         Programming</NavLink></a>
                     <a onClick={this.handleMenuClick}><NavLink to="/DistributedSystems">Distributed
                         Systems</NavLink></a>

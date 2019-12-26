@@ -44,8 +44,8 @@ const home = {
                 </li>
 
                 <li className='orange'>
-                    <NavLink to={"/CLanguage"}>
-                        A little bit of<br/>C Programming
+                    <NavLink to={"/lowlevellanguage"}>
+                        Low Level<br/>Programming
                     </NavLink>
 
                 </li>
@@ -86,9 +86,9 @@ const home = {
                 Interpretation of Computer Programs (SICP)</a> as the basis and Clojure as the main language. <strong>Hipster
                 Clojure</strong> contains some great insight into our Clojure projects as well as some blog posts on
             interesting work going on in that space and frameworks used such as Kafka and Cassandra! The Kafka section
-            is super interesting and is very full would definitely recommend it! Check out <strong>A Little bit of C
-                Programming</strong> for some Pointer Madness. Which will
-            then lead to some <strong>Distributed Systems</strong>. Finally a section
+            is super interesting and is very full would definitely recommend it! Check out <strong>Low Level
+                Programming</strong> for some Pointer Madness, Memory Models and programming close to the machine. Which
+            will then lead to some <strong>Distributed Systems</strong>. Finally a section
             on the overused term <strong>DevOps</strong> which will cover a large range of items.</p>
         <p><strong>Most of all have fun!</strong></p>
         <p><a href="https://github.com/perkss">Please check out my Github page and feel free to contribute to any of my

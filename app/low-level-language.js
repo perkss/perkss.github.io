@@ -4,9 +4,9 @@ import SyntaxHighlighter from 'react-syntax-highlighter';
 import {darcula} from 'react-syntax-highlighter/styles/hljs';
 
 
-const cLanguage = {
+const lowlevellanguage = {
 
-    title: 'C Programming',
+    title: 'Low Level Programming',
     text: <div>
         <h3>OS X Mac (High Sierra) glib Tutorial</h3>
         <p>To being with you need to install homebrew for following this tutorial. Once setup you we need to install
@@ -51,18 +51,17 @@ const cLanguage = {
 };
 
 
-const CLanguagePage = (props) => {
+const lowlevellanguagePage = () => {
 
     return (
 
         <BlogPage
-            title={cLanguage.title}
-            contents={cLanguage.contents}
-            text={cLanguage.text}
+            title={lowlevellanguage.title}
+            contents={lowlevellanguage.contents}
+            text={lowlevellanguage.text}
         />
     );
 
 }
 
-
-export default CLanguagePage;
+export default lowlevellanguagePage;
