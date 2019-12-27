@@ -2,7 +2,7 @@ import React from "react";
 import BlogPage from './blog-page.js';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import {darcula} from 'react-syntax-highlighter/styles/hljs';
-
+import {HashLink as Link} from 'react-router-hash-link';
 
 const devops = {
 
@@ -10,7 +10,15 @@ const devops = {
     contents: '',
     text: [
         <div>
-            <h3>Containers: Docker</h3>
+            <h3>Topics</h3>
+            <ul className="text-list">
+                <li><Link to="#Docker">Docker</Link></li>
+                <li><Link to="#Azure">Azure with Terraform</Link></li>
+                <li><Link to={"#Kubernetes"}>Kubernetes</Link></li>
+                <li><Link to={"#AZK8TERRA"}>Azure, Kubernetes and Terraform</Link></li>
+            </ul>
+
+            <h2 id={"Docker"}>Containers: Docker</h2>
             <p>There is a load of information of containers and Docker online so I will not bore you again with that. I
                 just want to show you a simple Dockerfile that will run our Kafka Producer Consumer example and then
                 show DockerCompose so we can run the full Kafka/Zookeeper/Our_APP stack in containers!</p>
@@ -192,7 +200,7 @@ CMD ["/usr/bin/java", "-jar", "/kafka-example.jar"]`}</SyntaxHighlighter>
                     network create</i></p>
 
 
-            <h2>Terraform and Azure</h2>
+            <h2 id={"Azure"}>Azure with Terraform</h2>
 
             <p>This section begins to look at deploying infrastructure sustainably using Infrastructure as Code. It is
                 my notes from the great book <a
@@ -308,7 +316,7 @@ CMD ["/usr/bin/java", "-jar", "/kafka-example.jar"]`}</SyntaxHighlighter>
             <p>So how do we configure this module per environment to actually make it useful? Well you can use variables
                 as Module inputs. In the same way we saw variables used before. For example:</p>
 
-            <h2>Kubernetes</h2>
+            <h2 id={"Kubernetes"}>Kubernetes</h2>
 
             <h3>An Introduction</h3>
 
@@ -397,6 +405,10 @@ CMD ["/usr/bin/java", "-jar", "/kafka-example.jar"]`}</SyntaxHighlighter>
                 share the same IP Address and port space. They can communicate with each other using interprocess
                 communication. On deciding if containers belong in the same Pod you should ask if they would work on
                 different machines fine if so they should be placed into different pods.</p>
+
+            <h2 id={"AZK8TERRA"}>Azure, K8s and Terraform</h2>
+
+            <p><a href={"https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/examples/kubernetes/basic/main.tf"}>Azure deploying Kubernetes with Terraform</a></p>
 
         </div>
 
