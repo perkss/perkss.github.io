@@ -406,9 +406,46 @@ CMD ["/usr/bin/java", "-jar", "/kafka-example.jar"]`}</SyntaxHighlighter>
                 communication. On deciding if containers belong in the same Pod you should ask if they would work on
                 different machines fine if so they should be placed into different pods.</p>
 
+            <h4>K8s Architecture</h4>
+
+            <h5>Master Nodes</h5>
+            <p>The master nodes run the control plane which runs all the tasks required for kubernetes to do its job such as scheduling containers,
+                managing services and so forth. The control plane contains multiple
+                components. <i>kube-apiserver</i> which is the frontend server for the control plane that handles API
+                requests. <i>kube-scheduler</i> which decides where to place newly created
+                pods. <i>kube-controller-manager</i> responsible for running resource controllers such as
+                deployments. <a href={"https://github.com/etcd-io/etcd"}><i>etcd</i></a> this is the database where K8s
+                stores
+                information. It is a distributed key value store which states its focus is on being simple, secure, fast
+                and reliable. <i>cloud-controller-manager</i> which interacts with the cloud provider such as Azure, for
+                managing load balancers and disk volumes. These components work in a distributed sense and all connect
+                via the kube-apiserver. That then transmits out to the worker nodes.</p>
+
+            <h5>Worker Nodes</h5>
+
+            <p>The other part of the cluster which runs the workloads are the worker nodes. These nodes run the
+                following various components. <i>kubelet</i> this starts workloads that are scheduled and monitors there
+                status. <i>kube-proxy</i> this deals with networking to route requests between Pods on different nodes
+                and across the internet. <i>Container runtime</i> is responsible for actually starting and stopping
+                containers and their communications.</p>
+
+            <h5>Handling Failures</h5>
+
+            <p>As with most modern frameworks Kubernetes is built to survive node failures. The control plane is made up
+                of multiple master nodes with it able to deal with components shutting down and network partitions. The
+                database that is stored using <i>etcd</i> is also replicated across multiple nodes and can continue
+                running as long as a quorum of over half the original number of replicas is available. Handling worker
+                node failures is very simple they are detected and then rescheduled to run somewhere else if the control
+                plane is operating correctly. The only risk is if a lot of worker nodes fail at once and you do not have
+                the resources available to reschedule them elsewhere. When using the cloud it maybe useful to have your
+                nodes spread across cloud availability zones, in case a zone goes down highly unlikely though.</p>
+
+
             <h2 id={"AZK8TERRA"}>Azure, K8s and Terraform</h2>
 
-            <p><a href={"https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/examples/kubernetes/basic/main.tf"}>Azure deploying Kubernetes with Terraform</a></p>
+            <p><a
+                href={"https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/examples/kubernetes/basic/main.tf"}>Azure
+                deploying Kubernetes with Terraform</a></p>
 
         </div>
 
