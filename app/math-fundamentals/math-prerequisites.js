@@ -65,8 +65,9 @@ const MathPrerequisites = () => (
                 $a/b\times c/d = ac/bd$</Latex></p>
 
         <h3>Exponents and Roots</h3>
-        <p>This section presented by Stanford in the linked <a
-            href="https://www.mathsisfun.com/algebra/exponent-laws.html">PDF</a> is very
+        <p>This section presented by two links <a
+            href="https://www.mathsisfun.com/algebra/exponent-laws.html">first</a> and <a
+            href={"https://www.rapidtables.com/math/number/exponent/adding-exponents.html"}>second</a> is very
             important and clearly explained. Please read it thoroughly. </p>
         <p>One item to highlight is this formula <BlockMath math="2^{n+1} = 2 \times 2^n
  = 2^n + 2^n"></BlockMath> as it comes up a few times and is a good one to remember.</p>
