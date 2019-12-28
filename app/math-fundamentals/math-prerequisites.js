@@ -47,7 +47,7 @@ const MathPrerequisites = () => (
         <h3>Manipulating Equalities</h3>
 
         <p>Similar to the above and covered in our BiteSize Maths section manipulating equalities is part of basic
-            Algebra. For example <Latex>$2x + 6 = 10$ can be manipulated so we firstly subtract $5$ from each side to
+            Algebra. For example <Latex>$2x + 6 = 10$ can be manipulated so we firstly subtract $6$ from each side to
                 get $2x = 4$ and then divide both sides by $2$ to equal $x=2$. Nice and easy right?!</Latex></p>
 
         <p>The next example is a little trickier and is chaining equalities the example shown<Latex> is $(2n+1)^2 -
