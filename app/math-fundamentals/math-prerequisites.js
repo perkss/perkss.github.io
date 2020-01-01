@@ -199,7 +199,7 @@ const MathPrerequisites = () => (
             </tr>
             <tr>
                 <td>Even</td>
-                <td><i>An integer is even if and only if the remainder is 0 when dividing n by 2.</i></td>
+                <td><i>An integer is even if and only if the remainder is 0 when dividing n by 2. Therefore an integer n is even if n = 2k for some integer k</i></td>
             </tr>
             <tr>
                 <td>Odd</td>

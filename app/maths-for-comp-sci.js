@@ -61,6 +61,11 @@ const mathsForCompSci = {
         <p><Latex>Proof: If $21$ were a multiple of $5$ there would be a natural number $n \times 5 = 21$ since $5
             \times 5 = 25 n$ must be less than $5$ but none of the values $1,2,3,4$ work.</Latex></p>
 
+        <p>Some further useful theorems along with some stated in the prerequisite section are: <i>The sum and
+            difference of any two even numbers is even.</i>
+            <i>The sum and difference of an odd number and an even number is odd.</i>
+            <i>The product of any integer and an even number is even.</i>
+            <i>The product of any two odd numbers is odd.</i></p>
 
         <p>Two particular statements occur many times in mathematics and these are referred to
             as <strong>quantifiers</strong>.</p>
@@ -248,6 +253,8 @@ const mathsForCompSci = {
 
         <h5>Examples</h5>
 
+        <h6>Example 1</h6>
+
         <p>Now to the exciting part lets take our knowledge we have learned from these first three sections and create
             some proofs of our own.</p>
 
@@ -257,11 +264,12 @@ const mathsForCompSci = {
 
         <p><strong>Conclusion</strong> <Latex>$n^2$</Latex> is an odd integer</p>
 
-        <p><strong>Step One:</strong> Starting with the backward process show can I show that a integer is odd, easy we
+        <p><strong>Step One:</strong> Starting with the backward process can I show that a integer is odd, easy we
             have it in our table of definitions in prerequisites.</p>
 
         <p>
-            <strong><i>B1: </i></strong>so <Latex>$n^2$</Latex> can be expressed as 2 times plus 1 of some other
+            <strong><i>B1: </i></strong>so <Latex>$n^2$</Latex> can be expressed as <Latex>$2n + 1$</Latex> of some
+            other
             integer. Which integer though? Now we turn to the forward process.
         </p>
 
@@ -278,6 +286,42 @@ const mathsForCompSci = {
 
         <p>Therefore by the definition of an odd integer, we can conclude that <Latex>$n^2$</Latex> is an odd integer
             (as it is one more than twice the integer <Latex>$2k^2 + 2k$</Latex>).
+        </p>
+
+        <h6>Example 2</h6>
+
+        <p>Lets see a similar version for the evens</p>
+
+        <p>If <i>n</i> is an even integer, then <Latex>$n^2$</Latex> is an even integer</p>
+
+        <p><strong>Hypothesis</strong> If <i>n</i> is an even integer</p>
+
+        <p><strong>Conclusion</strong> <Latex>$n^2$</Latex> is an even integer</p>
+
+        <p><strong>Step One:</strong> Starting with the backward process can I show that a integer is even, easy we
+            have it in our table of definitions in prerequisites.</p>
+
+        <p>
+            <strong><i>B1: </i></strong>so <Latex>$n^2$</Latex> can be expressed as <Latex>$2n$</Latex> of some
+            other integer. Which integer though? Now we turn to the forward process.
+        </p>
+
+        <p>Because <i>n</i> is a eve integer we can use the definition for an even integer as 2 times some other
+            integer.
+        </p>
+
+        <p><strong><i>A1: </i></strong>
+            <Latex>$n = 2k$</Latex>
+        </p>
+
+        <p>Now we can square both sides of <strong><i>A1</i></strong> and rewrite using the rules of algebra.</p>
+
+        <BlockMath math="n^2 = (n)(n) = (2k)(2k) = 4k^2 = 2(2k^2)"/>
+
+        <p>Therefore by the definition of an even integer, we can conclude that <Latex>$n^2$</Latex> is an even integer
+            (as it is twice the integer <Latex>$2k^2$</Latex>) as there exists <i>m</i> which
+            is <Latex>$2k^2$</Latex> where
+            <Latex>$n^2 = 2m$</Latex>.
         </p>
 
         <h4>Proof Methods</h4>
@@ -687,8 +731,10 @@ const mathsForCompSci = {
 
         <p>Part 2: Is the choice element is this case we choose the single <InlineMath math="n+1"/> which is the
             value <InlineMath math="5"/> from the new set of <InlineMath math={"X"}/>.
-            Which now for the second ball to be chosen only has the choices of the other elements reaming only as we have
-            selected one element of the two already so it is either going to be <InlineMath math="1"/>, or <InlineMath math="2"/> or <InlineMath
+            Which now for the second ball to be chosen only has the choices of the other elements reaming only as we
+            have
+            selected one element of the two already so it is either going to be <InlineMath math="1"/>, or <InlineMath
+                math="2"/> or <InlineMath
                 math="3"/> or <InlineMath math="4"/> as they are the elements in <i>X</i>. Which means that we have four
             choices available to match with our selected element which in this case was <InlineMath math="n + 1"/> which
             is <InlineMath math="5"/>. Therefore we have no remaining choices or overlaps between the two options so we
