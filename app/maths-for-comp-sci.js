@@ -260,11 +260,14 @@ const mathsForCompSci = {
 
         <p>If <i>n</i> is an odd integer, then <Latex>$n^2$</Latex> is an odd integer</p>
 
-        <p><strong>Hypothesis</strong> If <i>n</i> is an odd integer</p>
+        <p><strong>Hypothesis (A)</strong> If <i>n</i> is an odd integer</p>
 
-        <p><strong>Conclusion</strong> <Latex>$n^2$</Latex> is an odd integer</p>
+        <p><strong>Conclusion (B)</strong> <Latex>$n^2$</Latex> is an odd integer</p>
 
-        <p><strong>Step One:</strong> Starting with the backward process can I show that a integer is odd, easy we
+        <p><Latex>$A \Longrightarrow B$</Latex></p>
+
+        <p><strong>Step One:</strong> Starting with the <strong>backward</strong> process can I show that a integer is
+            odd, easy we
             have it in our table of definitions in prerequisites.</p>
 
         <p>
@@ -273,7 +276,8 @@ const mathsForCompSci = {
             integer. Which integer though? Now we turn to the forward process.
         </p>
 
-        <p>Because <i>n</i> is a odd integer we can use the definition for odd integer as 2 times some other integer.
+        <p>Because <i>n</i> is a odd integer we can use the definition for odd integer as 2 times some other integer
+            plus 1.
         </p>
 
         <p><strong><i>A1: </i></strong>
@@ -294,11 +298,14 @@ const mathsForCompSci = {
 
         <p>If <i>n</i> is an even integer, then <Latex>$n^2$</Latex> is an even integer</p>
 
-        <p><strong>Hypothesis</strong> If <i>n</i> is an even integer</p>
+        <p><strong>Hypothesis (A)</strong> If <i>n</i> is an even integer</p>
 
-        <p><strong>Conclusion</strong> <Latex>$n^2$</Latex> is an even integer</p>
+        <p><strong>Conclusion (B)</strong> <Latex>$n^2$</Latex> is an even integer</p>
 
-        <p><strong>Step One:</strong> Starting with the backward process can I show that a integer is even, easy we
+        <p><Latex>$A \Longrightarrow B$</Latex></p>
+
+        <p><strong>Step One:</strong> Starting with the <strong>backward</strong> process can I show that a integer is
+            even, easy we
             have it in our table of definitions in prerequisites.</p>
 
         <p>
@@ -306,7 +313,7 @@ const mathsForCompSci = {
             other integer. Which integer though? Now we turn to the forward process.
         </p>
 
-        <p>Because <i>n</i> is a eve integer we can use the definition for an even integer as 2 times some other
+        <p>Because <i>n</i> is an even integer we can use the definition for an even integer as 2 times some other
             integer.
         </p>
 
@@ -323,6 +330,21 @@ const mathsForCompSci = {
             is <Latex>$2k^2$</Latex> where
             <Latex>$n^2 = 2m$</Latex>.
         </p>
+
+        <h6>Concrete Example</h6>
+
+        <p>Lets now use a concrete value for our n to prove that <Latex>$6^2$</Latex> is even.</p>
+
+        <p>Since <Latex>$6$</Latex> is an even number, there is some integer <Latex>$k$</Latex> such that <Latex>$6 =
+            2k$</Latex>. This integer <Latex>$k =
+            3$</Latex>. Showing that <Latex>$6$</Latex> is an even number. This means that we can plug
+            in <Latex>$k$</Latex> as proved
+            above like so where <Latex>$k = 3$</Latex> so <Latex>$6^2 = 6 \times 6 = (2 \times 3)(2 \times 3) = 4 \times
+                3^2 = 2(2 \times
+                3^2) = 2 \times 18 = 36$</Latex>. As <Latex>$36$</Latex> is an integer there is some integer m (which
+            just worked out as <Latex>$18$</Latex>) such that <Latex>$6^2 =
+                2m$</Latex> <strong>thus</strong> <Latex>$6^2$</Latex> is even. As <Latex>$2m = 2 \times 18 =
+                36$</Latex> and the formula for an even number is <Latex>$2k$</Latex> (or m in this case).</p>
 
         <h4>Proof Methods</h4>
 

@@ -409,7 +409,8 @@ CMD ["/usr/bin/java", "-jar", "/kafka-example.jar"]`}</SyntaxHighlighter>
             <h4>K8s Architecture</h4>
 
             <h5>Master Nodes</h5>
-            <p>The master nodes run the control plane which runs all the tasks required for kubernetes to do its job such as scheduling containers,
+            <p>The master nodes run the control plane which runs all the tasks required for kubernetes to do its job
+                such as scheduling containers,
                 managing services and so forth. The control plane contains multiple
                 components. <i>kube-apiserver</i> which is the frontend server for the control plane that handles API
                 requests. <i>kube-scheduler</i> which decides where to place newly created
@@ -446,6 +447,12 @@ CMD ["/usr/bin/java", "-jar", "/kafka-example.jar"]`}</SyntaxHighlighter>
             <p><a
                 href={"https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/examples/kubernetes/basic/main.tf"}>Azure
                 deploying Kubernetes with Terraform</a></p>
+
+            <p>A neat <a
+                href={"https://docs.microsoft.com/en-us/azure/terraform/terraform-create-k8s-cluster-with-tf-and-aks"}>tutorial</a> is
+                a good place to begin. You may need to create your own storage account for the part to deal with
+                terraform state. A storage tutorial can be found <a
+                    href={"https://docs.microsoft.com/en-us/azure/terraform/terraform-backend"}>here</a></p>
 
         </div>
 
