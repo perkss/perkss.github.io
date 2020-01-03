@@ -333,7 +333,7 @@ const mathsForCompSci = {
 
         <h6>Concrete Example</h6>
 
-        <p>Lets now use a concrete value for our n to prove that <Latex>$6^2$</Latex> is even.</p>
+        <p>Lets now use a concrete value for our n to prove that if <Latex>$6$</Latex> is an even integer, then <Latex>$6^2$</Latex> is even integer.</p>
 
         <p>Since <Latex>$6$</Latex> is an even number, there is some integer <Latex>$k$</Latex> such that <Latex>$6 =
             2k$</Latex>. This integer <Latex>$k =
