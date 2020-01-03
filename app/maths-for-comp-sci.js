@@ -333,18 +333,25 @@ const mathsForCompSci = {
 
         <h6>Concrete Example</h6>
 
-        <p>Lets now use a concrete value for our n to prove that if <Latex>$6$</Latex> is an even integer, then <Latex>$6^2$</Latex> is even integer.</p>
+        <p>Lets now use a concrete value for our <strong>n</strong> to prove that if <Latex>$6$</Latex> is an even
+            integer,
+            then <Latex>$6^2$</Latex> is an even integer.</p>
 
         <p>Since <Latex>$6$</Latex> is an even number, there is some integer <Latex>$k$</Latex> such that <Latex>$6 =
             2k$</Latex>. This integer <Latex>$k =
-            3$</Latex>. Showing that <Latex>$6$</Latex> is an even number. This means that we can plug
+            3$</Latex>. Showing that <Latex>$6$</Latex> is an even number. </p>
+
+        <p>This means that we can plug
             in <Latex>$k$</Latex> as proved
             above like so where <Latex>$k = 3$</Latex> so <Latex>$6^2 = 6 \times 6 = (2 \times 3)(2 \times 3) = 4 \times
                 3^2 = 2(2 \times
-                3^2) = 2 \times 18 = 36$</Latex>. As <Latex>$36$</Latex> is an integer there is some integer m (which
+                3^2) = 2 \times 18 = 36$</Latex>.
+        </p>
+        <p>As <Latex>$36$</Latex> is an integer there is some integer m (which
             just worked out as <Latex>$18$</Latex>) such that <Latex>$6^2 =
-                2m$</Latex> <strong>thus</strong> <Latex>$6^2$</Latex> is even. As <Latex>$2m = 2 \times 18 =
-                36$</Latex> and the formula for an even number is <Latex>$2k$</Latex> (or m in this case).</p>
+                2m$</Latex> <strong>thus</strong> <Latex>$6^2$</Latex> is even. </p>
+        <p>As <Latex>$2m = 2 \times 18 = 36$</Latex> and the formula for an even number is <Latex>$2k$</Latex> (or m in
+            this case).</p>
 
         <h4>Proof Methods</h4>
 
