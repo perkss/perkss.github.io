@@ -230,12 +230,6 @@ const MathPrerequisites = () => (
             </tr>
         </table>
 
-        <h3>Summations</h3>
-
-        <h4>Summation Formula and Properties</h4>
-
-        <h4>Bounding Summations</h4>
-
     </div>
 
 );

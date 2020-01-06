@@ -673,6 +673,49 @@ const mathsForCompSci = {
         <br/>
         <h3 id={"Counting"}>Counting</h3>
 
+        <h4>Introduction</h4>
+
+        <p>Back to counting you may think I did this back in junior school. There you learnt direct counting fro simple
+            things such as how many fingers you have. Here and in computer science counting can be much larger and you
+            need more refined methods for counting the middle ground. For example the number of ways you can select 5
+            ice creams when there are 8 choices. Have a think about how you would go about this? Counting is useful in
+            computer science for determining time and storage requirements, counting is a fundamental for probability
+            theory, and it also is the basis for two proof techniques the pigeon hole principal and combinatorial
+            proof.</p>
+
+        <h4>Sums and Asymptotics</h4>
+
+        <p>We are briefly revisiting sums that were touched in the math fundamental section. Lets recall that we can
+            have the sum for the number of nodes in a complete binary tree of size <Latex>$N$</Latex> as <Latex>$1 + 2 +
+                4 ... + N$</Latex> and this can be represented as:</p>
+
+        <BlockMath math="\sum_{i=0}^{\log_n} 2^i"/>
+
+        <p>These sums can also be stated in <i>closed form</i> where it does not use the sum form or product form or any
+            <Latex>$. . .$</Latex> and they are usually easier to understand. But I hope you are asking now how do I
+            find these closed forms? Kind of like proofs its part maths and part art (or practice and experience).
+            Unfortunately closed from does not always exist in these cases we attempt to find the upper and lower bounds
+            of a sum in closed form.</p>
+
+        <p>Some steps to get into closed form at to try and simplify the the sum (or product) form as much as possible,
+            then you may even recognise a common closed for version if it turns out to be for example a geometric
+            sum.</p>
+
+        <p>One formal method you can try to help get to closed form is the perturbation method. This method basically
+            attempts to perturb the sum and then combine the original sum with the perturb sum to find something simpler.</p>
+
+        <p>For example <InlineMath math="S = 1 + x + x^2 + ... + x^{n-1}"/></p>
+
+        <p>Perturb is by multiplying S by x would be <InlineMath math="xS = x + x^2 + ... + x^{n}"/></p>
+
+        <p>Then if you subtract it you would get:</p>
+
+        <BlockMath math="S - xS = 1 - x^{n}"/>
+
+        <p>Then solving for S (TODO how explain this) gives the closed form known as the geometric sequence.</p>
+
+        <BlockMath math="S = \frac{1 - x^{n}}{1 - x}"/>
+
         <h4>How many ways to choose two items from a Set</h4>
 
         <p>In Kuns book he covers an example of the number of ways to choose two objects from a set of <i>n</i> objects.
