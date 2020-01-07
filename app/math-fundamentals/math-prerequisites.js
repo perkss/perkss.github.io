@@ -93,6 +93,8 @@ const MathPrerequisites = () => (
         </ul>
 
         <h3>Logarithms</h3>
+
+        <p><a href={"https://www.mathsisfun.com/algebra/logarithms.html"}>reference</a></p>
         <p>One key logarithm law that comes up regularly is <Latex>$b^c = x$ is equal to $\log _b(x) = c$</Latex> this
             is common in recursive algorithm time analysis. For example <Latex>$2^3 = 8$ and $\log _2(8) = 3$</Latex>
         </p>

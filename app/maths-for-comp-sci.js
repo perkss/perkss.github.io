@@ -675,13 +675,26 @@ const mathsForCompSci = {
 
         <h4>Introduction</h4>
 
-        <p>Back to counting you may think I did this back in junior school. There you learnt direct counting fro simple
+        <p>Back to counting you may think I did this back in junior school. There you learnt direct counting from simple
             things such as how many fingers you have. Here and in computer science counting can be much larger and you
             need more refined methods for counting the middle ground. For example the number of ways you can select 5
             ice creams when there are 8 choices. Have a think about how you would go about this? Counting is useful in
             computer science for determining time and storage requirements, counting is a fundamental for probability
             theory, and it also is the basis for two proof techniques the pigeon hole principal and combinatorial
             proof.</p>
+
+        <h4>Basic Counting Principle</h4>
+
+        <p>When there a <i>m</i> ways to do one thing</p>
+        <p>and <i>n</i> ways to do another</p>
+        <p>then there are <Latex>$m \times n$</Latex> ways of doing <a
+            href={"https://www.mathsisfun.com/data/basic-counting-principle.html"}><strong>both</strong></a></p>
+
+        <p>An example is if you have two sizes of tee shirt Small and Medium, five colours to choose from and three
+            brands, you can multiply them together to see total number of options. This only works if they are not
+            dependent on each other. If that is the case you have to multiply by each dependent and then sum.</p>
+
+        <BlockMath math="2 \text{(Sizes)} \times 5 \text{(Colours)} \times 3 \text{(Brands)}= 30"/>
 
         <h4>Sums and Asymptotics</h4>
 
@@ -702,7 +715,8 @@ const mathsForCompSci = {
             sum.</p>
 
         <p>One formal method you can try to help get to closed form is the perturbation method. This method basically
-            attempts to perturb the sum and then combine the original sum with the perturb sum to find something simpler.</p>
+            attempts to perturb the sum and then combine the original sum with the perturb sum to find something
+            simpler.</p>
 
         <p>For example <InlineMath math="S = 1 + x + x^2 + ... + x^{n-1}"/></p>
 
@@ -715,6 +729,14 @@ const mathsForCompSci = {
         <p>Then solving for S (TODO how explain this) gives the closed form known as the geometric sequence.</p>
 
         <BlockMath math="S = \frac{1 - x^{n}}{1 - x}"/>
+
+        <h4>Geometric Sequences and Sums</h4>
+
+        <p><a href={"https://www.mathsisfun.com/algebra/sequences-sums-geometric.html"}></a></p>
+
+        <h4>Arithmetic Sequences and Sums</h4>
+
+        <p><a href={"https://www.mathsisfun.com/algebra/sequences-sums-arithmetic.html"}></a></p>
 
         <h4>How many ways to choose two items from a Set</h4>
 
@@ -822,7 +844,51 @@ const mathsForCompSci = {
         <hr/>
         <br/>
         <h3 id={"Probability"}>Probability</h3>
-        <p></p>
+        <p>Probability is all around how <strong>likely</strong> something is to happen. When a single DIE is rolled
+            there are six possible outcomes <Latex>$1,2,3,4,5,6$</Latex> The probability of rolling say
+            a <i>4</i> is <InlineMath math="\frac{1}{6}"/>. Generally the probability can be thought of as:</p>
+
+        <BlockMath
+            math="\text{Probability of an event happening} = \frac{\text{Number of ways it can happen}}{\text{Total number of outcomes}}"/>
+
+        <p><strong>Important</strong> probability is always between <Latex>$0$</Latex> and <Latex>$1$</Latex>.
+            Probability is only a guide for example <i>toss a coin hundred times, how many Heads come up?</i> Using
+            probability you know its a <InlineMath math="\frac{1}{2}"/> chance due to Heads or Tails so we
+            say we expect <i>50</i> times. Some key terms for Probability.</p>
+
+        <table>
+            <tr>
+                <th>Term</th>
+                <th>Definition</th>
+                <th>Example</th>
+            </tr>
+            <tr>
+                <td>Experiment</td>
+                <td>A repeatable procedure with a set of possible results.</td>
+                <td>A coin can be tossed again and again.</td>
+            </tr>
+            <tr>
+                <td>Outcome</td>
+                <td>A possible result of an experiment.</td>
+                <td>Getting a head from a coin toss.</td>
+            </tr>
+            <tr>
+                <td>Sample Space</td>
+                <td>All the possible outcomes of an experiment.</td>
+                <td>For a coin toss it is either head or tails.</td>
+            </tr>
+            <tr>
+                <td>Sample Point</td>
+                <td>Just one of the possible outcomes.</td>
+                <td>For example heads.</td>
+            </tr>
+            <tr>
+                <td>Event</td>
+                <td>One or more outcomes of an experiment</td>
+                <td>For example getting a heads on a coin toss.</td>
+            </tr>
+        </table>
+
 
     </div>]
 

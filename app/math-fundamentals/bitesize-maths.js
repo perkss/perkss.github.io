@@ -173,6 +173,22 @@ const BiteSizeMath = () => (
             power of as brackets such as <Latex>$(2n+1)^2$</Latex> then it is the same as <Latex>$(2n+1)(2n+1)$ which
                 can be expanded doing the same as above to $4n^2 + 2n + 2n + 1$ $= 4n^2 + 4n + 1$</Latex>. Remember this
             part for Math prerequisites.</p>
+
+        <h3>Polynomials</h3>
+
+        <p>Polynomial means many terms and in mathematics and they can be made up of constants, variables and exponents,
+            but never division by a variable. Polynomials are good to work with as if you add or multiply
+            polynomials you are guaranteed to get another polynomial. The <a
+                href={"https://www.mathopenref.com/rootpolynomial.html"}>root</a> of a polynomial are the values for the
+            variables that cause the polynomial to evaluate to zero. Graphically if they are <i>x</i> values then it is
+            the
+            values that cross the <i>x</i> axis.</p>
+
+        <h3>Permutation & Combination</h3>
+
+        <p>When the <strong>order does not matter</strong> its a <strong>Combination</strong> (so the lock naming is
+            wrong) when the<strong>order does matter</strong> it is a <strong>Permutation</strong></p>
+
     </div>
 
 
