@@ -94,9 +94,13 @@ const MathPrerequisites = () => (
 
         <h3>Logarithms</h3>
 
-        <p><a href={"https://www.mathsisfun.com/algebra/logarithms.html"}>reference</a></p>
+        <p>Please check this great reference to remind yourself about <a
+            href={"https://www.mathsisfun.com/algebra/logarithms.html"}>logarithms</a></p>
         <p>One key logarithm law that comes up regularly is <Latex>$b^c = x$ is equal to $\log _b(x) = c$</Latex> this
-            is common in recursive algorithm time analysis. For example <Latex>$2^3 = 8$ and $\log _2(8) = 3$</Latex>
+            is common in recursive algorithm time analysis. For example <Latex>$2^3 = 8$ and $\log _2(8) = 3$</Latex>.
+            This is because logs are all about how many times you multiply the base to get the value you are applying
+            the log too. So here <Latex>$2^3 = 8 = 2 \times 2 \times 2 = 8$</Latex> which is <Latex>$\log _2(8) =
+                3$</Latex>
         </p>
         <h3>Closure Properties</h3>
         <p>When adding two natural numbers you are guaranteed to get back a natural number. This means that natural
@@ -201,7 +205,8 @@ const MathPrerequisites = () => (
             </tr>
             <tr>
                 <td>Even</td>
-                <td><i>An integer is even if and only if the remainder is 0 when dividing n by 2. Therefore an integer n is even if n = 2k for some integer k</i></td>
+                <td><i>An integer is even if and only if the remainder is 0 when dividing n by 2. Therefore an integer n
+                    is even if n = 2k for some integer k</i></td>
             </tr>
             <tr>
                 <td>Odd</td>

@@ -444,6 +444,11 @@ CMD ["/usr/bin/java", "-jar", "/kafka-example.jar"]`}</SyntaxHighlighter>
 
             <h2 id={"AZK8TERRA"}>Azure, K8s and Terraform</h2>
 
+            <p>You will need a service principal so do this <a
+                href={"https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal"}>first</a>.
+                I did just use the service principal details of my connected Azure CLI as a work around.
+            </p>
+
             <p><a
                 href={"https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/examples/kubernetes/basic/main.tf"}>Azure
                 deploying Kubernetes with Terraform</a></p>
@@ -452,7 +457,9 @@ CMD ["/usr/bin/java", "-jar", "/kafka-example.jar"]`}</SyntaxHighlighter>
                 href={"https://docs.microsoft.com/en-us/azure/terraform/terraform-create-k8s-cluster-with-tf-and-aks"}>tutorial</a> is
                 a good place to begin. You may need to create your own storage account for the part to deal with
                 terraform state. A storage tutorial can be found <a
-                    href={"https://docs.microsoft.com/en-us/azure/terraform/terraform-backend"}>here</a></p>
+                    href={"https://docs.microsoft.com/en-us/azure/terraform/terraform-backend"}>here</a>. Alternatively
+                if you access the Azure shell via the web browser it requires some state storage so will create one for
+                you.</p>
 
         </div>
 
