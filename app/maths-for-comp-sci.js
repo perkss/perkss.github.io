@@ -22,6 +22,7 @@ const mathsForCompSci = {
         <h3>Topics</h3>
         <ul className="text-list">
             <li><Link to="#Proofs">Proofs</Link></li>
+            <li><Link to={"#OrderingPrinciple"}>Well Ordering Principle</Link></li>
             <li><Link to="#Polynomials">Polynomials</Link></li>
             <li><Link to={"#Structures"}>Structures</Link></li>
             <li><Link to={"#Counting"}>Counting</Link></li>
@@ -371,6 +372,17 @@ const mathsForCompSci = {
             too. Then finally confirm the object you construct does satisfy the certain property and the something that
             happens.</p>
 
+        <h5>Proof by Cases</h5>
+
+        <p>Proof by cases is not particularly trusted process of proofs, but basically you divide the problem into
+            smaller cases which exhaust all possibilities and show that these cases all hold true. The difficulty here
+            is that all possibilities could be very large or infinite. An example that as programmers we use all the
+            time is when we have AND and OR logic in an if statement. We can check each valid predicate by breaking them
+            into cases and check all possibilities for correctness.</p>
+
+        <h5>Proof by Contradiction</h5>
+
+        <p></p>
 
         <h5>Proof by Direct Implication</h5>
         <p>Running through the example provided in <a
@@ -381,12 +393,15 @@ const mathsForCompSci = {
             but it would not be efficient! Lets define two sets:</p>
 
 
-        <h4>Well Ordering Principle</h4>
-        <p></p>
+        <h4 id={"OrderingPrinciple"}>Well Ordering Principle</h4>
+        <p>Basically any non empty <strong>SET</strong> of non negative integers has a least element. </p>
+
+
+
         <h4>Logic and Propositions</h4>
         <p></p>
 
-        <h4>Quantifiers and Predicate Logic</h4>
+        <h4 id={"Quantifiers"}>Quantifiers and Predicate Logic</h4>
         <p></p>
         <p></p>
         <h4>Sets</h4>
