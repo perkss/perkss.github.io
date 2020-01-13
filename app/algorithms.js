@@ -3,6 +3,8 @@ import BlogPage from './blog-page.js';
 import Latex from 'react-latex';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import {darcula} from 'react-syntax-highlighter/styles/hljs';
+import {HashLink as Link} from 'react-router-hash-link';
+import {InlineMath} from 'react-katex';
 
 const algorithms = {
     title: 'Algorithms',
@@ -11,8 +13,15 @@ const algorithms = {
     text: [
         <div>
 
+            <h3>Topics</h3>
+            <ul className="text-list">
+                <li><Link to={"#Introduction"}>Introduction</Link></li>
+                <li><Link to={"#Selections"}>Selections</Link></li>
+                <li><Link to={"#DataStructures"}>Data Structures</Link></li>
+                <li><Link to={"#Sorting"}>Sorting</Link></li>
+            </ul>
 
-            <h3>Introduction</h3>
+            <h3 id={"Introduction"}>Introduction</h3>
             <h4>Algorithmic Thinking</h4>
             <h5>Finding a peak in a list of numbers</h5>
             <p>Lets start with our first and very simple algorithm that finds peaks if one exists in a list of numbers.
@@ -99,10 +108,10 @@ const algorithms = {
 
             <h4>Models of Computation</h4>
 
-            <h3>Selections</h3>
+            <h3 id={"Selections"}>Selections</h3>
             <h4>Hoare QuickSelect</h4>
 
-            <h3>Data Structures</h3>
+            <h3 id={"DataStructures"}>Data Structures</h3>
 
             <h4>Introduction</h4>
             <p>Sets have already been covered in the Discrete Maths where they were usually fixed but sets that are
@@ -241,9 +250,96 @@ const algorithms = {
             <h5>Representing Rooted Trees</h5>
             <p></p>
 
+            <h4>Heap Data Structure</h4>
+
+            <p>A Heap is a tree based data structure (and has nothing to do with storage with garbage collected storage
+                like the Java heap). A heap puts all nodes in a specific order this is called the <strong>heap
+                    property</strong>. Usually a Max Heap where the value of
+                the parent node will always be greater than or equal to its children so the MAX value is stored at the
+                root. Or a Min Heap where the parent
+                node is always less than or equal to its children. Commonly max heaps are used for Heapsort and min
+                heaps are used for priority queues. A <strong>binary</strong> heap is when there at most
+                two children for each node. Other heaps exists and can differ on number of child nodes. The smallest
+                possible size/height of a complete binary heap with <Latex>$N$</Latex> nodes is <InlineMath
+                    math="\lg n"/>. The height is the number of edges on the longest simple downwards path from the root
+                to a leaf. A
+                heap will always be completely filled on all levels except the lowest. A heap has some simple operations
+                to find the parent, left and right nodes when it is stored in a array. No pointers required.</p>
+
+            <p>Root of the tree: is the first element in the stored array.</p>
+            <p><i>Parent(i) = i/2</i>: Finding the parent index of <i>i</i>.</p>
+            <p><i>Left(i) = 2i</i>: Find index of node <i>i</i> left child. This can be optimised by doing a left bit
+                shift.</p>
+            <p><i>Right(i) = 2i + 1</i>: Find index of node <i>i</i> right child.</p>
+
+            <p>Some common operations on Heaps are:</p>
+
+            <p><i>Build Max(Min) Heap</i> produce a Max(Min) heap from unordered array runs in linear time. <InlineMath
+                math="O(n)"/></p>
+            <p><i>Max(Min) Heapify</i> correct a single violation of the Heap property. <InlineMath math="O(\lg n)"/>
+            </p>
+            <p><i>Build Max(Min) Heap</i> produce a Max(Min) heap from unordered array.</p>
+
             <h4>Hashing with Chaining</h4>
             <h4>Table Doubling</h4>
             <h4>Open Addressing</h4>
+
+            <h3 id={"Sorting"}>Sorting</h3>
+
+            <h4>Introduction</h4>
+
+            <p>Sorting is sorting there is natural order of sorting the ascending and descending of values by number
+                value or letter. Usually though data sorted in computing is rarely isolated like this and is usually on
+                a data record with a key which would have related <strong>satellite data</strong>. For memory efficiency
+                we usually would manipulate the pointers to the records rather that the records themselves to save
+                moving around all of this satellite data.</p>
+
+            <p><strong>In place</strong> sorting algorithms are algorithms which transforms input using a data structure
+                with only a small constant amount of extra storage space outside of the array to be sorted.</p>
+
+            <table>
+                <tr>
+                    <th>Algorithm</th>
+                    <th>Worst Case<br/>Running Time</th>
+                    <th>Average Case<br/>Running Time</th>
+                </tr>
+                <tr>
+                    <td>Insertion Sort</td>
+                    <td><InlineMath math="\Theta(n^2)"/></td>
+                    <td><InlineMath math="\Theta(n^2)"/></td>
+                </tr>
+                <tr>
+                    <td>Merge Sort</td>
+                    <td><InlineMath math="\Theta(n \lg n)"/></td>
+                    <td><InlineMath math="\Theta(n \lg n)"/></td>
+                </tr>
+                <tr>
+                    <td>Heapsort</td>
+                    <td><InlineMath math="O(n \lg n)"/></td>
+                    <td><InlineMath math="O(n \lg n)"/></td>
+                </tr>
+                <tr>
+                    <td>Quicksort</td>
+                    <td><InlineMath math="\Theta(n^2)"/></td>
+                    <td><InlineMath math="\Theta(n \lg n)"/></td>
+                </tr>
+                <tr>
+                    <td>Counting Sort</td>
+                    <td><InlineMath math="\Theta(k + n)"/></td>
+                    <td><InlineMath math="\Theta(k + n)"/></td>
+                </tr>
+                <tr>
+                    <td>Radix Sort</td>
+                    <td><InlineMath math="\Theta(d(n + k))"/></td>
+                    <td><InlineMath math="\Theta(d(n + k))"/></td>
+                </tr>
+                <tr>
+                    <td>Bucket Sort</td>
+                    <td><InlineMath math="\Theta(n^2)"/></td>
+                    <td><InlineMath math="\Theta(n)"/></td>
+                </tr>
+            </table>
+
 
         </div>
     ]
