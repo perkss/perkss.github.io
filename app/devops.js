@@ -3,6 +3,7 @@ import BlogPage from './blog-page.js';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import {darcula} from 'react-syntax-highlighter/styles/hljs';
 import {HashLink as Link} from 'react-router-hash-link';
+import Latex from 'react-latex';
 
 const devops = {
 
@@ -200,7 +201,59 @@ CMD ["/usr/bin/java", "-jar", "/kafka-example.jar"]`}</SyntaxHighlighter>
                     network create</i></p>
 
 
-            <h2 id={"Azure"}>Azure with Terraform</h2>
+            <h2 id={"Azure"}>Azure</h2>
+
+            <h3>Azure Fundamentals</h3>
+
+            <p>As prep for doing the AZ900 course these are might notes with reference from the <a
+                href={"https://docs.microsoft.com/en-us/learn/paths/azure-fundamentals/"}>course material</a></p>
+
+            <h4>Cloud Fundamentals</h4>
+
+            <p>Cloud computing is a rental service for compute. For example others infrastructure or software. It is
+                flexible and cost effective.</p>
+            <p>Serverless compute lets you run application code without the need for creating configuring or maintaining
+                a server and you only pay for the processing time it takes to execute each function.</p>
+
+            <p>The benefits of cloud computing are its cost effective (pay as you go/consumption based), scalable,
+                elastic (can change compute power to demand), current (by keeping all hardware/networks/software
+                patched), reliable, global and secure (physical/digital)</p>
+
+            <p>Cloud providers are big businesses which can you there size for economies of scale to purchase
+                infrastructure at a lower cost. Operational expenditure is cloud where you pay as you use (agile with
+                demand), capital
+                expenditure is if you go yourself and have high up front cost then deduct that cost over time (nice
+                fixed cost at the beginning of the project). OpEx
+                costs are software licenses, scaling charges and billing at the user or org level (subscription
+                costs).</p>
+
+            <p>The three cloud <a
+                href={"https://docs.microsoft.com/en-us/learn/modules/principles-cloud-computing/5-types-of-cloud-services"}>categories</a> are
+                IAAS (rent hardware), PAAS (rent environment like Ubuntu or database), SAAS
+                (rent software like Office 365). </p>
+
+            <p><strong>Azure billing</strong> when you sign up to Azure you create a subscription which is a logical
+                grouping of resources that are billed too. There can be multiple subscriptions for example one per
+                environment of dev and prod, or organisational structures. Azure offers three support plans Developer
+                with response time of one business day, standard 1 hour response time for critical workloads production
+                ready and professional direct which is for business critical workloads with one hour response and
+                priority tracking.</p>
+
+            <p>Availability and redundancy are a key benefit of Azure, and <i>Availability zones</i> are physically
+                separate datacenters within a Azure region. <i>Region pairs</i> are data centers that are at least 300
+                miles apart but are within the same geography for example East US and West US. These region pairs are
+                directly connected still.</p>
+
+            <p>Downtime can be calculated from SLAs given, if multiple services are used you simply multiply the two
+                SLAs. For example if you have two components being used such as a web app and a database where
+                the SLA is <i>99.95&#37;</i> and <i>99.99&#37;</i> respectively then the composite downtime is <Latex>$99.95
+                    \times
+                    99.99 = 99.94$</Latex>. You can improve the SLA with fallback paths say for example the database
+                failed and you could fallback to a queue with SLA of <i>99.9&#37;</i>. To calculate this you do the SLA
+                as the difference of the two component chosen for primary and fallback and multiply this by the webapp
+                SLA. Azure provides services in 54 regions.</p>
+
+            <h4>Terraform and Azure</h4>
 
             <p>This section begins to look at deploying infrastructure sustainably using Infrastructure as Code. It is
                 my notes from the great book <a
