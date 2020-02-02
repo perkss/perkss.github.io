@@ -64,22 +64,22 @@ CMD ["/usr/bin/java", "-jar", "/kafka-example.jar"]`}</SyntaxHighlighter>
                 this example shows the doc for run but canny command or just plain help can be used.
             </p>
 
-            <h5>Docker Requirements</h5>
+            <h4>Docker Requirements</h4>
             <p>Docker requires running two processes in the User Space (as opposed to the OS or Hardware space), these
                 are the Docker CLI to allow
                 command line interaction and Docker daemon which is the Docker engine. Docker runs natively on Linux and
                 runs on a virtual machine when run
                 on Windows or Mac. Docker does not provide the container technology it uses the Linux namespaces and
                 cgroups, Docker makes it simpler to use. </p>
-            <h5>Shipping Containers</h5>
+            <h4>Shipping Containers</h4>
             <p>Images are the shippable part of Docker and then you start containers locally from the Images. They can
                 be hosted in the public repo Docker Inc or in
                 private repo such as Nexus.</p>
-            <h5>Docker in the Enterprise</h5>
+            <h4>Docker in the Enterprise</h4>
             <p>For dealing with container orchestration, high availability, clustering and visibility tools such as
                 Kubernetes are used.</p>
 
-            <h5>Some things to know .... </h5>
+            <h4>Some things to know .... </h4>
             <p>Docker Image is the collection of files and instructions to run a software program. When running a
                 container detached -d then it means the container
                 is running in the background with no attachment to any input or output stream. When you run a container
@@ -96,39 +96,39 @@ CMD ["/usr/bin/java", "-jar", "/kafka-example.jar"]`}</SyntaxHighlighter>
                     exec</i> will
                 attach a process to a already running container.</p>
 
-            <h5>Docker and the PID Namespace</h5>
+            <h4>Docker and the PID Namespace</h4>
             <p>Every program that runs on a linux machine has a unique PID number. A PID namespace is a unique set of
                 numbers that identify processes. Without PID namespace
                 processes running inside containers would share the same ID space as other containers running on the
                 same host. Isolation. </p>
 
-            <h5>Lets not couple our apps to a specific environment</h5>
+            <h4>Lets not couple our apps to a specific environment</h4>
 
-            <h6>Read only filesystem</h6>
+            <h5>Read only filesystem</h5>
             <p>The reason that a docker container that is read only is good is because it will not write files that make
                 this container unique to the running
                 instance. To achieve this you can use the <i>--read-only</i> flag. </p>
-            <h6>Environment Variable Injection</h6>
+            <h5>Environment Variable Injection</h5>
             <p>To provide environment variables at runtime to a container the <i>--env</i> or simply <i>e</i> flag can
                 be used that will inject the following variables into the
                 container environment. For example a referenced database HOST, PORT, USERNAME, PASSWORD could be
                 injected into a running application inside a container to reference
                 unique database.</p>
 
-            <h5>Durable Containers</h5>
+            <h4>Durable Containers</h4>
             <p>Docker containers can be in four states Running, Paused, Restarting, Exited. Docker allows automatic
                 restarts using the <i>--restart</i> flag
                 This can be combined with backoff strategies to only restart a number of times and with a period
                 between.</p>
 
-            <h5>Cleaning up after yourself</h5>
+            <h4>Cleaning up after yourself</h4>
             <p>To see a list of all containers in the docker instance you run <i>docker ps -a</i>. To remove a container
                 simply run <i>docker rm</i> followed by
                 the name of the container id. If you are running short lived containers for example ryane/kafkacat just
                 for some tooling purposes then you can set the flag
                 <i>--rm</i> on start up which will clean up when the container exits.</p>
 
-            <h5>Docker Repositories</h5>
+            <h4>Docker Repositories</h4>
             <p>Named repositories in Docker are a named bucket of images. This name is similar to a url for example you
                 have the registry host, user_name and the repository short name.
                 <i>quay.io/perkss/my_app_registry</i> where a unique app sits in the my_app_registry. Each repository
@@ -139,24 +139,24 @@ CMD ["/usr/bin/java", "-jar", "/kafka-example.jar"]`}</SyntaxHighlighter>
                 hosted, and they can be public or private. Its easy to point to different registries
                 and docker enables you to login and logout of private ones. </p>
 
-            <h5>Storage Volumes</h5>
+            <h4>Storage Volumes</h4>
             <p>A volume is a tool to segment and share data that has a scope of lifecycle, independent of a single
                 container.
                 Every container has a MNT namespace where and the image that a container is created from is mounted at
                 root. Docker has three mount types: Bind Mounts, In-memory Storage and Docker Volumes.</p>
 
-            <h6>Bind Mounts</h6>
+            <h5>Bind Mounts</h5>
             <p>Bind mounts are used to remount parts of the file tree system onto other locations for example from a
                 specific part of the host file system to a specific file tree in the container. For example
                 if you need to send your container logs to some specific location they can be bind mounted to some
                 specific host directory. As you can probably tell there is a major concern with Bind Mounts, as they
                 couple the container to the specific host filesystem.</p>
 
-            <h6>In-memory Storage</h6>
+            <h5>In-memory Storage</h5>
             <p>In memory storage should be used for private files, keys, passwords amongst other things as these secret
                 files do not want to be stored and shipped within a container.</p>
 
-            <h6>Docker Volumes</h6>
+            <h5>Docker Volumes</h5>
             <p>Docker volumes are named file system trees managed by Docker. Docker volumes allow you to state I just
                 need some space to add data I need to work with. This enables docker files to easily be cleaned up
                 once they have been used. For example you can bind a cassandra image to a particular created volume
@@ -187,13 +187,13 @@ CMD ["/usr/bin/java", "-jar", "/kafka-example.jar"]`}</SyntaxHighlighter>
                 removed with
                 <i>docker volume remove</i></p>
 
-            <h6>Problems with Local Volumes</h6>
+            <h5>Problems with Local Volumes</h5>
             <p>Local volumes are great but they are not perfect what if you want to move your containers to run on a
                 different host, then the volume will no longer be on that host. The docker plugins available for volumes
                 can help overcome this for example in cloud services space.</p>
 
 
-            <h5>Docker Networking</h5>
+            <h4>Docker Networking</h4>
             <p>Each container has its own private loopback interface and separate virtual ethernet interface that is
                 linked to a virtual interface in the hosts namespace. Each container has its own unique IP address that
                 is internal to the host as all connections
@@ -253,14 +253,14 @@ CMD ["/usr/bin/java", "-jar", "/kafka-example.jar"]`}</SyntaxHighlighter>
                 as the difference of the two component chosen for primary and fallback and multiply this by the webapp
                 SLA. Azure provides services in 54 regions.</p>
 
-            <h5>AZ 900 Fundamentals Certification Notes</h5>
+            <h4>AZ 900 Fundamentals Certification Notes</h4>
 
             <p>As part of my Azure learning I decided to take the fundamentals certification. These are my summary notes
                 for it.</p>
 
-            <h5>Cloud Concepts (15%-20%)</h5>
+            <h4>Cloud Concepts (15%-20%)</h4>
 
-            <h6>Benefits and Considerations for the Cloud</h6>
+            <h5>Benefits and Considerations for the Cloud</h5>
 
             <p>High availability issues can stop this such as network outage, application failure, VM outage, power
                 outage or a dependency outage such as a database. Cloud providers offer SLA that guarantees a certain
@@ -285,7 +285,7 @@ CMD ["/usr/bin/java", "-jar", "/kafka-example.jar"]`}</SyntaxHighlighter>
             <p><strong>Consumption based model</strong> is what cloud offers that you can only pay for what you use and
                 need at a particular time.</p>
 
-            <p>IAAS is the infrastucture you are buying such as a provisioned VM. As you control the entire OS you have
+            <p>IAAS is the infrastructure you are buying such as a provisioned VM. As you control the entire OS you have
                 more control but more responsibility such as patching security updates to the OS.</p>
 
             <p>PAAS offers the infra, along with the OS and installed software such as a database or web server. This
@@ -302,50 +302,59 @@ CMD ["/usr/bin/java", "-jar", "/kafka-example.jar"]`}</SyntaxHighlighter>
                 data stored in the private cloud. Adds complexity the setup of sharing this data and also may add
                 further latency.</p>
 
-            <h5>Core Azure Services (30%-35%)</h5>
+            <h4>Core Azure Services (30%-35%)</h4>
 
-            <h6>Core Architectural Components</h6>
+            <h5>Core Architectural Components</h5>
 
             <p><strong>Regions</strong> are an area in a particular geography with each region hundreds of miles apart.
                 Each geography is usually a country and contains at least two regions.
             </p>
-            <p><strong>Availability Zones</strong> ensure that resouces are deployed into at least three separate DCs in
-                a region.</p>
+            <p><strong>Availability Zones</strong> ensure that resources are deployed into at least three separate DCs
+                in a region. And allow you to specify which data center in a region a VM resides.</p>
             <p><strong>Resource Groups</strong> allows logical grouping of resources and to tag them.</p>
             <p><strong>Azure Resource Manager</strong> is how Azure management tools create and manage resources. It
-                uses resource providers to create and resources.</p>
+                uses resource providers to create and resources. It sits behind the portal, powershell or SDK.</p>
+            <p>Resources can be tagged with Meta Data not all resources support tags and they are not inherited from
+                resource group layer.</p>
             <p>ARM template allows the creation of consistent large number of resources.</p>
             <p><strong>Availability sets</strong> protect your services with fault domains to spread them across
                 different racks and update domains to spread across hardware so it does not update at the same time.</p>
 
-            <h6>Core Products</h6>
+            <p>Azure is in 52 regions and 10 geographies at this time 2020 January.</p>
 
-            <p><strong>Compute</strong> are <strong>Virtual Machines</strong> <strong>Virtual Machine Scale
-                Sets</strong> <strong>App Services Functions which are serverless</strong> <strong>Azure Container
-                Instances</strong>
-                for running containers and <strong>Azure Kubernetes Services</strong> for container orchestration.</p>
+            <h5>Core Products</h5>
+
+            <p><strong>Compute</strong> are <strong>Virtual Machines</strong>, <strong>Virtual Machine Scale
+                Sets</strong>, <strong>App Services Functions which are serverless</strong>, <strong>Azure Container
+                Instances</strong> for running containers and <strong>Azure Kubernetes Services</strong> for container
+                orchestration.</p>
+
+            <p>Compute resources are ones that perform some type of task that requires CPU cycles to work.</p>
+
+            <p>Azure only supports Linux and Windows OS.</p>
+
             <p><strong>Networking</strong> <strong>Virtual Network</strong> allows services to communicate with each
                 other and the internet. <strong>Load Balancer</strong> distribute traffic from the internet to multiple
                 VMs. <strong>VPN Gateway</strong> allows secure VPN tunnels to be set up. <strong>Application
-                    Gateway</strong> is a load balancer well suited for HTTP traffic.
-                <strong>Content Delivery Network</strong> caches resources so users can get a faster experience cross
-                the globe.
-                <strong>Traffic Manager</strong> is a DNS based solution help load balance, send traffic to another
+                    Gateway</strong> is a load balancer well suited for HTTP traffic. <strong>Content Delivery
+                    Network</strong> caches resources so users can get a faster experience cross
+                the globe. <strong>Traffic Manager</strong> is a DNS based solution help load balance, send traffic to
+                another
                 region in an outage or send users to their closest region.</p>
-            <p><strong>Storage</strong> <strong>Blob Storage</strong> for unstructured data like binary files.<strong>Disk
-                Storage</strong> is a virtual disk specifically for Vms.<strong>File
+            <p><strong>Storage</strong> <strong>Blob Storage</strong> for unstructured data like binary files. <strong>Disk
+                Storage</strong> is a virtual disk specifically for Vms. <strong>File
                 Storage</strong> allows disk space in the cloud to map file directories. <strong>Archive
                 Storage</strong> very low cost but slower to access.</p>
             <p><strong>Databases</strong> <strong>Cosmos DB</strong> is a NOSQL database for unstructured
                 data. <strong>Azure SQL DB</strong> is for relational database<strong>Azure
-                    MYSQL</strong> <strong>Azure PostgresSQL</strong>
+                    MYSQL</strong>, <strong>Azure PostgresSQL</strong>,
                 <strong>Database Migration</strong></p>
             <p><strong>Azure Marketplace</strong> is a source of templates for resource creation including third party.
             </p>
 
-            <h6>Azure Solutions</h6>
+            <h5>Azure Solutions</h5>
 
-            <p><strong>IoT</strong> refer to sensors that communicate over the internet. Azure IOT Hub allows you to
+            <p><strong>IoT</strong> refer to sensors that communicate over the internet. Azure IoT Hub allows you to
                 manage IoT devices and route to and from them. IoT hub makes it easy to provision a large number of
                 these devices. IoT central is a SAAS for monitoring the IoT devices.</p>
             <p><strong>Big Data and Analytics</strong> is for when there is more data than you can analyse through
@@ -361,10 +370,8 @@ CMD ["/usr/bin/java", "-jar", "/kafka-example.jar"]`}</SyntaxHighlighter>
                 actions.</p>
             <p><strong>Devops</strong> <strong>Azure Event Grid</strong> enables raising events when you interact with
                 your Azure resources.</p>
-            <p><strong></strong></p>
-            <p><strong></strong></p>
 
-            <h6>Azure Management Tools</h6>
+            <h5>Azure Management Tools</h5>
             <p><strong>Azure Portal</strong> is a web based interface for interacting with your resources.</p>
             <p><strong>Azure Powershell</strong> manage resources cross platform.</p>
             <p><strong>Azure CLI</strong> manage and can be scripted in multiple languages.</p>
@@ -373,9 +380,188 @@ CMD ["/usr/bin/java", "-jar", "/kafka-example.jar"]`}</SyntaxHighlighter>
                 availability, security and performance.</p>
 
 
-            <h5>Security, Privacy, Compliance and Trust (25%-30%)</h5>
+            <h4>Security, Privacy, Compliance and Trust (25%-30%)</h4>
 
-            <h5>Azure Pricing and Support (20%-25%)</h5>
+            <h5>Network Security</h5>
+            <p><strong>Network Security Groups (NSG)</strong> are used to control which subnets and resources can talk
+                to each other in a virtual network. These provide a basic way for protecting a Virtual Network subnet.
+            </p>
+            <p><strong>Application Security Groups (ASG)</strong> enables grouping VMs by the applications running on
+                them.</p>
+
+            <p><strong>User Defined Rules (UDR)</strong> for routing traffic via your firewall and virtual network.</p>
+            <p><strong>Azure Firewall</strong> stateful firewall to block network attacks. A web application firewall
+                protects against XSS attacks. It is useful for perimeter security.</p>
+            <p><strong>DDoS Protection</strong> basic is for common attacks, and standard uses advanced threat
+                protection.</p>
+            <p><strong>Azure Security Solution</strong> can be when you need to choose all or some of the features above
+                on offer depending on your application. Network layer security example is separate servers into distinct
+                subnets depending on roles.</p>
+
+            <h5>Identity Services</h5>
+            <p><strong>Azure active directory</strong> cloud based service that authenticates and authorises users.
+                Preferred choice for identity management.</p>
+            <p><strong>Azure Multi Factor Authentication</strong> requires both password and owned device to login.</p>
+
+
+            <h5>Security Tools and Features</h5>
+            <p><strong>Azure Security Center</strong> provides ability to monitor and manage cloud and on premises
+                resources for
+                security threats.</p>
+
+            <p><strong>Key Vault</strong> stores secrets, keys and certificates.</p>
+            <p><strong>Azure Information Protection (AIP)</strong> enables categorisation of email and documents to
+                protect against unauthorised access.</p>
+            <p><strong>Azure Advanced Thread Protection (ATP)</strong> protect on premise domain controllers and servers
+                from attack.</p>
+
+            <h5>Governance Methodologies</h5>
+            <p><strong>Azure Policy</strong> allows setting rules when creating and managing Azure resources. For
+                example only allow a certain VM size for cost compliance or location of resources. Used to enforce
+                standards.</p>
+
+            <p><strong>Role Based Access Control (RBAC)</strong> is more focused on user actions at different scopes.
+                Allowing users access or abilities to different resources available to them.
+            </p>
+            <p><strong>Locks</strong> allow properties to be locked on resources to make them Read Only or to block
+                deletion of resources.</p>
+            <p><strong>Azure Advisor</strong> provides portal for analysing and reporting best practices of your
+                resources. Specific to your uses. Such as turn off unused services or scale them down, buy reserved
+                instances over pay as you go and unprovisioned express route circuits.</p>
+            <p><strong>Azure Blueprints</strong> are a repeatable way to template and define role assignments, policy
+                assignments, resource manager templates and resources groups.</p>
+
+            <h5>Monitoring and Reporting</h5>
+            <p><strong>Azure Monitor</strong> displays metrics for your resources.</p>
+
+            <p><strong>Azure Service Health</strong> provides an overview of the health of your resources and general
+                Azure health in your regions.</p>
+            <p><strong>Example Use Cases</strong></p>
+
+            <h5>Privacy, Compliance, Data Protection</h5>
+            <p><strong>Compliance</strong></p>
+            <p><strong>Microsoft Privacy Statement</strong> states how data is protected.</p>
+            <p><strong>Trust Center</strong> information portal showing penetration test
+                results, security assessments and other documents that can be used to show
+                Microsoft's compliance efforts</p>
+            <p><strong>Service Trust Portal</strong> feature of 365 offering details on how to manage privacy.</p>
+            <p><strong>Compliance Manager</strong> makes it easy to manage compliance with industry standard
+                assignments.</p>
+            <p><strong>Azure Government Cloud Services</strong> is private cloud for governments operated in US, all
+                employees are screened and are US citizens. Azure government is made to ensure compliance with goverment
+                standards.</p>
+            <p><strong>Azure China Cloud Services</strong></p>
+
+            <h4>Azure Pricing and Support (20%-25%)</h4>
+
+            <h5>Azure Subscriptions</h5>
+
+            <h5>Azure Subscriptions</h5>
+            <p><strong>Azure Subscription</strong> contain Azure resources, they have limits and can have multiple
+                subscriptions. They belong to a tenant.</p>
+            <p><strong>Access control and Offer Types of Subscriptions</strong> include free, pay as you go and
+                enterprise.</p>
+            <p><strong>Management groups</strong> gives you the ability to manage multiple subscriptions into
+                hierarchies.</p>
+
+            <h5>Planning and Management Costs</h5>
+            <p><strong>Purchase Options</strong> you get monthly billing on pay as you go. And they are metered.</p>
+
+            <p>You only pay for outbound traffic not inbound.</p>
+            <p><strong>Free Account</strong> includes basic support.</p>
+            <p><strong>Cost Factors</strong> the type of resource for example 8 core VM vs single core. Differences
+                between services Enterprise, Web Direct or Cloud Solution Provider. Locations differ in costs with
+                different billing zones.</p>
+            <p><strong>Zones</strong> have different billing zones. Zone 1 is US, Europe and Canada. Zone 2 is Asia and
+                Australia. Zone 3 is Brazil, South Africa, UAE and the DE Zone 1 is Germany. </p>
+            <p><strong>Pricing Calculator</strong> makes it easy to estimate Azure costs and can be saved and shared and
+                exported to excel.</p>
+            <p><strong>Total Cost Of Ownership (TCO)</strong> allows calculation of costs vs on premise cloud.</p>
+            <p><strong>Minimise Cost</strong> have spending limits for subscriptions, reserved instances over pay as you
+                go if using a server all year. Correct size of under utilised resources. Deallocate virtual machines in
+                off hours. Use serverless or Azure batch to run jobs on non utilized vms.</p>
+            <p><strong>Cost Management</strong> portal showing insights into where your spending is going on cloud
+                resources. You can set budgets and have alerts when you are close to hitting budgets.</p>
+            <p><strong></strong></p>
+
+            <h5>Support Options</h5>
+            <p><strong>Support Plans</strong> free support is offered for subscription and billing issues. <strong>Business
+                hours</strong> as 9 til 5 local time. With different serverities give. <strong>Severity A</strong> is
+                production application completely down. <strong>Severity B</strong> is production application moderately
+                impacted. <strong>Severity C</strong> is situation causing moderate impact.</p>
+
+
+            <table>
+                <tr>
+                    <th>Basic</th>
+                    <th>Developer</th>
+                    <th>Standard</th>
+                    <th>Pro Direct</th>
+                    <th>Premier</th>
+                </tr>
+                <tr>
+                    <td>All accounts</td>
+                    <td>Trial and non production environments</td>
+                    <td>Production workloads</td>
+                    <td>Business critical dependence</td>
+                    <td>Substantial dependence</td>
+                </tr>
+                <tr>
+                    <td>24/7 Access to billing and subscription support</td>
+                    <td>24/7 Access to billing and subscription support and business hours email support</td>
+                    <td>Support via Phone and Email 24x7</td>
+                    <td>Support via Phone and Email 24x7</td>
+                    <td>Support via Phone and Email 24x7</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>Unlimited contacts / unlimited cases</td>
+                    <td>Unlimited contacts / unlimited cases</td>
+                    <td>Unlimited contacts / unlimited cases</td>
+                    <td>Unlimited contacts / unlimited cases</td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td>Severity C &lt; 8 business hours</td>
+                    <td>Severity C &lt; 8 business hours. Severity B &lt; 4 hours. Severity A &lt; 1 hour.</td>
+                    <td>Severity C &lt; 8 business hours. Severity B &lt; 4 hours. Severity A &lt; 1 hour.</td>
+                    <td>Severity C &lt; 8 business hours. Severity B &lt; 4 hours. Severity A &lt; 1 hour. &lt; 15
+                        minutes Azure Rapid Repsonse
+                    </td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td>General Guidance on Architecture</td>
+                    <td>General Guidance on Architecture</td>
+                    <td>Best practice guidance for architecture by ProDirect delivery manager.</td>
+                    <td>Customer specific architecture support</td>
+                </tr>
+
+            </table>
+
+            <p><strong>Support Tickets</strong> can be raised from home page or from New Support Request in the specific
+                resource.</p>
+            <p><strong>Other support channels</strong> include MSDN forums and Stack Overflow.</p>
+            <p><strong>Knowledge Center</strong> helps you find specific support articles for specific Azure product.
+            </p>
+
+            <h5>SLA</h5>
+            <p><strong>SLA</strong> guarantees availability and if you do not receive this you can be eligible for
+                credit.</p>
+            <p><strong>Composite SLA</strong></p>
+            <p><strong>Determine appropriate SLA</strong></p>
+
+
+            <h5>Service Lifecycle</h5>
+            <p><strong>Public and Private Preview Features</strong> public are available to all but private are select
+                users and only usually available via command line tools.</p>
+            <p><strong>General Availability</strong> once a preview feature meets quality level for SLA it becomes
+                publicly available. Anyone can use it and it can be used in production.</p>
+            <p><strong>Monitor updates</strong> via Azure Updates which provides details on feature and service updates
+                and lifecycles.</p>
+
 
             <h4>Terraform and Azure</h4>
 
@@ -585,7 +771,7 @@ CMD ["/usr/bin/java", "-jar", "/kafka-example.jar"]`}</SyntaxHighlighter>
 
             <h4>K8s Architecture</h4>
 
-            <h5>Master Nodes</h5>
+            <h4>Master Nodes</h4>
             <p>The master nodes run the control plane which runs all the tasks required for kubernetes to do its job
                 such as scheduling containers,
                 managing services and so forth. The control plane contains multiple
@@ -599,7 +785,7 @@ CMD ["/usr/bin/java", "-jar", "/kafka-example.jar"]`}</SyntaxHighlighter>
                 managing load balancers and disk volumes. These components work in a distributed sense and all connect
                 via the kube-apiserver. That then transmits out to the worker nodes.</p>
 
-            <h5>Worker Nodes</h5>
+            <h4>Worker Nodes</h4>
 
             <p>The other part of the cluster which runs the workloads are the worker nodes. These nodes run the
                 following various components. <i>kubelet</i> this starts workloads that are scheduled and monitors there
@@ -607,7 +793,7 @@ CMD ["/usr/bin/java", "-jar", "/kafka-example.jar"]`}</SyntaxHighlighter>
                 and across the internet. <i>Container runtime</i> is responsible for actually starting and stopping
                 containers and their communications.</p>
 
-            <h5>Handling Failures</h5>
+            <h4>Handling Failures</h4>
 
             <p>As with most modern frameworks Kubernetes is built to survive node failures. The control plane is made up
                 of multiple master nodes with it able to deal with components shutting down and network partitions. The
