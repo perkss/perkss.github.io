@@ -253,6 +253,130 @@ CMD ["/usr/bin/java", "-jar", "/kafka-example.jar"]`}</SyntaxHighlighter>
                 as the difference of the two component chosen for primary and fallback and multiply this by the webapp
                 SLA. Azure provides services in 54 regions.</p>
 
+            <h5>AZ 900 Fundamentals Certification Notes</h5>
+
+            <p>As part of my Azure learning I decided to take the fundamentals certification. These are my summary notes
+                for it.</p>
+
+            <h5>Cloud Concepts (15%-20%)</h5>
+
+            <h6>Benefits and Considerations for the Cloud</h6>
+
+            <p>High availability issues can stop this such as network outage, application failure, VM outage, power
+                outage or a dependency outage such as a database. Cloud providers offer SLA that guarantees a certain
+                level of of availability as a percentage.</p>
+
+            <p><strong>Scaling</strong> allows you to allows you to add additional resources or power (vertical or
+                horizontal).
+                <strong>Elasticity</strong> allows automatic scaling when demand requires it. This speed and flexibility
+                makes the cloud an <strong>agile</strong> offering.</p>
+
+            <p><strong>Fault tolerance</strong> allows systems to recover at a small scale for example moving a
+                unhealthy VM to a healthy one. <strong>Disaster recovery</strong> means being able to move your services
+                and data to another region.</p>
+
+            <p>Economies of scale as cloud providers have one focus and a large pool of resources available you can
+                benefit from their ability to purchase infrastructures, power, land at a cheaper rate. <strong>Capital
+                    expenditure</strong> is when you do it yourself on premises and you spend large up front in order to
+                have longer term benefits. <strong>Operational Expenditure</strong> are the costs of daily usage and
+                cloud is opex as you pay for what you are using right now.</p>
+
+
+            <p><strong>Consumption based model</strong> is what cloud offers that you can only pay for what you use and
+                need at a particular time.</p>
+
+            <p>IAAS is the infrastucture you are buying such as a provisioned VM. As you control the entire OS you have
+                more control but more responsibility such as patching security updates to the OS.</p>
+
+            <p>PAAS offers the infra, along with the OS and installed software such as a database or web server. This
+                offers a good balance as you get to control the software installed but the OS environment is maintained
+                for you. The Azure app services if PAAS.</p>
+
+            <p>SAAS the provider controls everything and you just rent the software for example Hotmail is SAAS. Takes
+                burden off your IT service but has limited flexibility.</p>
+            <p><strong>Public Cloud</strong> you use shared infrastructure available on the public Internet. May have
+                security concerns and vendor lockin.</p>
+            <p><strong>Private Cloud</strong> hosted on prem or by a private provider. Many benefits of cloud but then
+                you are paying for it and its CAPEX and pay for all the infra you may not even use.</p>
+            <p><strong>Hybrid Cloud</strong> is where you can have applications running in public cloud but then access
+                data stored in the private cloud. Adds complexity the setup of sharing this data and also may add
+                further latency.</p>
+
+            <h5>Core Azure Services (30%-35%)</h5>
+
+            <h6>Core Architectural Components</h6>
+
+            <p><strong>Regions</strong> are an area in a particular geography with each region hundreds of miles apart.
+                Each geography is usually a country and contains at least two regions.
+            </p>
+            <p><strong>Availability Zones</strong> ensure that resouces are deployed into at least three separate DCs in
+                a region.</p>
+            <p><strong>Resource Groups</strong> allows logical grouping of resources and to tag them.</p>
+            <p><strong>Azure Resource Manager</strong> is how Azure management tools create and manage resources. It
+                uses resource providers to create and resources.</p>
+            <p>ARM template allows the creation of consistent large number of resources.</p>
+            <p><strong>Availability sets</strong> protect your services with fault domains to spread them across
+                different racks and update domains to spread across hardware so it does not update at the same time.</p>
+
+            <h6>Core Products</h6>
+
+            <p><strong>Compute</strong> are <strong>Virtual Machines</strong> <strong>Virtual Machine Scale
+                Sets</strong> <strong>App Services Functions which are serverless</strong> <strong>Azure Container
+                Instances</strong>
+                for running containers and <strong>Azure Kubernetes Services</strong> for container orchestration.</p>
+            <p><strong>Networking</strong> <strong>Virtual Network</strong> allows services to communicate with each
+                other and the internet. <strong>Load Balancer</strong> distribute traffic from the internet to multiple
+                VMs. <strong>VPN Gateway</strong> allows secure VPN tunnels to be set up. <strong>Application
+                    Gateway</strong> is a load balancer well suited for HTTP traffic.
+                <strong>Content Delivery Network</strong> caches resources so users can get a faster experience cross
+                the globe.
+                <strong>Traffic Manager</strong> is a DNS based solution help load balance, send traffic to another
+                region in an outage or send users to their closest region.</p>
+            <p><strong>Storage</strong> <strong>Blob Storage</strong> for unstructured data like binary files.<strong>Disk
+                Storage</strong> is a virtual disk specifically for Vms.<strong>File
+                Storage</strong> allows disk space in the cloud to map file directories. <strong>Archive
+                Storage</strong> very low cost but slower to access.</p>
+            <p><strong>Databases</strong> <strong>Cosmos DB</strong> is a NOSQL database for unstructured
+                data. <strong>Azure SQL DB</strong> is for relational database<strong>Azure
+                    MYSQL</strong> <strong>Azure PostgresSQL</strong>
+                <strong>Database Migration</strong></p>
+            <p><strong>Azure Marketplace</strong> is a source of templates for resource creation including third party.
+            </p>
+
+            <h6>Azure Solutions</h6>
+
+            <p><strong>IoT</strong> refer to sensors that communicate over the internet. Azure IOT Hub allows you to
+                manage IoT devices and route to and from them. IoT hub makes it easy to provision a large number of
+                these devices. IoT central is a SAAS for monitoring the IoT devices.</p>
+            <p><strong>Big Data and Analytics</strong> is for when there is more data than you can analyse through
+                conventional means. Big data is stored in data warehouse specifically <strong>SQL Data
+                    Warehouse</strong> for relational data or <strong>Data Lake Storage</strong> is good for any type of
+                data. HD Insight is the offering for processing big data with Hadoop, Storm, Kafka</p>
+            <p><strong>AI</strong> Azure databricks can be used for machine learning and can be made up of notebooks.
+                Azure machine learning service uses cloud based resources to train models faster. Azure machine learning
+                studio allows you to build , train and Score ML models in a drag and drop style.</p>
+            <p><strong>Serverless Computing</strong> allows you to run code on surplus VMs when you need to execute it
+                so you only pay on demand for what you use. Azure functions is a compute component of
+                serverless. <strong>Azure logic apps</strong> are a serverless workflow that connects triggers and
+                actions.</p>
+            <p><strong>Devops</strong> <strong>Azure Event Grid</strong> enables raising events when you interact with
+                your Azure resources.</p>
+            <p><strong></strong></p>
+            <p><strong></strong></p>
+
+            <h6>Azure Management Tools</h6>
+            <p><strong>Azure Portal</strong> is a web based interface for interacting with your resources.</p>
+            <p><strong>Azure Powershell</strong> manage resources cross platform.</p>
+            <p><strong>Azure CLI</strong> manage and can be scripted in multiple languages.</p>
+            <p><strong>Azure Cloud Shell</strong> connect from anywhere with browser based shell.</p>
+            <p><strong>Azure Advisor</strong> provides best practice recommendations on in the area of high
+                availability, security and performance.</p>
+
+
+            <h5>Security, Privacy, Compliance and Trust (25%-30%)</h5>
+
+            <h5>Azure Pricing and Support (20%-25%)</h5>
+
             <h4>Terraform and Azure</h4>
 
             <p>This section begins to look at deploying infrastructure sustainably using Infrastructure as Code. It is
