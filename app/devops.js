@@ -325,13 +325,18 @@ CMD ["/usr/bin/java", "-jar", "/kafka-example.jar"]`}</SyntaxHighlighter>
             <h5>Core Products</h5>
 
             <p><strong>Compute</strong> are <strong>Virtual Machines</strong>, <strong>Virtual Machine Scale
-                Sets</strong>, <strong>App Services Functions which are serverless</strong>, <strong>Azure Container
-                Instances</strong> for running containers and <strong>Azure Kubernetes Services</strong> for container
-                orchestration.</p>
+                Sets</strong> allows to deploy a set of identical virtual machines that can auto scale or manually scale
+                , <strong>App Services</strong> which are for building web apps, mobile backends and rest
+                API, <strong>Azure Container Instances</strong> for running containers and <strong>Azure Kubernetes
+                    Services</strong> for
+                container orchestration.</p>
 
             <p>Compute resources are ones that perform some type of task that requires CPU cycles to work.</p>
 
             <p>Azure only supports Linux and Windows OS.</p>
+
+            <p>Azure Batch enables large job scheduling where it will start a pool of VMS, install applications and
+                data, runs the jobs, identifies failures, requeue's work and scales down as the job completes.</p>
 
             <p><strong>Networking</strong> <strong>Virtual Network</strong> allows services to communicate with each
                 other and the internet. <strong>Load Balancer</strong> distribute traffic from the internet to multiple
@@ -399,8 +404,12 @@ CMD ["/usr/bin/java", "-jar", "/kafka-example.jar"]`}</SyntaxHighlighter>
                 subnets depending on roles.</p>
 
             <h5>Identity Services</h5>
-            <p><strong>Azure active directory</strong> cloud based service that authenticates and authorises users.
-                Preferred choice for identity management.</p>
+            <p><strong>Azure active directory</strong> is a centralised cloud based service that authenticates and
+                authorises users.
+                Preferred choice for identity management. Authentication is proving who you say you are and
+                authorisation is act of granting a authenticated person permission to do something.</p>
+            <p>It provides single sign on where you can sign into one Azure app but then have access to all others that
+                share same centralised directory.</p>
             <p><strong>Azure Multi Factor Authentication</strong> requires both password and owned device to login.</p>
 
 
