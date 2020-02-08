@@ -14,7 +14,7 @@ const devops = {
             <h3>Topics</h3>
             <ul className="text-list">
                 <li><Link to="#Docker">Docker</Link></li>
-                <li><Link to="#Azure">Azure with Terraform</Link></li>
+                <li><Link to="#Azure">Azure Fundamentals AZ-900</Link></li>
                 <li><Link to={"#Kubernetes"}>Kubernetes</Link></li>
                 <li><Link to={"#AZK8TERRA"}>Azure, Kubernetes and Terraform</Link></li>
             </ul>
@@ -205,8 +205,22 @@ CMD ["/usr/bin/java", "-jar", "/kafka-example.jar"]`}</SyntaxHighlighter>
 
             <h3>Azure Fundamentals</h3>
 
-            <p>As prep for doing the AZ900 course these are might notes with reference from the <a
-                href={"https://docs.microsoft.com/en-us/learn/paths/azure-fundamentals/"}>course material</a></p>
+            <p>As prep for doing the Microsoft AZ900 Azure Fundamentals course I made notes on the key points with
+                reference from the <a href={"https://docs.microsoft.com/en-us/learn/paths/azure-fundamentals/"}>course
+                    material</a>.</p>
+
+            <p>This section provides my notes on what I think are some of the key points required for the exam. I also
+                used the recommended book Exam Ref AZ-900 Microsoft Azure Fundamentals (Jim Cheshire) and the Udemy
+                course, although I would say the Udemy course is not really needed. I was also lucky enough to get a
+                days training from Microsoft for the exam.</p>
+
+            <h4>Exam Experience</h4>
+
+            <p>I did the exam at home using Pearson. It was straightforward they called me examined my room by webcam
+                and it was fine. I was allowed a glass of water and the phone was required to be in the room just out of
+                hands reach. The exam was all multiple choice, and I was thrown by the first few questions as I rushed
+                them and question one and two were duplicated. Odd. It was straightforward though if you
+                do the prep you will finish in about 20 minutes, I would not stress about the exam at all.</p>
 
             <h4>Cloud Fundamentals</h4>
 
@@ -253,16 +267,16 @@ CMD ["/usr/bin/java", "-jar", "/kafka-example.jar"]`}</SyntaxHighlighter>
                 as the difference of the two component chosen for primary and fallback and multiply this by the webapp
                 SLA. Azure provides services in 54 regions.</p>
 
-            <h4>AZ 900 Fundamentals Certification Notes</h4>
+            <h4>AZ 900 Fundamentals Exam Notes</h4>
 
-            <p>As part of my Azure learning I decided to take the fundamentals certification. These are my summary notes
-                for it.</p>
+            <p>These are my lean points on what is required for the exam from the syllabus in January 2020.</p>
 
             <h4>Cloud Concepts (15%-20%)</h4>
 
             <h5>Benefits and Considerations for the Cloud</h5>
 
-            <p>High availability issues can stop this such as network outage, application failure, VM outage, power
+            <p><strong>High availability</strong> in the cloud issues can stop this such as network outage, application
+                failure, VM outage, power
                 outage or a dependency outage such as a database. Cloud providers offer SLA that guarantees a certain
                 level of of availability as a percentage.</p>
 
@@ -344,8 +358,8 @@ CMD ["/usr/bin/java", "-jar", "/kafka-example.jar"]`}</SyntaxHighlighter>
                     Gateway</strong> is a load balancer well suited for HTTP traffic. <strong>Content Delivery
                     Network</strong> caches resources so users can get a faster experience cross
                 the globe. <strong>Traffic Manager</strong> is a DNS based solution help load balance, send traffic to
-                another
-                region in an outage or send users to their closest region.</p>
+                another region in an outage or send users to their closest region. This is focused at region level when
+                compared to load balancer.</p>
             <p><strong>Storage</strong> <strong>Blob Storage</strong> for unstructured data like binary files. <strong>Disk
                 Storage</strong> is a virtual disk specifically for Vms. <strong>File
                 Storage</strong> allows disk space in the cloud to map file directories. <strong>Archive
@@ -412,6 +426,8 @@ CMD ["/usr/bin/java", "-jar", "/kafka-example.jar"]`}</SyntaxHighlighter>
                 share same centralised directory.</p>
             <p><strong>Azure Multi Factor Authentication</strong> requires both password and owned device to login.</p>
 
+            <p>Identity is something that can be authenticated.</p>
+            <p>Service principal is an identity that is used by a service or application and can be assigned roles.</p>
 
             <h5>Security Tools and Features</h5>
             <p><strong>Azure Security Center</strong> provides ability to monitor and manage cloud and on premises
@@ -463,9 +479,6 @@ CMD ["/usr/bin/java", "-jar", "/kafka-example.jar"]`}</SyntaxHighlighter>
 
             <h4>Azure Pricing and Support (20%-25%)</h4>
 
-            <h5>Azure Subscriptions</h5>
-
-            <h5>Azure Subscriptions</h5>
             <p><strong>Azure Subscription</strong> contain Azure resources, they have limits and can have multiple
                 subscriptions. They belong to a tenant.</p>
             <p><strong>Access control and Offer Types of Subscriptions</strong> include free, pay as you go and
@@ -491,11 +504,10 @@ CMD ["/usr/bin/java", "-jar", "/kafka-example.jar"]`}</SyntaxHighlighter>
                 off hours. Use serverless or Azure batch to run jobs on non utilized vms.</p>
             <p><strong>Cost Management</strong> portal showing insights into where your spending is going on cloud
                 resources. You can set budgets and have alerts when you are close to hitting budgets.</p>
-            <p><strong></strong></p>
 
             <h5>Support Options</h5>
             <p><strong>Support Plans</strong> free support is offered for subscription and billing issues. <strong>Business
-                hours</strong> as 9 til 5 local time. With different serverities give. <strong>Severity A</strong> is
+                hours</strong> as 9 til 5 local time. With different severities give. <strong>Severity A</strong> is
                 production application completely down. <strong>Severity B</strong> is production application moderately
                 impacted. <strong>Severity C</strong> is situation causing moderate impact.</p>
 
