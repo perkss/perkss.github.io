@@ -192,6 +192,14 @@ const DiscreteMaths = () => (
         <p>Now the great step is that we worked this out for a single year but this same formula can be done for every
             year! We just take the previous years amount in this case 110 and then apply the same formula.</p>
 
+        <p>In recurrence relation view this first part is initial amount <InlineMath math="a_0"/> which is <InlineMath
+            math="100"/>. Then we just calculated <InlineMath math="a_1 = 110"/></p>
+
+        <p>Some questions why do we plus with 1? As its one amount the starting amount. How come we can have <InlineMath
+            math="100 \times 0.10"/> and then have <InlineMath math="100 \times (1 + 0.10)"/> this is because we can
+            factor out the 100 and put it outside the brackets to have the equivalent sum..
+        </p>
+
         <BlockMath math="110 + 110 \times 10\%"/>
 
         <BlockMath math="110 \times 1 + 110 \times 0.10"/>
@@ -202,6 +210,11 @@ const DiscreteMaths = () => (
 
         <BlockMath math="= 121"/>
 
+        <p>In recurrence relation view the first part calculated as initial amount <InlineMath math="a_0"/>. We now
+            have <InlineMath math="a_1 = a_0 \times (1.1)"/> where <InlineMath math="a_0"/> is the <InlineMath
+                math="100"/> calculated previously and now <InlineMath math="a_1 = 110"/>. Then <InlineMath
+                math="a_2 = a_1 \times (1.1)"/></p>
+
         <p>Whats so great is that we can go straight to year 3 if we multiply the interest 3 times.</p>
 
         <BlockMath math="100 \times 1.10 \times 1.10 \times 1.10"/>
@@ -210,9 +223,26 @@ const DiscreteMaths = () => (
 
         <BlockMath math="100 \times 1.10^3 "/>
 
-        <p>Which leaves us with the formula to work out compound interest as:</p>
+        <p>Which leaves us with the closed formula to work out compound interest as:</p>
 
         <BlockMath math="Present Value \times (1 + Interest Rate)^{number of years} = Future Value"/>
+
+        <p>What happens if we want to double our money. How long does it take?</p>
+
+        <p>We make the equation to represent this:</p>
+
+        <BlockMath math="100 \times (1.10)^x = 200 "/>
+
+        <p>Then we divide both sides by 100.</p>
+
+        <BlockMath math="(1.10)^x = 2 "/>
+
+        <p>Then using logarithms we can find the exact value.</p>
+
+        <BlockMath math="x = \log _{1.1}(2)"/>
+
+        <p>Divide and conquer operations like Binary Search have similar recurrence relations a <a
+            href={"https://users.cs.duke.edu/~ola/ap/recurrence.html"}>reference.</a></p>
 
         <h4>Special Integer Sequences</h4>
 

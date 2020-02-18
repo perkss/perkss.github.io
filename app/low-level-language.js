@@ -45,6 +45,30 @@ const lowlevellanguage = {
         <p><SyntaxHighlighter language='c' style={darcula}>g_(container name)_(function name)</SyntaxHighlighter></p>
 
 
+        <h2>Systems Programming</h2>
+
+        <p>This section looks at the systems that build and run our applications primarily focusing on C Programming.
+            Reference to Computer Systems: A Programmers Perspective (Bryant et al.).</p>
+
+        <h3>Linking</h3>
+
+        <p></p>
+
+        <h2>Garbage Collection</h2>
+
+        <h3>Reference Types</h3>
+
+        <p><strong>Strong References</strong></p>
+        <p><strong>Weak References</strong>  <strong>Soft References</strong> or <strong>Phantom
+            References</strong></p>
+
+        <p><a href={"https://docs.oracle.com/javase/8/docs/api/java/util/WeakHashMap.html"}>Weak hashmap</a> will
+            garbage collect a key and value even if its mapped with a value if its no longer in ordinary use. </p>
+
+
+        <p></p>
+
+
     </div>,
     contents: ''
 
