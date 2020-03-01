@@ -48,6 +48,37 @@ const DiscreteMaths = () => (
         <p>Sets can be broken into two types countable sets have the same cardinality of natural numbers or are finite
             and those that do not.</p>
 
+        <h5>Binomial Coefficient</h5>
+
+        <p>In sets its common to see examples such as you have a bag of 10 items how many different ways can I pick 5
+            objects from the bag. So we have n choose m in this case 10 choose 5. Written as <InlineMath
+                math="{n \choose m}"/> in this case <InlineMath math="{10 \choose 5}"/>. In more mathematical terms
+            means the number of subsets of size <i>m</i> of a fixed set of size <i>n</i></p>
+
+        <p>If you want to find out the answer to the binomial coefficient you use the factorial formula.</p>
+
+        <p>The formula for permutations where order matters is:</p>
+        <BlockMath math="{n \choose m} = {n \choose n - m} = \frac{n!}{(n - m)!}"/>
+        <p>The formula for combinations where order does not matter is:</p>
+        <BlockMath math="{n \choose m} = {n \choose n - m} = \frac{n!}{m!(n - m)!}"/>
+
+        <p>A great explation from <a
+            href={"https://math.stackexchange.com/questions/1525332/how-many-ways-can-i-choose-5-items-from-10"}>StackExchange</a>
+        </p>
+
+        <p>Our example we have 10 items in a bag. To find how many was to choose five we have you would do this by
+            choose 1 item then you have 9 items left, another item then you have 8 items left, then another 7, then
+            another 6 then another 5 items left and you have chosen five items. This gives a total of <InlineMath
+                math="10 \times 9 \times 8 \times 7 \ times 6 = (n - m + 1) = \frac{10!/5!} = 30240"/> where n = 10 and
+            m = 5.
+            This is the formulate for permuations where order matters. If order does not matter we have the possible
+            options for the five are . <InlineMath
+                math="5 \times 4 \times 3 \times 2 \ times 1 = 5!"/> this plugged in. If we had been choosing 4 from 10
+            it would be <InlineMath
+                math="\frac{10!/4!6!}"/> as we had 6 balls to choose from so 6 permutations. Then we plug this in and
+            its <InlineMath
+                math="\frac{10!/5!5!}"/></p>
+
         <br/>
         <hr/>
         <br/>
@@ -111,6 +142,7 @@ const DiscreteMaths = () => (
         <p>A partial function allows a undefined mapping for some elements in the domain set to the codomain such as a
             youngest child function for parents with no childen. When domain
             of <Latex>$f$</Latex> equals <Latex>$A$</Latex> we say that <Latex>$f$</Latex> is a total function.</p>
+
 
         <br/>
         <hr/>
