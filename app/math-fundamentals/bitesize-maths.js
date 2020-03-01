@@ -189,6 +189,10 @@ const BiteSizeMath = () => (
         <p>When the <strong>order does not matter</strong> its a <strong>Combination</strong> (so the lock naming is
             wrong) when the<strong>order does matter</strong> it is a <strong>Permutation</strong></p>
 
+        <h3>Recurrence Relations</h3>
+
+        <p><a href={"https://www.bbc.co.uk/bitesize/guides/z8syyrd/revision/2"}>A initial guide</a> </p>
+
     </div>
 
 
