@@ -5,7 +5,7 @@ import {darcula} from 'react-syntax-highlighter/styles/hljs';
 const ElasticsearchClojure = () => (
 
     <div>
-        <h2>Why this Post?</h2>
+        <h2>Elasticsearch with Clojure</h2>
         <p>The Java interop features of Clojure are powerful. I wanted to show how you do not need to rely on some
             third party libraries that wrap Clojure around the Elasticsearch client and then you depend on them to
             upgrade with the fast moving Elasticsearch client to get its new features and instead simply upgrade
