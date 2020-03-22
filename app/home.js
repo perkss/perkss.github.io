@@ -70,12 +70,12 @@ const home = {
 
     ],
     text: [<div>
-        <p>Hello and congratulations on finding <strong>The Perks of Computer Science</strong>. This blog will become a
-            treasure chest of technical and mathematical knowledge for all those interested in computer science and
-            programming to use. Suitable for all but especially for those who like to learn with all the details and
-            solid examples, no more algorithm teachers assumptions.</p>
-        <p>Please check the side menu on the top left or the rather fancy buttons at the bottom to link to the sections.
-            I cover the <strong>Fundamentals of Mathematics&#39;s</strong> starting with some BiteSize Maths a few
+        <p>Hello and congratulations on finding <strong>The Perks of Computer Science</strong>. This is my memory dump
+            of knowledge I like to acquire and remind myself of to keep my focused on learning. I will have some very
+            basic stuff such as the Maths starting very basic but then journeying into more complex topics such as
+            Distributed Algorithms.</p>
+        <p>Please check the side menu on the top left or the buttons at the bottom to link to the sections. Some of the
+            topics I cover are the <strong>Fundamentals of Mathematics&#39;s</strong> starting with some BiteSize Maths a few
             Prerequisites from Stanford and finally looking in depth at the book Concrete Mathematics. A study
             of <strong>Mathematics for Computer Science</strong> using course content from <a
                 href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-042j-mathematics-for-computer-science-spring-2015/index.htm">MIT</a> and <a

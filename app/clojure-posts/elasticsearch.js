@@ -6,10 +6,13 @@ const ElasticsearchClojure = () => (
 
     <div>
         <h2>Elasticsearch with Clojure</h2>
-        <p>The Java interop features of Clojure are powerful. I wanted to show how you do not need to rely on some
-            third party libraries that wrap Clojure around the Elasticsearch client and then you depend on them to
-            upgrade with the fast moving Elasticsearch client to get its new features and instead simply upgrade
-            yourself. Lets make the most of Clojures powerful Java interop feature.</p>
+        <p>The Java interop features of Clojure are powerful. Therefore I wanted to show you that you do not need to
+            rely on some third party libraries that wrap Clojure around the Elasticsearch client. Removing the
+            dependency on them to upgrade with the fast moving Elasticsearch client to get its new features. Instead
+            simply upgrade yourself. Let's make the most of Clojure's powerful Java interop features.</p>
+
+        <p>As usual all code can be found in my repository <a
+            href={"https://github.com/perkss/clojure-elasticsearch-examples"}>here</a></p>
 
         <h2 id="elasticsearch">Elasticsearch Java API Interop with Clojure</h2>
         <h3>What is Elasticsearch?</h3>
