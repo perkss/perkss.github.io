@@ -10,6 +10,7 @@ import ConcurrencyClojure from './clojure-posts/concurrency';
 import DataStructuresClojure from './clojure-posts/data-structures';
 import GarbageCollection from './clojure-posts/garbage-collection';
 import Specs from './clojure-posts/specs.js';
+import Elasticsearch from './clojure-posts/elasticsearch.js'
 
 const ClojurePage = ({match}) => {
 
@@ -47,6 +48,11 @@ const ClojurePage = ({match}) => {
                             Skateboards<br/>and Specs</Link>
                     </li>
 
+                    <li className='blue'>
+                        <Link to={`${match.url}/Elasticsearch#text-body`}>
+                            Elasticsearch<br/>API</Link>
+                    </li>
+
                 </ul>
             </div>}
 
@@ -57,13 +63,12 @@ const ClojurePage = ({match}) => {
                 <Route exact path={`${match.url}/ConcurrencyClojure`} component={ConcurrencyClojure}/>
                 <Route exact path={`${match.url}/DataStructuresClojure`} component={DataStructuresClojure}/>
                 <Route exact path={`${match.url}/GarbageCollection`} component={GarbageCollection}/>
-
                 <Route exact path={`${match.url}/Specs`} component={Specs}/>
+                <Route exact path={`${match.url}/Elasticsearch`} component={Elasticsearch}/>
             </div>
             }
         />
     );
 
 }
-
 export default ClojurePage;
