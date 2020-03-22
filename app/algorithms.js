@@ -121,19 +121,22 @@ const algorithms = {
                 <p>We expand as many times as we need until we see the pattern which we can work out as</p>
                 <BlockMath math="     = C \times i + T(\frac{n}{2^{i}})"/>
 
-                <p>Now we want be able to write out the expanded form as the constant form plugging it in. With <i>i</i> such
+                <p>Now we want be able to write out the expanded form as the constant form plugging it in.
+                    With <i>i</i> such
                     that <InlineMath
-                        math="T(\frac{n}{2^i} = T(1)"></InlineMath></p>
+                        math="T(\frac{n}{2^i}) = T(1)"></InlineMath></p>
                 <p>We want to replace the left side with the right side which are equal</p>
                 <BlockMath math="\frac{n}{2^i} = 1"/>
                 <p>Using logarithm law we want to get <i>i = </i></p>
                 <BlockMath math="i = log n"/>
 
-                <p>Now we need to plug it back into our expanded term formula we found previously to find our function.</p>
+                <p>Now we need to plug it back into our expanded term formula we found previously to find our
+                    function.</p>
                 <BlockMath math="     = C \times i + T(\frac{n}{2^{i}})"/>
                 <p>We worked out the value for <i>i</i> so can replace when we have the T(1) as i = n so its n/n.</p>
                 <BlockMath math="     = C \times \log n + T(1)"/>
-                <p>We plugged it in now we replace T with Theta and replace constant with Theta forcing it to become base case</p>
+                <p>We plugged it in now we replace T with Theta and replace constant with Theta forcing it to become
+                    base case</p>
                 <BlockMath math="     = \Theta(1) \times \log n + \Theta(1)"/>
                 <p>We know that log dominates the constant so solved: <InlineMath
                     math="\Theta( log n)"></InlineMath></p>
@@ -518,21 +521,26 @@ const algorithms = {
 
             <h4>Heap Data Structure</h4>
 
-            <p>A Heap is a tree based data structure (and has nothing to do with storage with garbage collected storage
-                like the Java heap). A heap puts all nodes in a specific order this is called the <strong>heap
+            <p>A Heap is tree based data structure where the nodes are in a particular order but it is ususally
+                implemented as an
+                array (and has nothing to do with storage with garbage collected storage
+                like the Java heap). They are used for priority queue data structure. A heap puts all nodes in a
+                specific order this is called the <strong>heap
                     property</strong>. Usually a Max Heap where the value of
                 the parent node will always be greater than or equal to its children so the MAX value is stored at the
                 root. Or a Min Heap where the parent
                 node is always less than or equal to its children. Commonly max heaps are used for Heapsort and min
-                heaps are used for priority queues. A <strong>binary</strong> heap is when there at most
+                heaps are used for priority queues. A priority queue is a queue but where each element has a priority
+                associated with it and the item to be dequeued first has the highest priority.
+                A <strong>binary</strong> heap is when there at most
                 two children for each node. Other heaps exists and can differ on number of child nodes. The smallest
                 possible size/height of a complete binary heap with <Latex>$N$</Latex> nodes is <InlineMath
                     math="\lg n"/>. The height is the number of edges on the longest simple downwards path from the root
-                to a leaf. A
-                heap will always be completely filled on all levels except the lowest. A heap has some simple operations
-                to find the parent, left and right nodes when it is stored in a array. No pointers required.</p>
+                to a leaf. A heap will always be completely filled on all levels except the lowest. A heap has some
+                simple operations to find the parent, left and right nodes when it is stored in a array. No pointers
+                required.</p>
 
-            <p>Root of the tree: is the first element in the stored array.</p>
+            <p>Root of the tree: is the first element in the stored array. These are when index of array start at 1.</p>
             <p><i>Parent(i) = i/2</i>: Finding the parent index of <i>i</i>.</p>
             <p><i>Left(i) = 2i</i>: Find index of node <i>i</i> left child. This can be optimised by doing a left bit
                 shift.</p>
@@ -544,7 +552,38 @@ const algorithms = {
                 math="O(n)"/></p>
             <p><i>Max(Min) Heapify</i> correct a single violation of the Heap property. <InlineMath math="O(\lg n)"/>
             </p>
-            <p><i>Build Max(Min) Heap</i> produce a Max(Min) heap from unordered array.</p>
+
+            <h5>Priority Queue with Max Heap</h5>
+
+            <p>A priority queue keeps items in a queue and orders them by priority so they highest priority is removed
+                from the queue and processed first. An efficient approach to this is to use heaps as they can insert and
+                delete in O(log n) time. Our code example is a MAX priority queue where items with highest value are
+                removed first as they are highest priority.</p>
+
+            <h6>Maximum</h6>
+            <p>The array backing the heap first element will be the max we can view this in O(1) but when we extract the
+                maximum we take the first element remove it and swap it with the last, we then need to max heapify the
+                array again which is O(log n).</p>
+
+            <h6>Increase Priority of Value</h6>
+
+            <h6>Insert Value</h6>
+
+            <h3>Binary Search Tree</h3>
+
+            <p>A search tree can be used as both a dictionary and a priority queue due to its ability to search, min,
+                max, predecessor, successor, insert and delete. Such operations take &Theta;(lg n) worst case time
+                proportionately to the height of the tree however if the tree is a linear set of nodes they
+                take &Theta;(n).</p>
+
+            <p>Binary search tree is represented by nodes linked where each node has a key and the satellite data along
+                with a left, right and parent attribute. The <strong>binary search tree property</strong> that must be
+                satisfied is let x be a node if y is a node in the left subtree its key is less than or equal to x.key,
+                else if y is a node in the right subtree then y.key is greater than or equal to x.key.</p>
+
+            <p>There are three methods for printing out the keys in a binary search tree, you can print the sorted keys
+                with in order tree walk, preorder prints the root before the leaves and post order prints the leaves
+                before the roots.</p>
 
             <h4>Hashing with Chaining</h4>
             <h4>Table Doubling</h4>
@@ -605,6 +644,10 @@ const algorithms = {
                     <td><InlineMath math="\Theta(n)"/></td>
                 </tr>
             </table>
+
+            <h4>Insertion Sort</h4>
+
+            <p>Lets now see our first sort not the quickest but a good place to begin. Insertion sort.</p>
 
 
         </div>

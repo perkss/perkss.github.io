@@ -325,6 +325,19 @@ const DiscreteMaths = () => (
             so always think n as the total count of the sum you will have and its that final result added to the
             previous n items.</p>
 
+        <p>Question: How do we compute the summation from 1 to <i>n</i>? Well lets check a more basic
+            example from 1 to 5. <InlineMath math="1 + 2 + 3 + 4 + 5"/>. We can add the largest and the smallest value.
+            So we have <InlineMath math="1 + 5 = 6"/> then add the next <InlineMath math="2 + 4 = 6"/> this case we have
+            an odd number so we take two full pairs and the one half pair in this example the <i>3</i> which is half
+            if <i>6</i> and then we do <InlineMath math="2.5 \times 6 = 15 = 1 + 2 + 3 + 4 + 5"/>. If we take the
+            sequence from 1 to <i>n</i> we call this the <strong>arithmetic sequence</strong> with the sum of the
+            smallest and largest numbers is <InlineMath math="n + 1"/> as there are <i>n</i> numbers there are  <InlineMath
+                math="\frac{n}{2}"/> pairs. As we saw before we took the pairs. So we have <InlineMath
+                math="(n + 1)(\frac{n}{2})"/> and this equals <InlineMath math="\frac{n^2}{2} + \frac{n}{2}"/> as you
+            expand out the bracket terms. <InlineMath math="n * \frac{n}{2}"/> and <InlineMath math="1 * \frac{n}{2}"/>.
+            Testing this in our example we get <InlineMath math="\frac{5^2}{2} + \frac{5}{2} = 15"/> as we calculated
+            before.</p>
+
         <br/>
         <hr/>
         <br/>
