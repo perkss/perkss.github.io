@@ -445,6 +445,36 @@ user-regions (user-region-table builder input-topic-regions)`}</SyntaxHighlighte
         <p>As you can see the Processor API is more low level and more code but it is much more flexbile and is
             sometimes required to be used.</p>
 
+        <h3>#Post 7: Kafka and Testcontainers</h3>
+
+        <p><a href={"https://www.testcontainers.org/"}>Testcontainers</a> are awesome and they work wonderfully when
+            testing applications that interact with some distributed system we can start up with Docker such as Kafka.
+            For our Producer and Consumer example in Clojure we have a integration test which starts up Kafka container
+            then starts up our toy application in a separate thread producers a message <i>hello</i> and processes it
+            with our application writing the output. This has a isolated integration test that does depend on Docker but
+            who does not have that these days. And can input and output to Kafka and assert the outputs easily with the
+            test-consumer. Code seen below check out the repo and give it a try so simple yet powerful. Simple to run
+            this navigate to the producer consumer example folder and run <i>lein test</i>. Enjoy!
+
+            <SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`(deftest example-kafka-integration-test
+  (testing "Fire up test containers Kafka and then send and consume message"
+    (let
+      [kafka-container (KafkaContainer. "5.4.1")
+       _ (.start kafka-container)
+       bootstrap-server (.getBootstrapServers kafka-container)
+       test-producer (build-producer bootstrap-server)
+       _ (future (run-application bootstrap-server))        ; execute application in separate thread
+       producer-topic "example-consumer-topic"
+       test-consumer (build-consumer "example-produced-topic" bootstrap-server)
+       input-data "hello"
+       sent-result (.get (.send test-producer (ProducerRecord. producer-topic input-data)))
+       records (.poll test-consumer 10000)]
+      (is (= producer-topic (.topic sent-result)))
+      (doseq [record records]
+        (is (= (format "Processed Value: %s" input-data) (.value record)))))))`}</SyntaxHighlighter>
+        </p>
+
     </div>
 
 );
