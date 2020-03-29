@@ -159,7 +159,7 @@ const lowlevellanguage = {
             and <strong>hashtable</strong> which is a synchronized version of HashMap. These are poor in performance as
             synchronize all methods on a common lock and considered legacy code.</p>
 
-        <h4>Concurrent Collections</h4>
+        <h3>Concurrent Collections</h3>
 
         <p><strong>ConcurrentHashMap</strong> for replacing synchronized hash based map structures
             and <strong>CopyOnWriteArrayList</strong> a thread safe list with good performance for
@@ -187,6 +187,65 @@ const lowlevellanguage = {
             and if modification is made a entire copy and new reference is made to the backing array. As the data is
             immutable you can have multiple iterators at the same time. They are designed to be used when iteration is
             far more used than modification.</p>
+
+        <p><strong>Deques</strong> also has a blocking version. The enable a related pattern to producer consumer named
+            work stealing. If a consumer finishes the work on its deque then it can steal from the tail work from
+            another consumer. It does this from the tail rather than the head so that contention is reduced.</p>
+
+        <p><strong>Interrupts</strong> can be used to stop a blocked thread these can be handled into two ways you pass
+            the interrupt exception to the caller to handle or you catch it and call interrupt on the current thread who
+            caught it to propagate the exception. Reminder when a exception is thrown it is referenced by the JVM with
+            the exception type and current state at that time, the JVM then looks through the call stack starting at the
+            top for an exception handler if it finds one great it is handled else it will terminate the program.</p>
+
+
+        <h4>Synchronizers</h4>
+
+        <p>A synchronizer is any object that controls the flow of threads based on
+            state. <strong>CountdownLatch</strong> allows one or more threads to wait for a set of events to occur.
+            FutureTask is a Future implementation and can act like a latch as you call <i>get()</i> it will block until
+            the result state. <strong>Semaphore</strong> are used to control the number of activities that can access
+            data or do an operation at the same time. Usually a counting semaphore you acquire a permit which is defined
+            as a max number available for example 10. If the 10 permits are already in use then you are blocked until
+            one becomes available. Commonly used for database connection pools to control
+            connections. <strong>Barriers</strong> are similar to latches but are dependent on threads rather than
+            events, a barrier will wait until all threads required are ready to do the next item before proceeding, like
+            setting a meeting time at a train station awaiting for all to arrive (the threads) and then proceeding with
+            the next task. </p>
+
+        <h4>Summary</h4>
+
+        <p>Mutable state shared across multiple threads cause problems, try hide state, make it immutable. If data is
+            shared and mutable then guard this data with locks, if data is associated share the same lock, hold locks
+            for entire duration of a compound action.</p>
+
+
+        <h3>Executing Threads: Task Executor</h3>
+        <p>When working with real systems you have overheads of thread creation and start up, also you need to bound the
+            number of threads created as otherwise you are going to run out of memory and use up all your CPU. To
+            resolve this we have the ExecutorService. Thread pools are running how do we shut them down safely? We
+            maintain three states of the thread pool executor running, shutting down or terminated. When shutting down
+            new tasks are not accepted and awaits for tasks to finish. If it needs to shutdown abruptly it signals
+            cancel to threads running and awaits. Java has no set way of cancelling tasks submitted to run, but good
+            programming will provide a mechanism to clean up threads in this case of early stopping. One method is each
+            task to have a cancel flag that can be safely set which will be checked periodically by the task and then if
+            set it shuts down as programmed too. This flag must be volatile. What happens if the task is waiting on a
+            blocking queue and nothing ever arrives it will not check the flag. Then you need to request interrupt to
+            the thread. When interrupted the thread will know and at the next cancellation point by the interruption
+            policy in its code it throws up the exception. Java Futures allow you to call cancel on them to request an
+            interrupt. Another method of shutting down is to use a Poison Pill in producer consumer style you can do
+            this with dropping a distinct message that knows is a stop message. When consumed it then states to the
+            consumers finish work and shutdown. You can return a list of cancelled tasks if you need to abruptly stop
+            them or they were pending before shutdown. If exceptions are thrown and unhandled they can be returned to
+            the executor and the runnable task shutdowns. </p>
+
+        <h3>Liveness Hazards</h3>
+
+        <h4>Deadlock</h4>
+        <h4>Starvation</h4>
+        <h4>Livelock</h4>
+
+
 
     </div>,
     contents: ''
