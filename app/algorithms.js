@@ -20,6 +20,7 @@ const algorithms = {
                 <li><Link to={"#Search"}>Binary Search</Link></li>
                 <li><Link to={"#Asymptotic"}>Asymptotic Notation</Link></li>
                 <li><Link to={"#DataStructures"}>Data Structures</Link></li>
+                <li><Link to={"#Graphs"}>Graphs</Link></li>
                 <li><Link to={"#Sorting"}>Sorting</Link></li>
             </ul>
 
@@ -406,12 +407,21 @@ const algorithms = {
                 underflows, if we push to a full stack it overflows. Stacks are usually implemented with a linked list
                 node as the <a href={"https://introcs.cs.princeton.edu/java/43stack/Stack.java.html"}>structure</a>.</p>
 
+            <p>In Java there is a Deque interface that is implemented by LinkedList and ArrayDeque. The equivalent
+                methods
+                are <i>push</i> is <i>addFirst</i>, <i>pop</i> is <i>removeFirst</i>, <i>peek</i> is <i>peekFirst</i>.
+                An example question where stacks are useful is when being asked to check for matching brackets or
+                anything kind of grammar checking for compilers.</p>
+
             <h5>Queues</h5>
 
             <p>Queues follow a <i>first in first out</i> (FIFO) policy meaning the one deleted is the one
                 that has spent the longest time in the set. Where insert are referred to as ENQUEUE and delete DEQUEUE.
                 Items are enqueued at the <strong>tail</strong> and elements are dequeued at the <strong>head</strong>.
             </p>
+
+            <p>In Java there is a queue interface that is implemented by LinkedList, ArrayBlockingQueue and Priority
+                Queue.</p>
 
             <h5>Linked Lists</h5>
 
@@ -588,6 +598,173 @@ const algorithms = {
             <h4>Hashing with Chaining</h4>
             <h4>Table Doubling</h4>
             <h4>Open Addressing</h4>
+
+            <h3 id={"Graphs"}>Graphs and Trees</h3>
+
+            <h4>Representations</h4>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`    // Represents each connection with starting node and ending node.
+    private int[][] edgeList = {{0, 2}, {1, 3}, {2, 3}, {2, 4}, {3, 5}, {4, 5}};
+    // Rows are the nodes with the index matching and a 1 is representing a connection.
+    private int[][] adjMatrix = {
+            {0, 0, 1, 0, 0, 0},
+            {0, 0, 0, 1, 0, 0},
+            {0, 0, 0, 1, 1, 0},
+            {0, 0, 0, 0, 0, 1},
+            {0, 0, 0, 0, 0, 1},
+            {0, 0, 0, 0, 0, 0}};
+    // Index is node and list is values associated. Most efficient memory wise.
+    private int[][] adjList = {{2}, {3}, {3, 4}, {5}, {5}, {}};`}</SyntaxHighlighter>
+
+            <h4>Traversing a Tree</h4>
+
+            <p>A tree has exactly one root and no loops.</p>
+
+            <h5>Depth First Traversal</h5>
+
+            <p>All of the following traversals are <i>O(n)</i>. DFS in general is used for Network paths and maze
+                search.</p>
+
+            <p><strong>In Order Traversal</strong> (Left, Root, Right), you traverse the left tree (call
+                inOrder(node.left)) then you print root then you traverse right tree (call inOrder(node.right)).</p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`void inOrder(Node node) {
+        if(node == null) {
+            return;
+        }
+
+        inOrder(node.left);
+        System.out.println(node.data);
+        inOrder(node.right);
+    }`}</SyntaxHighlighter>
+
+            <p><strong>Pre Order Traversal </strong> (Root, Left, Right) here you call print root.data then
+                preOrder(root.left) and then preOrder(root.right).</p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{` void preOrder(Node node) {
+        if(node == null) {
+            return;
+        }
+
+        System.out.println(node.data);
+        preOrder(node.left);
+        preOrder(node.right);
+    }`}</SyntaxHighlighter>
+
+            <p><strong>Post Order Traversal </strong> (Left, Right, Root) here you call postOrder(root.left) then
+                postOrder(root.right) and then print root.data.</p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`void postOrder(Node node) {
+        if(node == null) {
+            return;
+        }
+
+        postOrder(node.left);
+        postOrder(node.right);
+        System.out.println(node.data);
+    }`}</SyntaxHighlighter>
+
+            <h5>Breadth First (Level Order Traversal)</h5>
+
+            <p>Here we are using a BFS basically to go through each level of the tree. We use a queue to push each node
+                on. Then take off the queue the first node then print the data and adds its connected nodes to the
+                queue. We then repeat this while the queue is not empty.</p>
+
+            <p>This technique is <i>O(n)</i>.</p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`boolean breadFirstSearch(Node root, int searchKey) {
+        if (root == null) {
+            return false;
+        }
+
+        // Queue to hold the nodes visiting
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+
+        // loop over queue items.
+        while (!queue.isEmpty()) {
+            Node current = queue.remove();
+            System.out.println(current.key);
+            if (current.key == searchKey) {
+                return true;
+            }
+            queue.addAll(current.children);
+        }
+        return false;
+    }`}</SyntaxHighlighter>
+
+            <h4>Height of a Tree</h4>
+
+            <p>This is straightforward we need to find the deepest path down to the leaves of the tree. You get max
+                depth of the left subtree, get max depth of the right subtree and then take the max of the two subtrees
+                and +1 for the root. This is <i>O(n)</i></p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{``}</SyntaxHighlighter>
+
+            <h4>Traversing a Graph</h4>
+
+            <p>The difference between a Graph and Tree is that a graph may have loops, it has no root node and edges can
+                be directed or undirected.</p>
+
+            <h4>Breadth First Search</h4>
+
+            <p>You begin with your starting node provided in the graph and the list of vertices. You again use a queue
+                data structure to hold the nodes when processing them and this time you are also required to have a
+                map/array of visited nodes. Firstly start with all nodes marked as unvisited. Start at the starting node
+                add to queue then while queue is not empty do the following display data, remove node from queue, for
+                all adjacent vertices to the node add to the queue. Mark node as visited and repeat. </p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{``}</SyntaxHighlighter>
+
+            <h4>Depth First Search</h4>
+
+            <p>For depth first search you have the starting node which you place onto a stack. Pop the stack and print
+                data. Then mark as visited. For all nodes connected to the starting node and not visited push onto the
+                stack, continue while stack is not empty.</p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{``}</SyntaxHighlighter>
+
+            <h4>Dijkstras Shortest Path for Graphs</h4>
+
+            <p>Dijkstras algorithm is a simple algorithm for finding the shortest path tree from source vertex to all
+                other vertices in the graph on a weighted graph. It only works when the weights are all non negative. It
+                works by maintaining two sets one for nodes on the shortest path and
+                others not yet included. The main step is finding the next shortest vertex from source from the set not
+                included yet. We say this is a greedy step as it chooses the shortest at each selection.It can be
+                implemented using a min heap of vertices keyed by their values.</p>
+
+            <h4>Retrieval Trees (Trie)</h4>
+            <p>Trie trees are commonly used data structure for storing commonly strings as trees and making them
+                searchable and insert in O(m) time where m is the length of the string. We keep a Tree starting with
+                a empty root. Then we keep all children in the alphabet to this root so in the english language 26
+                children to root. Each node is then made up of its character in the alphabet and its children which
+                could be any of the 26 letters. To search for a word you start at the root and then navigate through
+                each letter and letters in children until you terminate or reach the end of the words. Here you can see
+                how auto complete can make suggestions for you for finishing word spellings.</p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`public static class TrieNode {
+        // Alternatively use a Map<Character, TrieNode>
+        TrieNode[] children = new TrieNode[ALPHABET_SIZE];
+        // Holds itself being set and counts how many times its called to add next items.
+        int currentSize = 0;
+        // end of a word
+        boolean isEndOfWord;
+
+        public TrieNode() {
+            isEndOfWord = false;
+            for (int i = 0; i < ALPHABET_SIZE; i++)
+                children[i] = null;
+        }
+    }`}</SyntaxHighlighter>
 
             <h3 id={"Sorting"}>Sorting</h3>
 
