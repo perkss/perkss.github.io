@@ -621,7 +621,7 @@ const algorithms = {
 
             <p>A tree has exactly one root and no loops.</p>
 
-            <h5>Depth First Traversal</h5>
+            <h5>Tree Depth First Traversal</h5>
 
             <p>All of the following traversals are <i>O(n)</i>. DFS in general is used for Network paths and maze
                 search.</p>
@@ -668,7 +668,7 @@ const algorithms = {
         System.out.println(node.data);
     }`}</SyntaxHighlighter>
 
-            <h5>Breadth First (Level Order Traversal)</h5>
+            <h5>Tree Breadth First (Level Order Traversal)</h5>
 
             <p>Here we are using a BFS basically to go through each level of the tree. We use a queue to push each node
                 on. Then take off the queue the first node then print the data and adds its connected nodes to the
@@ -702,17 +702,26 @@ const algorithms = {
 
             <p>This is straightforward we need to find the deepest path down to the leaves of the tree. You get max
                 depth of the left subtree, get max depth of the right subtree and then take the max of the two subtrees
-                and +1 for the root. This is <i>O(n)</i></p>
+                and +1 for the root. This is <i>O(n)</i>. The algorithm to find the deepest path is DFS.</p>
 
             <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
-                               wrapLines={true}>{``}</SyntaxHighlighter>
+                               wrapLines={true}>{`int maxDepth(BinaryNode root) {
+        if(root == null) {
+            return -1; // -1 as we check below the root node.
+        } else {
+            int lDepth = maxDepth(root.left);
+            int rDepth = maxDepth(root.right);
+
+            return Math.max(lDepth, rDepth) + 1; // To account for the negative value put + 1
+        }
+    }`}</SyntaxHighlighter>
 
             <h4>Traversing a Graph</h4>
 
             <p>The difference between a Graph and Tree is that a graph may have loops, it has no root node and edges can
                 be directed or undirected.</p>
 
-            <h4>Breadth First Search</h4>
+            <h4>Graph Breadth First Search</h4>
 
             <p>You begin with your starting node provided in the graph and the list of vertices. You again use a queue
                 data structure to hold the nodes when processing them and this time you are also required to have a
@@ -721,16 +730,71 @@ const algorithms = {
                 all adjacent vertices to the node add to the queue. Mark node as visited and repeat. </p>
 
             <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
-                               wrapLines={true}>{``}</SyntaxHighlighter>
+                               wrapLines={true}>{`if (root == null) {
+            return Collections.emptyList();
+        }
 
-            <h4>Depth First Search</h4>
+        // Hold a list of visited nodes to protected against cycles
+        List<Node> visited = new ArrayList<>();
+        List<Integer> foundKeys = new ArrayList<>();
+        // Queue to hold the nodes visiting
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
 
-            <p>For depth first search you have the starting node which you place onto a stack. Pop the stack and print
+        // loop over queue items.
+        while (!queue.isEmpty()) {
+            Node current = queue.remove();
+            System.out.println(current.key);
+            foundKeys.add(current.key);
+            visited.add(current);
+
+            // only check those not already visited
+            for (Node adjacentNode : current.adjacentNodes) {
+                if (!visited.contains(adjacentNode)) {
+                    queue.add(adjacentNode);
+                }
+            }
+        }
+        return foundKeys;
+    }`}</SyntaxHighlighter>
+
+            <h4>Graph Depth First Search</h4>
+
+            <p>For depth first search of a graph you have the starting node which you place onto a stack. Pop the stack and print
                 data. Then mark as visited. For all nodes connected to the starting node and not visited push onto the
                 stack, continue while stack is not empty.</p>
 
             <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
-                               wrapLines={true}>{``}</SyntaxHighlighter>
+                               wrapLines={true}>{`List<Integer> depthFirstSearch(Node node) {
+        if (node == null) {
+            return Collections.emptyList();
+        }
+
+        List<Integer> foundKeys = new ArrayList<>();
+        List<Node> visited = new ArrayList<>();
+        Deque<Node> stack = new LinkedList<>();
+
+        stack.addFirst(node);
+
+        while (!stack.isEmpty()) {
+            Node popped = stack.removeFirst();
+
+            // May already have been visited from another node adjacent nodes
+            if(!visited.contains(popped)) {
+                System.out.println(popped.key);
+                foundKeys.add(popped.key);
+                visited.add(popped);
+            }
+
+            for (Node adjacent : popped.adjacentNodes) {
+                if (!visited.contains(adjacent)) {
+                    stack.addFirst(adjacent);
+                }
+            }
+
+        }
+        return foundKeys;
+    }`}</SyntaxHighlighter>
 
             <h4>Dijkstras Shortest Path for Graphs</h4>
 
@@ -740,6 +804,9 @@ const algorithms = {
                 others not yet included. The main step is finding the next shortest vertex from source from the set not
                 included yet. We say this is a greedy step as it chooses the shortest at each selection.It can be
                 implemented using a min heap of vertices keyed by their values.</p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{``}</SyntaxHighlighter>
 
             <h4>Retrieval Trees (Trie)</h4>
             <p>Trie trees are commonly used data structure for storing commonly strings as trees and making them
