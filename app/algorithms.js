@@ -806,7 +806,31 @@ const algorithms = {
                 implemented using a min heap of vertices keyed by their values.</p>
 
             <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
-                               wrapLines={true}>{``}</SyntaxHighlighter>
+                               wrapLines={true}>{` // is the vertices key by distance value
+        q = new PriorityQueue<>(new DistanceNodeComparator());
+        // Initialize the Q with all infinity values
+        initializeSingleSource(adjacencyMatrix, source);
+        Set<Integer> s = new HashSet<>();
+
+        // this works with either priority queue is empty or this
+        // s.size() != adjacencyMatrix.length
+        while (!q.isEmpty()) {
+            DistanceNode u = q.poll(); // take smallest weight from Q
+            s.add(u.key); // could add whole node here
+            for (int i = 0; i < adjacencyMatrix[u.key].length; i++) {
+
+                int weight = adjacencyMatrix[u.key][i];
+                // non links are set to -1
+                if (weight != -1) {
+                    // Alternate could optimise and store the distance node in the distance
+                    DistanceNode iInQueue = new DistanceNode(i, distance.get(i));
+                    // add distance of current adjVertex to edge weight to get distance of adjacent adjVertex from source adjVertex
+                    // when it goes through current adjVertex
+                    int newDistance = u.distance + weight;
+                    relax(u, iInQueue, newDistance);
+                }
+            }
+        }`}</SyntaxHighlighter>
 
             <h4>Retrieval Trees (Trie)</h4>
             <p>Trie trees are commonly used data structure for storing commonly strings as trees and making them
