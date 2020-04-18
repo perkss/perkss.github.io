@@ -283,7 +283,7 @@ const lowlevellanguage = {
         <h4>Starvation</h4>
         <h4>Livelock</h4>
 
-        <h2 id={"security"}>Security</h2>
+        <h2 id={"Security"}>Security</h2>
 
         <h3>Key Management</h3>
 
@@ -298,7 +298,7 @@ const lowlevellanguage = {
             certificate does belong to the entity the CA says it does. A certificate contains three pieces of
             information.</p>
 
-        <ol>
+        <ol className={"text-list"}>
             <li>Name of the entity the certificate has been issued too. Referred to as the subject.</li>
             <li>Public key associated with the subject.</li>
             <li>Digital signature signed by the issuer of the certificate usually the CA but could be self signed.
