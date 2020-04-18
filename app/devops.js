@@ -708,7 +708,7 @@ CMD ["/usr/bin/java", "-jar", "/kafka-example.jar"]`}</SyntaxHighlighter>
                 containers and orchestration, but where does Kubernetes fit in? Well it is a orchestrator for deploying
                 containers developed by Google. Some of the features of Kubernetes are: </p>
 
-            <ul>
+            <ul className="text-list">
                 <li>Pods (groups of containers) which can group together container images into a single deployable
                     unit
                 </li>

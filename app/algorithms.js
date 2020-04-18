@@ -22,6 +22,7 @@ const algorithms = {
                 <li><Link to={"#DataStructures"}>Data Structures</Link></li>
                 <li><Link to={"#Graphs"}>Graphs</Link></li>
                 <li><Link to={"#Sorting"}>Sorting</Link></li>
+                <li><Link to={"#Scheduling"}>Scheduling</Link></li>
             </ul>
 
             <h3 id={"Introduction"}>Introduction</h3>
@@ -323,7 +324,7 @@ const algorithms = {
             <p>The common complexities that come up in algorithm analysis are listed below in the order fastest to
                 slowest. Note for logs bases and exponents inside the logs turn into constant factors so are
                 dropped.</p>
-            <ul>
+            <ul className="text-list">
                 <li><InlineMath math="O(1)"></InlineMath></li>
                 <li><InlineMath math="O(log_2 n)"></InlineMath></li>
                 <li><InlineMath math="O(n)"></InlineMath></li>
@@ -760,7 +761,8 @@ const algorithms = {
 
             <h4>Graph Depth First Search</h4>
 
-            <p>For depth first search of a graph you have the starting node which you place onto a stack. Pop the stack and print
+            <p>For depth first search of a graph you have the starting node which you place onto a stack. Pop the stack
+                and print
                 data. Then mark as visited. For all nodes connected to the starting node and not visited push onto the
                 stack, continue while stack is not empty.</p>
 
@@ -917,6 +919,41 @@ const algorithms = {
 
             <p>Lets now see our first sort not the quickest but a good place to begin. Insertion sort.</p>
 
+            <h3 id={"Scheduling"}>Scheduling</h3>
+
+            <h4>Disk Scheduling Algorithms</h4>
+
+            <p>Disk scheduling algorithms are looking into the schedule of moving a cursor over a disk to read
+                information from 0 to n. This arm physically moves back and forth over the disk so needs to be optimal
+                and prevent starvation. Thanks to <a
+                    href={"https://www.geeksforgeeks.org/disk-scheduling-algorithms/"}>GeeksForGeeks</a> for reference.
+            </p>
+
+            <p>Some questions to think about before deciding what to use or base your algorithm on, should you
+                prioritise throughput, or response time? Is starvation a bad problem? The number and types of requests?
+                Could analyse data or track users and predict where to be when sitting idle.
+            </p>
+
+            <h5>First Come First Served</h5>
+
+            <p>Simple but inefficient as request are served as they come into the request queue. Not optimal for seek
+                time, but avoids starvation.</p>
+
+            <h5>Shortest Seek Time</h5>
+
+            <p>When you go to the closest request first so the queue maintains a priority of seek time shortest
+                first. Higher throughput but average response time improves but you are going to cause starvation.</p>
+
+            <h5>SCAN</h5>
+
+            <p>Simply moves in one direction servicing requests then hits the end and moves back servicing requests.
+                Decent throughput but slow to respond to requests just serviced.</p>
+
+
+            <h5>Circular SCAN</h5>
+
+            <p>This scheduling algorithm scans across the disk from start to finish and then it moves all the way back
+                to the start and scans again. This approach provides a more even wait time.</p>
 
         </div>
     ]

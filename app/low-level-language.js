@@ -2,13 +2,25 @@ import React from "react";
 import BlogPage from './blog-page.js';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import {darcula} from 'react-syntax-highlighter/styles/hljs';
+import {HashLink as Link} from 'react-router-hash-link';
 
 
 const lowlevellanguage = {
 
     title: 'Low Level Programming',
     text: <div>
-        <h3>OS X Mac (High Sierra) glib Tutorial</h3>
+
+        <h3>Topics</h3>
+        <ul className="text-list">
+            <li><Link to={"#CProgramming"}>C Programming</Link></li>
+            <li><Link to={"#Compilation"}>Java Compilation</Link></li>
+            <li><Link to={"#Systems"}>Systems Programming</Link></li>
+            <li><Link to={"#GC"}>Garbage Collection</Link></li>
+            <li><Link to={"#Concurrency"}>Concurrency</Link></li>
+            <li><Link to={"#Security"}>Security</Link></li>
+        </ul>
+
+        <h3 id={"CProgramming"}>OS X Mac (High Sierra) glib Tutorial</h3>
         <p>To being with you need to install homebrew for following this tutorial. Once setup you we need to install
             glib and pkg-config.</p>
 
@@ -44,8 +56,34 @@ const lowlevellanguage = {
 
         <p><SyntaxHighlighter language='c' style={darcula}>g_(container name)_(function name)</SyntaxHighlighter></p>
 
+        <h2 id={"Compilation"}>Java Compilation and Execution</h2>
 
-        <h2>Systems Programming</h2>
+        <p>Java is build once run anywhere and hence has a build (compilation) process and then a execution process on
+            the JVM. Here are the basic steps for this process:</p>
+
+        <ol className="text-list">
+            <li>Compile the source code <i>.java</i> files into machine independent bytecode encoding using <i>javac</i>.
+                It parses the source file builds an AST, puts entries into the symbol table which maps where identifiers
+                to where code is stored, processes annotations generating code if needed, attributes syntax tree and
+                then generates the <i>.class</i> files.
+            </li>
+            <li>Now execution occurs with three further stages. The <i>main.class</i> file is loaded by the class loader
+                by passing it to the JVM and loading it into memory.
+            </li>
+            <li>Once the class is loaded bytecode verification happens such checks include initialised variables, rules
+                for accessing private fields and methods.
+            </li>
+            <li>Final stage of execution is JVM dependent just in time compiler where loaded and verified bytecode is
+                converted into
+                machine code and executed can be used. Alternatively the JVM interprets the bytecode each run. Then
+                selects hot methods to be JIT compiled.
+            </li>
+        </ol>
+
+        <p>The Jar file is a container file that is like a zip that contains the <i>.class</i> files and any metadata
+            such as which is the <i>main.class</i>.</p>
+
+        <h2 id={"Systems"}>Systems Programming</h2>
 
         <p>This section looks at the systems that build and run our applications primarily focusing on C Programming.
             Reference to Computer Systems: A Programmers Perspective (Bryant et al.).</p>
@@ -54,7 +92,7 @@ const lowlevellanguage = {
 
         <p></p>
 
-        <h2>Garbage Collection</h2>
+        <h2 id={"GC"}>Garbage Collection</h2>
 
         <h3>Reference Types</h3>
 
@@ -69,7 +107,7 @@ const lowlevellanguage = {
         <p></p>
 
 
-        <h2>Concurrency</h2>
+        <h2 id={"Concurrency"}>Concurrency</h2>
 
         <p>Fundamentals of concurrency with reference to Concurrency in Practice (Goetz). Firstly concurrency is when
             two tasks can start, run and complete in overlapping time periods. Parallelism is when two processes run at
@@ -90,7 +128,7 @@ const lowlevellanguage = {
         <h4>Liveness Hazards</h4>
         <p>Liveness hazard is when the system gets into a state where it is permanently unable to make forward
             progress.</p>
-        <ul>
+        <ul className="text-list">
             <li>Deadlock</li>
             <li>Starvation</li>
             <li>Livelock</li>
@@ -245,6 +283,86 @@ const lowlevellanguage = {
         <h4>Starvation</h4>
         <h4>Livelock</h4>
 
+        <h2 id={"security"}>Security</h2>
+
+        <h3>Key Management</h3>
+
+        <p>Some common terms for key management are <strong>keystore</strong> that stores sets of keys and
+            certificates. <strong>Alias</strong> is a shortened keystore specific name for a entity. <strong>Distinguished
+                Name (DN)</strong> is the subset of the full X.500 name. </p>
+
+        <h3>Certificates</h3>
+
+        <p>Certificates are used to verify a public key being sent to you be verified by a trusted entity known as a
+            certificate authority. A certificate can provide extra confidence that the public key contained in the
+            certificate does belong to the entity the CA says it does. A certificate contains three pieces of
+            information.</p>
+
+        <ol>
+            <li>Name of the entity the certificate has been issued too. Referred to as the subject.</li>
+            <li>Public key associated with the subject.</li>
+            <li>Digital signature signed by the issuer of the certificate usually the CA but could be self signed.
+                Naughty.
+            </li>
+        </ol>
+
+        <p>We still need to verify the certificates digital signature which is signed by the CA. But how do we get the
+            public key of the issuer CA? This is known as the bootstrapping problem and Java solves this problem by
+            providing the public keys for well known CAs.</p>
+
+        <p>Certificates are usually supplied as a chain. You have one CA sign it and then another CA sign it this allows
+            users who do not know of all the certificate authorities to accept it as they will know one in the
+            chain.</p>
+
+        <p>It is possible to revoke a certificate once issued and signed if the tenant has used it illegally for
+            example. To do this a <i>certificate revocation list</i> is issued by the CA validators then check this list
+            before accepting it as genuine.</p>
+
+        <h3>SSL and HTTPS</h3>
+
+        <p>SSL provides a means to data encryption over TCP and is the basis for HTTPS. The Internet Engineering Task
+            Force took over SSL and rebranded it to Transport layer security (TLS). The advantages of using SSL are it
+            provides simple means for private key encryption by providing secret key exchange and data encryption with
+            the exchanged key. It is also designed for environments where there are few servers but many clients where
+            SSL servers have to authenticate themselves to clients but clients like web browsers do not need to
+            authenticate themselves to the server. For example a internet shopper on a web browser does not authenticate
+            to the server as they already can authenticate with credit card details and address when making the
+            purchase.</p>
+
+        <p><strong>The SSL Handshake</strong></p>
+
+        <ol className={"text-list"}>
+            <li>Client for example web browser initiates connection to server and states the ciphers it can accept.</li>
+            <li>The server responds with the cipher suite it supports.</li>
+            <li>The server then sends a certificate to verify its identity.</li>
+            <li>The server then initiates a key exchange algorithm and sends the necessary information to the client and
+                verifies the server certificate.
+            </li>
+            <li>The client completes the key exchange algorithm and sends the necessary key information to the server.
+            </li>
+            <li>The client then selects from the given cipher suite supported a cipher and tells the server.</li>
+            <li>The server then makes a final decision on the cipher suite to use completing the handshake.</li>
+        </ol>
+
+        <p>Once the SSL handshake is complete the server and client can communicate over the connection as per usual. In
+            Java programming SSL API abstracts all this away and a SSL connection is requested and once created the
+            handshake is complete.</p>
+
+        <h4>Keystores and Truststores</h4>
+
+        <p>Keystores and truststores technically are a database that hold certificates they are functionally used for
+            different things. Keystores are used for providing credentials and trustores are used to verify them. In SSL
+            a server must have a private key for input into the key exchange algorithm and a
+            certificate to identify who the server is this is contained within the keystore. If a server requires a
+            client to authenticate themselves then they must have its own keystore with private key and certificate.</p>
+
+        <p>The <strong>Truststore</strong> is used by a client to verify the certificate received from the server. The
+            certificate from the server is signed by a trusted CA, when a client receives this certificate it checks in
+            its trust store to verify the digital signature on the certificate. All clients must have a truststore and
+            if a server requires client authentication it must also have a truststore.</p>
+
+        <p>It is possible for keystore and truststore to be the same file. Ideally though they are not as truststore can
+            be shared as it contains only public certificates but keystore has the private key so cannot be shared.</p>
 
 
     </div>,
