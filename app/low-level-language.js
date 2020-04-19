@@ -18,6 +18,8 @@ const lowlevellanguage = {
             <li><Link to={"#GC"}>Garbage Collection</Link></li>
             <li><Link to={"#Concurrency"}>Concurrency</Link></li>
             <li><Link to={"#Security"}>Security</Link></li>
+            <li><Link to={"#Streams"}>Java and Kotlin Streams</Link></li>
+            <li><Link to={"#DataTypes"}>Data Types</Link></li>
         </ul>
 
         <h3 id={"CProgramming"}>OS X Mac (High Sierra) glib Tutorial</h3>
@@ -280,8 +282,23 @@ const lowlevellanguage = {
         <h3>Liveness Hazards</h3>
 
         <h4>Deadlock</h4>
+
+        <p>Dining philosophers is the example of deadlock where diners sit at a table five diners with five chopsticks
+            each philosopher eats only when holding two chopsticks. Each diner will grab left chopstick and then right.
+            If all diners grab left chopstick then the right is used by another and if they wait for the right they will
+            wait indefinitely. In thread terms this happens when thread <i>A</i> acquires lock <i>L</i> and then tries
+            to acquire lock <i>R</i> but thread <i>B</i> already has the lock R and wants to acquire lock <i>L</i>. They
+            will wait indefinitely.</p>
+
         <h4>Starvation</h4>
+
+        <p>When a thread is denied access to a resource it needs to proceed. This maybe due to infinite loops or
+            resource waits that do not terminate.</p>
         <h4>Livelock</h4>
+
+        <p>Is when the thread is not blocked but cannot make progress as it keeps retrying an operation that fails. For
+            example in transactional message platforms where a message fails then it is put back on the queue to be
+            retried and processed and fails again.</p>
 
         <h2 id={"Security"}>Security</h2>
 
@@ -364,6 +381,23 @@ const lowlevellanguage = {
         <p>It is possible for keystore and truststore to be the same file. Ideally though they are not as truststore can
             be shared as it contains only public certificates but keystore has the private key so cannot be shared.</p>
 
+        <h2 id={"Streams"}>Java and Kotlin Streams</h2>
+
+        <p>Java streams are <a href={"https://developer.ibm.com/articles/j-java-streams-3-brian-goetz/"}>lazy</a> in
+            nature including intermediate operations and only evaluate once terminal operation
+            is invoked. Java streams work from a spliterator to break the stream into smaller parts to process it and
+            chain up the operations. Intermediate operations always return a new stream. Kotlin streams are not they
+            execute and output a value on each intermediate operation and terminal. For Kotlin <i>Sequences</i> should
+            be used that are lazy collections that will not execute until the terminal operation is invoked.</p>
+
+        <h2 id={"DataTypes"}>Data Types</h2>
+
+        <p>In Java you have both primitive types such as <i>int</i> and reference types such as <i>String</i>. In Kotlin
+            it does not distinguish you only have <i>Int</i>. Behind the scenes at runtime Kotlin will decide if to use
+            the primitive or the reference type in this case <i>int</i> or <i>Integer</i> for a Kotlin <i>Int</i>.
+            Nullable datatypes are always stored as a reference type in Kotlin as null cannot be stored in a primitive
+            Java type.
+        </p>
 
     </div>,
     contents: ''
