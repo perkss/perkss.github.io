@@ -30,38 +30,40 @@ const DistributedAlgorithms = () => (
             joining and leaving the cluster and selecting partition leaders and rebalancing partitions. It also does the
             admin tasks of modifying topics. In Kafka Zookeeper does this controller election. <a
                 href={"https://hackernoon.com/apache-kafkas-distributed-system-firefighter-the-controller-broker-1afca1eae302"}>[Great
-                ref]</a>. It does it by having a path in Zookeeper called <i>/election</i> which is ephemeral and
+                ref]</a>. For Kafka the brokers all attempt to create a ephemeral node in Zookeeper when they start up.
+            This is called <i>/controller</i> after the first started broker succeeds and creates this the other brokers
+            get a node exists already exception back from Zookeeper. They create a Zookeeper watch on the controller
+            node path in Zookeeper then get notified when changes to this ZK Node are made. If a broker that is the
+            current controller is stopped or loses connection then the ephemeral <i>/controller</i> node in Zookeeper
+            will be removed. ZK will notify the other brokers as they are ZK Watchers adn the process starts again and
+            the first to create the node will be the new controller node in the cluster.</p>
+
+        <h4>Partition Leader Election</h4>
+
+        <p>Once a controller is elected it will select partition leaders from brokers. Each partition has one broker
+            that is its leader. The leader could be on different brokers for each partition of a given topic. The
+            controller is notified by Zookeeper if brokers go down and then can elect new partition leader by watching
+            the <i>/broker</i> node in Zookeeper. Generally only a member of the ISR set is used to become the leader
+            unless <i>unclean.leader.election.enable</i> is configured. Once the selected a leader the controller will
+            send a request to all brokers with the new leader and the followers for partitions information. Each leader
+            will then know to start serving producing and consuming requests for clients and the followers know to
+            replicate.
+        </p>
+
+        <h3>General Zookeeper Leadership Election</h3>
+
+        <p>General leadership election in Zookeeper works by having a path in Zookeeper
+            called <i>/my-app-leader</i> which is ephemeral and
             sequenced then each broker appends itself to this file path with a guid and Zookeeper adds a sequence number
             greater than any pre existing guid and sequence number combination. Then Zookeeper selects the lowest
             sequence number as the leader elected. When the lowest sequence number is deleted as the broker has gone
             down notify clients and next number in sequence is elected leader. This can lead to a spike in Zookeeper as
             all clients will call it so the clients actually watch the next in the sequence and if that goes they then
-            check and if no lower sequence use themselves as the leader.</p>
-        <h4>Partition Leader Election</h4>
-
-        <p>Once a controller is elected it will select partition leaders from brokers. Each partition has one broker
-            that is its leader. Could be on different brokers for all partitions of a given topic. The controller is
-            notified by
-            Zookeeper if brokers go down and then can elect new partition leader. Generally only a member of the ISR set
-            is used to become the leader.
-        </p>
-
-        <h4>Distributed Replication</h4>
-
-        <p><a href={"https://kafka.apache.org/documentation/#design_replicatedlog"}>Replicated Logs</a> when a write
-            happens in Kafka it is replicated to the followers. If the leader fails a replica can step up and become the
-            leader. But only if it is in synch with the leader this is <i>ISR</i>. You maybe blocked by slow ISR servers
-            with this approach compared to other majority consensus algorithms such as Raft. Once the failed node
-            returns it is unable to be part of the ISR set until it has caught up so will catch up missed data or start
-            a fresh. If an unclean leader election scenario
-            occurs where if all replicas become unavailable do we choose the first replica to come back to life even if
-            its not in sync. Could result in data loss so is the <i>unclean.leader.election.enable</i> is true. Or we
-            have this option set to false and wait for replica that is in ISR and elect it as the leader to come back.
-            This is consistency vs availability problem and is up to the user of Kafka to decide.
-        </p>
-
-        <p>Ensuring consistency you can have a producer ack=all which will wait for all those in minimum ISR to respond
-            before completing the produced message to Kafka so no messages are dropped.</p>
+            check and if no lower sequence use themselves as the leader. You always need a quorum in Zookeeper and it is
+            always required to have a majority of this quorum to work. This stops a split brain scenario for example
+            when you have a 3 node cluster of Zookeeper. If you split and have 2 nodes and 1 node in two separate
+            clusters incorrectly as the single node is not a majority of the quorum then it will not work but the 2 node
+            cluster will.</p>
 
         <h3>Elasticsearch Cluster Coordination</h3>
 

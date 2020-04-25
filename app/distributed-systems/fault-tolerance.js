@@ -12,6 +12,8 @@ const FaultTolerance = () => (
 
         <h3>Unreliable Clocks</h3>
 
+        <h3>Quorum Zookeeper and Kafka Cluster Redundancy</h3>
+
     </div>
 
 
