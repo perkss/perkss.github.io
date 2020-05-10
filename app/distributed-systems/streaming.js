@@ -1,4 +1,7 @@
 import React from 'react';
+import {HashLink as Link} from 'react-router-hash-link';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import {darcula} from 'react-syntax-highlighter/styles/hljs';
 
 const Streaming = () => (
 
@@ -6,7 +9,13 @@ const Streaming = () => (
 
         <h2>Streaming</h2>
 
-        <h3>Kafka Streams 101</h3>
+        <h3>Topics</h3>
+        <ul className="text-list">
+            <li><Link to={"#KafkaStreams101"}>Kafka Streams 101</Link></li>
+            <li><Link to={"#KafkaStreamsKotlin"}>Kafka Streams with Kotlin</Link></li>
+        </ul>
+
+        <h3 id={"KafkaStreams101"}>Kafka Streams 101</h3>
 
         <p>
             <a>Two key readings are <a
@@ -142,7 +151,100 @@ const Streaming = () => (
                 href={"https://docs.confluent.io/current/streams/developer-guide/dsl-api.html#window-final-results"}>Send
                 window result</a> after close and suppression is how this is achieved. </p>
 
-        <h4>Stateful Streaming</h4>
+        <h3 id={"KafkaStreamsKotlin"}>Kafka Streams with Kotlin</h3>
+
+        <p>We will now move onto discussing using Kafka Streams practically with Kotlin. This section will continually
+            grow to please check back for further examples coming. We will cover stateless and stateful transformations
+            using Kafka Streams and Kotlin covering <i>aggregations</i>, <i>joins</i>, <i>tables</i> to name a few. All
+            the code examples can be found on our github page <a
+                href={"https://github.com/perkss/kotlin-kafka-and-kafka-streams-examples/tree/master/kotlin-kafka-streams-examples"}>here</a>.
+        </p>
+
+        <p>Our story for these examples is going to be a social media service where users can create posts and we will
+            use Kafka Streams to process these social media posts and other users interactions with them.</p>
+
+        <p>The data model for these posts will be kept simple and we will use Avro for complex data types where the
+            schemas can be found in the <a
+                href={"https://github.com/perkss/kotlin-kafka-and-kafka-streams-examples/tree/master/avro-schemas"}>Avro
+                Schemas</a> module of our code examples and
+            the <i>avro-maven-plugin</i> is used to generate the code.</p>
+
+        <h4>Kafka Streams GroupBy and Count</h4>
+
+        <p>Our first example investigates using Kafka Streams <i>GroupBy</i> and <i>Count</i>. In this toy example we
+            will send social media creation posts to our SocialMediaTotalPostCount topology to group them by the <i>User
+                Id</i> and then keep a count and store this in a <i>KTable</i> and then stream this <i>KTable</i> back
+            out to an event topic. This is a simple example but our first so lets go into the basic details for this
+            one.</p>
+
+        <p>First we need to build our topology so that it can consume off the input topic. To build a KafkaStreams
+            topology you use the <i>StreamsBuilder</i>.</p>
+
+        <SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={false}
+                           wrapLines={true}>{`val builder = StreamsBuilder()`}</SyntaxHighlighter>
+
+        <p>Now we can simply start our topology off by consuming off the input topic by providing a name for the topic
+            and using the <i>stream</i> method on the <i>StreamsBuilder</i> object we created. Here we do not use the
+            default <i>Serde</i> so we specify the <i>Avro SpecificSerde</i> for the <i>PostCreated</i> object.</p>
+
+        <SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={false}
+                           wrapLines={true}>{`val input = builder.stream(inputTopic, Consumed.with(Serdes.String(), postCreatedSerde))`}</SyntaxHighlighter>
+
+        <p>Now we do the main work of the topology we take the input stream of <i>PostCreated</i> events and then we
+            group them by the <i>UserId</i> who created the post and count them recording this down in
+            a <i>KTable</i> with the key as the <i>UserId</i> and the value as the <i>Total Count of Posts</i>.</p>
+
+        <SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={false}
+                           wrapLines={true}>{`val aggregated: KTable<String, Long> = input
+                .groupBy { _, value -> value.userId }
+                .count()`}</SyntaxHighlighter>
+
+        <p>This <i>KTable</i> is then streamed to an event topic on each update where we can consume the updated counts.
+        </p>
+
+        <SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={false}
+                           wrapLines={true}>{`aggregated.toStream().to(outputTopic, Produced.with(Serdes.String(), Serdes.Long()))`}</SyntaxHighlighter>
+
+        <p>Kafka Streams provides a <a
+            href={"https://kafka.apache.org/25/javadoc/org/apache/kafka/streams/TopologyTestDriver.html"}>Topology Test
+            Driver</a> that provides a friendly way of testing
+            topologies by dropping messages into a test topic and asserting the output topic of the topology without the
+            need for starting a Kafka broker. The example test can be found in the repository <a
+                href={"https://github.com/perkss/kotlin-kafka-and-kafka-streams-examples/blob/master/kotlin-kafka-streams-examples/src/test/kotlin/com/perkss/kafka/reactive/examples/AggregateExamplesTest.kt#L25"}> here.</a>
+        </p>
+
+        <p>Firstly we build the Topology and then we use the TestDriver to allow us to interact with it.</p>
+
+        <SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={false}
+                           wrapLines={true}>{`val totalUserSocialMediaPostsTopology = AggregateExamples.buildUserSocialMediaPostsTotalCountTopology(inputTopicName, outputTopicName, postCreatedSerde)
+        val testDriver = TopologyTestDriver(totalUserSocialMediaPostsTopology, props)`}</SyntaxHighlighter>
+
+        <p>We then specify and create the test input topic and specify the <i>Serializers</i> required for it. Here we
+            use the String for the key and the Specific Avro Serde for the value.</p>
+
+        <SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={false}
+                           wrapLines={true}>{`val postCreatedTopic = testDriver.createInputTopic(inputTopicName,
+                Serdes.String().serializer(), postCreatedSerde.serializer())`}</SyntaxHighlighter>
+
+        <p>We then pipe input onto the topic in this case the <i>PostCreated</i> object pretending that Alice created a
+            Post.</p>
+
+        <SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={false}
+                           wrapLines={true}>{`postCreatedTopic.pipeInput(UUID.randomUUID().toString(), PostCreated(UUID.randomUUID().toString(), alice, "Happy", LocalDateTime.now(ZoneOffset.UTC).format(DateTimeFormatter.ISO_DATE_TIME)))`}</SyntaxHighlighter>
+
+        <p>An output topic is then created from the Topology and this is where we send the counts of users posts.</p>
+
+        <SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={false}
+                           wrapLines={true}>{`val outputTopic = testDriver.createOutputTopic(outputTopicName, Serdes.String().deserializer(),
+                Serdes.Long().deserializer())`}</SyntaxHighlighter>
+
+        <p>We then process and assert the results of the topic here we have Alice as the user ID and then a count of
+            1 as Alice has created a single post. In the actual test you can see the full example with multiple users
+            and increased counts.</p>
+
+        <SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={false}
+                           wrapLines={true}>{`assertThat(outputTopic.readKeyValue(), equalTo(KeyValue(alice, 1L)))`}</SyntaxHighlighter>
+
     </div>
 
 
