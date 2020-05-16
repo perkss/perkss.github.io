@@ -257,7 +257,7 @@ const Streaming = () => (
             windowing. This example topology will emit an event every time a post is created in a window. In our next
             post we will checkout suppression that emits at the end of the window.</p>
         <p>
-            In this example we will use a embedded timestamp in each message that represents the exact
+            In this example we will use an embedded timestamp in each message that represents the exact
             time the social media post was created by the user in <a
             href={"https://github.com/perkss/kotlin-kafka-and-kafka-streams-examples/blob/master/avro-schemas/src/main/resources/com.perkss.social.media.model/post-created.avsc#L33"}>UTC</a>.
             This is the event time when the event actually
@@ -280,7 +280,7 @@ const Streaming = () => (
 
         <p>Right to some code to see this happen the best way to understand this is to check the TopologyTestDriver <a
             href={"https://github.com/perkss/kotlin-kafka-and-kafka-streams-examples/blob/master/kotlin-kafka-streams-examples/src/test/kotlin/com/perkss/kafka/reactive/examples/AggregateExamplesTest.kt#L100"}>
-            test.</a> But first lets walk through the difference in the code to our last post.</p>
+            test.</a> But first let's walk through the difference in the code to our last post.</p>
 
 
         <p>The first difference you will notice is that we provide a custom timestamp extractor to the consumer in the
@@ -290,7 +290,7 @@ const Streaming = () => (
                            wrapLines={true}>{`val input = builder.stream(inputTopic, Consumed.with(Serdes.String(), postCreatedSerde,
                 PostCreatedTimestampExtractor, Topology.AutoOffsetReset.EARLIEST))`}</SyntaxHighlighter>
 
-        <p>The custom tiemstamp extractor is simple it simply parses back the ISO stored string in each message and
+        <p>The custom timestamp extractor is simple it simply parses back the ISO stored string in each message and
             converts it into EpochMilli. If this is not an instance of PostCreated we fall back to the original time on
             the event provided as default by Kafka.</p>
 
@@ -328,7 +328,7 @@ const Streaming = () => (
                 .to(outputTopic, Produced.with(Serdes.String(), Serdes.Long()))`}</SyntaxHighlighter>
 
         <p>To see the true power of this example the test is the place to <a
-            href={"https://github.com/perkss/kotlin-kafka-and-kafka-streams-examples/blob/master/kotlin-kafka-streams-examples/src/test/kotlin/com/perkss/kafka/reactive/examples/AggregateExamplesTest.kt#L100"}>go.</a>
+            href={"https://github.com/perkss/kotlin-kafka-and-kafka-streams-examples/blob/master/kotlin-kafka-streams-examples/src/test/kotlin/com/perkss/kafka/reactive/examples/AggregateExamplesTest.kt#L100"}>go. </a>
             In this test we manipulate the time of the PostCreated by moving it forward to move the window forward.
         </p>
 
