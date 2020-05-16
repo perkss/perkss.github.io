@@ -169,7 +169,7 @@ const Streaming = () => (
                 Schemas</a> module of our code examples and
             the <i>avro-maven-plugin</i> is used to generate the code.</p>
 
-        <h4>Kafka Streams GroupBy and Count</h4>
+        <h4>#Post 1 Kafka Streams GroupBy and Count</h4>
 
         <p>Our first example investigates using Kafka Streams <i>GroupBy</i> and <i>Count</i>. In this toy example we
             will send social media creation posts to our SocialMediaTotalPostCount topology to group them by the <i>User
@@ -180,21 +180,21 @@ const Streaming = () => (
         <p>First we need to build our topology so that it can consume off the input topic. To build a KafkaStreams
             topology you use the <i>StreamsBuilder</i>.</p>
 
-        <SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={false}
+        <SyntaxHighlighter language='kotlin' style={darcula} showLineNumbers={false}
                            wrapLines={true}>{`val builder = StreamsBuilder()`}</SyntaxHighlighter>
 
         <p>Now we can simply start our topology off by consuming off the input topic by providing a name for the topic
             and using the <i>stream</i> method on the <i>StreamsBuilder</i> object we created. Here we do not use the
             default <i>Serde</i> so we specify the <i>Avro SpecificSerde</i> for the <i>PostCreated</i> object.</p>
 
-        <SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={false}
+        <SyntaxHighlighter language='kotlin' style={darcula} showLineNumbers={false}
                            wrapLines={true}>{`val input = builder.stream(inputTopic, Consumed.with(Serdes.String(), postCreatedSerde))`}</SyntaxHighlighter>
 
         <p>Now we do the main work of the topology we take the input stream of <i>PostCreated</i> events and then we
             group them by the <i>UserId</i> who created the post and count them recording this down in
             a <i>KTable</i> with the key as the <i>UserId</i> and the value as the <i>Total Count of Posts</i>.</p>
 
-        <SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={false}
+        <SyntaxHighlighter language='kotlin' style={darcula} showLineNumbers={false}
                            wrapLines={true}>{`val aggregated: KTable<String, Long> = input
                 .groupBy { _, value -> value.userId }
                 .count()`}</SyntaxHighlighter>
@@ -202,7 +202,7 @@ const Streaming = () => (
         <p>This <i>KTable</i> is then streamed to an event topic on each update where we can consume the updated counts.
         </p>
 
-        <SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={false}
+        <SyntaxHighlighter language='kotlin' style={darcula} showLineNumbers={false}
                            wrapLines={true}>{`aggregated.toStream().to(outputTopic, Produced.with(Serdes.String(), Serdes.Long()))`}</SyntaxHighlighter>
 
         <p>Kafka Streams provides a <a
@@ -215,26 +215,26 @@ const Streaming = () => (
 
         <p>Firstly we build the Topology and then we use the TestDriver to allow us to interact with it.</p>
 
-        <SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={false}
+        <SyntaxHighlighter language='kotlin' style={darcula} showLineNumbers={false}
                            wrapLines={true}>{`val totalUserSocialMediaPostsTopology = AggregateExamples.buildUserSocialMediaPostsTotalCountTopology(inputTopicName, outputTopicName, postCreatedSerde)
         val testDriver = TopologyTestDriver(totalUserSocialMediaPostsTopology, props)`}</SyntaxHighlighter>
 
         <p>We then specify and create the test input topic and specify the <i>Serializers</i> required for it. Here we
             use the String for the key and the Specific Avro Serde for the value.</p>
 
-        <SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={false}
+        <SyntaxHighlighter language='kotlin' style={darcula} showLineNumbers={false}
                            wrapLines={true}>{`val postCreatedTopic = testDriver.createInputTopic(inputTopicName,
                 Serdes.String().serializer(), postCreatedSerde.serializer())`}</SyntaxHighlighter>
 
         <p>We then pipe input onto the topic in this case the <i>PostCreated</i> object pretending that Alice created a
             Post.</p>
 
-        <SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={false}
+        <SyntaxHighlighter language='kotlin' style={darcula} showLineNumbers={false}
                            wrapLines={true}>{`postCreatedTopic.pipeInput(UUID.randomUUID().toString(), PostCreated(UUID.randomUUID().toString(), alice, "Happy", LocalDateTime.now(ZoneOffset.UTC).format(DateTimeFormatter.ISO_DATE_TIME)))`}</SyntaxHighlighter>
 
         <p>An output topic is then created from the Topology and this is where we send the counts of users posts.</p>
 
-        <SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={false}
+        <SyntaxHighlighter language='kotlin' style={darcula} showLineNumbers={false}
                            wrapLines={true}>{`val outputTopic = testDriver.createOutputTopic(outputTopicName, Serdes.String().deserializer(),
                 Serdes.Long().deserializer())`}</SyntaxHighlighter>
 
@@ -242,8 +242,128 @@ const Streaming = () => (
             1 as Alice has created a single post. In the actual test you can see the full example with multiple users
             and increased counts.</p>
 
-        <SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={false}
+        <SyntaxHighlighter language='kotlin' style={darcula} showLineNumbers={false}
                            wrapLines={true}>{`assertThat(outputTopic.readKeyValue(), equalTo(KeyValue(alice, 1L)))`}</SyntaxHighlighter>
+
+        <p>Great we have seen our first example of writing a Kafka Streams application using Kotlin and testing it with
+            TopologyTestDriver simple and clean and perfectly integrates using Kotlin.</p>
+
+        <h4>#Post 2 Kafka Streams Windowed Count using Custom TimestampExtractor</h4>
+
+        <p>For our second post on Kotlin with Kafka Streams we will look into using Windowing with our Count Topology so
+            we only keep the count of posts for a certain time period. For example we have a window of every 30 seconds
+            if Alice creates two posts in those 30 seconds then they will count as a total count of two. But if Alice
+            then posts again at 31 seconds it will be a total post count of 1. A toy example just to show the concept of
+            windowing. This example topology will emit an event every time a post is created in a window. In our next
+            post we will checkout suppression that emits at the end of the window.</p>
+        <p>
+            In this example we will use a embedded timestamp in each message that represents the exact
+            time the social media post was created by the user in <a
+            href={"https://github.com/perkss/kotlin-kafka-and-kafka-streams-examples/blob/master/avro-schemas/src/main/resources/com.perkss.social.media.model/post-created.avsc#L33"}>UTC</a>.
+            This is the event time when the event actually
+            happened vs the standard timestamp provided by Kafka which is the processing time on the Kafka producer
+            which is configurable. A great read on the complexities of time stamps in stream processing is <a
+            href={"https://www.oreilly.com/radar/the-world-beyond-batch-streaming-101/"}>Streaming 101.</a> Well worth a
+            full read or particularly the section on Event Time vs Processing Time.
+
+            You can find out further about <i>TimestampExtractor</i> in the <a
+            href={"https://docs.confluent.io/current/streams/developer-guide/config-streams.html#default-timestamp-extractor"}>confluent
+            docs</a>. The object we use is a Kotlin singleton and implements the interface of
+            the <i>TimestampExtractor</i> where we parse the ISO string stored in each event recieved by our stream and
+            then convert it to epoch milli.
+
+            The window we will use in this example is the
+            <a href={"https://kafka.apache.org/25/javadoc/org/apache/kafka/streams/kstream/TimeWindows.html"}> FixedTime
+                Window</a>. To find out more about <strong>windowing</strong> in Kafka Streams check out the <a
+            href={"https://kafka.apache.org/20/documentation/streams/developer-guide/dsl-api.html#windowing"}>docs.</a>
+        </p>
+
+        <p>Right to some code to see this happen the best way to understand this is to check the TopologyTestDriver <a
+            href={"https://github.com/perkss/kotlin-kafka-and-kafka-streams-examples/blob/master/kotlin-kafka-streams-examples/src/test/kotlin/com/perkss/kafka/reactive/examples/AggregateExamplesTest.kt#L100"}>
+            test.</a> But first lets walk through the difference in the code to our last post.</p>
+
+
+        <p>The first difference you will notice is that we provide a custom timestamp extractor to the consumer in the
+            stream.</p>
+
+        <SyntaxHighlighter language='kotlin' style={darcula} showLineNumbers={false}
+                           wrapLines={true}>{`val input = builder.stream(inputTopic, Consumed.with(Serdes.String(), postCreatedSerde,
+                PostCreatedTimestampExtractor, Topology.AutoOffsetReset.EARLIEST))`}</SyntaxHighlighter>
+
+        <p>The custom tiemstamp extractor is simple it simply parses back the ISO stored string in each message and
+            converts it into EpochMilli. If this is not an instance of PostCreated we fall back to the original time on
+            the event provided as default by Kafka.</p>
+
+        <SyntaxHighlighter language='kotlin' style={darcula} showLineNumbers={false}
+                           wrapLines={true}>{`object PostCreatedTimestampExtractor : TimestampExtractor {
+
+    override fun extract(record: ConsumerRecord<Any, Any>, previousTimestamp: Long): Long {
+        return if (record.value() is PostCreated) {
+            LocalDateTime.parse((record.value() as PostCreated).timestamp)
+                    .toInstant(ZoneOffset.UTC).toEpochMilli()
+        } else previousTimestamp
+    }
+}`}</SyntaxHighlighter>
+
+        <p>The main body of processing logic is very similar we log out each post and then group them by the userId and
+            window these by a TimeWindow of 30 seconds. To reaffirm this will count the total posts for each user in a
+            30 second window and emit the count on each event streamed in.</p>
+
+        <SyntaxHighlighter language='kotlin' style={darcula} showLineNumbers={false}
+                           wrapLines={true}>{` val aggregated: KTable<Windowed<String>, Long> = input
+                .peek { key, postCreated -> logger.info("Key {} and value {}", key, postCreated) }
+                .groupBy { _, value -> value.userId } // group by the user who created the post
+                .windowedBy(
+                        TimeWindows.of(Duration.ofSeconds(30)))
+                .count()
+`}</SyntaxHighlighter>
+
+
+        <p>We then simply as before stream the User and Count of posts for each 30 second window back to a Kafka
+            topic.</p>
+
+        <SyntaxHighlighter language='kotlin' style={darcula} showLineNumbers={false}
+                           wrapLines={true}>{`aggregated.toStream { windowedKey, _ -> windowedKey.key() }
+                .peek { key, value -> logger.info("Sending on Key {} value {}", key, value) }
+                .to(outputTopic, Produced.with(Serdes.String(), Serdes.Long()))`}</SyntaxHighlighter>
+
+        <p>To see the true power of this example the test is the place to <a
+            href={"https://github.com/perkss/kotlin-kafka-and-kafka-streams-examples/blob/master/kotlin-kafka-streams-examples/src/test/kotlin/com/perkss/kafka/reactive/examples/AggregateExamplesTest.kt#L100"}>go.</a>
+            In this test we manipulate the time of the PostCreated by moving it forward to move the window forward.
+        </p>
+
+        <SyntaxHighlighter language='kotlin' style={darcula} showLineNumbers={false}
+                           wrapLines={true}>{` // Move 20 seconds forward in time #Window 1
+        val eventTimeStamp3 = eventTimeStamp2.plusSeconds(20)
+
+        postCreatedTopic.pipeInput(UUID.randomUUID().toString(),
+                PostCreated(
+                        UUID.randomUUID().toString(),
+                        alice,
+                        "Running",
+                        eventTimeStamp3.formatInstantToIsoDateTime()))
+
+        // New window
+        // Move 2 seconds forward in time #Window 2
+        val eventTimeStamp4 = eventTimeStamp3.plusSeconds(2)`}</SyntaxHighlighter>
+
+        <p>We allow single window posts for all users and then in the second window Alice has two posts.</p>
+
+        <SyntaxHighlighter language='kotlin' style={darcula} showLineNumbers={false}
+                           wrapLines={true}>{`        // Alice has a single post
+        assertThat(outputTopic.readKeyValue(), equalTo(KeyValue(alice, 1L)))
+        assertThat(outputTopic.readKeyValue(), equalTo(KeyValue(bill, 1L)))
+        // Alice has a second post
+        assertThat(outputTopic.readKeyValue(), equalTo(KeyValue(alice, 1L)))
+        assertThat(outputTopic.readKeyValue(), equalTo(KeyValue(jasmine, 1L)))
+        // Alice has a third post which is in the same window as her second post so aggregate
+        assertThat(outputTopic.readKeyValue(), equalTo(KeyValue(alice, 2L)))`}</SyntaxHighlighter>
+
+        <p>As expected the output of Alice count is twice in the second window as the default for Kafka streams is to
+            emit on every event. As noted we will look at suppression to emit only on the close of the window.</p>
+
+        <p>There you go folks post two. Windowing with a simple counting aggregation in Kafka Streams simple yet
+            powerful concept well done on making it through!</p>
 
     </div>
 
