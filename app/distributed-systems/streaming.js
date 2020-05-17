@@ -257,6 +257,10 @@ const Streaming = () => (
             windowing. This example topology will emit an event every time a post is created in a window. In our next
             post we will checkout suppression that emits at the end of the window.</p>
         <p>
+
+            A little pre reading for this section <a
+            href={"https://stackoverflow.com/questions/55258690/is-kafka-timestamp-order-corresponding-to-the-offset"}>Kafka
+            timestamps</a> and using them in <a href={"https://kafka.apache.org/25/documentation/streams/core-concepts#streams_time"}>Kafka Streams</a>.
             In this example we will use an embedded timestamp in each message that represents the exact
             time the social media post was created by the user in <a
             href={"https://github.com/perkss/kotlin-kafka-and-kafka-streams-examples/blob/master/avro-schemas/src/main/resources/com.perkss.social.media.model/post-created.avsc#L33"}>UTC</a>.
