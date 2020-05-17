@@ -365,6 +365,62 @@ const Streaming = () => (
         <p>There you go folks post two. Windowing with a simple counting aggregation in Kafka Streams simple yet
             powerful concept well done on making it through!</p>
 
+        <h4>#Post 3 Kafka Streams Windowed Final Result</h4>
+
+        <p>Following on from our previous post where window count was used for new social media posts by users, we
+            emitted the total user count each time a new post was created technically creating a new event that was
+            processed by our topology. What if for example we wanted to alert on a large number of posts or only process
+            each window once with an alert then we can use the <a
+                href={"https://kafka.apache.org/25/javadoc/org/apache/kafka/streams/kstream/Suppressed.html"}><i>suppression</i></a> feature
+            of Kafka streams to emit only on the window close or a time limit. Basically suppressing intermediate
+            results and only sending on the final result per window.</p>
+
+        <p>To use suppression in Kafka streams we simply add the call to suppress and the type of suppression we want to
+            use in this example we use the <i>untilWindowCloses</i> with an unbounded buffer. A note for this is as
+            suppression uses a state store we need to tell it how to materialize the key and value which serializers to
+            use. Therefore we state in the <i>count</i> function how to materialize the view.</p>
+
+        <SyntaxHighlighter language='kotlin' style={darcula} showLineNumbers={false}
+                           wrapLines={true}>{` val aggregated: KTable<Windowed<String>, Long> = input
+                .peek { key, postCreated -> logger.info("Key {} and value {}", key, postCreated) }
+                .groupBy { _, value -> value.userId } // group by the user who created the post
+                .windowedBy(
+                        TimeWindows.of(Duration.ofSeconds(30)).grace(Duration.ZERO))
+                // Note we need to materialize here as serdes changes
+                .count(Materialized.with(Serdes.String(), Serdes.Long()))
+                // Suppress the output so only output of a window is emitted when the window closes.
+                .suppress(Suppressed.untilWindowCloses(unbounded()))
+`}</SyntaxHighlighter>
+
+        <p>In the test case we process the data the same but the output differs as Alice posts twice in window 2 we do
+            not see the intermediate result of 1 but only the window emits when it closes so alice only emits the count
+            of 2 for her social media posts. We manipulate the time of events as before and we use the custom time stamp
+            extractor.</p>
+
+        <SyntaxHighlighter language='kotlin' style={darcula} showLineNumbers={false}
+                           wrapLines={true}>{`val expectedValues = mutableListOf<KeyValue<String, Long>>(
+                KeyValue(alice, 1L), // #Window1 Alice has a single post
+                KeyValue(bill, 1L), // #Window1
+                KeyValue(alice, 2L), // #Window2 Alice has a second post and a third post in the same window and it only emits the final values
+                KeyValue(jasmine, 1L) // #Window2`}</SyntaxHighlighter>
+
+        <p>To actually update the time in the window we also send an extra event to flush the window of results so we
+            emit a dummy event. This is the expected behaviour as the window does not use wall clock time it uses the
+            event times. This is discussed in the comments on <a
+                href={"https://stackoverflow.com/questions/57480927/how-to-unit-test-a-kafka-stream-application-that-uses-session-window"}>stack
+                overflow</a>.
+        </p>
+
+        <SyntaxHighlighter language='kotlin' style={darcula} showLineNumbers={false}
+                           wrapLines={true}>{`// Dummy event to close the window suppress() will only emit if event-time passed window-end time plus grace-period
+        logger.info("Sending in dummy event to flush the window")
+        postCreatedTopic.pipeInput(UUID.randomUUID().toString(),
+                PostCreated(UUID.randomUUID().toString(), alice, "Close that window",
+                        eventTimeStamp6.formatInstantToIsoDateTime()))`}</SyntaxHighlighter>
+
+        <p>A short post but powerful to see how we can only emit the final results of a window operation
+            using <i>suppress</i>.</p>
+
     </div>
 
 
