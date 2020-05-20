@@ -11,9 +11,25 @@ const Streaming = () => (
 
         <h3>Topics</h3>
         <ul className="text-list">
+            <li><Link to={"#StreamingSystems"}>Streaming Systems</Link></li>
             <li><Link to={"#KafkaStreams101"}>Kafka Streams 101</Link></li>
             <li><Link to={"#KafkaStreamsKotlin"}>Kafka Streams with Kotlin</Link></li>
         </ul>
+
+        <h3 id={"StreamingSystems"}>Streaming Systems</h3>
+
+        <p>Streaming has many definitions but from my view it is when processing unbounded data. In the sense a bounded
+            data source has a finite size but an unbounded data source is infinite.</p>
+
+        <h4>Time</h4>
+
+        <p><strong>Event Time</strong> when the event actually happens for example the time a social media post is
+            created by the actual user on a mobile phone.</p>
+
+        <p><strong>Processing Time</strong> the time the event is observed in our system. For example when the social
+            media post is processed this could be hours or days or any time later for example a social media post was
+            made when on a plane journey on flight mode it will not be processed until the plane lands and flight mode
+            is switched off.</p>
 
         <h3 id={"KafkaStreams101"}>Kafka Streams 101</h3>
 
@@ -26,6 +42,10 @@ const Streaming = () => (
         </p>
 
         <h4>Stream Table Duality</h4>
+
+        <p><strong>Table: </strong>A view of a data set at a specific point in time.</p>
+
+        <p><strong>Stream: </strong>A event by event view of the data set over a period of time.</p>
 
         <p>This point is driven in all over the internet but to summarise stream processing commonly needs to work with
             a data store. A stream is very simply put a unbounded sequence of key value pairs. A table is also a store
@@ -260,7 +280,8 @@ const Streaming = () => (
 
             A little pre reading for this section <a
             href={"https://stackoverflow.com/questions/55258690/is-kafka-timestamp-order-corresponding-to-the-offset"}>Kafka
-            timestamps</a> and using them in <a href={"https://kafka.apache.org/25/documentation/streams/core-concepts#streams_time"}>Kafka Streams</a>.
+            timestamps</a> and using them in <a
+            href={"https://kafka.apache.org/25/documentation/streams/core-concepts#streams_time"}>Kafka Streams</a>.
             In this example we will use an embedded timestamp in each message that represents the exact
             time the social media post was created by the user in <a
             href={"https://github.com/perkss/kotlin-kafka-and-kafka-streams-examples/blob/master/avro-schemas/src/main/resources/com.perkss.social.media.model/post-created.avsc#L33"}>UTC</a>.
