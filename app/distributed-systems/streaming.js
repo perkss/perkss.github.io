@@ -2,6 +2,11 @@ import React from 'react';
 import {HashLink as Link} from 'react-router-hash-link';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import {darcula} from 'react-syntax-highlighter/styles/hljs';
+import Graph from '../../images/InitialGraph.jpg'
+import EventTimeSum from '../../images/EventTimeSum.jpg'
+import ProcessingTimeSum from '../../images/ProcessingTimeSum.jpg'
+import Watermarks from '../../images/Watermarks.jpeg'
+import BatchProcess from '../../images/BatchProcess.jpg'
 
 const Streaming = () => (
 
@@ -12,8 +17,12 @@ const Streaming = () => (
         <h3>Topics</h3>
         <ul className="text-list">
             <li><Link to={"#StreamingSystems"}>Streaming Systems</Link></li>
-            <li><Link to={"#KafkaStreams101"}>Kafka Streams 101</Link></li>
+            <li><Link to={"#Watermarks"}>Watermarks</Link></li>
+            <li><Link to={"#Windowing"}>Windowing</Link></li>
+            <li><Link to={"#Triggers"}>Triggers</Link></li>
+            <li><Link to={"#KafkaStreams101"}>Apache Kafka Streams 101</Link></li>
             <li><Link to={"#KafkaStreamsKotlin"}>Kafka Streams with Kotlin</Link></li>
+            <li><Link to={"#Flink101"}>Apache Flink 101</Link></li>
         </ul>
 
         <h3 id={"StreamingSystems"}>Streaming Systems</h3>
@@ -31,7 +40,122 @@ const Streaming = () => (
             made when on a plane journey on flight mode it will not be processed until the plane lands and flight mode
             is switched off.</p>
 
-        <h3 id={"KafkaStreams101"}>Kafka Streams 101</h3>
+        {/*DO the example all running in race and timings are there positions submit score by 10-11. Run longest distance in an hour.
+         Distance recorded by each km. Each runner gets to km different times. Can see windows for each time. 1 minute. Ticks each km, and then
+          total count at the end. running average with window number of m per minute. total km. one big window. */}
+
+        <img width="90%" height="90%" src={Graph} alt="Runners Graph Image"/>
+
+        <h3 id={"Windowing"}>Windowing</h3>
+        <p>A key question to think about when building streaming systems is if my data is unbounded when can I say its
+            finished? When should I materialise the results? The data could be infinite, but you need to see who ran the
+            furthest with up to date values every
+            five minutes and present these back to your users. <strong>Where</strong> in event time are results
+            calculated? The business requirement can be refined to show me the
+            distanced covered by users running with a smart watch every 10 minutes in a hour long run between 10.00 and
+            11.00. Here we can see that if we window the data by an event time every 5 minutes we can then take the
+            distance covered for each 10 minutes. And find the total distanced run by each runner to find who ran the
+            furthest and is leading at each 10 minute interval. </p>
+
+        <table border="1" class="center">
+            <tr>
+                <th>Event Time <br/> Runner A</th>
+                <th>Processing Time <br/>  Runner A</th>
+                <th>Event Time <br/>  Runner B</th>
+                <th>Processing Time <br/> Runner B</th>
+            </tr>
+            <tr>
+                <td>10.1</td>
+                <td>10.11</td>
+                <td>10.08</td>
+                <td>10.15</td>
+            </tr>
+            <tr>
+                <td>10.25</td>
+                <td>10.25</td>
+                <td>10.20</td>
+                <td>10.31</td>
+            </tr>
+            <tr>
+                <td>10.33</td>
+                <td>10.45</td>
+                <td>10.31</td>
+                <td>10.32</td>
+            </tr>
+            <tr>
+                <td>10.40</td>
+                <td>10.47</td>
+                <td>10.41</td>
+                <td>10.51</td>
+            </tr>
+            <tr>
+                <td>10.51</td>
+                <td>10.54</td>
+                <td>10.50</td>
+                <td>10.51</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td>10.55</td>
+                <td>10.60</td>
+            </tr>
+        </table>
+
+        <img width="90%" height="90%" src={BatchProcess} alt="Runners Graph Image"/>
+
+
+        <p></p>
+
+        <img width="90%" height="90%" src={EventTimeSum} alt="Runners Graph Image"/>
+
+        <p></p>
+
+        <img width="90%" height="90%" src={ProcessingTimeSum} alt="Runners Graph Image"/>
+
+        <h3 id={"Watermarks"}>Watermarks</h3>
+        <p>Watermarks are to do with <strong>when</strong> input is complete in regards to event time. This is the
+            trickiest part I found
+            to grasp as literature commonly goes on about perfect watermarks but in reality a perfect watermark in a
+            distributed system is impossible. When does unbounded data have a end? You can chunk it into timed slots
+            windows which we covered above, but then will all the data chunked into event time slots arrive on time?
+            Impossible to guarantee. In distributed systems delays happens, network outages happen data
+            can happen on a mobile phone at 9.01am (event time) and the user has no mobile data signal until 9.22
+            (process time) to send the data on to be processed. Watermark X states that all data with an event time less
+            than X have been observed. In the above example of keeping a distanced run for each runner between 9:00 and
+            10:00 do we wait for all data points or emit with partial results? Maybe data is late? Maybe those who
+            signed up did not run at all so do not emit any running data if we waited we would be waiting
+            incorrectly. All considerations that need to be made when defining a watermark and different types of
+            triggers can be used to help with when to emit final windowed results.</p>
+
+        <p>The diagram below shows the watermarks stating the Perfect Watermark (the green line) that will stay long
+            enough for any late data but will add latency. A Heuristic Watermark (the orange line) that will best guess
+            when data has all arrived but may miss late data mixing latency and accuracy. Then shows the perfect
+            watermark (pink line) where the processing time and event time is always equal.</p>
+
+        <img width="90%" height="90%" src={Watermarks} alt="Runners Graph Image"/>
+
+        <h4>Perfect Watermark</h4>
+        <h4>Heuristic Watermark</h4>
+        <h4>Ideal Watermark</h4>
+
+        {/*Perfect watermark is data is proceesed per runner each time they run a km. Could do these examples in Flink?*/}
+
+        <h3 id={"Triggers"}>Triggers</h3>
+
+        <p>When is a window finished? As discussed in watermarks when is a window result final, what happens if data is
+            later than the event time by say an hour? When should the result be emitted. </p>
+
+        <h4>Discarding</h4>
+
+        <h4>Accumulating</h4>
+
+        <h4>Accumulating and Retracting</h4>
+        {/* When do we rank the final score? If they process the time late how long do we wait?*/}
+
+        <h3 id={"Accumulation"}>Accumulation</h3>
+
+        <h3 id={"KafkaStreams101"}>Apache Kafka Streams 101</h3>
 
         <p>
             <a>Two key readings are <a
@@ -445,6 +569,39 @@ const Streaming = () => (
 
         <p>A short post but powerful to see how we can only emit the final results of a window operation
             using <i>suppress</i>.</p>
+
+        <p>docker run -d --name local_postgres -v postgres_data:/var/lib/postgresql/data -e POSTGRES_PASSWORD=password
+            -e POSTGRES_DB=db -p 54320:5432 postgres:11</p>
+
+        <p>docker exec -it local_postgres psql -U postgres</p>
+
+        <p>CREATE DATABASE testdb;</p>
+
+        <p>CREATE TABLE my_left(num serial UNIQUE NOT NULL, id VARCHAR(2) PRIMARY KEY, time TIMESTAMP NOT NULL);</p>
+
+        <p>CREATE TABLE my_right(num serial UNIQUE NOT NULL, id VARCHAR(2) PRIMARY KEY, time TIMESTAMP NOT NULL);</p>
+
+        <p>INSERT INTO my_left(num, id, time) VALUES ('1', 'L1', '01/01/2020 12:02:00'::TIMESTAMP);</p>
+
+        <p>INSERT INTO my_left(num, id, time) VALUES ('2', 'L2', '01/01/2020 12:06:00'::TIMESTAMP);</p>
+
+        <p>INSERT INTO my_left(num, id, time) VALUES ('3', 'L3', '01/01/2020 12:03:00'::TIMESTAMP);</p>
+
+        <p>INSERT INTO my_right(num, id, time) VALUES ('2', 'R2', '01/01/2020 12:01:00'::TIMESTAMP);</p>
+
+        <p>INSERT INTO my_right(num, id, time) VALUES ('3', 'R3', '01/01/2020 12:04:00'::TIMESTAMP);</p>
+
+        <p>INSERT INTO my_right(num, id, time) VALUES ('4', 'R4', '01/01/2020 12:05:00'::TIMESTAMP);</p>
+
+
+        <p>SELECT num FROM my_right AS R;</p>
+
+        <p>SELECT my_left.id AS L, my_right.id FROM my_left FULL OUTER JOIN my_right on my_left.num = my_right.num;</p>
+        <p>my_left.id, my_right.id FROM my_left FULL OUTER JOIN my_right on my_left.num = my_right.num</p>
+
+        <p></p>
+
+        <h3 id={"Flink101"}>Apache Flink 101</h3>
 
     </div>
 
