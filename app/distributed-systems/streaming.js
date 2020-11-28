@@ -28,7 +28,11 @@ const Streaming = () => (
         <h3 id={"StreamingSystems"}>Streaming Systems</h3>
 
         <p>Streaming has many definitions but from my view it is when processing unbounded data. In the sense a bounded
-            data source has a finite size but an unbounded data source is infinite.</p>
+            data source has a finite size but an unbounded data source is infinite. The first part of this post is
+            completely inspired and references throughout to <a
+                href={"https://www.oreilly.com/radar/the-world-beyond-batch-streaming-101/"}>Streaming 101</a> and <a
+                href={"https://www.oreilly.com/radar/the-world-beyond-batch-streaming-102/"}>Streaming 102</a> [Akidau]
+        </p>
 
         <h4>Time</h4>
 
@@ -60,8 +64,8 @@ const Streaming = () => (
         <table border="1" class="center">
             <tr>
                 <th>Event Time <br/> Runner A</th>
-                <th>Processing Time <br/>  Runner A</th>
-                <th>Event Time <br/>  Runner B</th>
+                <th>Processing Time <br/> Runner A</th>
+                <th>Event Time <br/> Runner B</th>
                 <th>Processing Time <br/> Runner B</th>
             </tr>
             <tr>
