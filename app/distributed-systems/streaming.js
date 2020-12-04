@@ -53,13 +53,25 @@ const Streaming = () => (
         <h3 id={"Windowing"}>Windowing</h3>
         <p>A key question to think about when building streaming systems is if my data is unbounded when can I say its
             finished? When should I materialise the results? The data could be infinite, but you need to see who ran the
-            furthest with up to date values every
-            five minutes and present these back to your users. <strong>Where</strong> in event time are results
-            calculated? The business requirement can be refined to show me the
-            distanced covered by users running with a smart watch every 10 minutes in a hour long run between 10.00 and
-            11.00. Here we can see that if we window the data by an event time every 5 minutes we can then take the
-            distance covered for each 10 minutes. And find the total distanced run by each runner to find who ran the
-            furthest and is leading at each 10 minute interval. </p>
+            furthest with up to date values every five minutes and present these back to your
+            users. <strong>Where</strong> in event time are results calculated?
+            To help us understand windowing and the importance of using event time rather than processing time lets
+            define a example. We have the business requirement to show me the
+            distanced covered by two runners A and B, running with a smart watch every 10 minutes in a hour long run
+            between 10.00 and 11.00. Here we can see that if we window the data by an event time every 10 minutes we can
+            then take the distance covered for each 10 minutes. And find the total distanced run by each runner to find
+            who ran the furthest and is leading at each 10 minute interval. Then final take the final scores of distance
+            covered by 10:59:59. When the final window shuts.</p>
+
+        <p>The window strategy we will use for this example to consider using event time or processing time are fixed
+            tumbling windows. We will review others afterwards. This window is where we tumble over 10 minute time slots
+            with no no overlaps or gaps. Some key frameworks explain the different types of windows here are the
+            references <a
+                href={"https://docs.confluent.io/platform/current/streams/developer-guide/dsl-api.html#windowing"}>Kafka
+                Streams</a>, <a
+                href={"https://ci.apache.org/projects/flink/flink-docs-stable/dev/stream/operators/windows.html#window-assigners"}>Apache
+                Flink</a> and <a
+                href={"https://beam.apache.org/documentation/programming-guide/#windowing"}>Apache Beam</a></p>
 
         <table border="1" class="center">
             <tr>
@@ -99,23 +111,79 @@ const Streaming = () => (
                 <td>10.51</td>
             </tr>
             <tr>
-                <td></td>
-                <td></td>
+                <td>-</td>
+                <td>-</td>
                 <td>10.55</td>
                 <td>10.60</td>
             </tr>
         </table>
 
+        <br/>
+
+        <h4 id={"GlobalWindow"}>Global Window</h4>
+
+        <p>Lets start with the easiest window one that is the full dataset window
+            where we can process all the data in the window with no end time to add up the total distance runner by each
+            runner at the end of the data. This could be a batch process in the evening or a <a
+                href={"https://ci.apache.org/projects/flink/flink-docs-stable/dev/stream/operators/windows.html#global-windows"}>global
+                window</a> where we trigger on each result. Here we see that runner B wins with 6km vs runner A's 5km.
+        </p>
+
         <img width="90%" height="90%" src={BatchProcess} alt="Runners Graph Image"/>
 
 
-        <p></p>
+        <h4 id={"EventimeWindow"}>Event Time Window</h4>
+
+        <p>Using the event time window strategy setting setting fixed windows of 10 minutes we can see that the results
+            are finalized correctly. The data maybe late on processing time but this data is windowed by event time so
+            it falls into the same windows and the final window due to the requirements of this race ending at 11.00am
+            [10.00 + 59].</p>
 
         <img width="90%" height="90%" src={EventTimeSum} alt="Runners Graph Image"/>
 
-        <p></p>
+        <h4 id={"ProcessTimeWindow"}>Process Time Window</h4>
+
+        <p>When comparing the final result of windowing using the Processing Time rather than Even Time for windowing
+            the score is different as this is strictly windowed by processing time
+            between 10.00 and 10.59. Also as this is a live 10 minute update score feed then the first window is
+            empty neither has made the 1km. Which is incorrect. You can also see at the differences in window 10:20 to
+            10:29, 10:30 to 10.39. Lots of incorrect updates for our users monitoring our two runners. This is a pretty
+            obvious why you should not use processing time for windowing. </p>
 
         <img width="90%" height="90%" src={ProcessingTimeSum} alt="Runners Graph Image"/>
+
+
+        <h4 id={"WindowAssigment"}>Window Assignment</h4>
+
+        <p>Lets now explore how three of the major stream processing frameworks calculate the window each data point
+            should enter into.</p>
+
+        <h5>Flink</h5>
+        <p><a
+            href={"https://github.com/perkss/flink/blob/master/flink-streaming-java/src/main/java/org/apache/flink/streaming/api/windowing/windows/TimeWindow.java#L271"}>Window
+            start</a>
+        </p>
+
+        <p>timestamp - (timestamp - offset + windowSize) % windowSize;</p>
+
+        <h5>Beam</h5>
+        <p><a
+            href={"https://github.com/perkss/beam/blob/master/sdks/java/core/src/main/java/org/apache/beam/sdk/transforms/windowing/FixedWindows.java#L74"}>Window
+            start</a>
+        </p>
+
+        <p>Instant start =
+            new Instant(
+            timestamp.getMillis()
+            - timestamp.plus(size).minus(offset).getMillis() % size.getMillis());</p>
+
+        <h5>Kafka Streams</h5>
+        <p><a
+            href={"https://github.com/apache/kafka/blob/trunk/streams/src/main/java/org/apache/kafka/streams/kstream/TimeWindows.java#L175"}>Window
+            start</a>
+        </p>
+
+        <p>long windowStart = (Math.max(0, timestamp - sizeMs + advanceMs) / advanceMs) * advanceMs;</p>
 
         <h3 id={"Watermarks"}>Watermarks</h3>
         <p>Watermarks are to do with <strong>when</strong> input is complete in regards to event time. This is the
