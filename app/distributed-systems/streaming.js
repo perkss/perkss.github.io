@@ -21,6 +21,7 @@ const Streaming = () => (
             <li><Link to={"#Windowing"}>Windowing</Link></li>
             <li><Link to={"#Watermarks"}>Watermarks</Link></li>
             <li><Link to={"#Triggers"}>Triggers</Link></li>
+            <li><Link to={"#Accumulation"}>Accumulation</Link></li>
             <li><Link to={"#KafkaStreams101"}>Apache Kafka Streams 101</Link></li>
             <li><Link to={"#KafkaStreamsKotlin"}>Kafka Streams with Kotlin</Link></li>
             <li><Link to={"#Flink101"}>Apache Flink 101</Link></li>
@@ -30,9 +31,15 @@ const Streaming = () => (
 
         <p>Streaming has many definitions but from my view it is when processing unbounded data. In the sense a bounded
             data source has a finite size but an unbounded data source is infinite. The first part of this post is
-            completely inspired and references throughout to <a
+            completely inspired and makes references throughout to <a
                 href={"https://www.oreilly.com/radar/the-world-beyond-batch-streaming-101/"}>Streaming 101</a> and <a
-                href={"https://www.oreilly.com/radar/the-world-beyond-batch-streaming-102/"}>Streaming 102</a> [Akidau]
+                href={"https://www.oreilly.com/radar/the-world-beyond-batch-streaming-102/"}>Streaming 102</a> credit to
+            Tyler Akidau.
+            I will take this further by taking a more practical approach by looking into the differences and
+            commonalities of three popular streaming processing frameworks <a
+                href={"https://kafka.apache.org/documentation/streams/"}>Kafka Streams</a>, <a
+                href={"https://beam.apache.org/"}>Apache Beam</a> and <a href={"https://flink.apache.org/"}>Apache
+                Flink</a>.
         </p>
 
         <h3 id={"StreamingTime"}>Streaming Time</h3>
@@ -60,13 +67,13 @@ const Streaming = () => (
         <h3 id={"Windowing"}>Windowing</h3>
         <p>Windowing is taking a data source this can be finite or infinite and breaking it into finite chunks of data
             to be processed where the start and end time of these chunks is provided by a time boundary. A key question
-            to think about when building streaming systems is if my data is unbounded when can I say its finished? When
+            to think about when building streaming systems is, if my data is unbounded when can I say its finished? When
             should I materialise the results? The data could be infinite, but you need to see data point updates every
             five minutes and present these back to your users. All these questions will be answered in the following
             sections. But first we will review the most common types of windowing assignments for some of the most
             popular streaming processing frameworks. Examples of each type of Kafka streams window can be found in code
             <a href={"https://github.com/perkss/kotlin-kafka-and-kafka-streams-examples/blob/master/kotlin-kafka-streams-examples/src/test/kotlin/com/perkss/kafka/reactive/examples/WindowingExamplesTest.kt"}
-            >here.</a>
+            > here.</a>
         </p>
 
         <h4 id={"WindowTypes"}>Window Types</h4>
@@ -244,30 +251,33 @@ const Streaming = () => (
 
         <img width="90%" height="90%" src={BatchProcess} alt="Runners Graph Image"/>
 
-        <h4 id={"EventimeWindow"}>Event Time Window</h4>
+        <h4 id={"EventimeWindow"}>Event Time Tumbling Window</h4>
 
-        <p>Using the event time window strategy setting setting fixed windows of 10 minutes we can see that the results
+        <p>Using the event time window strategy setting fixed windows of 10 minutes we can see that the results
             are finalized correctly. The data maybe late on processing time but this data is windowed by event time so
             it falls into the same windows and the final window due to the requirements of this race ending at 11.00am
             [10.00 + 59]. For this to work with late data you need to buffer the data for a time period you can always
             store intermediate results such as a sum rather than all data points to save space. Another problem is when
             has all the data arrived? If we have late data how long do we wait for it before we materialize, hours,
             days, years? We cannot be certain on this we have to use a combination of heuristics and triggers and allows
-            for late data the best we can for our use case.</p>
+            for late data the best we can for our use case. Commonly processing frameworks allow a grace period of
+            lateness and if data arrives in this grace period then it falls into the final result.</p>
 
         <img width="90%" height="90%" src={EventTimeSum} alt="Runners Graph Image"/>
 
-        <h4 id={"ProcessTimeWindow"}>Process Time Window</h4>
+        <h4 id={"ProcessTimeWindow"}>Process Time Tumbling Window</h4>
 
         <p>When comparing the final result of windowing using the Processing Time rather than Event Time for windowing
             the score is different as this is strictly windowed by processing time
             between 10.00 and 10.59. As this is a live 10 minute update score feed then the first window is
             empty neither has made the 1km. Which is incorrect. You can also see the differences in window 10:20 to
             10:29, 10:30 to 10.39. Lots of incorrect updates for our users monitoring our two runners with updates every
-            10 minutes. This is a pretty obvious why you should not use processing time for windowing if you data has
-            event times and your data and outcome of its correctness work like this. There are benefits of using
-            processing time these are the system knows when the window shuts as no concept of late data, or you want to
-            infer information about the source of data such as delays in it or outages at runtime.</p>
+            10 minutes. This is a pretty obvious why you should not use processing time for windowing if your data has
+            event times and your data and outcome of its correctness work like this. Processing time will give different
+            results if the data is observed at different times but with event time processing you will always get the
+            same results eventually. There are benefits of using processing time these are the system knows when the
+            window shuts as no concept of late data, or you want to infer information about the source of data such as
+            delays in it or outages at runtime.</p>
 
         <img width="90%" height="90%" src={ProcessingTimeSum} alt="Runners Graph Image"/>
 
@@ -334,29 +344,98 @@ const Streaming = () => (
 
         <img width="90%" height="90%" src={Watermarks} alt="Runners Graph Image"/>
 
+        <h4>Dealing with Late Data</h4>
+
+        <p>When working with windows you will need to eventually close it out. Then you will be able to set and handle
+            late data. This late data itself will have a time period for validity, as you cannot store data infinitely
+            for a window due to cost and storage requirements. In Kafka Streams this period of allowed lateness is set
+            using the <a href={"https://docs.confluent.io/platform/current/streams/concepts.html#windowing"}>grace
+                period</a> API. With Beam you can use the <a
+                href={"https://beam.apache.org/documentation/programming-guide/#watermarks-and-late-data"}>withAllowedLateness</a> API.
+            Apache Flink offers <a
+                href={"https://ci.apache.org/projects/flink/flink-docs-stable/dev/stream/operators/windows.html#allowed-lateness"}> allowedLateness</a>
+            and you can also send the dropped late data to a specific stream using <i>sideOutputLateData</i>.
+        </p>
+
 
         {/*Perfect watermark is data is proceesed per runner each time they run a km. Could do these examples in Flink?*/}
 
         <h3 id={"Triggers"}>Triggers</h3>
 
-        <p>When is a window finished? As discussed in watermarks when is a window result final, what happens if data is
-            later than the event time by say an hour? When should the result be emitted. Triggers are used to determine
-            when the data for windowing should happen. Kafka streams usually works on <a
+        <p>When is a window finished? As discussed in watermarks when is a window result final? When should the result
+            be emitted. Triggers are used to determine when the data for windowing should happen striking to the balance
+            between too early but may miss data or too late so you add unecessary latency. Kafka streams usually
+            works on <a
                 href={"https://www.confluent.io/blog/kafka-streams-take-on-watermarks-and-triggers/"}>continuous
-                refinement</a> where data arrives and task that uses windowing will emit the result at that point even
-            if not final. They recently added the suppress API to support only emitting when the window shuts. This
-            approach simplifies things massively.</p>
+                refinement</a> where data arrives and the task that uses aggregation or windowing will emit the result
+            at that point even if not final. They recently added the suppress API to support only emitting when the
+            window shuts. This approach simplifies things massively.</p>
 
+        <p>More generic triggers described in Streaming 102 [Akidau] are Watermark progress, Processing time progress,
+            the number of data records received into the stream, markers in the stream such as EOF points and finally
+            you can use sequences where one trigger causes another to fire which causes another to fine in different
+            parts of the system.</p>
 
+        <h4 id={"FlinkTriggers"}>Apache Flink Triggers</h4>
+
+        <p>The triggers available from Flink are well <a
+            href={"https://ci.apache.org/projects/flink/flink-docs-stable/dev/stream/operators/windows.html#triggers"}>documented </a>
+            so please read.</p>
+
+        <h5>Event Time Trigger</h5>
+        <p>Fires based on the progress of the event time based on the Watermark defined.</p>
+        <h5>Processing Time Trigger</h5>
+        <p>Fires the result based on the processing time.</p>
+        <h5>Count Trigger</h5>
+        <p>Fires once the number of elements reach a certain count in the window.</p>
+        <h5>Purging Trigger</h5>
+        <p>Adds purging to clear the window to an existing trigger.</p>
+
+        <h4 id={"BeamTriggers"}>Apache Beam Triggers</h4>
+
+        <p>The triggers available from Beam are also well <a
+            href={"https://beam.apache.org/documentation/programming-guide/#triggers"}>documented </a>
+            so please read.</p>
+
+        <h5>Event Time Trigger</h5>
+        <p>Fires based on the progress of the event time based on the timestamp defined on the message and the
+            Watermark.</p>
+        <h5>Processing Time Trigger</h5>
+        <p>Fires the result based on the processing time.</p>
+        <h5>Data-driven Trigger</h5>
+        <p>Analyses the data in the message and if it meets a certain condition then it triggers the final result.</p>
+        <h5>Composite Trigger</h5>
+        <p>Ability to merge multiple triggers together for composite functionality.</p>
+
+        <h4>Kafka Streams</h4>
+
+        <p>As mentioned previously Kafka Streams allows the use of continuous refinement where results are emitted on
+            each new message being processed. Also they introduced suppress to stop results emitting until the window
+            completes as <a
+                href={"https://www.confluent.io/blog/kafka-streams-take-on-watermarks-and-triggers/"}>documented</a>.
+            The grace period is also specified and remember it defaults to 24 hours so you will want to specify this.
+        </p>
 
         <h3 id={"Accumulation"}>Accumulation</h3>
 
+        <p>Now we have seen how triggers work we need to think about how the data they emit relates to each other. For
+            triggers on each data or when a window closes or late data should we discard the previous result and only
+            emit the new or do we calculate with the last result and the new?</p>
+
         <h4>Discarding</h4>
+        <p>Discarding is the simplest approach drop the last data stored for the window and only emit the new data for
+            the window. For example you receive data point 8 and emit it, then you receive data point 4 you then drop
+            data point 8 and only emit data point 4 this time.</p>
 
         <h4>Accumulating</h4>
 
+        <p>Accumulating is also simple you keep the results emitted for the window from the previous trigger and then
+            combine them. For example a simple sum you get data point 8, then you emit that, then you get data point 4
+            and its a sum so you emit 12.</p>
+
         <h4>Accumulating and Retracting</h4>
-        {/* When do we rank the final score? If they process the time late how long do we wait?*/}
+        <p>Accumulating and retracting method will emit the result accumulated, but if it sent an incorrect result
+            previously it will retract that value by telling you the new result and the retracted result.</p>
 
         <h3 id={"KafkaStreams101"}>Apache Kafka Streams 101</h3>
 
