@@ -269,7 +269,12 @@ const Streaming = () => (
 
         <p>When comparing the final result of windowing using the Processing Time rather than Event Time for windowing
             the score is different as this is strictly windowed by processing time
-            between 10.00 and 10.59. As this is a live 10 minute update score feed then the first window is
+            between 10.00 and 10.59. The late data point that arrives at 11:00 (10:60) on the graph is dropped as it
+            falls into the next window which is not considered in this example so the scores differ runner B only has
+            5km achieved but in fact on event time at 10:55 they achieved another 1km to make it 6km, but their watch
+            tracking the running didnt have signal to send the result to be processed until 10:60. </p>
+        <p>
+            As this is a live 10 minute update score feed then the first window is
             empty neither has made the 1km. Which is incorrect. You can also see the differences in window 10:20 to
             10:29, 10:30 to 10.39. Lots of incorrect updates for our users monitoring our two runners with updates every
             10 minutes. This is a pretty obvious why you should not use processing time for windowing if your data has
@@ -280,6 +285,34 @@ const Streaming = () => (
             delays in it or outages at runtime.</p>
 
         <img width="90%" height="90%" src={ProcessingTimeSum} alt="Runners Graph Image"/>
+
+        <h4>Processing Time vs Event Time</h4>
+        <p>Using processing time can have its place especially where no timestamp is added to the creation of the event
+            due to legacy systems. Commonly the ingestion onto Kafka timestamp is used as a timestamp throughout the
+            lifecycle of an event to provide semi event timestamp vs processing timestamp.</p>
+
+        <p>To add a few real world examples to using event time away from what Streaming 101, and 102 give us on data
+            analysis. Imagine a scenario where you had a architecture backed by Kafka and you wanted to materialize a
+            few into a database such as elastic search. What do you do if your Elasticsearch goes down and is corrupted
+            beyond saving in all your data centres so replicas are also lost, but Kafka survived (theoretical I know)?
+            You would replay events off of Kafka and write them back into Elastic. Now if you wanted the data in Elastic
+            to match what was written previously and you didnt use event times to process this data before writing into
+            Elastic for example summing data, averaging data, tracking user sessions then using processing time here
+            would be very far from the event time at the start of a Kafka topic with a 2 year retention period. Using
+            the processing time would be the here and now of the replay of the data 2 years later and any operation that
+            depends on event time ordering would be completely skewed to the here and now.</p>
+
+        <p>Its similar to processing hot hot data centres, if you didnt use a sophisticated replication tool and just
+            sent the same data into each cluster using event time with time sensitive operations such as windowing would
+            result in the same results in each. Where as processing time may differ greatly on unordered data.</p>
+
+        <p>For people to related in everyday life imagine if the timestamp on your current account transactions was
+            processing time. When you make the transaction it will be fairly close and unnoticeable. If your bank
+            required replaying your current transactions due to a data migration and the transactions used the
+            processing time then your transactions could get out of order as the processing time would change to the
+            here and now and all be milliseconds apart rather than potentially years. In reality if this did happen
+            workarounds would be used to migrated from the processing time to event time but systems would no the
+            designed like this ideally but its a neat example.</p>
 
         <h4 id={"WindowAssignment"}>Window Assignment</h4>
 
