@@ -12,11 +12,12 @@ const Streaming = () => (
 
     <div>
 
-        <h2>Streaming</h2>
+        <h2>Stream Processing</h2>
 
         <h3>Topics</h3>
         <ul className="text-list">
             <li><Link to={"#StreamingSystems"}>Streaming Systems</Link></li>
+            <li><Link to={"#StreamingTime"}>Streaming Time</Link></li>
             <li><Link to={"#Watermarks"}>Watermarks</Link></li>
             <li><Link to={"#Windowing"}>Windowing</Link></li>
             <li><Link to={"#Triggers"}>Triggers</Link></li>
@@ -34,7 +35,10 @@ const Streaming = () => (
                 href={"https://www.oreilly.com/radar/the-world-beyond-batch-streaming-102/"}>Streaming 102</a> [Akidau]
         </p>
 
-        <h4>Time</h4>
+        <h3 id={"StreamingTime"}>Streaming Time</h3>
+
+        <p>In stream processing time is critical. It is usually described as Event Time and
+            Processing Time. Please understand these are they are critical throughout the rest of the topic.</p>
 
         <p><strong>Event Time</strong> when the event actually happens for example the time a social media post is
             created by the actual user on a mobile phone.</p>
@@ -44,24 +48,74 @@ const Streaming = () => (
             made when on a plane journey on flight mode it will not be processed until the plane lands and flight mode
             is switched off.</p>
 
-        {/*DO the example all running in race and timings are there positions submit score by 10-11. Run longest distance in an hour.
-         Distance recorded by each km. Each runner gets to km different times. Can see windows for each time. 1 minute. Ticks each km, and then
-          total count at the end. running average with window number of m per minute. total km. one big window. */}
+        <p>Below is the example data that we will discuss further but simply this graph shows two runners A and B
+            between 10:00 and 11:00 with updates of data points arriving every 1km they have run. We total up the scores
+            to keep a rolling sum so we can track how far each runner has run. The X Axis is the event time that a 1km
+            increase in distance run by the user occurs. The Y Axis shows the processing time that our backend service
+            running in the cloud received and processed this data. Each data point states the X axis value and Y value
+            next to it.</p>
 
         <img width="90%" height="90%" src={Graph} alt="Runners Graph Image"/>
 
         <h3 id={"Windowing"}>Windowing</h3>
-        <p>A key question to think about when building streaming systems is if my data is unbounded when can I say its
-            finished? When should I materialise the results? The data could be infinite, but you need to see who ran the
-            furthest with up to date values every five minutes and present these back to your
-            users. <strong>Where</strong> in event time are results calculated?
-            To help us understand windowing and the importance of using event time rather than processing time lets
-            define a example. We have the business requirement to show me the
-            distanced covered by two runners A and B, running with a smart watch every 10 minutes in a hour long run
-            between 10.00 and 11.00. Here we can see that if we window the data by an event time every 10 minutes we can
-            then take the distance covered for each 10 minutes. And find the total distanced run by each runner to find
-            who ran the furthest and is leading at each 10 minute interval. Then final take the final scores of distance
-            covered by 10:59:59. When the final window shuts.</p>
+        <p>Windowing is taking a data source this can be finite or infinite and breaking it into finite chunks of data
+            to be processed where the start and end time of these chunks is provided by a time boundary. A key question
+            to think about when building streaming systems is if my data is unbounded when can I say its finished? When
+            should I materialise the results? The data could be infinite, but you need to see data point updates every
+            five minutes and present these back to your users. All these questions will be answered in the following
+            sections. But first we will review the most common types of windowing assignments for some of the most
+            popular streaming processing frameworks.
+        </p>
+
+        <h4 id={"WindowTypes"}>Window Types</h4>
+        <h5>Fixed Tumbling Windows</h5>
+        <p><a
+            href={"https://kafka.apache.org/26/documentation/streams/developer-guide/dsl-api.html#windowing-tumbling"}>Kafka
+            Streams</a>
+            <a href={"https://beam.apache.org/documentation/programming-guide/#fixed-time-windows"}>Apache Beam</a>
+            <a href={"https://ci.apache.org/projects/flink/flink-docs-stable/dev/stream/operators/windows.html#tumbling-windows"}>Apache
+                Flink</a>
+        </p>
+        <h5>Fixed Hopping (Sliding) Windows</h5>
+        <p><a href={"https://kafka.apache.org/26/documentation/streams/developer-guide/dsl-api.html#windowing-hopping"}>Kafka
+            Streams</a>
+            <a href={"https://beam.apache.org/documentation/programming-guide/#sliding-time-windows"}>Apache Beam</a>
+            <a href={"https://ci.apache.org/projects/flink/flink-docs-stable/dev/stream/operators/windows.html#sliding-windows"}>Apache
+                Flink</a>
+        </p>
+        <h5>Kafka Streams Sliding Windows</h5>
+        <p><a href={"https://kafka.apache.org/26/documentation/streams/developer-guide/dsl-api.html#windowing-sliding"}>Kafka
+            Streams</a>
+            <a href={""}>Apache Beam</a>
+            <a href={""}>Apache Flink</a>
+        </p>
+        <h5>Session Windows</h5>
+        <p><a href={"https://kafka.apache.org/26/documentation/streams/developer-guide/dsl-api.html#windowing-session"}>Kafka
+            Streams</a>
+            <a href={"https://beam.apache.org/documentation/programming-guide/#session-windows"}>Apache Beam</a>
+            <a href={"https://ci.apache.org/projects/flink/flink-docs-stable/dev/stream/operators/windows.html#session-windows"}>Apache
+                Flink</a>
+        </p>
+        <h5>Global Windows</h5>
+        <p><a href={""}>Kafka Streams</a>
+            <a href={"https://beam.apache.org/documentation/programming-guide/#single-global-window"}>Apache Beam</a>
+            <a href={"https://ci.apache.org/projects/flink/flink-docs-stable/dev/stream/operators/windows.html#global-windows"}>Apache
+                Flink</a>
+        </p>
+
+        <h4 id={"CaseStudy"}>Example Business Requirement</h4>
+        <p>
+            To help us understand windowing and the difference of using event time vs processing time for correctness of
+            results. We define a example business requirement to show the
+            distanced covered by two runners A and B, running with a smart watch which sends live updates we want a view
+            of the results every 10 minutes in a hour long run between 10.00 and 11.00. This is a simple example where
+            we bound the event time of the data to make understanding the key points easier but this example and the
+            points below all are relevant for streaming data that is unbounded also. Using this example we can see that
+            if we window the data by a fixed tumbling window time every 10 minutes we can then take the distance covered
+            for each runner every 10 minutes. Showing the total distanced run by each runner to find who ran the
+            furthest and is leading at each 10 minute interval. Then at the final window take the final scores of
+            distance covered by 10:59:59 for each runner. When the final window shuts.
+        </p>
 
         <p>The window strategy we will use for this example to consider using event time or processing time are fixed
             tumbling windows. We will review others afterwards. This window is where we tumble over 10 minute time slots
@@ -81,7 +135,7 @@ const Streaming = () => (
                 <th>Processing Time <br/> Runner B</th>
             </tr>
             <tr>
-                <td>10.1</td>
+                <td>10.10</td>
                 <td>10.11</td>
                 <td>10.08</td>
                 <td>10.15</td>
@@ -153,10 +207,12 @@ const Streaming = () => (
         <img width="90%" height="90%" src={ProcessingTimeSum} alt="Runners Graph Image"/>
 
 
-        <h4 id={"WindowAssigment"}>Window Assignment</h4>
+        <h4 id={"WindowAssignment"}>Window Assignment</h4>
 
         <p>Lets now explore how three of the major stream processing frameworks calculate the window each data point
-            should enter into.</p>
+            should enter into. For this example lets make it easy and use timestamps from the start of EPOCH. We will
+            use fixed windows still and they will be 2 minutes so 120000ms in size and advance by the same 120000ms (2
+            minute) size. </p>
 
         <h5>Flink</h5>
         <p><a
@@ -184,6 +240,7 @@ const Streaming = () => (
         </p>
 
         <p>long windowStart = (Math.max(0, timestamp - sizeMs + advanceMs) / advanceMs) * advanceMs;</p>
+
 
         <h3 id={"Watermarks"}>Watermarks</h3>
         <p>Watermarks are to do with <strong>when</strong> input is complete in regards to event time. This is the
