@@ -18,8 +18,8 @@ const Streaming = () => (
         <ul className="text-list">
             <li><Link to={"#StreamingSystems"}>Streaming Systems</Link></li>
             <li><Link to={"#StreamingTime"}>Streaming Time</Link></li>
-            <li><Link to={"#Watermarks"}>Watermarks</Link></li>
             <li><Link to={"#Windowing"}>Windowing</Link></li>
+            <li><Link to={"#Watermarks"}>Watermarks</Link></li>
             <li><Link to={"#Triggers"}>Triggers</Link></li>
             <li><Link to={"#KafkaStreams101"}>Apache Kafka Streams 101</Link></li>
             <li><Link to={"#KafkaStreamsKotlin"}>Kafka Streams with Kotlin</Link></li>
@@ -64,44 +64,102 @@ const Streaming = () => (
             should I materialise the results? The data could be infinite, but you need to see data point updates every
             five minutes and present these back to your users. All these questions will be answered in the following
             sections. But first we will review the most common types of windowing assignments for some of the most
-            popular streaming processing frameworks.
+            popular streaming processing frameworks. Examples of each type of Kafka streams window can be found in code
+            <a href={"https://github.com/perkss/kotlin-kafka-and-kafka-streams-examples/blob/master/kotlin-kafka-streams-examples/src/test/kotlin/com/perkss/kafka/reactive/examples/WindowingExamplesTest.kt"}
+            >here.</a>
         </p>
 
         <h4 id={"WindowTypes"}>Window Types</h4>
         <h5>Fixed Tumbling Windows</h5>
-        <p><a
-            href={"https://kafka.apache.org/26/documentation/streams/developer-guide/dsl-api.html#windowing-tumbling"}>Kafka
-            Streams</a>
-            <a href={"https://beam.apache.org/documentation/programming-guide/#fixed-time-windows"}>Apache Beam</a>
-            <a href={"https://ci.apache.org/projects/flink/flink-docs-stable/dev/stream/operators/windows.html#tumbling-windows"}>Apache
-                Flink</a>
+        <p>Fixed Tumbling windows are one the simplest form of windows to understand please read the various definitions
+            below with insightful diagrams. Simply though a fixed window is chopping time into fixed sized durations for
+            example a fixed tumbling window of 1 minute would start at 0:00:00 up to 0:00:59 and then the next fixed
+            window is 0:01:00 to 0:01:59.
         </p>
+
+        <ul>
+            <li style={{display: 'flex', justifyContent: 'left'}}><a
+                href={"https://kafka.apache.org/26/documentation/streams/developer-guide/dsl-api.html#windowing-tumbling"}>Kafka
+                Streams Tumbling Window</a></li>
+            <li style={{display: 'flex', justifyContent: 'left'}}><a
+                href={"https://beam.apache.org/documentation/programming-guide/#fixed-time-windows"}>Apache Beam Fixed
+                Time Window</a>
+            </li>
+            <li style={{display: 'flex', justifyContent: 'left'}}><a
+                href={"https://ci.apache.org/projects/flink/flink-docs-stable/dev/stream/operators/windows.html#tumbling-windows"}>Apache
+                Flink Tumbling Window</a></li>
+        </ul>
+
         <h5>Fixed Hopping (Sliding) Windows</h5>
-        <p><a href={"https://kafka.apache.org/26/documentation/streams/developer-guide/dsl-api.html#windowing-hopping"}>Kafka
-            Streams</a>
-            <a href={"https://beam.apache.org/documentation/programming-guide/#sliding-time-windows"}>Apache Beam</a>
-            <a href={"https://ci.apache.org/projects/flink/flink-docs-stable/dev/stream/operators/windows.html#sliding-windows"}>Apache
-                Flink</a>
-        </p>
+        <p>Hopping or Sliding windows depending on the frameworks terminology represent a time window that is usually
+            fixed following the same scales as above of 1 minute window, but then the next window may start at 30
+            seconds named the period so two windows overlap. Therefore the question you probably ask is will data
+            points belong to two windows and the answer is yes, if it is in the overlapping time of two windows
+            then the data is in each window. If we have window 1 starting at 0:00:00 with a size of 60 seconds and a
+            period of 30 seconds, the second window 2 starts at 0:00:30. Then window 1 finishes at 0:00:59 and window 2
+            finishes at 0:01:29 with the overlap between 0:00:30 and 0:00:59.</p>
+        <ul>
+            <li style={{display: 'flex', justifyContent: 'left'}}><a
+                href={"https://kafka.apache.org/26/documentation/streams/developer-guide/dsl-api.html#windowing-hopping"}>Kafka
+                Streams Hopping Window</a></li>
+            <li style={{display: 'flex', justifyContent: 'left'}}><a
+                href={"https://beam.apache.org/documentation/programming-guide/#sliding-time-windows"}>Apache Beam
+                Sliding Window</a>
+            </li>
+            <li style={{display: 'flex', justifyContent: 'left'}}><a
+                href={"https://ci.apache.org/projects/flink/flink-docs-stable/dev/stream/operators/windows.html#sliding-windows"}>Apache
+                Flink Sliding Window</a></li>
+        </ul>
+
         <h5>Kafka Streams Sliding Windows</h5>
-        <p><a href={"https://kafka.apache.org/26/documentation/streams/developer-guide/dsl-api.html#windowing-sliding"}>Kafka
-            Streams</a>
-            <a href={""}>Apache Beam</a>
-            <a href={""}>Apache Flink</a>
+        <p> Kafka Streams differentiates between Sliding and Hopping windows, when referring to sliding windows they are
+            talking about windows that align to the data points timestamps not to the epoch (the continuous running time
+            clock) and are only used for join operations. Therefore two data points are in the same window if the
+            distance between their timestamps fall into the sliding windows size. Specifically in Kafka streams this
+            windows start and end time are both inclusive. If we have a window size of 30 seconds then data point A at
+            0:00:21, data point B at 0:00:42 then they would be in the same window. A data point at 0:01:20 would not in
+            joined with either point.
         </p>
+
+        <ul>
+            <li style={{display: 'flex', justifyContent: 'left'}}><a
+                href={"https://kafka.apache.org/26/documentation/streams/developer-guide/dsl-api.html#windowing-sliding"}>Kafka
+                Streams Sliding Window</a></li>
+        </ul>
         <h5>Session Windows</h5>
-        <p><a href={"https://kafka.apache.org/26/documentation/streams/developer-guide/dsl-api.html#windowing-session"}>Kafka
-            Streams</a>
-            <a href={"https://beam.apache.org/documentation/programming-guide/#session-windows"}>Apache Beam</a>
-            <a href={"https://ci.apache.org/projects/flink/flink-docs-stable/dev/stream/operators/windows.html#session-windows"}>Apache
-                Flink</a>
+        <p>Session windows are a little different than the previous ones, they focus on per key data basis activity. So
+            for example a user visiting a social media page. They have a session at 0:00:30 for 10 seconds, then they go
+            back to the page at 0:01:10 if we have a session window with minimum gap duration of 1 minute then these two
+            sessions would fall under the same session window.
         </p>
+
+        <ul>
+            <li style={{display: 'flex', justifyContent: 'left'}}><a
+                href={"https://kafka.apache.org/26/documentation/streams/developer-guide/dsl-api.html#windowing-session"}>Kafka
+                Streams Session Window</a></li>
+            <li style={{display: 'flex', justifyContent: 'left'}}><a
+                href={"https://beam.apache.org/documentation/programming-guide/#session-windows"}>Apache Beam Session
+                Window</a>
+            </li>
+            <li style={{display: 'flex', justifyContent: 'left'}}><a
+                href={"https://ci.apache.org/projects/flink/flink-docs-stable/dev/stream/operators/windows.html#session-windows"}>Apache
+                Flink Session Window</a></li>
+        </ul>
         <h5>Global Windows</h5>
-        <p><a href={""}>Kafka Streams</a>
-            <a href={"https://beam.apache.org/documentation/programming-guide/#single-global-window"}>Apache Beam</a>
-            <a href={"https://ci.apache.org/projects/flink/flink-docs-stable/dev/stream/operators/windows.html#global-windows"}>Apache
-                Flink</a>
+        <p>In some frameworks by default all data is assigned to a global window and if the data is finite you can use
+            the global window. Late data is discarded. For unbounded data sets you can use the global window but you
+            need to specify triggers appropriately which is something we will discuss at a later point.
         </p>
+
+        <ul>
+            <li style={{display: 'flex', justifyContent: 'left'}}><a
+                href={"https://beam.apache.org/documentation/programming-guide/#single-global-window"}>Apache Beam
+                Global Window</a>
+            </li>
+            <li style={{display: 'flex', justifyContent: 'left'}}><a
+                href={"https://ci.apache.org/projects/flink/flink-docs-stable/dev/stream/operators/windows.html#global-windows"}>Apache
+                Flink Global Window</a></li>
+        </ul>
 
         <h4 id={"CaseStudy"}>Example Business Requirement</h4>
         <p>
@@ -177,35 +235,41 @@ const Streaming = () => (
         <h4 id={"GlobalWindow"}>Global Window</h4>
 
         <p>Lets start with the easiest window one that is the full dataset window
-            where we can process all the data in the window with no end time to add up the total distance runner by each
-            runner at the end of the data. This could be a batch process in the evening or a <a
+            where we can process all the data in the window at the end of the day so 8 hours after the event to add up
+            the total distance runner by each runner at the end of the data. This could be a batch process in the
+            evening or a <a
                 href={"https://ci.apache.org/projects/flink/flink-docs-stable/dev/stream/operators/windows.html#global-windows"}>global
                 window</a> where we trigger on each result. Here we see that runner B wins with 6km vs runner A's 5km.
         </p>
 
         <img width="90%" height="90%" src={BatchProcess} alt="Runners Graph Image"/>
 
-
         <h4 id={"EventimeWindow"}>Event Time Window</h4>
 
         <p>Using the event time window strategy setting setting fixed windows of 10 minutes we can see that the results
             are finalized correctly. The data maybe late on processing time but this data is windowed by event time so
             it falls into the same windows and the final window due to the requirements of this race ending at 11.00am
-            [10.00 + 59].</p>
+            [10.00 + 59]. For this to work with late data you need to buffer the data for a time period you can always
+            store intermediate results such as a sum rather than all data points to save space. Another problem is when
+            has all the data arrived? If we have late data how long do we wait for it before we materialize, hours,
+            days, years? We cannot be certain on this we have to use a combination of heuristics and triggers and allows
+            for late data the best we can for our use case.</p>
 
         <img width="90%" height="90%" src={EventTimeSum} alt="Runners Graph Image"/>
 
         <h4 id={"ProcessTimeWindow"}>Process Time Window</h4>
 
-        <p>When comparing the final result of windowing using the Processing Time rather than Even Time for windowing
+        <p>When comparing the final result of windowing using the Processing Time rather than Event Time for windowing
             the score is different as this is strictly windowed by processing time
-            between 10.00 and 10.59. Also as this is a live 10 minute update score feed then the first window is
-            empty neither has made the 1km. Which is incorrect. You can also see at the differences in window 10:20 to
-            10:29, 10:30 to 10.39. Lots of incorrect updates for our users monitoring our two runners. This is a pretty
-            obvious why you should not use processing time for windowing. </p>
+            between 10.00 and 10.59. As this is a live 10 minute update score feed then the first window is
+            empty neither has made the 1km. Which is incorrect. You can also see the differences in window 10:20 to
+            10:29, 10:30 to 10.39. Lots of incorrect updates for our users monitoring our two runners with updates every
+            10 minutes. This is a pretty obvious why you should not use processing time for windowing if you data has
+            event times and your data and outcome of its correctness work like this. There are benefits of using
+            processing time these are the system knows when the window shuts as no concept of late data, or you want to
+            infer information about the source of data such as delays in it or outages at runtime.</p>
 
         <img width="90%" height="90%" src={ProcessingTimeSum} alt="Runners Graph Image"/>
-
 
         <h4 id={"WindowAssignment"}>Window Assignment</h4>
 
@@ -214,13 +278,21 @@ const Streaming = () => (
             use fixed windows still and they will be 2 minutes so 120000ms in size and advance by the same 120000ms (2
             minute) size. </p>
 
+        <h5>Kafka Streams</h5>
+        <p><a
+            href={"https://github.com/apache/kafka/blob/trunk/streams/src/main/java/org/apache/kafka/streams/kstream/TimeWindows.java#L175"}>Window
+            start</a>
+        </p>
+
+        <p>long windowStart = (Math.max(0, timestamp - sizeMs + advanceMs) / advanceMs) * advanceMs;</p>
+
         <h5>Flink</h5>
         <p><a
             href={"https://github.com/perkss/flink/blob/master/flink-streaming-java/src/main/java/org/apache/flink/streaming/api/windowing/windows/TimeWindow.java#L271"}>Window
             start</a>
         </p>
 
-        <p>timestamp - (timestamp - offset + windowSize) % windowSize;</p>
+        <p>start = timestamp - (timestamp - offset + windowSize) % windowSize;</p>
 
         <h5>Beam</h5>
         <p><a
@@ -233,17 +305,8 @@ const Streaming = () => (
             timestamp.getMillis()
             - timestamp.plus(size).minus(offset).getMillis() % size.getMillis());</p>
 
-        <h5>Kafka Streams</h5>
-        <p><a
-            href={"https://github.com/apache/kafka/blob/trunk/streams/src/main/java/org/apache/kafka/streams/kstream/TimeWindows.java#L175"}>Window
-            start</a>
-        </p>
-
-        <p>long windowStart = (Math.max(0, timestamp - sizeMs + advanceMs) / advanceMs) * advanceMs;</p>
-
-
         <h3 id={"Watermarks"}>Watermarks</h3>
-        <p>Watermarks are to do with <strong>when</strong> input is complete in regards to event time. This is the
+        <p>Watermarks are to do with <strong>when</strong> input data is complete in regards to event time. This is the
             trickiest part I found
             to grasp as literature commonly goes on about perfect watermarks but in reality a perfect watermark in a
             distributed system is impossible. When does unbounded data have a end? You can chunk it into timed slots
@@ -254,26 +317,39 @@ const Streaming = () => (
             than X have been observed. In the above example of keeping a distanced run for each runner between 9:00 and
             10:00 do we wait for all data points or emit with partial results? Maybe data is late? Maybe those who
             signed up did not run at all so do not emit any running data if we waited we would be waiting
-            incorrectly. All considerations that need to be made when defining a watermark and different types of
-            triggers can be used to help with when to emit final windowed results.</p>
+            incorrectly forever. All considerations that need to be made when defining a watermark and different types
+            of triggers can be used to help with when to emit final windowed results.</p>
 
-        <p>The diagram below shows the watermarks stating the Perfect Watermark (the green line) that will stay long
-            enough for any late data but will add latency. A Heuristic Watermark (the orange line) that will best guess
-            when data has all arrived but may miss late data mixing latency and accuracy. Then shows the perfect
-            watermark (pink line) where the processing time and event time is always equal.</p>
+        <p>The diagram below shows the three main categories of watermarks Perfect, Heuristic and Ideal.</p>
+
+        <h4>Perfect Watermark</h4>
+        <p>Perfect Watermark (the green line) that will stay long enough for any late data (or no late data arrives) but
+            will add latency waiting for late data but give correct results.</p>
+        <h4>Heuristic Watermark</h4>
+        <p>A Heuristic Watermark (the orange line) that will best guess when data has all arrived but may miss late data
+            mixing faster latency but may have incorrect accuracy due to not waiting long enough for late data.</p>
+        <h4>Ideal Watermark</h4>
+        <p>The final line shows the ideal (pink line) where the processing time and event time is always equal so we
+            have no late data.</p>
 
         <img width="90%" height="90%" src={Watermarks} alt="Runners Graph Image"/>
 
-        <h4>Perfect Watermark</h4>
-        <h4>Heuristic Watermark</h4>
-        <h4>Ideal Watermark</h4>
 
         {/*Perfect watermark is data is proceesed per runner each time they run a km. Could do these examples in Flink?*/}
 
         <h3 id={"Triggers"}>Triggers</h3>
 
         <p>When is a window finished? As discussed in watermarks when is a window result final, what happens if data is
-            later than the event time by say an hour? When should the result be emitted. </p>
+            later than the event time by say an hour? When should the result be emitted. Triggers are used to determine
+            when the data for windowing should happen. Kafka streams usually works on <a
+                href={"https://www.confluent.io/blog/kafka-streams-take-on-watermarks-and-triggers/"}>continuous
+                refinement</a> where data arrives and task that uses windowing will emit the result at that point even
+            if not final. They recently added the suppress API to support only emitting when the window shuts. This
+            approach simplifies things massively.</p>
+
+
+
+        <h3 id={"Accumulation"}>Accumulation</h3>
 
         <h4>Discarding</h4>
 
@@ -281,8 +357,6 @@ const Streaming = () => (
 
         <h4>Accumulating and Retracting</h4>
         {/* When do we rank the final score? If they process the time late how long do we wait?*/}
-
-        <h3 id={"Accumulation"}>Accumulation</h3>
 
         <h3 id={"KafkaStreams101"}>Apache Kafka Streams 101</h3>
 
