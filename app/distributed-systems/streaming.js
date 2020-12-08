@@ -29,14 +29,19 @@ const Streaming = () => (
 
         <h3 id={"StreamingSystems"}>Streaming Systems</h3>
 
-        <p>Streaming has many definitions but from my view it is when processing unbounded data. In the sense a bounded
-            data source has a finite size but an unbounded data source is infinite. The first part of this post is
+        <p>Streaming has many definitions but from my view it is when processing data in motion when it is consumed or
+            produced in real time. This data consumption can be applied to a bounded data source that has a finite size
+            or on an unbounded data source that is infinite. Historically data was commonly bounded and processed as a
+            batch
+            job overnight with obvious high latencies. The first part of this post is
             completely inspired and makes references throughout to <a
                 href={"https://www.oreilly.com/radar/the-world-beyond-batch-streaming-101/"}>Streaming 101</a> and <a
                 href={"https://www.oreilly.com/radar/the-world-beyond-batch-streaming-102/"}>Streaming 102</a> credit to
-            Tyler Akidau.
-            I will take this further by taking a more practical approach by looking into the differences and
-            commonalities of three popular streaming processing frameworks <a
+            Tyler Akidau. The <a
+                href={"https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/43864.pdf"}>Dataflow
+                Model</a> paper was also a great inspiration and its themes are referenced throughout.
+            In this post I will take the themes of these publications further by taking a more practical approach by
+            looking into the differences and commonalities of three popular streaming processing frameworks <a
                 href={"https://kafka.apache.org/documentation/streams/"}>Kafka Streams</a>, <a
                 href={"https://beam.apache.org/"}>Apache Beam</a> and <a href={"https://flink.apache.org/"}>Apache
                 Flink</a>.
@@ -59,8 +64,18 @@ const Streaming = () => (
             between 10:00 and 11:00 with updates of data points arriving every 1km they have run. We total up the scores
             to keep a rolling sum so we can track how far each runner has run. The X Axis is the event time that a 1km
             increase in distance run by the user occurs. The Y Axis shows the processing time that our backend service
-            running in the cloud received and processed this data. Each data point states the X axis value and Y value
-            next to it.</p>
+            running in the cloud received and processed each data point of a runner completing another 1km. Each data
+            point states the X axis value and Y value next to it. You can see that the processing time is always going
+            to be equal to or after the event time and is usually after due to latencies of networks and processing
+            logic. If you observe closely now you may see that the processing time can be substantially after the event
+            time due to network outages or mobile signals or large volumes of traffic being processed before it gets to
+            that data point.</p>
+
+        {/*TODO write about the different time options of these different frameworks*/}
+        <p><a
+            href={"https://ci.apache.org/projects/flink/flink-docs-release-1.11/concepts/timely-stream-processing.html"}>Apache
+            Flink</a> provides a good discussion on this with particular focus on how it works with different times.
+        </p>
 
         <img width="90%" height="90%" src={Graph} alt="Runners Graph Image"/>
 
@@ -171,7 +186,7 @@ const Streaming = () => (
         <h4 id={"CaseStudy"}>Example Business Requirement</h4>
         <p>
             To help us understand windowing and the difference of using event time vs processing time for correctness of
-            results. We define a example business requirement to show the
+            results. We define a example business requirement as previously mentioned to show the
             distanced covered by two runners A and B, running with a smart watch which sends live updates we want a view
             of the results every 10 minutes in a hour long run between 10.00 and 11.00. This is a simple example where
             we bound the event time of the data to make understanding the key points easier but this example and the
@@ -242,9 +257,9 @@ const Streaming = () => (
         <h4 id={"GlobalWindow"}>Global Window</h4>
 
         <p>Lets start with the easiest window one that is the full dataset window
-            where we can process all the data in the window at the end of the day so 8 hours after the event to add up
-            the total distance runner by each runner at the end of the data. This could be a batch process in the
-            evening or a <a
+            where we can process all the data in the window to add up
+            the total distance run by each runner at the end of the race and when all data is received. This could be a
+            batch process in the evening or a <a
                 href={"https://ci.apache.org/projects/flink/flink-docs-stable/dev/stream/operators/windows.html#global-windows"}>global
                 window</a> where we trigger on each result. Here we see that runner B wins with 6km vs runner A's 5km.
         </p>
@@ -306,9 +321,10 @@ const Streaming = () => (
             sent the same data into each cluster using event time with time sensitive operations such as windowing would
             result in the same results in each. Where as processing time may differ greatly on unordered data.</p>
 
-        <p>For people to related in everyday life imagine if the timestamp on your current account transactions was
-            processing time. When you make the transaction it will be fairly close and unnoticeable. If your bank
-            required replaying your current transactions due to a data migration and the transactions used the
+        <p>For people to easily relate lets look at an everyday life example, imagine if the timestamp on your current
+            account transactions was processing time. When you make the transaction it will be fairly close and
+            unnoticeable. If your bank required replaying your current transactions due to a data migration and the
+            transactions used the
             processing time then your transactions could get out of order as the processing time would change to the
             here and now and all be milliseconds apart rather than potentially years. In reality if this did happen
             workarounds would be used to migrated from the processing time to event time but systems would no the
