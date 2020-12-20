@@ -4,12 +4,65 @@ const DistSIntro = () => (
 
     <div>
         <h2>Distributed Systems</h2>
-        <p>Welcome to the <strong>Distributed Systems</strong> please select from the menu items to begin your
+        <p>Welcome to <strong>Distributed Systems</strong> please read below and then select from the menu items to
+            begin your
             journey. This section will discuss many popular and academic aspects of distributed systems, discussing how
-            mainstreams systems like Kafka and ElasticSearch work under the hood in a distributed and fault tolerance
-            manor. Along with looking at fundamental architectures such as the Kappa Architecture and how it applies to
-            the CAP Theorem. The fun of streaming joins, leader election, replication and node failure detection and
-            many other things. Enjoy!!</p>
+            popular distributed systems like Kafka and ElasticSearch work under the hood in a distributed and fault
+            tolerance manor. Along with looking at fundamental architectures such as the Kappa Architecture and how it
+            applies to the CAP Theorem. The fun of streaming joins, leader election, replication and node failure
+            detection and many other things. Enjoy!!</p>
+
+        <p>Distributed systems are all about moving data between machines therefore we always need to
+            consider <strong>Latency</strong> the time until a message arrives. Or the <strong>Bandwidth</strong> the
+            data volume per unit of time.</p>
+
+        <h3>Remote Procedure Call</h3>
+
+        <p>Remote procedure calls (Remote Method Invocation) can be used in distributed systems which is when you call a
+            function and it invokes on another node in the distributed system. Examples of RPC are CORBA, SOAP, Thrift,
+            gRPC and REST (unless you are a purist of REST). These RPC functions are designed to look like normal
+            function calls, but as they are remote they may result in lost messages, delayed messages, can you retry?</p>
+
+        <h3>Distributed Time Clocks and Event Ordering</h3>
+
+        <p>Time is used all over the place in distributed systems for example scheduling jobs, timeouts, retry timers,
+            performance profiling, timestamps of event times or ingestion times, windowing, cache validity and ordering
+            events.</p>
+
+        <p>Two types of clocks are used in distributed systems <strong>physical</strong> clocks that are your everyday
+            clock counting
+            seconds elapsed and also <strong>logical</strong> clocks which count events. Quartz crystals are used for
+            computer clocks usually. These resonate a signal with a regular frequency. This frequency can drift with
+            temperature changes to make them run faster or slower and drift away from the current correct time. A more
+            accurate clock but expensive is to use atomic clocks. Satellites have these in used for GPS which can be
+            used to get accurate current time.</p>
+
+        <p>Coordinated Universal Time (UTC) is the reference time for all timezones. This uses international atomic time
+            to be accurate and UTC in modern times means international atomic time with some corrections due to the
+            Earth rotation changes. Daylight savings and timezones are calculated by offsets from this time. Leap
+            seconds exist and happen every year on the 30th June and 31 December. Where the clock can jump forward
+            skipping a second, move as usual or moves after one second. Troublesome for computers the approach to solve
+            this is to spread the leap second throughout the day.</p>
+
+        <p>Computers represent time usually using either <strong>Unix Time</strong> number of seconds since the epoch 1
+            January 1970. Or <strong>ISO 8601</strong> a time with an offset relative to UTC.</p>
+
+        <p>In distributed systems due to clock drift where clock errors occur <strong>clock skew</strong> can happen
+            where a difference exists between two clocks at a point in time. To solve this issue your computers will get
+            a current time from a more accurate clock time source such as a atomic clock. Two protocols are used to
+            achieve this firstly Network Time Protocol (NTP). This protocol works in a hierarchy where you can either
+            get directly from the atomic clock or be synced directly or be 1 step away from it synch with the synced
+            directly server. The success of this approach depends on the network conditions. The clint will request the
+            time from the NTP server and apply the correction to its clock. By either slowing or speeding up the client
+            clock to drift together the two clocks to skew the clocks to the same time. If the time difference is too
+            great then you step the clock by reset it to the estimated server timestamp. If the difference is massive
+            then it does nothing and leaves the error to the human operator.</p>
+
+        <p>Time of day clock is the time since a fixed date such as epoch time may just forward or backwards due to NTP
+            stepping but can be used to compare between synced nodes. Monotonic clock is the time since a arbitrary
+            point for example when the machine boots up moves in near constant time good for measuring time on a single
+            node.</p>
+
 
         <h3>The CAP Theorem</h3>
 

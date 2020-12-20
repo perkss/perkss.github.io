@@ -394,6 +394,8 @@ const Streaming = () => (
         <img width="90%" height="90%" src={Watermarks} alt="Runners Graph Image"/>
 
         <h4>Dealing with Late Data</h4>
+        
+        {/*TODO compare the API and handling of BEAM FLINK KSTREAMS*/}
 
         <p>When working with windows you will need to eventually close it out. Then you will be able to set and handle
             late data. This late data itself will have a time period for validity, as you cannot store data infinitely
