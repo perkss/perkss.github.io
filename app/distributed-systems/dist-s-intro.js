@@ -10,7 +10,9 @@ const DistSIntro = () => (
             popular distributed systems like Kafka and ElasticSearch work under the hood in a distributed and fault
             tolerance manor. Along with looking at fundamental architectures such as the Kappa Architecture and how it
             applies to the CAP Theorem. The fun of streaming joins, leader election, replication and node failure
-            detection and many other things. Enjoy!!</p>
+            detection and many other things. The fundamentals of this section stem from the course by <a
+                href={"https://www.youtube.com/playlist?list=PLeKd45zvjcDFUEv_ohr_HdUFe97RItdiB"}>Martin
+                Kleppmann.</a>. Enjoy!!</p>
 
         <p>Distributed systems are all about moving data between machines therefore we always need to
             consider <strong>Latency</strong> the time until a message arrives. Or the <strong>Bandwidth</strong> the
@@ -21,7 +23,10 @@ const DistSIntro = () => (
         <p>Remote procedure calls (Remote Method Invocation) can be used in distributed systems which is when you call a
             function and it invokes on another node in the distributed system. Examples of RPC are CORBA, SOAP, Thrift,
             gRPC and REST (unless you are a purist of REST). These RPC functions are designed to look like normal
-            function calls, but as they are remote they may result in lost messages, delayed messages, can you retry?</p>
+            function calls, but as they are remote they may result in lost messages, delayed messages, can you
+            retry?</p>
+
+        <p></p>
 
         <h3>Distributed Time Clocks and Event Ordering</h3>
 
@@ -63,9 +68,60 @@ const DistSIntro = () => (
             point for example when the machine boots up moves in near constant time good for measuring time on a single
             node.</p>
 
+        <p>Message ordering in distributed systems can be tricky due to network issues or laggy nodes ordering of
+            messages can be received incorrectly. The other potential fault is that the clocks are not synchronized so
+            even if you use a timestamp to order messages they may not be correct so later messages may be timestamped
+            earlier. To solve this we can use the happens before relation where an event is something happening at one
+            node. We can say for sure that <i>a</i> happens before <i>b</i> in three scenarios.
+            Firstly <i>a</i> and <i>b</i> happen on the same node and occurred in that order on the node. Secondly
+            event <i>a</i> is sending a message and <i>b</i> is the receipt of that same message. Or thirdly their
+            exists an event <i>c</i> that exists that <i>a</i> happens before <i>c</i> and <i>c</i> happens
+            before <i>b</i>. In the case that <i>a</i>,<i>b</i> happen at the similar time they do not know about each
+            other then we state they must happen concurrently. Meaning we can have three possibilities of event
+            ordering. Basically if one happens before the other causal order then we know the order, but if we do not
+            know the causal order then we cannot know for sure which event came first if comparing two events.</p>
+
+        <h4>Logical Clocks</h4>
+
+        <p>Logical clocks are for counting the number of events that occurred and will capture causal dependencies.</p>
+
+        <h5>Lamports Clock</h5>
+
+        <p>Some references <a href={"https://www.cs.rutgers.edu/~pxk/417/notes/logical-clocks.html"}>Paul
+            Krzyzanowski</a>, <a href={"https://www.youtube.com/playlist?list=PLeKd45zvjcDFUEv_ohr_HdUFe97RItdiB"}>Martin
+            Kleppmann.</a></p>
+
+        <p>On initialisation each node has its own local variable <i>t</i> set to 0. On any event occurring at a node we
+            increment that nodes <i>t</i>. When requesting to send a message <i>m</i> we increment <i>t</i> and we send
+            the message <i>(t,m)</i>. On receiving the <i>(t',m)</i> we take the <i>max(t,t')</i> of the
+            local <i>t</i> and the received <i>t</i> and updates its own
+            local <i>t</i> to be the max plus <i>1</i>.</p>
+
+        <p>With this clock timestamp events can have duplicates between nodes to uniquely identify events we can combine
+            the event timestamp and the name of the node that it occurred then we can uniquely identify the events.</p>
+
+        <h5>Vector Clock</h5>
+        <p>The vector clock allow us to detect if events are concurrent or not which Lamports clock cannot. Here we
+            assume that there are <i>n</i> nodes. We have a vector timestamp of event <i>a</i> is <i>V(a)
+                = (t1,t2,...,tn)}</i> <i>ti</i> is the number of events observed by node <i>Ni</i>. Each node has a
+            current vector timestamp <i>T</i> representing all nodes. On event at node <i>Ni</i> increment a vector
+            element <i>T[i]</i>. We also attach vector clocks to messages sent.</p>
+
+        <p>Every node starts with timestamps of <i>0</i> in the vector with entries for each node. On any event on our
+            node we increment <i>T[i]+1</i>. On a request we send a message <i>m</i> at node <i>Ni</i> we do <i>T[i] :=
+                T[i] + 1</i> and send <i>(T,m)</i> via the network. On receiving this we take the max for each element
+            for each node, this could be either the senders vector or the current vector timestamp for that node and
+            takes the max. The receiving node then
+            increments its own entry and deliver <i>m</i>. Each vector clock represents its own events and
+            those events that happened before it. The vector length represents the number of nodes. The vector
+            summarises a set of events in a system.</p>
+
+        <p>In the vector clock example we assumed we knew at the start that there were <i>n</i> nodes. We do not require
+            this in the case we do not know the number of nodes. We can achieve this by replacing the timestamps in the
+            vector with a set of tuples where they are pairs of node id and the current event timestamp. Then we can
+            merge them together and do the max as usual, but if any are missing then we take the union of them.</p>
 
         <h3>The CAP Theorem</h3>
-
 
         <h2>Bits that did not fit elsewhere</h2>
 
