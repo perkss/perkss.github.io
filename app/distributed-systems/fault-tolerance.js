@@ -109,6 +109,26 @@ const FaultTolerance = () => (
             detect failed tasks and move them automatically to a working container that runs single or multiple tasks.
         </p>
 
+        <p>This is explained fully in the docs a little hidden but located <a
+            href={"https://samza.apache.org/learn/documentation/latest/deployment/standalone.html#coordinator-internals"}>here</a>.
+            Another hidden reference from when they were releasing it can be read <a
+                href={"http://samza.apache.org/startup/preview/#flexible-deployment-model"}>here</a>. Dynamic
+            coordination provided by Zookeeper as a out the box solution but fully pluggable if requiring other
+            solutions. The coordinators main tasks are to elect a leader from the selection of Samza containers to
+            create the job model and to update it if containers leave or join. Notify Samza containers about a new
+            job model. The creation of a cluster works by each Samza container (processor) register with the
+            coordination service, in this example Zookeeper. The service elects one to a leader which will monitor all
+            live participants. Whenever this list of participants change then a new job model is created and notifies
+            all
+            in the cluster. This notification is done by Zookeeper in this example. Each participant will stop
+            processing, apply the new job model and then continue processing. To ensure that duplicates are not
+            processed by containers running the same partition a barrier is used by the coordination service to
+            synchronize all cluster participants and once synchronised pause, apply the job model and then resume.
+        </p>
+
+        <p>As we see next checkpointing protects Kafka consumers from missing messages when reapplying the job
+            model.</p>
+
         <h3>Checkpointing</h3>
 
         <p><a
