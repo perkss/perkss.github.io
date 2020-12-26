@@ -14,6 +14,9 @@ const DistSIntro = () => (
                 href={"https://www.youtube.com/playlist?list=PLeKd45zvjcDFUEv_ohr_HdUFe97RItdiB"}>Martin
                 Kleppmann.</a>. Enjoy!!</p>
 
+        <p>I would recommend reading through this intro section you can skip the random bits at the bottom. And then go
+            through each of the linked sections.</p>
+
         <p>Distributed systems are all about moving data between machines therefore we always need to
             consider <strong>Latency</strong> the time until a message arrives. Or the <strong>Bandwidth</strong> the
             data volume per unit of time.</p>

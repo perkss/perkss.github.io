@@ -98,7 +98,23 @@ const FaultTolerance = () => (
 
         <h3>Quorum Zookeeper and Kafka Cluster Redundancy</h3>
 
-        <h2>Apache Samza Faut Tolerance Internals</h2>
+        <p>Zookeeper will work fine as long as active Zookeepers are in the majority of the ensemble compared to failed
+            Zookeepers. A reference can be read here <a
+                href={"https://zookeeper.apache.org/doc/r3.1.2/zookeeperAdmin.html#sc_zkMulitServerSetup"}>here</a>.
+            Another good post on <a
+                href={"https://bowenli86.github.io/2016/07/04/distributed%20system/zookeeper/ZooKeeper-Consistency-Guarantees/"}>consistency
+                in Zookeeper</a> and also <a
+                href={"https://bowenli86.github.io/2016/07/07/distributed%20system/zookeeper/How-does-ZooKeeper-s-persistent-sequential-id-work/"}>sequential
+                persistence</a> will work. This majority will meet read after write consistency we discussed in a
+            previous post. Zookeeper can support an even number of nodes so we do not need to be concered with split
+            brain scenario. The Zookeeper Atomic Broadcast (ZAB) algorithm deals with this please check the Distributed
+            Algorithms section. As long as you have a majority cluster then it will be fine so in a 3 ensemble cluster
+            of ZK Nodes. Then if one failed you would be left with a majority of 2 still. These are safe against split
+            brain as each node could not form a cluster on its own as they would not be a majority out of the 3 nodes.
+            Therefore Zookeeper can run with 2 nodes in a cluster.
+        </p>
+
+        <h2>Apache Samza Fault Tolerance Internals</h2>
 
         <h3>Task Fail Over</h3>
 
@@ -109,21 +125,23 @@ const FaultTolerance = () => (
             detect failed tasks and move them automatically to a working container that runs single or multiple tasks.
         </p>
 
-        <p>This is explained fully in the docs a little hidden but located <a
+        <p>The embedded cluster failover is explained fully in the docs; a little hidden but located <a
             href={"https://samza.apache.org/learn/documentation/latest/deployment/standalone.html#coordinator-internals"}>here</a>.
             Another hidden reference from when they were releasing it can be read <a
                 href={"http://samza.apache.org/startup/preview/#flexible-deployment-model"}>here</a>. Dynamic
-            coordination provided by Zookeeper as a out the box solution but fully pluggable if requiring other
+            coordination can be provided by Zookeeper as an out the box solution but fully pluggable if requiring other
             solutions. The coordinators main tasks are to elect a leader from the selection of Samza containers to
-            create the job model and to update it if containers leave or join. Notify Samza containers about a new
-            job model. The creation of a cluster works by each Samza container (processor) register with the
-            coordination service, in this example Zookeeper. The service elects one to a leader which will monitor all
-            live participants. Whenever this list of participants change then a new job model is created and notifies
-            all
-            in the cluster. This notification is done by Zookeeper in this example. Each participant will stop
-            processing, apply the new job model and then continue processing. To ensure that duplicates are not
-            processed by containers running the same partition a barrier is used by the coordination service to
-            synchronize all cluster participants and once synchronised pause, apply the job model and then resume.
+            create the job model and also to update it if Samza containers leave or join. The leader will then notify
+            Samza
+            containers about a new job model which it creates with increased or decreased number of containers. The
+            creation of a cluster works by each Samza container (processor) register with the
+            coordination service, in this example Zookeeper. The service elects one to be a leader which will monitor
+            all live participants. Whenever this list of participants change then a new job model is created and
+            notifies all in the cluster. This notification is done by Zookeeper in this example but as stated is
+            pluggable. Each participant will stop processing, apply the new job model and then continue processing. To
+            ensure that duplicates are not processed by containers running the same partition a barrier is used by the
+            coordination service to synchronize all cluster participants and once synchronised pause, apply the job
+            model and then resume.
         </p>
 
         <p>As we see next checkpointing protects Kafka consumers from missing messages when reapplying the job
@@ -207,18 +225,19 @@ const FaultTolerance = () => (
 
         <h4>Two Instances Registering Partitions</h4>
 
-        <p>Now lets start up an instance 2 of our application. Our application creates a new path in Zookeeper following
+        <p>Now lets start up our first instance of our application. Our application creates a new path in Zookeeper
+            following
             the usual pattern of leader election described in the <a
                 href={"https://zookeeper.apache.org/doc/r3.6.1/recipes.html#sc_leaderElection"}>docs</a>.</p>
 
         <SyntaxHighlighter language='json' style={darcula} showLineNumbers={false}
                            wrapLines={true}>
-            {`Created ephemeral path: /app-order-grouping-app-2/order-grouping-app-2-2.0-coordinationData/processors/0000000000`} </SyntaxHighlighter>
+            {`Created ephemeral path: /app-order-grouping-app-2/order-grouping-app-2-2.0-coordinationData/processors/0000000001`} </SyntaxHighlighter>
 
 
         <SyntaxHighlighter language='json' style={darcula} showLineNumbers={false}
                            wrapLines={true}>
-            {`tryBecomeLeader: index = 0 for path=/app-order-grouping-app-2/order-grouping-app-2-2.0-coordinationData/processors/0000000000 out of [0000000000]`} </SyntaxHighlighter>
+            {`tryBecomeLeader: index = 0 for path=/app-order-grouping-app-2/order-grouping-app-2-2.0-coordinationData/processors/000000000 out of [0000000000]`} </SyntaxHighlighter>
 
         <p>You should see that it then registers and subscribes to partitions 0,1,2 all three of them. The
             KafkaSystemConsumer logs this out <i>Registering ssp: SystemStreamPartition [order-topology, order-request,

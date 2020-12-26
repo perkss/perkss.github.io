@@ -110,6 +110,10 @@ const Streaming = () => (
             <li style={{display: 'flex', justifyContent: 'left'}}><a
                 href={"https://ci.apache.org/projects/flink/flink-docs-stable/dev/stream/operators/windows.html#tumbling-windows"}>Apache
                 Flink Tumbling Window</a></li>
+
+            <li style={{display: 'flex', justifyContent: 'left'}}><a
+                href={"http://samza.apache.org/learn/documentation/latest/api/high-level-api.html#window-types"}>Apache
+                Samza Tumbling Window</a></li>
         </ul>
 
         <h5>Fixed Hopping (Sliding) Windows</h5>
@@ -166,6 +170,10 @@ const Streaming = () => (
             <li style={{display: 'flex', justifyContent: 'left'}}><a
                 href={"https://ci.apache.org/projects/flink/flink-docs-stable/dev/stream/operators/windows.html#session-windows"}>Apache
                 Flink Session Window</a></li>
+
+            <li style={{display: 'flex', justifyContent: 'left'}}><a
+                href={"http://samza.apache.org/learn/documentation/latest/api/high-level-api.html#window-types"}>Apache
+                Samza Session Window</a></li>
         </ul>
         <h5>Global Windows</h5>
         <p>In some frameworks by default all data is assigned to a global window and if the data is finite you can use
@@ -355,14 +363,28 @@ const Streaming = () => (
 
         <h5>Beam</h5>
         <p><a
-            href={"https://github.com/perkss/beam/blob/master/sdks/java/core/src/main/java/org/apache/beam/sdk/transforms/windowing/FixedWindows.java#L74"}>Window
+            href={"https://github.com/perkss/beam/blob/master/sdks/java/core/src/main/java/org/apache/beam/sdk/transforms/windowing/FixedWindows.java#L74"}>Fixed Window
+            start</a>
+        </p>
+        <p><a
+            href={"https://github.com/perkss/beam/blob/master/sdks/java/core/src/main/java/org/apache/beam/sdk/transforms/windowing/SlidingWindows.java#L109"}>Sliding Window
             start</a>
         </p>
 
-        <p>Instant start =
+        <p>For fixed window: Instant start =
             new Instant(
             timestamp.getMillis()
             - timestamp.plus(size).minus(offset).getMillis() % size.getMillis());</p>
+
+        <h5>Samza</h5>
+        <p><a
+            href={"https://github.com/apache/samza/blob/master/samza-core/src/main/java/org/apache/samza/operators/impl/WindowOperatorImpl.java#L338"}>Window
+            start times</a>
+        </p>
+
+        <p>For tumbling window is it: long timestamp = now - now % triggerDurationMs</p>
+        <p>For session window is it: long timestamp = (timestampedValues.isEmpty())? clock.currentTimeMillis() : timestampedValues.get(0).getTimestamp();
+        </p>
 
         <h3 id={"Watermarks"}>Watermarks</h3>
         <p>Watermarks are to do with <strong>when</strong> input data is complete in regards to event time. This is the
@@ -394,7 +416,7 @@ const Streaming = () => (
         <img width="90%" height="90%" src={Watermarks} alt="Runners Graph Image"/>
 
         <h4>Dealing with Late Data</h4>
-        
+
         {/*TODO compare the API and handling of BEAM FLINK KSTREAMS*/}
 
         <p>When working with windows you will need to eventually close it out. Then you will be able to set and handle
@@ -467,6 +489,23 @@ const Streaming = () => (
             The grace period is also specified and remember it defaults to 24 hours so you will want to specify this.
         </p>
 
+        <h4>Apache Samza</h4>
+
+        <p>Apache Samza offers early or late triggers <a
+            href={"http://samza.apache.org/learn/documentation/latest/api/high-level-api.html#windowing-concepts"}>discussed</a> in
+            this concepts section.
+        </p>
+
+        <h5>Count Trigger</h5>
+        <p>Fire when a certain number of events are received in a window.</p>
+
+        <h5>Time Trigger</h5>
+        <p>Fire after a certain time since the first message was received in a window pane. Or fire when there is no
+            new message received in a pane.</p>
+
+        <h5>Any Trigger</h5>
+        <p>A trigger that fires when any of the provided triggers fire.</p>
+
         <h3 id={"Accumulation"}>Accumulation</h3>
 
         <p>Now we have seen how triggers work we need to think about how the data they emit relates to each other. For
@@ -487,6 +526,12 @@ const Streaming = () => (
         <h4>Accumulating and Retracting</h4>
         <p>Accumulating and retracting method will emit the result accumulated, but if it sent an incorrect result
             previously it will retract that value by telling you the new result and the retracted result.</p>
+
+        <h5>Apache Samza</h5>
+        <p>When using windows with Samza the emitted window pane will include all messages by default. Usually you would
+            aggregate these messages somehow. The accumulation mode of this aggregation can be either discarding so
+            clear all state for the window at every emission. Or accumulating which will will contain all the results
+            emitted for that window pane.</p>
 
         <h3 id={"KafkaStreams101"}>Apache Kafka Streams 101</h3>
 
