@@ -29,16 +29,10 @@ const home = {
                         Algorithm<br/>Fun
                     </NavLink>
                 </li>
-                <li className='purple'>
-                    <NavLink to={"/clojure"}>
-                        Some Hipster<br/>Clojure
-                    </NavLink>
 
-                </li>
-
-                <li className='sixth-gold'>
-                    <NavLink to={"/FunctionalProgramming"}>
-                        Functional<br/>Programming
+                <li className='yellow'>
+                    <NavLink to={"/DistributedSystems"}>
+                        Distributed<br/>Systems
                     </NavLink>
 
                 </li>
@@ -50,9 +44,9 @@ const home = {
 
                 </li>
 
-                <li className='yellow'>
-                    <NavLink to={"/DistributedSystems"}>
-                        Distributed<br/>Systems
+                <li className='purple'>
+                    <NavLink to={"/clojure"}>
+                        Some Hipster<br/>Clojure
                     </NavLink>
 
                 </li>
@@ -64,6 +58,12 @@ const home = {
 
                 </li>
 
+                <li className='sixth-gold'>
+                    <NavLink to={"/FunctionalProgramming"}>
+                        Functional<br/>Programming
+                    </NavLink>
+
+                </li>
 
             </ul>
         </div>
@@ -73,9 +73,10 @@ const home = {
         <p>Hello and congratulations on finding <strong>The Perks of Computer Science</strong>. This is my memory dump
             of knowledge I like to acquire and remind myself of to keep my focused on learning. I will have some very
             basic stuff such as the Maths starting very basic but then journeying into more complex topics such as
-            Distributed Algorithms.</p>
+            Distributed Algorithms please can through the sections for more in depth contents.</p>
         <p>Please check the side menu on the top left or the buttons at the bottom to link to the sections. Some of the
-            topics I cover are the <strong>Fundamentals of Mathematics&#39;s</strong> starting with some BiteSize Maths a few
+            topics I cover are the <strong>Fundamentals of Mathematics&#39;s</strong> starting with some BiteSize Maths
+            a few
             Prerequisites from Stanford and finally looking in depth at the book Concrete Mathematics. A study
             of <strong>Mathematics for Computer Science</strong> using course content from <a
                 href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-042j-mathematics-for-computer-science-spring-2015/index.htm">MIT</a> and <a

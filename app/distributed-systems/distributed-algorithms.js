@@ -104,7 +104,8 @@ const DistributedAlgorithms = () => (
 
         <p>Raft is one of the newest consensus algorithms. Each node awakes randomly and
             sends a proposal, all the rest respond with votes if this server node gets the highest number of votes then
-            it wins. <a href={"http://thesecretlivesofdata.com/raft/"}>A great visualisation.</a></p>
+            it wins. <a href={"http://thesecretlivesofdata.com/raft/"}>A great visualisation.</a> <a
+                href={"https://pdos.csail.mit.edu/6.824/papers/raft-extended.pdf"}>A extended paper on Raft.</a></p>
 
         <p>We use terms to elect a leader like a parliamentary term and ensure that there is less than or equal to 1
             leader per term. The term is incremented every time a leader election is started, a node can only vote once
@@ -184,7 +185,11 @@ const DistributedAlgorithms = () => (
 
         <p><a href={"https://cwiki.apache.org/confluence/display/ZOOKEEPER/Zab+vs.+Paxos"}>ZAB Vs Paxos</a>
             <a href={"https://zookeeper.apache.org/doc/r3.4.13/zookeeperInternals.html"}>Zookeeper internals</a>
-            <a href={"http://www.cs.cornell.edu/courses/cs6452/2012sp/papers/zab-ieee.pdf"}>Zab Paper</a></p>
+            <a href={"http://www.cs.cornell.edu/courses/cs6452/2012sp/papers/zab-ieee.pdf"}>Zab Paper</a>
+            <a href={"https://www.confluent.io/blog/distributed-consensus-reloaded-apache-zookeeper-and-replication-in-kafka/"}>A
+                little dated but Zookeeper and Kafka.</a>
+        </p>
+
 
         <h3>Kafka Controller and Partition Leader Election</h3>
 
