@@ -23,7 +23,10 @@ const DistributedAlgorithms = () => (
         <p><strong>Causal Broadcast</strong> ensures that messages are delivered in causal order (happens before
             relation ordered). The algorithm will ensure that a message 1 sent by a node say A will be delivered to all
             nodes before sending message 2 that depends on the message 1 say sent by node B if message 1
-            happens before message 2. Although concurrent messages can be delivered in any order between nodes as they
+            happens before message 2. As we can trace back the order through the broadcast as happens before will
+            guarantee there is a path. A example in real world terms is a chat room, where a user posts a question, and
+            then a user responds therefore the question happened before the response. Although concurrent messages can be
+            delivered in any order between nodes as they
             have no causal dependency. Say a message 3 was sent by Node A. A message 2 was sent concurrently (doesnt
             need to be exact same time concurrency in causal sense) by Node B. Then node C can receive either message 1
             or message 2 and it will be valid in this algorithm. So we can see that nodes can get differences in order

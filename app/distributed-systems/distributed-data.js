@@ -90,6 +90,70 @@ const DistributedData = () => (
 
         <h4>Viewstamped Replication (VR)</h4>
 
+
+        <h3>Consistency</h3>
+
+        <p>Replicas should be in a consistent state with all other replicas but soon do they have to be consistent?
+            Should reads be immediate, there are various consistency models in regards to replication.</p>
+
+        <p>If we commit a transaction to multiple nodes all the nodes should commit or abort. And if any node crashes
+            then they all should abort.</p>
+
+        <h4>Two Phase Commit</h4>
+        <p>Client wants to open a transaction on multiple database nodes so sends open identifier to all nodes. Apply
+            the execution. The client will then send to a coordinator commit request.
+            This coordinator will then send prepare to all nodes in the database and check they are in consistent state
+            and each node is required to reply yes I am ready to commit. Then the coordinator decides if we can commit
+            or not.</p>
+
+        <p>If the coordinator crashes it has written decisions to disk that are durable it will then continue processing
+            from this point. If it has no decision before crash it will abort.</p>
+
+        <p>If a replica fails to respond we can timeout and abort or we can have nodes predict failures on nodes and
+            use total order broadcast to message other nodes that this node suspects a failure to ensure liveness so we
+            do not wait indefinitely for replicas to respond.</p>
+
+        <h4>Linearizability</h4>
+
+        <p>How do we get consistent data if we if we access replicated data from multiple nodes from multiple clients
+            concurrently. Linearizability provides us with a distributed view but all operations behave like we have a
+            single copy of the data. It provides strong consistency where if we read a value we will get up to date
+            value. If one client updates a value and then another client reads the value afterwards we expect them to
+            see the updated value. This is not the happens before relationship as that is to do with broadcast only as
+            we want these semantics even if the clients have not directly interacted with each other. If the write from
+            client and the read from another client happens at a overlapping time then the order can be any order and
+            that is fine with linearizability. Quorum read and writes do not solve this problem as we may write to only
+            Node A, but replication happens after the a client read to Node B which has the older data. We can solve
+            this by the client telling the replicas enough to make a quorum that are not updated with the updated value
+            read repair approach. </p>
+
+        <p>Problems with linearizability is the performance cost as it takes a lot of messages and waiting for responses
+            to these messages to get it to work. It also can be trick to scale if you are using a leader node. Also if
+            you cannot contact a quorum then you cannot do the operation so availability is an issue.</p>
+
+        <p><strong>Compare and swap</strong> in distributed system is achievable using total order broadcast we do this
+            by total order broadcast get to get the current value. We then total order broadcast compare and swap with
+            the old value and then new value to set. We then check and do the compare and swap to check if existing
+            state is the old value and return true or we see the old value does not match we return false and fail the
+            operation.</p>
+
+        <h4>Eventual Consistency</h4>
+        <p>This model is weaker than linerizability but has performance and availability benefits. The CAP theorem
+            provides us with a theorem that we can only have two of three Consistency, Availability or Partition
+            Tolerance. Therefore if the state of our system has the presence of a network partition then we can be
+            either <strong>consistent</strong> or <strong>available</strong>.</p>
+
+        <p>Eventual consistency replication process operations based on local state only. If we have no more updates
+            then all of our nodes will eventually converge to the same state. Therefore any read requests use local
+            state if an update is applied to one replica it will then eventually update other replicas. If updates never
+            stop it could be impossible to get eventual consistency. A strong eventual consistency was created to help
+            with this. The convergence point is that any two replicas processed same updates they will be in the same
+            state. The benefits of this approach is high availability operations do not wait for the replication across
+            the network and always reliable against partitions of the network.</p>
+
+        <p>If we only become eventually consistent how do we deal with conflicts? Algorithms exist to help with these
+            merge problems.</p>
+
         <h4>Kafka Distributed Replication</h4>
 
         <p><a href={"https://kafka.apache.org/documentation/#design_replicatedlog"}>Replicated Logs</a> when a write
@@ -121,8 +185,6 @@ const DistributedData = () => (
             all nodes have committed successfully the FORGET phase happens where status information is erased and
             transaction is forgotten.</p>
 
-
-        <h3>Consistency and Consensus</h3>
 
     </div>
 

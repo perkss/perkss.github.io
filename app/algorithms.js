@@ -5,6 +5,64 @@ import SyntaxHighlighter from 'react-syntax-highlighter';
 import {darcula} from 'react-syntax-highlighter/styles/hljs';
 import {HashLink as Link} from 'react-router-hash-link';
 import {InlineMath, BlockMath} from 'react-katex';
+import Insertion1 from '../images/insertion-sort/random-order/Average1.jpeg'
+import Insertion2 from '../images/insertion-sort/random-order/Average2.jpeg'
+import Insertion3 from '../images/insertion-sort/random-order/Average3.jpeg'
+import Insertion4 from '../images/insertion-sort/random-order/Average4.jpeg'
+import Insertion5 from '../images/insertion-sort/random-order/Average5.jpeg'
+import Insertion6 from '../images/insertion-sort/random-order/Average6.jpeg'
+import Insertion7 from '../images/insertion-sort/random-order/Average7.jpeg'
+import Insertion8 from '../images/insertion-sort/random-order/Average8.jpeg'
+import Insertion9 from '../images/insertion-sort/random-order/Average9.jpeg'
+import Insertion10 from '../images/insertion-sort/random-order/Average10.jpeg'
+import Insertion11 from '../images/insertion-sort/random-order/Average11.jpeg'
+import Insertion12 from '../images/insertion-sort/random-order/Average12.jpeg'
+import Insertion13 from '../images/insertion-sort/random-order/Average13.jpeg'
+import Insertion14 from '../images/insertion-sort/random-order/Average14.jpeg'
+import Insertion16 from '../images/insertion-sort/random-order/Average16.jpeg'
+import Insertion17 from '../images/insertion-sort/random-order/Average17.jpeg'
+
+// import InsertionWorst1 from '../images/insertion-sort/worst-case/1.jpeg'
+// import InsertionWorst2 from '../images/insertion-sort/worst-case/2.jpeg'
+// import InsertionWorst3 from '../images/insertion-sort/worst-case/3.jpeg'
+// import InsertionWorst4 from '../images/insertion-sort/worst-case/4.jpeg'
+// import InsertionWorst5 from '../images/insertion-sort/worst-case/5.jpeg'
+// import InsertionWorst6 from '../images/insertion-sort/worst-case/6.jpeg'
+// import InsertionWorst7 from '../images/insertion-sort/worst-case/7.jpeg'
+// import InsertionWorst8 from '../images/insertion-sort/worst-case/8.jpeg'
+// import InsertionWorst9 from '../images/insertion-sort/worst-case/9.jpeg'
+// import InsertionWorst10 from '../images/insertion-sort/worst-case/10.jpeg'
+// import InsertionWorst11 from '../images/insertion-sort/worst-case/11.jpeg'
+// import InsertionWorst12 from '../images/insertion-sort/worst-case/12.jpeg'
+// import InsertionWorst13 from '../images/insertion-sort/worst-case/13.jpeg'
+// import InsertionWorst14 from '../images/insertion-sort/worst-case/14.jpeg'
+// import InsertionWorst15 from '../images/insertion-sort/worst-case/15.jpeg'
+// import InsertionWorst16 from '../images/insertion-sort/worst-case/16.jpeg'
+// import InsertionWorst17 from '../images/insertion-sort/worst-case/17.jpeg'
+// import InsertionWorst18 from '../images/insertion-sort/worst-case/18.jpeg'
+// import InsertionWorst19 from '../images/insertion-sort/worst-case/19.jpeg'
+// import InsertionWorst20 from '../images/insertion-sort/worst-case/20.jpeg'
+// import InsertionWorst21 from '../images/insertion-sort/worst-case/21.jpeg'
+// import InsertionWorst22 from '../images/insertion-sort/worst-case/22.jpeg'
+// import InsertionWorst23 from '../images/insertion-sort/worst-case/23.jpeg'
+// import InsertionWorst24 from '../images/insertion-sort/worst-case/24.jpeg'
+// import InsertionWorst25 from '../images/insertion-sort/worst-case/25.jpeg'
+// import InsertionWorst26 from '../images/insertion-sort/worst-case/26.jpeg'
+// import InsertionWorst27 from '../images/insertion-sort/worst-case/27.jpeg'
+// import InsertionWorst28 from '../images/insertion-sort/worst-case/28.jpeg'
+// import InsertionWorst29 from '../images/insertion-sort/worst-case/29.jpeg'
+
+
+import InsertionBest1 from '../images/insertion-sort/best-case/Best1.jpeg'
+import InsertionBest2 from '../images/insertion-sort/best-case/Best2.jpeg'
+import InsertionBest3 from '../images/insertion-sort/best-case/Best3.jpeg'
+import InsertionBest4 from '../images/insertion-sort/best-case/Best4.jpeg'
+import InsertionBest5 from '../images/insertion-sort/best-case/Best5.jpeg'
+import InsertionBest6 from '../images/insertion-sort/best-case/Best6.jpeg'
+import InsertionBest7 from '../images/insertion-sort/best-case/Best7.jpeg'
+import InsertionBest8 from '../images/insertion-sort/best-case/Best8.jpeg'
+import InsertionBest9 from '../images/insertion-sort/best-case/Best9.jpeg'
+import InsertionBest10 from '../images/insertion-sort/best-case/Best10.jpeg'
 
 const algorithms = {
     title: 'Algorithms',
@@ -917,7 +975,138 @@ const algorithms = {
 
             <h4>Insertion Sort</h4>
 
+
             <p>Lets now see our first sort not the quickest but a good place to begin. Insertion sort.</p>
+
+            <h4>Insertion Sort Average Case</h4>
+
+            <img width="90%" height="90%" src={Insertion1} alt="Insertion Sort Graph Image"/>
+
+            <p></p>
+
+            <img width="90%" height="90%" src={Insertion2} alt="Insertion Sort Graph Image"/>
+
+            <p></p>
+            <img width="90%" height="90%" src={Insertion3} alt="Insertion Sort Graph Image"/>
+
+            <p></p>
+            <img width="90%" height="90%" src={Insertion4} alt="Insertion Sort Graph Image"/>
+            <p></p>
+            <img width="90%" height="90%" src={Insertion5} alt="Insertion Sort Graph Image"/>
+            <p></p>
+            <img width="90%" height="90%" src={Insertion6} alt="Insertion Sort Graph Image"/>
+            <p></p>
+            <img width="90%" height="90%" src={Insertion7} alt="Insertion Sort Graph Image"/>
+            <p></p>
+            <img width="90%" height="90%" src={Insertion8} alt="Insertion Sort Graph Image"/>
+            <p></p>
+            <img width="90%" height="90%" src={Insertion9} alt="Insertion Sort Graph Image"/>
+            <p></p>
+            <img width="90%" height="90%" src={Insertion10} alt="Insertion Sort Graph Image"/>
+            <p></p>
+            <img width="90%" height="90%" src={Insertion11} alt="Insertion Sort Graph Image"/>
+            <p></p>
+            <img width="90%" height="90%" src={Insertion12} alt="Insertion Sort Graph Image"/>
+            <p></p>
+            <img width="90%" height="90%" src={Insertion13} alt="Insertion Sort Graph Image"/>
+            <p></p>
+            <img width="90%" height="90%" src={Insertion14} alt="Insertion Sort Graph Image"/>
+            <p></p>
+            <img width="90%" height="90%" src={Insertion16} alt="Insertion Sort Graph Image"/>
+            <p></p>
+            <img width="90%" height="90%" src={Insertion17} alt="Insertion Sort Graph Image"/>
+
+            <h4>Insertion Sort Worst Case</h4>
+
+            <p>The time complexity is explained thoroughly on this <a
+                href={"https://www.happycoders.eu/algorithms/insertion-sort/#Worst-Case_Time_Complexity"}>site</a>.</p>
+
+            {/*<img width="90%" height="90%" src={InsertionWorst1} alt="Insertion Sort Graph Image"/>*/}
+            {/*<p></p>*/}
+            {/*<img width="90%" height="90%" src={InsertionWorst2} alt="Insertion Sort Graph Image"/>*/}
+            {/*<p></p>*/}
+            {/*<img width="90%" height="90%" src={InsertionWorst3} alt="Insertion Sort Graph Image"/>*/}
+            {/*<p></p>*/}
+            {/*<img width="90%" height="90%" src={InsertionWorst4} alt="Insertion Sort Graph Image"/>*/}
+            {/*<p></p>*/}
+            {/*<img width="90%" height="90%" src={InsertionWorst5} alt="Insertion Sort Graph Image"/>*/}
+            {/*<p></p>*/}
+            {/*<img width="90%" height="90%" src={InsertionWorst6} alt="Insertion Sort Graph Image"/>*/}
+            {/*<p></p>*/}
+            {/*<img width="90%" height="90%" src={InsertionWorst7} alt="Insertion Sort Graph Image"/>*/}
+            {/*<p></p>*/}
+            {/*<img width="90%" height="90%" src={InsertionWorst8} alt="Insertion Sort Graph Image"/>*/}
+            {/*<p></p>*/}
+            {/*<img width="90%" height="90%" src={InsertionWorst9} alt="Insertion Sort Graph Image"/>*/}
+            {/*<p></p>*/}
+            {/*<img width="90%" height="90%" src={InsertionWorst10} alt="Insertion Sort Graph Image"/>*/}
+            {/*<p></p>*/}
+            {/*<img width="90%" height="90%" src={InsertionWorst11} alt="Insertion Sort Graph Image"/>*/}
+            {/*<p></p>*/}
+            {/*<img width="90%" height="90%" src={InsertionWorst12} alt="Insertion Sort Graph Image"/>*/}
+            {/*<p></p>*/}
+            {/*<img width="90%" height="90%" src={InsertionWorst13} alt="Insertion Sort Graph Image"/>*/}
+            {/*<p></p>*/}
+            {/*<img width="90%" height="90%" src={InsertionWorst14} alt="Insertion Sort Graph Image"/>*/}
+            {/*<p></p>*/}
+            {/*<img width="90%" height="90%" src={InsertionWorst15} alt="Insertion Sort Graph Image"/>*/}
+            {/*<p></p>*/}
+            {/*<img width="90%" height="90%" src={InsertionWorst16} alt="Insertion Sort Graph Image"/>*/}
+            {/*<p></p>*/}
+            {/*<img width="90%" height="90%" src={InsertionWorst17} alt="Insertion Sort Graph Image"/>*/}
+            {/*<p></p>*/}
+            {/*<img width="90%" height="90%" src={InsertionWorst18} alt="Insertion Sort Graph Image"/>*/}
+            {/*<p></p>*/}
+            {/*<img width="90%" height="90%" src={InsertionWorst19} alt="Insertion Sort Graph Image"/>*/}
+            {/*<p></p>*/}
+            {/*<img width="90%" height="90%" src={InsertionWorst20} alt="Insertion Sort Graph Image"/>*/}
+            {/*<p></p>*/}
+            {/*<img width="90%" height="90%" src={InsertionWorst21} alt="Insertion Sort Graph Image"/>*/}
+            {/*<p></p>*/}
+            {/*<img width="90%" height="90%" src={InsertionWorst22} alt="Insertion Sort Graph Image"/>*/}
+            {/*<p></p>*/}
+            {/*<img width="90%" height="90%" src={InsertionWorst23} alt="Insertion Sort Graph Image"/>*/}
+            {/*<p></p>*/}
+            {/*<img width="90%" height="90%" src={InsertionWorst24} alt="Insertion Sort Graph Image"/>*/}
+            {/*<p></p>*/}
+            {/*<img width="90%" height="90%" src={InsertionWorst25} alt="Insertion Sort Graph Image"/>*/}
+            {/*<p></p>*/}
+            {/*<img width="90%" height="90%" src={InsertionWorst26} alt="Insertion Sort Graph Image"/>*/}
+            {/*<p></p>*/}
+            {/*<img width="90%" height="90%" src={InsertionWorst27} alt="Insertion Sort Graph Image"/>*/}
+            {/*<p></p>*/}
+            {/*<img width="90%" height="90%" src={InsertionWorst28} alt="Insertion Sort Graph Image"/>*/}
+            {/*<p></p>*/}
+            {/*<img width="90%" height="90%" src={InsertionWorst29} alt="Insertion Sort Graph Image"/>*/}
+
+            <h4>Insertion Sort Best Case</h4>
+
+            <p>The time complexity of Insertion Sort best case is <i>O(n)</i> as in reality we scan through the whole
+                array starting at the second element so <i>n-1</i> as we state the first element is the single sorted
+                array. We only do the comparisons and no swaps in this case. Giving us a best case of <i>O(n)</i>.
+            </p>
+
+            <img width="90%" height="90%" src={InsertionBest1} alt="Insertion Sort Graph Image"/>
+            <p></p>
+            <img width="90%" height="90%" src={InsertionBest2} alt="Insertion Sort Graph Image"/>
+            <p></p>
+            <img width="90%" height="90%" src={InsertionBest3} alt="Insertion Sort Graph Image"/>
+            <p></p>
+            <img width="90%" height="90%" src={InsertionBest4} alt="Insertion Sort Graph Image"/>
+            <p></p>
+            <img width="90%" height="90%" src={InsertionBest5} alt="Insertion Sort Graph Image"/>
+            <p></p>
+            <img width="90%" height="90%" src={InsertionBest6} alt="Insertion Sort Graph Image"/>
+            <p></p>
+            <img width="90%" height="90%" src={InsertionBest7} alt="Insertion Sort Graph Image"/>
+            <p></p>
+            <img width="90%" height="90%" src={InsertionBest8} alt="Insertion Sort Graph Image"/>
+            <p></p>
+            <img width="90%" height="90%" src={InsertionBest9} alt="Insertion Sort Graph Image"/>
+            <p></p>
+            <img width="90%" height="90%" src={InsertionBest10} alt="Insertion Sort Graph Image"/>
+            <p></p>
+
 
             <h3 id={"Scheduling"}>Scheduling</h3>
 
