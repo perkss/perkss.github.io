@@ -34,8 +34,7 @@ const config = {
                     {
                         loader: 'file-loader',
                         options: {
-                            name: '[name].[ext]',
-                            outputPath: 'images/'
+                            name: '[path][name].[ext]',
                         }
                     }
                 ]
