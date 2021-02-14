@@ -21,6 +21,16 @@ const DistSIntro = () => (
             consider <strong>Latency</strong> the time until a message arrives. Or the <strong>Bandwidth</strong> the
             data volume per unit of time.</p>
 
+        <h3>Definitions</h3>
+
+        <p>Some key terms to be familiar with are:</p>
+
+        <p><strong>Serializable</strong> is the strongest guarantee that transactions even if executed in parallel will
+            always end up in the same state as if executed serially.</p>
+        <p><strong>Linearizability</strong> is that the data can be viewed as a single view as if serializable but
+            some of the responses may yet have to return so it maybe a subset but it remains a consistent view to all
+            users.</p>
+
         <h3>Remote Procedure Call</h3>
 
         <p>Remote procedure calls (Remote Method Invocation) can be used in distributed systems which is when you call a
