@@ -29,16 +29,14 @@ ul, li {
 
 .text-list li {
     text-align: left;
-
 }
 
 .cv {
     font-size: large;
 }
 
-.no-bullets {
+.no-bullets li {
     list-style-type: none;
-    display:inline;
     text-align: left;
     padding: 10px;
 }
