@@ -4,7 +4,7 @@ import Latex from 'react-latex';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import {darcula} from 'react-syntax-highlighter/styles/hljs';
 import {HashLink as Link} from 'react-router-hash-link';
-import {InlineMath, BlockMath} from 'react-katex';
+import {BlockMath, InlineMath} from 'react-katex';
 import Insertion1 from '../images/insertion-sort/random-order/Average1.jpeg'
 import Insertion2 from '../images/insertion-sort/random-order/Average2.jpeg'
 import Insertion3 from '../images/insertion-sort/random-order/Average3.jpeg'
@@ -51,8 +51,6 @@ import Insertion17 from '../images/insertion-sort/random-order/Average17.jpeg'
 // import InsertionWorst27 from '../images/insertion-sort/worst-case/27.jpeg'
 // import InsertionWorst28 from '../images/insertion-sort/worst-case/28.jpeg'
 // import InsertionWorst29 from '../images/insertion-sort/worst-case/29.jpeg'
-
-
 import InsertionBest1 from '../images/insertion-sort/best-case/Best1.jpeg'
 import InsertionBest2 from '../images/insertion-sort/best-case/Best2.jpeg'
 import InsertionBest3 from '../images/insertion-sort/best-case/Best3.jpeg'
@@ -187,13 +185,18 @@ const algorithms = {
                         math="T(\frac{n}{2^i}) = T(1)"></InlineMath></p>
                 <p>We want to replace the left side with the right side which are equal</p>
                 <BlockMath math="\frac{n}{2^i} = 1"/>
-                <p>Using logarithm law we want to get <i>i = </i></p>
+                <p>Using logarithm law we want to get <i>i = </i> by multiplying both sides by <InlineMath
+                    math="2^i"></InlineMath> giving us <InlineMath
+                    math="n = 2^i * 1"></InlineMath> which is the same as <InlineMath
+                    math="n = 2^i"></InlineMath>. We then apply the log law for converting the power to a log form to
+                    give.</p>
                 <BlockMath math="i = log n"/>
 
                 <p>Now we need to plug it back into our expanded term formula we found previously to find our
                     function.</p>
                 <BlockMath math="     = C \times i + T(\frac{n}{2^{i}})"/>
-                <p>We worked out the value for <i>i</i> so can replace when we have the T(1) as i = n so its n/n.</p>
+                <p>We worked out the value for <i>i</i> when <i>n = 1</i>so we can replace when we have the T(1) as i =
+                    n so its n/n in this case 1/1.</p>
                 <BlockMath math="     = C \times \log n + T(1)"/>
                 <p>We plugged it in now we replace T with Theta and replace constant with Theta forcing it to become
                     base case</p>
@@ -378,7 +381,6 @@ const algorithms = {
             <p>Therefore if <i>a</i> and <i>b</i> are constants which they are then they only differ by a constant
                 factor which we said we ignore in asymptotic notation.</p>
 
-
             <p>The common complexities that come up in algorithm analysis are listed below in the order fastest to
                 slowest. Note for logs bases and exponents inside the logs turn into constant factors so are
                 dropped.</p>
@@ -393,6 +395,11 @@ const algorithms = {
                 <li><InlineMath math="O(2^n)"></InlineMath></li>
                 <li><InlineMath math="O(n!)"></InlineMath></li>
             </ul>
+
+            <p>Commonly we may also have <i>O(n + m)</i> when we have a signature of a function func(n: List, m: List)
+                and we iterate over each one in the function rather than <i>2n</i> as it is potentially different size
+                lists. Or we may have a nested loop in a function with that signature where it is <i>O(n *
+                    m)</i> not <i>O(n*n)</i> as we again have the two different array sizes.</p>
 
             <h4>Big Omega</h4>
 
@@ -443,6 +450,9 @@ const algorithms = {
             <h3 id={"DataStructures"}>Data Structures</h3>
 
             <h4>Introduction</h4>
+
+            <h5>Sets</h5>
+
             <p>Sets have already been covered in the Discrete Maths where they were usually fixed but sets that are
                 manipulated by Algorithms
                 can change by growing and shrinking over time, these sets are call dynamic. Algorithm may require the

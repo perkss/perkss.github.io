@@ -14,7 +14,9 @@ body {
 }
 
 h1, h2, p, ul, li {
-    font-family: 'Open Sans';
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue",
+    Helvetica, Arial, "Lucida Grande", sans-serif;
+
 }
 
 p {
@@ -28,6 +30,17 @@ ul, li {
 .text-list li {
     text-align: left;
 
+}
+
+.cv {
+    font-size: large;
+}
+
+.no-bullets {
+    list-style-type: none;
+    display:inline;
+    text-align: left;
+    padding: 10px;
 }
 
 .center {

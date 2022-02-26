@@ -3,6 +3,19 @@ import {NavLink} from "react-router-dom";
 import HomeTemplate from './home-page.js';
 import './../css/nav-grid.css';
 import './../css/colours.css';
+import {SocialIcon} from 'react-social-icons';
+import me from '../images/me.jpg';
+
+const ColoredLine = ({color}) => (
+    <hr
+        style={{
+            color,
+            backgroundColor: color,
+            height: 5,
+            marginLeft: "22%"
+        }}
+    />
+);
 
 const home = {
 
@@ -69,20 +82,31 @@ const home = {
         </div>
 
     ],
-    text: [<div>
+    text: [
+        <div>
 
-        <p>Hello my name is Stuart, I am a software engineer living in London UK. Please hit me up and say hello on <a
-            href={"https://www.linkedin.com/in/stuart-perks/"}>LinkedIn</a>.</p>
+            <img style={{float: "left", marginRight: 25, marginBottom: 15 }} src={me} alt="Me" width="20%" height="20%"/>
 
-        <p>I am currently a technical lead, software engineer with a focus on distributed systems working heavily with
+            <p className={"cv"}>Hello my name is <i>Stuart Perks</i>. I am a software engineer living in London UK. I have a keen
+            interest in Distributed
+            Systems with a focus on database internals and stream processing. Some of the open source projects I have
+            contributed to are Kafka, Beam, Reactor-Kafka and Samza.</p>
+        <p className={"cv"}>Please hit me up and say hello on LinkedIn <SocialIcon style={{ height: 35, width: 35 }} url="https://www.linkedin.com/in/stuart-perks/"/> and
+            check out my Github <SocialIcon style={{ height: 35, width: 35 }} url="https://github.com/perkss"/>.</p>
+
+        <p className={"cv"}>I am currently a technical lead, software engineer with a focus on distributed systems working heavily with
             Kotlin, Kafka and Kafka streams.</p>
 
-        <p>Please check out my <a href="https://github.com/perkss">Github</a> and feel free to contribute to any of my
-            projects. Some of the open source projects I have contributed to are Kafka, Beam, Reactor-Kafka and Samza</p>
+        <p className={"cv"}>Please check out my <a href="https://github.com/perkss">Github</a> and feel free to contribute to any of my
+            projects. </p>
+
+        {/*<ColoredLine color="#0288D1"/>*/}
+        <br/>
 
         <p>Congratulations on finding <strong>The Perks of Computer Science</strong>. This is my memory dump
             of knowledge and a place to structure and focus my learning. I will have some very
-            basic stuff such as the Maths starting very basic (got to have those foundations solid) but then journeying into more complex topics such as
+            basic stuff such as the Maths starting very basic (got to have those foundations solid) but then journeying
+            into more complex topics such as
             Distributed Algorithms please scan through the sections for more in depth content pages.</p>
 
         <p>Please check the side menu on the top left or the buttons at the bottom to link to the sections. Some of the
