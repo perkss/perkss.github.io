@@ -89,6 +89,12 @@ const algorithms = {
                 href={"https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/index.htm"}>MIT
                 Introduction to Algorithms</a>. </p>
 
+            <h4>Useful Links</h4>
+
+            <ul className="text-list">
+                <li><a href={"https://www.bigocheatsheet.com/"}>Big O CheatSheet</a></li>
+            </ul>
+
             <h4>Algorithmic Thinking</h4>
             <h5>Finding a peak in a list of numbers</h5>
             <p>Lets start with our first and very simple algorithm that finds peaks if one exists in a list of numbers.
@@ -686,14 +692,13 @@ const algorithms = {
     // Index is node and list is values associated. Most efficient memory wise.
     private int[][] adjList = {{2}, {3}, {3, 4}, {5}, {5}, {}};`}</SyntaxHighlighter>
 
-            <h4>Traversing a Tree</h4>
+            <h4>Traversing a Binary Tree</h4>
 
-            <p>A tree has exactly one root and no loops.</p>
+            <p>A tree has exactly one root and no loops. A binary tree only has at most two children per node.</p>
 
-            <h5>Tree Depth First Traversal</h5>
+            <h5>Binary Tree Traversal</h5>
 
-            <p>All of the following traversals are <i>O(n)</i>. DFS in general is used for Network paths and maze
-                search.</p>
+            <p>All of the following traversals are <i>O(n)</i>.</p>
 
             <p><strong>In Order Traversal</strong> (Left, Root, Right), you traverse the left tree (call
                 inOrder(node.left)) then you print root then you traverse right tree (call inOrder(node.right)).</p>
@@ -947,6 +952,16 @@ const algorithms = {
                     <th>Average Case<br/>Running Time</th>
                 </tr>
                 <tr>
+                    <td>Bubble Sort</td>
+                    <td><InlineMath math="\Theta(n^2)"/></td>
+                    <td><InlineMath math="\Theta(n^2)"/></td>
+                </tr>
+                <tr>
+                    <td>Selection Sort</td>
+                    <td><InlineMath math="\Theta(n^2)"/></td>
+                    <td><InlineMath math="\Theta(n^2)"/></td>
+                </tr>
+                <tr>
                     <td>Insertion Sort</td>
                     <td><InlineMath math="\Theta(n^2)"/></td>
                     <td><InlineMath math="\Theta(n^2)"/></td>
@@ -959,7 +974,7 @@ const algorithms = {
                 <tr>
                     <td>Heapsort</td>
                     <td><InlineMath math="O(n \lg n)"/></td>
-                    <td><InlineMath math=""/></td>
+                    <td><InlineMath math="O(n \lg n)"/></td>
                 </tr>
                 <tr>
                     <td>Quicksort</td>
@@ -983,10 +998,98 @@ const algorithms = {
                 </tr>
             </table>
 
+            <h4>Bubble Sort</h4>
+            <p>Bubble sort is not an efficient algorithm for sorting but is simple to understand. It simply moves
+                the largest element up to the end of the list each run bubbling it up. And then does the same again
+                for the list size - 1 the already sorted elements. It will compare each element on the bubble up and
+                move the largest up to the final spot each time.</p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`static int[] bubbleSort(int[] arr) {
+   boolean hasSwapped = true;
+   // iterate till we dont swap any
+   while(hasSwapped) {
+   hasSwapped = false;
+       // start at 0 then compare each element
+       // then start at 1 and so on
+       for(int i = 0; i < arr.length-1; i++) {
+
+            if(arr[i] > arr[i+1]) {
+                int tmp = arr[i];
+                arr[i] = arr[i+1];
+                arr[i+1] = tmp;
+                hasSwapped = true;
+            }
+        }
+   }
+  return arr;
+}`}</SyntaxHighlighter>
+
+            <h4>Selection Sort</h4>
+
+            <p>Selection sorts iterates the whole list each time and ensures the first element is the smallest element
+                after the run then applies again for the rest of the list with the smallest removed so finding the next
+                smallest element.</p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`static int[] selectionSort(int[] arr) {
+     for(int i = 0; i<arr.length-1;i++) {
+         int smallestPos = i;
+         for(int j = i + 1; j<arr.length; j++) {
+ 
+             if(arr[j] < arr[smallestPos]) {
+                 smallestPos = j;
+             }
+ 
+         }
+ 
+         // if i is not the smallest element swap with smallest
+         if(i != smallestPos) {
+             int temp = arr[i];
+             arr[i] = arr[smallestPos];
+             arr[smallestPos] = temp;
+         }
+     }
+ 
+     return arr;
+ }`}</SyntaxHighlighter>
+
             <h4>Insertion Sort</h4>
 
-
             <p>Lets now see our first sort not the quickest but a good place to begin. Insertion sort.</p>
+
+            <p>Insertion sort can be efficient when sorting a list that is almost sorted and this can give us O(n) it
+                also has a O(1) space complexity so is very memory efficient. The
+                basic process is check the first item and leave where it is. We now look at the next item and compare to
+                the first and insert it into the correct order by swapping. The in place sort orders the start of the
+                list and you continually insert new items from the remaining unsorted list by compare and swap. This can
+                be thought of like
+                sorting cards you have a sorted list in your left hand and a unsorted in your right, then you take the
+                next card from the right hand and insert into the correct place on the left hand.</p>
+
+            <p>Insertion sort is also stable and in place.</p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`static int[] insertionSort(int[] arr) {
+ 
+    for(int i = 1; i<arr.length; i++) {
+        int curr = arr[i];
+
+        // move the elements in the sorted list to be ahead of the new curr eleemnt
+        // [3,4,  choose 1  11, 2,5]
+        // move 1 compare against 4 swap [3,1,4,11,2,5]
+        // move 1 compare against 3 swap [1,3,4,11,2,5]
+        int j = i-1;
+        while(j>= 0 && curr < arr[j]) {
+            arr[j+1] = arr[j];
+            j--;
+       }
+       arr[j+1] = curr;
+
+    }
+
+    return arr;
+}`}</SyntaxHighlighter>
 
             <h4>Insertion Sort Average Case</h4>
 
@@ -1117,6 +1220,138 @@ const algorithms = {
             <img width="90%" height="90%" src={InsertionBest10} alt="Insertion Sort Graph Image"/>
             <p></p>
 
+            <h4>Merge Sort</h4>
+
+            <p>Merge sort is a stable sort that is <InlineMath math="O(n \lg n)"/> for all time complexities. It is
+                good as it guarantees the speed, but is not as space efficient as it has the auxiliary space requirement
+                of <InlineMath math="O(n)"/></p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{` /**
+      ** A stable and O(n log n) algorithm for all best/worst/average cases
+      ** with a O(n) space complexity.
+      ** Good as reliable on time, and stable but bad due to its space complexity
+      **/
+      static int[] mergeSort(int[] arr) {
+         if(arr.length <= 1) {
+             return arr;
+         }
+
+ // split list into two sides
+         int midPoint = arr.length/2;
+         int leftSize = midPoint;
+         int rightSize = arr.length - midPoint;
+         //System.out.println("Mid = " + midPoint);
+         int[] left = new int[leftSize];
+         int[] right = new int[rightSize];
+
+         // fill each side with left side and then right side
+         for(int i = 0; i<midPoint; i++) {
+             left[i] = arr[i];
+         }
+
+         for(int i = midPoint; i<arr.length; i++) {
+             // remember to subtract mid value
+             right[i-midPoint] = arr[i];
+         }
+
+         // recursively split and then merge each side
+         return merge(
+             mergeSort(left),
+             mergeSort(right));
+      }
+      
+      static int[] merge(int[] left, int[] right) {
+         int leftPtr = 0;
+         int rightPtr = 0;
+
+         int currPos = 0;
+         int[] merged = new int[left.length + right.length];
+
+         // merge the two parts
+         while(leftPtr < left.length && rightPtr < right.length) {
+             if(left[leftPtr] <= right[rightPtr]) {
+                 merged[currPos] = left[leftPtr];
+                 leftPtr++;
+             } else {
+                 merged[currPos] = right[rightPtr];
+                 rightPtr++;
+             }
+             currPos++;
+         }
+
+         // any remaining are on order so merge in
+         while(leftPtr < left.length) {
+             merged[currPos] = left[leftPtr];
+             currPos++;
+             leftPtr++;
+         }
+
+         while(rightPtr < right.length) {
+             merged[currPos] = right[rightPtr];
+             currPos++;
+             rightPtr++;
+         }
+         //System.out.println("Merged = " + Arrays.toString(merged));
+         return merged;
+      }`}</SyntaxHighlighter>
+
+            <h4>Quick Sort</h4>
+
+            <p>Quick sort is a unstable sort that is <InlineMath math="O(n \lg n)"/> for best and average case
+                but <InlineMath math="O(n^2)"/> for worst, when the pivot doesnt split the list as all the items are
+                either larger or smaller than the pivot. It is good as it is usually fast, and it only requires storage
+                for the call stack operations of <InlineMath math="O(log n)"/></p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`/** A non stable sort with good best and average case O(n log n) but a worst case of
+      ** O(n^2). But has a good space complexity of O(log n) from the stack usage in recursive call.
+       **
+       **/
+      static int[] quickSort(int[] arr, int begin, int end) {
+         // empty or we have come to final match element partitioned
+         System.out.println("Quick Sort " + begin + " : " + end);
+             if(begin < end) {
+
+             // partition the arr so all values less than pivot value before and all others after
+             int pivotLocationAfterPartition = partition(arr, begin, end);
+
+             quickSort(arr, begin, pivotLocationAfterPartition-1);
+             // the negative and plus 1 results in leaving the sorted pivot in place
+             quickSort(arr, pivotLocationAfterPartition+1, end);
+         }
+         return arr;
+      }
+
+         // take last element as pivot and swap all those smaller before and all
+         // those larger after
+      static int partition(int[] arr, int begin, int end) {
+             int pivot = arr[end]; // random pivot but use last value
+             // index of smaller element indicates the right position  found so far
+             int i = begin-1;
+
+             for(int j = begin; j<end; j++) {
+
+                 if(arr[j] <= pivot) {
+                 i++;
+                 int swapTemp = arr[i];
+                 arr[i] = arr[j];
+                 arr[j] = swapTemp;
+                 }
+
+             }
+
+             int swapTemp = arr[i+1];
+             arr[i+1] = arr[end];
+             arr[end] = swapTemp;
+             System.out.println("Pivot = " + pivot + " : " + Arrays.toString(arr));
+         return i+1;
+      }`}</SyntaxHighlighter>
+
+            <h3>Conclusion</h3>
+
+            <p>Other sorts exist that can be faster such as Radix or Counting sorts but these are limited to specific
+                inputs usually a small amount of integer size values.</p>
 
             <h3 id={"Scheduling"}>Scheduling</h3>
 
