@@ -571,6 +571,80 @@ const algorithms = {
                 first so its worst case time is <Latex>$O(n)$</Latex> as it maybe the tail of the list you are deleting.
             </p>
 
+            <h5>Detecting cycles in a Linked List</h5>
+
+            <p>To detect cycles in a Linked List we can use the tortoise and hare algorithm. This algorithm works in the
+                following steps.</p>
+
+            <ul className="text-list">
+                <li>Initialise two pointers at the head of the linked list. The tortoise moves one node at a time and
+                    the hare moves forward two nodes.
+                </li>
+                <li>Loop as long as the hare does not meet null.</li>
+                <li>If they arrive at the same node then reset the tortoise back to head.</li>
+                <li>Have the tortoise and the hare move one node at a time when they meet again return the node.</li>
+            </ul>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`public ListNode detectCycle(ListNode head) {
+        
+        if(head == null || head.next == null) {
+            return null;
+        }
+        
+        ListNode tortoise = head.next;
+        ListNode hare = head.next.next;
+        
+        // find when they intersect
+        while(tortoise != hare && hare != null && hare.next != null) {
+            hare = hare.next.next;
+            tortoise = tortoise.next;
+        }
+        
+
+        // if the hare is not null or its next it is not a tail but a cycle
+        if(hare != null && hare.next != null) {
+            tortoise = head;
+            // is a cycle so wont go to null
+            while(tortoise != hare) {
+                tortoise = tortoise.next;  
+                hare = hare.next;
+            }
+
+            return tortoise;
+        }
+        
+        return null;
+        
+    }`}</SyntaxHighlighter>
+
+            <h5>Reversing a Linked List</h5>
+
+            <p>Reversing a linked list can be done iteratively or recursively. The basic idea is you create the start of
+                the new list (prev) as null. And set the current value. Then iterate over the current value store its
+                next value in a temp variable, set its next as the previous so the new list. Then set the new list prev
+                to be current and update current to be the temp next.</p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`        if(head == null || head.next == null) {
+            return head;
+        }
+        
+        ListNode prev = null;
+        ListNode current = head;
+        
+        
+        while(current != null) {
+            ListNode next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+        
+        
+        return prev;`}</SyntaxHighlighter>
+
+
             <h5>Sentinel Node</h5>
 
             <p>A sentinel node in a linked list is a dummy node with all the attributes of the other objects in the
@@ -658,18 +732,22 @@ const algorithms = {
             <h6>Insert Value</h6>
 
             <h3 id={"BinaryTree"}>Binary Tree</h3>
-            <p>A binary tree is where each node in the tree have exactly two child nodes. Where as a standard tree can
-                have as many or little as required.</p>
+            <p>A binary tree is where each node in the tree has no more than two child nodes. Where as a standard tree
+                can
+                have as many or little as required. A full binary tree is a tree that each node has two child nodes
+                other than the leaves. A complete binary tree is one where all levels are full except the last and this
+                is filled from the left side.</p>
 
             <h4>Traversal vs Searching</h4>
 
-            <p>Search through a binary tree can be either done using Breadth First Search or Depth First Search. When
-                using DFS there are three types of traversal as we shall see of a binary tree Pre, In or Post order.
-                Searching and traversing are different traversing is a subpart of searching. You choose the type of
-                search based on if you are going deep into the tree, finding if path exists, a very wide tree use DFS,
-                it is more memory efficient but can be slow. Where as if the node is closer to your source use BFS or if
-                finding shortest path, or rare solutions but very deep tree use BFS but this uses more memory. The way
-                it enqueues the whole level each time.</p>
+            <p>Searching through a binary tree can be either done using Breadth First Search or Depth First Search. When
+                using DFS there are three types of traversal pre-order, in-order and post-order.
+                Searching and traversing are different. Traversing is a subpart of searching using DFS. You first choose
+                the type of search. Usually DFS is used if you are going deep into the tree, finding if a path exists or
+                you are traversing a very wide tree. DFS is is more memory efficient but can be slow. Where as if the
+                node is closer to your source use or if you are finding the
+                finding shortest path, or rare solutions exist but very deep tree you tend to use BFS but this uses more
+                memory. Due to the way it enqueues the whole level each time.</p>
 
             <h3>Binary Search Tree</h3>
 
@@ -706,12 +784,33 @@ const algorithms = {
             <p>Here we traverse each level and we represent the level with a queue as it is FIFO. We can do this
                 iteratively.</p>
 
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`public List<Integer> bfsIterate(Node root) {
+   Node curr = root;
+   List<Integer> traversed = new ArrayList<>();
+   // BFS is the FIFO queue
+   Queue<Node> queue = new LinkedList<>();
+
+   queue.add(curr);
+   while(!queue.isEmpty()) {
+     curr = queue.poll();
+     if(curr != null) {
+        System.out.println("-> " + curr.val);
+        traversed.add(curr.val);
+        // or you check if not null add before here
+        queue.add(curr.left);
+        queue.add(curr.right);
+     }
+   }
+
+  return traversed;
+}`}</SyntaxHighlighter>
+
             <h5>Binary Tree Traversal with Depth First Search (Recursive)</h5>
 
             <p>All of the following traversals are <i>O(n)</i>. These traversals differ to graphs as graphs have to
                 record visited to protect against loops. They are binary tree specific and are options when you need
-                to
-                consider the data held in each row. They are all DFS traversals.</p>
+                to consider the data held in each row. They are all DFS traversals.</p>
 
 
             <p>Example if we have a tree where we insert these values <i>15,10,20,8,12,16,25</i> we will traverse it out
