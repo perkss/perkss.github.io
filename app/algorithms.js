@@ -248,27 +248,50 @@ const algorithms = {
             </p>
 
             <p>It does this by taking the midpoint and dividing the list in two and seeing if the item is higher or
-                lower than the chosen midpoint then applies the same process to the chosen halved list.</p>
+                lower than the chosen midpoint then applies the same process to the chosen halved list. This can be done
+                in an iterative or a recursive approach. Recursive is easier to read, but iterative is more memory
+                efficient.</p>
 
-            <SyntaxHighlighter language='python' style={darcula} showLineNumbers={true} wrapLines={true}>{`def recursive_binary_search(data, start_index, end_index, to_find):
-    if end_index >= start_index:
-        mid_point = math.floor((start_index + end_index) / 2)
+            <h4>Binary Search Recursive</h4>
 
-        # midpoint is found return it
-        if data[mid_point] == to_find:
-            return mid_point
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true} wrapLines={true}>{`static boolean binarySearch(int[] arr, int key, int start, int end) {
+        if(end < start) {
+            return false;
+        }
+        System.out.println("end " + end + " start " + start);
+        int midPoint = (start + end) / 2; // java will always round down with integer division
+ 
+        System.out.println("mid = " + midPoint);
+        if(arr[midPoint] == key) {
+            return true;
+        } else if(key < arr[midPoint]) {
+            return binarySearch(arr, key, 0, midPoint-1);
+        } else {
+            return binarySearch(arr, key, midPoint+1, end);
+        }
+ 
+    }`}</SyntaxHighlighter>
 
-        # midpoint is higher than to find check in lower half of list exclude midpoint
-        elif data[mid_point] > to_find:
-            return recursive_binary_search(data, start_index, mid_point - 1, to_find)
+            <h4>Binary Search Iterative</h4>
 
-        # midpoint is lower than to find check in higher half of list exclude midpoint
-        else:
-            return recursive_binary_search(data, mid_point + 1, end_index, to_find)
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true} wrapLines={true}>{`static int binarySearchIter(int[]nums, int target, int left, int right) {
+     while(left <= right) {
+         int midPoint = (left + right)/2; // java will always round down with integer division
+         int foundValue = nums[midPoint];
 
-    else:
-        # Element is not in array
-        return -1`}</SyntaxHighlighter>
+         if(foundValue == target) {
+             return midPoint;
+         } else if(target < foundValue) {
+             // left side
+             right = midPoint-1;
+         } else {
+             //right side
+             left = midPoint +1;
+         }
+
+     }
+     return -1;
+ }`}</SyntaxHighlighter>
 
             <h4>Time Complexity</h4>
 
