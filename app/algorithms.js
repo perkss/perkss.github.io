@@ -21,6 +21,7 @@ import Insertion13 from '../images/insertion-sort/random-order/Average13.jpeg'
 import Insertion14 from '../images/insertion-sort/random-order/Average14.jpeg'
 import Insertion16 from '../images/insertion-sort/random-order/Average16.jpeg'
 import Insertion17 from '../images/insertion-sort/random-order/Average17.jpeg'
+import binarytree from '../images/binarytree.png'
 
 // import InsertionWorst1 from '../images/insertion-sort/worst-case/1.jpeg'
 // import InsertionWorst2 from '../images/insertion-sort/worst-case/2.jpeg'
@@ -76,6 +77,8 @@ const algorithms = {
                 <li><Link to={"#Search"}>Binary Search</Link></li>
                 <li><Link to={"#Asymptotic"}>Asymptotic Notation</Link></li>
                 <li><Link to={"#DataStructures"}>Data Structures</Link></li>
+                <li><Link to={"#Heap"}>Heap</Link></li>
+                <li><Link to={"#BinaryTree"}>Binary Tree</Link></li>
                 <li><Link to={"#Graphs"}>Graphs</Link></li>
                 <li><Link to={"#Sorting"}>Sorting</Link></li>
                 <li><Link to={"#Scheduling"}>Scheduling</Link></li>
@@ -604,7 +607,7 @@ const algorithms = {
             <h5>Representing Rooted Trees</h5>
             <p></p>
 
-            <h4>Heap Data Structure</h4>
+            <h4 id={"Heap"}>Heap Data Structure</h4>
 
             <p>A Heap is tree based data structure where the nodes are in a particular order but it is ususally
                 implemented as an
@@ -654,7 +657,24 @@ const algorithms = {
 
             <h6>Insert Value</h6>
 
+            <h3 id={"BinaryTree"}>Binary Tree</h3>
+            <p>A binary tree is where each node in the tree have exactly two child nodes. Where as a standard tree can
+                have as many or little as required.</p>
+
+            <h4>Traversal vs Searching</h4>
+
+            <p>Search through a binary tree can be either done using Breadth First Search or Depth First Search. When
+                using DFS there are three types of traversal as we shall see of a binary tree Pre, In or Post order.
+                Searching and traversing are different traversing is a subpart of searching. You choose the type of
+                search based on if you are going deep into the tree, finding if path exists, a very wide tree use DFS,
+                it is more memory efficient but can be slow. Where as if the node is closer to your source use BFS or if
+                finding shortest path, or rare solutions but very deep tree use BFS but this uses more memory. The way
+                it enqueues the whole level each time.</p>
+
             <h3>Binary Search Tree</h3>
+
+            <p>A binary search tree compared to a binary tree ensures the ordering of nodes is sorted. So a root nodes
+                left child is always less than the root node, and its right child is always greater than.</p>
 
             <p>A search tree can be used as both a dictionary and a priority queue due to its ability to search, min,
                 max, predecessor, successor, insert and delete. Such operations take &Theta;(lg n) worst case time
@@ -666,13 +686,287 @@ const algorithms = {
                 satisfied is let x be a node if y is a node in the left subtree its key is less than or equal to x.key,
                 else if y is a node in the right subtree then y.key is greater than or equal to x.key.</p>
 
-            <p>There are three methods for printing out the keys in a binary search tree, you can print the sorted keys
+            <p>There are three methods for traversal of keys in a binary search tree, you can print the sorted keys
                 with in order tree walk, preorder prints the root before the leaves and post order prints the leaves
                 before the roots.</p>
 
-            <h4>Hashing with Chaining</h4>
-            <h4>Table Doubling</h4>
-            <h4>Open Addressing</h4>
+
+            <h4>Questions to ask when coming across Binary Tree Problems</h4>
+
+            <ul className="text-list">
+                <li>Does traversal matter? If so should it be BFS or DFS</li>
+                <li>If it is DFS then should the traversal order matter Pre, In, Post Order or does not matter.</li>
+            </ul>
+
+            <h4>Traversing a Binary Tree</h4>
+
+            <p>A tree has exactly one root and no loops. A binary tree only has at most two children per node.</p>
+
+            <h5>Binary Tree Traversal with Breadth First Search (Iterate)</h5>
+            <p>Here we traverse each level and we represent the level with a queue as it is FIFO. We can do this
+                iteratively.</p>
+
+            <h5>Binary Tree Traversal with Depth First Search (Recursive)</h5>
+
+            <p>All of the following traversals are <i>O(n)</i>. These traversals differ to graphs as graphs have to
+                record visited to protect against loops. They are binary tree specific and are options when you need
+                to
+                consider the data held in each row. They are all DFS traversals.</p>
+
+
+            <p>Example if we have a tree where we insert these values <i>15,10,20,8,12,16,25</i> we will traverse it out
+                as the following.</p>
+
+            <img width="90%" height="90%" src={binarytree} alt="Binary Tree Image"/>
+
+            <ul className="text-list">
+                <li>Pre Order [15, 10, 8, 12, 20, 16, 25] Top Down</li>
+                <li>In Order [8, 10, 12, 15, 16, 20, 25] Sorted Order</li>
+                <li>Post Order [8, 12, 10, 16, 25, 20, 15] Bottom Up</li>
+            </ul>
+
+            <p><strong>In Order Traversal (DFS)</strong> (Left, Root, Right), you traverse the left tree (call
+                inOrder(node.left)) then you print root then you traverse right tree (call inOrder(node.right)).</p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`void inOrder(Node node) {
+        if(node == null) {
+            return;
+        }
+
+        inOrder(node.left);
+        // If we want to return a list of the path we just pass in a list recursively and then add it to the list here
+        System.out.println(node.data);
+        inOrder(node.right);
+    }`}</SyntaxHighlighter>
+
+            <p><strong>Pre Order Traversal (DFS)</strong> (Root, Left, Right) here you call print root.data then
+                preOrder(root.left) and then preOrder(root.right). This sets the order out as the order of the tree
+                to
+                build so is useful if you want to rebuild a tree.</p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{` void preOrder(Node node) {
+        if(node == null) {
+            return;
+        }
+        // If we want to return a list of the path we just pass in a list recursively and then add it to the list here
+        // mutates the list or can return the list
+        System.out.println(node.data);
+        preOrder(node.left);
+        preOrder(node.right);
+    }`}</SyntaxHighlighter>
+
+            <p>For example returning the list.</p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`public List<Integer> dfsPreOrder(Node root, List<Integer> traversed) {
+        if(root == null) {
+            return traversed;
+        }
+        // Preorder
+        traversed.add(root.val);
+        if(root.left != null) {
+         dfsPreOrder(root.left, traversed);
+        }
+
+        if(root.right != null) {
+         dfsPreOrder(root.right, traversed);
+        }
+        return traversed;
+     }`}</SyntaxHighlighter>
+
+            <p><strong>Post Order Traversal (DFS)</strong> (Left, Right, Root) here you call postOrder(root.left)
+                then
+                postOrder(root.right) and then print root.data. To delete a tree one by one post order should be
+                used.
+            </p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`void postOrder(Node node) {
+        if(node == null) {
+            return;
+        }
+
+        postOrder(node.left);
+        postOrder(node.right);
+         // If we want to return a list of the path we just pass in a list recursively and then add it to the list here
+        System.out.println(node.data);
+    }`}</SyntaxHighlighter>
+
+            <h4>Height of a Binary Tree (DFS)</h4>
+
+            <p>This is straightforward we need to find the deepest path down to the leaves of the tree. You get max
+                depth of the left subtree, get max depth of the right subtree and then take the max of the two
+                subtrees
+                and +1 for the root. This is <i>O(n)</i>. The algorithm to find the deepest path is DFS.</p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`int maxDepth(BinaryNode root, int count) {
+        if(root == null) {
+            return count; // the current count back when hit the end
+        } else {
+            
+            //  hit a new level increment
+            count++;
+                
+            int lDepth = maxDepth(root.left, count);
+            int rDepth = maxDepth(root.right, count);
+
+            // each side returns of the binary tree take the max depth
+            return Math.max(lDepth, rDepth)
+        }
+    }`}</SyntaxHighlighter>
+
+            <h4>Level order Binary Tree (BFS)</h4>
+
+            <p>The requirement here is to record the level order (the ordered values) on each level of the binary
+                tree.
+                BFS will traverse the nodes in the right order, but how we keep track of the levels. We need to
+                track
+                the size of the queue this is the level size. We then take the node and the level size and process
+                the
+                whole level. Then we exit the level add to the levels array and then start again get level size,
+                init
+                new level add the nodes of children and reduce the level size as we processed one item in that level
+                and
+                continue. This has a time complexity of <i>O(n)</i> and a space complexity of the nodes <i>O(n)</i>
+            </p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{` public List<List<Integer>> bfs(TreeNode root) {
+        Queue<TreeNode> queue = new LinkedList();
+        List<List<Integer>> levels = new ArrayList();
+        
+        int level = 0;
+        
+        if(root != null) {
+            queue.add(root);
+        }
+       
+              
+        while(!queue.isEmpty()) {
+            // get the current levle size
+            int levelSize = queue.size();
+            
+            // add a blank level
+            levels.add(level, new ArrayList());
+            
+            // whilst we have a level poll and then add the nodes to queue and add them to level
+            while(levelSize != 0) {
+                TreeNode node = queue.poll();    
+                
+                // add the node to the left of the queue
+                // and add it to the current level
+                if(node.left != null) {
+                    queue.add(node.left);
+                }
+            
+                if(node.right != null) {
+                    queue.add(node.right);
+                }
+                
+                levels.get(level).add(node.val);
+                // processed a item in that level reduce its size
+                levelSize--;
+            }
+            
+            
+            // processed a level fully increment it
+            level++;
+           
+            
+        }
+        
+        return levels;
+    }`}</SyntaxHighlighter>
+
+            <h4>View a Tree from the right side (BFS approach)</h4>
+
+            <p>This problem is similar to the above if using BFS approach we say we are stood on the right of a Tree,
+                and we can only see the nodes from the right side that are not blocked by nodes on that level
+                further to the right.</p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{` public List<Integer> bfsApproach(TreeNode root) {
+        Queue<TreeNode> queue = new LinkedList<TreeNode>();
+        
+        List<Integer> result = new ArrayList<>();
+        
+        if(root == null) {
+            return result;
+        }
+        
+        queue.add(root);
+        
+        while(!queue.isEmpty()) {
+            
+            // get level size
+            int levelSize = queue.size();
+            
+            // move along the level horizontally
+            while(levelSize > 0) {
+                // take node on level
+                TreeNode curr = queue.poll();
+            
+                // if the size of the level is now 1 its the right most node and we add to result
+                if(levelSize == 1) {
+                    // last item in it
+                    result.add(curr.val);
+                }
+                
+                // add children
+                if(curr.left != null) {
+                    queue.add(curr.left);
+                }
+                
+                if(curr.right != null) {
+                    queue.add(curr.right);
+                }
+                
+                // can only see right most so ignore others and decrement level size
+                levelSize--;
+            }
+            
+        }
+        
+        return result;
+        
+    }`}</SyntaxHighlighter>
+
+            <p>A depth first search approach is also possible with a Right to Left pre order traversal, where we track
+                the level nodes if a level already had a right node added then it is blocked so we do not add it.</p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`// dfs approach
+    // to a in order R N L with the usual process reveresed go right first
+    // keep a level param where it increments on entry and decrements on return
+    // keep a list where the level is the index if the level is already populated
+    // then we skip it as its blocked from our view
+    
+    public List<Integer> dfsApproach(TreeNode root, List<Integer> traversed, int level) {
+        if(root == null) {
+            return traversed;
+        }
+        
+        // if the level equals the size of the current list
+        if(level >= 0 && level == traversed.size()) {
+            traversed.add(level, root.val);
+        }
+        
+        // moved to the children to be added to stack so increase level
+        level++;
+        
+        if(root.right != null) {
+            dfsApproach(root.right, traversed, level);
+        }  
+        
+        if(root.left != null) {
+            dfsApproach(root.left, traversed, level);
+        } 
+         
+        return traversed;
+    }`}</SyntaxHighlighter>
 
             <h3 id={"Graphs"}>Graphs and Trees</h3>
 
@@ -692,59 +986,11 @@ const algorithms = {
     // Index is node and list is values associated. Most efficient memory wise.
     private int[][] adjList = {{2}, {3}, {3, 4}, {5}, {5}, {}};`}</SyntaxHighlighter>
 
-            <h4>Traversing a Binary Tree</h4>
-
-            <p>A tree has exactly one root and no loops. A binary tree only has at most two children per node.</p>
-
-            <h5>Binary Tree Traversal</h5>
-
-            <p>All of the following traversals are <i>O(n)</i>.</p>
-
-            <p><strong>In Order Traversal</strong> (Left, Root, Right), you traverse the left tree (call
-                inOrder(node.left)) then you print root then you traverse right tree (call inOrder(node.right)).</p>
-
-            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
-                               wrapLines={true}>{`void inOrder(Node node) {
-        if(node == null) {
-            return;
-        }
-
-        inOrder(node.left);
-        System.out.println(node.data);
-        inOrder(node.right);
-    }`}</SyntaxHighlighter>
-
-            <p><strong>Pre Order Traversal </strong> (Root, Left, Right) here you call print root.data then
-                preOrder(root.left) and then preOrder(root.right).</p>
-
-            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
-                               wrapLines={true}>{` void preOrder(Node node) {
-        if(node == null) {
-            return;
-        }
-
-        System.out.println(node.data);
-        preOrder(node.left);
-        preOrder(node.right);
-    }`}</SyntaxHighlighter>
-
-            <p><strong>Post Order Traversal </strong> (Left, Right, Root) here you call postOrder(root.left) then
-                postOrder(root.right) and then print root.data.</p>
-
-            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
-                               wrapLines={true}>{`void postOrder(Node node) {
-        if(node == null) {
-            return;
-        }
-
-        postOrder(node.left);
-        postOrder(node.right);
-        System.out.println(node.data);
-    }`}</SyntaxHighlighter>
 
             <h5>Tree Breadth First (Level Order Traversal)</h5>
 
-            <p>Here we are using a BFS basically to go through each level of the tree. We use a queue to push each node
+            <p>Here we are using a BFS basically to go through each level of the tree. We use a queue to push each
+                node
                 on. Then take off the queue the first node then print the data and adds its connected nodes to the
                 queue. We then repeat this while the queue is not empty.</p>
 
@@ -772,35 +1018,22 @@ const algorithms = {
         return false;
     }`}</SyntaxHighlighter>
 
-            <h4>Height of a Tree</h4>
-
-            <p>This is straightforward we need to find the deepest path down to the leaves of the tree. You get max
-                depth of the left subtree, get max depth of the right subtree and then take the max of the two subtrees
-                and +1 for the root. This is <i>O(n)</i>. The algorithm to find the deepest path is DFS.</p>
-
-            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
-                               wrapLines={true}>{`int maxDepth(BinaryNode root) {
-        if(root == null) {
-            return -1; // -1 as we check below the root node.
-        } else {
-            int lDepth = maxDepth(root.left);
-            int rDepth = maxDepth(root.right);
-
-            return Math.max(lDepth, rDepth) + 1; // To account for the negative value put + 1
-        }
-    }`}</SyntaxHighlighter>
 
             <h4>Traversing a Graph</h4>
 
-            <p>The difference between a Graph and Tree is that a graph may have loops, it has no root node and edges can
+            <p>The difference between a Graph and Tree is that a graph may have loops, it has no root node and edges
+                can
                 be directed or undirected.</p>
 
             <h4>Graph Breadth First Search</h4>
 
-            <p>You begin with your starting node provided in the graph and the list of vertices. You again use a queue
+            <p>You begin with your starting node provided in the graph and the list of vertices. You again use a
+                queue
                 data structure to hold the nodes when processing them and this time you are also required to have a
-                map/array of visited nodes. Firstly start with all nodes marked as unvisited. Start at the starting node
-                add to queue then while queue is not empty do the following display data, remove node from queue, for
+                map/array of visited nodes. Firstly start with all nodes marked as unvisited. Start at the starting
+                node
+                add to queue then while queue is not empty do the following display data, remove node from queue,
+                for
                 all adjacent vertices to the node add to the queue. Mark node as visited and repeat. </p>
 
             <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
@@ -834,9 +1067,11 @@ const algorithms = {
 
             <h4>Graph Depth First Search</h4>
 
-            <p>For depth first search of a graph you have the starting node which you place onto a stack. Pop the stack
+            <p>For depth first search of a graph you have the starting node which you place onto a stack. Pop the
+                stack
                 and print
-                data. Then mark as visited. For all nodes connected to the starting node and not visited push onto the
+                data. Then mark as visited. For all nodes connected to the starting node and not visited push onto
+                the
                 stack, continue while stack is not empty.</p>
 
             <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
@@ -873,10 +1108,13 @@ const algorithms = {
 
             <h4>Dijkstras Shortest Path for Graphs</h4>
 
-            <p>Dijkstras algorithm is a simple algorithm for finding the shortest path tree from source vertex to all
-                other vertices in the graph on a weighted graph. It only works when the weights are all non negative. It
+            <p>Dijkstras algorithm is a simple algorithm for finding the shortest path tree from source vertex to
+                all
+                other vertices in the graph on a weighted graph. It only works when the weights are all non
+                negative. It
                 works by maintaining two sets one for nodes on the shortest path and
-                others not yet included. The main step is finding the next shortest vertex from source from the set not
+                others not yet included. The main step is finding the next shortest vertex from source from the set
+                not
                 included yet. We say this is a greedy step as it chooses the shortest at each selection.It can be
                 implemented using a min heap of vertices keyed by their values.</p>
 
@@ -913,7 +1151,8 @@ const algorithms = {
                 a empty root. Then we keep all children in the alphabet to this root so in the english language 26
                 children to root. Each node is then made up of its character in the alphabet and its children which
                 could be any of the 26 letters. To search for a word you start at the root and then navigate through
-                each letter and letters in children until you terminate or reach the end of the words. Here you can see
+                each letter and letters in children until you terminate or reach the end of the words. Here you can
+                see
                 how auto complete can make suggestions for you for finishing word spellings.</p>
 
             <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
@@ -937,12 +1176,15 @@ const algorithms = {
             <h4>Introduction</h4>
 
             <p>Sorting is sorting there is natural order of sorting the ascending and descending of values by number
-                value or letter. Usually though data sorted in computing is rarely isolated like this and is usually on
-                a data record with a key which would have related <strong>satellite data</strong>. For memory efficiency
+                value or letter. Usually though data sorted in computing is rarely isolated like this and is usually
+                on
+                a data record with a key which would have related <strong>satellite data</strong>. For memory
+                efficiency
                 we usually would manipulate the pointers to the records rather that the records themselves to save
                 moving around all of this satellite data.</p>
 
-            <p><strong>In place</strong> sorting algorithms are algorithms which transforms input using a data structure
+            <p><strong>In place</strong> sorting algorithms are algorithms which transforms input using a data
+                structure
                 with only a small constant amount of extra storage space outside of the array to be sorted.</p>
 
             <table>
@@ -1027,8 +1269,10 @@ const algorithms = {
 
             <h4>Selection Sort</h4>
 
-            <p>Selection sorts iterates the whole list each time and ensures the first element is the smallest element
-                after the run then applies again for the rest of the list with the smallest removed so finding the next
+            <p>Selection sorts iterates the whole list each time and ensures the first element is the smallest
+                element
+                after the run then applies again for the rest of the list with the smallest removed so finding the
+                next
                 smallest element.</p>
 
             <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
@@ -1058,13 +1302,18 @@ const algorithms = {
 
             <p>Lets now see our first sort not the quickest but a good place to begin. Insertion sort.</p>
 
-            <p>Insertion sort can be efficient when sorting a list that is almost sorted and this can give us O(n) it
+            <p>Insertion sort can be efficient when sorting a list that is almost sorted and this can give us O(n)
+                it
                 also has a O(1) space complexity so is very memory efficient. The
-                basic process is check the first item and leave where it is. We now look at the next item and compare to
-                the first and insert it into the correct order by swapping. The in place sort orders the start of the
-                list and you continually insert new items from the remaining unsorted list by compare and swap. This can
+                basic process is check the first item and leave where it is. We now look at the next item and
+                compare to
+                the first and insert it into the correct order by swapping. The in place sort orders the start of
+                the
+                list and you continually insert new items from the remaining unsorted list by compare and swap. This
+                can
                 be thought of like
-                sorting cards you have a sorted list in your left hand and a unsorted in your right, then you take the
+                sorting cards you have a sorted list in your left hand and a unsorted in your right, then you take
+                the
                 next card from the right hand and insert into the correct place on the left hand.</p>
 
             <p>Insertion sort is also stable and in place.</p>
@@ -1132,7 +1381,8 @@ const algorithms = {
             <h4>Insertion Sort Worst Case</h4>
 
             <p>The time complexity is explained thoroughly on this <a
-                href={"https://www.happycoders.eu/algorithms/insertion-sort/#Worst-Case_Time_Complexity"}>site</a>.</p>
+                href={"https://www.happycoders.eu/algorithms/insertion-sort/#Worst-Case_Time_Complexity"}>site</a>.
+            </p>
 
             {/*<img width="90%" height="90%" src={InsertionWorst1} alt="Insertion Sort Graph Image"/>*/}
             {/*<p></p>*/}
@@ -1194,8 +1444,10 @@ const algorithms = {
 
             <h4>Insertion Sort Best Case</h4>
 
-            <p>The time complexity of Insertion Sort best case is <i>O(n)</i> as in reality we scan through the whole
-                array starting at the second element so <i>n-1</i> as we state the first element is the single sorted
+            <p>The time complexity of Insertion Sort best case is <i>O(n)</i> as in reality we scan through the
+                whole
+                array starting at the second element so <i>n-1</i> as we state the first element is the single
+                sorted
                 array. We only do the comparisons and no swaps in this case. Giving us a best case of <i>O(n)</i>.
             </p>
 
@@ -1223,7 +1475,8 @@ const algorithms = {
             <h4>Merge Sort</h4>
 
             <p>Merge sort is a stable sort that is <InlineMath math="O(n \lg n)"/> for all time complexities. It is
-                good as it guarantees the speed, but is not as space efficient as it has the auxiliary space requirement
+                good as it guarantees the speed, but is not as space efficient as it has the auxiliary space
+                requirement
                 of <InlineMath math="O(n)"/></p>
 
             <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
@@ -1300,7 +1553,8 @@ const algorithms = {
 
             <p>Quick sort is a unstable sort that is <InlineMath math="O(n \lg n)"/> for best and average case
                 but <InlineMath math="O(n^2)"/> for worst, when the pivot doesnt split the list as all the items are
-                either larger or smaller than the pivot. It is good as it is usually fast, and it only requires storage
+                either larger or smaller than the pivot. It is good as it is usually fast, and it only requires
+                storage
                 for the call stack operations of <InlineMath math="O(log n)"/></p>
 
             <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
@@ -1350,7 +1604,8 @@ const algorithms = {
 
             <h3>Conclusion</h3>
 
-            <p>Other sorts exist that can be faster such as Radix or Counting sorts but these are limited to specific
+            <p>Other sorts exist that can be faster such as Radix or Counting sorts but these are limited to
+                specific
                 inputs usually a small amount of integer size values.</p>
 
             <h3 id={"Scheduling"}>Scheduling</h3>
@@ -1358,25 +1613,30 @@ const algorithms = {
             <h4>Disk Scheduling Algorithms</h4>
 
             <p>Disk scheduling algorithms are looking into the schedule of moving a cursor over a disk to read
-                information from 0 to n. This arm physically moves back and forth over the disk so needs to be optimal
+                information from 0 to n. This arm physically moves back and forth over the disk so needs to be
+                optimal
                 and prevent starvation. Thanks to <a
-                    href={"https://www.geeksforgeeks.org/disk-scheduling-algorithms/"}>GeeksForGeeks</a> for reference.
+                    href={"https://www.geeksforgeeks.org/disk-scheduling-algorithms/"}>GeeksForGeeks</a> for
+                reference.
             </p>
 
             <p>Some questions to think about before deciding what to use or base your algorithm on, should you
-                prioritise throughput, or response time? Is starvation a bad problem? The number and types of requests?
+                prioritise throughput, or response time? Is starvation a bad problem? The number and types of
+                requests?
                 Could analyse data or track users and predict where to be when sitting idle.
             </p>
 
             <h5>First Come First Served</h5>
 
-            <p>Simple but inefficient as request are served as they come into the request queue. Not optimal for seek
+            <p>Simple but inefficient as request are served as they come into the request queue. Not optimal for
+                seek
                 time, but avoids starvation.</p>
 
             <h5>Shortest Seek Time</h5>
 
             <p>When you go to the closest request first so the queue maintains a priority of seek time shortest
-                first. Higher throughput but average response time improves but you are going to cause starvation.</p>
+                first. Higher throughput but average response time improves but you are going to cause
+                starvation.</p>
 
             <h5>SCAN</h5>
 
@@ -1386,7 +1646,8 @@ const algorithms = {
 
             <h5>Circular SCAN</h5>
 
-            <p>This scheduling algorithm scans across the disk from start to finish and then it moves all the way back
+            <p>This scheduling algorithm scans across the disk from start to finish and then it moves all the way
+                back
                 to the start and scans again. This approach provides a more even wait time.</p>
 
         </div>
