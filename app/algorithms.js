@@ -22,6 +22,7 @@ import Insertion14 from '../images/insertion-sort/random-order/Average14.jpeg'
 import Insertion16 from '../images/insertion-sort/random-order/Average16.jpeg'
 import Insertion17 from '../images/insertion-sort/random-order/Average17.jpeg'
 import binarytree from '../images/binarytree.png'
+import heap from '../images/heap/max-heap.png'
 
 // import InsertionWorst1 from '../images/insertion-sort/worst-case/1.jpeg'
 // import InsertionWorst2 from '../images/insertion-sort/worst-case/2.jpeg'
@@ -77,11 +78,21 @@ const algorithms = {
                 <li><Link to={"#Search"}>Binary Search</Link></li>
                 <li><Link to={"#Asymptotic"}>Asymptotic Notation</Link></li>
                 <li><Link to={"#DataStructures"}>Data Structures</Link></li>
+                <ul className="text-list">
+                    <li><Link to={"#Set"}>Sets</Link></li>
+                    <li><Link to={"#Stack"}>Stacks</Link></li>
+                    <li><Link to={"#Queue"}>Queues</Link></li>
+                    <li><Link to={"#LinkedList"}>Linked List</Link></li>
+                </ul>
                 <li><Link to={"#Heap"}>Heap</Link></li>
                 <li><Link to={"#BinaryTree"}>Binary Tree</Link></li>
+                <li><Link to={"#Matrix"}>2D Arrays (Matrices)</Link></li>
                 <li><Link to={"#Graphs"}>Graphs</Link></li>
                 <li><Link to={"#Sorting"}>Sorting</Link></li>
                 <li><Link to={"#Scheduling"}>Scheduling</Link></li>
+                <li><Link to={"#DynamicProgramming"}>Dynamic Programming</Link></li>
+                <li><Link to={"#Array"}>Array</Link></li>
+                <li><Link to={"#String"}>Strings</Link></li>
             </ul>
 
             <h3 id={"Introduction"}>Introduction</h3>
@@ -483,7 +494,7 @@ const algorithms = {
 
             <h4>Introduction</h4>
 
-            <h5>Sets</h5>
+            <h5 id={"Set"}>Sets</h5>
 
             <p>Sets have already been covered in the Discrete Maths where they were usually fixed but sets that are
                 manipulated by Algorithms
@@ -494,7 +505,7 @@ const algorithms = {
                 is referred to as <strong>satellite data</strong>. Satellite data is the payload of the data which is
                 not part of the structure of the data structure. If the key is unique then they can be ordered.</p>
 
-            <h5>Stacks</h5>
+            <h5 id={"Stack"}>Stacks</h5>
 
             <p>Stacks are <i>last in first out</i> (LIFO) meaning the most recently added element to a stack is deleted.
                 Insert is usually referred to as Push and deletion is referred to as Pop on a stack, much like with GIT
@@ -514,7 +525,10 @@ const algorithms = {
                 An example question where stacks are useful is when being asked to check for matching brackets or
                 anything kind of grammar checking for compilers.</p>
 
-            <h5>Queues</h5>
+            <h6>Valid Parentheses</h6>
+            <h6>Minimum Brackets to Remove</h6>
+
+            <h5 id={"Queue"}>Queues</h5>
 
             <p>Queues follow a <i>first in first out</i> (FIFO) policy meaning the one deleted is the one
                 that has spent the longest time in the set. Where insert are referred to as ENQUEUE and delete DEQUEUE.
@@ -524,7 +538,9 @@ const algorithms = {
             <p>In Java there is a queue interface that is implemented by LinkedList, ArrayBlockingQueue and Priority
                 Queue.</p>
 
-            <h5>Linked Lists</h5>
+            <h6>Create a Queue with Stacks</h6>
+
+            <h5 id={"LinkedList"}>Linked Lists</h5>
 
             <p>Linked lists are a data structure arranged in linear orders. Unlike a array the order is not determined
                 by indices but a pointer in each object to the next item. <strong>Doubly linked lists</strong> nodes not
@@ -706,7 +722,7 @@ const algorithms = {
 
             <h4 id={"Heap"}>Heap Data Structure</h4>
 
-            <p>A Heap is tree based data structure where the nodes are in a particular order but it is ususally
+            <p>A Heap is tree based data structure where the nodes are in a particular order but it is usually
                 implemented as an
                 array (and has nothing to do with storage with garbage collected storage
                 like the Java heap). They are used for priority queue data structure. A heap puts all nodes in a
@@ -725,11 +741,66 @@ const algorithms = {
                 simple operations to find the parent, left and right nodes when it is stored in a array. No pointers
                 required.</p>
 
+            <p>A <strong>binary</strong> heap is a complete binary tree that maintains the heap property. Where the
+                order of the array view is the same as doing BFS on the tree. As a reminder a complete binary tree is
+                when every level except the lowest is completely filled.</p>
+
+            <img width="90%" height="90%" src={heap} alt="Max Heap Image"/>
+
             <p>Root of the tree: is the first element in the stored array. These are when index of array start at 1.</p>
             <p><i>Parent(i) = i/2</i>: Finding the parent index of <i>i</i>.</p>
             <p><i>Left(i) = 2i</i>: Find index of node <i>i</i> left child. This can be optimised by doing a left bit
                 shift.</p>
             <p><i>Right(i) = 2i + 1</i>: Find index of node <i>i</i> right child.</p>
+
+            <p>The reason to start at index 1 is due to you not requiring to add 1 to find the left child and subtract 1
+                to find the parent. In bit manipulation this can have a positive impact on performance. The below table
+                summarises the calculation depending on the style.</p>
+
+            <table border="1">
+                <tr>
+                    <td>Operation</td>
+                    <td>Index at 0</td>
+                    <td>Index at 1</td>
+                </tr>
+                <tr>
+                    <td>Left Child</td>
+                    <td>index*2 + 1</td>
+                    <td>index*2</td>
+                </tr>
+                <tr>
+                    <td>Right child</td>
+                    <td>index*2 + 2</td>
+                    <td>index*2 + 1</td>
+                </tr>
+                <tr>
+                    <td>Parent</td>
+                    <td>(index-1)/2</td>
+                    <td>index/2</td>
+                </tr>
+            </table>
+
+
+            <br/>
+            <br/>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`private Integer leftChild(int index) {
+         return index * 2 + 1;
+     }
+
+private Integer rightChild(int index) {
+    return index * 2 + 2;
+}
+
+private void swap(int left, int right) {
+    Collections.swap(this.heap, left, right);
+}
+
+private boolean compare(int left, int right) {
+    return heap.get(left) > heap.get(right);
+}`}</SyntaxHighlighter>
+            <br/>
 
             <p>Some common operations on Heaps are:</p>
 
@@ -737,6 +808,88 @@ const algorithms = {
                 math="O(n)"/></p>
             <p><i>Max(Min) Heapify</i> correct a single violation of the Heap property. <InlineMath math="O(\lg n)"/>
             </p>
+
+            <h5>Insert Value</h5>
+
+            <p>To insert a value into a heap the process follows these steps.</p>
+
+            <ul className="text-list">
+                <li>Insert the value into the next available spot in the heap. Lowest level and leftmost position.</li>
+                <li>Then we say does this heap still maintain the heap property. If yes then fine we are done else.</li>
+                <li>We heapify the heap by comparing the value to its parent if it is greater than parent (in max heap)
+                    then we swap with parent.
+                </li>
+                <li>We repeat this process until it is no longer greater.</li>
+            </ul>
+
+            <p>Applying this to an array implementation. We add the value at the end of the array, we then apply the
+                parent formula and compare the values and then swap if greater than and repeat until the root or it is
+                not greater.</p>
+
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`public int insert(int value) {
+          heap.add(value);
+          this.siftUp();
+          return this.size();
+      }
+ 
+private void siftUp() {
+    int nodeIdx = this.size() -1;
+    while(nodeIdx > 0 && this.compare(nodeIdx, this.parent(nodeIdx))) {
+        this.swap(nodeIdx, this.parent(nodeIdx));
+        nodeIdx = this.parent(nodeIdx);
+    }
+}`}</SyntaxHighlighter>
+
+            <h5>Delete/Remove/Retrieve Value (Extract Max/Min)</h5>
+            <p>Here we only talk about getting the highest priority so we take the root value.</p>
+
+            <ul className="text-list">
+                <li>Delete the root value and replace with the last value in the heap (rightmost value of the last
+                    level)
+                </li>
+                <li>Now we check if our heap property is valid if it is then fine the next priority item is at the root
+                    otherwise.
+                </li>
+                <li>We use the sift down process where we check if the values of the left child or right child are
+                    greater. Then select the largest (or smallest) and swap.
+                </li>
+                <li>This process continues until we have satisfied the heap property.</li>
+            </ul>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`public int extractMax() {
+         // swap first and last element
+         this.swap(0, this.size()-1);
+         int max = this.heap.get(this.size()-1);
+         // remove last
+         this.heap.remove(this.size()-1);
+         this.siftDown();
+         return max;
+     }
+
+private void siftDown() {
+    int nodeIdx = 0;
+
+    // while we are smaller than the size and we are smaller
+    // on both sides
+    while(this.leftChild(nodeIdx) < this.size() && this.compare(this.leftChild(nodeIdx), nodeIdx) ||
+        this.rightChild(nodeIdx) < this.size() && this.compare(this.rightChild(nodeIdx), nodeIdx)) {
+        // determine the largest child node here
+        // is it the left or right check that the right is under size as we can fall here if left is smaller
+        // then compare the left and the right
+        int greaterChildNodeIdx =
+            this.rightChild(nodeIdx) < this.size() && this.compare(this.rightChild(nodeIdx), this.leftChild(nodeIdx))
+                ? this.rightChild(nodeIdx)
+                : this.leftChild(nodeIdx);
+
+        // swap the nodes and then check the new child node with the sifted down value
+        this.swap(greaterChildNodeIdx, nodeIdx);
+        nodeIdx = greaterChildNodeIdx;
+    }
+
+     }`}</SyntaxHighlighter>
 
             <h5>Priority Queue with Max Heap</h5>
 
@@ -752,7 +905,6 @@ const algorithms = {
 
             <h6>Increase Priority of Value</h6>
 
-            <h6>Insert Value</h6>
 
             <h3 id={"BinaryTree"}>Binary Tree</h3>
             <p>A binary tree is where each node in the tree has no more than two child nodes. Where as a standard tree
@@ -771,6 +923,13 @@ const algorithms = {
                 node is closer to your source use or if you are finding the
                 finding shortest path, or rare solutions exist but very deep tree you tend to use BFS but this uses more
                 memory. Due to the way it enqueues the whole level each time.</p>
+
+            <p>Finding the next node in traversal order is useful and this next node is
+                called <strong>successor</strong>.
+                If you want to find the previous node in the order this is called the <strong>predecessor</strong>.
+                Finding
+                these differ depending on your traversal order.
+            </p>
 
             <h3>Binary Search Tree</h3>
 
@@ -861,6 +1020,13 @@ const algorithms = {
         System.out.println(node.data);
         inOrder(node.right);
     }`}</SyntaxHighlighter>
+
+            <p>This order will result in a ordered result list if it is a binary search tree, and you can find the
+                minimum by traversing to the left most node or the maximum by traversing to the right most node. To find
+                the <strong>successor</strong> if the right node is not null we find the minimum of the right subtree.
+                If the right node is null then we walk up the parents subtree to find the lowest ancestor (the parent
+                that is not on the left of the node). The <strong>predecessor</strong> can be found by checking the
+                maximum value in the left subtree. If it does not have a left subtree it is the first left ancestor.</p>
 
             <p><strong>Pre Order Traversal (DFS)</strong> (Root, Left, Right) here you call print root.data then
                 preOrder(root.left) and then preOrder(root.right). This sets the order out as the order of the tree
@@ -1088,6 +1254,432 @@ const algorithms = {
         } 
          
         return traversed;
+    }`}</SyntaxHighlighter>
+
+            <h4>Validating a Binary Search Tree</h4>
+
+            <p>The challenges on <a
+                href={"https://leetcode.com/problems/validate-binary-search-tree/"}>leetcode</a> asks to validate if a
+                given tree is a valid binary search tree. To approach this we need to think about relationships between
+                nodes we want to compare the root node value to its children therefore we are searching with depth first
+                so we use DFS. We then need to track the constraints of the node what is its min it needs to be larger
+                than and what is its max it needs to be smaller than. We can then pass these at each recursive step and
+                validate if valid then apply and pass the new value as the max to the left node and the new value as the
+                min to the right node.</p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`public boolean isValidBST(TreeNode root) {
+        // dfs 
+        // covers the case where its negative or positive max size
+        return dfs(root, null, null);
+    }
+    
+    public boolean dfs(TreeNode root, Integer min, Integer max) {
+        if(root == null) {
+            return true;
+        }
+        
+        // not valid node as doesnt fall between min and max
+        if((min != null && root.val <= min) || (max != null && root.val >= max)) {
+             return false;
+        }
+        
+        
+        // check the left side of the tree
+        if(root.left != null) {
+            if(!dfs(root.left, min, root.val)) {
+                return false;
+            }
+        }
+        
+        // check the right side of the tree
+        if(root.right != null) {
+            if(!dfs(root.right, root.val, max)) {
+                return false;
+            }
+        }
+        
+        return true;  
+    }`}</SyntaxHighlighter>
+
+
+            <h3 id={"Matrix"}>2D Array (Matrices)</h3>
+
+            <p>Following on from Binary Tree when doing interview questions 2D array questions are common and follow a
+                lot of the techniques used in Binary Trees.</p>
+
+            <h4>Navigation</h4>
+            <p>To move from a position in a 2D array you can move any position from your current as long as it is within
+                the boundary of the 2D array. To find the length of a 2D arrays row you use the array.length and to find
+                the
+                length of the 2D arrays column you use the first row and then call array[0].length</p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`int rowWidth = matrix.length`}</SyntaxHighlighter>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`int columnWidth = matrix[0].length`}</SyntaxHighlighter>
+
+            <p>To check that a row or column is in a valid position you check if they are greater than 0 and within the
+                lengths of the rowWidth and columnWidth (height).</p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`if(row < 0 || row >= matrix.length || column < 0 || column >= matrix[0].length
+     || seen[row][column] == true) {
+     // out of bounds
+     return;
+ }`}</SyntaxHighlighter>
+
+            <h5>2D Array Sequential Order Traversal Left to Right, Row by Row</h5>
+
+            <p>To simply start at the top left and traverse from left to right and row by row we can use the following
+                code. We iterate with an outer loop through each row and inside we iterate through the length of the row
+                which is each column.</p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`public int[] sequentialTraversal(int[][] matrix) {
+    int[] values = new int[matrix.length * matrix[0].length];
+
+    int idx = 0;
+    // iterate the first row
+    for(int row = 0; row<matrix.length; row++) {
+       // iterate the columns in the selected row
+       for(int col = 0; j<matrix[row].length; col++) {
+           values[idx] = matrix[row][col];
+           idx++;
+       }
+    }
+
+    System.out.println(Arrays.toString(values));
+    return values;
+}`}</SyntaxHighlighter>
+
+            <p>The directions to move are simple then if we view it as this we can move UP[-1,0], Right[0, 1], Down[1,
+                0], Left[0,-1]. To traverse a 2D array we can then do a depth first search starting at the top left and
+                tracking the seen values. Then attempting to move in each direction and only progressing if it is a
+                valid move. We then store the seen value and set the seen position to true.</p>
+
+            <h5>2D Array Depth First Search</h5>
+
+            <p>This example code shows how to DFS through a 2d array starting from the top left and moving along
+                attempting Up, Right, Down and Left. With DFS we keep going in one direction until we hit the end.</p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`private int[][] directions = new int[][] {
+    {-1, 0}, // Up
+    {0, 1}, // Right
+    {1, 0}, // Down
+    {0, -1} // Left
+    };
+
+public int[] traversalDfs(int[][] matrix) {
+    // track the seen items
+    boolean[][] seen = new boolean[matrix.length][matrix[0].length];
+
+    // flat array of the values seen
+    int[] values = new int[matrix.length * matrix[0].length];
+
+    //dfs starting at top left corner, pass seen and values to be added for result
+    dfs(matrix, 0, 0, seen, values, 0);
+
+    return values;
+
+}
+// Time O(n) as touch each item
+// Space O(n) as seen
+        // as we set the values we dont need to return
+private void dfs(int[][] matrix, int row, int column, boolean[][] seen, int[] values, int place) {
+    if(row < 0 || row >= matrix.length || column < 0 || column >= matrix[0].length
+        || seen[row][column] == true) {
+        // out of bounds
+        return;
+    }
+
+    // seen this value set
+    seen[row][column] = true;
+    // add the value into the right place
+    values[place] = matrix[row][column];
+
+    // iterate over each direction and try it out dfs
+    for(int i = 0; i<directions.length; i++) {
+        int[] currentDirection = directions[i];// get the direction pair
+        // traverse that with the new direction recursively dfs
+        dfs(matrix, row + currentDirection[0], column + currentDirection[1], seen, values, place + 1);
+    }
+}
+
+    
+    `}</SyntaxHighlighter>
+
+            <p>This approach of DFS using these direction order of UP, Right, Down, Left results in a spiral result.</p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`    // a row is 1,2,3,4,5
+    // a column is 1,6,11,16
+    int[][] testMatrix = new int[][] {
+        {1,2,3,4,5},
+        {6,7,8,9,10},
+        {11,12,13,14,15},
+        {16,17,18,19,20},
+    };
+    
+    Result
+    [1, 2, 3, 4, 5, 10, 15, 20, 19, 14, 9, 8, 13, 18, 17, 12, 7, 6, 11, 16]`}</SyntaxHighlighter>
+
+            <p>If we change the direction order to Right, Left, Up, Down we get a zig zag across right, down, across
+                left pattern as follows.</p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{` private int[][] directions = new int[][] {
+{0, 1}, //RIGHT
+{0, -1}, //LEFT
+{-1, 0}, // UP
+{1, 0} // DOWN
+};
+
+int[][] testMatrix = new int[][] {
+        {1,2,3,4,5},
+        {6,7,8,9,10},
+        {11,12,13,14,15},
+        {16,17,18,19,20},
+    };
+
+[1, 2, 3, 4, 5, 10, 9, 8, 7, 6, 11, 12, 13, 14, 15, 20, 19, 18, 17, 16]
+`}</SyntaxHighlighter>
+
+            <h5>2D Array Breadth First Search</h5>
+
+            <p>With breadth first search we start at a location in the 2D array and we spiral out of it adding each
+                position (row,column) to the queue if not already visited and then spiraling out from each of these.
+                This approach is usually done iteratively and follows the standard approach of adding each item next to
+                the selected row column to a queue and then taking the next item off the queue and adding its
+                neighbours onto the queue if they have not already been visited.</p>
+
+            <p>For tracking we have visited a position we use a helper pair class.</p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`static class Pair {
+
+    public int row;
+    public int column;
+
+    public Pair(int row, int column) {
+        this.row = row;
+        this.column = column;
+    }
+
+    @Override
+    public String toString() {
+        return this.row + ":" + this.column;
+    }
+}`}</SyntaxHighlighter>
+
+            <p>We have a first call to traversal that will set the seen array to track if we have seen values by
+                recreating matrix as boolean false. And initialise an array of integers.</p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`public int[] bfsTraversal(int[][] matrix) {
+    boolean[][] seen = new boolean[matrix.length][matrix[0].length];
+
+    //values length is the area of the 2D array
+    int[] values = new int[matrix.length * matrix[0].length];
+
+    bfs(matrix, values, seen);
+
+    return values;
+}`}</SyntaxHighlighter>
+
+            <p>We now have the main BFS method that will create a queue, stick the first point on it (0,0) and then
+                iterate over each direction and add these if valid (in the 2D array) or not already been seen to be
+                processed. This has a space of <i>O(n)</i> for the seen matrix and values. The time complexity is
+                also <i>O(n)</i>.
+            </p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`public void bfs(int[][] matrix, int[] values,  boolean[][] seen) {
+    Queue<Pair> next = new LinkedList<Pair>();
+
+    // start in top left
+    int row = 0;
+    int column = 0;
+    //set a starting position and its been seen
+    next.add(new Pair(row,column));
+    seen[row][column] = true;
+    int valueIdx = 0;
+    // while queue is not empty
+    while(!next.isEmpty()) {
+       Pair idx = next.poll();
+       System.out.println(next);
+       row = idx.row;
+       column = idx.column;
+       values[valueIdx] = matrix[row][column];
+       // added value now move to add next
+       valueIdx++;
+
+        for(int i = 0; i<directions.length; i++) {
+            int newRow = row +  directions[i][0];
+            int newColumn = column + directions[i][1];
+
+
+            System.out.println("newRow = " + newRow + " newCol = " + newColumn);
+            // if not already visited and a valid row,col then add to be processed
+            if(newRow >= 0 && newRow < matrix.length && newColumn >= 0 &&
+                newColumn < matrix[0].length && seen[newRow][newColumn] == false) {
+                next.add(new Pair(newRow, newColumn));
+                seen[newRow][newColumn] = true;
+            }
+        }
+    }
+}`}</SyntaxHighlighter>
+
+            <p>This gives the following result on the test data provided of traversal with directions of Up, Right,
+                Down, Left of a zig zag pattern.</p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`int[][] testData = new int[][]{
+             {1,2,3,4,5},
+             {6,7,8,9,10},
+             {11,12,13,14,15},
+             {16,17,18,19,20}
+          };
+          
+          [1, 2, 6, 3, 7, 11, 4, 8, 12, 16, 5, 9, 13, 17, 10, 14, 18, 15, 19, 20]
+`}</SyntaxHighlighter>
+
+            <h4>Which search is better to use?</h4>
+
+            <p>Breadth first search is good for finding items close together.</p>
+
+            <h4>Tackling 2D Array Questions</h4>
+
+            <p>When getting a question on 2D arrays you should focus on the values each item in the inner array. They
+                are usually limited such as one of three kind of values or unlimited can be anything. A question to ask
+                is there a relationship between values? Next question is there a repeated sub-problem to solve (e.g. how
+                many steps to take from value A to B). We want to think about sequential order rather than search
+                approach. Then we can scan 2D array to find value to solve the problem. Solve this sub-problem. Then
+                continue sequential search to the end.</p>
+
+            <h4>Problem 1: Number of Islands</h4>
+
+            <p><a href={"https://leetcode.com/problems/number-of-islands/"}>Leetcode</a> question for number of islands.
+                <i> Given a 2D array containing only 1s representing islands and 0 representing water. Count the number
+                    of
+                    islands. An island is land connected vertically or horizontally.</i> This is an example of a limited
+                value question.
+            </p>
+
+            <p>Questions to ask, are the edges of the 2D array classed as water? Yes they are.</p>
+
+            <p>Edge cases single islands, empty array, empty nested array. Does the order of traversal matter? Where to
+                start? How do we ensure we do not double count the islands?</p>
+
+            <h5>The Approach</h5>
+            <p>For this question we can traverse from the top left all the way through the 2D array rather than use DFS
+                or BFS we can use sequential search which saves on space complexity. When we discover a
+                1 we do a dfs or a bfs search to find the island until the boundary or 0. We increment the number of
+                islands by 1 and
+                we record these as visited by flipping its value to 0 rather than create another array. Then we continue
+                traversal sequentially and ignore any already visited or 0 until we find the start of the next
+                island.</p>
+
+            <p>The coded solution here is using BFS as the solution to the sub-problem. It can also be done with DFS.
+                Comparing the two solutions BFS is in our approach is slightly more efficient. First time complexity our
+                sequential search touches each element in the array. And this is O(NxM). Space complexity is the maximum
+                size of the queue in the BFS which is the Max(N,M) as it will only be the size of diagonal of it so we
+                are constrained by the farthest width of the structure so M or N. This may not be the case in all BFS
+                solutions. For DFS the space complexity could hold the entire grid in the stack so O(MxN). The time
+                complexity is the same as O(NxM) as it touches each item in array.</p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`public int numIslands(char[][] grid) {
+        
+        if(grid.length == 0) return 0;
+        
+        int totalIslandCount = 0;
+
+        
+        // sequentially iterate over each cell in grid
+        for(int row = 0; row<grid.length; row++) {
+            for(int col = 0; col<grid[row].length; col++) {
+                // do a BFS on each cell 
+                boolean isIsland = bfs(grid, row, col);
+                if(isIsland) {
+                    totalIslandCount++;
+                }
+            }
+        }
+        
+        return totalIslandCount;
+        
+    }
+    
+    static class Pair {
+        
+        public int row;
+        public int column;
+        
+        public Pair(int row, int column) {
+            this.row = row;
+            this.column = column;
+        }
+        
+    }
+    
+    private int[][] directions = new int[][]{
+        {-1,0}, //UP
+        {0,1}, //RIGHT
+        {1,0}, //DOWN
+        {0,-1} // lEFT
+    };
+    
+    
+    // is in bounds, not visited already and is an island
+    private boolean isValidMove(char[][] grid, int row, int column) {
+        if(row < 0 || column < 0 || row >= grid.length || column >= grid[row].length 
+            || grid[row][column] == '0') {
+            return false;
+        } else {
+            return true;
+        }
+        
+    }
+    
+    public boolean bfs(char[][] grid, int row, int column) {
+        boolean isIsland = false;
+        // add the first item but check if its a 1 and not already visited
+        if(grid[row][column] == '1') {
+            Queue<Pair> next = new LinkedList<Pair>();
+        
+            next.add(new Pair(row, column));
+      
+     
+    
+            isIsland = true;
+            // if visited we flip it to zero so its seen as visited from now on
+            grid[row][column] = '0';
+            while(!next.isEmpty()) {
+            
+            Pair nextPair = next.poll(); 
+            
+            // iterate over each direction
+            for(int i = 0; i<directions.length; i++) {
+                int[] direction = directions[i];
+                int newRow = nextPair.row + direction[0];
+                int newColumn = nextPair.column + direction[1];
+                
+                // if is valid move and not visited
+                if(isValidMove(grid, newRow, newColumn)) {
+                    next.add(new Pair(newRow, newColumn));
+                    // mark as visited by flipping it from 1 to 0
+                    grid[newRow][newColumn] = '0';
+                }
+
+            }
+        }
+        }
+            
+        return isIsland;
+        
     }`}</SyntaxHighlighter>
 
             <h3 id={"Graphs"}>Graphs and Trees</h3>
@@ -1771,6 +2363,28 @@ const algorithms = {
             <p>This scheduling algorithm scans across the disk from start to finish and then it moves all the way
                 back
                 to the start and scans again. This approach provides a more even wait time.</p>
+
+            <h3 id={"DynamicProgramming"}>Dynamic Programming</h3>
+
+            <p>Dynamic Programming is an optimization technique for solving overlapping sub problems. It requires the
+                problem to be solved to have <strong>optimal substructure</strong> so final solution can be solved from
+                optimal solutions of sub problems. The sub problems <strong>overlap</strong> and can be reused in the
+                answer. It usually follows two approaches <strong>memoization</strong> top down cache filling where we
+                cache and reuse previous results for example in a fibonacci solution.
+                Or <strong>tabulation</strong> bottom up cache filling where we focus on filling the cache with results.</p>
+
+            <h3 id={"Array"}>Array</h3>
+
+            <h4>Two Sum</h4>
+            <h4>Container with Most Water</h4>
+            <h4>Trapping Rainwater</h4>
+
+            <h3 id={"String"}>Strings</h3>
+
+            <h4>Typed Out Strings</h4>
+            <h4>Longest Substring without Repeating Characters</h4>
+            <h4>Valid Palindrome</h4>
+            <h4>Almost Palindrome</h4>
 
         </div>
     ]
