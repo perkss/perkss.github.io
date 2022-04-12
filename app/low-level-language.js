@@ -12,6 +12,7 @@ const lowlevellanguage = {
 
         <h3>Topics</h3>
         <ul className="text-list">
+            <li><Link to={"#Bits"}>Bit Manipulation</Link></li>
             <li><Link to={"#CProgramming"}>C Programming</Link></li>
             <li><Link to={"#Compilation"}>Java Compilation</Link></li>
             <li><Link to={"#Systems"}>Systems Programming</Link></li>
@@ -21,6 +22,9 @@ const lowlevellanguage = {
             <li><Link to={"#Streams"}>Java and Kotlin Streams</Link></li>
             <li><Link to={"#DataTypes"}>Data Types</Link></li>
         </ul>
+
+        <h3 id={"Bits"}>Bit Manipulation</h3>
+        <p></p>
 
         <h3 id={"CProgramming"}>OS X Mac (High Sierra) glib Tutorial</h3>
         <p>To being with you need to install homebrew for following this tutorial. Once setup you we need to install

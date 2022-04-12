@@ -85,6 +85,7 @@ const algorithms = {
                     <li><Link to={"#LinkedList"}>Linked List</Link></li>
                 </ul>
                 <li><Link to={"#Heap"}>Heap</Link></li>
+                <li><Link to={"#Tree"}>Tree</Link></li>
                 <li><Link to={"#BinaryTree"}>Binary Tree</Link></li>
                 <li><Link to={"#Matrix"}>2D Arrays (Matrices)</Link></li>
                 <li><Link to={"#Graphs"}>Graphs</Link></li>
@@ -1682,24 +1683,7 @@ int[][] testMatrix = new int[][] {
         
     }`}</SyntaxHighlighter>
 
-            <h3 id={"Graphs"}>Graphs and Trees</h3>
-
-            <h4>Representations</h4>
-
-            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
-                               wrapLines={true}>{`    // Represents each connection with starting node and ending node.
-    private int[][] edgeList = {{0, 2}, {1, 3}, {2, 3}, {2, 4}, {3, 5}, {4, 5}};
-    // Rows are the nodes with the index matching and a 1 is representing a connection.
-    private int[][] adjMatrix = {
-            {0, 0, 1, 0, 0, 0},
-            {0, 0, 0, 1, 0, 0},
-            {0, 0, 0, 1, 1, 0},
-            {0, 0, 0, 0, 0, 1},
-            {0, 0, 0, 0, 0, 1},
-            {0, 0, 0, 0, 0, 0}};
-    // Index is node and list is values associated. Most efficient memory wise.
-    private int[][] adjList = {{2}, {3}, {3, 4}, {5}, {5}, {}};`}</SyntaxHighlighter>
-
+            <h3 id={"Tree"}>Trees</h3>
 
             <h5>Tree Breadth First (Level Order Traversal)</h5>
 
@@ -1733,11 +1717,46 @@ int[][] testMatrix = new int[][] {
     }`}</SyntaxHighlighter>
 
 
+            <h3 id={"Graphs"}>Graphs</h3>
+
+            <p>Graphs are made up on vertices (nodes) and edges. A graph can contain cycles where a tree cannot. Where
+                nodes have a circular connections. A vertex can have a cycle to itself. Graphs can have undirected edges
+                where you can traverse in both directions. Directed graphs are where the edges have specific
+                directions. The edge can be directed both ways or only one way. Any undirected graph can be seen as a
+                directed graph where each edge is directed both ways. Graphs can also have weights associated
+                with edges, where they have a cost of traversing different nodes.</p>
+
+            <h4>Representations</h4>
+
+            <p><strong>Edge List</strong> represents the pairs of edge connections.</p>
+
+            <p><strong>Adjacency list</strong> represents graphs where the index in the array is the vertex with a list
+                of connected
+                vertices. This only works with integers. If you have string values such as A,B,C this can be represented
+                as a MAP or map the index to the letter. The benefit of adjacency list is fast lookup.</p>
+
+            <p><strong>Adjacency Matrix</strong> where each row is the vertex and if its connected to an edge then we
+                mark it as 1 at the connected vertex position in the matrix row if no connection mark it as 0. This
+                approach uses a lot of space to store it.</p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`    // Represents each connection with starting node and ending node.
+    private int[][] edgeList = {{0, 2}, {1, 3}, {2, 3}, {2, 4}, {3, 5}, {4, 5}};
+    // Rows are the nodes with the index matching and a 1 is representing a connection.
+    private int[][] adjMatrix = {
+            {0, 0, 1, 0, 0, 0},
+            {0, 0, 0, 1, 0, 0},
+            {0, 0, 0, 1, 1, 0},
+            {0, 0, 0, 0, 0, 1},
+            {0, 0, 0, 0, 0, 1},
+            {0, 0, 0, 0, 0, 0}};
+    // Index is node and list is values associated. Most efficient memory wise.
+    private int[][] adjList = {{2}, {3}, {3, 4}, {5}, {5}, {}};`}</SyntaxHighlighter>
+
             <h4>Traversing a Graph</h4>
 
             <p>The difference between a Graph and Tree is that a graph may have loops, it has no root node and edges
-                can
-                be directed or undirected.</p>
+                can be directed or undirected.</p>
 
             <h4>Graph Breadth First Search</h4>
 
@@ -1749,6 +1768,8 @@ int[][] testMatrix = new int[][] {
                 add to queue then while queue is not empty do the following display data, remove node from queue,
                 for
                 all adjacent vertices to the node add to the queue. Mark node as visited and repeat. </p>
+
+            <h5>Graph Breadth First Search (Node)</h5>
 
             <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
                                wrapLines={true}>{`if (root == null) {
@@ -1779,14 +1800,63 @@ int[][] testMatrix = new int[][] {
         return foundKeys;
     }`}</SyntaxHighlighter>
 
+            <h5>Graph Breadth First Search (Adjacency List)</h5>
+            <p>In the breadth first search for an adjacency list we track the vertex visited to protect against cycles.
+                The we iterate through the connections for each node we are working on starting from a starting node. If
+                we have not already visited a node we add it to the queue to be processed. This is then processed in the
+                same way once removed from the queue.</p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`int[][] graphAdj = new int[][]{
+              {1,3},
+              {0},
+              {3,8},
+              {0,4,5,2},
+              {3,6},
+              {3},
+              {4,7},
+              {6},
+              {2}
+              };`}</SyntaxHighlighter>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`static int[] bfs(int[][] graph) {
+    if(graph.length == 0) {
+        return new int[0];
+    }
+
+    int[] path = new int[graph.length];
+    Queue<Integer> next = new LinkedList<>();
+    int pathIdx = 0;
+    boolean[] visited = new boolean[graph.length];
+    // add starting vertex
+    next.add(0);
+    visited[0] = true;
+    while(!next.isEmpty()) {
+        int vertex = next.poll();
+        // add to path
+        path[pathIdx] = vertex;
+        pathIdx++;
+        // add the children
+        int[] connections = graph[vertex];
+        for(int i = 0; i<connections.length; i++) {
+            // if not already visited add to be processed
+            if(!visited[connections[i]]) {
+                // next item to process in BFS
+                next.add(connections[i]);
+                // visited
+                visited[connections[i]] = true;
+            }
+        }
+    }
+    return path;
+}`}</SyntaxHighlighter>
+
             <h4>Graph Depth First Search</h4>
 
             <p>For depth first search of a graph you have the starting node which you place onto a stack. Pop the
-                stack
-                and print
-                data. Then mark as visited. For all nodes connected to the starting node and not visited push onto
-                the
-                stack, continue while stack is not empty.</p>
+                stack and print data. Then mark as visited. For all nodes connected to the starting node and not visited
+                push onto the stack, continue while stack is not empty.</p>
 
             <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
                                wrapLines={true}>{`List<Integer> depthFirstSearch(Node node) {
@@ -1819,6 +1889,115 @@ int[][] testMatrix = new int[][] {
         }
         return foundKeys;
     }`}</SyntaxHighlighter>
+
+            <h4>Graph Depth First Search (Recursive Adjacency List)</h4>
+
+            <p>In the recursive approach with the adjacency list we simply call itself again for each node that is being
+                processed and it will
+                return once all the nodes are visited. We track the path by a list that we add to on each recursive
+                call this list gets mutated on each call recursively so then we get the final ordered result.</p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`static int[] dfsR(int[][] graph) {
+         List<Integer> path = new ArrayList<>();
+         dfsRecursive(graph, 0, new boolean[graph.length], path);
+         return path.stream().mapToInt(Integer::intValue).toArray();
+     }
+ 
+     static void dfsRecursive(int[][] graph, int vertex, boolean[] visited, List<Integer> path) {
+         path.add(vertex);
+         // mark as visited
+         visited[vertex] = true;
+         // try connections
+         int[] connections = graph[vertex];
+         // process each connection via dfs
+         for(int i = 0; i<connections.length; i++) {
+             if(!visited[connections[i]]) {
+                 dfsRecursive(graph, connections[i], visited, path);
+             }
+         }
+     }`}</SyntaxHighlighter>
+
+            <p>We have seen with graphs that we can represent them in four different ways, adjacency list, edge list,
+                matrix or nodes. We can approach the graph traversal using BFS or DFS and these can be done iteratively
+                or recursively. Graphs have the added complexity of cycles within them so we have to track the visited
+                vertices and not process them again to stop going into a infinite loop.</p>
+
+            <h4>Graph Interview Questions</h4>
+
+            <p>Questions to ask when looking at graph problems in interviews are?</p>
+
+            <ul className="text-list">
+                <li>Does the graph contain cycles? Look in the question it may mention Tree Structure which cannot
+                    contain cycles. Or you can ask this question. Think is is possible that a node may have more than
+                    one parent? In a directed graph can happen but not be a cycle.
+                </li>
+                <li>Are there any unconnected parts in the graph? Ask a related sentence to the question if every x is
+                    connected or has?
+                </li>
+                <li>Is the graph weighted?</li>
+                <li>Is the graph directed? If it is a tree yes.</li>
+                <li>Think of edge cases? Empty graph? Single graph? Ask interviewer if any test case they want to
+                    share? Think we can have a heavily weighted single side graph? Like binary tree being a linked list.
+                </li>
+            </ul>
+
+            <h5>Converting a Question to a Adjacency List</h5>
+            <p>When cracking a coding question that looks like it should be a graph the best thing to do is to convert
+                it into a Adjacency List.</p>
+
+            <p>For example this <a href={"https://leetcode.com/problems/time-needed-to-inform-all-employees/"}>Time
+                Needed to inform all employees</a> question. The manager list represents a graph and can be converted to
+                an adjacency list.</p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`// convert array to adjacency list
+             int[] managers = new int[]{2,2,4,6,-1,4,4,5};
+
+             List<List<Integer>> adjGraph = new ArrayList<>();
+
+             // prepopulate
+
+             for(int i = 0; i<managers.length; i++) {
+                 adjGraph.add(i, new ArrayList<Integer>());
+             }
+
+             // then assign the managers to subordinates inverse it
+             for(int i = 0; i<managers.length; i++) {
+                 // ignore manager
+                 if(managers[i] != -1){
+                     adjGraph.get(managers[i]).add(i);
+                 }
+             }
+
+             System.out.println(adjGraph);`}</SyntaxHighlighter>
+
+            <h5>Converting a Adjacency Matrix to a Adjacency List</h5>
+            <p>To do this you can simply create a list of lists the length of the matrix. The iterate through the
+                matrix row by row from left to right with a double for loop. Then add into the adjacency list if
+                the matrix value is 1.</p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`static List<List<Integer>> matrixToList(int[][] matrix) {
+         List<List<Integer>> adjList = new ArrayList<>();
+         // pre create lists
+         for(int i = 0; i<matrix.length; i++) {
+             adjList.add(i, new ArrayList<>());
+         }
+         // insert the 1s in the matrix to correct place in list
+         // by iterating row by row of matrix
+         for(int i = 0; i<matrix.length; i++) {
+             for(int j = 0; j<matrix[i].length; j++) {
+                 if(matrix[i][j] == 1) {
+                     adjList.get(i).add(j);
+                 }
+             }
+         }
+
+
+         System.out.println(adjList);
+         return adjList;
+     }`}</SyntaxHighlighter>
 
             <h4>Dijkstras Shortest Path for Graphs</h4>
 
@@ -2371,7 +2550,36 @@ int[][] testMatrix = new int[][] {
                 optimal solutions of sub problems. The sub problems <strong>overlap</strong> and can be reused in the
                 answer. It usually follows two approaches <strong>memoization</strong> top down cache filling where we
                 cache and reuse previous results for example in a fibonacci solution.
-                Or <strong>tabulation</strong> bottom up cache filling where we focus on filling the cache with results.</p>
+                Or <strong>tabulation</strong> bottom up cache filling where we focus on filling the cache with results.
+            </p>
+
+            <p>Dynamic programming can be applied when these factors fall true, can the problem be divided into
+                repetitive sub problems (notice repetitive) if so if we do a recursive solution we can memoize these
+                problems.</p>
+
+            <h4>Memoize Fibonacci Sequence</h4>
+
+            <p>A classic coding example the Fibonacci sequence. A recursive solution to this can have dynamic
+                programming optimisation applied. As fibonacci formula repeats the same calculation we can cache this
+                result and reduce the workload from <i>O(2^n)</i> to <i>O(n)</i> incredible stuff right? Lets see the
+                code.</p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`private Map<Integer, Integer> cache = new HashMap<Integer,Integer>();
+
+public int fib(int n) {
+    if(cache.containsKey(n)) {
+        return cache.get(n);
+    } else {
+        // classic fib
+        if(n < 2) {
+            return n;
+        } else {
+            cache.put(n, fib(n-1) + fib(n-2));
+            return cache.get(n);
+        }
+    }
+}`}</SyntaxHighlighter>
 
             <h3 id={"Array"}>Array</h3>
 
