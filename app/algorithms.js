@@ -87,8 +87,27 @@ const algorithms = {
                 <li><Link to={"#Heap"}>Heap</Link></li>
                 <li><Link to={"#Tree"}>Tree</Link></li>
                 <li><Link to={"#BinaryTree"}>Binary Tree</Link></li>
+                <ul className="text-list">
+                    <li><Link to={"#btbfs"}>Breadth First Search</Link></li>
+                    <li><Link to={"#btdfs"}>Depth First Search</Link></li>
+                </ul>
                 <li><Link to={"#Matrix"}>2D Arrays (Matrices)</Link></li>
+                <ul className="text-list">
+                    <li><Link to={"#dfs"}>Depth First Search</Link></li>
+                    <li><Link to={"#bfs"}>Breadth First Search</Link></li>
+                </ul>
                 <li><Link to={"#Graphs"}>Graphs</Link></li>
+                <ul className="text-list">
+                    <li><Link to={"#Representations"}>Representations</Link></li>
+                    <li><Link to={"#Traversal"}>Traversals</Link></li>
+                    <ul className="text-list">
+                        <li><Link to={"#gdfs"}>Depth First Search</Link></li>
+                        <li><Link to={"#gbfs"}>Breadth First Search</Link></li>
+                    </ul>
+                    <li><Link to={"#DAG"}>Directed Acyclic Graph</Link></li>
+                    <li><Link to={"#weighted"}>Weighted Graph</Link></li>
+                    <li><Link to={"#trie"}>Trie Tree</Link></li>
+                </ul>
                 <li><Link to={"#Sorting"}>Sorting</Link></li>
                 <li><Link to={"#Scheduling"}>Scheduling</Link></li>
                 <li><Link to={"#DynamicProgramming"}>Dynamic Programming</Link></li>
@@ -963,7 +982,7 @@ private void siftDown() {
 
             <p>A tree has exactly one root and no loops. A binary tree only has at most two children per node.</p>
 
-            <h5>Binary Tree Traversal with Breadth First Search (Iterate)</h5>
+            <h5 id={"btdfs"}>Binary Tree Traversal with Breadth First Search (Iterate)</h5>
             <p>Here we traverse each level and we represent the level with a queue as it is FIFO. We can do this
                 iteratively.</p>
 
@@ -989,7 +1008,7 @@ private void siftDown() {
   return traversed;
 }`}</SyntaxHighlighter>
 
-            <h5>Binary Tree Traversal with Depth First Search (Recursive)</h5>
+            <h5 id={"btdfs"}>Binary Tree Traversal with Depth First Search (Recursive)</h5>
 
             <p>All of the following traversals are <i>O(n)</i>. These traversals differ to graphs as graphs have to
                 record visited to protect against loops. They are binary tree specific and are options when you need
@@ -1360,7 +1379,7 @@ private void siftDown() {
                 tracking the seen values. Then attempting to move in each direction and only progressing if it is a
                 valid move. We then store the seen value and set the seen position to true.</p>
 
-            <h5>2D Array Depth First Search</h5>
+            <h5 id={"dfs"}>2D Array Depth First Search</h5>
 
             <p>This example code shows how to DFS through a 2d array starting from the top left and moving along
                 attempting Up, Right, Down and Left. With DFS we keep going in one direction until we hit the end.</p>
@@ -1448,7 +1467,7 @@ int[][] testMatrix = new int[][] {
 [1, 2, 3, 4, 5, 10, 9, 8, 7, 6, 11, 12, 13, 14, 15, 20, 19, 18, 17, 16]
 `}</SyntaxHighlighter>
 
-            <h5>2D Array Breadth First Search</h5>
+            <h5 id={"bfs"}>2D Array Breadth First Search</h5>
 
             <p>With breadth first search we start at a location in the 2D array and we spiral out of it adding each
                 position (row,column) to the queue if not already visited and then spiraling out from each of these.
@@ -1726,7 +1745,7 @@ int[][] testMatrix = new int[][] {
                 directed graph where each edge is directed both ways. Graphs can also have weights associated
                 with edges, where they have a cost of traversing different nodes.</p>
 
-            <h4>Representations</h4>
+            <h4 id={"Representations"}>Representations</h4>
 
             <p><strong>Edge List</strong> represents the pairs of edge connections.</p>
 
@@ -1752,13 +1771,69 @@ int[][] testMatrix = new int[][] {
             {0, 0, 0, 0, 0, 0}};
     // Index is node and list is values associated. Most efficient memory wise.
     private int[][] adjList = {{2}, {3}, {3, 4}, {5}, {5}, {}};`}</SyntaxHighlighter>
+                             <h5>Converting a Question to a Adjacency List</h5>
+            <p>When cracking a coding question that looks like it should be a graph the best thing to do is to convert
+                it into a Adjacency List.</p>
 
-            <h4>Traversing a Graph</h4>
+            <p>For example this <a href={"https://leetcode.com/problems/time-needed-to-inform-all-employees/"}>Time
+                Needed to inform all employees</a> question. The manager list represents a graph and can be converted to
+                an adjacency list.</p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`// convert array to adjacency list
+             int[] managers = new int[]{2,2,4,6,-1,4,4,5};
+
+             List<List<Integer>> adjGraph = new ArrayList<>();
+
+             // prepopulate
+
+             for(int i = 0; i<managers.length; i++) {  // O(n)
+                 adjGraph.add(i, new ArrayList<Integer>());
+             }
+
+             // then assign the managers to subordinates inverse it
+             for(int i = 0; i<managers.length; i++) {  // O(n)
+                 // ignore manager
+                 if(managers[i] != -1){
+                     adjGraph.get(managers[i]).add(i);
+                 }
+             }
+
+             System.out.println(adjGraph);`}</SyntaxHighlighter>
+
+            <h5>Converting a Adjacency Matrix to a Adjacency List</h5>
+            <p>To do this you can simply create a list of lists the length of the matrix. The iterate through the
+                matrix row by row from left to right with a double for loop. Then add into the adjacency list if
+                the matrix value is 1.</p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`static List<List<Integer>> matrixToList(int[][] matrix) {
+         List<List<Integer>> adjList = new ArrayList<>();
+         // pre create lists
+         for(int i = 0; i<matrix.length; i++) {
+             adjList.add(i, new ArrayList<>());
+         }
+         // insert the 1s in the matrix to correct place in list
+         // by iterating row by row of matrix
+         for(int i = 0; i<matrix.length; i++) {
+             for(int j = 0; j<matrix[i].length; j++) {
+                 if(matrix[i][j] == 1) {
+                     adjList.get(i).add(j);
+                 }
+             }
+         }
+
+
+         System.out.println(adjList);
+         return adjList;
+     }`}</SyntaxHighlighter>
+
+            <h4 id={"Traversal"}>Traversing a Graph</h4>
 
             <p>The difference between a Graph and Tree is that a graph may have loops, it has no root node and edges
                 can be directed or undirected.</p>
 
-            <h4>Graph Breadth First Search</h4>
+            <h4 id={"gbfs"}>Graph Breadth First Search</h4>
 
             <p>You begin with your starting node provided in the graph and the list of vertices. You again use a
                 queue
@@ -1852,7 +1927,7 @@ int[][] testMatrix = new int[][] {
     return path;
 }`}</SyntaxHighlighter>
 
-            <h4>Graph Depth First Search</h4>
+            <h4 id={"gdfs"}>Graph Depth First Search</h4>
 
             <p>For depth first search of a graph you have the starting node which you place onto a stack. Pop the
                 stack and print data. Then mark as visited. For all nodes connected to the starting node and not visited
@@ -1942,62 +2017,118 @@ int[][] testMatrix = new int[][] {
                 </li>
             </ul>
 
-            <h5>Converting a Question to a Adjacency List</h5>
-            <p>When cracking a coding question that looks like it should be a graph the best thing to do is to convert
-                it into a Adjacency List.</p>
+            <p>An example question for using DFS with a graph is <a
+                href={"https://leetcode.com/problems/time-needed-to-inform-all-employees/"}>time needed to inform all
+                employees</a>. This question states a manager and the time to inform all its employees who can also be
+                managers and have a inform time and so on. We can use DFS and track the max it takes to inform employees
+                at a level. Repeating this process and keeping the max only.</p>
 
-            <p>For example this <a href={"https://leetcode.com/problems/time-needed-to-inform-all-employees/"}>Time
-                Needed to inform all employees</a> question. The manager list represents a graph and can be converted to
-                an adjacency list.</p>
+            <h4 id={"DAG"}>Directed Acyclic Graph</h4>
 
-            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
-                               wrapLines={true}>{`// convert array to adjacency list
-             int[] managers = new int[]{2,2,4,6,-1,4,4,5};
+            <p>A directed acyclic graph is a graph that has directed edges byt no cycles within it. This type of graph
+                can be topologically sorted.</p>
 
-             List<List<Integer>> adjGraph = new ArrayList<>();
+            <h5>Topological Sort</h5>
+            <p><strong>In degree value</strong> is the number of edges entering into a vertex. For topological sort to
+                work the graph cannot contain cycles as these will not be able to ever have an in degree of 0.</p>
+            <p>Topological sort works by taking a node with a 0 degree, adding it to the sorted list of nodes and then
+                removing its edges and decreasing the resulting in degree of these removals, repeating this process
+                until the graph is sorted in topological order. If there are any remaining vertices then it is not a
+                directed acyclic graph. An example can be seen by <a
+                    href={"https://www.geeksforgeeks.org/topological-sorting/"}>Geeks for Geeks</a>.</p>
 
-             // prepopulate
+            <p>If a graph does have a cycle it is impossible to reduce the in degree of the vertices in the cycle to
+                0.</p>
 
-             for(int i = 0; i<managers.length; i++) {
-                 adjGraph.add(i, new ArrayList<Integer>());
-             }
-
-             // then assign the managers to subordinates inverse it
-             for(int i = 0; i<managers.length; i++) {
-                 // ignore manager
-                 if(managers[i] != -1){
-                     adjGraph.get(managers[i]).add(i);
-                 }
-             }
-
-             System.out.println(adjGraph);`}</SyntaxHighlighter>
-
-            <h5>Converting a Adjacency Matrix to a Adjacency List</h5>
-            <p>To do this you can simply create a list of lists the length of the matrix. The iterate through the
-                matrix row by row from left to right with a double for loop. Then add into the adjacency list if
-                the matrix value is 1.</p>
+            <p>The following example of <a href={"https://leetcode.com/problems/course-schedule/"}>Course
+                Schedule</a> problem can be solved with topological sort but working out if it can be sorted and if any
+                remaining vertices not sorted means they are in a cycle. The algorithm works by creating lists of in
+                degree and the adjacency list. We then add the vertices with in degree 0 to the stack to be processed.
+                We reduce the connected vertices in degree by 1 when we remove that vertex with degree 0 and repeat the
+                cycle. If the number of courses do not match the number of vertices in the sorted list then we know that
+                there is a cycle and you cannot complete all courses.</p>
 
             <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
-                               wrapLines={true}>{`static List<List<Integer>> matrixToList(int[][] matrix) {
-         List<List<Integer>> adjList = new ArrayList<>();
-         // pre create lists
-         for(int i = 0; i<matrix.length; i++) {
-             adjList.add(i, new ArrayList<>());
-         }
-         // insert the 1s in the matrix to correct place in list
-         // by iterating row by row of matrix
-         for(int i = 0; i<matrix.length; i++) {
-             for(int j = 0; j<matrix[i].length; j++) {
-                 if(matrix[i][j] == 1) {
-                     adjList.get(i).add(j);
-                 }
-             }
-         }
+                               wrapLines={true}>{`public boolean canFinish(int numCourses, int[][] prerequisites) {
+        
+        if(prerequisites.length == 0)
+            return true;
+        
+        // degrees
+        // adjacency list
+        List<Integer> degrees = new ArrayList<>();
+        List<List<Integer>> adjacency = new ArrayList<>();
+           
+        // number of courses
+        for(int i = 0; i < numCourses; i++) {
+            // set initial degree of zero
+            degrees.add(i, 0);
+            // add empty array list of adjacency
+            adjacency.add(i, new ArrayList<>());
+        }
+        
+        for(int i = 0; i < prerequisites.length; i++) {
+            int[] pre = prerequisites[i];
+            // add the edge between the vertex and its prerequisite
+            adjacency.get(pre[1]).add(pre[0]);
+            // increment the degrees in for that vertex
+            degrees.set(pre[0],degrees.get(pre[0])+1);
+        }
+        
+        System.out.println("Degree = " + degrees);
+        System.out.println(adjacency);
+        
+        // start with a node with degree 0
+        // store the indegrees with a stack
+        Deque<Integer> verticesWithZeroDegree = new LinkedList<>();
+        
+        // add all the zero vertices to stack
+        for(int i = 0; i<degrees.size(); i++) {
+            if(degrees.get(i) == 0) {
+                // add i as vertex
+                verticesWithZeroDegree.addFirst(i);
+            }
+        }
+        
+        System.out.println(verticesWithZeroDegree);
+        
+        int count = 0;
+        // take the next vertex with in degree zero
+        while(!verticesWithZeroDegree.isEmpty()) {
+            int vertex = verticesWithZeroDegree.removeFirst(); // O(n)
+            // processing a course increment the count
+            count++;
+            // get adjacent nodes for vertex
+            List<Integer> adjacent = adjacency.get(vertex);
+            
+            for(int edge = 0; edge<adjacent.size(); edge++) { // O(n)
+                // next edge
+                int next = adjacent.get(edge); 
+                // reduce the indegree of next
+                // replace the item 
+                degrees.set(next, degrees.get(next) - 1);
+                System.out.println("Degree for " + next + " " + degrees.get(next));
+                if(degrees.get(next) == 0) {
+                
+                    // if in degree changes to 0 add to stack to be processed
+                    // add the vertex
+                    verticesWithZeroDegree.addFirst(next);
+                    System.out.println(verticesWithZeroDegree);
+                }
+            }
+            
+        }
+        
+        // compare the num of courses and make sure all are processed
+        return count == numCourses;
+        
+    }`}</SyntaxHighlighter>
 
+            <p>Time analysis is <i>O(P+n^2)</i> P is building the adjacency and the degree. The N^2 is due to a worst
+                case where a node maybe connected to all other nodes so you iterate the node and all connected nodes.
+            </p>
 
-         System.out.println(adjList);
-         return adjList;
-     }`}</SyntaxHighlighter>
+            <h4 id={"weighted"}>Weighted Graph</h4>
 
             <h4>Dijkstras Shortest Path for Graphs</h4>
 
@@ -2012,33 +2143,9 @@ int[][] testMatrix = new int[][] {
                 implemented using a min heap of vertices keyed by their values.</p>
 
             <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
-                               wrapLines={true}>{` // is the vertices key by distance value
-        q = new PriorityQueue<>(new DistanceNodeComparator());
-        // Initialize the Q with all infinity values
-        initializeSingleSource(adjacencyMatrix, source);
-        Set<Integer> s = new HashSet<>();
+                               wrapLines={true}>{``}</SyntaxHighlighter>
 
-        // this works with either priority queue is empty or this
-        // s.size() != adjacencyMatrix.length
-        while (!q.isEmpty()) {
-            DistanceNode u = q.poll(); // take smallest weight from Q
-            s.add(u.key); // could add whole node here
-            for (int i = 0; i < adjacencyMatrix[u.key].length; i++) {
-
-                int weight = adjacencyMatrix[u.key][i];
-                // non links are set to -1
-                if (weight != -1) {
-                    // Alternate could optimise and store the distance node in the distance
-                    DistanceNode iInQueue = new DistanceNode(i, distance.get(i));
-                    // add distance of current adjVertex to edge weight to get distance of adjacent adjVertex from source adjVertex
-                    // when it goes through current adjVertex
-                    int newDistance = u.distance + weight;
-                    relax(u, iInQueue, newDistance);
-                }
-            }
-        }`}</SyntaxHighlighter>
-
-            <h4>Retrieval Trees (Trie)</h4>
+            <h4 id={"trie"}>Retrieval Trees (Trie)</h4>
             <p>Trie trees are commonly used data structure for storing commonly strings as trees and making them
                 searchable and insert in O(m) time where m is the length of the string. We keep a Tree starting with
                 a empty root. Then we keep all children in the alphabet to this root so in the english language 26
