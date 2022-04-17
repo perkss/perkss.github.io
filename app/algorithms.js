@@ -109,6 +109,13 @@ const algorithms = {
                     <li><Link to={"#trie"}>Trie Tree</Link></li>
                 </ul>
                 <li><Link to={"#Sorting"}>Sorting</Link></li>
+                <ul className="text-list">
+                    <li><Link to={"#Bubble"}>Bubble Sort</Link></li>
+                    <li><Link to={"#Selection"}>Selection Sort</Link></li>
+                    <li><Link to={"#Insertion"}>Insertion Sort</Link></li>
+                    <li><Link to={"#Merge"}>Merge Sort</Link></li>
+                    <li><Link to={"#Quick"}>Quick Sort</Link></li>
+                </ul>
                 <li><Link to={"#Scheduling"}>Scheduling</Link></li>
                 <li><Link to={"#DynamicProgramming"}>Dynamic Programming</Link></li>
                 <li><Link to={"#Array"}>Array</Link></li>
@@ -1771,7 +1778,7 @@ int[][] testMatrix = new int[][] {
             {0, 0, 0, 0, 0, 0}};
     // Index is node and list is values associated. Most efficient memory wise.
     private int[][] adjList = {{2}, {3}, {3, 4}, {5}, {5}, {}};`}</SyntaxHighlighter>
-                             <h5>Converting a Question to a Adjacency List</h5>
+            <h5>Converting a Question to a Adjacency List</h5>
             <p>When cracking a coding question that looks like it should be a graph the best thing to do is to convert
                 it into a Adjacency List.</p>
 
@@ -2128,26 +2135,267 @@ int[][] testMatrix = new int[][] {
                 case where a node maybe connected to all other nodes so you iterate the node and all connected nodes.
             </p>
 
-            <h4 id={"weighted"}>Weighted Graph</h4>
+            <h4 id={"weighted"}>Weighted Graph Shortest Path</h4>
 
-            <h4>Dijkstras Shortest Path for Graphs</h4>
+            <h4>Dijkstras Shortest Path for Graphs (Greedy)</h4>
+
+            <p>The Greedy paradigm works for optimisation problems and ones which are looking for the maximum or the
+                minimum. </p>
 
             <p>Dijkstras algorithm is a simple algorithm for finding the shortest path tree from source vertex to
-                all
-                other vertices in the graph on a weighted graph. It only works when the weights are all non
-                negative. It
-                works by maintaining two sets one for nodes on the shortest path and
-                others not yet included. The main step is finding the next shortest vertex from source from the set
-                not
-                included yet. We say this is a greedy step as it chooses the shortest at each selection.It can be
-                implemented using a min heap of vertices keyed by their values.</p>
+                all other vertices in the graph on a weighted graph. It only works when the weights are all non
+                negative and the graph is directed and weighted. It works by maintaining two sets one for vertices on
+                the
+                shortest path and another for vertices not yet included this second starts out with a distance of
+                infinity for each unchecked vertex. The main step is finding the next shortest vertex from source from
+                the set not included yet. We say this is a <strong>greedy</strong> step as it chooses the shortest at
+                each selection. It can be implemented using a min heap (Priority Queue) of vertices keyed by their
+                weight
+                values.</p>
+
+            <p>Lets walk through an example. Say we have a graph of 6 vertices labelled 0 to 5. We are starting at
+                vertex 0. We keep a set of vertices to the distance from node 0. At the beginning these are all
+                defaulted to infinity. Obviously we can state that node 0 is a distance of 0 from itself so can update
+                the distance set for vertex 0 to 0. We then traverse from 0 to each node connected and we set the weight
+                in the distance set. For example 0 connects to 1 with a weight of 4 and vertex 2 with a weight of 2. We
+                update the distance set with these values. We leave nodes we cannot travel too as infinity. Then which
+                node do we move to now we take the greedy approach and move to the node which is the least distance
+                away. We then repeat the process of trying to move to each connected node and recording the weight to
+                get there including previous weights if already traversed from the starting node and updating from
+                infinity. If the recorded distance set has a lower value we leave it. In this example we can traverse
+                from vertex 2 to vertex 3 with a weight of 6 inserting into our distance set a distance of 6 + 2 the
+                previous vertex weight plus this one and we can also do vertex 4 with a weight of 5 giving a final
+                result of 7. We then marked this node
+                as fully traversed. We then look in our set of distances and take the next one that is not complete and
+                select it. We then traverse again repeating the pattern from this node to each connected node and record
+                its distance from the starting node of vertex 0. When traversing other nodes they may have shorter
+                distances than those stored in the distance set. If this is the case we update the distance set with
+                this new shorter distance.</p>
+
+            <p>If we complete processing all nodes and the distance set contains an infinity still we know that we
+                cannot traverse all nodes. Any of the nodes with infinity remaining.</p>
+
+            <ul className="text-list">
+                <li>Initialise all distances from the source node to other nodes with infinity and to the source as
+                    0. This states they have not been visited yet.
+                </li>
+                <li>Now select the current node which will be the source to begin. In future iterations it is the
+                    closest to source. This can be found with a priority queue.
+                </li>
+                <li>From the current node update all connected nodes with the distance if shorter to connect to them
+                    from the current setting of infinity or its setting from a previous route.
+                </li>
+                <li>Mark fully visited edges as complete and then continue to select the next shortest unvisited node.
+                </li>
+                <li>Repeat this process until found the target node or all nodes are visited.
+                </li>
+            </ul>
 
             <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
-                               wrapLines={true}>{``}</SyntaxHighlighter>
+                               wrapLines={true}>{`    static class Pair {        
+        public int target;
+        public int weight;
+        
+        public Pair(int target, int weight) {
+            this.target = target;
+            this.weight = weight;
+        }
+        
+        @Override
+        public String toString() {
+            return this.target + ":" + this.weight;
+        }
+    }
+    // Using Dijkstra
+    public int networkDelayTime(int[][] times, int n, int k) {
+        // dijkstra
+        // we choose smallest value from a priority queue (min heap)
+        // max value will be the delay
+        
+        // adjacency list of source node to target and weight pair
+        List<List<Pair>> adjList = new ArrayList<>();
+        
+        // as no negative represent infinity as negative
+        // holds the current distances to each node from start
+        // zero indexed array so need to shift down vertex indices to store in here
+        int[] distances = new int[n];
+        // track once we have set all the connected nodes done for 
+        boolean[] completed = new boolean[n];
+        
+        // populate infinity distances
+        for(int i = 0; i<n; i++) {
+            adjList.add(i, new ArrayList());
+            distances[i] = Integer.MAX_VALUE;
+        }
+        
+        // starting node is a distance of 0
+        distances[k-1] = 0;
+        
+        // takes the least weighted distance for each value
+        Comparator<Integer> compare = new Comparator<Integer>() {
+            @Override
+            public int compare(Integer a, Integer b) {
+                return Integer.compare(distances[a], distances[b]);
+            }
+        };
+        
+        PriorityQueue<Integer> priority = new PriorityQueue(compare);
+        
+        // add the first starting node
+        priority.add(k-1);
+        
+        // populate the adjacency list on times array of source node, target node and the weight
+        for(int i = 0; i< times.length; i++) {
+            // add value
+            int source = times[i][0];
+            int dest = times[i][1];
+            int weight = times[i][2];
+            adjList.get(source-1).add(new Pair(dest-1, weight));
+        }
+        
+        System.out.println(adjList);
+        
+        while(!priority.isEmpty()) {
+            // take the vertex with least priority the smallest distance using the distance array
+            int source = priority.poll();
+            // get current weight of getting to this node so far
+            int sourceWeight = distances[source];
+            
+            // get connected nodes
+            List<Pair> destinations = adjList.get(source);
+            
+            // iterate each connection 
+            for(Pair neighbour: destinations) {
+                // calculate the current nodes weight + the new weight to get to this 
+                // target node
+                int totalDistance = neighbour.weight + sourceWeight;
+                // if the new total distance is less than the old 
+                // update it
+                if(distances[neighbour.target] > totalDistance) {
+                    distances[neighbour.target] = totalDistance;
+                }
+                System.out.println(Arrays.toString(distances));
+                // add the next node to priority queue for processing
+                // unless we have completed with this node as in we have iterated all its connected nodes
+                if(!completed[source]) {
+                    priority.add(neighbour.target);
+                }
+            }
+            completed[source] = true;
+            
+        }
+        
+
+        System.out.println(Arrays.toString(distances));
+}`}</SyntaxHighlighter>
+
+            <p>The time complexity of the above setting up the adjacency list iterates over the number of edges so we
+                have a time complexity <i>E</i>. Every time we shuffle the priority queue the minimum heap it costs <i>Log
+                    V</i>. Resulting in a time complexity of <i>V + E * log V</i>. Space with <i>O(E + N)</i> for the
+                adjacency list.</p>
+
+            <h5>Dealing with Negative Weights? Bellman Ford</h5>
+
+            <p>We need to use the Bellman Ford Algorithm when finding the shortest path with negative weights. The
+                algorithm does not work though if there is a negative cycle. It does allow us to check for negative
+                cycles. You complete the bellman ford algorithm for <i>n-1</i> items and then one more and if it
+                continues then the graph must have a negative cycle (which can be made up of positive and negative
+                weights in the path but with an overall negative weight). This is
+                our first dynamic programming solution. Dynamic programming takes the greedy method further by
+                understanding we need to investigate every path to find the optimal answer but it also recognises that
+                we repeat traversals when checking every possible path. Where we can optimise this repeatable sub
+                problem
+                of repeated traversals. This is memoization as discussed in the dynamic programming section. The
+                algorithm is much simpler than Dijkstra but is slower.</p>
+
+            <ul className="text-list">
+                <li>Initialise all distances from the node to infinity and to the source as 0.</li>
+                <li>Iterate for the number of vertices - 1 times.</li>
+                <li>In the iteration iterate all edges. If the distance from the source node to the target node node can
+                    be shortened by taking an edge the distance is updated to the new lower value and stored in the
+                    distances list.
+                </li>
+                <li>Track for each iteration if there has been any updates if none we can break out and finish.</li>
+                <li>Since the longest path without cycle is V-1 the edges must be scanned V-1 times.</li>
+                <li>A final scan can be performed and if any edges are updated that means that there must be a negative
+                    cycle.
+                </li>
+                <li>The list of distances contains all the shortest distances to each node from the source node.</li>
+            </ul>
+
+            <p>The time complexity is <i>O(v*e)</i> with a space complexity of <i>O(v)</i>.</p>
+
+            <p>If there is a negative cycle there is not much you can do.</p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`public int bellman(int[][] times, int n, int k) {
+        
+        // as no negative represent infinity as negative
+        // holds the current distances to each node from start
+        // zero indexed array so need to shift down vertex indices to store in here
+        int[] distances = new int[n];
+       
+        // init all distances to infinity
+        for(int i = 0; i<n; i++) {
+            distances[i] = Integer.MAX_VALUE;
+        }
+        
+        // starting node is a distance of 0
+        distances[k-1] = 0;
+        System.out.println(Arrays.toString(distances));
+        
+        // iterate code n-1 times for the less times of the number of nodes
+        // as the algorithm states
+        for(int i = 0; i<n-1; i++) {
+            // if no updates we have done this cycle and break as complete
+           int updates = 0;
+            // iterate all the edges from the times array which is already edge list
+           for(int j = 0; j<times.length; j++) {
+               // get the nodes and the weight
+               int source = times[j][0];
+               int target = times[j][1];
+               int weight = times[j][2];
+               
+               // if the source distance add the new weight is less
+               // than the distance already for the target then update it
+               // subtract 1 as we are zero indexed in distances
+               // check first we are not at INT max value (infinity) for the distance so we can traverse it
+               if(distances[source-1] != Integer.MAX_VALUE && distances[source-1] + weight < distances[target-1]) {
+                   System.out.println(distances[source-1] + " weight: " + weight + " distance:" + distances[target-1]);
+                   distances[target-1] = distances[source-1] + weight;
+                   updates++;
+               }
+           } 
+            // no new updates we are done
+            if(updates == 0) break;
+        }
+        
+        int min = -1;
+        
+        System.out.println(Arrays.toString(distances));
+        // take the max value from the arry
+        for(int i = 0; i<distances.length; i++) {
+            System.out.println(distances[i]);
+            if(distances[i] == Integer.MAX_VALUE) {
+                // cannot traverse all paths not updated the length
+                return -1;
+            }
+            
+            // take the max value of the distances which is the minimum
+            min = Math.max(distances[i], min);
+            System.out.println("Min:" + min + " " + distances[i]);
+        }
+        
+        return min;
+        
+    }`}</SyntaxHighlighter>
 
             <h4 id={"trie"}>Retrieval Trees (Trie)</h4>
             <p>Trie trees are commonly used data structure for storing commonly strings as trees and making them
-                searchable and insert in O(m) time where m is the length of the string. We keep a Tree starting with
+                searchable and insert in <i>O(m)</i> time where m is the length of the string. The space complexity is
+                going to
+                be <i>O(N*K)</i> where the N is the node size multiplied by the number of characters in alphabet as each
+                character is stored. The space of a single word is <i>O(m)</i>. We keep a Tree starting with
                 a empty root. Then we keep all children in the alphabet to this root so in the english language 26
                 children to root. Each node is then made up of its character in the alphabet and its children which
                 could be any of the 26 letters. To search for a word you start at the root and then navigate through
@@ -2155,21 +2403,130 @@ int[][] testMatrix = new int[][] {
                 see
                 how auto complete can make suggestions for you for finishing word spellings.</p>
 
+            <p>The below solution uses a MAP to store the characters we can optimise this and use a fixed size array to
+                store the alphabet.</p>
+
             <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
-                               wrapLines={true}>{`public static class TrieNode {
-        // Alternatively use a Map<Character, TrieNode>
-        TrieNode[] children = new TrieNode[ALPHABET_SIZE];
-        // Holds itself being set and counts how many times its called to add next items.
-        int currentSize = 0;
+                               wrapLines={true}>{`class Trie {
+
+    private TrieNode root = new TrieNode();
+    
+    static class TrieNode {
+        // Could do this as a list of characters
+        private Map<Character,TrieNode> children = new HashMap<>();
+        
         // end of a word
-        boolean isEndOfWord;
+        private boolean isEndOfWord;
 
         public TrieNode() {
-            isEndOfWord = false;
-            for (int i = 0; i < ALPHABET_SIZE; i++)
-                children[i] = null;
+            this.isEndOfWord = false;
         }
-    }`}</SyntaxHighlighter>
+        
+        public boolean containsKey(char letter) {
+            return this.children.containsKey(letter);
+        }
+        
+        public TrieNode get(char letter) {
+            return this.children.get(letter);
+        }
+        
+        public void put(char letter, TrieNode node) {
+            this.children.put(letter, node);
+        }
+        
+        public void setEndOfWord() {
+            this.isEndOfWord = true;
+        }
+        
+        public boolean isEndOfWord() {
+            return this.isEndOfWord;
+        }
+        
+    }
+    
+    public Trie() {
+        
+    }
+    
+    public void insert(String word) {
+        TrieNode current = root;
+        
+        for(int i = 0; i<word.length(); i++) {
+            if(current.containsKey(word.charAt(i))) {
+                current = current.get(word.charAt(i));
+            } else {
+                TrieNode newNode = new TrieNode();
+                // insert a new node
+                current.put(word.charAt(i), newNode);
+                // return this new node as the next
+                current = current.get(word.charAt(i));
+            }
+        }
+        // final letter so is end of word
+        current.setEndOfWord(); 
+    }
+    
+    private TrieNode searchPrefix(String word) {
+        TrieNode current = this.root;
+        for(int i = 0; i<word.length(); i++) {
+            if(current.containsKey(word.charAt(i))) {
+                current = current.get(word.charAt(i));
+            } else {
+                return null;
+            }
+        }
+        
+        return current;
+    }
+    
+    public boolean search(String word) {
+        TrieNode node = searchPrefix(word);
+        return node != null && node.isEndOfWord();
+    }
+    
+    public boolean startsWith(String prefix) {
+        TrieNode node = searchPrefix(prefix);
+        return node != null;
+    }
+}`}</SyntaxHighlighter>
+
+            <p>A further optimised TrieNode that uses fixed length alphabet arrays can be seen as below.</p>
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`static class TrieNode {
+        // Could do this as a list of characters
+        private static final int ALPHABET_SIZE = 26;
+        private TrieNode[] children;
+        
+        // end of a word
+        private boolean isEndOfWord;
+
+        public TrieNode() {
+            this.isEndOfWord = false;
+            this.children = new TrieNode[ALPHABET_SIZE];
+        }
+        
+        public boolean containsKey(char letter) {
+            return this.children[letter-'a'] != null;
+        }
+        
+        public TrieNode get(char letter) {
+            return this.children[letter - 'a'];
+        }
+        
+        public void put(char letter, TrieNode node) {
+            this.children[letter-'a'] = node;
+        }
+        
+        public void setEndOfWord() {
+            this.isEndOfWord = true;
+        }
+        
+        public boolean isEndOfWord() {
+            return this.isEndOfWord;
+        }
+        
+    }
+`}</SyntaxHighlighter>
 
             <h3 id={"Sorting"}>Sorting</h3>
 
@@ -2240,7 +2597,7 @@ int[][] testMatrix = new int[][] {
                 </tr>
             </table>
 
-            <h4>Bubble Sort</h4>
+            <h4 id={"Bubble"}>Bubble Sort</h4>
             <p>Bubble sort is not an efficient algorithm for sorting but is simple to understand. It simply moves
                 the largest element up to the end of the list each run bubbling it up. And then does the same again
                 for the list size - 1 the already sorted elements. It will compare each element on the bubble up and
@@ -2267,7 +2624,7 @@ int[][] testMatrix = new int[][] {
   return arr;
 }`}</SyntaxHighlighter>
 
-            <h4>Selection Sort</h4>
+            <h4 id={"Selection"}>Selection Sort</h4>
 
             <p>Selection sorts iterates the whole list each time and ensures the first element is the smallest
                 element
@@ -2298,7 +2655,7 @@ int[][] testMatrix = new int[][] {
      return arr;
  }`}</SyntaxHighlighter>
 
-            <h4>Insertion Sort</h4>
+            <h4 id={"Insertion"}>Insertion Sort</h4>
 
             <p>Lets now see our first sort not the quickest but a good place to begin. Insertion sort.</p>
 
@@ -2472,7 +2829,7 @@ int[][] testMatrix = new int[][] {
             <img width="90%" height="90%" src={InsertionBest10} alt="Insertion Sort Graph Image"/>
             <p></p>
 
-            <h4>Merge Sort</h4>
+            <h4 id={"Merge"}>Merge Sort</h4>
 
             <p>Merge sort is a stable sort that is <InlineMath math="O(n \lg n)"/> for all time complexities. It is
                 good as it guarantees the speed, but is not as space efficient as it has the auxiliary space
@@ -2549,7 +2906,7 @@ int[][] testMatrix = new int[][] {
          return merged;
       }`}</SyntaxHighlighter>
 
-            <h4>Quick Sort</h4>
+            <h4 id={"Quick"}>Quick Sort</h4>
 
             <p>Quick sort is a unstable sort that is <InlineMath math="O(n \lg n)"/> for best and average case
                 but <InlineMath math="O(n^2)"/> for worst, when the pivot doesnt split the list as all the items are
@@ -2688,18 +3045,346 @@ public int fib(int n) {
     }
 }`}</SyntaxHighlighter>
 
+            <h4>Minimum Cost of Climbing Stairs</h4>
+
+            <p>A common dynamic programming question is <a
+                href={"https://leetcode.com/problems/min-cost-climbing-stairs/"}>Minimum Cost of Climbing Stairs</a>. In
+                this question the cost of each step is represented as an array. You can climb the stairs with either one
+                or two steps.</p>
+
+            <p>To recognise this is a dynamic programming question when you see the word minimum or maximum then you
+                should note its a optimisation problem. Does it have overlapping sub problems. With dynamic programming
+                you always want to have a working solution you can then continually optimise. Recursion will also be
+                used which
+                requires a base case and the recursive steps. A recurrence relation can give you the formula for the
+                basis of a recursive solution.</p>
+
+            <p>We want to define the minimum cost of getting to step n the end of the array. The cost to get to step n
+                is cost of <i>n</i> and
+                the minimum of step <i>n-1</i> and <i>n-2</i>. We take the minimum value of these two results. This
+                repeats down as the min of <i>n-2</i> is the minimum of <i>n-3</i> and <i>n-4</i> added to the cost
+                of <i>n-2</i>. And the min
+                of <i>n-1</i> can be found by the minimum of <i>n-2</i> and <i>n-3</i> added to the cost of <i>n-1</i>.
+                This is the recurrence relation of the relationship between the steps. This repeats until <i>n=0</i>.
+                We can now see that we are repeating calculations, much like the fibonacci sequence. Therefore we have
+                repeating sub problems that can be solved with dynamic programming.
+            </p>
+
+            <p>Now we need to turn this into a generic formula. This can be seen as where step is <i>i</i> <i>minCost(i)
+                = cost[i] + minimum(minCost(i-1) + minCost(i-2))</i>. With a base case of checking for if the step
+                is <i>i == 0 || i == 1</i> and just return that value.</p>
+
+            <p>The basic solution below is not optimised and it has time complexity of <InlineMath
+                math="O(2^n)"></InlineMath>. This is because we call
+                the function twice we have a base of 2 for each item in the array. A space complexity
+                of <InlineMath
+                    math="O(n)"></InlineMath> as the call stack gets filled for a single branch first and then the
+                second one.</p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`public int minCostClimbingStairs(int[] cost) {
+        // start at the top step which has a cost of 0.
+        int n = cost.length;
+        return Math.min(minCost(cost, n-1), minCost(cost, n-2)); // + cost[n] which would be zero in this case the top step
+    }
+    
+    public int minCost(int[] cost, int idx) {
+        if(idx < 0) {
+            return 0;
+        }
+        // otherwise we go down to -1
+        // base case
+        if(idx == 0 || idx == 1) {
+            return cost[idx];
+        }
+        
+        //formula is the cost of the current step and the minimum of the previous two steps
+        return cost[idx] + Math.min(minCost(cost, idx-1), minCost(cost, idx-2));
+    }`}</SyntaxHighlighter>
+
+            <p>Our first optimisation can be to memoize our calls that are repeated for each step this is a <strong>top
+                down</strong> dynamic programming approach. We can do the classic
+                approach of adding it into a map and then getting that result if already calculated. In this case though
+                we only need to remember the last two steps. This then takes the time complexity to <i>O(n)</i>. The
+                space complexity does increase to <i>O(n)</i> as we store each step in the memoized cache. For
+                interviews this approach is usually enough.</p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`// memoize the results
+    private Map<Integer, Integer> stepToCost = new HashMap<>();
+    
+    public int minCostClimbingStairs(int[] cost) {
+        // start at the top step so the next index in the array with a cost of 1.
+        int n = cost.length;
+        return Math.min(minCost(cost, n-1), minCost(cost, n-2)); // + cost[n] which would be zero in this case the top step
+    }
+    
+    public int minCost(int[] cost, int idx) {
+        if(idx < 0) {
+            return 0;
+        }
+        // otherwise we go down to -1
+        // base case
+        if(idx == 0 || idx == 1) {
+            return cost[idx];
+        }
+        
+        if(stepToCost.containsKey(idx)) {
+            return stepToCost.get(idx);
+        }
+        
+        //formula is the cost of the current step and the minumum of the previous two steps
+        int stepCost = cost[idx] + Math.min(minCost(cost, idx-1), minCost(cost, idx-2));
+        stepToCost.put(idx, stepCost);
+        
+        return stepToCost.get(idx);
+    }`}</SyntaxHighlighter>
+
+            <p>To reduce our space complexity we can also look at the <strong>bottom up</strong> tabulation approach.
+                This approach takes the opposite approach from top down and looks to see if we can build our cases from
+                the bottom so the <i>n=0</i> and the <i>n=1</i> the bottom two steps. This then can give us the minimum
+                value to the next step as we have a choice of taking one or two steps to get to the next step plus the
+                cost of that next step. For example <i>minCost(2) = cost(2) + minCost(1) + minCost(2)</i>. The bottom up
+                approach is usually iterative. In this code we start at the bottom so the first two steps have no
+                calculation so we take the cost of them. Once higher than the first two steps we do the calculation and
+                store in the result. At the final step we take the minimum of the previous two steps. As we can go from
+                either of them. We still store the full set of steps in the cache which is <i>O(n)</i>.
+            </p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`public int minCostBottomUp(int[] cost) {
+        int n = cost.length;
+        for(int i = 0; i<n; i++) {
+            if(i<2) {
+                // first two steps
+                stepToCost.put(i, cost[i]);
+            } else {
+                // take the previously calculated data and store again with the cost of the current step
+                stepToCost.put(i, cost[i] + Math.min(stepToCost.get(i-1), stepToCost.get(i-2)));
+            }
+        }
+        
+        // as we have the optio of two steps to get to the top take the min of the previous two
+        return Math.min(stepToCost.get(n-1), stepToCost.get(n-2));
+    }`}</SyntaxHighlighter>
+
+            <p>Here we have applied the optimisation by only storing the previous two steps. Reducing our space
+                complexity by <i>O(1)</i>. </p>
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`public int minCostBottomUp(int[] cost) {
+        int n = cost.length;
+        int prevStep = cost[1];
+        int prevStep2 = cost[0];
+        for(int i = 2; i<n; i++) {
+            // take the previously calculated data and store again with the cost of the current step
+            int currentCost =  cost[i] + Math.min(prevStep, prevStep2);
+            prevStep2 = prevStep; // update the cached steps to move to the next two
+            prevStep = currentCost;
+        }
+        
+        // as we have the option of two steps to get to the top take the min of the previous two
+        return Math.min(prevStep, prevStep2);
+    }`}</SyntaxHighlighter>
+
             <h3 id={"Array"}>Array</h3>
 
             <h4>Two Sum</h4>
             <h4>Container with Most Water</h4>
             <h4>Trapping Rainwater</h4>
+            <h4>Kth Element</h4>
+
+            <h4>Finding the Median of two sorted arrays</h4>
+
+            <p>A question from <a href={"https://leetcode.com/problems/median-of-two-sorted-arrays/"}>leetcode</a>. We
+                are tasked with finding the median of two sorted arrays. These arrays can be of a different length. We
+                cannot merge and sort the arrays. The median is the middle value in a sorted array if the array is of
+                even length we take the midpoint between the two middle numbers so we add them and divide by two.</p>
 
             <h3 id={"String"}>Strings</h3>
 
+            <h4>Manipulating Chars</h4>
+
+            <p>Chars are represented by their encoding table. Therefore you can manipulate chars by incrementing or
+                decrementing them within the bounds of your alphabet. You can say if it is less than a or greater than
+                z either plus 26 or subtract it. For example.</p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`
+char z = 'z';
+System.out.println("z=" + (int)z);
+
+z += 3;
+if(z > 'z') {
+    z = (char)((int)z - 26);
+}
+
+System.out.println("Z rotated = " + z);
+
+//Z=122
+//Z rotated = c=99
+                               `}</SyntaxHighlighter>
+
+            <p>If we take the starting char of a. Then increment it beyong the alphabet we get the next encoded
+                character as show below.</p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`char a = 'a';
+        a+=25;
+        // max char if we go over it will overflow
+        System.out.println("a+25=" + a);
+        // we would get {
+        a++;
+        System.out.println("a+26=" + a);
+        // a+25=z
+        // a+26={
+        `}</SyntaxHighlighter>
+
+            <h4>Rotate Cipher</h4>
+            <p>A common cipher approach is to rotate all characters by a rotation number. For example in a word rotate
+                each
+                character by 3.</p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{` public static String rotateAnyCase(String a, int rotation) {
+         StringBuilder sb = new StringBuilder();
+
+         for(int i = 0; i<a.length(); i++) {
+             char current = a.charAt(i);
+             // do the integer increment to rotate it
+             current = current += rotation;
+             // if it is greater than z then restart it from the alphabet
+             if(current > 'z' || current > 'Z') {
+                 current = (char)((int) current - 26);
+             }
+             // add proper string to builder
+             sb.append(current);
+         }
+
+         return sb.toString();
+
+     }
+
+//abc rotated = def
+`}</SyntaxHighlighter>
+
             <h4>Typed Out Strings</h4>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{``}</SyntaxHighlighter>
+
+            <h4>Permutations</h4>
+
+            <p>A great resource on finding permutations is <a
+                href={"https://www.techiedelight.com/generate-permutations-string-java-recursive-iterative/"}>techie
+                delight</a>. This examples the two approaches recursive and iterative.</p>
+
+            <p>We focus on the recursive here. This approach uses backtracking where we swap each of the remaining
+                characters in the string with the first character then generating all remaining rest of the strings
+                using recursive calls. The recursive call terminates when we have processed all the remainders.</p>
+
+            <p>For example for ABC. First take the first character A and the remaining characters BC and CB. Then insert
+                the first character A into each of these remaining characters and repeat this process. This case giving
+                us ABC and ACB. With a final result of [ABC, ACB, BAC, BCA, CAB, CBA]</p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`static List<String> permutate(String str) {
+         List<String> permutations = new ArrayList<>();
+         permutate(str, "", permutations);
+         return permutations;
+     }
+
+     static void permutate(String remainder, String ans, List<String> permutations) {
+         // Done the prefix now its empty we have the final permutation so add to result
+         if(remainder.length() == 0) {
+             permutations.add(ans);
+             return;
+         } else {
+             // iterate and permutate each character in remainder
+             for(int i = 0; i<remainder.length(); i++) {
+                 // take each letter in prefix
+                 char letter = remainder.charAt(i);
+
+                 //take the rest of the word without prefix
+                 String rest = remainder.substring(0, i) + remainder.substring(i + 1);
+
+                 // append the ans and the letter together and pass rest of string
+                 System.out.println("letter="+letter+" ans+letter=" + ans+letter + " permutations=" + permutations);
+                 permutate(rest, ans+letter, permutations);
+             }
+         }
+     }`}</SyntaxHighlighter>
+
             <h4>Longest Substring without Repeating Characters</h4>
             <h4>Valid Palindrome</h4>
+
+            <p>For finding a palindrome we can start from the outside of the string with two pointers then increment
+                inward and check if they are equal. If they are equal all the way to the where the left and the right
+                pointer meet then this is a valid palindrome.</p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`static boolean isPalindromeTwoPtrs(String s) {
+        if(s.length() == 1) return true;
+        int left = 0;
+        int right = s.length()-1;
+        
+        // start from outside in as we want to detect if immediately
+        // until they are equal positions
+        while(left < right) {
+            System.out.println(left + "->" + right);
+            // we move out from the centre and if they dont match its not a palindrome
+            if(s.charAt(left) != s.charAt(right)) {
+                return false;
+            }
+            left++;
+            right--;
+        }
+        
+        return true;
+    }`}</SyntaxHighlighter>
+
             <h4>Almost Palindrome</h4>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`public boolean validPalindrome(String s) {        
+        int start = 0;
+        int end = s.length()-1;
+        
+        while(start < end) {
+            if(s.charAt(start) != s.charAt(end)) {  
+                // we check if the updated is a palindrome and return so we can only check once
+                return (isPalindrome(s, start+1, end) || isPalindrome(s, start, end-1));
+            }
+            start++;
+            end--;
+        }
+        
+        return true;
+    }
+    
+    // we dont need to delete just move the one index and check if still palindrome
+    public boolean isPalindrome(String s, int start, int end) {
+        //System.out.println("checking if palindrome " + s);
+        
+        while(start < end) {
+            if(s.charAt(start) != s.charAt(end)) {
+                return false;
+            }
+            start++;
+            end--;
+        }
+        
+        
+        return true;
+    }`}</SyntaxHighlighter>
+            <h4>Longest Palindrome Substring</h4>
+
+            <p><a href={"https://leetcode.com/problems/longest-palindromic-substring/solution/"}></a>.
+                For odd and even palindrome we have to call findPalindrome twice one for the starting pointers on same
+                index for odd length strings and one for when they start on different indexes for even length strings.
+                We iterate over each character in the array call findPalindrome where we start at the pointers of left
+                and right and expand out. We take the max of the two results. We take this result if its new length is
+                bigger than the previously seen longest palindrome.
+            </p>
 
         </div>
     ]

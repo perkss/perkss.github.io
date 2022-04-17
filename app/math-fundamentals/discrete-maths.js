@@ -62,7 +62,7 @@ const DiscreteMaths = () => (
         <p>The formula for combinations where order does not matter is:</p>
         <BlockMath math="{n \choose m} = {n \choose n - m} = \frac{n!}{m!(n - m)!}"/>
 
-        <p>A great explation from <a
+        <p>A great explanation from <a
             href={"https://math.stackexchange.com/questions/1525332/how-many-ways-can-i-choose-5-items-from-10"}>StackExchange</a>
         </p>
 
