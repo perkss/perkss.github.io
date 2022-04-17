@@ -237,6 +237,21 @@ const MathPrerequisites = () => (
             </tr>
         </table>
 
+        <h3>Combinations and Permutations</h3>
+
+        <p>Combination is arrangement of items in a collection where the order <strong>does not</strong> matter.</p>
+        <p>Permutation is arrangement of items in a collection where the order <strong>does</strong> matter. A
+            permutation can allow repetition or no repetition. The number of permutations where repetition is allowed is
+            calculated as <Latex>$N^r$</Latex> (N = number of items in collection) where we choose r things. For example
+            in a padlock we have 10 numbers and we choose 3 of them. This would be <Latex>$10^3$</Latex>. If we cannot
+            have repetition then the possibilities are <Latex>$N!$</Latex>. If we want to just select 3 of them then it
+            is:
+        </p>
+
+        <BlockMath math="\frac{n!}{(n - r)!}"/>
+
+        <p></p>
+
     </div>
 
 );
