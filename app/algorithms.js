@@ -74,6 +74,7 @@ const algorithms = {
             <h3>Topics</h3>
             <ul className="text-list">
                 <li><Link to={"#Introduction"}>Introduction</Link></li>
+                <li><Link to={"#Midpoint"}>Midpoint</Link></li>
                 <li><Link to={"#Selections"}>Selections</Link></li>
                 <li><Link to={"#Search"}>Binary Search</Link></li>
                 <li><Link to={"#Asymptotic"}>Asymptotic Notation</Link></li>
@@ -274,8 +275,22 @@ const algorithms = {
 
             <h4>Models of Computation</h4>
 
+            <h3 id={"Midpoint"}>Finding the Midpoint</h3>
+
+            <p>Finding the midpoint in an array should be done using the following code if we are processing with
+                specific start and end indexes. This is because of the risk of overflow. A great write up on this is
+                found here at <a
+                    href={"https://www.geeksforgeeks.org/start-end-start2-preferrable-method-calculating-middle-array-start-end2/"}>Geeks
+                    for Geeks</a>.</p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true} wrapLines={true}>{`
+        int midPoint = left + (right - left) / 2; // java will always round down with integer division`}</SyntaxHighlighter>
+
             <h3 id={"Selections"}>Selections</h3>
+
             <h4>Hoare QuickSelect</h4>
+
+
 
             <h3 id={"Search"}>Binary Search</h3>
 
@@ -292,20 +307,20 @@ const algorithms = {
 
             <h4>Binary Search Recursive</h4>
 
-            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true} wrapLines={true}>{`static boolean binarySearch(int[] arr, int key, int start, int end) {
-        if(end < start) {
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true} wrapLines={true}>{`static boolean binarySearch(int[] arr, int key, int left, int right) {
+        if(right < left) {
             return false;
         }
-        System.out.println("end " + end + " start " + start);
-        int midPoint = (start + end) / 2; // java will always round down with integer division
+        System.out.println("right " + right + " left " + left);
+        int midPoint = left + (right - left) / 2; // java will always round down with integer division
  
         System.out.println("mid = " + midPoint);
         if(arr[midPoint] == key) {
             return true;
         } else if(key < arr[midPoint]) {
-            return binarySearch(arr, key, 0, midPoint-1);
+            return binarySearch(arr, key, left, midPoint-1);
         } else {
-            return binarySearch(arr, key, midPoint+1, end);
+            return binarySearch(arr, key, midPoint+1, right);
         }
  
     }`}</SyntaxHighlighter>
@@ -932,7 +947,6 @@ private void siftDown() {
 
             <h6>Increase Priority of Value</h6>
 
-
             <h3 id={"BinaryTree"}>Binary Tree</h3>
             <p>A binary tree is where each node in the tree has no more than two child nodes. Where as a standard tree
                 can
@@ -945,7 +959,11 @@ private void siftDown() {
             <p>Searching through a binary tree can be either done using Breadth First Search or Depth First Search. When
                 using DFS there are three types of traversal pre-order, in-order and post-order.
                 Searching and traversing are different. Traversing is a subpart of searching using DFS. You first choose
-                the type of search. Usually DFS is used if you are going deep into the tree, finding if a path exists or
+                the type of search. </p>
+
+            <h4>When to use BFS or DFS</h4>
+
+            <p>Usually DFS is used if you are going deep into the tree, finding if a path exists or
                 you are traversing a very wide tree. DFS is is more memory efficient but can be slow. Where as if the
                 node is closer to your source use or if you are finding the
                 finding shortest path, or rare solutions exist but very deep tree you tend to use BFS but this uses more
@@ -989,7 +1007,7 @@ private void siftDown() {
 
             <p>A tree has exactly one root and no loops. A binary tree only has at most two children per node.</p>
 
-            <h5 id={"btdfs"}>Binary Tree Traversal with Breadth First Search (Iterate)</h5>
+            <h5 id={"btbfs"}>Binary Tree Traversal with Breadth First Search (Iterate)</h5>
             <p>Here we traverse each level and we represent the level with a queue as it is FIFO. We can do this
                 iteratively.</p>
 
@@ -1342,13 +1360,13 @@ private void siftDown() {
                 length of the 2D arrays column you use the first row and then call array[0].length</p>
 
             <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
-                               wrapLines={true}>{`int rowWidth = matrix.length`}</SyntaxHighlighter>
+                               wrapLines={true}>{`int numberOfRows = matrix.length // height`}</SyntaxHighlighter>
 
             <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
-                               wrapLines={true}>{`int columnWidth = matrix[0].length`}</SyntaxHighlighter>
+                               wrapLines={true}>{`int numberOfColumns = matrix[0].length // width`}</SyntaxHighlighter>
 
             <p>To check that a row or column is in a valid position you check if they are greater than 0 and within the
-                lengths of the rowWidth and columnWidth (height).</p>
+                lengths of the rows (height) and columns (width).</p>
 
             <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
                                wrapLines={true}>{`if(row < 0 || row >= matrix.length || column < 0 || column >= matrix[0].length
@@ -1440,6 +1458,8 @@ private void dfs(int[][] matrix, int row, int column, boolean[][] seen, int[] va
 
             <p>This approach of DFS using these direction order of UP, Right, Down, Left results in a spiral result.</p>
 
+            <p>The time complexity is also <i>O(MxN)</i> with a space of <i>O(MxN)</i></p>
+
             <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
                                wrapLines={true}>{`    // a row is 1,2,3,4,5
     // a column is 1,6,11,16
@@ -1518,8 +1538,8 @@ int[][] testMatrix = new int[][] {
 
             <p>We now have the main BFS method that will create a queue, stick the first point on it (0,0) and then
                 iterate over each direction and add these if valid (in the 2D array) or not already been seen to be
-                processed. This has a space of <i>O(n)</i> for the seen matrix and values. The time complexity is
-                also <i>O(n)</i>.
+                processed. This has a space of <i>O(MxN)</i> for the seen matrix and values. The time complexity is
+                also <i>O(MxN)</i>.
             </p>
 
             <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
@@ -1839,6 +1859,8 @@ int[][] testMatrix = new int[][] {
 
             <p>The difference between a Graph and Tree is that a graph may have loops, it has no root node and edges
                 can be directed or undirected.</p>
+
+            <p>The time complexity of graphs for BFS and DFS differ than trees and is <i>O(V+E)</i></p>
 
             <h4 id={"gbfs"}>Graph Breadth First Search</h4>
 
@@ -3189,9 +3211,151 @@ public int fib(int n) {
             <h3 id={"Array"}>Array</h3>
 
             <h4>Two Sum</h4>
+
+            <h4>Three Sum</h4>
+
+            <h4>Permutations</h4>
+
+            <p>The question is from <a href={"https://leetcode.com/problems/permutations/"}>leetcode</a>. We are
+                required to print all permutations of an array. This can be solved recursively and with backtracking. A
+                video that explains this well is <a
+                    href={"https://www.youtube.com/watch?v=GuTPwotSdYw&ab_channel=TECHDOSE"}>here</a>. The approach is
+                fairly simple you start with the first character in the string and swap with the next character (ABC ->
+                BAC) then
+                recursively call the function on this new string (BAC), then revert back the string (BAC -> ABC) and
+                repeat the process
+                with the first character and the third character (ABC -> CBA). The code below shows how to achieve this.
+            </p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`// O(n!) as its the depth of the tree (n * n!) == (time to print one permutation * number of permutations)
+    // O(n!) space as its the stack
+    public List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>> permutations = new ArrayList<>();
+        permutate(nums, 0, nums.length, permutations);
+        return permutations;
+    }
+    
+    private void permutate(int[] nums, int left, int right, List<List<Integer>> permutations) {    
+        // when we have the left ptr at the end so fixed all the values we add to result
+        if(left == right) {
+            System.out.println(Arrays.toString(nums));
+            permutations.add(Arrays.stream(nums).boxed().collect(Collectors.toList()));
+        }
+        
+        // iterate each character in string from left to right ptr
+        // will fix the ones left of the left pointer
+        for(int i = left; i<right; i++) {
+            swap(nums, left, i); // ABC swap A and B to BAC
+            // increment left as want permuations to right of fixed value
+            permutate(nums, left+1, right, permutations);
+            // backtrack and rearrange back from swap to original ABC to calculate
+            swap(nums, left, i);
+        }
+        
+    }
+    
+    private void swap(int[] nums, int left, int right) {
+        int temp = nums[left];
+        nums[left] = nums[right];
+        nums[right] = temp;
+    }`}</SyntaxHighlighter>
+
+            <p>This same approach can be applied to strings as in the next section for strings.</p>
+
+            <h4>Two City Scheduling</h4>
+
+            <p>The question is from <a href={"https://leetcode.com/problems/two-city-scheduling/"}>leetcode</a>. Where
+                we are tasked with finding out the most efficient way to schedule interviews between two cities with
+                associated costs. It is a greedy problem. The solution involves breaking down the differences for each
+                person to travel to city A vs city B. We do this by subtracting the cost of city B from city A costs.
+                (We could reverse this if we wanted to change order). This then orders the costs of going to city A over
+                city B. We can sort the array that is input by this then the starting n persons in the sorted array
+                should go to city A and the rest to city B. A greedy approach as we want to keep the cost of going to
+                city A small and choose the smallest.</p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`public int twoCitySchedCost(int[][] costs) {
+        // now we sort by the biggest savings being greedy so the smallest values are the best for city A
+        // if we do a - b times then we take the start of the list and send to city A. 
+        // If we did b - a then the start of the list would be for city B first and reverse the logic
+        
+        // 10-20 = -10
+        // 30-200 = -170
+        // 400-50 = 350
+        // 30-20 = 10 
+        // ^^ these are put into sorted order for the best case going to city A
+        
+        Arrays.sort(costs, (o1, o2) -> Integer.compare(o1[0] - o1[1], o2[0] - o2[1]));
+        
+        int n = costs.length/2;
+        
+        int totalCost = 0;
+        
+        for(int i = 0; i<costs.length; i++) {
+            System.out.println(costs[i][0]+","+costs[i][1] + "=" + (costs[i][0] - costs[i][1]));
+            
+            // Lowest values sorted go to City A
+            if(i < n) {
+                totalCost += costs[i][0];
+            } else {
+                // Higher values in sorted list go to City B
+                totalCost += costs[i][1];
+            }
+        }
+        
+        return totalCost;
+        
+    }`}</SyntaxHighlighter>
+
             <h4>Container with Most Water</h4>
             <h4>Trapping Rainwater</h4>
             <h4>Kth Element</h4>
+
+            <h4>Find all subsets of the input array (Power Set)</h4>
+            <p>We are required to find all subsets of the input array, the empty set is always a subset. The number of
+                subsets will be <i>2^n</i>. The question is from <a
+                    href={"https://leetcode.com/problems/subsets/"}>leetcode</a></p>
+
+            <p>The solution can be found by iterating over each item in the array. For each iteration add the value to
+                the subset and then recursively explore the elements with this starting value and the position of the
+                rest of the array starting from this index + 1. Then remove the index item from the subset and move to
+                the next index in the array and repeating the process.</p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`// Start with an empty subset and start at index 0
+    // then iterate each item in nums and add to subset and recursively call it
+    // then remove the last added item and repeat the process
+    // so we get [], [1], [2], [1,2] [3], [1,3], [2,3], [1,2,3]
+    
+    public List<List<Integer>> subsets(int[] nums) {
+        List<List<Integer>> results = new ArrayList<>();
+        
+        subset(new ArrayList<Integer>(), results, nums, 0);
+        
+        return results;
+    }
+    
+    private void subset(List<Integer> subset, List<List<Integer>> results, int[] nums, int start) {
+      
+        // add the previous subset starts with empty then [1] then [2]
+        results.add(new ArrayList(subset));
+        
+        // start from next position
+        for(int i = start; i<nums.length; i++) {
+            // incrementally add each item from the list to the subset
+            // so 1 
+            subset.add(nums[i]);
+            
+            // recursively call with the subset so it grows from 1 to 2
+            subset(subset, results, nums, i+1);
+            
+            // remove last item from subset so we then go from 1 to empty
+            // then we repeated above starting with 2
+            subset.remove(subset.size()-1);
+        }
+        
+    }`}</SyntaxHighlighter>
 
             <h4>Finding the Median of two sorted arrays</h4>
 
@@ -3275,43 +3439,48 @@ System.out.println("Z rotated = " + z);
             <h4>Permutations</h4>
 
             <p>A great resource on finding permutations is <a
-                href={"https://www.techiedelight.com/generate-permutations-string-java-recursive-iterative/"}>techie
-                delight</a>. This examples the two approaches recursive and iterative.</p>
+                href={"https://www.youtube.com/watch?v=GuTPwotSdYw&ab_channel=TECHDOSE"}>tech
+                dose</a>. This approach can be applied to any array a more efficient string one does exist but we remain
+                happy with this.</p>
 
             <p>We focus on the recursive here. This approach uses backtracking where we swap each of the remaining
                 characters in the string with the first character then generating all remaining rest of the strings
                 using recursive calls. The recursive call terminates when we have processed all the remainders.</p>
 
-            <p>For example for ABC. First take the first character A and the remaining characters BC and CB. Then insert
-                the first character A into each of these remaining characters and repeat this process. This case giving
-                us ABC and ACB. With a final result of [ABC, ACB, BAC, BCA, CAB, CBA]</p>
+            <p>For example for ABC. First take the first character A and swap with next character ABC -> BAC. Then move
+                to the next character and repeat this process. With a final result of [ABC, ACB, BAC, BCA, CAB, CBA]. We
+                always back track to original string from BAC -> ABC so we can then swap A and C to apply to CBA.</p>
 
             <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
                                wrapLines={true}>{`static List<String> permutate(String str) {
          List<String> permutations = new ArrayList<>();
-         permutate(str, "", permutations);
+         permutate(str.toCharArray(), 0, str.length(), permutations);
          return permutations;
      }
 
-     static void permutate(String remainder, String ans, List<String> permutations) {
+     static void permutate(char[] input, int left, int right, List<String> permutations) {
          // Done the prefix now its empty we have the final permutation so add to result
-         if(remainder.length() == 0) {
-             permutations.add(ans);
+         if(left == right) {
+             permutations.add(new String(input));
              return;
          } else {
-             // iterate and permutate each character in remainder
-             for(int i = 0; i<remainder.length(); i++) {
-                 // take each letter in prefix
-                 char letter = remainder.charAt(i);
-
-                 //take the rest of the word without prefix
-                 String rest = remainder.substring(0, i) + remainder.substring(i + 1);
-
-                 // append the ans and the letter together and pass rest of string
-                 System.out.println("letter="+letter+" ans+letter=" + ans+letter + " permutations=" + permutations);
-                 permutate(rest, ans+letter, permutations);
+             // iterate and permutate each prefix
+             for(int i = left; i<right; i++) {
+                // swap characters start ptr and the current swap to right
+                swap(input, left, i);
+                 // move to next character and permutate leave first fixed pass in full lenght of original string
+                 // as we always iterate over each character till its end
+                permutate(input, left+1, right, permutations);
+                // backtrack and swap back
+                swap(input, left, i);
              }
          }
+     }
+
+     static void swap(char[] input, int left, int right) {
+         char tmp = input[left];
+         input[left] = input[right];
+         input[right] = tmp;
      }`}</SyntaxHighlighter>
 
             <h4>Longest Substring without Repeating Characters</h4>
@@ -3378,7 +3547,8 @@ System.out.println("Z rotated = " + z);
     }`}</SyntaxHighlighter>
             <h4>Longest Palindrome Substring</h4>
 
-            <p><a href={"https://leetcode.com/problems/longest-palindromic-substring/solution/"}></a>.
+            <p><a href={"https://leetcode.com/problems/longest-palindromic-substring/solution/"}>Longest Palindome
+                Substring LeetCode</a>.
                 For odd and even palindrome we have to call findPalindrome twice one for the starting pointers on same
                 index for odd length strings and one for when they start on different indexes for even length strings.
                 We iterate over each character in the array call findPalindrome where we start at the pointers of left
