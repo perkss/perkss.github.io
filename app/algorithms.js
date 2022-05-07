@@ -74,6 +74,7 @@ const algorithms = {
             <h3>Topics</h3>
             <ul className="text-list">
                 <li><Link to={"#Introduction"}>Introduction</Link></li>
+                <li><Link to={"#Midpoint"}>Midpoint</Link></li>
                 <li><Link to={"#Selections"}>Selections</Link></li>
                 <li><Link to={"#Search"}>Binary Search</Link></li>
                 <li><Link to={"#Asymptotic"}>Asymptotic Notation</Link></li>
@@ -274,8 +275,22 @@ const algorithms = {
 
             <h4>Models of Computation</h4>
 
+            <h3 id={"Midpoint"}>Finding the Midpoint</h3>
+
+            <p>Finding the midpoint in an array should be done using the following code if we are processing with
+                specific start and end indexes. This is because of the risk of overflow. A great write up on this is
+                found here at <a
+                    href={"https://www.geeksforgeeks.org/start-end-start2-preferrable-method-calculating-middle-array-start-end2/"}>Geeks
+                    for Geeks</a>.</p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true} wrapLines={true}>{`
+        int midPoint = left + (right - left) / 2; // java will always round down with integer division`}</SyntaxHighlighter>
+
             <h3 id={"Selections"}>Selections</h3>
+
             <h4>Hoare QuickSelect</h4>
+
+
 
             <h3 id={"Search"}>Binary Search</h3>
 
@@ -292,20 +307,20 @@ const algorithms = {
 
             <h4>Binary Search Recursive</h4>
 
-            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true} wrapLines={true}>{`static boolean binarySearch(int[] arr, int key, int start, int end) {
-        if(end < start) {
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true} wrapLines={true}>{`static boolean binarySearch(int[] arr, int key, int left, int right) {
+        if(right < left) {
             return false;
         }
-        System.out.println("end " + end + " start " + start);
-        int midPoint = (start + end) / 2; // java will always round down with integer division
+        System.out.println("right " + right + " left " + left);
+        int midPoint = left + (right - left) / 2; // java will always round down with integer division
  
         System.out.println("mid = " + midPoint);
         if(arr[midPoint] == key) {
             return true;
         } else if(key < arr[midPoint]) {
-            return binarySearch(arr, key, 0, midPoint-1);
+            return binarySearch(arr, key, left, midPoint-1);
         } else {
-            return binarySearch(arr, key, midPoint+1, end);
+            return binarySearch(arr, key, midPoint+1, right);
         }
  
     }`}</SyntaxHighlighter>
@@ -992,7 +1007,7 @@ private void siftDown() {
 
             <p>A tree has exactly one root and no loops. A binary tree only has at most two children per node.</p>
 
-            <h5 id={"btdfs"}>Binary Tree Traversal with Breadth First Search (Iterate)</h5>
+            <h5 id={"btbfs"}>Binary Tree Traversal with Breadth First Search (Iterate)</h5>
             <p>Here we traverse each level and we represent the level with a queue as it is FIFO. We can do this
                 iteratively.</p>
 
