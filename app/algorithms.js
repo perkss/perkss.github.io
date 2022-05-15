@@ -84,6 +84,10 @@ const algorithms = {
                     <li><Link to={"#Stack"}>Stacks</Link></li>
                     <li><Link to={"#Queue"}>Queues</Link></li>
                     <li><Link to={"#LinkedList"}>Linked List</Link></li>
+                    <ul className="text-list">
+                        <li><Link to={"#cycle"}>Detecting Cycles</Link></li>
+                        <li><Link to={"#reverse"}>Reverse</Link></li>
+                    </ul>
                 </ul>
                 <li><Link to={"#Heap"}>Heap</Link></li>
                 <li><Link to={"#Tree"}>Tree</Link></li>
@@ -120,7 +124,25 @@ const algorithms = {
                 <li><Link to={"#Scheduling"}>Scheduling</Link></li>
                 <li><Link to={"#DynamicProgramming"}>Dynamic Programming</Link></li>
                 <li><Link to={"#Array"}>Array</Link></li>
+                <ul className="text-list">
+                    <li><Link to={"#2sum"}>Two Sum</Link></li>
+                    <li><Link to={"#2sum2"}>Two Sum Two</Link></li>
+                    <li><Link to={"#3sum"}>Three Sum</Link></li>
+                    <li><Link to={"#permutations"}>Permutations</Link></li>
+                    <li><Link to={"#scheduling"}>Scheduling Intervals</Link></li>
+                    <li><Link to={"#container"}>Containers with Most Water</Link></li>
+                    <li><Link to={"#subsets"}>Find all subsets of the input array (Power Set)</Link></li>
+                    <li><Link to={"#kth"}>Find Kth Element</Link></li>
+                    <li><Link to={"#median"}>Median of two Sorted Arrays</Link></li>
+                </ul>
                 <li><Link to={"#String"}>Strings</Link></li>
+                <ul className="text-list">
+                    <li><Link to={"#"}></Link></li>
+                    <li><Link to={"#"}></Link></li>
+                    <li><Link to={"#"}></Link></li>
+                    <li><Link to={"#"}></Link></li>
+                    <li><Link to={"#"}></Link></li>
+                </ul>
             </ul>
 
             <h3 id={"Introduction"}>Introduction</h3>
@@ -289,7 +311,6 @@ const algorithms = {
             <h3 id={"Selections"}>Selections</h3>
 
             <h4>Hoare QuickSelect</h4>
-
 
 
             <h3 id={"Search"}>Binary Search</h3>
@@ -652,7 +673,7 @@ const algorithms = {
                 first so its worst case time is <Latex>$O(n)$</Latex> as it maybe the tail of the list you are deleting.
             </p>
 
-            <h5>Detecting cycles in a Linked List</h5>
+            <h5 id={"cycle"}>Detecting cycles in a Linked List</h5>
 
             <p>To detect cycles in a Linked List we can use the tortoise and hare algorithm. This algorithm works in the
                 following steps.</p>
@@ -699,7 +720,7 @@ const algorithms = {
         
     }`}</SyntaxHighlighter>
 
-            <h5>Reversing a Linked List</h5>
+            <h5 id={"reverse"}>Reversing a Linked List</h5>
 
             <p>Reversing a linked list can be done iteratively or recursively. The basic idea is you create the start of
                 the new list (prev) as null. And set the current value. Then iterate over the current value store its
@@ -3210,11 +3231,138 @@ public int fib(int n) {
 
             <h3 id={"Array"}>Array</h3>
 
-            <h4>Two Sum</h4>
+            <p>Tips for working with array questions are can we use pointers, can we iterate through it in reverse, can
+                we use extra storage to make the problem easier.</p>
 
-            <h4>Three Sum</h4>
+            <h4 id={"2sum"}>Two Sum</h4>
 
-            <h4>Permutations</h4>
+            <p>The <a href={"https://leetcode.com/problems/two-sum/"}>Two Sum</a> problem is a classic starting point.
+                It covers many of the steps required to get a brute force solution then optimise it. Remember, read the
+                question, ask questions, think of test cases, think of edge cases, then think of a brute force, then try
+                and optimise.</p>
+
+            <p>There are a few solutions to this problem, if the data is not sorted then the best choice is to use a
+                Dictionary to store the complementary values required and then continue iterating the list and checking
+                if the complementary value is in the list. This extra space of <i>O(n)</i> allows a running time
+                of <i>O(n)</i>. The complementary value is the <i>target - nums[i]</i>. Then if that value is in the
+                rest of the list we know we have the two values to form the sum.</p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`public int[] twoSum(int[] nums, int target) {
+        // Holds the complement to the seen numbers to get the target
+        Map<Integer,Integer> complement = new HashMap<>();
+        
+        for(int i = 0; i<nums.length; i++) { 
+            if(complement.containsKey(nums[i])) {
+                return new int[]{complement.get(nums[i]), i};
+            } else {
+                int numberToFind = target - nums[i];
+                System.out.println("Putting " + numberToFind);
+                complement.put(numberToFind, i);
+            }
+            
+        }
+        
+        return new int[0];
+    
+    }`}</SyntaxHighlighter>
+
+            <h4 id={"2sum2"}>Two Sum Two</h4>
+
+            <p>The <a href={"https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/"}>Two Sum Two</a> problem
+                is the same as above but the array is already sorted. This enables us to
+                use the two pointer approach, where we start on the widest possible pointers on the left and right side.
+                Then we calculate the sum. If the sum is larger than the target we decrement the right pointer, and if
+                it is less than the target we increment the right pointer. Until they find a target of they overlap.</p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`public int[] twoSum(int[] numbers, int target) {
+        int leftPtr = 0;
+        int rightPtr = numbers.length-1;
+        
+        while(leftPtr < rightPtr) {
+            int sum = numbers[leftPtr] + numbers[rightPtr];
+            
+            if(target == sum) {
+                // add one as returning position
+                return new int[]{leftPtr+1, rightPtr+1};
+            } else if(sum < target) {
+                leftPtr++; // if sum is less than target move left ptr only
+            } else {
+                rightPtr--;
+            }
+        }
+        
+        return new int[0];
+    }`}</SyntaxHighlighter>
+
+            <h4 id={"3sum"}>Three Sum</h4>
+            <p>The <a id={"https://leetcode.com/problems/3sum/"}>Three Sum</a> problem is a bit trickier but we can take
+                what we learned from the two sum. This problem requires us to find a target of zero. It also says do not
+                return duplicate solutions. To overcome this we can sort the array. Then iterate through it if the
+                current value at the current index is greater than zero we break from loop as the remaining ordered
+                values cannot form zero. Otherwise we call the two sum with two pointers approach as the list is sorted.
+                The two sum function sets the left pointer to the current index + 1, and the right pointer always as the
+                last value in the array. We calculate the sum as <i>int sum = nums[index] + nums[leftPtr] +
+                    nums[rightPtr];</i> then we check and increment and decrement as appropriate or add to the result if
+                matches. When adding to the result we move both pointers and then skip any duplicates from the left
+                pointer.
+            </p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`public List<List<Integer>> threeSum(int[] nums) {
+        // Pre sort to deal with duplicates
+        Arrays.sort(nums);
+        
+        List<List<Integer>> res = new ArrayList<>();
+        
+        // O(n^2)
+        // break from loop if the value is greater than zero
+        for(int i = 0; i<nums.length && nums[i] <= 0; i++) {            
+            // if first or non duplicate
+            if(i == 0 || nums[i-1] != nums[i]) {
+                twoSum(nums, i, res, 0);
+            }
+            
+        }
+       
+        return res;
+    }
+    
+    //[-4,-1,-1,0,1,2]
+    
+    public void twoSum(int[] nums, int index, List<List<Integer>> res, int target) {
+        // left ptr is next item
+        int leftPtr = index + 1;
+        // right ptr is always the last
+        int rightPtr = nums.length-1;
+        
+        while(leftPtr < rightPtr) {
+            // sum the three values with fixed index
+            int sum = nums[index] + nums[leftPtr] + nums[rightPtr];
+            
+            if(sum > target) {
+                // move ptr inward to make result smaller
+                rightPtr--;
+            } else if(sum < target) {
+                leftPtr++;
+            } else {
+                // Found triplet add to result
+                res.add(Arrays.asList(nums[index], nums[leftPtr], nums[rightPtr]));
+                
+                // move the values to keep searching
+                leftPtr++;
+                rightPtr--;
+                
+                // increment left ptr until we have not just moved to a duplicate
+                while(leftPtr < rightPtr && nums[leftPtr] == nums[leftPtr - 1]) {
+                    leftPtr++;
+                }   
+            }   
+        }
+    }`}</SyntaxHighlighter>
+
+            <h4 id={"permutations"}>Permutations</h4>
 
             <p>The question is from <a href={"https://leetcode.com/problems/permutations/"}>leetcode</a>. We are
                 required to print all permutations of an array. This can be solved recursively and with backtracking. A
@@ -3263,7 +3411,7 @@ public int fib(int n) {
 
             <p>This same approach can be applied to strings as in the next section for strings.</p>
 
-            <h4>Two City Scheduling</h4>
+            <h4 id={"scheduling"}>Two City Scheduling</h4>
 
             <p>The question is from <a href={"https://leetcode.com/problems/two-city-scheduling/"}>leetcode</a>. Where
                 we are tasked with finding out the most efficient way to schedule interviews between two cities with
@@ -3308,11 +3456,10 @@ public int fib(int n) {
         
     }`}</SyntaxHighlighter>
 
-            <h4>Container with Most Water</h4>
-            <h4>Trapping Rainwater</h4>
-            <h4>Kth Element</h4>
+            <h4 id={"container"}>Container with Most Water</h4>
+            <h4 id={"kth"}>Kth Element</h4>
 
-            <h4>Find all subsets of the input array (Power Set)</h4>
+            <h4 id={"subsets"}>Find all subsets of the input array (Power Set)</h4>
             <p>We are required to find all subsets of the input array, the empty set is always a subset. The number of
                 subsets will be <i>2^n</i>. The question is from <a
                     href={"https://leetcode.com/problems/subsets/"}>leetcode</a></p>
@@ -3357,7 +3504,7 @@ public int fib(int n) {
         
     }`}</SyntaxHighlighter>
 
-            <h4>Finding the Median of two sorted arrays</h4>
+            <h4 id={"median"}>Finding the Median of two sorted arrays</h4>
 
             <p>A question from <a href={"https://leetcode.com/problems/median-of-two-sorted-arrays/"}>leetcode</a>. We
                 are tasked with finding the median of two sorted arrays. These arrays can be of a different length. We
@@ -3436,7 +3583,7 @@ System.out.println("Z rotated = " + z);
             <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
                                wrapLines={true}>{``}</SyntaxHighlighter>
 
-            <h4>Permutations</h4>
+            <h4>Permutations (Backtracking)</h4>
 
             <p>A great resource on finding permutations is <a
                 href={"https://www.youtube.com/watch?v=GuTPwotSdYw&ab_channel=TECHDOSE"}>tech
@@ -3482,6 +3629,58 @@ System.out.println("Z rotated = " + z);
          input[left] = input[right];
          input[right] = tmp;
      }`}</SyntaxHighlighter>
+
+            <h4>Generating Parentheses (Backtracking)</h4>
+
+            <p>A common question is <a href={"https://leetcode.com/problems/generate-parentheses/"}>generate
+                parentheses</a> that are all valid combinations. This problem is again solved using the backtracking
+                approach. For this question we need to think what is a valid result, and this is where the open
+                parenthesis match the closed and the size of the final string is 2 times the number of combinations to
+                generate. This is the base case for the recursive algorithm. We use a string builder
+                like a stack where we add an opening bracket if it is less than the number of parentheses, then call the
+                function again and back track by removing the parenthesis. We then continue on and add the closing
+                parenthesis if its count is less than the opening.</p>
+
+            <p>This process is repeated forming a break down tree where the leaves are all the final combinations of
+                valid parentheses. This gives a time complexity of <i>O(4^n / sqrt(n))</i></p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`public List<String> generateParenthesis(int n) {
+        
+        List<String> result = new ArrayList<>();
+        // We track this as we can only add
+        // a closing bracket if we add a open first
+        int open = 0;
+        int closed = 0;
+        
+        StringBuilder sb = new StringBuilder();
+        
+        backTrack(open,  closed, n, result, sb);
+        
+        return result;
+    }
+    
+    private void backTrack(int open, int closed, int n, List<String> result, StringBuilder sb) {
+        // base case the length of the string is at the expected size
+        if(sb.length() == n * 2) {
+            result.add(sb.toString());
+            return;
+        }
+        
+        if(open < n) {
+            sb.append("(");
+            backTrack(open + 1, closed, n, result, sb);
+            sb.deleteCharAt(sb.length()-1); //backtrack
+        }
+        
+        // if closed is less than open
+        if(closed < open) {
+            sb.append(")");
+            backTrack(open, closed + 1, n, result, sb);
+            sb.deleteCharAt(sb.length()-1); //backtrack
+        }
+        
+    }`}</SyntaxHighlighter>
 
             <h4>Longest Substring without Repeating Characters</h4>
             <h4>Valid Palindrome</h4>
