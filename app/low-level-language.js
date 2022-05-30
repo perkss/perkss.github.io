@@ -12,6 +12,7 @@ const lowlevellanguage = {
 
         <h3>Topics</h3>
         <ul className="text-list">
+            <li><Link to={"#DataTypes"}>Data Types</Link></li>
             <li><Link to={"#Bits"}>Bit Manipulation</Link></li>
             <li><Link to={"#CProgramming"}>C Programming</Link></li>
             <li><Link to={"#Compilation"}>Java Compilation</Link></li>
@@ -23,7 +24,205 @@ const lowlevellanguage = {
             <li><Link to={"#DataTypes"}>Data Types</Link></li>
         </ul>
 
+        <h3 id={"DataTypes"}>Data Types</h3>
+
+        <p>Basics there is 1 bit and this can represent two values 0 or 1. There are 8 bits in a byte. There are 1000
+            bytes in 1 kilobyte. 1000 kilobytes in a megabyte (1_000_000 bytes in a mega byte). 1000 megabytes in a
+            gigabyte (1_000_000_000 bytes in a gigabyte). 1000 gigabyte in a terabyte.</p>
+
+        <p>Therefore we can calculate the rough maximum size of an item by 2 to the power of how many bits there
+            are. Firstly one byte is 8 bits which is either 0 or 1 and can represent 256 distinct values found
+            by <i>2^8 = 256</i>. Another example is a char of 2 bytes can store <i>2^16 = 65536</i> possible values. An
+            interesting explanation can be found on <a
+                href={"https://stackoverflow.com/questions/26753029/how-many-characters-2-bytes-can-hold#:~:text=so%202%20byte%20can%20hold,character%20or%202%20ASCII%20character."}>stack
+                overflow</a>.</p>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Data Type</th>
+                <th>Size Bytes</th>
+                <th>Size Bits</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>byte</td>
+                <td>1 byte</td>
+                <td>8 bits</td>
+                <td>Stores whole numbers from -128 to 127 (2^8)</td>
+            </tr>
+            <tr>
+                <td>short</td>
+                <td>2 bytes</td>
+                <td>16 bits</td>
+                <td>Stores whole numbers from -32,768 to 32,767</td>
+            </tr>
+            <tr>
+                <td>int</td>
+                <td>4 bytes</td>
+                <td>32 bits</td>
+                <td>Stores whole numbers from -2,147,483,648 to 2,147,483,647</td>
+            </tr>
+            <tr>
+                <td>long</td>
+                <td>8 bytes</td>
+                <td>64 bits</td>
+                <td>Stores whole numbers from -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807</td>
+            </tr>
+            <tr>
+                <td>float</td>
+                <td>4 bytes</td>
+                <td>32 bits</td>
+                <td>Stores fractional numbers. Sufficient for storing 6 to 7 decimal digits</td>
+            </tr>
+            <tr>
+                <td>double</td>
+                <td>8 bytes</td>
+                <td>64 bits</td>
+                <td>Stores fractional numbers. Sufficient for storing 15 decimal digits</td>
+            </tr>
+            <tr>
+                <td>boolean</td>
+                <td>1 bit</td>
+                <td>1 bit</td>
+                <td>Stores true or false values</td>
+            </tr>
+            <tr>
+                <td>char</td>
+                <td>2 bytes</td>
+                <td>16 bits</td>
+                <td>Stores a single character/letter or ASCII values</td>
+            </tr>
+            </tbody>
+        </table>
+
         <h3 id={"Bits"}>Bit Manipulation</h3>
+        <h4>Binary Addition</h4>
+
+        <p>Binary addition is straight forward. You simply add 1 at each matching index with three scenarios if its 0
+            and 0 then the result is 0. If it is 1 + 0 then the result is 1. If it is 1+1 then the result is 1. With a
+            carry of 1. For example <i>0110 + 0010 = 1000</i></p>
+
+        <table class="table table-striped .table-bordered ">
+            <thead>
+            <tr>
+                <th>Binary Number</th>
+                <th>Addition Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>0+0</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>1+0</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>1+1</td>
+                <td>0 (Carry 1 up)</td>
+            </tr>
+            <tr>
+                <td>1+1 (with a carry 1 already)</td>
+                <td>1 (Carry 1 up</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <br/>
+
+        <h4>Binary Subtraction</h4>
+
+        <p>Binary subtraction works in four ways below two examples are <i>0110-0011 = 0011</i> and <i>1000-0110 =
+            0010</i></p>
+
+        <table class="table table-striped .table-bordered ">
+            <thead>
+            <tr>
+                <th>Binary Number</th>
+                <th>Subtraction Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>0-0</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>1-0</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>0-1</td>
+                <td>1 (Borrow 1 from next higher order digit)</td>
+            </tr>
+            <tr>
+                <td>1-1</td>
+                <td>0</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <br/>
+
+        <h4>Binary Multiplication</h4>
+
+        <p>Works as usual multiplication start at right most side of the multiplier and then apply the rules to all
+            digits of the number to be multiplied. Repeat this step for each number in the multiplier. Please check
+            <a href={"https://www.cuemath.com/numbers/binary-multiplication/"}>cuemath</a> for a more detailed
+            explanation.</p>
+
+        <p>Some examples are <i>0011 * 0101 = 1111</i> so we multiply the number by each multiplier digit and then add
+            up each row. Partial steps are <i>0011 -> 0000x -> 0011xx -> 0000xxx</i> these summed give <i>1111</i>.</p>
+
+        <p>Another example is <i>0011 * 0011 = 1001</i></p>
+
+        <table class="table table-striped .table-bordered ">
+            <thead>
+            <tr>
+                <th>Binary Number</th>
+                <th>Result</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>0 * 0</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>1 * 0</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>0 * 1</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>1 * 1</td>
+                <td>1</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <br/>
+
+        <h4>Binary Shift</h4>
+
+        <p>You can easily multiply by two by shifting the binary left by 1. To do division by 2 shift to the right by
+            1.</p>
+
+        <h4>Other Operations</h4>
+
+        <p>BITWISE XOR = <i>^</i> BITWISE AND = <i>&</i> BITWISE COMPLEMENT = <i>~</i> BITWISE OR = <i>|</i></p>
+
+        <p>These operations are explained well by <a href={"https://www.tutorialspoint.com/Java-Bitwise-Operators"}>tutorials
+            point</a>.</p>
+
+        <h4>Twos Complement</h4>
+
         <p></p>
 
         <h3 id={"CProgramming"}>OS X Mac (High Sierra) glib Tutorial</h3>

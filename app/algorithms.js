@@ -96,6 +96,11 @@ const algorithms = {
                     <li><Link to={"#btbfs"}>Breadth First Search</Link></li>
                     <li><Link to={"#btdfs"}>Depth First Search</Link></li>
                 </ul>
+                <li><Link to={"#balancedtree"}>Balanced Tree</Link></li>
+                <ul className="text-list">
+                    <li><Link to={"#redblack"}>Red Black Tree</Link></li>
+                    <li><Link to={"#avltree"}>AVL Tree</Link></li>
+                </ul>
                 <li><Link to={"#Matrix"}>2D Arrays (Matrices)</Link></li>
                 <ul className="text-list">
                     <li><Link to={"#dfs"}>Depth First Search</Link></li>
@@ -129,8 +134,12 @@ const algorithms = {
                     <li><Link to={"#2sum2"}>Two Sum Two</Link></li>
                     <li><Link to={"#3sum"}>Three Sum</Link></li>
                     <li><Link to={"#permutations"}>Permutations</Link></li>
+                    <li><Link to={"#meeting"}>Meeting Rooms 1</Link></li>
+                    <li><Link to={"#meeting2"}>MeetingRooms 2</Link></li>
                     <li><Link to={"#scheduling"}>Scheduling Intervals</Link></li>
+                    <li><Link to={"#subarraysum"}>Subarray Sum = K</Link></li>
                     <li><Link to={"#container"}>Containers with Most Water</Link></li>
+                    <li><Link to={"#trapping"}>Trapping Rainwater</Link></li>
                     <li><Link to={"#subsets"}>Find all subsets of the input array (Power Set)</Link></li>
                     <li><Link to={"#kth"}>Find Kth Element</Link></li>
                     <li><Link to={"#median"}>Median of two Sorted Arrays</Link></li>
@@ -1368,6 +1377,44 @@ private void siftDown() {
         return true;  
     }`}</SyntaxHighlighter>
 
+            <h3 id={"balancedtree"}>Balanced Binary Trees</h3>
+
+            <p>As we have seen operations in binary trees can take up to the height of the tree <i>O(h)</i> where the
+                height of the tree can be a worst case <i>O(n)</i>. When the tree is unbalanced. Ideally we keep the
+                tree balanced so we can keep the height to <i>O(log n)</i>. Two common data structures exist for this.
+            </p>
+
+            <h4 id={"redblack"}>Red Black Tree</h4>
+
+            <p>Red Black trees were inspired by 2-3 trees. They keep a balanced tree by rotating the nodes if they do
+                not meet the properties required of a RB tree. These properties are as follows: Every node is either
+                Black or Red. All NULL nodes are considered black. A red node does not have a red child. Every path from
+                any node goes through the same number of black nodes to its descendants. This data structure is used for
+                the Java TreeMap and TreeSet.</p>
+
+            <p>When inserting a new node the new node is always red. As this doesnt invalidate the depth rule and makes
+                balancing easier. When inserting we then apply logic to rebalance the tree by rotating or flipping
+                colours.</p>
+
+            <p>This results in insertion <i>O(log n)</i>, deletion <i>O(log n)</i> and search <i>O(log n)</i>.
+                Rebalancing has a worst case of <i>O(log n)</i> with a average case of <i>O(1)</i></p>
+
+            <h4 id={"avltree"}>AVL Tree</h4>
+
+            <p>AVL Trees are another balanced tree data structure. These work by maintaining an extra field for each
+                node of the balance factor. The <strong>balance factor</strong> is the difference between the height of
+                the left subtree and the right subtree of the node.</p>
+
+            <p><i>Balance Factor = (Height of Left Subtree - Height of Right Subtree) or (Height of Right Subtree -
+                Height
+                of Left Subtree)</i></p>
+
+            <p>When inserting or deleting a node we do the process like a usual binary tree but then we update the
+                balance factors of the nodes and if the balanced factor is greater than 1, it means the height of the
+                left subtree is greater than the right subtree so we rotate. We rotate right if the newNodeKey inserted
+                is less than the left child key otherwise rotate left.</p>
+
+            <p>This results in insertion <i>O(log n)</i>, deletion <i>O(log n)</i> and search <i>O(log n)</i>.</p>
 
             <h3 id={"Matrix"}>2D Array (Matrices)</h3>
 
@@ -2189,7 +2236,8 @@ int[][] testMatrix = new int[][] {
                 all other vertices in the graph on a weighted graph. It only works when the weights are all non
                 negative and the graph is directed and weighted. It works by maintaining two sets one for vertices on
                 the
-                shortest path and another for vertices not yet included this second starts out with a distance of
+                shortest path and another for vertices not yet included. The second unchecked set starts out with a
+                distance of
                 infinity for each unchecked vertex. The main step is finding the next shortest vertex from source from
                 the set not included yet. We say this is a <strong>greedy</strong> step as it chooses the shortest at
                 each selection. It can be implemented using a min heap (Priority Queue) of vertices keyed by their
@@ -2310,7 +2358,7 @@ int[][] testMatrix = new int[][] {
             // iterate each connection 
             for(Pair neighbour: destinations) {
                 // calculate the current nodes weight + the new weight to get to this 
-                // target node
+                // target node so we get total distance from source node
                 int totalDistance = neighbour.weight + sourceWeight;
                 // if the new total distance is less than the old 
                 // update it
@@ -2405,6 +2453,7 @@ int[][] testMatrix = new int[][] {
                // check first we are not at INT max value (infinity) for the distance so we can traverse it
                if(distances[source-1] != Integer.MAX_VALUE && distances[source-1] + weight < distances[target-1]) {
                    System.out.println(distances[source-1] + " weight: " + weight + " distance:" + distances[target-1]);
+                   // We addd the weight of this link to the previous node so we track total distance from source
                    distances[target-1] = distances[source-1] + weight;
                    updates++;
                }
@@ -2432,6 +2481,39 @@ int[][] testMatrix = new int[][] {
         return min;
         
     }`}</SyntaxHighlighter>
+
+            <table>
+                <tr>
+                    <th>Algorithm</th>
+                    <th>Restriction</th>
+                    <th>Typical</th>
+                    <th>Worst Case</th>
+                    <th>Extra Space</th>
+                </tr>
+                <tr>
+                    <td>Dijkstra</td>
+                    <td>Only for positive weights</td>
+                    <td>E Log V</td>
+                    <td>E Log V</td>
+                    <td>V</td>
+                </tr>
+                <tr>
+                    <td>Topological Sort</td>
+                    <td>Edge weighted DAG</td>
+                    <td>E+V</td>
+                    <td>E+V</td>
+                    <td>V</td>
+                </tr>
+                <tr>
+                    <td>Bellman Ford (Queue Based)</td>
+                    <td>No negative cycles</td>
+                    <td>E+V</td>
+                    <td>VE</td>
+                    <td>V</td>
+                </tr>
+            </table>
+
+            <br></br>
 
             <h4 id={"trie"}>Retrieval Trees (Trie)</h4>
             <p>Trie trees are commonly used data structure for storing commonly strings as trees and making them
@@ -3362,7 +3444,7 @@ public int fib(int n) {
         }
     }`}</SyntaxHighlighter>
 
-            <h4 id={"permutations"}>Permutations</h4>
+            <h4 id={"permutations"}>Permutations (Order Matters)</h4>
 
             <p>The question is from <a href={"https://leetcode.com/problems/permutations/"}>leetcode</a>. We are
                 required to print all permutations of an array. This can be solved recursively and with backtracking. A
@@ -3411,6 +3493,71 @@ public int fib(int n) {
 
             <p>This same approach can be applied to strings as in the next section for strings.</p>
 
+            <h4 id={"#meeting"}>Meeting Rooms 1</h4>
+
+            <p>A simple problems that involves sorting an array by start time of meetings and checking for overlaps in
+                meeting rooms end and start time. <a href={"https://leetcode.com/problems/meeting-rooms/"}>Meeting
+                    rooms</a> problem easy.</p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`public boolean canAttendMeetings(int[][] intervals) {
+        // sort by start time and 
+        // check if an overlap between start of next one and end of previous
+        
+        Arrays.sort(intervals, (time1, time2) -> Integer.compare(time1[0], time2[0]));
+        
+        for(int i = 1; i<intervals.length; i++) {
+            // if end of first is greater than second start
+            if(intervals[i-1][1] > intervals[i][0]) {
+                return false;
+            }
+        }
+        
+        return true;
+    }`}</SyntaxHighlighter>
+
+            <h4 id={"#meeting2"}>MeetingRooms 2</h4>
+
+            <p><a href={"https://leetcode.com/problems/meeting-rooms/"}>Meeting
+                rooms two</a> problem is a medium and is a bit harder than the one above as you start with sorting the
+                input schedule by start time as before. Then we need to track the next minimum end time to count how
+                many overlap and how many rooms are required. We can use a minimum heap (default implementation for
+                Java) to track the end times so we know that the next earliest end time is the top of the heap. Then pop
+                it if we have a meeting with a later start time otherwise add it to the heap and increment the room
+                count.
+            </p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`// Sort by the start time
+        Arrays.sort(intervals, (time1, time2) -> Integer.compare(time1[0], time2[0]));
+        
+        int numberOfRooms = 0;
+        
+        // default priority queue is minimum
+        Queue<Integer> minEndTime = new PriorityQueue<>();
+        
+        // iterate over each start and end time
+        // check if the start time is less than equal to start 
+        // then add time or increment rooms as meeting still going
+        for(int[] time: intervals) {
+            int startTime = time[0];
+            int endTime = time[1];
+            
+            // have a room smaller so pop it and add
+            if(minEndTime.peek() != null && minEndTime.peek() <= startTime) {
+                minEndTime.poll();
+                minEndTime.add(endTime);
+            } else {
+                // not smaller so we need a room
+                numberOfRooms++;
+                minEndTime.add(endTime);
+            }
+        }
+        
+        return numberOfRooms;
+        
+    }`}</SyntaxHighlighter>
+
             <h4 id={"scheduling"}>Two City Scheduling</h4>
 
             <p>The question is from <a href={"https://leetcode.com/problems/two-city-scheduling/"}>leetcode</a>. Where
@@ -3456,7 +3603,143 @@ public int fib(int n) {
         
     }`}</SyntaxHighlighter>
 
+            <h4 id={"#subarraysum"}>Subarray Sum = K</h4>
+
+            <p>A straightforward problem for a brute force solution. <a
+                href={"https://leetcode.com/problems/subarray-sum-equals-k/"}>Subarray sum equals K</a> problem medium.
+                To make this <i>O(n^2)</i> linear we can use extra storage with a table storing the current sums seen so
+                far to the frequencies. This enables us to do a check where we subtract the latest sum from K seen if
+                its in the table and then we know we can sum it back to the sum and the number of times we can do this
+                is the frequency count in the value of the table. This gives a <i>O(n)</i> solution for time and space.
+            </p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`public int subarraySum(int[] nums, int k) {
+        // Holds the sums seen so far and the frequency of those sums
+        Map<Integer, Integer> sumToFreq = new HashMap<>();
+        int count = 0;
+        int sum = 0;
+        
+        // we have seen the sum of zero once at start by default
+        sumToFreq.put(0, 1);
+        
+        // iterate each item 
+        // check if the sum - k exists as a key in the map if so increment the sub array possible
+        // and put sum in map
+        for(int i = 0; i<nums.length; i++) {
+            sum += nums[i];
+            if(sumToFreq.containsKey(sum - k)) {
+                count += sumToFreq.get(sum - k); // add the current count that matches
+            }
+            sumToFreq.put(sum, sumToFreq.getOrDefault(sum, 0) + 1); // keep freq as can sum multiple times
+                
+        }
+        
+        return count;
+    }`}</SyntaxHighlighter>
+
             <h4 id={"container"}>Container with Most Water</h4>
+
+            <p>This <a
+                href={"https://leetcode.com/problems/container-with-most-water/"}>problem</a> requires us to find the
+                container that holds the most water when provided an array that represents a graph. This graph allows
+                capturing water. A brute force solution is to take each point in array and compare its min height with
+                every other point multiplied by their width to find the max area. <i>O(n^2)</i>. An optimal solution is
+                the two shifting pointer technique. This approach runs in <i>O(n)</i> time. It works by having a pointer
+                at the start and at the end. We then calculate the max area by taking the minimum of the left and right
+                side values provided in the array and then subtracting right from left to find the width. Multiply these
+                for the area. We then keep the previous max or the new max area. <i>maxArea = Math.max(maxArea,
+                    Math.min(left, right) * width);</i>. After this we move in the smaller of the left or right values
+                incrementing or decrementing the related pointers and repeat.
+            </p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`public int maxArea(int[] height) {
+        int maxArea = 0;
+        
+        int leftPtr = 0;
+        int rightPtr = height.length-1;
+        
+        while(leftPtr < rightPtr) { 
+            int left = height[leftPtr];
+            int right = height[rightPtr];
+            
+            int width = rightPtr - leftPtr;
+            
+            // take the min height of the left or right side
+            maxArea = Math.max(maxArea, Math.min(left, right) * width);
+            
+            // take smallest side and move in
+            if(left <= right) {
+                leftPtr++;
+            } else {
+                rightPtr--;
+            }    
+        }
+        
+        return maxArea;
+    }`}</SyntaxHighlighter>
+
+            <h4 id={"trapping"}>Trapping Rainwater</h4>
+
+            <p>This <a
+                href={"https://leetcode.com/problems/trapping-rain-water/"}>problem</a> requires us to trap rain water
+                but this time we have the array representing a bar chart where we can have different heights in the
+                chart which results in capturing different levels of rain water. A formula to calculate this from any
+                point in the array is <i>take max left side and max right side take the minimum of the two then subtract
+                    the current pointer height and will result in how much water this particular point can hold.</i> In
+                a formula <i>currentWater = min(maxLeft, maxRight) - currentHeight</i>. This gives us a <strong>brute
+                    force</strong> solution where we iterate through each point and try the formula adding to the total
+                water. This is <i>O(n^2)</i>.
+            </p>
+
+            <p><strong>Optimal solution</strong> to improve on this we can use the two pointer technique. With the
+                following steps we identify the pointer left or right with the lowest value. We also track the max of
+                each side if the pointer value is greater than or equal to the max of that side yes we update max on
+                that side. If not then get the subtract that value from the minimum which is the pointer on that side.
+                Move the pointer inward and repeat.</p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`
+    // optimal solution
+// 2 ptr approach
+// 1) Identify ptr with lesser value
+// 2) is ptr great than or equal to max of that side? 
+// yes -> update max on that side
+// no -> get water for ptr valu and add on total
+// move ptr inward
+// repeat for other ptr                           
+    public int trap(int[] height) {
+        int total = 0;
+        
+        int leftPtr = 0;
+        int rightPtr = height.length-1;
+        
+        int maxLeft = 0;
+        int maxRight = 0;
+        
+        while(leftPtr < rightPtr) {
+            if(height[leftPtr] <= height[rightPtr]) {
+                if(height[leftPtr] >= maxLeft) {
+                    maxLeft = height[leftPtr];
+                } else {
+                    total += maxLeft - height[leftPtr];
+                }
+                leftPtr++;
+            } else {
+                if(height[rightPtr] > maxRight) {
+                    maxRight = height[rightPtr];
+                } else {
+                    total += maxRight - height[rightPtr];
+                }
+                rightPtr--;
+            }
+        }
+        
+        return total;
+
+    }`}</SyntaxHighlighter>
+
             <h4 id={"kth"}>Kth Element</h4>
 
             <h4 id={"subsets"}>Find all subsets of the input array (Power Set)</h4>
