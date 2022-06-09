@@ -143,6 +143,7 @@ const algorithms = {
                     <li><Link to={"#subsets"}>Find all subsets of the input array (Power Set)</Link></li>
                     <li><Link to={"#kth"}>Find Kth Element</Link></li>
                     <li><Link to={"#median"}>Median of two Sorted Arrays</Link></li>
+                    <li><Link to={"#jump"}>Jump Game</Link></li>
                 </ul>
                 <li><Link to={"#String"}>Strings</Link></li>
                 <ul className="text-list">
@@ -3146,6 +3147,30 @@ int[][] testMatrix = new int[][] {
                 repetitive sub problems (notice repetitive) if so if we do a recursive solution we can memoize these
                 problems.</p>
 
+            <h4>Framework for Dynamic Programming</h4>
+
+            <p>To solve a dynamic programming question we need to combine the following three items. This framework is
+                suggested by <a
+                    href={"https://leetcode.com/explore/learn/card/dynamic-programming/631/strategy-for-solving-dp-problems/4096/"}>Leetcode</a>.
+            </p>
+
+            <h5>A function or data structure that will compute the answer to each state in the problem</h5>
+
+            <p>Typically a top down approach will solve the problem using recursion and a hash map whilst a bottom up
+                approach will solve the problem with nested for loops and arrays.</p>
+
+            <h5>A recurrence relation to transition between states</h5>
+
+            <p>States in DP are a set of values that can describe the scenario of the problem. A recurrence relation
+                takes
+                the states and relates them to each other for a solution.</p>
+
+            <h4>Base Cases</h4>
+
+            <p>As with recursion we need to stop our function when it is complete. We need to apply some logical
+                thinking
+                and ask what states can be used to find the answer without DP.</p>
+
             <h4>Memoize Fibonacci Sequence</h4>
 
             <p>A classic coding example the Fibonacci sequence. A recursive solution to this can have dynamic
@@ -3493,7 +3518,7 @@ public int fib(int n) {
 
             <p>This same approach can be applied to strings as in the next section for strings.</p>
 
-            <h4 id={"#meeting"}>Meeting Rooms 1</h4>
+            <h4 id={"meeting"}>Meeting Rooms 1</h4>
 
             <p>A simple problems that involves sorting an array by start time of meetings and checking for overlaps in
                 meeting rooms end and start time. <a href={"https://leetcode.com/problems/meeting-rooms/"}>Meeting
@@ -3516,7 +3541,7 @@ public int fib(int n) {
         return true;
     }`}</SyntaxHighlighter>
 
-            <h4 id={"#meeting2"}>MeetingRooms 2</h4>
+            <h4 id={"meeting2"}>MeetingRooms 2</h4>
 
             <p><a href={"https://leetcode.com/problems/meeting-rooms/"}>Meeting
                 rooms two</a> problem is a medium and is a bit harder than the one above as you start with sorting the
@@ -3603,7 +3628,7 @@ public int fib(int n) {
         
     }`}</SyntaxHighlighter>
 
-            <h4 id={"#subarraysum"}>Subarray Sum = K</h4>
+            <h4 id={"subarraysum"}>Subarray Sum = K</h4>
 
             <p>A straightforward problem for a brute force solution. <a
                 href={"https://leetcode.com/problems/subarray-sum-equals-k/"}>Subarray sum equals K</a> problem medium.
@@ -3793,6 +3818,44 @@ public int fib(int n) {
                 are tasked with finding the median of two sorted arrays. These arrays can be of a different length. We
                 cannot merge and sort the arrays. The median is the middle value in a sorted array if the array is of
                 even length we take the midpoint between the two middle numbers so we add them and divide by two.</p>
+
+            <h4 id={"jump"}>Jump Game</h4>
+            <p>A question from <a href={"https://leetcode.com/problems/jump-game/"}>leetcode</a>. Given an array of
+                integer nums, positioned at the first index where each element in the array means the max amount you can
+                jump forward. Return true if you can reach the last index. We can look at this with a greedy approach.
+                Starting from the last index we can look at the last - 1 position and see if we can make it to the last
+                from there. Repeating this step moving backwards can we make it to the next position that is true
+                shortening the criteria. We move the goal back on each successful index from the end we have found. This
+                is repeated if we cannot reach the goal from that index the goal remains where it is and we continue on.
+                To check we need to consider the starting index (see code comments) to be included in where we are at in
+                addition to the element data for that index so we include where in the array we are in comparison to the
+                goal. This solution is <i>O(n)</i> for time and <i>O(1)</i> for space.
+            </p>
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
+                               wrapLines={true}>{`public boolean canJump(int[] nums) {
+     
+        // end goal we need to get to this index
+        int goal = nums.length-1;
+        
+        for(int j = nums.length-1; j>=0; j--) {
+            // only updates if we can reach the goal 
+            // we add the current index and the value as we are trying to 
+            // reach from that index as we are closer so say we are at index 4
+            // we need to get to index 5 so we only need 1 so it be (index + nums[index])
+            // but say we are at index 0 trying to get to index 5 then we need to jump
+            // 5
+            if(j + nums[j] >= goal) {
+                // we set the goal as the index if we can reach it from this index
+                // otherwise its not set and we continue on trying from other positions
+                goal = j;
+            }
+        }
+        
+        
+        return (goal == 0) ? true : false;
+        
+    }`}</SyntaxHighlighter>
 
             <h3 id={"String"}>Strings</h3>
 

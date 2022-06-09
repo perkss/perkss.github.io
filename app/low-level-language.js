@@ -86,8 +86,8 @@ const lowlevellanguage = {
             <tr>
                 <td>boolean</td>
                 <td>1 bit</td>
-                <td>1 bit</td>
-                <td>Stores true or false values</td>
+                <td>Undefined</td>
+                <td>Stores true or false values most likely 1 byte but only needs 1 bit, in JVM is undefined</td>
             </tr>
             <tr>
                 <td>char</td>
