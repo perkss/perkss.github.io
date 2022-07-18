@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import {HashRouter, Route} from "react-router-dom";
 import HomePage from "./home";
 import FunctionalProgrammingPage from "./functional-programming.js";
-import AlgorithmsPage from "./algorithms.js";
+import AlgorithmsPage from "./algorithms-menu.js";
 import MathFundamentalsPage from "./math-fundamentals";
 import MathsForCompSciPage from "./maths-for-comp-sci.js";
 import lowlevellanguagePage from "./low-level-language.js";
