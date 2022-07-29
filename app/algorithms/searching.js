@@ -4,7 +4,7 @@ import Latex from 'react-latex';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import {darcula} from 'react-syntax-highlighter/styles/hljs';
 import {HashLink as Link} from 'react-router-hash-link';
-import {BlockMath, InlineMath} from 'react-katex';
+import {InlineMath} from 'react-katex';
 
 const algorithms = {
     title: 'Searching Algorithms',
@@ -33,8 +33,99 @@ const algorithms = {
 
             <h3 id={"Selections"}>Selections</h3>
 
+            <p>Many problems require us to find a <strong>kth</strong> smallest (or largest) value in a data structure.
+                This number is called the <strong>kth</strong> order statistic.</p>
+
+            <p>We want to aim to find this value in <i>O(n)</i> time. You may think we could sort the data fully first
+                to find the <strong>kth</strong> smallest item in the data structure and this is feasible but slow as
+                the fastest search is generally <i>O(n log n)</i>.</p>
+
+            <p>Data structures can be used to improve the time cost but increase the space complexity. For example
+                a <strong>Heap</strong> or <strong>Balanced Binary Search Tree</strong> could be used. But the consider
+                the cost of creation and memory.</p>
+
             <h4>Hoare QuickSelect</h4>
 
+            <p>This algorithm can find the kth value in a data structure in place in <i>O(n)</i> time. This requires us
+                to know the full data set before starting.</p>
+
+            <p>The best case running time is <InlineMath math={"O(n)"}></InlineMath> and the worst case is
+                <InlineMath math={"O(n^2)"}></InlineMath>. It has a <InlineMath math={"O(1)"}></InlineMath> space
+                complexity.</p>
+
+            <p>1. Choose a random pivot to partition the input data.</p>
+
+            <p>2. Move all values that are smaller to the left of the pivot and larger to the right of the pivot
+                value.</p>
+
+            <p>The partition phase returns the correct index of the pivot value.</p>
+
+            <p>3. Recurse the algorithm with the side that the element we are looking for is in. The left side is for
+                smaller items than pivot. Or right side for larger. If our K that we are trying to find is equal to
+                pivot index then we have found the item.</p>
+
+
+            <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true} wrapLines={true}>{`public int findKthLargest(int[] nums, int k) {
+        if(nums.length < 2){
+            return nums[0];
+        }
+        return quickselect(nums, 0, nums.length-1, k);
+    }
+    
+    public int quickselect(int[] nums, int start, int end, int k) {
+        // base case
+        if(start < end) {
+            
+            int pivotIndex = partition(nums, start, end);
+            System.out.println("Pivot = " + pivotIndex);
+       
+            // piviot index is in final place
+            // and it is the kth element so subtract
+            if(nums.length-pivotIndex == k) {
+                System.out.println("Return Pivot = " + pivotIndex);
+                return nums[pivotIndex];
+            } else if(nums.length - pivotIndex < k) {
+                      //  System.out.println("First Half = " + Arrays.toString(nums));
+                // first half of list
+                return quickselect(nums, start, pivotIndex-1, k);
+            } else {
+                // second half of list
+                // System.out.println("Second Half = " + Arrays.toString(nums));
+                return quickselect(nums, pivotIndex+1, end, k);
+            }
+        }
+        
+        // is sorted fully so return the item
+        return nums[nums.length - k];
+    }
+    
+    public int partition(int[] nums, int start, int end) {
+        //System.out.println("Start " + start + " End " + end);
+        int pivot = nums[end];
+        // index of smaller element is the right location found as of now
+        int i = start-1; // negative one as increment first in swap;
+        
+        // i and j both start 
+        for(int j = start; j<end; j++) {
+            //System.out.println("nums[j]=" + nums[j] + " pivot " + pivot);
+            if(nums[j] <= pivot) {
+                i++; // move the smaller elemnt up one as placed
+                // swap with currrent location of smallest
+                int tmp = nums[i];
+                nums[i] = nums[j];
+                nums[j] = tmp;
+                
+            }
+        }
+        
+        // move pivot to final place
+        int swaptmp = nums[i+1];
+        nums[i+1] = nums[end];
+        nums[end] = swaptmp;
+        
+        // new pivot
+        return i+1;
+    }`}</SyntaxHighlighter>
 
             <h3 id={"Search"}>Binary Search</h3>
 

@@ -99,9 +99,7 @@ const home = {
                                                                                        url="https://www.linkedin.com/in/stuart-perks/"/> and
                 check out my Github <SocialIcon style={{height: 35, width: 35}} url="https://github.com/perkss"/>.</p>
 
-            <p className={"cv"}>I am currently a technical lead, software engineer with a focus on distributed systems
-                working heavily with
-                Kotlin, Kafka and Kafka streams.</p>
+            <p className={"cv"}>All views and content are my own.</p>
 
             <p className={"cv"}>Please check out my <a href="https://github.com/perkss">Github</a> and feel free to
                 contribute to any of my
