@@ -97,11 +97,11 @@ const home = {
                 contributed to are Kafka, Beam, Reactor-Kafka and Samza.</p>
             <p className={"cv"}>Please hit me up and say hello on LinkedIn <SocialIcon style={{height: 35, width: 35}}
                                                                                        url="https://www.linkedin.com/in/stuart-perks/"/> and
-                check out my Github <SocialIcon style={{height: 35, width: 35}} url="https://github.com/perkss"/>.</p>
+                check out my GitHub <SocialIcon style={{height: 35, width: 35}} url="https://github.com/perkss"/>.</p>
 
             <p className={"cv"}>All views and content are my own.</p>
 
-            <p className={"cv"}>Please check out my <a href="https://github.com/perkss">Github</a> and feel free to
+            <p className={"cv"}>Please check out my <a href="https://github.com/perkss">GitHub</a> and feel free to
                 contribute to any of my
                 projects. </p>
 
