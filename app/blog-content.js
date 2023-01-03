@@ -11,7 +11,8 @@ import ClojurePage from "./clojure.js";
 import DistributedSystemsPage from "./distributed-systems.js";
 import DevOpsPage from "./devops.js";
 import ScrollToTopRoute from './scroll-to-top-route';
-
+import FinancialPage from './financial.js';
+import GreenPage from './green.js'
 
 class Content extends Component {
 
@@ -31,6 +32,8 @@ class Content extends Component {
                             <Route path="/Clojure" component={ClojurePage}/>
                             <Route path="/DistributedSystems" component={DistributedSystemsPage}/>
                             <Route path="/Devops" component={DevOpsPage}/>
+                            <Route path="/Financial" component={FinancialPage}/>
+                            <Route path="/GreenComputing" component={GreenPage}/>
                         </div>
 
 
