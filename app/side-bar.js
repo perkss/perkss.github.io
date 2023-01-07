@@ -36,7 +36,8 @@ class SideBar extends Component {
                         Programming</NavLink></a>
 
                     <a onClick={this.handleMenuClick}><NavLink to="/DevOps">Devops Time</NavLink></a>
-
+                    <a onClick={this.handleMenuClick}><NavLink to="/Financial">Financial Programming</NavLink></a>
+                    <a onClick={this.handleMenuClick}><NavLink to="/GreenComputing">Green Computing</NavLink></a>
                 </Menu>
 
 
