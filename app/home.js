@@ -78,6 +78,19 @@ const home = {
 
                 </li>
 
+                <li className='teal'>
+                    <NavLink to={"/Financial"}>
+                        Financial<br/>Programming
+                    </NavLink>
+                </li>
+
+                <li className='seventh-gold'>
+                    <NavLink to={"/GreenComputing"}>
+                        Green<br/>Computing
+                    </NavLink>
+                </li>
+
+
             </ul>
         </div>
 
