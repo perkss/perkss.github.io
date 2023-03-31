@@ -78,14 +78,26 @@ The risk free reference rate used is not from treasury due to tax and regulatory
 
         <h2 id={"FutureForward"}>Pricing Futures and Forwards</h2>
 
+              <p></p>
 
         <h2 id={"IRFuture"}>Interest Rate Futures</h2>
 
-
+          <p>Interest rate futures is a derivative that allows exposure to changes in interest rates. Interest rate futures move inversely to interest rates, if interest rates go down then interest rate futures go up. This is becuase if the rates go down then the price of bonds will go up, so a trader would lock in a future price on the current interest rate and executure when the interest rates go down. A fuller definition can be read on [Investopedia](https://www.investopedia.com/ask/answers/why-interest-rates-have-inverse-relationship-bond-prices/). They can be used for speculation or hedging. The rates used for the interest rate differ from the bond future rates and also they are cash settled compared to bonds that deliver the bond. </p>
         <h2 id={"Swaps"}>Swaps</h2>
 
+              <h2 id={"Options"}>Options</h2>
 
-        <h2 id={"Greeks"}>The Greeks</h2>
+        <h3>Properties of Stock Options</h3>
+
+    <p>There are six factors that affect the price of stock options. These are the current stock price, the strike price, the time to expiration, the volatility of the stock price, the risk free interest rate and the dividends that are expected to be paid. Changes to each of these impact the option price in a increase, decrease or an unclear way.</p>
+
+    <p>Current stock price can increase this would increase the price of the call option, decrease the price of the put option for both American and European options. If the strike price increase then the call price options value decrease and the put increase for both European and American options. The time to expiration increase has an unknown impact on European options due to the fixed exercise date but have increases in price for American options as you can exercise at any point in that timeframe. Volatility increases will increase the price for all call and put options due to the increased changes of significant movements in the stock. When the risk free rate increases the price of call options increase and put options decrease. The risk free rate is used in option pricing represents the return from a risk free investment over the same time period. Depending on the ex-dividend date and where it falls with the expiration will impact the price of the option if it will be included to the owner of the stack as the seller or buyer.</p>
+
+    <p>Options have bounds for example call options give the buyer the right to buy one share of a stock for a certain price. No matter what happens the option can never be worth more than the stock. Therefore the stock price is the upper bound to the option price. </p>
+
+    <h2 id={"Greeks"}>The Greeks</h2>
+
+
         <h2 id={"Risk"}>Risk</h2>
 
 

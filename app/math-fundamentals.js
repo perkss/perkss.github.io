@@ -7,6 +7,7 @@ import BiteSizeMath from './math-fundamentals/bitesize-maths';
 import ConcreteMathematics from './math-fundamentals/concrete-mathematics';
 import MathPreliminaries from './math-fundamentals/math-preliminaries';
 import DiscreteMaths from './math-fundamentals/discrete-maths';
+import FinanceMathematics from './math-fundamentals/finance-maths';
 import {HashLink as Link} from 'react-router-hash-link';
 import BlogPage from './blog-page.js';
 import "./../css/list-menu.css";
@@ -58,6 +59,13 @@ const MathFundamentals = ({match}) => {
 
                         </li>
 
+                        <li className='cyan'>
+                            <Link to={`${match.url}/FinanceMathematics#text-body`}>
+                                Mathematics for<br/>Finance
+                            </Link>
+
+                        </li>
+
 
                     </ul>
                 </div>
@@ -73,6 +81,7 @@ const MathFundamentals = ({match}) => {
 
                 <Route path={`${match.url}/MathPreliminaries`} component={MathPreliminaries}/>
                 <Route path={`${match.url}/ConcreteMathematics`} component={ConcreteMathematics}/>
+                <Route path={`${match.url}/FinanceMathematics`} component={FinanceMathematics}/>
             </div>
             }
 
