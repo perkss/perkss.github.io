@@ -59,6 +59,11 @@ const FinanceMathematics = () => (
         <p>Benfords distribution is an interesting one for example if you had a large set of decimal integers you would expect that the first digit to appear for each would be about a ninth of the time due to 1-9. In reality this has not turned out to be true and Benford has a formula that is more accurate for naturally ocurring data sets such as the starting digit of iPhone passcodes. Benfords law is that a set of decimal numbers follow it if the first digit <i>d</i> is consistent with <InlineMath math={"P(d) = {log_10} (1 + 1/d)"}></InlineMath> </p>
 
 
+  <h4>Random Walks</h4>
+
+  <p>A random walk is a random process where it describes a path that consists of a sucession of random steps in a mathematical space. They are widely used to model physical processes, biological processes and social processes like the stock market moving. They can be used for simulation of events and you can manipulate them with biases.</p>
+
+  <h4>Monte Carlo Simulation</h4>
 
     </div>
 
