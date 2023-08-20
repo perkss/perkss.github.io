@@ -53,7 +53,7 @@ const green = {
 
         <h3 id={"EfficientProgramming"}>Efficient Programming</h3>
 
-        <p>This is the most controversial part of the Green Computing and always gets a mention due to the popularity of a post by AWS on Rust please take a <a href="https://aws.amazon.com/blogs/opensource/sustainability-with-rust/">here.</a> I am intending to do some of my own benchmarks on this to form my own opinion on the results. The results do make sense but its a small test case. I would always urge the answer to be the right tool for the job. You also need to consider the build times and tooling overheads of different programming languaged choices.</p>
+        <p>Efficient Programming languages is the most controversial part of the Green Computing and always gets a mention due to the popularity of a post by AWS on Rust please take a <a href="https://aws.amazon.com/blogs/opensource/sustainability-with-rust/">here.</a> I am intending to do some of my own benchmarks on this to form my own opinion on the results. The results do make sense but its a small test case. I would always urge the answer to be the right tool for the job. You also need to consider the build times and tooling overheads of different programming languaged choices.</p>
 
 
         <h2 id={"EfficientArch"}>Efficient Architecture</h2>
