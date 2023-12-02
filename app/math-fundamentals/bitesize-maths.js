@@ -1,6 +1,6 @@
 import React from 'react';
 import Latex from 'react-latex';
-import {InlineMath} from 'react-katex';
+import {BlockMath, InlineMath} from 'react-katex';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import {darcula} from 'react-syntax-highlighter/styles/hljs';
 
@@ -9,7 +9,7 @@ const BiteSizeMath = () => (
 
 
     <div>
-        <h2>BiteSize Math</h2>
+        <h2>Basic Math</h2>
 
         <p>Welcome to the very beginning of our journey through mathematics, this first section of Math Fundamentals
             focuses on High School level maths with some help from the BBC Bitesize page. This section will be minimal
@@ -192,6 +192,38 @@ const BiteSizeMath = () => (
         <h3>Recurrence Relations</h3>
 
         <p><a href={"https://www.bbc.co.uk/bitesize/guides/z8syyrd/revision/2"}>A initial guide</a> </p>
+
+        <h3>Calculus</h3>
+
+        <p>Calculus is like understanding something by looking at small pieces. Differential calculus is cutting something into small pieces to find out how it changes. Whilst integral calculus is joining the small pieces together to find out how much there is. </p>
+
+        <h4>Differentiation</h4>
+
+        <p>Differentiation is used for calculating the rate of change. The rate of change of a function can be found by finding the derived function. You can ask to differentiate by the following notations , firstly the Liebniz Notation <InlineMath math="\frac{dy}{dx}" /> or <InlineMath math="f'(x)" />.</p>
+
+        <p>The general formula to solve differentiation is to bring the power down to the front of x and multiply and then bring the power down by 1.</p>
+
+        <BlockMath math="f(x) = ax^n \rightarrow f'(x) = nax^{n-1}" />
+
+        <p>For example</p>
+
+        <BlockMath math="y = x^{4}" />
+
+        <BlockMath math="\frac{dy}{dx} = 4x^{3}" />
+
+        <p>When you have a negative power the law of indices need to be remembered. </p>
+
+        <BlockMath math="a^{-n} = \frac{1}{a^n}" />
+
+        <BlockMath math="a^{\frac{m}{n}} = \sqrt[n]{a^m}"/>
+
+        <p>Before differentiating you should remove brackets, separate top heavy fractions, change terms involving roots into fractional powers and change terms with <i>x</i> on the denominator to negative powers.</p>
+
+
+
+
+
+
 
     </div>
 
