@@ -33,7 +33,7 @@ const MathFundamentals = ({match}) => {
 
                         <li className='quay-pink'>
                             <Link to={`${match.url}/BiteSizeMath#text-body`}>
-                                Bitesize<br/>Math
+                                Basic<br/>Math
                             </Link>
                         </li>
                         <li className='dark-blue'>
