@@ -13,12 +13,28 @@ const BiteSizeMath = () => (
 
         <p>Welcome to the very beginning of our journey through mathematics, this first section of Math Fundamentals
             focuses on High School level maths with some help from the BBC Bitesize page. This section will be minimal
-            and offer many resources to the reader to take each topic further. As part of this work many of the
-            functions have been written to be available in Clojure see the <a
-                href="https://github.com/perkss/basic-maths">repository here</a>. Code samples will be added into the
-            tutorial to give those comfortable with programming something to relate too. This may be skipped by those
-            who are comfortable with the very basics of the topics below, but its always good to have a recap.</p>
+            and offer many resources to the reader to take each topic further.</p>
 
+        <h3>Fractions</h3>
+        <p>A fraction is a numerical quantity that is not a whole number.</p>
+        <h4>Add</h4>
+        <p>Adding fractions you need to have the same denominator if they are not the same you can get the least common denominator of a common denominator. Once they have the same denomiator you just add the numerator. </p>
+        <BlockMath math="\frac{2}{5} + \frac{7}{5} = \frac{9}{5}" />
+        <h4>Subtract</h4>
+
+        <p>Subtracting fractions is similar you need to make the denominator the same then can subtract.</p>
+        <BlockMath math="\frac{3}{4} - \frac{1}{4} = \frac{2}{4} = \frac{1}{2}" />
+
+        <h4>Multiply</h4>
+        <p>Rules multiplying is you multiply the numerator by the other numerator and the denominator by the other denominator and simplify if needed.</p>
+
+        <BlockMath math="\frac{1}{2} \times \frac{2}{5} = \frac{2}{10} = \frac{1}{5}" />
+
+        <h4>Divide</h4>
+
+        <p>Dividing fractions is a little more complex the steps are 1) Turn the second fraction upside down into its reciprocal. Multiply the first fraction by the reciprocal. Simplify as needed.</p>
+
+        <BlockMath math="\frac{1}{2} \div \frac{1}{6} = \frac{1}{2} \times \frac{6}{1} = \frac{6}{2} = \frac{3}{1} = 3" />
 
         <h3>Multiples and Factors</h3>
 
@@ -96,6 +112,8 @@ const BiteSizeMath = () => (
             href={"https://study.com/academy/lesson/how-to-find-the-prime-factorization-of-a-number.html"}>here.</a>
         </p>
 
+<p>To look for the two factors you can form a tree. Where you divide the top number by a multiple until it is a prime number. If the new leaf is not a prime number you divide again and repeat until it is a prime number. A easy start is usually dived by 2. Then you have all the prime numbers which a terminal leaves of the tree as the factors. </p>
+
         <p>Highest common factor is a factor shared by two or more numbers for example 8 and 12 have the common factors
             of 1,2 and 4. The highest common factor here is 4. </p>
         <p>Lowest common multiple is a number that is shared multiple of two or more numbers. For example the lowest
@@ -107,15 +125,102 @@ const BiteSizeMath = () => (
 
         </p>
 
+        <p>First law Mutliplication: <InlineMath math="a^m \times a^n = a^{m+n}" /> for example <InlineMath math="3^2 \times 3^5 = 3^{2+5} = 3^7" /> as this is <InlineMath math="(3 \times 3) \times (3 \times 3 \times 3 \times 3 \times 3) = 3^7" /></p>
+        <p>Second law Division: <InlineMath math="a^m \div a^n = a^{m-n}" /> for example <InlineMath math="a^4 \div a^2 = a^{4-2} = a^2" /> this can be thought as <InlineMath math="\frac{a \times a \times a \times a}{a \times a}" /> which can be cancelled out which would leave you <InlineMath math="a \times a = a^2" /></p>
 
-        <ul>
+        <p>Third law raising a power to another power: <InlineMath math="(k^3)^2 = k^3 \times k^3" /> this is stating that <InlineMath math="k^3" /> is raised again by the power of 2. In this case then we multiply the powers together. For example <InlineMath math="(k^3)^2 = (k^{3 \times 2} = k^3 \times k^3 = k^6)" />. An example of this is <InlineMath math="(3a^4)^3 = 3^3 \times a^{4 \times 3} = 27 \times a^{12} = 27a^{12}"/></p>
+
+        <p>Fourth law if <InlineMath math="a > 0 \implies a^0 =1" /> this is because any number divided by itself is 1. For example <InlineMath math="a^2 \div a^2 = a^{2-2} = a^0" /> as <InlineMath math="j^2 \div j^2 = 25 \div 25 = 1" /></p>
+
+        <p>Fifth law if we have negative it can be solved as <InlineMath math="a^{-n} = \frac{1}{a^n}" /> For example <InlineMath math="3^5 \times 3^{-5} = 3^0 = 1" /> this can be rearranged by dividing both sides with <InlineMath math="3^5" /> as <InlineMath math="3^{-5} = \frac{1}{3^5}" /></p>
+
+        <p>Sixth law is fractional powers this will result in the denomiator of the fraction becomes the root and then numerator becomes the power to raise too as this formula states<InlineMath math="a^{\frac{m}{n}} = (\sqrt[n]a)^m" />. For example <InlineMath math="8^{2}{3} = (\sqrt[3]8)^2 = 2^2 = 4" /></p>
 
 
-        </ul>
+        <p>Some further examples:</p>
+
+        <p>In this example we need to simplify the term in the brackets in this case the bracket is raised to the power of 2 so that is exampled to be <InlineMath math="(3^2) \times y^2 = 9y^2" />.</p>
+
+        <BlockMath math="4y^4 \times (3y)^2 = 4y^4 \times 9y^2 = 36y^2" />
+
+        <h3>Surds</h3>
+
+        <p>Surds are the representation of the most simplified version of a number. Where it cannot be simplified anymore in latin surd means death. It enables writing irrational numbers precisely. Irrational numbers are real numbers that cannot be written as a simple fraction. Having the exact surd form is useful in mathematics.</p>
+
+        <h4>Key Facts</h4>
+
+        <BlockMath math="a\sqrt{b} + c\sqrt{b} = (a+c)\sqrt{b}" />
+        <BlockMath math="a\sqrt{b} - c\sqrt{b} = (a-c)\sqrt{b}" />
+        <BlockMath math="\sqrt{a} \times \sqrt{a} = a" />
+        <BlockMath math="\sqrt{a} \times \sqrt{b} = \sqrt{ab}" />
+        <BlockMath math="\frac{\sqrt{a}}{\sqrt{b}} = \sqrt{\frac{a}{b}}" />
+
+<h5>Example</h5>
+        <p>Lets start simple we can simplify <InlineMath math="\sqrt{75}"/> this can be simplified as follows:</p>
+
+<BlockMath math="\sqrt{75} = \sqrt{25 \times 3} = \sqrt{25} \times \sqrt{3} = 5\sqrt{3}"/>
+
+<h5>Example</h5>
+
+<p>Finding the simpliest surd without a calculator.</p>
+
+<BlockMath math="\sqrt{392} = \sqrt{4 \times 98} = \sqrt{4} \times \sqrt{2} \times \sqrt{49} = 14\sqrt{2}"/>
+
+        <p>Having surds on the denonmiator is not a good thing. When a surd is written on the denominator of a fraction, we rationalise the denominator to make it simpler. We do this by multiplying the numerator and denominator by an expression that will simplify the surd on the denominator. Therefore you can multiply the fraction by the surd over the surd as the example below as if you do this is just multiply by 1 is the same result. </p>
+
+<h5>Example</h5>
+        <BlockMath math="\frac{14}{\sqrt{7}} \times \frac{\sqrt{7}}{\sqrt{7}} = \frac{14\sqrt{7}}{7} = 2\sqrt{7}" />
+
+        <p>In the example we start with the tricky square root 7 at the bottom therefore we can multiply by the square root 7 over square root 7.  This is legitamate as anything divided by itself is just 1 and you multiply anything by 1 is just itself. Which can then simplify the denominator to 7 and then you end up with the 14 divided by the 7 to give the final answer of <InlineMath math="2\sqrt{7}"></InlineMath>.</p>
 
 
-        <p><Latex></Latex></p>
 
+        <h5>Example</h5>
+        <p>Another example provided shows how to solve with sqrt on the botttom.</p>
+
+        <BlockMath math="\frac{5}{\sqrt{32}}" />
+
+        <p>Start by simplifying <InlineMath math="\sqrt{32}" /></p>
+
+        <BlockMath math="\sqrt{32} = \sqrt{16 \times 2} = 4\sqrt{2}" />
+
+        <p>Now have:</p>
+        <BlockMath math="\frac{5}{\sqrt{32}} = \frac{5}{4\sqrt{2}}" />
+
+        <p>We can now rationalise the denominator by multiplying the numerator and denominator by <InlineMath math="\sqrt{2}" /></p>
+
+        <BlockMath math="\frac{5}{4\sqrt{2}} \times \frac{\sqrt{2}}{\sqrt{2}} = \frac{5\sqrt{2}}{4\sqrt{2} \times \sqrt{2}} = \frac{5\sqrt{2}}{4 \times 2} = \frac{5\sqrt{2}}{8}" />
+
+        <p>This is possible as <InlineMath math="\sqrt{2} \times \sqrt{2} = 2" /> which removes the root from the denominator and <InlineMath math="\frac{\sqrt{2}}{\sqrt{2}} = 1" /> so the multiplication does not affect the value of the fraction.</p>
+
+<h5>Example</h5>
+
+<p>In this case you can do a common denominator but we can simply multiply and remove the denominator of each side. Which is what is done here, then divide by the new denominator. </p>
+
+<BlockMath math="\frac{6}{\sqrt{3}} - \frac{8}{2\sqrt{2}} = \frac{6}{\sqrt{3}} \times \frac{\sqrt{3}}{\sqrt{3}} - \frac{8}{2\sqrt{2}} \times \frac{\sqrt{2}}{\sqrt{2}}"/>
+
+<p>We can then simplify by multiplying out and then dividing by the integer denominator. It ends up as <InlineMath math="2 \times 2"/> as the  <InlineMath math="\sqrt{2} \times \sqrt{2} = 2"/> and then there is the extra  <InlineMath math="2"/> that multiplies the result.</p>
+
+<BlockMath math="\frac{6\sqrt{3}}{3} - \frac{8\sqrt{2}}{2 \times 2} = 2\sqrt{3} - 2\sqrt{2} = 2(\sqrt{3} - \sqrt{2})"/>
+
+        <h5>Example</h5>
+        <p>Another more complex example is the following. Where we have two items in the denominator we simply multiply by both (the whole denominator still not just the surd) with the opposite sign. This allows them to be cancelled out.</p>
+
+        <BlockMath math="\frac{2 + \sqrt{7}}{3 - \sqrt{2}}" />
+        <BlockMath math="\frac{2 + \sqrt{7}}{3 - \sqrt{2}} \times \frac{3 + \sqrt{2}}{3 + \sqrt{2}}" />
+
+        <BlockMath math="\frac{6 + 2\sqrt{2} + 3\sqrt{7} + \sqrt{14}}{3^2 - 3\sqrt{2} + 3\sqrt{2} - (\sqrt{2}) ^2}" />
+
+        <p>Note that the <InlineMath math="\sqrt{7} \times \sqrt{2} = \sqrt{14}" /> as stated in the rule earlier. </p>
+
+        <p>Now it simplifies by cancelling the values out. In particular <InlineMath math="-3\sqrt{2} + 3\sqrt{2}" /> and also <InlineMath math=" (\sqrt{2}) ^ 2 = 2" /> as you multiply out the square root.</p>
+
+        <BlockMath math="\frac{6 + 2\sqrt{2} + 3\sqrt{7} + \sqrt{14}}{9-2}" />
+        <p></p>
+        <BlockMath math="\frac{6 + 2\sqrt{2} + 3\sqrt{7} + \sqrt{14}}{7}" />
+
+
+        <p>A good reference with lots of examples is <a href={"https://twinklsecondary.blog/simplifying-surds-as-level/"}>here</a>.</p>
 
         <h3>Algebra</h3>
 
@@ -173,6 +278,12 @@ const BiteSizeMath = () => (
             power of as brackets such as <Latex>$(2n+1)^2$</Latex> then it is the same as <Latex>$(2n+1)(2n+1)$ which
                 can be expanded doing the same as above to $4n^2 + 2n + 2n + 1$ $= 4n^2 + 4n + 1$</Latex>. Remember this
             part for Math prerequisites.</p>
+
+<p>In alegbra to find the slope between two points you can use the formula.</p>
+
+<BlockMath math="\frac{y2 - y1}{x2 - x2}"/>
+
+<p>Basically it is dividing the vetical change (rise) by the horizontal change (run).</p>
 
         <h3>Polynomials</h3>
 
