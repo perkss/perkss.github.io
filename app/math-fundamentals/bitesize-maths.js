@@ -122,10 +122,21 @@ const BiteSizeMath = () => (
         <h3>Indices</h3>
         <p>The law of indices are important to know as a reference so please refer back to these when required: <a
             href="https://www.bbc.co.uk/education/guides/z826y4j/revision/5">Source</a>
-
         </p>
 
-        <p>First law Mutliplication: <InlineMath math="a^m \times a^n = a^{m+n}" /> for example <InlineMath math="3^2 \times 3^5 = 3^{2+5} = 3^7" /> as this is <InlineMath math="(3 \times 3) \times (3 \times 3 \times 3 \times 3 \times 3) = 3^7" /></p>
+<p>When we have the exponent 0 then then result is always 1.  <InlineMath math="9^0 = 1"/>.</p>
+
+<p>When we have the exponent 1 then then result is always the base number.  <InlineMath math="9^1 = 9"/>.</p>
+
+<p><InlineMath math="0^0"/> this is indeterminate. As it could be zero or one.</p>
+
+<p>Be careful about grouping and use parentheses as <InlineMath math="(-2)^2 = (-2) \times (-2) = 4"/> but without <InlineMath math="-2^2 = -(2 \times 2) = -4"/></p>
+
+<p>Another example is  <InlineMath math="(ab)^2 = ab \times ab"/> or without this would be <InlineMath math="ab^2 = a \times (b)^2 = a \times b \times b"/></p>
+
+<h4>Laws of Indices</h4>
+
+        <p>First law Multiplication: <InlineMath math="a^m \times a^n = a^{m+n}" /> for example <InlineMath math="3^2 \times 3^5 = 3^{2+5} = 3^7" /> as this is <InlineMath math="(3 \times 3) \times (3 \times 3 \times 3 \times 3 \times 3) = 3^7" /></p>
         <p>Second law Division: <InlineMath math="a^m \div a^n = a^{m-n}" /> for example <InlineMath math="a^4 \div a^2 = a^{4-2} = a^2" /> this can be thought as <InlineMath math="\frac{a \times a \times a \times a}{a \times a}" /> which can be cancelled out which would leave you <InlineMath math="a \times a = a^2" /></p>
 
         <p>Third law raising a power to another power: <InlineMath math="(k^3)^2 = k^3 \times k^3" /> this is stating that <InlineMath math="k^3" /> is raised again by the power of 2. In this case then we multiply the powers together. For example <InlineMath math="(k^3)^2 = (k^{3 \times 2} = k^3 \times k^3 = k^6)" />. An example of this is <InlineMath math="(3a^4)^3 = 3^3 \times a^{4 \times 3} = 27 \times a^{12} = 27a^{12}"/></p>
@@ -134,14 +145,14 @@ const BiteSizeMath = () => (
 
         <p>Fifth law if we have negative it can be solved as <InlineMath math="a^{-n} = \frac{1}{a^n}" /> For example <InlineMath math="3^5 \times 3^{-5} = 3^0 = 1" /> this can be rearranged by dividing both sides with <InlineMath math="3^5" /> as <InlineMath math="3^{-5} = \frac{1}{3^5}" /></p>
 
-        <p>Sixth law is fractional powers this will result in the denomiator of the fraction becomes the root and then numerator becomes the power to raise too as this formula states<InlineMath math="a^{\frac{m}{n}} = (\sqrt[n]a)^m" />. For example <InlineMath math="8^{2}{3} = (\sqrt[3]8)^2 = 2^2 = 4" /></p>
+        <p>Sixth law is fractional powers this will result in the denomiator of the fraction becomes the root and then numerator becomes the power to raise too as this formula states<InlineMath math="a^{\frac{m}{n}} = (\sqrt[n]a)^m" />. For example <InlineMath math="8^{\frac{2}{3}} = (\sqrt[3]8)^2 = 2^2 = 4" /></p>
 
 
-        <p>Some further examples:</p>
+        <h4>Some further examples:</h4>
 
         <p>In this example we need to simplify the term in the brackets in this case the bracket is raised to the power of 2 so that is exampled to be <InlineMath math="(3^2) \times y^2 = 9y^2" />.</p>
 
-        <BlockMath math="4y^4 \times (3y)^2 = 4y^4 \times 9y^2 = 36y^2" />
+        <BlockMath math="4y^4 \times (3y)^2 = 4y^4 \times 9y^2 = 36y^6" />
 
         <h3>Surds</h3>
 
@@ -156,7 +167,7 @@ const BiteSizeMath = () => (
         <BlockMath math="\frac{\sqrt{a}}{\sqrt{b}} = \sqrt{\frac{a}{b}}" />
 
 <h5>Example</h5>
-        <p>Lets start simple we can simplify <InlineMath math="\sqrt{75}"/> this can be simplified as follows:</p>
+        <p>Lets start simple we can simplify <InlineMath math="\sqrt{75}"/> this can be simplified as follows by looking for factors such as 25 and 3:</p>
 
 <BlockMath math="\sqrt{75} = \sqrt{25 \times 3} = \sqrt{25} \times \sqrt{3} = 5\sqrt{3}"/>
 
@@ -164,7 +175,7 @@ const BiteSizeMath = () => (
 
 <p>Finding the simpliest surd without a calculator.</p>
 
-<BlockMath math="\sqrt{392} = \sqrt{4 \times 98} = \sqrt{4} \times \sqrt{2} \times \sqrt{49} = 14\sqrt{2}"/>
+<BlockMath math="\sqrt{392} = \sqrt{4 \times 98} = \sqrt{4} \times \sqrt{2} \times \sqrt{49} = 2 \times \sqrt{2} \times 7 =  14\sqrt{2}"/>
 
         <p>Having surds on the denonmiator is not a good thing. When a surd is written on the denominator of a fraction, we rationalise the denominator to make it simpler. We do this by multiplying the numerator and denominator by an expression that will simplify the surd on the denominator. Therefore you can multiply the fraction by the surd over the surd as the example below as if you do this is just multiply by 1 is the same result. </p>
 
@@ -222,11 +233,36 @@ const BiteSizeMath = () => (
 
         <p>A good reference with lots of examples is <a href={"https://twinklsecondary.blog/simplifying-surds-as-level/"}>here</a>.</p>
 
+        <h3>Inequalities</h3>
+
+        <p>Things are not always equal for example someone could be faster than someone else but we do not know how fast therefore we just say that he was faster. Which can be written as <InlineMath math='a > b'/>.</p>
+
+        <p>The aim of solving inequalities is to have the variable say x on the left side of the sign on its own.</p>
+
+        <p>When simplifying inequalities you can safely Add (or subtract) a number on both sides, Multiply (or divide) a <strong>positive</strong> number on both sides or simplify a side. None of these things change the direction of the inequality.</p>
+
+        <p>But a quick rule for inequalities is when you multiply or divide by something negative then you swap the inequality.</p>
+
+        <p>If you solve the inequality but the variable is on the right side then you simply swap the sides and flip the inequality sign.</p>
+
+        <p>A linear equality example is <InlineMath math="-4x \le -20" /> you can easily see divided by -4 to get the answer but remember the rule you then swap the inequality. <InlineMath math="x \ge 5" /></p>
+
+        <p>Do not try and divide by a variable say x. As you do not know the sign if x is positive or negative. You can if you know the sign of the variable.</p>
+
+        <h4>Two Inequalities</h4>
+        <p>When you have two inequalities such as <InlineMath math="-2 < \frac{6 - 2x}{2} < 4" /> then for each simplification you apply the same to all parts of the inequality. In this case we multiply each part by 2 to clear the divide. Resulting in <InlineMath math="-8 < 6 - 2x < 8" />. Now subtract six from each part <InlineMath math="-14 < -2x < 2" />. And finally divide by negative two each part giving the final result of <InlineMath math="7 > x > -1" />. Note as dividing by negative two it requires to flip the inequalities.</p>
+
+        <h4>Graphing Linear Inequalities</h4>
+
+<p>To graph a linear equality you need to rearrange the equation so <i>y</i> is on the left and everything else is on the right hand side. Plot the <i>y=</i> making it solid for greater than and equal too or less than and equal too. With it dashed for just greater than or less than. If it is <InlineMath math="y >  (y \ge)"/> then shade <strong>above</strong> the line or if it is  <InlineMath math="y< (y \le)"/> then shade <strong>below</strong> the line.</p>
+
+
+
         <h3>Algebra</h3>
 
         <h4>Expanding Brackets</h4>
         <p>When working with future maths expanding brackets on Algebra is key lets have a <a
-            href="https://www.bbc.co.uk/education/guides/zcqmsrd/revision/3">Bitesize</a> refresher. Expanding brackets
+href="https://www.bbc.co.uk/education/guides/zcqmsrd/revision/3">Bitesize</a> refresher. Expanding brackets
             directly means that we multiply each term in the expression by the term outside of it.
 
         </p>
