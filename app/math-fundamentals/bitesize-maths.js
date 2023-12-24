@@ -119,6 +119,76 @@ const BiteSizeMath = () => (
         <p>Lowest common multiple is a number that is shared multiple of two or more numbers. For example the lowest
             common multiple of 3 and 4 is 12.</p>
 
+        <h3>Algebra</h3>
+
+        <h4>Expanding Brackets</h4>
+        <p>When working with future maths expanding brackets on Algebra is key lets have a <a
+href="https://www.bbc.co.uk/education/guides/zcqmsrd/revision/3">Bitesize</a> refresher. Expanding brackets
+            directly means that we multiply each term in the expression by the term outside of it.
+
+        </p>
+        <p><h5>Examples</h5>
+            <ul className="text-list">
+                <li><Latex>$3(m + 7) = $$3 \times m + 3 \times 7 $$= 3m + 21$</Latex></li>
+                <li><Latex>$k(k - 2) = $$k \times k - 2 \times k $$= k^2 - 2k$</Latex></li>
+                <li><Latex>$3(m + 7) = $$3 \times m + 3 \times 7 $$= 3m + 21$.</Latex></li>
+
+            </ul>
+
+        </p>
+
+        <p>When expanding out brackets with powers we must remember the Laws of Indices noted above. For example to
+            expand <Latex>$5p^3q(4pq - 2p^5q^2 + 3p)$ we need to do the following steps:</Latex></p>
+        <ol className="text-list">
+            <li><Latex>$5p^3q \times 4pq =$$ 20p^4q^2$</Latex></li>
+            <li><Latex>$5p^3q \times - 2p^5q^2 =$$ - 10p^8q^3$</Latex></li>
+            <li><Latex>$5p^3q \times 3p =$$ 15p^4q$</Latex></li>
+            <li><Latex>$5p^3q(4pq - 2p^5q^2 + 3p) =$$ 20p^4q^2 - 10p^8q^3 + 15p^4q$</Latex></li>
+
+        </ol>
+
+        <p>Expanding and then simplifying is another key skill required remember the rules of BIDMAS for this. <Latex>$6g
+            + 2g(3g + 7) = $$6g + 2g\times 3g + 2g\times 7 = $$6g + 6g^2 + 14g$</Latex>. Here you multiply the bracket
+            equation <Latex>$(3g+7)\times 2g$</Latex> following the rules of BIDMAS. Then you simplify it resulting
+            in <Latex>$6g^2 + 20g$</Latex>. </p>
+
+        <h4>Expanding Double Brackets</h4>
+        <p>To expand double brackets each term needs to be multipled together so the first term in the first bracket
+            needs to be multiplied by the first and second term in the second bracket. And then the second term in the
+            first bracket needs to be multiplied by the first and second term in the second bracket also. An
+            example <Latex>expand the bracket $(2m - 3)(m + 1)$</Latex>: </p>
+
+
+        <ol className="text-list">
+            <li><Latex>$2m\times m =$$ 2m^2$</Latex></li>
+            <li><Latex>$2m\times 1 =$$ 2m$</Latex></li>
+            <li><Latex>$(-3)\times m =$$ -3m$</Latex></li>
+            <li><Latex>$(-3)\times 1 =$$ -3$</Latex></li>
+
+
+        </ol>
+
+        <p>Resulting in <Latex>$2m^2 + 2m - 3m - 3$</Latex> which can be simplified down to <Latex>$2m^2 - m -
+            3$</Latex>.</p>
+
+        <p>This process can be applied to any number of brackets that need expanding. Also if you see something to the
+            power of as brackets such as <Latex>$(2n+1)^2$</Latex> then it is the same as <Latex>$(2n+1)(2n+1)$ which
+                can be expanded doing the same as above to $4n^2 + 2n + 2n + 1$ $= 4n^2 + 4n + 1$</Latex>. Remember this
+            part for Math prerequisites.</p>
+
+<h4>Recipricol</h4>
+
+<p>Recipricol of a number is the 1 divided by the number for example <InlineMath math="8"/> the reciprocl is <InlineMath math="\frac{1}{8}"/>. For fractions you flip the whole number over.</p>
+
+<h4>Finding slope between two points</h4>
+
+<p>In alegbra to find the slope between two points you can use the formula.</p>
+
+<BlockMath math="\frac{y2 - y1}{x2 - x2}"/>
+
+<p>Basically it is dividing the vetical change (rise) by the horizontal change (run).</p>
+
+
         <h3>Indices</h3>
         <p>The law of indices are important to know as a reference so please refer back to these when required: <a
             href="https://www.bbc.co.uk/education/guides/z826y4j/revision/5">Source</a>
@@ -153,6 +223,67 @@ const BiteSizeMath = () => (
         <p>In this example we need to simplify the term in the brackets in this case the bracket is raised to the power of 2 so that is exampled to be <InlineMath math="(3^2) \times y^2 = 9y^2" />.</p>
 
         <BlockMath math="4y^4 \times (3y)^2 = 4y^4 \times 9y^2 = 36y^6" />
+
+<p><a href={"https://www.mathsisfun.com/algebra/variables-exponents-multiply.html"}>Math is fun</a> provides some good examples. In particular its worth highlighting.</p>
+
+<p>Mixed variable example is we just add up the exponents of the same variable. Remember when there is not power it is to the power of one.</p>
+        <BlockMath math="(x^3y^5)(x^2yz) = x^{3 + 2} y^{5 + 1} z^1 = x^5y^6z" />
+
+        <p>Variables will often have constants you simply multiply the constants and put the result in the answer for example.</p>
+        <BlockMath math="(3x^2y^2)(4x^2) = 3 \times 4 x^{2 + 2} y^2 = 12x^4y^2" />
+<p>Negative exponents means how many times to divide by the number. You take the exponent and take 1 and divide by the number to the power of the positive exponent.</p>
+        <BlockMath math="4^{-2} = \frac{1}{4^2} = \frac{1}{16}" />
+        <BlockMath math="x^{-1} = \frac{1}{x}" />
+        <BlockMath math="x^{-2} = \frac{1}{x^2}" />
+        <BlockMath math="x^{-3} = \frac{1}{x^3}" />
+
+<p>Dividing exponents is easy. Simply subtract the bottom exponents from the top for like terms. In this case we get negative exponent so it moves to be a denominator and the z's get cancelled out.</p>
+        <BlockMath math="\frac{x^3yz^2}{xy^2z^2} = x^{3-1}y^{1-2}z^{2-2} = x^2y^-1z^0 = \frac{x^2}{y}" />
+
+<h3>Square Root</h3>
+
+<p>The square root of a number can be negative for example <InlineMath math="-3 \times -3 = 9"/> but also <InlineMath math="3 \times 3 = 9"/> therefore the square root could be <InlineMath math="-3"/> or <InlineMath math="3"/>. But when using the square root symbol it can only give the positive or zero result. Therefore <InlineMath math="\sqrt{9} = 3"/> is the positive value only.</p>
+
+<p>To simplify square roots make the number inside the square root as small as possible but still be a whole number.</p>
+
+<BlockMath math="\sqrt{12} = 2\sqrt{4 \times 3}"/>
+<p>Use the rule: <InlineMath math="\sqrt{ab} = \sqrt{a} \times \sqrt{b}"/></p>
+<BlockMath math="\sqrt{4 \times 3} = \sqrt{4} \times \sqrt{3}"/>
+<BlockMath math="\sqrt{4} \times \sqrt{3} = 2\sqrt{3}"/>
+
+<p>The above example is a simpler representation as the number inside the square root gets smaller and is a factor. This example is taken from <a href={"https://www.mathsisfun.com/numbers/simplify-square-roots.html"}>Maths is Fun</a></p>
+
+<p>For fractions there is another rule to follow to simplify <InlineMath math="\frac{\sqrt{a}}{\sqrt{b}} = \sqrt{\frac{a}{b}}"/>.</p>
+
+<p>Using this rule can make it simple for working with fractions.</p>
+
+<BlockMath math="\frac{\sqrt{30}}{\sqrt{10}} = \sqrt{\frac{30}{10}} = \sqrt{3}"/>
+
+<p>A more complex example</p>
+
+<BlockMath math="\frac{\sqrt{20} \times \sqrt{5}}{\sqrt{2}}"/>
+<BlockMath math="\frac{\sqrt{2 \times 2 \times 5} \times \sqrt{5}}{\sqrt{2}}"/>
+<BlockMath math="\frac{\sqrt{2} \times \sqrt{2} \times \sqrt{5} \times \sqrt{5}}{\sqrt{2}}"/>
+<p>Now cancel out terms</p>
+<BlockMath math="\sqrt{2} \times \sqrt{5} \times \sqrt{5}"/>
+<p>Now you can multiply out the two 5</p>
+<BlockMath math="\sqrt{2} \times 5"/>
+<p>Place at front the multiplication</p>
+<BlockMath math="5\sqrt{2}"/>
+
+<p>Another example to know is:</p>
+
+<BlockMath math="2\sqrt{12} + 9\sqrt{3}"/>
+
+<p>First simplify:</p>
+
+<BlockMath math="2\sqrt{12} = 2 \times 2\sqrt{3} = 4\sqrt{3}"/>
+
+<p>Now both terms has a <InlineMath math="\sqrt{3}"/> and we can add them.</p>
+
+<BlockMath math="4\sqrt{3} + 9\sqrt{3} = (4+9)\sqrt{3} = 13\sqrt{3}"/>
+
+
 
         <h3>Surds</h3>
 
@@ -254,74 +385,11 @@ const BiteSizeMath = () => (
 
         <h4>Graphing Linear Inequalities</h4>
 
-<p>To graph a linear equality you need to rearrange the equation so <i>y</i> is on the left and everything else is on the right hand side. Plot the <i>y=</i> making it solid for greater than and equal too or less than and equal too. With it dashed for just greater than or less than. If it is <InlineMath math="y >  (y \ge)"/> then shade <strong>above</strong> the line or if it is  <InlineMath math="y< (y \le)"/> then shade <strong>below</strong> the line.</p>
+        <p>To graph a linear equality you need to rearrange the equation so <i>y</i> is on the left and everything else is on the right hand side. Plot the <i>y=</i> making it solid for greater than and equal too or less than and equal too. With it dashed for just greater than or less than. If it is <InlineMath math="y >  (y \ge)" /> then shade <strong>above</strong> the line or if it is  <InlineMath math="y< (y \le)" /> then shade <strong>below</strong> the line.</p>
 
+        <h3>Polynomial</h3>
 
-
-        <h3>Algebra</h3>
-
-        <h4>Expanding Brackets</h4>
-        <p>When working with future maths expanding brackets on Algebra is key lets have a <a
-href="https://www.bbc.co.uk/education/guides/zcqmsrd/revision/3">Bitesize</a> refresher. Expanding brackets
-            directly means that we multiply each term in the expression by the term outside of it.
-
-        </p>
-        <p><h5>Examples</h5>
-            <ul className="text-list">
-                <li><Latex>$3(m + 7) = $$3 \times m + 3 \times 7 $$= 3m + 21$</Latex></li>
-                <li><Latex>$k(k - 2) = $$k \times k - 2 \times k $$= k^2 - 2k$</Latex></li>
-                <li><Latex>$3(m + 7) = $$3 \times m + 3 \times 7 $$= 3m + 21$.</Latex></li>
-
-            </ul>
-
-        </p>
-
-        <p>When expanding out brackets with powers we must remember the Laws of Indices noted above. For example to
-            expand <Latex>$5p^3q(4pq - 2p^5q^2 + 3p)$ we need to do the following steps:</Latex></p>
-        <ol className="text-list">
-            <li><Latex>$5p^3q \times 4pq =$$ 20p^4q^2$</Latex></li>
-            <li><Latex>$5p^3q \times - 2p^5q^2 =$$ - 10p^8q^3$</Latex></li>
-            <li><Latex>$5p^3q \times 3p =$$ 15p^4q$</Latex></li>
-            <li><Latex>$5p^3q(4pq - 2p^5q^2 + 3p) =$$ 20p^4q^2 - 10p^8q^3 + 15p^4q$</Latex></li>
-
-        </ol>
-
-        <p>Expanding and then simplifying is another key skill required remember the rules of BIDMAS for this. <Latex>$6g
-            + 2g(3g + 7) = $$6g + 2g\times 3g + 2g\times 7 = $$6g + 6g^2 + 14g$</Latex>. Here you multiply the bracket
-            equation <Latex>$(3g+7)\times 2g$</Latex> following the rules of BIDMAS. Then you simplify it resulting
-            in <Latex>$6g^2 + 20g$</Latex>. </p>
-
-        <h4>Expanding Double Brackets</h4>
-        <p>To expand double brackets each term needs to be multipled together so the first term in the first bracket
-            needs to be multiplied by the first and second term in the second bracket. And then the second term in the
-            first bracket needs to be multiplied by the first and second term in the second bracket also. An
-            example <Latex>expand the bracket $(2m - 3)(m + 1)$</Latex>: </p>
-
-
-        <ol className="text-list">
-            <li><Latex>$2m\times m =$$ 2m^2$</Latex></li>
-            <li><Latex>$2m\times 1 =$$ 2m$</Latex></li>
-            <li><Latex>$(-3)\times m =$$ -3m$</Latex></li>
-            <li><Latex>$(-3)\times 1 =$$ -3$</Latex></li>
-
-
-        </ol>
-
-        <p>Resulting in <Latex>$2m^2 + 2m - 3m - 3$</Latex> which can be simplified down to <Latex>$2m^2 - m -
-            3$</Latex>.</p>
-
-        <p>This process can be applied to any number of brackets that need expanding. Also if you see something to the
-            power of as brackets such as <Latex>$(2n+1)^2$</Latex> then it is the same as <Latex>$(2n+1)(2n+1)$ which
-                can be expanded doing the same as above to $4n^2 + 2n + 2n + 1$ $= 4n^2 + 4n + 1$</Latex>. Remember this
-            part for Math prerequisites.</p>
-
-<p>In alegbra to find the slope between two points you can use the formula.</p>
-
-<BlockMath math="\frac{y2 - y1}{x2 - x2}"/>
-
-<p>Basically it is dividing the vetical change (rise) by the horizontal change (run).</p>
-
-        <h3>Polynomials</h3>
+        <p>A polynomial is an expression that can have variables, constants and exponents that are combined with mathematical operations such as addition, subtraction, multiplication and division (except division by a variable so something like <InlineMath math="\frac{1}{x}" /> is not allowed.) They also cannot have negative or fractional indices.</p>
 
         <p>Polynomial means many terms and in mathematics and they can be made up of constants, variables and exponents,
             but never division by a variable. Polynomials are good to work with as if you add or multiply
@@ -330,6 +398,50 @@ href="https://www.bbc.co.uk/education/guides/zcqmsrd/revision/3">Bitesize</a> re
             variables that cause the polynomial to evaluate to zero. Graphically if they are <i>x</i> values then it is
             the
             values that cross the <i>x</i> axis.</p>
+
+
+        <h5>Names</h5>
+        <p>A single polynomial is a <i>Monomial</i>, a two term polynomial is a <i>Binomial</i> and a three term polynomial is a <i>Trinomial</i>.</p>
+
+        <h5>Variables</h5>
+        <p>Polynomials can have no variable so just a constant term of say 32.</p>
+        <p>It can have one variable say (x) <InlineMath math="x^4 + 2x^3 + x" /></p>
+        <p>Or it can have two or more variables <InlineMath math="xy^3 - 2x^2z" /></p>
+
+        <h5>Properties</h5>
+
+        <p>Adding and multiplying polynomials always results in another polynomial. You can divide polynomial but the result may not be a polynomial.</p>
+
+        <p>The degree of the polynomial is the variable with the highest exponent. <InlineMath math="x^4 + 2x^3 + x" /> in this case the degree is 4.</p>
+
+        <p>The standard form for writing a polynomial is to put the terms with the highest degree first.</p>
+
+
+        <h4>Adding Polynomials</h4>
+
+        <p>Adding polynomials is easy you simply add the like terms. A like term is a term whose variable and exponent is the same. There are examples of like terms <InlineMath math="2y\hspace{0.5cm}y\hspace{0.5cm}-4y" /> or <InlineMath math="\frac{1}{3}xy^2 \hspace{0.5cm} 6xy^2" /> but these are not like terms <InlineMath math="4y\hspace{0.5cm}4y^2\hspace{0.5cm}2z\hspace{0.5cm}2xz " /> as their variables and exponents are not the same.</p>
+
+        <p>To add two polynomials simply place the like terms together and then add the like terms. </p>
+
+        <p>You can use the column method for adding where you line the polynomials on top of each other with like terms above and below and then add. A good example can be see on <a href={"https://www.mathsisfun.com/algebra/polynomials-adding-subtracting.html"}>MathsIsFun</a>.</p>
+
+        <h4>Subtracting Polynomials</h4>
+        <p>You can use the column method for subtracting where you line the polynomials on top of each other with like terms above and below and then subtract.</p>
+
+        <h4>Multiplying Polynomials</h4>
+        <p><a href={"https://www.mathsisfun.com/algebra/polynomials-multiplying.html"}>Maths is fun</a> provides a good guide on multiplying polynomials.</p>
+        <h4></h4>
+        <h4></h4>
+
+        <h3>Factor Theorem</h3>
+        <p>To find the linear factors of a polynomial (split the polynomial into as many factors as you can) you first you simply plugin and try different numbers until they equal zero. This is going to be time consuming though. You only need to try the numbers that are factors of the constant. If no of these works then you cannot find simple integer factors. </p>
+
+        <BlockMath math="x^3 - 6x^2 + 3x + 10" />
+
+        <p>In the example above the factors to try are of 10 which are <InlineMath math="(\pm 1) (\pm 2) (\pm3)" />. Once you have found two of the factors in this case <InlineMath math="(x+1)(x-2)( ... )" /> you can simply then work out that the way to get a <InlineMath math="10" /> is through a factor of <InlineMath math="1 \times -2" /> multiplied by something will be <InlineMath math="1 \times -2 \times -5 = 10" />.</p>
+
+        <h3>Algebraic Division</h3>
+
 
         <h3>Permutation & Combination</h3>
 
