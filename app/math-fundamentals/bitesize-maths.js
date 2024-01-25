@@ -873,14 +873,84 @@ const BiteSizeMath = () => (
 
         <h3 id={"quadraticequation"}>Quadratic Equations</h3>
 
-        <p></p>
+        <p>A quadratic equation is an equation with a degree of 2.</p>
+
+        <p>They can be solved in different ways.</p>
+
+        <h4>Solving by Factorising</h4>
+        <p>For simple quadratic equations you can simply factorise for example <InlineMath
+            math="x^2 + x - 12 = 0"></InlineMath> this can be factored into <InlineMath
+            math="(x+4)(x-3)=0"></InlineMath> therefore <InlineMath
+            math="x=-4"></InlineMath> or <InlineMath math="x=+3"></InlineMath></p>
+
+        <h4>Completing the Square</h4>
+
+        <p>The square is in the form <InlineMath math="(x + something)^2 + ?"></InlineMath> its pretty much the
+            factorised equation (with two identical factors) but you need to <i>complete</i> it by adding a number to
+            the
+            square to make the original equation.</p>
+
+        <p>A sure formula way of completing the square is the following: <InlineMath math="ax^2 + bx + c"/></p>
+
+        <p>1. Take a factor out of <InlineMath math="a"/> out of the <InlineMath math="x^2"/> and <InlineMath
+            math="x"/> terms
+            to give <InlineMath math="a(x^2 + \frac{b}{a}x) + c"/>.</p>
+
+        <p>2. Now rewrite the bracket as one bracket squared where the number in the bracket is always <InlineMath
+            math="\frac{b}{2a}"/>
+            therefore the bracket will be <InlineMath math="a(x+\frac{b}{2a})^2"/>.</p>
+
+        <p>3. Now add <i>d</i> to the bracket to complete the square and find <i>d</i> by setting the new and original
+            expressions
+            equal to each other <InlineMath math="a(x + \frac{b}{2a})^2 + d = ax^2 + bx + c"/> (remember to expand left
+            side)</p>
+
+        <p>4. Now solve this equation always gives <InlineMath math="d = (c - \frac{b^2}{4a})"/> therefore: </p>
+
+        <BlockMath math="a(x + \frac{b}{2a})^2 + (c-\frac{b^2}{4a}) = ax^2 + bx + c"/>
+
+        <br/>
+        <hr/>
+
+        <p>For example you start with <InlineMath>x^2 - 6x + 5 = 0</InlineMath>.</p>
+
+        <p>1. Take a factor of <InlineMath math="1"/> out of the <InlineMath math="x^2"/> and <InlineMath
+            math="-6x"/> terms
+            to give <InlineMath math="1(x^2 - \frac{6}{1}x) + 5"/>.</p>
+
+        <p>2. Now rewrite the bracket as one bracket squared where the number in the bracket is always <InlineMath
+            math="\frac{6}{2 \times 1}"/>
+            therefore the bracket will be <InlineMath math="1(x - \frac{6}{2 \times 1})^2"/>.</p>
+
+        <p>3. Now add <i>d</i> to the bracket to complete the square and find <i>d</i> by setting the new and
+            original expressions equal to each other <InlineMath math="(x - 3)^2 + d = x^2 - 6x + 5"/>.
+            Expanding the left hand side gives <InlineMath math="x^2 - 6x + 9 + d = x^2 - 6x + 5"/> now can cancel these
+            out
+            to be <InlineMath math="-9 + d = 5"/></p>
+
+        <p>4. Now solve this equation gives <InlineMath math="d = -4"/> therefore putting <i>d</i> back into the equation you get <InlineMath math="(x-3)^2 - 4 = 0"></InlineMath> as <InlineMath
+                math="x^2 - 6x + 9 - 4 = x^2 - 6x + 5"></InlineMath></p>
+
+        <p>Now the final solution is <InlineMath math="(x-3)^2 = 4"/> simplify <InlineMath
+            math="x-3 = \sqrt{4} "/> which results in <InlineMath math="x = 3 \pm 2"/> therefore <InlineMath
+            math="x = 5"/> or <InlineMath
+            math="x = 1"/>.</p>
+
+        <hr/>
+
+        <h4>Quadratic Formula</h4>
+
+        <p>The final way is to use the quadratic formula this can be the simplest way for complex quadratics.</p>
+
+        <hr/>
 
         <h3 id={"geometry"}>Coordinate Geometry</h3>
 
         <p>Things to know up front</p>
 
         <p>Midpoint of a line: <InlineMath math="M = (\frac{x1 + x2}{2}, \frac{y1 + y2}{2})"/></p>
-        <p>Distance between two points: <InlineMath math="AB = \sqrt{(x2 - x1)^2 + (y2 - y1)^2}"/> this is pythagoras
+        <p>Distance between two points: <InlineMath math="AB = \sqrt{(x2 - x1)^2 + (y2 - y1)^2}"/> this is
+            pythagoras
             theorem a triangle is created and you find the hypotenuse.</p>
         <p>Gradient of a straight line: <InlineMath math="\frac{y2 - y1}{x2 - x1}"/></p>
 
@@ -889,23 +959,27 @@ const BiteSizeMath = () => (
         <p>Gradient Point Form: <InlineMath math="y - y1 = m(x - x1)"/></p>
         <p>Two Point Form: <InlineMath math="\frac{y - y1}{y2 - y1} = \frac{x - x1}{x2 - x1}"/></p>
 
-        <p>A circle has a centre point and a radius. The definition of a circle is the set of all points on a plane that
+        <p>A circle has a centre point and a radius. The definition of a circle is the set of all points on a plane
+            that
             are fixed distance from the center. The diameter is the width of the circle through the centre, the
             circumference is perimeter and the radius is the measure from the centre of the circle to any of outs
             boundary which is <InlineMath math="2r = d"/> two times the radius is the diameter. The formula for
             calculating the circumference is <InlineMath math="c = \pi d"/> or <InlineMath math="c = 2\pi r"/>.</p>
 
         <p>The <strong>cartesian</strong> equation of a circle with a centre of (a,b) and radius r can be written
-            as <InlineMath math="(x-a)^2 + (y-b)^2 = r^2"/> where x and y are points on the circle. This can be thought
+            as <InlineMath math="(x-a)^2 + (y-b)^2 = r^2"/> where x and y are points on the circle. This can be
+            thought
             of as taking a triangle from the centre to the radius (so any point on the circle) using pythagoras
             theorem <InlineMath math="a^2 + b^2 = c^2"/>. This is described at <a
-                href="https://www.mathsisfun.com/algebra/circle-equations.html">Maths is Fun</a>. In that example they
+                href="https://www.mathsisfun.com/algebra/circle-equations.html">Maths is Fun</a>. In that example
+            they
             have a radius of five and then any point on the circle can be thought of as <InlineMath
                 math="x^2 + y^2 = 5^2"/>.</p>
 
         <h5>Circle Theorem</h5>
 
-        <p>The angle in a semi circle that are created when you join the two ends of the diameter to one point on the
+        <p>The angle in a semi circle that are created when you join the two ends of the diameter to one point on
+            the
             arc using chord is always a right angle <InlineMath math="90 \degree"/>. A good <a
                 href="https://thirdspacelearning.com/gcse-maths/geometry-and-measure/angle-in-a-semi-circle/">read.</a>
         </p>
@@ -915,24 +989,30 @@ const BiteSizeMath = () => (
 
         <p>The angles at the circumference subtended by the same arc are equal.</p>
 
-        <p>Inscribed angle is the angle formed in the interior of a circle when two chords intersect on the circle. The
-            inscribed angle theorem states that an angle inscribed in a circle is half the central angle that subtends
+        <p>Inscribed angle is the angle formed in the interior of a circle when two chords intersect on the circle.
+            The
+            inscribed angle theorem states that an angle inscribed in a circle is half the central angle that
+            subtends
             the same arc on the circle. Good <a
                 href="https://en.wikipedia.org/wiki/Inscribed_angle#:~:text=In%20geometry%2C%20an%20inscribed%20angle,The%20inscribed%20angle%20%CE%B8%20circle.">reference</a>.
         </p>
 
-        <p>The tangent to a circle is a straight line that touches the circumference of the circle at only one point.
-            The angle between a tangent and a radius is <InlineMath math="90 \degree"/>. Tangents that meet at the same
+        <p>The tangent to a circle is a straight line that touches the circumference of the circle at only one
+            point.
+            The angle between a tangent and a radius is <InlineMath math="90 \degree"/>. Tangents that meet at the
+            same
             point are equal in length. <a
                 href="https://thirdspacelearning.com/gcse-maths/geometry-and-measure/tangent-of-a-circle/">A good
                 reference</a>.</p>
 
         <p>The perpendicular from the centre of a circle to a chord always bisects (midpoint) the chord.</p>
 
-        <p>The distances from the meeting point of two tangents to the points where each tangent touches the circle are
+        <p>The distances from the meeting point of two tangents to the points where each tangent touches the circle
+            are
             equal.</p>
 
-        <p>The alternate segment theorem the angle between the tangent and a chord is equal to the angle in an alternate
+        <p>The alternate segment theorem the angle between the tangent and a chord is equal to the angle in an
+            alternate
             segment.</p>
 
         <h5>Standard Form</h5>
@@ -940,25 +1020,29 @@ const BiteSizeMath = () => (
         <p>To make this generic we can think of the centre of a circle as (a,b) with all points on the circle
             as <strong>r</strong> away from the center represented as (x,y). Using the right angle triangle and
             pythagoras theorem we can work out where the points are in a standard form equation of <InlineMath
-                math="(x-a)^2 + (y-b)^2 = r^2"/>. This allows us to find missing values by rearranging the formula.</p>
+                math="(x-a)^2 + (y-b)^2 = r^2"/>. This allows us to find missing values by rearranging the formula.
+        </p>
 
         <p>To find the distance between two points we can use the formula <InlineMath
             math="distance = \sqrt{a^2 + b^2}"/>. In our case we can have the two circles as <InlineMath
             math="(x-10)^2 + (y-6)^2 = 9"/> and <InlineMath math="(x+2)^2 + (y+3)^2 = 16"/> therefore the distance
             between these two points is the <InlineMath math="AB^2 = 12^2 + 9^2"/> which is <InlineMath
                 math="AB^2 = 225"/> and then take the square root <InlineMath math="AB = 15"/>. This is the distance
-            between the centers of the circles and now if we want the max and the minumum we simply add each radius or
+            between the centers of the circles and now if we want the max and the minumum we simply add each radius
+            or
             subtract each radius to give the max and minimum distances resulting in <InlineMath
                 math="max = 15 + 3 + 4 = 22"/> and the shortest is <InlineMath math="min = 15 - 3 - 4 = 8"/>.</p>
 
         <h5>General Form</h5>
 
-        <p>Sometimes equations are not written in standard form therefore you may see a circle equation and not know it.
+        <p>Sometimes equations are not written in standard form therefore you may see a circle equation and not know
+            it.
             This can be described as general form and is standard form expanded. <InlineMath
                 math="x^2 + y^2 + Ax + By + C = 0"/>.</p>
 
         <p>Equations of a circle centre and radius can be written in general form so <InlineMath
-            math="x^2 + y^2 - 6x + 4y + 8 = 0"/> this can be written into the form above by completing the square twice
+            math="x^2 + y^2 - 6x + 4y + 8 = 0"/> this can be written into the form above by completing the square
+            twice
             once for <strong>x</strong> and once for <strong>y</strong>.</p>
 
         <p>Now put the <strong>x</strong> and <strong>y</strong> together. <InlineMath
@@ -966,22 +1050,26 @@ const BiteSizeMath = () => (
             math="(x^2 -6x) + (y^2 + 4y) = -8"/>. Now we <a
             href="https://www.mathsisfun.com/algebra/completing-square.html">complete the square</a>. </p>
 
-        <p>Complete the square for <strong>x</strong> we can take half the <InlineMath math="-6x"/> square it and add to
+        <p>Complete the square for <strong>x</strong> we can take half the <InlineMath math="-6x"/> square it and
+            add to
             both sides. Resulting in <InlineMath math="(x^2 -6x + (-3)^2) + (y^2 + 4y) = -8 + (-3)^2"/></p>
 
-        <p>Now complete the square for <strong>y</strong> which is take half the <InlineMath math="-2"/> square it and
+        <p>Now complete the square for <strong>y</strong> which is take half the <InlineMath math="-2"/> square it
+            and
             add to both sides. Resulting in <InlineMath
                 math="(x^2 -6x + (-3)^2) + (y^2 + 4y + (-2)^2) = -8 + (-3)^2 + (-2)^2"/></p>
 
         <p>Then tidy up. <InlineMath math="(x^2 -6x + 9) + (y^2 + 4y + 4) = -8 + (-3)^2 + (-2)^2"/></p>
         <p>Factor the left side which can be simplified to <InlineMath
-            math="(x-3)^2 + (y-2)^2 = 3^2 + 2^2 - 8 = 5"/> therefore the centre is <InlineMath math="(3,2)"/> and radius
+            math="(x-3)^2 + (y-2)^2 = 3^2 + 2^2 - 8 = 5"/> therefore the centre is <InlineMath math="(3,2)"/> and
+            radius
             is <InlineMath math="\sqrt{5}"/>.</p>
 
         <h5>Is it defining a circle</h5>
         <p>There are some requirements for it to be a circle definition is must have an <InlineMath
             math="x^2 + y^2"/> and these must both be the same sign for it to be a circle. They also cannot have
-            different coefficients of the <InlineMath math="x^2 +y^2"/> terms <InlineMath math="2x^2 +y^2"/>. It will
+            different coefficients of the <InlineMath math="x^2 +y^2"/> terms <InlineMath math="2x^2 +y^2"/>. It
+            will
             also only be a circle if the x and y terms can cancel for example this is not a circle <InlineMath
                 math="x^2 + y^2 - 3xy + 4y + 3 = 0"/>.</p>
 
@@ -998,29 +1086,38 @@ const BiteSizeMath = () => (
         <BlockMath math="(x^2 - 4x - 4) + (y^2 -6y +9) = 25"/>
         <BlockMath math="(x-2)^2 + (y-3)^2 = 25"/>
 
-        <p>Therefore the centre of the circle is <InlineMath math="(2,3)"/> with a radius of <InlineMath math="5"/></p>
+        <p>Therefore the centre of the circle is <InlineMath math="(2,3)"/> with a radius of <InlineMath math="5"/>
+        </p>
 
-        <p>Now to find the length of the chord we check the distance between the centre of the circle and the centre of
+        <p>Now to find the length of the chord we check the distance between the centre of the circle and the centre
+            of
             the chord. <InlineMath math="\sqrt{(4-2)^2 + (4-3)^2} = \sqrt{5}"/>. This is because we are finding the
-            length from the centre of the circle to the midpoint of the chord PQ. So the distance between the two points
-            as per the standard formula for distance between two points. We can then create a full triangle as we know
+            length from the centre of the circle to the midpoint of the chord PQ. So the distance between the two
+            points
+            as per the standard formula for distance between two points. We can then create a full triangle as we
+            know
             that the radius to the circle boundary so to the end of the chord line as it is the radius which we know
             is <InlineMath math="5"/>. Therefore we can work out the final length of the triangle which is half the
-            length of the chord as <InlineMath math="a^2 = b^2 + c^2 = 5^2 = b^2 + (\sqrt{5})^2"/>. The formula can be
+            length of the chord as <InlineMath math="a^2 = b^2 + c^2 = 5^2 = b^2 + (\sqrt{5})^2"/>. The formula can
+            be
             rearrranged to give us <InlineMath
                 math="5^2 - (\sqrt{5})^2 = b^2 = 25 - 5 = b^2 = \sqrt{20} = b"/> therefore this can be simplied
-            to <InlineMath math="b = \sqrt{20} = \sqrt{4 \times 5} = 2\sqrt{5}"/>. This is the length of the half chord
-            therefore the <strong>length</strong> of the chord is two times this so <InlineMath math="4\sqrt{5}"/></p>
+            to <InlineMath math="b = \sqrt{20} = \sqrt{4 \times 5} = 2\sqrt{5}"/>. This is the length of the half
+            chord
+            therefore the <strong>length</strong> of the chord is two times this so <InlineMath math="4\sqrt{5}"/>
+        </p>
 
         <p>Now we need to calculate the coordinates of the endpoints PQ.</p>
 
         <p>We can find the gradient of the line from the centre of the circle through the chord by using the
-            formula <InlineMath math="\frac{4-3}{4-2} = \frac{1}{2}"/>. The gradient of the chord will be a right angle
+            formula <InlineMath math="\frac{4-3}{4-2} = \frac{1}{2}"/>. The gradient of the chord will be a right
+            angle
             to this so it must be <InlineMath math="-1 \div \frac{1}{2} = -2"/>. </p>
 
         <p>Therefore we know that the chord PQ has gradient <InlineMath math="-2"/> and passes through <InlineMath
             math="(4,4)"/>. And we know that from the gradient form formula shared at the start this is <InlineMath
-            math="y - 4 = -2(x-4)"/>. We can expand this to get <InlineMath math="y-4 = -2x + 8"/> giving a final result
+            math="y - 4 = -2(x-4)"/>. We can expand this to get <InlineMath math="y-4 = -2x + 8"/> giving a final
+            result
             of <InlineMath math="y = -2x + 12"/> this gives us the equation of the stright line.</p>
 
         <p>We now have the equation of the circle and straight line and can find the points where they intersect by
@@ -1056,16 +1153,20 @@ const BiteSizeMath = () => (
         <h3 id={"calculus"}>Calculus</h3>
 
         <p>Calculus is like understanding something by looking at small pieces. Differential calculus is cutting
-            something into small pieces to find out how it changes. Whilst integral calculus is joining the small pieces
+            something into small pieces to find out how it changes. Whilst integral calculus is joining the small
+            pieces
             together to find out how much there is. </p>
 
         <h4>Differentiation</h4>
 
-        <p>Differentiation is used for calculating the rate of change. The rate of change of a function can be found by
-            finding the derived function. You can ask to differentiate by the following notations , firstly the Liebniz
+        <p>Differentiation is used for calculating the rate of change. The rate of change of a function can be found
+            by
+            finding the derived function. You can ask to differentiate by the following notations , firstly the
+            Liebniz
             Notation <InlineMath math="\frac{dy}{dx}"/> or <InlineMath math="f'(x)"/>.</p>
 
-        <p>The general formula to solve differentiation is to bring the power down to the front of x and multiply and
+        <p>The general formula to solve differentiation is to bring the power down to the front of x and multiply
+            and
             then bring the power down by 1.</p>
 
         <BlockMath math="f(x) = ax^n \rightarrow f'(x) = nax^{n-1}"/>
@@ -1082,7 +1183,8 @@ const BiteSizeMath = () => (
 
         <BlockMath math="a^{\frac{m}{n}} = \sqrt[n]{a^m}"/>
 
-        <p>Before differentiating you should remove brackets, separate top heavy fractions, change terms involving roots
+        <p>Before differentiating you should remove brackets, separate top heavy fractions, change terms involving
+            roots
             into fractional powers and change terms with <i>x</i> on the denominator to negative powers.</p>
 
 
