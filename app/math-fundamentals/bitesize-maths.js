@@ -33,6 +33,7 @@ const BiteSizeMath = () => (
             <li><Link to={"#factortheorem"}>Factor Theorem</Link></li>
             <li><Link to={"#algebraicdivision"}>Algebraic Division</Link></li>
             <li><Link to={"#quadraticequation"}>Quadratic Equation</Link></li>
+            <li><Link to={"#quadraticfunctiongraph"}>Quadratic Function and Graphs</Link></li>
             <li><Link to={"#geometry"}>Coordinate Geometry</Link></li>
             <li><Link to={"#permutation"}>Permutation</Link></li>
             <li><Link to={"#recurrencerelation"}>Recurrence Relation</Link></li>
@@ -909,9 +910,6 @@ const BiteSizeMath = () => (
 
         <BlockMath math="a(x + \frac{b}{2a})^2 + (c-\frac{b^2}{4a}) = ax^2 + bx + c"/>
 
-        <br/>
-        <hr/>
-
         <p>For example you start with <InlineMath>x^2 - 6x + 5 = 0</InlineMath>.</p>
 
         <p>1. Take a factor of <InlineMath math="1"/> out of the <InlineMath math="x^2"/> and <InlineMath
@@ -925,10 +923,10 @@ const BiteSizeMath = () => (
         <p>3. Now add <i>d</i> to the bracket to complete the square and find <i>d</i> by setting the new and
             original expressions equal to each other <InlineMath math="(x - 3)^2 + d = x^2 - 6x + 5"/>.
             Expanding the left hand side gives <InlineMath math="x^2 - 6x + 9 + d = x^2 - 6x + 5"/> now can cancel these
-            out
-            to be <InlineMath math="-9 + d = 5"/></p>
+            out to be <InlineMath math="-9 + d = 5"/></p>
 
-        <p>4. Now solve this equation gives <InlineMath math="d = -4"/> therefore putting <i>d</i> back into the equation you get <InlineMath math="(x-3)^2 - 4 = 0"></InlineMath> as <InlineMath
+        <p>4. Now solve this equation gives <InlineMath math="d = -4"/> therefore putting <i>d</i> back into the
+            equation you get <InlineMath math="(x-3)^2 - 4 = 0"></InlineMath> as <InlineMath
                 math="x^2 - 6x + 9 - 4 = x^2 - 6x + 5"></InlineMath></p>
 
         <p>Now the final solution is <InlineMath math="(x-3)^2 = 4"/> simplify <InlineMath
@@ -936,13 +934,103 @@ const BiteSizeMath = () => (
             math="x = 5"/> or <InlineMath
             math="x = 1"/>.</p>
 
+
         <hr/>
+
+        <p>Another more complex example is when there is a multiplier to the quadratic part of the expression.</p>
+
+        <BlockMath math="2x^2 - 6x -2 = 0"/>
+
+        <p>Step one take out the factor of 2</p>
+
+        <BlockMath math="2(x^2 - 3x) -2 = 0"/>
+
+        <p>Now find the part of the bracket as one bracket squared</p>
+
+        <p>Therefore <InlineMath math="b = -6"/> and then the formula to do is <InlineMath math="\frac{b}{2a}"/> which
+            is
+            <InlineMath math="\frac{-6}{2 \times 2}"/>. Therefore it is <InlineMath math="- \frac{3}{2}"/>.</p>
+
+        <p>This gives <InlineMath math="2(x-\frac{3}{2})^2 + d"/></p>
+
+        <p>Now we need to expand out the bracket after setting the new equation to the original equation.</p>
+
+        <BlockMath math="2(x - \frac{3}{2})^2 + d = 2x^2 - 6x - 2"/>
+
+        <p>Expanding out the left side is not straight forward so follow closely. First expand out the squared
+            bracket.</p>
+
+        <BlockMath math="(x - \frac{3}{2})(x - \frac{3}{2}) = x^2 - \frac{3}{2}x - \frac{3}{2}x + \frac{9}{4}"/>
+        <p>Simplify now</p>
+        <BlockMath math="2(x^2 - \frac{6}{2}x + \frac{9}{4})"/>
+        <p>Then we need to multiply by the outside multiplier</p>
+        <BlockMath math="2x^2 - 6x + \frac{9}{2} + d = 2x^2 - 6x -2"/>
+
+        <p>Now we can cancel out the equation and find d.</p>
+
+        <BlockMath math="\frac{9}{2} + d = -2"/>
+        <BlockMath math="d = -2 - \frac{9}{2}"/>
+        <BlockMath math="d = - \frac{13}{2}"/>
+
+        <p>Hence we have completed the square as:</p>
+        <BlockMath math="2(x - \frac{3}{2})^2 - \frac{13}{2} = 0"/>
+
+        <p>Now to find the exact solutions: </p>
+
+        <BlockMath math="2(x - \frac{3}{2})^2 = \frac{13}{2}"/>
+
+        <p>Divide both sides by 2.</p>
+
+        <BlockMath math="(x - \frac{3}{2})^2 = \frac{13}{4}"/>
+
+        <p>Now square root both sides</p>
+
+        <BlockMath math="x - \frac{3}{2} = \pm \sqrt{\frac{13}{4}}"/>
+
+        <p>Add the fraction to move to the other side and square root the bottom of the fraction leaving just the top
+            rationalising the fraction.</p>
+
+        <BlockMath math="x = \frac{3 \pm \sqrt{13}}{2}"/>
+
+        <hr/>
+
+        <p>The way we have come to the solution is the full method but in example one you can reduce the expansion steps
+            as a shortcut as remember <InlineMath math="ax^2 + bx + c = 0 "/> we can turn into this <InlineMath
+                math="a(x+d)^2 + e"/>.</p>
+
+        <p>Where we have <InlineMath math="d = \frac{b}{2a}"/> and <InlineMath math="e = c - \frac{b^2}{4a}"/></p>
+
+        <p>Repeating the last example we would have the following:</p>
+
+        <BlockMath math="2x^2 - 6x -2 = 0"/>
+
+        <BlockMath math="d = \frac{-6}{2 \times 2} = -\frac{3}{2}"/>
+
+        <BlockMath math="e = -2 - \frac{6^2}{4 \times 2} = \frac{36}{8} = \frac{9}{2}"/>
+
+        <BlockMath math="e = \frac{-2}{1} - \frac{9}{2} = - \frac{13}{2}"/>
+
+        <p>Putting it back into the formula gives.</p>
+
+        <BlockMath math="2(x - \frac{3}{2})^2 - \frac{13}{2} = 0"/>
+
+        <p>Now you can find the exact solutions as before.</p>
+
+        <br/>
 
         <h4>Quadratic Formula</h4>
 
         <p>The final way is to use the quadratic formula this can be the simplest way for complex quadratics.</p>
 
         <hr/>
+
+        <h3 id={"quadraticfunctiongraph"}>Quadratic Functions and Graphs</h3>
+
+        <p></p>
+
+        <hr/>
+
+        <br/>
 
         <h3 id={"geometry"}>Coordinate Geometry</h3>
 
@@ -1054,14 +1142,14 @@ const BiteSizeMath = () => (
             add to
             both sides. Resulting in <InlineMath math="(x^2 -6x + (-3)^2) + (y^2 + 4y) = -8 + (-3)^2"/></p>
 
-        <p>Now complete the square for <strong>y</strong> which is take half the <InlineMath math="-2"/> square it
+        <p>Now complete the square for <strong>y</strong> which is take half the <InlineMath math="4"/> square it
             and
             add to both sides. Resulting in <InlineMath
-                math="(x^2 -6x + (-3)^2) + (y^2 + 4y + (-2)^2) = -8 + (-3)^2 + (-2)^2"/></p>
+                math="(x^2 -6x + (-3)^2) + (y^2 + 4y + (2)^2) = -8 + (-3)^2 + (2)^2"/></p>
 
-        <p>Then tidy up. <InlineMath math="(x^2 -6x + 9) + (y^2 + 4y + 4) = -8 + (-3)^2 + (-2)^2"/></p>
+        <p>Then tidy up. <InlineMath math="(x^2 -6x + 9) + (y^2 + 4y + 4) = -8 + (-3)^2 + (2)^2"/></p>
         <p>Factor the left side which can be simplified to <InlineMath
-            math="(x-3)^2 + (y-2)^2 = 3^2 + 2^2 - 8 = 5"/> therefore the centre is <InlineMath math="(3,2)"/> and
+            math="(x-3)^2 + (y+2)^2 = 3^2 + 2^2 - 8 = 5"/> therefore the centre is <InlineMath math="(3,-2)"/> and
             radius
             is <InlineMath math="\sqrt{5}"/>.</p>
 
