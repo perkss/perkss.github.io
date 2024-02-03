@@ -1026,7 +1026,61 @@ const BiteSizeMath = () => (
 
         <h3 id={"quadraticfunctiongraph"}>Quadratic Functions and Graphs</h3>
 
-        <p></p>
+        <p>If you are struggling with a problem then graphing a quadration function can help there are some key points
+            to be able to do this.</p>
+
+        <ol className={"text-list"}>
+            <li>Up or Down</li>
+            <p>If the coefficient <InlineMath math="x^2"/> is positive then the graph is U-shaped.</p>
+            <p>If the coefficient <InlineMath math="x^2"/> is negative then the graph is N-shaped.</p>
+            <li>Axes: You can find out where it crosses the y-axis by (set x = 0) and crosses the x-axis by (set y =
+                0).
+            </li>
+            <li>Maximum or Minimum: You can find the maximum or minimum point by finding the point halfway between the
+                roots <strong>or</strong> by completing the square.
+            </li>
+            <li>Sketch the graph. You now have all you need to sketch the graph.</li>
+        </ol>
+
+        <h5>An example</h5>
+
+        <p>This example is taken from GCP book on A level maths.</p>
+
+        <BlockMath math="y = 8 - 2x - x^2"/>
+
+        <p>Point 1 we know this is n-shaped as it is a negative coefficient on the <InlineMath math="x^2"/>.</p>
+
+        <p>Point 2: Now find y when x is zero.</p>
+
+        <BlockMath math="y = 8 - 2(0) - 0^2 = 8"/>
+
+        <p>When y is zero</p>
+        <BlockMath math="8 - 2x - x^2 = 0"/>
+        <BlockMath math="(2 - x)(x + 4) = 0"/>
+        <p><InlineMath math="x = 2"/> or <InlineMath math="x = -4"/></p>
+
+        <p>This means that the curve crosses y at <InlineMath math="(0,8)"/> and x at <InlineMath
+            math="(2,0)"/> and <InlineMath math="(-4,0)"/>.</p>
+
+        <p>Point 3: We can now find the max point. Which is halfway between the roots because the curve is
+            symmetrical.</p>
+
+        <BlockMath math="(2 + -4) \div 2 = -1"/>
+
+        <p>So the max value is at <i>-1</i>.</p>
+
+        <BlockMath math="y = 8 - 2(-1) - (-1)^2 = 9"/>
+
+        <p>The graph has a maximum at <InlineMath math="(-1,9)"/></p>
+
+        <p>We now have all the points to sketch the graph.</p>
+
+        <h5>No real roots</h5>
+
+        <p>Again completing the square can be useful way to quickly find if a graph crosses the x-axis. It will only
+            cross the x-axis if the function changes sign.</p>
+
+
 
         <hr/>
 
