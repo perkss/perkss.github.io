@@ -1022,6 +1022,27 @@ const BiteSizeMath = () => (
 
         <p>The final way is to use the quadratic formula this can be the simplest way for complex quadratics.</p>
 
+        <BlockMath math="x = \frac {-b \pm \sqrt{b^2 -4ac}} {2a}"/>
+
+        <p>The formula is applied to the values in a quadratic formula.</p>
+
+        <BlockMath math="ax^2 + bx + c = 0"/>
+
+        <p>Part of the formula can be used to tell the roots of a quadratic equation.</p>
+
+        <BlockMath math="b^2 - 4ac"/>
+
+        <p>This part of the formula is called the discrimant.</p>
+
+        <p>Two real roots <InlineMath math="b^2 - 4ac > 0"/> as the graph will cross the x-axis twice and these values
+            are the roots.</p>
+        <p>One real root <InlineMath math="b^2 - 4ac = 0"/> graph just touches the x-axis from above or below if
+            negative coefficient.</p>
+        <p>No real roots (equal roots) <InlineMath math="b^2 - 4ac < 0"/> graph will not touch the x-axis at all as it
+            is greater than zero.</p>
+
+        <p>Sometimes a,b or c are unknown you may then have to find a range of values of the unknown.</p>
+
         <hr/>
 
         <h3 id={"quadraticfunctiongraph"}>Quadratic Functions and Graphs</h3>
@@ -1081,10 +1102,14 @@ const BiteSizeMath = () => (
             cross the x-axis if the function changes sign.</p>
 
 
-
         <hr/>
 
         <br/>
+
+        <h3 id={"simultaneousequation"}>Simultaneous Equations</h3>
+
+        <hr/>
+
 
         <h3 id={"geometry"}>Coordinate Geometry</h3>
 
