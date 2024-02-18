@@ -542,7 +542,35 @@ const BiteSizeMath = () => (
             is on the right hand side. Plot the <i>y=</i> making it solid for greater than and equal too or less than
             and equal too. With it dashed for just greater than or less than. If it is <InlineMath
                 math="y >  (y \ge)"/> then shade <strong>above</strong> the line or if it is <InlineMath
-                math="y< (y \le)"/> then shade <strong>below</strong> the line.</p>
+                math="y< (y \le)"/> then shade <strong>below</strong> the line. You can then also check the shape of the
+            graph
+            and the value of the <InlineMath math="x"/> variable to see if shade on the inside or outside of where the
+            curve hits the x-axis.</p>
+
+        <h4>Quadratic Inequality</h4>
+
+        <p>For quadratics it is best to sketch the graph. To find the range of values that satisfy the inequality such
+            as <InlineMath math="36x \le 6x^2"/> follow these steps. Rearrange into the form <InlineMath
+                math="f(x) \ge 0"/>.
+            By moving the values to one side. Then write the expression as a equation for this case <InlineMath
+                math="y = x^2 - 6x"/>.
+        </p>
+
+        <p>Then find out where the curve crosses the x-axis by factorising the quadratic to find its solutions by
+            setting <InlineMath math="y=0"/>. In this case
+            <InlineMath math="x^2 - 6x = 0 \implies x(x-6) = 0"/> therefore <InlineMath math="x = 0"/> or <InlineMath
+                math="x = 6"/>. As the coefficient is positive this is a <strong>U</strong> shaped graph. Therefore the
+            graph is positive to the left of <InlineMath math="x = 0"/> and to the right of <InlineMath
+                math="x = 6"/> inclusive. Therefore <InlineMath math="x \le 0"/> or <InlineMath math="x \ge 6"/>.</p>
+
+        <h4>Finding Region of Inequality</h4>
+
+        <p>If it is required to find the region of the inequality for multple lines and curves then you can sketch them
+            and then test the coordinate points and the region you are looking for will hold true for any tested
+            point.</p>
+
+        <p>Remember that for <InlineMath math="\ge"/> or <InlineMath math="\le"/> you use a solid line to draw the
+            region. But for <InlineMath math=">"/> or <InlineMath math="<"/> then use a dotted line for the region.</p>
 
         <h3 id={"polynomial"}>Polynomial</h3>
 
@@ -697,11 +725,14 @@ const BiteSizeMath = () => (
 
         <hr/>
 
-        <h3 id={"factortheorem"}>Factor Theorem</h3>
+        <h3 id={"factortheorem"}>Factor Theorem (Solving Cubics)</h3>
         <p>To find the linear factors of a polynomial (split the polynomial into as many factors as you can) you first
             you simply plugin and try different numbers until they equal zero. This is going to be time consuming
             though. You only need to try the numbers that are factors of the constant. If no of these works then you
             cannot find simple integer factors. </p>
+
+        <p>The factor theorem defined <InlineMath math="f(x)"/> is a polynomial and <InlineMath
+            math="f(k) = 0"/> then <InlineMath math="(x-k)"/> is a factor of <InlineMath math="f(x)"/></p>
 
         <BlockMath math="x^3 - 6x^2 + 3x + 10"/>
 
@@ -741,6 +772,12 @@ const BiteSizeMath = () => (
 
         <BlockMath math="2x^3 + 3x^2 - 32x + 15 = (x-3)(2x^2 + 9x -5)"/>
         <BlockMath math="= (x-3)(2x - 1 )(x + 5)"/>
+
+        <h4>Sketching Cubics</h4>
+
+        <p>Once you know the factors of a cubic sketching the graph is straightforward. You can find the roots by
+            setting <i>x</i> to zero. As all cubics have a similar shape if <InlineMath math="x^3"/> is positive it is
+        bottom left to top right and if <InlineMath math="x^3"/> is negative it is top left to bottom right.</p>
 
 
         <h3 id={"algebraicdivision"}>Algebraic Division (or Polynomial Division)</h3>
@@ -1107,6 +1144,22 @@ const BiteSizeMath = () => (
         <br/>
 
         <h3 id={"simultaneousequation"}>Simultaneous Equations</h3>
+
+        <p>Simultaneous equations are two or more equations that share a variable.</p>
+
+        <p>Simultaneous equations that are both linear can easily be solved by matching the coefficients of the
+            equations
+            so that when you add them they will negate to zero that variable and eliminate it.</p>
+
+        <p>If one equation is linear and one is quadratic then you need to do substitution. In this case you isolate one
+            variable in the linear equation by rearranging to <i>x</i> or <i>y</i> on its own. Then you can substitute
+            this <i>x</i> or <i>y</i> into
+            the quadratic equation. You can solve by factorising or using the quadratic formula. Once resolved then
+            place the result back into the linear equation to find the solution to the other variable.</p>
+
+        <p>The number of solutions is the number of intersections between the two equations. If there are two solutions
+            then the graph meets at these two locations. If this is one solution the graph meets in one place and if
+            their are no solutions then the graphs never meet.</p>
 
         <hr/>
 
