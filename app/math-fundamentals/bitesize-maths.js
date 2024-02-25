@@ -34,6 +34,8 @@ const BiteSizeMath = () => (
             <li><Link to={"#algebraicdivision"}>Algebraic Division</Link></li>
             <li><Link to={"#quadraticequation"}>Quadratic Equation</Link></li>
             <li><Link to={"#quadraticfunctiongraph"}>Quadratic Function and Graphs</Link></li>
+            <li><Link to={"#simultaneousequation"}>Simultaneous Equations</Link></li>
+            <li><Link to={"#absolutevalues"}>Absolute Values (Modulus)</Link></li>
             <li><Link to={"#geometry"}>Coordinate Geometry</Link></li>
             <li><Link to={"#permutation"}>Permutation</Link></li>
             <li><Link to={"#recurrencerelation"}>Recurrence Relation</Link></li>
@@ -777,7 +779,7 @@ const BiteSizeMath = () => (
 
         <p>Once you know the factors of a cubic sketching the graph is straightforward. You can find the roots by
             setting <i>x</i> to zero. As all cubics have a similar shape if <InlineMath math="x^3"/> is positive it is
-        bottom left to top right and if <InlineMath math="x^3"/> is negative it is top left to bottom right.</p>
+            bottom left to top right and if <InlineMath math="x^3"/> is negative it is top left to bottom right.</p>
 
 
         <h3 id={"algebraicdivision"}>Algebraic Division (or Polynomial Division)</h3>
@@ -1163,6 +1165,72 @@ const BiteSizeMath = () => (
 
         <hr/>
 
+        <h3 id={"absolutevalues"}>Absolute Values (Modulus)</h3>
+
+        <p>The absolute value means how far a number is from zero. A great resource is <a
+            href="https://www.mathsisfun.com/algebra/absolute-value-solving.html">Maths is Fun</a>. Therefore the
+            absolute value of <i>6</i> is <strong>6</strong> and the absolute value of <i>-6</i> is
+            also <strong>6</strong>. The absolute value symbol us two bars as shown <InlineMath
+                math="\lvert 6 \rvert = 6"/> and <InlineMath math="\lvert -6 \rvert = 6"/></p>
+
+        <p>Rules:</p>
+
+        <ul className="text-list">
+            <li><InlineMath math="\lvert a \rvert \geq 0"/></li>
+            <li><InlineMath math="\lvert a \rvert = \sqrt(a^2)"/> squaring a makes it positive or zero. The taking the
+                square root will undo the square but leave it positive.
+            </li>
+            <li><InlineMath math="\lvert a \times b \rvert = \lvert a \rvert \times \lvert b \rvert"/> the
+                multiplication is the same for absolute of each or both.
+            </li>
+            <li><InlineMath math="\lvert x \rvert = a"/> is the same as <InlineMath math="x = \pm a"/> this is an
+                important one and helps solve most problems.
+            </li>
+        </ul>
+
+        <h4>Graphical View</h4>
+
+        <p>You can easily plot the graphs and then see the result of the mods using different reflection mechanisms. You
+            can set the equation in the form equal to zero. The
+            rules for these are as follows.</p>
+
+        <ul className="text-list">
+            <li><InlineMath math="y = \lvert f(x) \rvert"/> any negative values of <i>f(x)</i> are made positive by
+                reflecting them on the x-axis.
+            </li>
+            <li><InlineMath math="y =  f(\lvert x \rvert) "/> the negative x-values produce the same results as the
+                corresponding positive x-values.
+            </li>
+            <li><InlineMath math="y = \lvert f(-x) \rvert"/> the x-values change from positive to negative (or negative
+                to positive) so the graph is reflected on the y-axis.
+            </li>
+        </ul>
+
+        <h4>Absolute Value Inequalities</h4>
+
+        <p>Absolute values can be written as inequalities here are some examples but remember these represent the values
+            distance from <i>x</i>.</p>
+
+        <p><InlineMath math="\lvert x \rvert < 4"/> these are everything in between but not
+            including <i>-4</i> and <i>4</i>.</p>
+
+        <p><InlineMath math="-4 < x < 4"/></p>
+
+        <p><strong>Important point</strong> for less than, less than or equal to we get one interval.</p>
+
+        <p>Another example is <InlineMath math="\lvert x+3 \rvert \leq 3"/> in this case we state <InlineMath
+            math="-3 \leq x+3 \leq 3"/> the we subtract the central 3 from each side to give the equivalent <InlineMath
+            math="-6 \leq x \leq 0"/></p>
+
+        <p><strong>Important point</strong> for greater than, greater than or equal to we get two separate intervals.
+        </p>
+
+        <p><InlineMath math="\lvert x \rvert > 4"/> we get everything less than -4 or greater than 4.</p>
+
+        <p><InlineMath math="x < -4"/> or <InlineMath math="x > 4"/></p>
+
+        <br/>
+        <hr/>
 
         <h3 id={"geometry"}>Coordinate Geometry</h3>
 
