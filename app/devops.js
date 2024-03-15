@@ -548,7 +548,7 @@ CMD ["/usr/bin/java", "-jar", "/kafka-example.jar"]`}</SyntaxHighlighter>
                     <td>Severity C &lt; 8 business hours. Severity B &lt; 4 hours. Severity A &lt; 1 hour.</td>
                     <td>Severity C &lt; 8 business hours. Severity B &lt; 4 hours. Severity A &lt; 1 hour.</td>
                     <td>Severity C &lt; 8 business hours. Severity B &lt; 4 hours. Severity A &lt; 1 hour. &lt; 15
-                        minutes Azure Rapid Repsonse
+                        minutes Azure Rapid Response
                     </td>
                 </tr>
 
@@ -755,7 +755,7 @@ CMD ["/usr/bin/java", "-jar", "/kafka-example.jar"]`}</SyntaxHighlighter>
                                wrapLines={true}>{`kubectl --namespace=mystuff`}</SyntaxHighlighter>
 
             <p><i>Contexts</i> are used to change the default namespace and can be set in the kubectl configuration
-                file. They can also be used to manage different clusters to users for authnticating to the clusters.</p>
+                file. They can also be used to manage different clusters to users for authenticating to the clusters.</p>
 
             <p><strong>Everything contained in K8s is represented by a Restful Resource.</strong> A very key point and
                 these can be referred to as objects. Where every object has a unique HTTP URL. The kubectl basically

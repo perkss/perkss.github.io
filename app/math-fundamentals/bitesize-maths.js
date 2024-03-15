@@ -1386,7 +1386,8 @@ const BiteSizeMath = () => (
             <li>Finally you then swap the domain and the range.</li>
         </ul>
 
-        <p>If you need to draw the inverse function it is a reflection of the original function graph along <i>y=x</i>.</p>
+        <p>If you need to draw the inverse function it is a reflection of the original function graph along <i>y=x</i>.
+        </p>
 
         <br/>
 
@@ -1394,16 +1395,24 @@ const BiteSizeMath = () => (
 
         <p>Things to know up front</p>
 
-        <p>Midpoint of a line: <InlineMath math="M = (\frac{x1 + x2}{2}, \frac{y1 + y2}{2})"/></p>
+        <p>Midpoint of a line segment: <InlineMath math="M = (\frac{x1 + x2}{2}, \frac{y1 + y2}{2})"/></p>
         <p>Distance between two points: <InlineMath math="AB = \sqrt{(x2 - x1)^2 + (y2 - y1)^2}"/> this is
-            pythagoras
-            theorem a triangle is created and you find the hypotenuse.</p>
+            pythagoras theorem a triangle is created and you find the hypotenuse.</p>
         <p>Gradient of a straight line: <InlineMath math="\frac{y2 - y1}{x2 - x1}"/></p>
 
         <p>Three forms of equation of a straight line:</p>
         <p>Gradient Intercept: <InlineMath math="y = mx + c"/></p>
         <p>Gradient Point Form: <InlineMath math="y - y1 = m(x - x1)"/></p>
+        <p>Equation Form: <InlineMath math="ax + by + c = 0"/></p>
         <p>Two Point Form: <InlineMath math="\frac{y - y1}{y2 - y1} = \frac{x - x1}{x2 - x1}"/></p>
+
+        <p>These forms of line can easily be transformed between each form the easiest to find is the gradient point form.</p>
+
+        <h4>Parallel Lines</h4>
+
+        <p>Parallel lines have an equal gradients. Therefore you can find the equation of a parallel line easily by
+            <InlineMath math="y = mx + c"/> and substituting in the gradient of the parallel line you know and the
+        x and y of the parallel line point you are trying to find the equation of.</p>
 
         <p>A circle has a centre point and a radius. The definition of a circle is the set of all points on a plane
             that
