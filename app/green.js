@@ -59,7 +59,7 @@ const green = {
 
         <p>Therefore from the view point of sustainable software you still should choose the right language for the job and not consider changing languages as you think an alternative might be more efficient.</p>
 
-        <h2 id={"EfficientArch"}>Efficient Architecture</h2>
+        <h3 id={"EfficientArch"}>Efficient Architecture</h3>
 
         <p>All of the hyper scale cloud providers now have strategies for well architected systems for the cloud.</p>
 
@@ -71,7 +71,7 @@ const green = {
 
         <p>GCP has details on <a href="https://cloud.google.com/sustainability">Sustainability</a> in the cloud.</p>
 
-        <h2 id={"Tools"}>Tools</h2>
+        <h3 id={"Tools"}>Tools</h3>
 
         <p>The Green Software Foundation is now building tooling to help measure software for example the <a href="https://github.com/Green-Software-Foundation/if">Impact Framework</a>.
             This is a tool for providing the ability to calculate different environmental metrics such as the SCI easily for all engineers.
