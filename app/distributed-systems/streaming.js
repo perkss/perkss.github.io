@@ -431,13 +431,13 @@ const Streaming = () => (
         </p>
 
 
-        {/*Perfect watermark is data is proceesed per runner each time they run a km. Could do these examples in Flink?*/}
+        {/*Perfect watermark is data is processed per runner each time they run a km. Could do these examples in Flink?*/}
 
         <h3 id={"Triggers"}>Triggers</h3>
 
         <p>When is a window finished? As discussed in watermarks when is a window result final? When should the result
             be emitted. Triggers are used to determine when the data for windowing should happen striking to the balance
-            between too early but may miss data or too late so you add unecessary latency. Kafka streams usually
+            between too early but may miss data or too late so you add unnecessary latency. Kafka streams usually
             works on <a
                 href={"https://www.confluent.io/blog/kafka-streams-take-on-watermarks-and-triggers/"}>continuous
                 refinement</a> where data arrives and the task that uses aggregation or windowing will emit the result
@@ -796,7 +796,7 @@ const Streaming = () => (
             You can find out further about <i>TimestampExtractor</i> in the <a
             href={"https://docs.confluent.io/current/streams/developer-guide/config-streams.html#default-timestamp-extractor"}>confluent
             docs</a>. The object we use is a Kotlin singleton and implements the interface of
-            the <i>TimestampExtractor</i> where we parse the ISO string stored in each event recieved by our stream and
+            the <i>TimestampExtractor</i> where we parse the ISO string stored in each event received by our stream and
             then convert it to epoch milli.
 
             The window we will use in this example is the

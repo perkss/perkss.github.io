@@ -9,7 +9,7 @@ const MathPrerequisites = () => (
         <h2>Math Prerequisites</h2>
         <p>I was looking through the course notes for <a
             href="http://web.stanford.edu/class/cs103/">CS103</a> Mathematical Foundations of Computing and found a
-            greate slide on <a
+            great slide on <a
                 href="http://web.stanford.edu/class/cs103/handouts/020%20Mathematical%20Prerequisites.pdf">mathematical
                 prerequisites</a> for the course. I felt straight away this was a great small sample of the required
             maths for any maths for computer science or algorithm course in a short form, I still recommend Concrete
@@ -23,13 +23,13 @@ const MathPrerequisites = () => (
 
         <h3>Multiplying Polynomials</h3>
 
-        <p><Latex>As part of this course polynomical knowledge is expected to be known which may not be the case if
+        <p><Latex>As part of this course polynomial knowledge is expected to be known which may not be the case if
             students did not have a great maths experience at earlier school years. They come to a specific case $n^2 =
             (2k)^2$ this is the same as $n^2 = 4k^2$. This is fairly trivial to understand as you take $(2k)\times(2k) =
             2\times2$ and $k\times k = 4k^2$.</Latex></p>
 
         <p><Latex>The next example is a little less trivial if you do not know polynomial multiplication and simply says
-            $n^2 = (2k + 1)^2$ which simplied is $n^2 = 4k^2 + 4k + 1$. What always trips me up here is the 4k. Lets
+            $n^2 = (2k + 1)^2$ which simplified is $n^2 = 4k^2 + 4k + 1$. What always trips me up here is the 4k. Lets
             walk though this example.</Latex></p>
         <p><Latex>$(2k+1)^2$ can be written as $(2k+1)(2k+1)$</Latex> so we take each part of multiply by the next
             section so: </p>
@@ -144,7 +144,7 @@ const MathPrerequisites = () => (
 
         <h3>Manipulating Inequalities</h3>
         <p>An example of an inequality is <Latex>$3$ &lt; $x$ &lt; $4$ this states that $x$ is strictly great than $3$
-            and strictly lesss than $4$. Whats interesting to consider here if $x$ is a integer or a natural number then
+            and strictly less than $4$. Whats interesting to consider here if $x$ is a integer or a natural number then
             there are no choices for $x$ but if it is a real number it could be $3.1$ or $3.72412$. Another interesting
             case is that $3$ &lt; $n$ is the same as $3 \leq n$. These are equal because $2$ is strictly less than $n$
             so $n$ cannot be two or less it has to be three or more. In general sense this is the formula:</Latex></p>

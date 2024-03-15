@@ -52,7 +52,7 @@ const BiteSizeMath = () => (
         <p>A fraction is a numerical quantity that is not a whole number.</p>
         <h4>Add</h4>
         <p>Adding fractions you need to have the same denominator if they are not the same you can get the least common
-            denominator of a common denominator. Once they have the same denomiator you just add the numerator. </p>
+            denominator of a common denominator. Once they have the same denominator you just add the numerator. </p>
         <BlockMath math="\frac{2}{5} + \frac{7}{5} = \frac{9}{5}"/>
         <h4>Subtract</h4>
 
@@ -196,11 +196,11 @@ const BiteSizeMath = () => (
 
         <h4>Finding slope between two points</h4>
 
-        <p>In alegbra to find the slope between two points you can use the formula.</p>
+        <p>In algebra to find the slope between two points you can use the formula.</p>
 
         <BlockMath math="\frac{y2 - y1}{x2 - x2}"/>
 
-        <p>Basically it is dividing the vetical change (rise) by the horizontal change (run).</p>
+        <p>Basically it is dividing the vertical change (rise) by the horizontal change (run).</p>
 
 
         <h3 id={"indices"}>Indices</h3>
@@ -243,7 +243,7 @@ const BiteSizeMath = () => (
             example <InlineMath math="3^5 \times 3^{-5} = 3^0 = 1"/> this can be rearranged by dividing both sides
             with <InlineMath math="3^5"/> as <InlineMath math="3^{-5} = \frac{1}{3^5}"/></p>
 
-        <p>Sixth law is fractional powers this will result in the denomiator of the fraction becomes the root and then
+        <p>Sixth law is fractional powers this will result in the denominator of the fraction becomes the root and then
             numerator becomes the power to raise too as this formula states<InlineMath
                 math="a^{\frac{m}{n}} = (\sqrt[n]a)^m"/>. For example <InlineMath
                 math="8^{\frac{2}{3}} = (\sqrt[3]8)^2 = 2^2 = 4"/></p>
@@ -339,7 +339,7 @@ const BiteSizeMath = () => (
         <p>Therefore: </p>
         <BlockMath math="\sqrt{9} \times \sqrt{9} = 9"/>
         <BlockMath math="9^{\frac{1}{2}} \times 9^{\frac{1}{2}} = 9"/>
-        <p>Resulting in these being equavalent <InlineMath math="9^\frac{1}{2}"/> is the same as <InlineMath
+        <p>Resulting in these being equivalent <InlineMath math="9^\frac{1}{2}"/> is the same as <InlineMath
             math="\sqrt{9}"/></p>
 
         <p>Some examples to make this clearer:</p>
@@ -373,12 +373,12 @@ const BiteSizeMath = () => (
 
         <h5>Example</h5>
 
-        <p>Finding the simpliest surd without a calculator.</p>
+        <p>Finding the simplest surd without a calculator.</p>
 
         <BlockMath
             math="\sqrt{392} = \sqrt{4 \times 98} = \sqrt{4} \times \sqrt{2} \times \sqrt{49} = 2 \times \sqrt{2} \times 7 =  14\sqrt{2}"/>
 
-        <p>Having surds on the denonmiator is not a good thing. When a surd is written on the denominator of a fraction,
+        <p>Having surds on the denonminator is not a good thing. When a surd is written on the denominator of a fraction,
             we rationalise the denominator to make it simpler. We do this by multiplying the numerator and denominator
             by an expression that will simplify the surd on the denominator. Therefore you can multiply the fraction by
             the surd over the surd as the example below as if you do this is just multiply by 1 is the same result. </p>
@@ -387,13 +387,13 @@ const BiteSizeMath = () => (
         <BlockMath math="\frac{14}{\sqrt{7}} \times \frac{\sqrt{7}}{\sqrt{7}} = \frac{14\sqrt{7}}{7} = 2\sqrt{7}"/>
 
         <p>In the example we start with the tricky square root 7 at the bottom therefore we can multiply by the square
-            root 7 over square root 7. This is legitamate as anything divided by itself is just 1 and you multiply
+            root 7 over square root 7. This is legitimate as anything divided by itself is just 1 and you multiply
             anything by 1 is just itself. Which can then simplify the denominator to 7 and then you end up with the 14
             divided by the 7 to give the final answer of <InlineMath math="2\sqrt{7}"></InlineMath>.</p>
 
 
         <h5>Example</h5>
-        <p>Another example provided shows how to solve with sqrt on the botttom.</p>
+        <p>Another example provided shows how to solve with sqrt on the bottom.</p>
 
         <BlockMath math="\frac{5}{\sqrt{32}}"/>
 
@@ -486,7 +486,7 @@ const BiteSizeMath = () => (
             in <Latex>$6g^2 + 20g$</Latex>. </p>
 
         <h4>Expanding Double Brackets</h4>
-        <p>To expand double brackets each term needs to be multipled together so the first term in the first bracket
+        <p>To expand double brackets each term needs to be multiplied together so the first term in the first bracket
             needs to be multiplied by the first and second term in the second bracket. And then the second term in the
             first bracket needs to be multiplied by the first and second term in the second bracket also. An
             example <Latex>expand the bracket $(2m - 3)(m + 1)$</Latex>: </p>
@@ -570,7 +570,7 @@ const BiteSizeMath = () => (
 
         <h4>Finding Region of Inequality</h4>
 
-        <p>If it is required to find the region of the inequality for multple lines and curves then you can sketch them
+        <p>If it is required to find the region of the inequality for multiple lines and curves then you can sketch them
             and then test the coordinate points and the region you are looking for will hold true for any tested
             point.</p>
 
@@ -1074,7 +1074,7 @@ const BiteSizeMath = () => (
 
         <BlockMath math="b^2 - 4ac"/>
 
-        <p>This part of the formula is called the discrimant.</p>
+        <p>This part of the formula is called the discriminant.</p>
 
         <p>Two real roots <InlineMath math="b^2 - 4ac > 0"/> as the graph will cross the x-axis twice and these values
             are the roots.</p>
@@ -1483,7 +1483,7 @@ const BiteSizeMath = () => (
             math="(x-10)^2 + (y-6)^2 = 9"/> and <InlineMath math="(x+2)^2 + (y+3)^2 = 16"/> therefore the distance
             between these two points is the <InlineMath math="AB^2 = 12^2 + 9^2"/> which is <InlineMath
                 math="AB^2 = 225"/> and then take the square root <InlineMath math="AB = 15"/>. This is the distance
-            between the centers of the circles and now if we want the max and the minumum we simply add each radius
+            between the centers of the circles and now if we want the max and the minimum we simply add each radius
             or
             subtract each radius to give the max and minimum distances resulting in <InlineMath
                 math="max = 15 + 3 + 4 = 22"/> and the shortest is <InlineMath math="min = 15 - 3 - 4 = 8"/>.</p>
@@ -1556,7 +1556,7 @@ const BiteSizeMath = () => (
             length of the chord as <InlineMath math="a^2 = b^2 + c^2 = 5^2 = b^2 + (\sqrt{5})^2"/>. The formula can
             be
             rearrranged to give us <InlineMath
-                math="5^2 - (\sqrt{5})^2 = b^2 = 25 - 5 = b^2 = \sqrt{20} = b"/> therefore this can be simplied
+                math="5^2 - (\sqrt{5})^2 = b^2 = 25 - 5 = b^2 = \sqrt{20} = b"/> therefore this can be simplified
             to <InlineMath math="b = \sqrt{20} = \sqrt{4 \times 5} = 2\sqrt{5}"/>. This is the length of the half
             chord
             therefore the <strong>length</strong> of the chord is two times this so <InlineMath math="4\sqrt{5}"/>
@@ -1573,7 +1573,7 @@ const BiteSizeMath = () => (
             math="(4,4)"/>. And we know that from the gradient form formula shared at the start this is <InlineMath
             math="y - 4 = -2(x-4)"/>. We can expand this to get <InlineMath math="y-4 = -2x + 8"/> giving a final
             result
-            of <InlineMath math="y = -2x + 12"/> this gives us the equation of the stright line.</p>
+            of <InlineMath math="y = -2x + 12"/> this gives us the equation of the straight line.</p>
 
         <p>We now have the equation of the circle and straight line and can find the points where they intersect by
             solving them simultaneously. Therefore we can sub one into the other to find this.</p>

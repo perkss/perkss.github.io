@@ -116,7 +116,7 @@ const DistSIntro = () => (
         <h5>Vector Clock</h5>
         <p>The vector clock allow us to detect if events are concurrent or not which Lamports clock cannot. Here we
             assume that there are <i>n</i> nodes. We have a vector timestamp of event <i>a</i> is <i>V(a)
-                = (t1,t2,...,tn)}</i> <i>ti</i> is the number of events observed by node <i>Ni</i>. Each node has a
+                = (t1,t2,...,tn)</i> <i>ti</i> is the number of events observed by node <i>Ni</i>. Each node has a
             current vector timestamp <i>T</i> representing all nodes. On event at node <i>Ni</i> increment a vector
             element <i>T[i]</i>. We also attach vector clocks to messages sent.</p>
 

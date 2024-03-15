@@ -73,7 +73,7 @@ from the provided kafka topic name"
         <SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={false}
                            wrapLines={true}>{`(def consumer (build-consumer topic bootstrap-server))`}</SyntaxHighlighter>
 
-        <p>Defining the Kafka producer is very similiar we provide the map of properties and pass them to the
+        <p>Defining the Kafka producer is very similar we provide the map of properties and pass them to the
             constructor of the KafkaProducer and return that instance which can be bound to a value name.</p>
         <SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={true} wrapLines={true}>{`(defn- build-producer
   "Create the kafka producer to send on messages received"
@@ -84,7 +84,7 @@ from the provided kafka topic name"
     (KafkaProducer. producer-props)))`}</SyntaxHighlighter>
 
         <p>Now that the producer and consumer have been created we can actually use the simple common pattern of having
-            a while loop that continously polls the consumer a list of records is found and if populated this code
+            a while loop that continuously polls the consumer a list of records is found and if populated this code
             iterates over them and logs out the information and then sends the message received prepended with Value: to
             the output topic. We then commitAsync to say we have processed these messages to commit the offset.</p>
         <SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={true} wrapLines={true}>{`(while true
@@ -101,7 +101,7 @@ from the provided kafka topic name"
 
         <h3>Summary</h3>
 
-        <p>Thats about it the full program can be found in our <a
+        <p>That's about it the full program can be found in our <a
             href="https://github.com/perkss/clj-kafka-examples/blob/master/kafka-producer-consumer-example/src/kafka_example/core.clj">kafka-examples</a> project
             on github. We have seen how to use the Kafka message broker to consume and produce messages using the raw
             Java API in Clojure which is still fairly elegant. Coming from a Java background and being used to the API I
@@ -159,7 +159,7 @@ from the provided kafka topic name"
    (.mapValues (reify ValueMapper
      (apply [_ v]
        (clojure.string/upper-case v))))
-   ;; Send the repsonse onto an output topic
+   ;; Send the response onto an output topic
    (.to output-topic))`}</SyntaxHighlighter>
 
         <p>Here we can see the main topology being built with the builder having .stream called on it with the source
@@ -222,7 +222,7 @@ from the provided kafka topic name"
     properties))`}</SyntaxHighlighter>
 
         <p>You can then simply define the serializer and deserializer, careful note of using the static call and then
-            the instace on the Java API interop. Define the topology under test here simply call the method to build the
+            the instance on the Java API interop. Define the topology under test here simply call the method to build the
             topology from the core file and define the TopologyTestDriver. You can then simply pipe the input and read
             the output from the topology-test-driver and do some asserts and here is your test simples!! Thank you
             Kafka.</p>
@@ -249,7 +249,7 @@ from the provided kafka topic name"
                 href="https://www.confluent.io/blog/distributed-real-time-joins-and-aggregations-on-user-activity-events-using-kafka-streams/"> example.</a> Here
             we take two topics one of the data of user click events and another topic of user geo location. The user
             clicks is considered a stream of individual records where each data item is a individual event the geo
-            location stream is going to be conisdered as a changelog where each event is an update this will be backed
+            location stream is going to be considered as a changelog where each event is an update this will be backed
             by a KTable. Record streams use KStream and Changelogs use KTable interface. The code for this example can
             be found <a
                 href="https://github.com/perkss/clojure-kafka-examples/blob/master/kafka-streams-example/src/kafka_streams_example/ktable_example.clj">here.</a> The
@@ -309,7 +309,7 @@ user-regions (user-region-table builder input-topic-regions)`}</SyntaxHighlighte
         <p>Kafka joins are inner joins and there semantics are that both sides of the join must be there before it
             outputs. So a record from the left stream and a record from the right stream will cause a output that are in
             the same join windows. To use this simply call join on stream and provide the other stream it joins too, a
-            window and the joining function that implemnts ValueJoiner ensure that the keys match!</p>
+            window and the joining function that implements ValueJoiner ensure that the keys match!</p>
 
         <SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={true} wrapLines={true}>{`(.join clicks
              (reify ValueJoiner
@@ -322,7 +322,7 @@ user-regions (user-region-table builder input-topic-regions)`}</SyntaxHighlighte
         <h4>Left Join</h4>
 
         <p>The left join will output a record if in the left side record is present it will always output even if the
-            right side is not present. If only the right side record is present then it will wait untl a left side is
+            right side is not present. If only the right side record is present then it will wait until a left side is
             present for the length of the join window.</p>
 
         <SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={true} wrapLines={true}>{`(.leftJoin clicks
@@ -336,9 +336,9 @@ user-regions (user-region-table builder input-topic-regions)`}</SyntaxHighlighte
 
         <h4>Outer Join</h4>
 
-        <p>The outer join will emit a result if either side a record comes via the left side stream or the righ side
+        <p>The outer join will emit a result if either side a record comes via the left side stream or the right side
             stream and always emit, it will join if the other side is present and send them joined. For example if the
-            left side record is recieved it is sent, then if the right side arrives in the same join window it is then
+            left side record is received it is sent, then if the right side arrives in the same join window it is then
             joined to the left side record and sent together. If the window expires and new record appears on the right
             side then it is output.</p>
 
@@ -356,7 +356,7 @@ user-regions (user-region-table builder input-topic-regions)`}</SyntaxHighlighte
 
         <p>What we have seen so far is the Kafka Streams DSL API which is the recommended way to write Kafka Streaming
             applications. There is a lower level API the processor API. Anyone from a Apache Storm background will be
-            much more familar with this type of API well I was! I have taken the Kafka example and transformed it into
+            much more familiar with this type of API well I was! I have taken the Kafka example and transformed it into
             Clojure using the interop. As you can see there is much more code and is not as clean especially in Clojure
             as implementing a fair few interfaces.</p>
 
@@ -366,7 +366,7 @@ user-regions (user-region-table builder input-topic-regions)`}</SyntaxHighlighte
 
 
         <SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={true} wrapLines={true}>{`(defn word-processor
-  "The first argument to reify method if this. Impleemt the Processor Java API"
+  "The first argument to reify method if this. Implement the Processor Java API"
   [store-name]
   (let [store (atom {})
         context (atom nil)
@@ -410,7 +410,7 @@ user-regions (user-region-table builder input-topic-regions)`}</SyntaxHighlighte
         (dorun (map #(.forward @context (.key %) (str (.value %))) iter))
         (.commit @context)))))`}</SyntaxHighlighter>
 
-        <p>The procssor is wrapped in a ProcessorSupplier so the definition for that is here.</p>
+        <p>The processor is wrapped in a ProcessorSupplier so the definition for that is here.</p>
 
         <SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={true} wrapLines={true}>{`(defn word-processor-supplier
   [store-name]
@@ -442,7 +442,7 @@ user-regions (user-region-table builder input-topic-regions)`}</SyntaxHighlighte
         (.addSink "Sink" "sink-topic" (into-array String ["Process"])))))`}</SyntaxHighlighter>
 
         <h4>Processor API Summary</h4>
-        <p>As you can see the Processor API is more low level and more code but it is much more flexbile and is
+        <p>As you can see the Processor API is more low level and more code but it is much more flexible and is
             sometimes required to be used.</p>
 
         <h3>#Post 7: Kafka and Testcontainers</h3>

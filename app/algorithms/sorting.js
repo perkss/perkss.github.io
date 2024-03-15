@@ -207,7 +207,7 @@ const algorithms = {
     for(int i = 1; i<arr.length; i++) {
         int curr = arr[i];
 
-        // move the elements in the sorted list to be ahead of the new curr eleemnt
+        // move the elements in the sorted list to be ahead of the new curr element
         // [3,4,  choose 1  11, 2,5]
         // move 1 compare against 4 swap [3,1,4,11,2,5]
         // move 1 compare against 3 swap [1,3,4,11,2,5]

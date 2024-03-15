@@ -588,7 +588,7 @@ const mathsForCompSci = {
         <h5>Another example</h5>
 
         <p>For completeness lets try our own example with smaller numbers to make it easier, say we want to share
-            secretly the number 3. Remember this polynomial needs to be in its simpliest form for this to work which
+            secretly the number 3. Remember this polynomial needs to be in its simplest form for this to work which
             threw me.</p>
 
         <BlockMath math="f(x)= 3 + random \times x + random \times x^2"/>

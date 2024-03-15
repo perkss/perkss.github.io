@@ -79,7 +79,7 @@ const algorithms = {
             int pivotIndex = partition(nums, start, end);
             System.out.println("Pivot = " + pivotIndex);
        
-            // piviot index is in final place
+            // pivot index is in final place
             // and it is the kth element so subtract
             if(nums.length-pivotIndex == k) {
                 System.out.println("Return Pivot = " + pivotIndex);
@@ -109,8 +109,8 @@ const algorithms = {
         for(int j = start; j<end; j++) {
             //System.out.println("nums[j]=" + nums[j] + " pivot " + pivot);
             if(nums[j] <= pivot) {
-                i++; // move the smaller elemnt up one as placed
-                // swap with currrent location of smallest
+                i++; // move the smaller element up one as placed
+                // swap with current location of smallest
                 int tmp = nums[i];
                 nums[i] = nums[j];
                 nums[j] = tmp;

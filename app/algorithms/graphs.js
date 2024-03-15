@@ -276,7 +276,7 @@ const algorithms = {
        
               
         while(!queue.isEmpty()) {
-            // get the current levle size
+            // get the current level size
             int levelSize = queue.size();
             
             // add a blank level
@@ -297,7 +297,7 @@ const algorithms = {
                 }
                 
                 levels.get(level).add(node.val);
-                // processed a item in that level reduce its size
+                // processed an item in that level reduce its size
                 levelSize--;
             }
             
@@ -339,7 +339,7 @@ const algorithms = {
                 // take node on level
                 TreeNode curr = queue.poll();
             
-                // if the size of the level is now 1 its the right most node and we add to result
+                // if the size of the level is now 1 it's the right most node and we add to result
                 if(levelSize == 1) {
                     // last item in it
                     result.add(curr.val);
@@ -369,7 +369,7 @@ const algorithms = {
 
             <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
                                wrapLines={true}>{`// dfs approach
-    // to a in order R N L with the usual process reveresed go right first
+    // to an in order R N L with the usual process reveresed go right first
     // keep a level param where it increments on entry and decrements on return
     // keep a list where the level is the index if the level is already populated
     // then we skip it as its blocked from our view
@@ -1367,7 +1367,7 @@ int[][] testMatrix = new int[][] {
     // Using Dijkstra
     public int networkDelayTime(int[][] times, int n, int k) {
         // dijkstra
-        // we choose smallest value from a priority queue (min heap)
+        // we choose the smallest value from a priority queue (min heap)
         // max value will be the delay
         
         // adjacency list of source node to target and weight pair
@@ -1414,7 +1414,7 @@ int[][] testMatrix = new int[][] {
         System.out.println(adjList);
         
         while(!priority.isEmpty()) {
-            // take the vertex with least priority the smallest distance using the distance array
+            // take the vertex with the least priority the smallest distance using the distance array
             int source = priority.poll();
             // get current weight of getting to this node so far
             int sourceWeight = distances[source];
@@ -1425,7 +1425,7 @@ int[][] testMatrix = new int[][] {
             // iterate each connection 
             for(Pair neighbour: destinations) {
                 // calculate the current nodes weight + the new weight to get to this 
-                // target node so we get total distance from source node
+                // target node, so we get total distance from source node
                 int totalDistance = neighbour.weight + sourceWeight;
                 // if the new total distance is less than the old 
                 // update it
@@ -1520,7 +1520,7 @@ int[][] testMatrix = new int[][] {
                // check first we are not at INT max value (infinity) for the distance so we can traverse it
                if(distances[source-1] != Integer.MAX_VALUE && distances[source-1] + weight < distances[target-1]) {
                    System.out.println(distances[source-1] + " weight: " + weight + " distance:" + distances[target-1]);
-                   // We addd the weight of this link to the previous node so we track total distance from source
+                   // We added the weight of this link to the previous node so we track total distance from source
                    distances[target-1] = distances[source-1] + weight;
                    updates++;
                }
@@ -1532,7 +1532,7 @@ int[][] testMatrix = new int[][] {
         int min = -1;
         
         System.out.println(Arrays.toString(distances));
-        // take the max value from the arry
+        // take the max value from the array
         for(int i = 0; i<distances.length; i++) {
             System.out.println(distances[i]);
             if(distances[i] == Integer.MAX_VALUE) {

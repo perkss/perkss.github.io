@@ -8,7 +8,7 @@ const MathPreliminaries = () => (
         <h2>The Art of Computer Programming: Math Preliminaries</h2>
 
         <p>Welcome to the section on one of the most important texts in the computer science world The Art of Computer
-            Programming (Knuth). This section will coer the mathematical preliminaries section of the book from the
+            Programming (Knuth). This section will cover the mathematical preliminaries section of the book from the
             first chapter. The Concrete Mathematics book we also study in the next section has taken the preliminaries
             even further. So if this is tricky for you please read Concrete Mathematics first. </p>
 
@@ -55,7 +55,7 @@ const MathPreliminaries = () => (
 
         <strong>Assume: </strong> <Latex> $1 + 3 + 5 + ... + $$(2n - 1) = n^2$</Latex> <p></p>
 
-        <strong>Step 3: </strong> <Latex>And then prove that the equation is true for $n + 1$. So we substitue $n$ on
+        <strong>Step 3: </strong> <Latex>And then prove that the equation is true for $n + 1$. So we substitute $n$ on
         both sides with $n + 1$ giving the below. We are now working on the next in the sequence so the original left
         side sequence is kept in full including $(2n - 1)$ which is omitted in many texts which I find
         confusing.</Latex>
@@ -87,7 +87,7 @@ const MathPreliminaries = () => (
         <p>
         </p>
 
-        <h4>Fiboncacci Example</h4>
+        <h4>Fibonacci Example</h4>
 
 
     </div>

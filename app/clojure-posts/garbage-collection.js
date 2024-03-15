@@ -6,8 +6,8 @@ const GarbageCollection = () => (
     <div>
         <h2>Garbage Collection</h2>
         <h3>The Basics</h3>
-        <p>As we know Java and Clojure run on the JVM when you compile your Jar it creates Java Bytedcode that the JVM
-            interprets to run. The HOTSPOT JVM actaully can optimize this code on the fly with Just in Time Complilation
+        <p>As we know Java and Clojure run on the JVM when you compile your Jar it creates Java Bytecode that the JVM
+            interprets to run. The HOTSPOT JVM actually can optimize this code on the fly with Just in Time Compilation
             to generate optimizations and compile hotspots of code. When allocating new objects using
             the <strong>new</strong> keyword in Java these objects are allocated to the heap space of memory which runs
             within the JVM. An area of memory that was also allocated was the Permgen space for Class loaders and String
@@ -33,21 +33,21 @@ const GarbageCollection = () => (
         <p>Objects in the JVM are short lived research has shown hence it has been optimized to deal with this fact.
             Therefore the JVM heap has been broken up into generational parts (Young Generation, Old Generation) which
             are also subdivided. As the young generation is where most of the collections occur it is subdivided into
-            Eden, Survior Space 0 and Survivor Space 1. The survivor space is where eden references that are live are
+            Eden, Survivor Space 0 and Survivor Space 1. The survivor space is where eden references that are live are
             copied and one always remains empty so it becomes the destination for the next collection and survivors from
             the other space are copied over. The young generation has many dead objects in it usually and any remaining
             ones can be moved up into survivor space and eventually to Old Generation where garbage collection
             frequencies are reduced. Young generation garbage collections are minor and Old generation collections are
-            major and bothare stop the world events. Major collections are usually slower.</p>
+            major and both are stop the world events. Major collections are usually slower.</p>
 
         <h3>Garbage Collection Options</h3>
         <h4>Parallel GC</h4>
-        <p>The Parallel Collector where new or old generational collections can occur in parllel using the mark and
+        <p>The Parallel Collector where new or old generational collections can occur in parallel using the mark and
             compact method as stated above. There is the concurrent mark and sweep where a thread can run in parallel to
             run Garbage Collection but does not perform compaction.</p>
         <h4>G1</h4>
         <p>The G1 will be the standard garbage collector in Java 9 it focuses still on parallel mark and sweep but
-            focusses on mainly empty areas of memory first to keep larger areas clear on the heap.</p>
+            focuses on mainly empty areas of memory first to keep larger areas clear on the heap.</p>
 
         <h3>Performance Considerations</h3>
         <p>You can focus on measuring pause times of Garbage Collection or the total throughput of your system without
@@ -58,7 +58,7 @@ const GarbageCollection = () => (
         <p>As Clojure runs on the JVM all the considerations above are required. In the background Clojure is making
             objects although you are not explicitly calling new you are using the Clojure API which does in the
             background.</p>
-        <h3>Summary</h3><p>Understanding the JVM and the Garabge collection process is key to using any lagnuaged on the
+        <h3>Summary</h3><p>Understanding the JVM and the Garbage collection process is key to using any language on the
         JVM so take this stuff seriously.</p>
     </div>
 

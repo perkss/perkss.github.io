@@ -207,7 +207,7 @@ const algorithms = {
         // will fix the ones left of the left pointer
         for(int i = left; i<right; i++) {
             swap(nums, left, i); // ABC swap A and B to BAC
-            // increment left as want permuations to right of fixed value
+            // increment left as want permutations to right of fixed value
             permutate(nums, left+1, right, permutations);
             // backtrack and rearrange back from swap to original ABC to calculate
             swap(nums, left, i);
@@ -436,7 +436,7 @@ const algorithms = {
 // 1) Identify ptr with lesser value
 // 2) is ptr great than or equal to max of that side? 
 // yes -> update max on that side
-// no -> get water for ptr valu and add on total
+// no -> get water for ptr value and add on total
 // move ptr inward
 // repeat for other ptr                           
     public int trap(int[] height) {

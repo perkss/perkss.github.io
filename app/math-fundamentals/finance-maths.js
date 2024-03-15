@@ -18,13 +18,13 @@ const FinanceMathematics = () => (
 
 <p><InlineMath math={"\reals ^2"}></InlineMath> the two dimensional real coordinate space is just the coordinate space that is found in the coordinates plane this is one representation of it. It is all possible real value two tuples (which is a ordered list of two numbers). Vectors are object in mathematics that have both magnitude and direction. Vectors can be added by simply adding each part of one vector to the other and this will create a new vector. The origin is not relevant when plotting vectors its tail can start at (0,0) but it can be plotted anyway. The magnitude and direction is the key part. The sum of two vectors shifts the original vectors is the same as plotting where the tail of vector A is used to start Vector B, it will align with the resulting vector C.</p>
 
-<p>Vectors can also be mulitplied by a scalar a single number. You simply create a new vector with the values from the old multiplied by the scalar. The direction of the original vector remains but the magnitude increases. A scalar can be a negative number and this will reduce the magnitude.</p>
+<p>Vectors can also be multiplied by a scalar a single number. You simply create a new vector with the values from the old multiplied by the scalar. The direction of the original vector remains but the magnitude increases. A scalar can be a negative number and this will reduce the magnitude.</p>
 
         <h2>Computational Thinking</h2>
 
         <h3>Introduction</h3>
 
-        <p>Declarative knowledge is composed of a statement of facts. Imperative knowledge is the how to knowledge that shares recipes for deducing information like algorithms. To create these algorithms for a computer we need a programming language. Alan Turing described a hypotethetical computing device in 1936 stating the machine had unbounded memory in the form of tape on which one could write zeroes and ones with some primitive read, move and write instructions for the tape. The Church-Turing thesis states if a function is computable a Turing Machine can run it. Not all problems have a computational solution and the halting problem states it is undecidable the problem is whether an arbitrary program will will finish running or continue to run forever.</p>
+        <p>Declarative knowledge is composed of a statement of facts. Imperative knowledge is the how to knowledge that shares recipes for deducing information like algorithms. To create these algorithms for a computer we need a programming language. Alan Turing described a hypothetical computing device in 1936 stating the machine had unbounded memory in the form of tape on which one could write zeroes and ones with some primitive read, move and write instructions for the tape. The Church-Turing thesis states if a function is computable a Turing Machine can run it. Not all problems have a computational solution and the halting problem states it is undecidable the problem is whether an arbitrary program will will finish running or continue to run forever.</p>
 
         <p>Turing completeness is when a programming language can be used to simulate a Turing Machine.</p>
 
@@ -44,9 +44,9 @@ const FinanceMathematics = () => (
         <p>Data can be spread out (distributed) in different ways it can be more to the left, more to the right or completely jumbled up, or it can look like a bell shape.</p>
 
         <h5>Normal Distributions</h5>
-        <p>A <strong>histogram</strong> is used to plot the distributions of values in a set of data. The data is first sorted and then divided into a set of bins. <strong>Normal Distributions</strong> peak at the mean and fall off symmetrically before and after the mean. This resembles the shape of a bell therefore is sometimes called a bell curve. Many naturally occurring distributuons are normal distributions. These distributions can be used for create confidence levels. Confidence levels provide a range and a percentage that a unknown value will be in this range with this percentage of confidence. Think about polls you may indicate that a result will have a 60% of the votes with a +/- 5% range. This having a confidence interval of size 10 and a confidence level of 95%. This provides a indicator of the reliability of the estimate and almost always increasing the confidence level will increase the confidence interval. Error Bars are a good way to visualize confidence intervals.</p>
+        <p>A <strong>histogram</strong> is used to plot the distributions of values in a set of data. The data is first sorted and then divided into a set of bins. <strong>Normal Distributions</strong> peak at the mean and fall off symmetrically before and after the mean. This resembles the shape of a bell therefore is sometimes called a bell curve. Many naturally occurring distributions are normal distributions. These distributions can be used for create confidence levels. Confidence levels provide a range and a percentage that a unknown value will be in this range with this percentage of confidence. Think about polls you may indicate that a result will have a 60% of the votes with a +/- 5% range. This having a confidence interval of size 10 and a confidence level of 95%. This provides a indicator of the reliability of the estimate and almost always increasing the confidence level will increase the confidence interval. Error Bars are a good way to visualize confidence intervals.</p>
 
-        <p>Empirical means relying on experience of past observations without regard to theory. The standard deviation is how spread out numbers are in a normal distribution geenrally the empirical rule is that we find 68% of values are in 1 std deviation. 95% of the data will fall in 2 std deviations. And almost all the data 99.7% will fall within 3 std deviations. <a href={"https://www.mathsisfun.com/data/standard-normal-distribution.html"}>[MathsIsFun]</a></p>
+        <p>Empirical means relying on experience of past observations without regard to theory. The standard deviation is how spread out numbers are in a normal distribution generally the empirical rule is that we find 68% of values are in 1 std deviation. 95% of the data will fall in 2 std deviations. And almost all the data 99.7% will fall within 3 std deviations. <a href={"https://www.mathsisfun.com/data/standard-normal-distribution.html"}>[MathsIsFun]</a></p>
 
         <h5>Uniform Distributions</h5>
 
@@ -62,12 +62,12 @@ const FinanceMathematics = () => (
 
 
         <h5>Benfords Distribution</h5>
-        <p>Benfords distribution is an interesting one for example if you had a large set of decimal integers you would expect that the first digit to appear for each would be about a ninth of the time due to 1-9. In reality this has not turned out to be true and Benford has a formula that is more accurate for naturally ocurring data sets such as the starting digit of iPhone passcodes. Benfords law is that a set of decimal numbers follow it if the first digit <i>d</i> is consistent with <InlineMath math={"P(d) = {log_10} (1 + 1/d)"}></InlineMath> </p>
+        <p>Benfords distribution is an interesting one for example if you had a large set of decimal integers you would expect that the first digit to appear for each would be about a ninth of the time due to 1-9. In reality this has not turned out to be true and Benford has a formula that is more accurate for naturally occurring data sets such as the starting digit of iPhone passcodes. Benfords law is that a set of decimal numbers follow it if the first digit <i>d</i> is consistent with <InlineMath math={"P(d) = {log_10} (1 + 1/d)"}></InlineMath> </p>
 
 
   <h4>Random Walks</h4>
 
-  <p>A random walk is a random process where it describes a path that consists of a sucession of random steps in a mathematical space. They are widely used to model physical processes, biological processes and social processes like the stock market moving. They can be used for simulation of events and you can manipulate them with biases.</p>
+  <p>A random walk is a random process where it describes a path that consists of a succession of random steps in a mathematical space. They are widely used to model physical processes, biological processes and social processes like the stock market moving. They can be used for simulation of events and you can manipulate them with biases.</p>
 
   <h4>Monte Carlo Simulation</h4>
 

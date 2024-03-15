@@ -43,11 +43,11 @@ const CassandraClojure = () => (
             href="https://github.com/mpenet/alia">alia</a> as the API.
             <SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={true}
                                wrapLines={true}>{`(require '[qbits.alia :as alia])\n(def cluster (alia/cluster {:contact-points ["127.0.0.1"]}))\n(def session (alia/connect cluster))\n(alia/execute session "USE perkss-keyspace;")`}</SyntaxHighlighter>
-            As before we have created a cluster reference and a session reference using def. Which then use ecute
+            As before we have created a cluster reference and a session reference using def. Which then use execute
             session to the persss-keyspace as before, very simple stuff. Lets now also insert and read some
             data. <SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={true}
                                      wrapLines={true}>{`(alia/execute session "INSERT INTO users (lastname, city, skills) VALUES ('perkss', 'London', 'clojure');")\n(alia/execute session "SELECT * FROM users WHERE lastname='perkss'")\n({:firstname "perkss", :city "London", :skills "clojure"})`}</SyntaxHighlighter> Using
-            alia execute we can pass the CQL to be executed when executing queries the results are retrned as maps. To
+            alia execute we can pass the CQL to be executed when executing queries the results are returned as maps. To
             improve the performance prepared statements can be used for example here we could have
             done. <SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={true}
                                      wrapLines={true}>{`(def prepared-statement (alia/prepare session "select * from users where lastname=?;"))\n(alia/execute session prepared-statement {:values ["perkss"]})`}</SyntaxHighlighter> Although

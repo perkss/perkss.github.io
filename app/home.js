@@ -104,10 +104,10 @@ const home = {
             <p className={"cv"}>Hello my name is <i>Stuart Perks</i>. I am an experienced software engineer living in
                 London UK. I
                 have a keen
-                interest in Distributed
-                Systems with a focus on database internals and stream processing. Some of the open source projects I
+                interest in Green Computing considering the environmental aspects of software. Along with Distributed
+                Systems with a particular focus on database internals and stream processing. Some of the open source projects I
                 have
-                contributed to are Kafka, Beam, Reactor-Kafka and Samza.</p>
+                contributed to are Apache Kafka, Apache Beam, Reactor-Kafka, GSF Impact Framework and Apache Samza.</p>
             <p className={"cv"}>Please hit me up and say hello on LinkedIn <SocialIcon style={{height: 35, width: 35}}
                                                                                        url="https://www.linkedin.com/in/stuart-perks/"/> and
                 check out my GitHub <SocialIcon style={{height: 35, width: 35}} url="https://github.com/perkss"/>.</p>
@@ -153,7 +153,7 @@ const home = {
                 the
                 topics I cover are the <strong>Fundamentals of Mathematics&#39;s</strong> starting with
                 a few
-                Prerequisites from Stanford and finally looking in depth at the book Concrete Mathematics. A study
+                pre-requisites from Stanford and finally looking in depth at the book Concrete Mathematics. A study
                 of <strong>Mathematics for Computer Science</strong> using course content from <a
                     href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-042j-mathematics-for-computer-science-spring-2015/index.htm">MIT</a> and <a
                     href="http://web.stanford.edu/class/cs103/">Stanford</a> follows the fundamental
@@ -161,16 +161,16 @@ const home = {
                 languages such as C, Kotlin, Java, Python and Clojure. We then have a dig into the world of <strong>Functional
                     Programming</strong> using the text book <a href="https://mitpress.mit.edu/sicp/">Structure and
                     Interpretation of Computer Programs (SICP)</a> as the basis and Clojure as the main
-                language. <strong>Hipster
-                    Clojure</strong> contains some great insight into our Clojure projects as well as some blog posts on
+                language. <strong>Hipster Clojure</strong> contains some great insight into our Clojure projects as well as some blog posts of
                 interesting work going on in that space and some of the open source frameworks available such as Kafka
                 and
                 Cassandra! The Kafka section
-                is super interesting and is very full would definitely recommend it! Check out <strong>Low Level
+                is super interesting and is very detailed would definitely recommend it! Check out <strong>Low Level
                     Programming</strong> for some Pointer Madness, Memory Models and programming close to the machine.
                 Which
-                then leads to some <strong>Distributed Systems</strong> knowledge. Finally a section
-                on the overused term <strong>DevOps</strong> which will cover a large range of items.</p>
+                then leads to some <strong>Distributed Systems</strong> knowledge. A section
+                on the overused term <strong>DevOps</strong> which will cover a large range of items. Leading us to the very important topic of <strong>Green Computing</strong>.</p>
+
             <p><strong>Most of all have fun!</strong></p>
 
 

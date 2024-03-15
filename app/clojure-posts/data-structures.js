@@ -8,7 +8,7 @@ const DataStructuresClojure = () => (
     <div>
         <h2>Data Structures</h2>
         <h3>Some Background</h3>
-        <p>Clojure data structures are immutable and peristent and are used in abstractions rather than the concrete
+        <p>Clojure data structures are immutable and persistent and are used in abstractions rather than the concrete
             implementations. Small and widely supported abstractions are one of Clojures main principles. There are
             seven primary abstractions for Clojure data structures and we will detail these below.</p>
 
@@ -27,8 +27,8 @@ const DataStructuresClojure = () => (
             be lazy so getting the count in the list has a cost associated too it.</p>
         <h4>Associative</h4>
         <p>The associative abstraction is canonical to the Map data structure. It defined by four definitions assoc
-            which builds new associates between keys and values within the given collection. dissoc taht drops
-            associations, get that looks up a value for a partcular key and contains? that returns true only if the
+            which builds new associates between keys and values within the given collection. dissoc tact drops
+            associations, get that looks up a value for a particular key and contains? that returns true only if the
             collection has a value associated with a given key.</p>
         <h4>Indexed</h4>
         <p>Indexed abstractions allows accessing data in Vectors by the index. It has two
@@ -42,7 +42,7 @@ const DataStructuresClojure = () => (
             stack. <strong>pop</strong> for obtaining the stack with its top value removed and <strong>peek</strong> for
             obtaining the value on the top of the stack. Both lists and vectors can be used as stacks.</p>
         <h4>Set</h4>
-        <p>The sets abstraction is minimal as there is a standard libaray providing a suite of further operations
+        <p>The sets abstraction is minimal as there is a standard library providing a suite of further operations
             in <strong>clojure.set</strong>. The abstraction for set contains <strong>disj</strong> that allows the
             removal of values from a set.</p>
         <h4>Sorted</h4>
@@ -51,7 +51,7 @@ const DataStructuresClojure = () => (
         <h3>Data Structure Types</h3>
         <h4>Lists</h4>
         <p>A list in Clojure is a simple data type but not commonly used because they are only efficient at data access
-            at the head of the list. The data structrue behind Clojure lists are a single linked list. Hence they do not
+            at the head of the list. The data structure behind Clojure lists are a single linked list. Hence they do not
             support efficient random access. This has benefits of being persistent data structure and more memory
             efficient. <strong>conj</strong> adds to the beginning of the list due to this data structure. Finding the
             count of a list is O(1)</p>

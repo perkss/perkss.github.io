@@ -199,7 +199,7 @@ public int fib(int n) {
             }
         }
         
-        // as we have the optio of two steps to get to the top take the min of the previous two
+        // as we have the option of two steps to get to the top take the min of the previous two
         return Math.min(stepToCost.get(n-1), stepToCost.get(n-2));
     }`}</SyntaxHighlighter>
 

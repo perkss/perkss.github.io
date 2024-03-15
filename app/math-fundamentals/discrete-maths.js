@@ -71,7 +71,7 @@ const DiscreteMaths = () => (
             another 6 then another 5 items left and you have chosen five items. This gives a total of <InlineMath
                 math="10 \times 9 \times 8 \times 7 \ times 6 = (n - m + 1) = \frac{10!/5!} = 30240"/> where n = 10 and
             m = 5.
-            This is the formulate for permuations where order matters. If order does not matter we have the possible
+            This is the formulate for permutations where order matters. If order does not matter we have the possible
             options for the five are . <InlineMath
                 math="5 \times 4 \times 3 \times 2 \ times 1 = 5!"/> this plugged in. If we had been choosing 4 from 10
             it would be <InlineMath
@@ -103,7 +103,7 @@ const DiscreteMaths = () => (
             B <InlineMath math="\{4,5\}"/> then a surjective function could be <Latex>$f(a) = 4, f(b) = 5, f(c) =
                 4$</Latex></p>
 
-        <h5>Injective and Surjective thats a Bijective Function</h5>
+        <h5>Injective and Surjective that's a Bijective Function</h5>
         <p>Can you see above how a function can be injective and surjective which would make it Bijective? Well if the
             Domain only maps 1-1 to the codomain and the codomain is fully assigned then it is! Simple. If the codomain
             is not fully assigned from the domain and two images from the preimage point to the same image in the
@@ -140,7 +140,7 @@ const DiscreteMaths = () => (
 
         <h5>Partial Function</h5>
         <p>A partial function allows a undefined mapping for some elements in the domain set to the codomain such as a
-            youngest child function for parents with no childen. When domain
+            youngest child function for parents with no children. When domain
             of <Latex>$f$</Latex> equals <Latex>$A$</Latex> we say that <Latex>$f$</Latex> is a total function.</p>
 
 
@@ -278,7 +278,7 @@ const DiscreteMaths = () => (
 
         <h4>Special Integer Sequences</h4>
 
-        <p>With the above we were given the closed formula (the pattern the sequence is running in forumla) a recurrence
+        <p>With the above we were given the closed formula (the pattern the sequence is running in formula) a recurrence
             relation or other type of general rule. What if this is not provided, well given the first few values of the
             sequence then we have to make an educated conjecture (guess) about the identity of the sequence. Some common
             things to look for; are there runs of the same value in the sequence?, are terms made from previous terms by
@@ -345,7 +345,7 @@ const DiscreteMaths = () => (
         <h3 id={"numbertheory"}>Number Theory</h3>
 
         <h4>Division</h4>
-        <p>When <i>a</i> divides <i>b</i> we say that <i>a</i> is a facotr or divisor of <i>b</i> and that <i>b</i> is a
+        <p>When <i>a</i> divides <i>b</i> we say that <i>a</i> is a factor or divisor of <i>b</i> and that <i>b</i> is a
             multiple of <i>a</i>. When dividing we gave the quotient as q, a as the dividend, d as the divisor and r as
             the remainder. It follows this formula.</p>
 

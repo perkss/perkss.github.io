@@ -60,7 +60,7 @@ const algorithms = {
                 subroutine. When a subroutine completes and executes the return statement it is popped off the stack. If
                 an exception is thrown (c++ behaviour) it will walk the stack until it finds a handler, unwind the stack
                 to to the handler and let it handle it. Back to the plain data structure, if we pop an empty stack it
-                underflows, if we push to a full stack it overflows. Stacks are usually implemented with a linked list
+                underflow's, if we push to a full stack it overflows. Stacks are usually implemented with a linked list
                 node as the <a href={"https://introcs.cs.princeton.edu/java/43stack/Stack.java.html"}>structure</a>.</p>
 
             <p>In Java there is a Deque interface that is implemented by LinkedList and ArrayDeque. The equivalent

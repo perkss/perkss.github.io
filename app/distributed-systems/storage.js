@@ -35,7 +35,7 @@ const Storage = () => (
             order we can only append in sorted order. Therefore we use a in memory structure to maintain this order and
             then write to disk. This structure allows simple lookup with sparse keys as we know the table is ordered so
             if we index spare keys say Stuart and Tom, and we are looking for Tammy we know it will be between Stuart
-            and Tom in the SSTable. Merging is also simplier as we can do a merge of two SSTables using an approach
+            and Tom in the SSTable. Merging is also simpler as we can do a merge of two SSTables using an approach
             similar to the merge part of merge sort. Take each SSTable then ready from the beginning of each and merge
             in the ordered result into the new SSTable. These files can be variable size.</p>
 
@@ -50,7 +50,7 @@ const Storage = () => (
             until found. A bloom filter can optimise this by stating if the key is definitely not in the store.
         </p>
 
-        <p>Cleaning up overwritten or deleted keys or old data is done via compaction from time to time and the tabls
+        <p>Cleaning up overwritten or deleted keys or old data is done via compaction from time to time and the tables
             can be merged
             into new ones that are more optimised.</p>
 

@@ -247,7 +247,7 @@ const algorithms = {
 
             <p>Big O notation lets you say things that can be true but are not the most accurate for example we could
                 say Binary Search is <InlineMath math="O(n)"></InlineMath> and this is true as it will never worse than
-                that. Like saying I have 3 cards in my wallet but could say I have an amount of cards in my wallet thats
+                that. Like saying I have 3 cards in my wallet but could say I have an amount of cards in my wallet that's
                 no more than 10 cards. Big O gives us a upper bound where for a large enough input the running time is
                 at most this constant times the running time.</p>
 

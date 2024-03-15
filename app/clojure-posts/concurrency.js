@@ -20,17 +20,17 @@ const ConcurrencyClojure = () => (
         <p>Thread safety is key because without it code can run with subtle differences in the ordering of operations.
             For example mutable data that is not protected and modified for example incrementing a field counter with a
             method can result in the same result being returned for two different threads as they can execute the code
-            in parallel read the current value before the other has updated incremement and then return the same value.
+            in parallel read the current value before the other has updated increment and then return the same value.
             This type of issue is referred to as a race condition. </p>
         <h4>Liveness Hazards</h4>
         <p>A liveness failure is one where the process will get into a state it cannot get out of. This can happen in
             single threaded processes if the program enters a infinite loop. The risk of liveness failures increases
             with multi threaded programs these include <strong>deadlock</strong> where Thread A waits for a resource
-            that Thread B holds exclusively andnever releases it Thread A will wait forever unless it has a timeout.
+            that Thread B holds exclusively and never releases it Thread A will wait forever unless it has a timeout.
             Another liveness failure is <strong>starvation</strong> where a Thread A cannot access a shared resource
             regularly because it for example is locked by another greedy Thread B. Finally <strong>livelock</strong> can
             happen when Thread A responds to a Thread B action but Thread B has also responded to Thread A action. For
-            example walking down the corrider person A moves left to walk passed, but person B moves right to walk pass
+            example walking down the corridor person A moves left to walk passed, but person B moves right to walk pass
             they block each other, then they move the opposite direction again blocking each other and continually do
             this.</p>
         <h4>Performance Hazards</h4>
@@ -43,7 +43,7 @@ const ConcurrencyClojure = () => (
         <h4>Thread Safety</h4>
         <p>In Java there are many instances of objects and within these objects there is mutable data that can be
             modified concurrently by Threads, this data needs protecting. Thread safety comes into play here and the
-            decision is made simply if a class is going to be accessed by multiple threads. For Java synchronzation is a
+            decision is made simply if a class is going to be accessed by multiple threads. For Java synchronization is a
             key method of forming thread safety of a class. This mutable data is one reason why Functional Programming
             is powerful for concurrent processing because of its focus on immutable data.</p>
         <p>Locking enables single access to data and parts of code in Java. Reentrant locks are important as they enable
@@ -70,7 +70,7 @@ const ConcurrencyClojure = () => (
             if data is only accessed from a single thread then you do not, this is thread confinement. An example of
             this is JDBC Connection objects they are not required to be thread safe as most requests for example a
             servlet request are run synchronously and the Connection pool will not return the same connection thread
-            until it has fullly processed making it thread safe. </p>
+            until it has fully processed making it thread safe. </p>
         <p>Stack confinement is a special case where local variables are only used and they are confined to the Stack.
             Thread confinement can be achieved formally by using the ThreadLocal class that provides get and set
             accessors and maintains a copy of the value for each thread.</p>
@@ -81,7 +81,7 @@ const ConcurrencyClojure = () => (
 
         <h4>Safe Publication</h4>
         <p>At certain times objects will be required to be shared across threads in these cases we need protective
-            techniques. Creating objects that are shared as a field a common idiom is to use static initalization as the
+            techniques. Creating objects that are shared as a field a common idiom is to use static initialization as the
             JVM will publish these at class initialization time causing them to be thread safe. For mutable objects to
             be shared safely they must be safely published and either be thread safe or guarded by a lock.</p>
 
@@ -92,7 +92,7 @@ const ConcurrencyClojure = () => (
 
         <h4>Introduction</h4>
         <p>Functional programming leads itself well to concurrent programming because of immutable data and pure
-            functions. Clojure aims to minmise mutability, when you do need to manage mutable data you can use Clojure
+            functions. Clojure aims to minimise mutability, when you do need to manage mutable data you can use Clojure
             reference types to isolate that state and constrain its modification methods. Java interop means you can
             always fallback to the Java methods of Thread safety discussed above. The Clojure and functional approach to
             immutable data structures enables much better concurrency features, in Java world you have mutable state
@@ -105,7 +105,7 @@ const ConcurrencyClojure = () => (
             the reference type section.</p>
         <h4>Delays</h4>
         <p>Delays enable the suspension of some body of code and evaluating it on demand so when deref is called or
-            force. This body will only be evalauted once so its result is cached for fast future responses. This enables
+            force. This body will only be evaluated once so its result is cached for fast future responses. This enables
             delaying some potential costly function call until its absolutely necessary to call. Here println is only
             called once as the result is cached of :done.</p>
         <SyntaxHighlighter language='clojure' style={darcula} showLineNumbers={true}

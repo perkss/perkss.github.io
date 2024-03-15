@@ -99,7 +99,7 @@ const ConcreteMathematics = () => (
 
         <p><Latex>Resulting in: $2^n - 2 + 1$. Equalling $2^n - 1$ which is the proposed solution so this proof is
             correct. Throughout the rest of the book it will mainly focus on the recurrence relation part as the first
-            two steps are provided. A recap 1: Look at small cases 2: Find and prove a mathematcal expression for theses
+            two steps are provided. A recap 1: Look at small cases 2: Find and prove a mathematical expression for theses
             small cases 3: FInd and prove a closed form for our mathematical expression in step 2.</Latex></p>
 
         <p><Latex>The problem with solving like this is that we had to make a guess. Alternatively we could simplify the
@@ -159,7 +159,7 @@ const ConcreteMathematics = () => (
 
         <h3>Discrete Probability</h3>
 
-        <h3>Asymptotics</h3>
+        <h3>Asymptotic</h3>
 
     </div>
 
