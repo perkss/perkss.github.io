@@ -143,17 +143,13 @@ const home = {
             <h3>Perks of Computer Science</h3>
 
             <p>Congratulations on finding <strong>The Perks of Computer Science</strong>. This is my memory dump
-                of knowledge and a place to structure and focus my learning. I will have some very
-                basic stuff such as the Maths starting very basic (got to have those foundations solid) but then
-                journeying
-                into more complex topics such as
+                of technical knowledge and a place to structure and focus my learning. We will journey from the foundations
+                of Mathematics starting basic (got to have those foundations solid) but then move into more complex topics such as
                 Distributed Algorithms please scan through the sections for more in depth content pages.</p>
 
-            <p>Please check the side menu on the top left or the buttons at the bottom to link to the sections. Some of
-                the
-                topics I cover are the <strong>Fundamentals of Mathematics&#39;s</strong> starting with
-                a few
-                pre-requisites from Stanford and finally looking in depth at the book Concrete Mathematics. A study
+            <p>Please check the side menu on the top left or the buttons at the bottom to link to the sections.</p>
+            <p>Some of the topics I cover are the <strong>Fundamentals of Mathematics&#39;s</strong> starting with
+                a few pre-requisites from Stanford and finally looking in depth at the book Concrete Mathematics. A study
                 of <strong>Mathematics for Computer Science</strong> using course content from <a
                     href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-042j-mathematics-for-computer-science-spring-2015/index.htm">MIT</a> and <a
                     href="http://web.stanford.edu/class/cs103/">Stanford</a> follows the fundamental
@@ -161,15 +157,13 @@ const home = {
                 languages such as C, Kotlin, Java, Python and Clojure. We then have a dig into the world of <strong>Functional
                     Programming</strong> using the text book <a href="https://mitpress.mit.edu/sicp/">Structure and
                     Interpretation of Computer Programs (SICP)</a> as the basis and Clojure as the main
-                language. <strong>Hipster Clojure</strong> contains some great insight into our Clojure projects as well as some blog posts of
+                language. <strong>Hipster Clojure</strong> contains some great insight into practical Clojure projects as well as some blog posts of
                 interesting work going on in that space and some of the open source frameworks available such as Kafka
-                and
-                Cassandra! The Kafka section
-                is super interesting and is very detailed would definitely recommend it! Check out <strong>Low Level
+                and Cassandra! The Kafka section has been very popular and is very detailed would definitely recommend it! Check out <strong>Low Level
                     Programming</strong> for some Pointer Madness, Memory Models and programming close to the machine.
-                Which
-                then leads to some <strong>Distributed Systems</strong> knowledge. A section
-                on the overused term <strong>DevOps</strong> which will cover a large range of items. Leading us to the very important topic of <strong>Green Computing</strong>.</p>
+                Which then leads to some <strong>Distributed Systems</strong> knowledge. A section
+                on the overused term <strong>DevOps</strong> which will cover a large range of items.
+                Leading us to the very important topic of <strong>Green Computing</strong>.</p>
 
             <p><strong>Most of all have fun!</strong></p>
 
