@@ -30,6 +30,8 @@ const DiscreteMaths = () => (
             <li><Link to={"#logic"}>Logical Framework</Link></li>
             <li><Link to={"#naturalnumbers"}>Natural Numbers</Link></li>
             <li><Link to={"#integers"}>Integers</Link></li>
+            <li><Link to={"#artof"}>Art of Computer Programming Prelimineries</Link></li>
+            <li><Link to={"#concrete"}>Concrete Mathematics</Link></li>
         </ul>
 
         <br/>
@@ -331,7 +333,8 @@ const DiscreteMaths = () => (
             an odd number so we take two full pairs and the one half pair in this example the <i>3</i> which is half
             if <i>6</i> and then we do <InlineMath math="2.5 \times 6 = 15 = 1 + 2 + 3 + 4 + 5"/>. If we take the
             sequence from 1 to <i>n</i> we call this the <strong>arithmetic sequence</strong> with the sum of the
-            smallest and largest numbers is <InlineMath math="n + 1"/> as there are <i>n</i> numbers there are  <InlineMath
+            smallest and largest numbers is <InlineMath math="n + 1"/> as there are <i>n</i> numbers there
+            are <InlineMath
                 math="\frac{n}{2}"/> pairs. As we saw before we took the pairs. So we have <InlineMath
                 math="(n + 1)(\frac{n}{2})"/> and this equals <InlineMath math="\frac{n^2}{2} + \frac{n}{2}"/> as you
             expand out the bracket terms. <InlineMath math="n * \frac{n}{2}"/> and <InlineMath math="1 * \frac{n}{2}"/>.
@@ -485,6 +488,247 @@ const DiscreteMaths = () => (
             the positive version on the right side. In the explicit example for <i>-2</i> remember to subtract the right
             side from the left of the pair. For example <Latex>$(1,3) = -2 = 1 - 3$. Then the formula holds true for the
                 relation of the pairs provided neat stuff.</Latex></p>
+
+        <h2 id={"artof"}>The Art of Computer Programming: Math Preliminaries</h2>
+
+        <p>Welcome to the section on one of the most important texts in the computer science world The Art of Computer
+            Programming (Knuth). This section will cover the mathematical preliminaries section of the book from the
+            first chapter. The Concrete Mathematics book we also study in the next section has taken the preliminaries
+            even further. So if this is tricky for you please read Concrete Mathematics first. </p>
+
+        <h3>Mathematical Induction</h3>
+
+        <p>The book starts with a proof using Mathematical Induction. (A initially very scary concept, but please think
+            like a mathematician not an engineer). The steps for mathematical induction are: </p>
+        <ol className="text-list">
+            <li>Give a proof that <Latex>$P(1)$</Latex> is true. Simply verify that the method works for the
+                number <Latex>$1$</Latex>.
+            </li>
+            <li>Assume that the method works for an arbitrary number, <Latex>$n$ or sometimes $k$ is used but it means
+                the same</Latex>.
+            </li>
+            <li>Give a proof that “if all of <Latex>$P(1), P (2), ..., P (n)$</Latex> are true, then <Latex>$P(n +
+                1)$</Latex> is also true”; this proof should be valid for any positive integer <Latex>$n$. Simply prove
+                that if the method works for an arbitrary number $k$, then it work for the number $k+1$</Latex>, too.
+            </li>
+            <li>After the 3 steps were completed, then the formula works for any number.</li>
+        </ol>
+
+        <p>Mathematical induction is used as a conclusive proof for an infinite number of statements one for
+            each <Latex>$n$</Latex>. The term induction is used as one must somehow define what is to be proved before
+            one can apply the technique of mathematical induction.</p>
+        <h4>So Called Simple Example</h4>
+        <p>Many books make this seem so easy and skip out a lot of steps so we will try cover this as they say simple,
+            but as we say not so simple example. The example is that the sums of odd numbers is equal to the amount of
+            odd numbers in the sum to the power or 2 for example.</p> <p><Latex>$1=1^2$$, 1+3=2^2$$, 1+3+5=3^2 . .
+        .$</Latex></p>
+        <p>This can be formulated as: <Latex>$1 + 3 + 5 . . . + $$(2n - 1) = n^2$.</Latex></p><p>Now lets do the fun
+        part that looks scary but is actually simple when you understand step 2 and remember this is the sum to prove
+        this by mathematical induction.</p>
+
+
+        <strong>Step 1:</strong> Firstly we need to prove that the equation is valid when <Latex>$n = 1$. So we go ahead
+        and substitute $n$ for $1$. When $n = 1$, instead of $(2n-1)$ we have $(2(1) - 1) = 1$, so the statement holds
+        for $n = 1$ as $2 \times 1 = 2$ and then $2 - 1 = 1$.</Latex>
+
+        <p></p>
+
+
+        <strong> Step 2:</strong><Latex> We then need to assume that the equation is true for $n$.</Latex> (This is the
+        part that always tripped me up before as we make the assumption that the proposed equation is true.)<br/>
+
+        <strong>Assume: </strong> <Latex> $1 + 3 + 5 + ... + $$(2n - 1) = n^2$</Latex> <p></p>
+
+        <strong>Step 3: </strong> <Latex>And then prove that the equation is true for $n + 1$. So we substitute $n$ on
+        both sides with $n + 1$ giving the below. We are now working on the next in the sequence so the original left
+        side sequence is kept in full including $(2n - 1)$ which is omitted in many texts which I find
+        confusing.</Latex>
+        <p></p>
+        <strong> Prove: </strong> <br/><Latex> $1 + 3 + 5 +...+ $$(2(n + 1) - 1) = (n + 1)^2$</Latex>
+        <p>So lets now prove this by working on simplifying the left hand side only to match the right hand side to see
+            if the proof is true for <Latex>$n + 1$</Latex> values.</p>
+        <br/>
+        <strong>Proof: </strong><br/> <Latex> $1 + 3 + 5 +... + $$(2(n + 1) - 1)$</Latex>(The left side from
+        above) <br/><br/>
+        <Latex> $= 1 + 3 + 5 + ... + (2n - 1) + (2n + 2 - 1)$</Latex> (simplify we can see here the <Latex>$(2n -
+        1)$</Latex> has returned as this is expected as we are working on the next in the sequence <Latex>$n +
+        1$</Latex> so the original remains.)<br/><br/>
+        <Latex> $= n^2 + (2n + 2 - 1)$</Latex> (by assumption Step 2 we can replace the left side of the equation
+        with <Latex>$n^2$</Latex>)<br/><br/>
+        <Latex> $= n^2 + 2n + 1$</Latex>(simplify) <br/><br/>
+        <Latex> $= (n + 1)^2$</Latex>(See math prerequisites we did this example of simplification from the line
+        above.) <br/><br/>
+
+        Brilliant we have simplified the left side to match the right side, by induction, for every positive
+        integer <Latex>$n,
+        1 + 3 + 5 + ... + (2n - 1) = n^2$</Latex>. This is also proved visually using the square table in the book so
+        please check that out. Some pointers it is the whole numer of squares up to the number so <Latex>$3$ is four
+        squares as its the second step so $2 \times 2 - 1 = 3.$ Then you need to add the extra square from $1$ so that
+        is $4$ which is $n^2$ so $2^2 = 4$ is equal to the added number of squares from the bottom left corner of
+        $4$.</Latex>
+
+
+        <p>
+        </p>
+
+        <h4>Fibonacci Example</h4>
+
+
+        <h2 id={"concrete"}>Concrete Mathematics</h2>
+
+        <p>The introduction chapter of Concrete Mathematics is tough, I have found that with many Computer Science
+            Textbooks, so its sometimes good to revisit the first chapter once you have tried the relevant chapters, as
+            the first usually covers a snapshot from the rest of the book. </p>
+
+        <h3>Recurrent Problems</h3>
+
+        <h4>Tower of Hanoi Problem: The Maths Explained</h4>
+
+
+        <p><Latex>The Tower of Hanoi problem is a bit of fun, but the recurrence math behind it is intimidating, I hope
+            we can walk through this and manage to get you to understand it as I have managed too with a lot of
+            effort!</Latex></p>
+
+
+        <p>The Tower of Hanoi problem is defined as given three pegs with one peg that has eight disks on it stacked in
+            decreasing order. Transfer the disks to another peg moving only one disk at a time and never having a larger
+            disk on top of a smaller one. There are some great examples of this <a
+                href="https://www.mathsisfun.com/games/towerofhanoi.html">here</a>. Concrete Mathematics suggests some
+            key points of tackling a problem like this firstly generalise the problem so what would happen if there
+            were <Latex>$n$ disks? Then we can scale down the problem and look at small cases first what if there were
+                only one or two disks? Then NAME and CONQUER basically add some notation to the problem. </Latex></p>
+        <p><Latex>Here they say $T_n$ is the minimum number of moves to transfer $n$ disks from one peg to another peg.
+            For example $T_1 = 1$ is one disk as you are just moving one. Moving $T_2$ disks needs thinking about so we
+            are moving to the $2$ disks to the same peg. Following the rules we will need to move the top disk which is
+            the smallest to a peg, then the next disk to another peg as it cannot go on top of the smallest disk and
+            then the smallest disk on top of the other disk hence this is $3$ moves, $T_2 = 3$. We also can say that
+            $T_0 = 0$ as no disks are moved.</Latex></p><p><Latex>Now we need to scale up what if we had a near infinite
+        amount of disks. We have just shown optimally we can move two disks in $3$ moves. To move three optimally we
+        follow the pattern moving the top two disks as mentioned above, to the middle peg and then move the third and
+        then move the top two disks back on top of the third. Here we can say the movement of the smallest disk
+        is </Latex><InlineMath math="T_{n-1}"/><Latex> so the case of two disks it is $2$ disks to move it
+        is one move, in the case of three disks to move the two smallest are two moves and so on. We then move the very
+        bottom disk which is one move $T_1 = 1$. Then we have to move the </Latex><InlineMath
+        math="T_{n-1}"/> disks back on top.</p>
+
+        <p>Producing the formula for disk movement as at most: </p>
+
+        <BlockMath math="T_n \leq 2T_{n-1} + 1 \text{       for } (n > 0)"/>
+
+        <p>Lets do the actual calculation for three disks. With this formula when having three disks <Latex>$n = 3$ so
+            $T_2 = 3$ we multiply that by $2$ giving us $6$ and then plus the constant of moving the largest disk as
+            $1$. Hence we expect to be able to move three disks in $7$ moves.</Latex></p>
+        <p>Firstly we need to move the smallest disk so<Latex> $T_1 = 1$ we then need to move the next disk again $1$
+            move and then place the smallest disk back onto it so another $1$ move this is the </Latex><InlineMath
+            math="T_{n-1}"/> part. We now need to move the bottom largest disk with the constant move
+            of <Latex> $1$ and then move the other two disks back so the smallest onto another peg $1$ move and then the
+                next disk on top of the largest disk which takes $1$ move and then the smallest disk on top again so
+                another $1$ move totalling $3$ again and this all totals $7$ moves so the formula is correct.</Latex>
+        </p>
+
+        <p><Latex>This has produced the following inequality and base case for $n = 0$:</Latex></p>
+
+        <p><BlockMath math="T_0 = 0;"/></p>
+
+        <p><BlockMath math="T_n = 2T_{n-1} + 1"/></p>
+
+        <p><Latex>A set of equalities like this are called a recurrence (recurrence relation or recursion relation). It
+            gives a boundary value and an equation for general value terms. The problem with this recurrence is that it
+            is not in closed form (an expression that can be evaluated in finite number of steps) and what take a long
+            time to computer for large values of $n$. As you need to know the sequence up to $n$ to work it out. To
+            produce this closed form we need to solve the recurrence relation using mathematical induction, we have seen
+            this in the Art of Computer Programming section before!</Latex></p>
+
+        <p><Latex>Firstly we need to make a guess on the correct solution so we take a look at the small cases $T_1 = 0
+            \times 1 + 1 = 1;$ $T_2 = 2 \times 1 + 1 = 3;$ $T_3 = 2 \times 3 + 1 = 7;$ $T_4 = 2 \times 7 + 1 = 15;$ $T_5
+            = 2 \times 15 + 1 = 31;$ </Latex></p>
+
+        <p>This pattern appears to be <BlockMath math="T_n = 2^n - 1, \text{ for } n \geq 0"/> this is our proposed
+            solution.</p> <p><Latex>Mathematical induction is a general way to prove that some statement about the
+        integer $n$ is true for all $n \geq n_0$. Firstly proving when $n$ has its smallest value, $n_0$ called the
+        basis step. Then we prove for the statement $n$ > $n_0$ for all values between $n_0$ and $n-1$.</Latex></p>
+
+
+        <p><Latex>Base case: $T_0 = 2^0 - 1 = 0$</Latex></p>
+
+        <p><Latex>Inductive Step: Here the book assumes the reader knows rules of indices so we will walk through step
+            by step.</Latex></p>
+
+        <p><InlineMath math="T_n = 2T_{n-1} + 1"/> so lets replace <Latex>$T_n$ with the proposed solution of </Latex>
+            <InlineMath math="T_n = 2^n - 1, \text{ for } n \geq 0"/> and use <Latex>$n - 1$.</Latex></p>
+        <p>Providing: </p><BlockMath math="2(2^{n-1} - 1) + 1"/>
+
+        <p><Latex>Simplify: Firstly distribute parentheses </Latex><InlineMath
+            math="2 \times 2^{n-1} + 2 \times (-1) + 1"/>. Now we can use the product rule of exponents
+            that states
+            if two powers have the same base they can simply be added, remember that <Latex>$2$ is the same as
+                $2^1$</Latex>. So shown here we simply using the product rule: <InlineMath
+                math="2^{1} \times 2^{n-1} = 2^{1 + n - 1} = 2^n"/></p>
+
+        <p><Latex>Resulting in: $2^n - 2 + 1$. Equalling $2^n - 1$ which is the proposed solution so this proof is
+            correct. Throughout the rest of the book it will mainly focus on the recurrence relation part as the first
+            two steps are provided. A recap 1: Look at small cases 2: Find and prove a mathematical expression for
+            theses
+            small cases 3: FInd and prove a closed form for our mathematical expression in step 2.</Latex></p>
+
+        <p><Latex>The problem with solving like this is that we had to make a guess. Alternatively we could simplify the
+            recurrence by adding $1$ to both sides.</Latex></p>
+
+        <BlockMath math="T_0 + 1 = 0 + 1"/>
+
+        <BlockMath math="T_n + 1 = 2T_{n - 1} + 1 + 1"/> <BlockMath math="\text{ for } n > 0"/>
+
+        <p><Latex>Now we let $U_n = T_n + 1$ giving $U_0 = 1$</Latex></p>
+
+
+        <BlockMath math="U_{n-1} = T_{n - 1}+1 \text{ and therefore }"/>
+        <BlockMath math="2T_{n - 1}+2=2(T_{n - 1}+1)=2U{n-1}"/>
+        <BlockMath math="\text{As we can substitute } U_{n - 1}"/>
+        <BlockMath math="\text{We have seen that }"/><BlockMath math="T_n + 1 = 2T_{n - 1} + 2"/>
+        <BlockMath math="\text{ and }  U_{n-1} = T_n + 1"/>
+        <p>Therefore combining these you see:</p>
+        <BlockMath math="U_n = 2U_{n-1} \text{, with } U_0 = 1"/>
+
+        <p>Now we can see that from our definition of <InlineMath math="U_n"/> it is simply doubling each
+            time <InlineMath math="n"/> is increased. </p>
+
+        <BlockMath math="U_1 = 2U_0"/>
+        <BlockMath math="U_2 = 2U_1 = 2^2U_0"/>
+        <BlockMath math="U_3 = 2U_2 = 2^3U_0"/>
+        <BlockMath math="U_4 = 2U_3 = 2^4U_0"/>
+
+        <p>We can now conjecture (form an opinion based on the information) that <InlineMath math="U_n = 2^nU_0"/> for
+            each <InlineMath math="n"/> > <InlineMath math="0"/>. This is true for <InlineMath math="n = 0"/> lets use
+            induction to check for when <InlineMath math="n \geq 0"/> then <InlineMath
+                math=" U_{n+1} = 2U_n = 2 \times 2^nU_0 = 2^{n+1}U_0"/>.</p>
+
+        <p>Now we can look back at the fact we found <InlineMath math="U_0 = 1"/> to say that <InlineMath
+            math="U_n = 2^n"/> for each <InlineMath math="n \geq 0"/> and hence from our proposed definition
+            of <InlineMath math="T_n = U_n - 1 = 2^n - 1"/> it has come back true.</p>
+
+
+        <h3>Sums</h3>
+
+        <p><Latex></Latex></p>
+        <h3>Integer Functions</h3>
+
+        <p><Latex></Latex></p>
+        <h3>Number Theory</h3>
+
+        <p><Latex></Latex></p>
+        <h3>Binomial Coefficients</h3>
+
+        <p><Latex></Latex></p>
+        <h3>Special Numbers</h3>
+
+        <p><Latex></Latex></p>
+        <h3>Generating Functions</h3>
+
+        <p><Latex></Latex></p>
+
+        <h3>Discrete Probability</h3>
+
+        <h3>Asymptotic</h3>
 
 
     </div>

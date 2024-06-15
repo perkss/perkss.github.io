@@ -48,13 +48,13 @@ const MathFundamentals = ({match}) => {
                         </li>
                         <li className='teal'>
                             <Link to={`${match.url}/MathPreliminaries#text-body`}>
-                                The Art of Computer<br/>Programming
+                                Statistics and<br/>Probability
                             </Link>
 
                         </li>
-                        <li className='cyan'>
+                        <li className='orange'>
                             <Link to={`${match.url}/ConcreteMathematics#text-body`}>
-                                Concrete<br/>Mathematics
+                                Calculus and<br/>Differential Equations
                             </Link>
 
                         </li>

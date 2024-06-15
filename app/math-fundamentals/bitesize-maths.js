@@ -13,9 +13,8 @@ const BiteSizeMath = () => (
     <div>
         <h2>Basic Math</h2>
 
-        <p>Welcome to the very beginning of our journey through mathematics, this first section of Math Fundamentals
-            focuses on High School level maths with some help from the BBC Bitesize page. This section will be minimal
-            and offer many resources to the reader to take each topic further.</p>
+        <p>Welcome to the very beginning of our journey through mathematics, this first section of Math
+            Fundamentals.</p>
 
         <h3>Topics</h3>
         <ul className="text-list">
@@ -42,11 +41,23 @@ const BiteSizeMath = () => (
             <li><Link to={"#geometry"}>Coordinate Geometry</Link></li>
             <li><Link to={"#permutation"}>Permutation</Link></li>
             <li><Link to={"#recurrencerelation"}>Recurrence Relation</Link></li>
-            <li><Link to={"#calculus"}>Calculus</Link></li>
-            <li><Link to={"#"}></Link></li>
+            <li><Link to={"#mechanics"}>Mechanics</Link></li>
         </ul>
 
         <br/>
+
+        <h3>Basic Rules</h3>
+
+        <p>When multiplying or dividing two integers if the signs are different then the result is negative. If the
+            signs are the same (both positive or both negative) then the result is positive.</p>
+
+        <BlockMath math="4 \times 3 = 12"/>
+        <BlockMath math="-4 \times 3 = -12"/>
+        <BlockMath math="-4 \times -3 = 12"/>
+
+        <BlockMath math="12 \div 4 = 3"/>
+        <BlockMath math="-12 \div 4 = -3"/>
+        <BlockMath math="-12 \div -4 = 3"/>
 
         <h3 id={"fractions"}>Fractions</h3>
         <p>A fraction is a numerical quantity that is not a whole number.</p>
@@ -93,6 +104,8 @@ const BiteSizeMath = () => (
 
             </Latex></p>
 
+        <p></p>
+
         <h3 id={"factors"}>Factorising</h3>
 
         <p>Finding what is multiplied together to get an expression. Basically as above we split the expression into a
@@ -111,6 +124,30 @@ const BiteSizeMath = () => (
         <BlockMath math="a^3+3a^2b+3ab^2+b^3 = (a+b)^3"/>
         <BlockMath math="a^3-3a^2b+3ab^2-b^3 = (a-b)^3"/>
 
+        <h4>Methods</h4>
+
+        <h5>unFOIL</h5>
+        <p>To factor the quadratic <InlineMath math="ax^2 + bx + c"/> you can use the unFOIL method the opposite to
+            multiplying our and distributing a binomial.</p>
+
+        <p>Step 1: Determine all the ways you can multiply numbers to get <i>a</i>.</p>
+        <p>Step 2: Determine all the ways you can multiply two numbers together to get <i>c</i>.</p>
+        <p>Step 3: Look at the sign of <i>c</i> and the lists of multiples from step 1 and 2. Then if it is a
+            positive <i>c</i> find a value from Step 1 list and another from the step 2 list where the sum of their
+            product and the product of the two numbers they are paired with result in <i>b</i>. <InlineMath
+                math="e \times g"></InlineMath> and <InlineMath math="f \times h"></InlineMath> such that <InlineMath
+                math="(e \times g) + (f \times h) = b"/></p>
+        <p>If <i>c</i> is negative then find the numbers so that <InlineMath math="e \times g"/> and <InlineMath
+            math="f \times h"/> are <InlineMath math="(e \times g) - (f \times h)"/></p>
+
+        <p>Step 4: Arrange the positions of the variables above in a binomial <InlineMath math="(e h)(f g)"/></p>
+        <p>Step 5: Then set the signs where signs are both positive when <i>c</i> is positive and <i>b</i> is positive.
+        </p>
+        <p>Step 5: Then set the signs where signs are both negative when <i>c</i> is positive and <i>b</i> is negative.
+        </p>
+        <p>Step 5: Then set the signs where signs are one sign is positive and negative depending on if <i>c</i> is
+            positive or negative and <i>b</i> is positive or negative.
+        </p>
 
         <h4 id={"primes"}>Prime Numbers</h4>
         <p> A prime number has exactly two factors. A prime number can only be divided by <Latex>$1$</Latex> and itself.
@@ -378,7 +415,8 @@ const BiteSizeMath = () => (
         <BlockMath
             math="\sqrt{392} = \sqrt{4 \times 98} = \sqrt{4} \times \sqrt{2} \times \sqrt{49} = 2 \times \sqrt{2} \times 7 =  14\sqrt{2}"/>
 
-        <p>Having surds on the denonminator is not a good thing. When a surd is written on the denominator of a fraction,
+        <p>Having surds on the denonminator is not a good thing. When a surd is written on the denominator of a
+            fraction,
             we rationalise the denominator to make it simpler. We do this by multiplying the numerator and denominator
             by an expression that will simplify the surd on the denominator. Therefore you can multiply the fraction by
             the surd over the surd as the example below as if you do this is just multiply by 1 is the same result. </p>
@@ -454,6 +492,53 @@ const BiteSizeMath = () => (
 
         <h3 id={"algebra"}>Algebra</h3>
 
+        <h4>Basic Rules</h4>
+
+        <p>When working with algebra the order of the operations matter.</p>
+
+        <p>Grouping Symbols: Starting from the inside out and then powers and roots, division and multiplication (can be
+            done at the same time) then addition and subtraction.</p>
+
+        <p>Important: When the expression is in fraction form, perform all the operations on the numerator and
+            denominator separately and then finally divide.</p>
+
+        <h4>Like Terms</h4>
+
+        <p><strong>Like Terms</strong> have exactly the same variables in them and each variable is powered the same.
+            For example two terms that are alike are <InlineMath math="5a^2bc^3"/> and <InlineMath math="2a^2b^3"/> as
+            they have the same variables and powers. The difference in numerical coefficient is fine. But <InlineMath
+                math="5a^3bc^2"/> is not the same as <InlineMath math="2a^2bc^3"/> as the powers of the same bases are
+            different.
+        </p>
+
+        <h5>Adding and Subtracting Like Terms</h5>
+
+        <p>When adding and subtracting if they are like terms you can simply combine the like terms and simplify.</p>
+
+        <p>An example taken from Algebra 1 for Dummies.</p>
+
+        <BlockMath math="8x^2 - 3x + 4xy - 9x^2 - 5x - 20xy"/>
+
+        <BlockMath math="(8x^2 - 9x^2)+(-3x -5x)+(4xy - 20xy) = -x^2 - 8x - 16xy"/>
+
+        <h4>Multiplying Algebraically</h4>
+
+        <p>When multiplying and dividing you can use the law of indices and work on terms where the base is the same,
+            but they do not need to be like terms so can have different powers. When multiplying factors containing
+            variables simply multiply the coefficients and then the variables as usual. If the bases are the same you
+            can add the exponents as per the law of indices.</p>
+
+        <p>An example taken from Algebra 1 for Dummies.</p>
+
+        <BlockMath math="(4x^2y^2z^3)(3xy^4z^3) = 12x^3y^6z^6"/>
+
+        <h4>Dividing Algebraically</h4>
+
+        <p>When you need to divide algebraically you write the problem as a fraction then divide the coefficient and use
+            the law of indices to divide the variables that are the same. <strong>Each variable is considered
+                individually.</strong></p>
+
+
         <h4>Expanding Brackets</h4>
         <p>When working with future maths expanding brackets on Algebra is key lets have a <a
             href="https://www.bbc.co.uk/education/guides/zcqmsrd/revision/3">Bitesize</a> refresher. Expanding brackets
@@ -526,6 +611,30 @@ const BiteSizeMath = () => (
 
         <p>If you solve the inequality but the variable is on the right side then you simply swap the sides and flip the
             inequality sign.</p>
+
+        <p>Referencing Algebra 1 by Mary Jane Sterling</p>
+
+        <ul className="text-list">
+            <li>If <InlineMath math="a > b"/> then adding or subtracting <InlineMath math="c"/> does not change the
+                direction of the inequality and you get <InlineMath math="a \pm c > b \pm c"/></li>
+            <li>
+                If <InlineMath math="a > b"/> then multiplying or dividing each side by a positive <InlineMath
+                math="c"/> <strong>does not change</strong> the direction of the inequality and you get <InlineMath
+                math="a \times c > b \times c"/> or <InlineMath math="a \div c > b \div c"/>
+            </li>
+            <li>
+                If <InlineMath math="a > b"/> then multiplying or dividing each side by a negative <InlineMath
+                math="c"/> <strong>does change</strong> the direction of the inequality (reverses it) and you
+                get <InlineMath math="a \times c < b \times c"/> or <InlineMath math="a \div c < b \div c"/>
+            </li>
+
+            <li>
+                If <InlineMath math="a > b"/> then reversing the terms reverses the inequality and you get <InlineMath
+                math="b < a"/>
+            </li>
+        </ul>
+
+        <p>If there are multiple inequalities then you do the same reductions to all parts of the inequality.</p>
 
         <p>A linear equality example is <InlineMath math="-4x \le -20"/> you can easily see divided by -4 to get the
             answer but remember the rule you then swap the inequality. <InlineMath math="x \ge 5"/></p>
@@ -1393,26 +1502,97 @@ const BiteSizeMath = () => (
 
         <h3 id={"geometry"}>Coordinate Geometry</h3>
 
+        <h4>Graphing using Points</h4>
+
+        <p>Plotting graphs can be done by substituting values of <i>x</i> or <i>y</i> into the equation and then find
+            the opposite value to plot by solving it. Then marking the cartesian pair and plotting them.</p>
+
+        <p>A straight line graph is known as linear.</p>
+
+        <h4>Horizontal and Vertical Plots</h4>
+
+        <p>When <i>y</i> is a constant you have a horizontal straight line such as <InlineMath math="y = 10"/> where the
+            line is parallel to the <i>x-axis</i>. When <i>x</i> is equal to a constant then
+            you have a vertical straight line <InlineMath math="x = 10"/> is a straight line up through 10 parallel to
+            the <i>y-axis</i>.</p>
+
         <p>Things to know up front</p>
 
         <p>Midpoint of a line segment: <InlineMath math="M = (\frac{x1 + x2}{2}, \frac{y1 + y2}{2})"/></p>
         <p>Distance between two points: <InlineMath math="AB = \sqrt{(x2 - x1)^2 + (y2 - y1)^2}"/> this is
             pythagoras theorem a triangle is created and you find the hypotenuse.</p>
-        <p>Gradient of a straight line: <InlineMath math="\frac{y2 - y1}{x2 - x1}"/></p>
+        <p>Find the Gradient (Slope) of a straight line: <InlineMath math="\frac{y2 - y1}{x2 - x1}"/></p>
 
-        <p>Three forms of equation of a straight line:</p>
-        <p>Gradient Intercept: <InlineMath math="y = mx + c"/></p>
-        <p>Gradient Point Form: <InlineMath math="y - y1 = m(x - x1)"/></p>
+        <p>Forms of equation of a straight line:</p>
+        <p>Gradient (Slope) Intercept: <InlineMath math="y = mx + c"/></p>
+        <p>Gradient (Slope) Point Form: <InlineMath math="y - y1 = m(x - x1)"/>. Use this when given a slope and a
+            point.</p>
         <p>Equation Form: <InlineMath math="ax + by + c = 0"/></p>
-        <p>Two Point Form: <InlineMath math="\frac{y - y1}{y2 - y1} = \frac{x - x1}{x2 - x1}"/></p>
+        <p>Two Point Form: <InlineMath math="\frac{y - y1}{y2 - y1} = \frac{x - x1}{x2 - x1}"/>. When given two points.
+        </p>
 
-        <p>These forms of line can easily be transformed between each form the easiest to find is the gradient point form.</p>
+        <p>These forms of line can easily be transformed between each form the easiest to find is the gradient point
+            form.</p>
+
+        <h4>Graphing lines with Intercepts</h4>
+
+        <p>You can easily graph intercepts as you can set either <i>x</i> or <i>y</i> to zero to find the intercept. The
+            x-intercept is where it crosses the <i>x-axis</i> to find this let <i>y</i> be equal to zero and solve
+            for <i>x</i>. </p>
+
+        <p>The y-intercept is where the line crosses the <i>y-axis</i> and can be found by setting <i>x</i> to zero and
+            solve for <i>y</i>.</p>
+
+        <h4>Finding the Gradient (Slope) of Lines</h4>
+
+        <p>The slope of the line is a number that describes the slopes steepness and if it rises or falls.</p>
+
+        <p><strong>Rise over run</strong> is when a slope is written as a fraction and states for example <InlineMath
+            math="\frac{5}{2}"/> that we have for every two units along the x-axis it has five units up the y-axis.</p>
+
+        <p>As shown in the formulas above finding the slope (gradient) of a line is easy with two points you plug into
+            the formula.</p>
+
+        <p>Gradient (Slope) of a straight line: <InlineMath math="\frac{y2 - y1}{x2 - x1}"/></p>
+
+        <p>Remember a slope of 0 is a horizontal line and a vertical line has no slope.</p>
+
+        <p>When the formula is in the gradient intercept or gradient point form you already have the gradient
+            represented by <i>m</i>.</p>
+
+        <p>When the graph is in this form you can simply plot the y-intercept on the y-axis. Write the slope as a
+            fraction then move along with rise over run to mark the the next points.</p>
+
+        <p>For example <InlineMath math="y = \frac{5}{2}x + 7"/> you know that when <i>x</i> is set to zero the
+            y-intercept is <i>7</i>. Then you know that you need to go two units along and five units up as represented
+            by rise over run.</p>
+
 
         <h4>Parallel Lines</h4>
 
         <p>Parallel lines have an equal gradients. Therefore you can find the equation of a parallel line easily by
             <InlineMath math="y = mx + c"/> and substituting in the gradient of the parallel line you know and the
-        x and y of the parallel line point you are trying to find the equation of.</p>
+            x and y of the parallel line point you are trying to find the equation of. Parallel lines never touch and
+            never share a common point.</p>
+
+        <h4>Perpendicular Lines</h4>
+
+        <p>Perpendicular lines form a 90 degree angle where they cross. They have slopes that are negative reciprocals
+            of each other.</p>
+
+        <h4>Finding Line Intersections</h4>
+
+        <p>If two lines intersect they cross at a common point between the two lines. You can test a point by putting it
+            into each formula <i>x</i> and <i>y</i> coordinates and checking it is true for both.</p>
+
+        <p>You can simply graph the two equations to see if they intersect graphically. But you can use the <strong>substitution
+            method</strong>.</p>
+
+        <p>First put each equation into the slope intercept form <InlineMath math="y = mx + c"/>. Then substitute the y
+            value into the other formula. Then substitute the solved <i>x</i> into one of the original formula to find
+            the <i>y</i>. </p>
+
+        <h4>Circles</h4>
 
         <p>A circle has a centre point and a radius. The definition of a circle is the set of all points on a plane
             that
@@ -1599,49 +1779,135 @@ const BiteSizeMath = () => (
         <h3 id={"permutation"}>Permutation & Combination</h3>
 
         <p>When the <strong>order does not matter</strong> its a <strong>Combination</strong> (so the lock naming is
-            wrong) when the <strong>order does matter</strong> it is a <strong>Permutation</strong></p>
+            wrong) when the <strong>order does matter</strong> it is a <strong>Permutation</strong>.</p>
+
+        <h4>Combinations</h4>
+
+        <p>Combinations state how many ways you can choose some of the items from a group. The formula below can be used
+            to answer this <i>n</i> is how many items in the total group and <i>r</i> is how many are to be chosen from
+            all those available.</p>
+
+        <p>For example how many ways to choose 9 numbers out of of a possible 72 numbers.</p>
+
+        <BlockMath math="\frac{n!}{r!(n-r)!}"/>
+
+        <h4>Permutations</h4>
+
+        <p>With permutations ordering matters. Therefore when choosing items from a list you need to think about the
+            different order the items can be in.</p>
+
+        <BlockMath math="\frac{n!}{(n-r)!}"/>
 
         <h3 id={"recurrencerelation"}>Recurrence Relations</h3>
 
         <p><a href={"https://www.bbc.co.uk/bitesize/guides/z8syyrd/revision/2"}>A initial guide</a></p>
 
-        <h3 id={"calculus"}>Calculus</h3>
 
-        <p>Calculus is like understanding something by looking at small pieces. Differential calculus is cutting
-            something into small pieces to find out how it changes. Whilst integral calculus is joining the small
-            pieces
-            together to find out how much there is. </p>
+        <h3 id={"mechanics"}>Mechanics</h3>
+        <p><strong>Scalar</strong> are quantities without direction they only have a size(magnitude) for example a speed
+            of of 10 m/s or distance of 12m.</p>
 
-        <h4>Differentiation</h4>
+        <p><strong>Vectors</strong> are quantities that have a <strong>direction</strong> they can be positive or
+            negative. Some examples of vectors are <strong>displacement</strong> which is the distance moved in a given
+            direction from a starting point. <strong>Velocity</strong> which is a speed given with direction
+            and <strong>acceleration</strong> which is a change in velocity over time.</p>
 
-        <p>Differentiation is used for calculating the rate of change. The rate of change of a function can be found
-            by
-            finding the derived function. You can ask to differentiate by the following notations , firstly the
-            Liebniz
-            Notation <InlineMath math="\frac{dy}{dx}"/> or <InlineMath math="f'(x)"/>.</p>
+        <h4>Fundamental Units</h4>
+        <p><strong>Fundamental Units</strong> are the international standard units.</p>
 
-        <p>The general formula to solve differentiation is to bring the power down to the front of x and multiply
-            and
-            then bring the power down by 1.</p>
+        <p><strong>Length measured in metres (m)</strong> which can also be called displacement. 1km = 1000m, 1m =
+            100cm, 1cm = 10mm.</p>
+        <p><strong>Time measured in seconds (s)</strong>. 1 hour = 60 minutes, 1 minute = 60 seconds.</p>
+        <p><strong>Mass measured in kilograms (kg)</strong>. 1kg = 1000g, 1g = 1000mg.</p>
 
-        <BlockMath math="f(x) = ax^n \rightarrow f'(x) = nax^{n-1}"/>
+        <p>Converting units is straightforward for example to convert 4.2 hours to seconds you simply do <InlineMath
+            math="4.2 hours \times 3600 = 15,120 seconds"/>.</p>
+        <h4>Derived Units</h4>
 
-        <p>For example</p>
+        <p>Derived units are combinations of the <strong>fundamental units</strong>.</p>
+        <p><strong>Speed or Velocity</strong> is <InlineMath math="\frac{distance}{time}"/> which is <InlineMath
+            math="m/s"/></p>
+        <p><strong>Acceleration</strong> is <InlineMath math="\frac{velocity}{time}"/> which is <InlineMath
+            math="m/s^2"/></p>
+        <p><strong>Weight or Force</strong> is <InlineMath math="mass \times acceleration"/> which is <InlineMath
+            math="kg m/s^2"/> or <strong>N (N=Newtons)</strong></p>
 
-        <BlockMath math="y = x^{4}"/>
+        <h4>Types of Force</h4>
+        <p>A <strong>force</strong> is a vector with both magnitude and direction. It is either push or pull and is
+            measured in Newtons.</p>
 
-        <BlockMath math="\frac{dy}{dx} = 4x^{3}"/>
+        <p>The types of forces include <strong>weight</strong> (effect of mass and gravity and acts
+            downwards), <strong>tension</strong> is a pulling force, <strong>thrust</strong> is a pushing
+            force, <strong>friction</strong> is a resistive force and opposes the motion of the object.</p>
 
-        <p>When you have a negative power the law of indices need to be remembered. </p>
+        <h4>Modelling</h4>
 
-        <BlockMath math="a^{-n} = \frac{1}{a^n}"/>
+        <p>Mechanics uses modelling to solve real life problems where assumptions are made to turn these problems into
+            graphs or equations. The standard type of assumptions are:</p>
 
-        <BlockMath math="a^{\frac{m}{n}} = \sqrt[n]{a^m}"/>
+        <ul className="text-list">
+            <li>Gravity is constant and vertical</li>
+            <li>Air resistance is negligible and can be ignored</li>
+            <li>Smooth surface has no friction</li>
+            <li>A rough surface has friction</li>
+            <li>A particle is so small the forces will act on the particle at the same point</li>
+            <li>A uniform object mass is evenly distributed</li>
+            <li>A light object has zero mass</li>
+            <li>An inextensible object cannot be stretched</li>
+        </ul>
 
-        <p>Before differentiating you should remove brackets, separate top heavy fractions, change terms involving
-            roots
-            into fractional powers and change terms with <i>x</i> on the denominator to negative powers.</p>
+        <h4>Displacement Time Graphs</h4>
 
+        <p>Displacement time graphs show the displacement (change in position of object can be negative) from a fixed
+            origin in a straight line.</p>
+
+        <p>They show displacement (on the vertical axis) against time (on the horizontal axis). They can go below the
+            horizontal axis as displacement can be negative. Distance Time graphs cannot do this as cannot be
+            negative.</p>
+
+        <p>Displacement time graph key features.</p>
+
+        <ul className="text-list">
+            <li>Gradient of the graph means the velocity of the object. Positive (forward), Negative (backward). Steeper
+                is greater speed.
+            </li>
+            <li>A straight line shows the object is moving with constant velocity.</li>
+            <li>A curved line shows acceleration or deceleration.</li>
+            <li>A horizontal line is the object is at rest.</li>
+            <li>If the graph touches the x-axis it means it is at the origin.</li>
+        </ul>
+
+        <p>Knowing these features means the following can be calculated.</p>
+
+        <BlockMath math="Average Speed = \frac{Total Distance Travelled}{Time}"/>
+
+        <p>Speed is a scalar quantity and can only be positive.</p>
+
+        <BlockMath math="Average Velocity = \frac{Displacement from starting point}{Time}"/>
+
+        <p>The velocity is a vector quantity and can be positive, negative or zero.</p>
+
+        <p>Using these two formulas questions about the graph can easily be answered.</p>
+
+        <h4>Velocity Time Graphs</h4>
+
+        <p>Show the velocity of an object as it moves in a straight line.</p>
+        <p>They show velocity (on vertical axis) against the time on the (horizontal axis).</p>
+        <p>They can go below the horizontal axis as can be negative.</p>
+
+        <ul className="text-list">
+            <li>The gradient of the graph equals the acceleration of the object.</li>
+            <li>A straight line shows the object is accelerating at a constant rate.</li>
+            <li>A horizontal line shows the object is moving at a constant velocity.</li>
+            <li>Displacement can be found by the distance between the graph and the x-axis.</li>
+            <li>The total displacement is the sum of the areas above the x-axis and the area below the x-axis
+                subtracted.
+            </li>
+            <li>The total distance travelled is the sum of all areas above and below.</li>
+            <li>If the graph is at the x-axis the object is stationary, if it is above it is travelling forwards and if
+                it is below it is travelling backward.
+            </li>
+        </ul>
 
     </div>
 
