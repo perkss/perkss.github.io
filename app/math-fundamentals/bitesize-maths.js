@@ -11,7 +11,7 @@ const BiteSizeMath = () => (
 
 
     <div>
-        <h2>Basic Math</h2>
+        <h2>Foundational Mathematics</h2>
 
         <p>Welcome to the very beginning of our journey through mathematics, this first section of Math
             Fundamentals.</p>
@@ -35,12 +35,16 @@ const BiteSizeMath = () => (
             <li><Link to={"#quadraticfunctiongraph"}>Quadratic Function and Graphs</Link></li>
             <li><Link to={"#simultaneousequation"}>Simultaneous Equations</Link></li>
             <li><Link to={"#absolutevalues"}>Absolute Values (Modulus)</Link></li>
+            <li><Link to={"#geometry"}>Coordinate Geometry</Link></li>
+            <li><Link to={"#parabola"}>Parabola</Link></li>
+            <li><Link to={"#circles"}>Circles</Link></li>
+            <li><Link to={"#polynomialgraph"}>Polynomial Graph</Link></li>
             <li><Link to={"#graphsketching"}>Graphical Transformations and Curve Sketching</Link></li>
             <li><Link to={"#proportion"}>Proportion</Link></li>
             <li><Link to={"#compositefunctions"}>Composite and Inverse Functions</Link></li>
-            <li><Link to={"#geometry"}>Coordinate Geometry</Link></li>
             <li><Link to={"#permutation"}>Permutation</Link></li>
             <li><Link to={"#recurrencerelation"}>Recurrence Relation</Link></li>
+            <li><Link to={"#trigonemtry"}>Trigonometry</Link></li>
             <li><Link to={"#mechanics"}>Mechanics</Link></li>
         </ul>
 
@@ -1344,177 +1348,8 @@ const BiteSizeMath = () => (
         <br/>
         <hr/>
 
-        <h3 id={"graphsketching"}>Graphical Transformations and Curve Sketching</h3>
-
-        <h4>Graphs of Functions</h4>
-
-        <p>The graph in the form <InlineMath math="y = kx^n"/> is a different shape for the different values
-            of <strong>k</strong> and <strong>n</strong>.</p>
-
-        <br/>
-
-        <ul className="text-list">
-            <li><strong>n</strong> is positive and even
-                and <strong>k</strong> is <strong>positive</strong> you will
-                get a <strong>u-shaped</strong> graph.
-            </li>
-            <li><strong>n</strong> is positive and even
-                and <strong>k</strong> is <strong>negative</strong> you will
-                get a <strong>n-shaped</strong> graph.
-            </li>
-            <li><strong>n</strong> is positive and odd
-                and <strong>k</strong> is <strong>positive</strong> you will
-                get a <strong>corner to corner shape which is bottom left to top right</strong> graph.
-            </li>
-            <li><strong>n</strong> is positive and odd
-                and <strong>k</strong> is <strong>negative</strong> you will
-                get a <strong>corner to corner shape which is top left to bottom right</strong> graph.
-            </li>
-            <li><strong>n</strong> is negative and even you will get a graph with two lines back to back
-                and if <strong>k</strong> is <strong>negative</strong> you will
-                get the graph <strong>below the x-axis</strong> and
-                if <strong>k</strong> is <strong>positive</strong> you will get a graph above
-                the a-axis.
-            </li>
-            <li><strong>n</strong> is negative and odd you will get a graph with two parts opposite the <strong>x and y
-                axis</strong> if it is positive <strong>k</strong> then it is top right and bottom left quadrant else
-                for <strong>negative k</strong> the graph is in the top left and bottom right quadrants.
-            </li>
-        </ul>
-
-        <br/>
-
-        <p>To be able to find the graph of a function you can set <i>x</i> to zero and then find the <i>y</i> intercept,
-            along with checking the intercepts of <i>x</i> which are the values that make the function
-            for <i>x</i> equal zero.</p>
-
-        <BlockMath math="f(x) = (x^2 - 1)(3 - x)"/>
-
-        <p>This example will intercept <i>y</i> at <InlineMath
-            math="f(0) = (0^2 - 1)(3 - x) = -1 \times 3 = -3"/> therefore it crosses the y-axis at <InlineMath
-            math="(0,-3)"/>. It will then cross the x-axis and intercept at <InlineMath
-            math="(-1,0), (1,0), (3,0)"/> where you can create <strong>x</strong> is equal to zero.
-        </p>
-
-        <br/>
-
-        <h4>Transformations</h4>
-
-        <ul className="text-list">
-            <li><InlineMath math="y = f(x + c)"/> will shift the graph to the left side. <InlineMath
-                math="y = f(x - c)"/> will shift the graph to the right side.
-            </li>
-            <li><InlineMath math="y = f(x) + c"/> will shift the graph upwards by c. <InlineMath
-                math="y = f(x) - c"/> will shift the graph downwards by c.
-            </li>
-            <li>Reflections in the x-axis flip the <InlineMath math="f(x)"/> vertically and reflections in the y-axis
-                flip the <InlineMath math="f(x)"/> horizontally.
-            </li>
-            <li><InlineMath math="y = af(x)"/> if <InlineMath math="|a| > 1"/> the graph of <InlineMath
-                math="y = af(x)"/> is stretched vertically by a factor of <i>a</i>.
-            </li>
-            <li><InlineMath math="y = af(x)"/> if <InlineMath math="0 < |a| < 1"/> the graph of <InlineMath
-                math="y = af(x)"/> is squashed vertically by a factor of <i>a</i>.
-            </li>
-            <li><InlineMath math="y = af(x)"/> if <InlineMath math="a < 0"/> the graph of <InlineMath
-                math="y = af(x)"/> is also reflected on the <i>x-axis</i>.
-            </li>
-            <li><InlineMath math="y = f(ax)"/> if <InlineMath math="|a| > 1"/> the graph of <InlineMath
-                math="y = f(ax)"/> is squashed horizontally by a factor of <i>a</i>.
-            </li>
-            <li><InlineMath math="y = f(ax)"/> if <InlineMath math="0 < |a| < 1"/> the graph of <InlineMath
-                math="y = f(ax)"/> is stretched horizontally by a factor of <i>a</i>.
-            </li>
-            <li><InlineMath math="y = f(ax)"/> if <InlineMath math="a < 0"/> the graph of <InlineMath
-                math="y = f(ax)"/> is also reflected on the <i>y-axis</i>.
-            </li>
-        </ul>
-
-        <br/>
-
-        <h3 id={"proportion"}>Proportion</h3>
-
-        <p>Proportional variables are closely related.</p>
-
-        <h4>Direct Proportion</h4>
-
-        <p>If two variables are directly proportional it means that changing one variable will change the other by the
-            same scale factor.
-            This can be written as <InlineMath math="y \propto x"/> which is equivalent to <InlineMath math="y = kx"/>.
-        </p>
-
-        <p>Direct proportion graphs are straight lines through the origin.</p>
-
-        <h4>Inverse Proportion</h4>
-
-        <p>If two variables are inverse proportion changing one variable will change the other by the reciprocal of the
-            scale factor. Therefore
-            multiplying one by variable by any constant will be the same as dividing the other variable by the same
-            constant.</p>
-
-        <p><InlineMath math="y \propto \frac{1}{x}"/> which is equivalent to <InlineMath math="y = \frac{k}{x}"/>.</p>
-
-        <br/>
-
-        <h3 id={"compositefunctions"}>Composite and Inverse Functions</h3>
-
-        <p>Mappings take one number and transform it into another functions are a type of mapping in mathematics.</p>
-
-        <h4>Functions</h4>
-
-        <ul className="text-list">
-            <li>A function is an operation that takes one or many numbers and maps them to one and only one number.</li>
-            <li>The set of starting numbers is the <strong>domain</strong> and the resulting numbers they become is the
-                range.
-            </li>
-            <li>A one to one mapping takes one number in the domain and maps to one number in the range.</li>
-            <li>A many to one function maps more than one element in the domain to one element in the range.</li>
-            <li>One to many mappings are not functions as per the definition in the first item in this list.</li>
-        </ul>
-
-        <h4>Composite Functions</h4>
-
-        <p>A composite function is when you take multiple functions and combine them to make a composite one. They are
-            written in the order they should be executed. </p>
-
-        <h4>Inverse Functions</h4>
-
-        <p><strong>Only one to one functions have inverses</strong>. An inverse function does the opposite to the
-            original function and is written as <InlineMath math="f^{-1}(x)"/>.</p>
-
-        <p>The <strong>domain</strong> of the inverse is the <strong>range</strong> of the function.</p>
-        <p>The <strong>range</strong> of the inverse is the <strong>domain</strong> of the function.</p>
-
-        <p>To work out the inverse for complex cases you can use algebra. For simple cases you can usually just look at
-            it and work it out. The steps are as follows:</p>
-
-        <ul className="text-list">
-            <li>First replace <InlineMath math="f(x)"/> with <InlineMath math="y"/> to make it easier to work with.</li>
-            <li>Rearrange the equation to make <i>x</i> the subject.</li>
-            <li>Replace <i>x</i> with <InlineMath math="f^{-1}(x)"/> and <i>y</i> with <i>x</i>.</li>
-            <li>Finally you then swap the domain and the range.</li>
-        </ul>
-
-        <p>If you need to draw the inverse function it is a reflection of the original function graph along <i>y=x</i>.
-        </p>
-
-        <br/>
 
         <h3 id={"geometry"}>Coordinate Geometry</h3>
-
-        <h4>Graphing using Points</h4>
-
-        <p>Plotting graphs can be done by substituting values of <i>x</i> or <i>y</i> into the equation and then find
-            the opposite value to plot by solving it. Then marking the cartesian pair and plotting them.</p>
-
-        <p>A straight line graph is known as linear.</p>
-
-        <h4>Horizontal and Vertical Plots</h4>
-
-        <p>When <i>y</i> is a constant you have a horizontal straight line such as <InlineMath math="y = 10"/> where the
-            line is parallel to the <i>x-axis</i>. When <i>x</i> is equal to a constant then
-            you have a vertical straight line <InlineMath math="x = 10"/> is a straight line up through 10 parallel to
-            the <i>y-axis</i>.</p>
 
         <p>Things to know up front</p>
 
@@ -1533,6 +1368,22 @@ const BiteSizeMath = () => (
 
         <p>These forms of line can easily be transformed between each form the easiest to find is the gradient point
             form.</p>
+
+        <h4>Straight Line Graphs</h4>
+
+        <h4>Graphing using Points</h4>
+
+        <p>Plotting graphs can be done by substituting values of <i>x</i> or <i>y</i> into the equation and then find
+            the opposite value to plot by solving it. Then marking the cartesian pair and plotting them.</p>
+
+        <p>A straight line graph is known as linear.</p>
+
+        <h4>Horizontal and Vertical Plots</h4>
+
+        <p>When <i>y</i> is a constant you have a horizontal straight line such as <InlineMath math="y = 10"/> where the
+            line is parallel to the <i>x-axis</i>. When <i>x</i> is equal to a constant then
+            you have a vertical straight line <InlineMath math="x = 10"/> is a straight line up through 10 parallel to
+            the <i>y-axis</i>.</p>
 
         <h4>Graphing lines with Intercepts</h4>
 
@@ -1592,7 +1443,14 @@ const BiteSizeMath = () => (
             value into the other formula. Then substitute the solved <i>x</i> into one of the original formula to find
             the <i>y</i>. </p>
 
-        <h4>Circles</h4>
+        <h3 id={"parabola"}>Parabolas</h3>
+
+        <p>A parabola is roughly a U-shaped curve. It is one of the conic sections where the other conic sections are
+            ellipsis and hyperbolas.</p>
+
+        <p>This section relates back to the curve sketching section.</p>
+
+        <h3 id={"circles"}>Circles</h3>
 
         <p>A circle has a centre point and a radius. The definition of a circle is the set of all points on a plane
             that
@@ -1775,6 +1633,203 @@ const BiteSizeMath = () => (
         <p>When <InlineMath math="x = 6"/> then <InlineMath math="y = -2 \times 6 + 12 = 0"/></p>
         <p>Therefore the points of PQ are <InlineMath math="(2,8)"/> and <InlineMath math="(6,0)"/></p>
 
+        <br/>
+
+        <h3 id={"polynomialgraph"}>Polynomial Graphs</h3>
+
+        <p>The graph of a polynomial is a smooth curve. As in the previous sections you want to factor a polynomial to
+            find the x-intercepts or zeroes of a polynomial. These are the places where the curve crosses the
+            x-axis.</p>
+
+        <p>Steps to draw this curve are:</p>
+
+        <p>1: Let <InlineMath math="x = 0"/> then <InlineMath math="P(0) = a_{0}"/>. This gives
+            the <strong>y-intercept</strong> of the
+            curve <InlineMath math="(0, a_{0})"/>.</p>
+
+        <p>2: Factor the equation <InlineMath math="P(x)"/> and set the factor form equal to zero. <InlineMath
+            math="P(x) = 0"/> when <InlineMath math="x = b"/>. Then <InlineMath math="(b,0)"/> is an x-intercept.</p>
+
+        <p>3. Now plot the coordinates. If the exponent on the <strong>x-intercept</strong> is even then it will just
+            touch that point and not cross the x-axis. Else if it is odd it will then it will cross the a-xis. It will
+            cross the y-axis at the <strong>y-intercept.</strong></p>
+
+        <p>4. You can work out if the function <InlineMath math="P(x)"/> is positive or negative between the
+            x-intercepts to determine if positive line or negative. Simply test a number between the points and see if
+            it is negative or positive on the plot.</p>
+
+        <h3>Inequality Function Graphs</h3>
+
+        <p>When sketching graphs for inequalities convert to a format where you have <i>y</i> on its own. For
+            example <InlineMath math="x + y > 5"/> would be <InlineMath math="y > -x + 5"/> this has a line slope of -1
+            and a intercept on y of 5. Then you need to <strong>shade</strong> to consider the inequality sign you can
+            test a point in the formula to see if its true if it is then shade that side of the
+            line. <strong>Remember</strong> if the inequality is greater/less than it is a dotted line else it is a
+            solid line for grater/less than or equal to.</p>
+
+        <h3>Absolute Values Graphed</h3>
+
+        <p>Absolute value graphs are always positive and if linear will be V shaped. As usual plug in an x value to find
+            the y values.</p>
+
+        <br/>
+
+        <h3 id={"graphsketching"}>Graphical Transformations and Curve Sketching</h3>
+
+        <h4>Graphs of Functions</h4>
+
+        <p>The graph in the form <InlineMath math="y = kx^n"/> is a different shape for the different values
+            of <strong>k</strong> and <strong>n</strong>.</p>
+
+        <br/>
+
+        <ul className="text-list">
+            <li><strong>n</strong> is positive and even
+                and <strong>k</strong> is <strong>positive</strong> you will
+                get a <strong>u-shaped</strong> graph.
+            </li>
+            <li><strong>n</strong> is positive and even
+                and <strong>k</strong> is <strong>negative</strong> you will
+                get a <strong>n-shaped</strong> graph.
+            </li>
+            <li><strong>n</strong> is positive and odd
+                and <strong>k</strong> is <strong>positive</strong> you will
+                get a <strong>corner to corner shape which is bottom left to top right</strong> graph.
+            </li>
+            <li><strong>n</strong> is positive and odd
+                and <strong>k</strong> is <strong>negative</strong> you will
+                get a <strong>corner to corner shape which is top left to bottom right</strong> graph.
+            </li>
+            <li><strong>n</strong> is negative and even you will get a graph with two lines back to back
+                and if <strong>k</strong> is <strong>negative</strong> you will
+                get the graph <strong>below the x-axis</strong> and
+                if <strong>k</strong> is <strong>positive</strong> you will get a graph above
+                the a-axis.
+            </li>
+            <li><strong>n</strong> is negative and odd you will get a graph with two parts opposite the <strong>x and y
+                axis</strong> if it is positive <strong>k</strong> then it is top right and bottom left quadrant else
+                for <strong>negative k</strong> the graph is in the top left and bottom right quadrants.
+            </li>
+        </ul>
+
+        <br/>
+
+        <p>To be able to find the graph of a function you can set <i>x</i> to zero and then find the <i>y</i> intercept,
+            along with checking the intercepts of <i>x</i> which are the values that make the function
+            for <i>x</i> equal zero.</p>
+
+        <BlockMath math="f(x) = (x^2 - 1)(3 - x)"/>
+
+        <p>This example will intercept <i>y</i> at <InlineMath
+            math="f(0) = (0^2 - 1)(3 - x) = -1 \times 3 = -3"/> therefore it crosses the y-axis at <InlineMath
+            math="(0,-3)"/>. It will then cross the x-axis and intercept at <InlineMath
+            math="(-1,0), (1,0), (3,0)"/> where you can create <strong>x</strong> is equal to zero.
+        </p>
+
+        <br/>
+
+        <h4>Transformations</h4>
+
+        <ul className="text-list">
+            <li><InlineMath math="y = f(x + c)"/> will shift the graph to the left side. <InlineMath
+                math="y = f(x - c)"/> will shift the graph to the right side.
+            </li>
+            <li><InlineMath math="y = f(x) + c"/> will shift the graph upwards by c. <InlineMath
+                math="y = f(x) - c"/> will shift the graph downwards by c.
+            </li>
+            <li>Reflections in the x-axis flip the <InlineMath math="f(x)"/> vertically and reflections in the y-axis
+                flip the <InlineMath math="f(x)"/> horizontally.
+            </li>
+            <li><InlineMath math="y = af(x)"/> if <InlineMath math="|a| > 1"/> the graph of <InlineMath
+                math="y = af(x)"/> is stretched vertically by a factor of <i>a</i>.
+            </li>
+            <li><InlineMath math="y = af(x)"/> if <InlineMath math="0 < |a| < 1"/> the graph of <InlineMath
+                math="y = af(x)"/> is squashed vertically by a factor of <i>a</i>.
+            </li>
+            <li><InlineMath math="y = af(x)"/> if <InlineMath math="a < 0"/> the graph of <InlineMath
+                math="y = af(x)"/> is also reflected on the <i>x-axis</i>.
+            </li>
+            <li><InlineMath math="y = f(ax)"/> if <InlineMath math="|a| > 1"/> the graph of <InlineMath
+                math="y = f(ax)"/> is squashed horizontally by a factor of <i>a</i>.
+            </li>
+            <li><InlineMath math="y = f(ax)"/> if <InlineMath math="0 < |a| < 1"/> the graph of <InlineMath
+                math="y = f(ax)"/> is stretched horizontally by a factor of <i>a</i>.
+            </li>
+            <li><InlineMath math="y = f(ax)"/> if <InlineMath math="a < 0"/> the graph of <InlineMath
+                math="y = f(ax)"/> is also reflected on the <i>y-axis</i>.
+            </li>
+        </ul>
+
+        <br/>
+
+
+        <h3 id={"proportion"}>Proportion</h3>
+
+        <p>Proportional variables are closely related.</p>
+
+        <h4>Direct Proportion</h4>
+
+        <p>If two variables are directly proportional it means that changing one variable will change the other by the
+            same scale factor.
+            This can be written as <InlineMath math="y \propto x"/> which is equivalent to <InlineMath math="y = kx"/>.
+        </p>
+
+        <p>Direct proportion graphs are straight lines through the origin.</p>
+
+        <h4>Inverse Proportion</h4>
+
+        <p>If two variables are inverse proportion changing one variable will change the other by the reciprocal of the
+            scale factor. Therefore
+            multiplying one by variable by any constant will be the same as dividing the other variable by the same
+            constant.</p>
+
+        <p><InlineMath math="y \propto \frac{1}{x}"/> which is equivalent to <InlineMath math="y = \frac{k}{x}"/>.</p>
+
+        <br/>
+
+        <h3 id={"compositefunctions"}>Composite and Inverse Functions</h3>
+
+        <p>Mappings take one number and transform it into another functions are a type of mapping in mathematics.</p>
+
+        <h4>Functions</h4>
+
+        <ul className="text-list">
+            <li>A function is an operation that takes one or many numbers and maps them to one and only one number.</li>
+            <li>The set of starting numbers is the <strong>domain</strong> and the resulting numbers they become is the
+                range.
+            </li>
+            <li>A one to one mapping takes one number in the domain and maps to one number in the range.</li>
+            <li>A many to one function maps more than one element in the domain to one element in the range.</li>
+            <li>One to many mappings are not functions as per the definition in the first item in this list.</li>
+        </ul>
+
+        <h4>Composite Functions</h4>
+
+        <p>A composite function is when you take multiple functions and combine them to make a composite one. They are
+            written in the order they should be executed. </p>
+
+        <h4>Inverse Functions</h4>
+
+        <p><strong>Only one to one functions have inverses</strong>. An inverse function does the opposite to the
+            original function and is written as <InlineMath math="f^{-1}(x)"/>.</p>
+
+        <p>The <strong>domain</strong> of the inverse is the <strong>range</strong> of the function.</p>
+        <p>The <strong>range</strong> of the inverse is the <strong>domain</strong> of the function.</p>
+
+        <p>To work out the inverse for complex cases you can use algebra. For simple cases you can usually just look at
+            it and work it out. The steps are as follows:</p>
+
+        <ul className="text-list">
+            <li>First replace <InlineMath math="f(x)"/> with <InlineMath math="y"/> to make it easier to work with.</li>
+            <li>Rearrange the equation to make <i>x</i> the subject.</li>
+            <li>Replace <i>x</i> with <InlineMath math="f^{-1}(x)"/> and <i>y</i> with <i>x</i>.</li>
+            <li>Finally you then swap the domain and the range.</li>
+        </ul>
+
+        <p>If you need to draw the inverse function it is a reflection of the original function graph along <i>y=x</i>.
+        </p>
+
+        <br/>
 
         <h3 id={"permutation"}>Permutation & Combination</h3>
 
@@ -1798,10 +1853,20 @@ const BiteSizeMath = () => (
 
         <BlockMath math="\frac{n!}{(n-r)!}"/>
 
+        <br/>
+
         <h3 id={"recurrencerelation"}>Recurrence Relations</h3>
 
         <p><a href={"https://www.bbc.co.uk/bitesize/guides/z8syyrd/revision/2"}>A initial guide</a></p>
 
+
+        <h3 id={"trigonemtry"}>Trigonometry</h3>
+
+        <br/>
+
+        <p></p>
+
+        <br/>
 
         <h3 id={"mechanics"}>Mechanics</h3>
         <p><strong>Scalar</strong> are quantities without direction they only have a size(magnitude) for example a speed

@@ -33,7 +33,7 @@ const MathFundamentals = ({match}) => {
 
                         <li className='quay-pink'>
                             <Link to={`${match.url}/BiteSizeMath#text-body`}>
-                                Basic<br/>Math
+                                Foundational<br/>Math
                             </Link>
                         </li>
                         <li className='dark-blue'>
@@ -41,6 +41,14 @@ const MathFundamentals = ({match}) => {
                                 Math<br/>Prerequisites
                             </Link>
                         </li>
+
+                        <li className='orange'>
+                            <Link to={`${match.url}/ConcreteMathematics#text-body`}>
+                                Calculus and<br/>Differential Equations
+                            </Link>
+
+                        </li>
+
                         <li className='blue'>
                             <Link to={`${match.url}/DiscreteMaths#text-body`}>
                                 Discrete<br/>Maths
@@ -52,12 +60,7 @@ const MathFundamentals = ({match}) => {
                             </Link>
 
                         </li>
-                        <li className='orange'>
-                            <Link to={`${match.url}/ConcreteMathematics#text-body`}>
-                                Calculus and<br/>Differential Equations
-                            </Link>
 
-                        </li>
 
                         <li className='cyan'>
                             <Link to={`${match.url}/FinanceMathematics#text-body`}>
