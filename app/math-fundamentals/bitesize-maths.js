@@ -41,6 +41,7 @@ const BiteSizeMath = () => (
             <li><Link to={"#polynomialgraph"}>Polynomial Graph</Link></li>
             <li><Link to={"#graphsketching"}>Graphical Transformations and Curve Sketching</Link></li>
             <li><Link to={"#proportion"}>Proportion</Link></li>
+            <li><Link to={"#exponentialfunctions"}>Exponential and Logarithmic Functions</Link></li>
             <li><Link to={"#compositefunctions"}>Composite and Inverse Functions</Link></li>
             <li><Link to={"#permutation"}>Permutation</Link></li>
             <li><Link to={"#recurrencerelation"}>Recurrence Relation</Link></li>
@@ -62,6 +63,7 @@ const BiteSizeMath = () => (
         <BlockMath math="12 \div 4 = 3"/>
         <BlockMath math="-12 \div 4 = -3"/>
         <BlockMath math="-12 \div -4 = 3"/>
+
 
         <h3 id={"fractions"}>Fractions</h3>
         <p>A fraction is a numerical quantity that is not a whole number.</p>
@@ -244,7 +246,8 @@ const BiteSizeMath = () => (
         <p>Basically it is dividing the vertical change (rise) by the horizontal change (run).</p>
 
 
-        <h3 id={"indices"}>Indices</h3>
+        <h3 id={"indices"}>Indices (Exponents)</h3>
+
         <p>The law of indices are important to know as a reference so please refer back to these when required: <a
             href="https://www.bbc.co.uk/education/guides/z826y4j/revision/5">Source</a>
         </p>
@@ -1369,6 +1372,10 @@ const BiteSizeMath = () => (
         <p>These forms of line can easily be transformed between each form the easiest to find is the gradient point
             form.</p>
 
+        <p><strong>Asymptote</strong> is a line that approaches a curve as it heads towards infinity. This is used in
+            computer science for analysis of algorithms complexity some information can be found on <a
+                href="https://www.mathsisfun.com/algebra/asymptote.html">Maths is Fun.</a></p>
+
         <h4>Straight Line Graphs</h4>
 
         <h4>Graphing using Points</h4>
@@ -1760,6 +1767,21 @@ const BiteSizeMath = () => (
             </li>
         </ul>
 
+        <h3>Piecewise Functions</h3>
+
+        <p>Piecewise functions are functions that are broken into pieces they can consist of more than one rule assigned
+            to different parts of the domain. Each rule in a piecewise function is assigned to a specific interval. A
+            good example of a piecewise function is tax brackets people will pay different tax bands depending on
+            income.</p>
+
+        <p>A piecewise function simply is a definition of each part of the interval. For example use <InlineMath
+            math="x^2"/> for when <InlineMath math="x < 0"/> and have <InlineMath math="x + 2"/> for when <InlineMath
+            math="x \ge 0"/></p>
+
+        <p>To graph a piecewise function you can draw the graph out and then add circles for each interval if the number
+            is included in the interval then shade it. If the number is not included in the interval you leave it as a
+            hollow circle.</p>
+
         <br/>
 
 
@@ -1784,6 +1806,14 @@ const BiteSizeMath = () => (
             constant.</p>
 
         <p><InlineMath math="y \propto \frac{1}{x}"/> which is equivalent to <InlineMath math="y = \frac{k}{x}"/>.</p>
+
+        <br/>
+
+        <h3 id={"exponentialfunctions"}>Exponential and Logarithmic Functions</h3>
+
+        <p>An exponential function is a function with a variable in the exponent. Previously when we discussed exponents
+            in the indices section the exponent was fixed but now we look at when the exponent is a variable and the
+            base is fixed. <InlineMath math="f(x) = b^x"/> where <i>b</i> is fixed.</p>
 
         <br/>
 
@@ -1972,6 +2002,138 @@ const BiteSizeMath = () => (
             <li>If the graph is at the x-axis the object is stationary, if it is above it is travelling forwards and if
                 it is below it is travelling backward.
             </li>
+        </ul>
+
+        <h3 id={"probability"}>Probability</h3>
+        <p>A probabilistic model is a mathematical description of an uncertain situation.</p>
+
+        <p>Every probabilistic model involves an underlying process called an <strong>experiment</strong>.</p>
+
+
+        <p>Sample space (represented by Omega) is all possible outcomes of an experiment for example when flipping a
+            coin the sample space would be
+            heads or tails. An event is a subset of the sample space and probability is assigned to the events.</p>
+
+        <h4>Probability Axioms</h4>
+        <p>Probability axioms are rules that state that probabilities will be non negative <strong>(Non
+            Negativity)</strong>. The probability
+            of the entire sample space will be 1. <strong>(Normalization)</strong>.
+        </p>
+
+        <p>Computing probabilities = counting. Countable additivity axiom is if there is an infinite set of disjoint
+            events in the sample space then the probability of the union event is equal to the sum of probabilities of
+            all events. Sets are disjoint if there intersection is empty. <strong>Additivity</strong></p>
+
+        <p>The probability of the empty set is zero.</p>
+
+        <p><strong>Mutually Exclusive</strong> are when two events cannot occur at the same time or simultaneously.</p>
+
+        <p><strong>Collectively Exhaustive</strong> no matter what happens in the experiment the result is always from
+            the sample space.</p>
+
+        <p>You can have the intersection of events where both A and B events occurred. Along with the union of events A
+            or B where either one has occurred or both. If event A and B have no common elements then the total of
+            probability of A occurs + B occurs</p>
+
+
+        <p>The de morgans law is that the negation of "A and B" is the same as "Not A or Not B"</p>
+        <p>The negation of "A or B" is the same as "Not A and Not B"</p>
+
+        <h4>Sequential Models</h4>
+
+        <p>It is common that experiments have a sequential nature where for example you are considering one coin toss
+            followed by another. These can be represented visually by a tree structure.</p>
+
+        <h4>Discrete Models</h4>
+
+        <p>Discrete probability events are finite outcomes.</p>
+
+        <p><strong>Discrete Probability Law</strong> if the probability of any event <InlineMath
+            math="{S_1 S_2 S_3}"/> is the sum of the probabilities of its elements. <InlineMath
+            math="P({S_1 S_2 S_n}) = P({S_1}) + ... + P({S_n)"/></p>
+
+        <p>If all outcomes are equally likely then we have the <strong>Discrete Uniform Probability law</strong></p>
+
+        <BlockMath math="P(A) = \frac{Number of elements of A}{total number of sample points}"/>
+
+        <h4>Continuous Models</h4>
+
+        <p>Continuous models can take any value within a range or interval like height or weight.</p>
+
+
+        <p></p>
+
+        <h3 id={"linearalgebra"}>Linear Algebra</h3>
+
+        <h4>Matrices</h4>
+        <p>A matrix is an array of numbers.</p>
+
+        <p>A <strong>symmetric</strong> matrix is a square matrix that is equal to its transpose. The transpose is where
+            you swap rows and columns. The example below shows this if you flip along the main diagonal it will look the
+            same.</p>
+
+        <BlockMath math="\begin{bmatrix}
+   1 & 2 & 3 \\
+   2 & 4 & 5 \\
+   3 & 5 & 6 \\
+\end{bmatrix}"/>
+
+        <h5>Adding Matrices</h5>
+
+        <p>To be able to add matrices they need to be the same size have the same columns and row lengths. Then
+            to <strong>add</strong> you simply add the numbers in the equivalent parts of the matrices.</p>
+
+        <h5>Negate</h5>
+
+        <p>To negate a matrix you simply negate each number or make it positive if already negative.</p>
+
+        <h5>Subtraction</h5>
+
+        <p>To subtract two matrices you subtract each matching row and column. It is written as addition of the
+            negate.</p>
+
+        <h5>Multiply Matrix by Constant (Scalar Multiplication)</h5>
+
+        <p>To multiply a matrix by a constant (where this constant is called a scalar) you simply multiply each item in
+            the matrix by the constant term.</p>
+
+        <p>Complex conjugate. Real eigenvalues. Transpose. Orthonormal diagonizable.</p>
+
+        <p>In general not all matrices are diagonizable.</p>
+
+        <p>Diagonalization = Eigenvalue Decomposition</p>
+
+        <p>Singular value decomposition. </p>
+
+
+        <br/>
+
+        <h4>Assignment Topics in Mathematics with Finance: Problem Set 1</h4>
+
+        <h5>Part A</h5>
+
+        <ul className="text-list">
+            <li>(a) The row-rank and column-rank of a matrix is always equal to each other. True</li>
+            <li>(b) For a m x n matrix A and a n x l matrix B, it is always true that rank(AB) is less than or equal to
+                rank(A). True as the columns of AB are a linear combination of columns A. This means the column space of
+                AB is a subspace of the column space A. Where a subspace is always less than or equal to the original
+                space.
+            </li>
+            <li>(c) There are matrices whose left inverse and right inverse are not equal to each other. This is only
+                true for square matrices but not for non square matrices. Non square matrices can have one or both.
+            </li>
+
+            <li>(d) A matrix has a full rank if and only if it is invertible. True as a Full Rank is if its rank is
+                equal to the number of rows (or columns). This means all rows (or columns) are linearly independent.
+                Invertible means if there exists another matrix so that their product is the identity matrix.
+            </li>
+
+            <li>(e) All symmetric matrices are invertible. False as the zero matrix is symmetric but not invertible.
+            </li>
+
+            <li>(f) A matrix is invertible if all eigenvalues are distinct. This is not true.</li>
+
+            <li>(g) A matrix is diagonizable if and only if it is invertible. False.</li>
         </ul>
 
     </div>
