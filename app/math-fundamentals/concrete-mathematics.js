@@ -101,15 +101,40 @@ const ConcreteMathematics = () => (
 
 
         <h3 id={"differentiation"}>Differentiation</h3>
-        <p>Differentiation is used for calculating the rate of change. The rate of change of a function can be found
-            by
-            finding the derived function. You can ask to differentiate by the following notations , firstly the
-            Liebniz
-            Notation <InlineMath math="\frac{dy}{dx}"/> or <InlineMath math="f'(x)"/>.</p>
 
-        <p>The general formula to solve differentiation is to bring the power down to the front of x and multiply
-            and
-            then bring the power down by 1.</p>
+        <p>When learning about slopes of graphs you can find the average slope between two points. The slope is the
+            change</p>
+
+        <BlockMath
+            math="Slope = \frac{rise}{run} = \frac{Change in Y}{Change in X} = \frac{y_2 - y_1}{x_2 - x_2}"></BlockMath>
+
+        <p>Following this approach if you want to know the slope at a single point you cannot as it would be zero change
+            in both therefore:</p>
+
+        <BlockMath math="Slope = \frac{0}{0} = ?"></BlockMath>
+
+        <p>but with derivatives we can take a small change and shrink it down towards zero.</p>
+
+        <BlockMath math="Slope = \frac{Change in Y}{Change in X} = \frac{\vartriangle Y}{\vartriangle X}"></BlockMath>
+
+        <p>This leads to the difference quotient formula for differentiation which you will not use once you learn the
+            rules. The change in <i>x</i> is commonly replaced by the letter <i>h</i>.</p>
+
+        <BlockMath
+            math="Slope = \lim_{\vartriangle x \to 0} \frac{\vartriangle Y}{\vartriangle X} = \frac{f(x+\vartriangle x) - f(x)}{\vartriangle x}"></BlockMath>
+
+        <p>Differentiation is used for calculating the rate of change. The rate of change of a function can be found
+            by finding the derived function. You can ask to differentiate by the following notations , firstly the
+            Liebniz Notation <InlineMath math="\frac{dy}{dx}"/> or <InlineMath math="f'(x)"/>.</p>
+
+        <h4>Derivatives Rules</h4>
+
+        <p>To differentiate there are many rules that can be followed these can be found listed on <a
+            href={"https://www.mathsisfun.com/calculus/derivatives-rules.html"}>Maths is Fun</a></p>
+
+        <h5>Power Rule</h5>
+        <p>For example the power rule to solve differentiation is to bring the power down to the front of x and multiply
+            and then bring the power down by 1.</p>
 
         <BlockMath math="f(x) = ax^n \rightarrow f'(x) = nax^{n-1}"/>
 
@@ -126,10 +151,117 @@ const ConcreteMathematics = () => (
         <BlockMath math="a^{\frac{m}{n}} = \sqrt[n]{a^m}"/>
 
         <p>Before differentiating you should remove brackets, separate top heavy fractions, change terms involving
-            roots
-            into fractional powers and change terms with <i>x</i> on the denominator to negative powers.</p>
+            roots into fractional powers and change terms with <i>x</i> on the denominator to negative powers.</p>
+
+        <h5>Product Rule</h5>
+
+        <p>The product rule is used when you need to differentiate two functions that are multiplied together. Here you
+            differentiate each function and multiply it by the other non differentiated function then add them.</p>
+
+        <p>' means derivative of</p>
+        <BlockMath math="(fg)' = fg' + gf'"/>
+
+        <h5>Chain Rule</h5>
+
+        <p>If we know the rate of change for two related things, how do we work out the overall rate of change?</p>
+        <p>The chain can tell us the overall rate of change when we know the rate of change of two related things.</p>
+
+        <BlockMath math="\frac{dy}{dx} = \frac{dy}{du} \times \frac{du}{dx}"/>
+
+        <p>Simply when you have a function of a function you will use the chain rule. You can replace the value in
+            side with a variable. Differentiate both parts and multiply then plug back in the original value for the
+            variable. <a href={"https://www.mathsisfun.com/calculus/chain-rule.html"}>Example</a>.</p>
+
+        <h4>Higher Order Derivatives</h4>
+
+        <p>You can differentiate multiple times as required to get higher order derivatives. This enables you to see the
+            the rate of change of the rate of change. For example the acceleration of speed, or the jerk of
+            acceleration.</p>
+
+        <h4>Partial Derivatives</h4>
+
+        <p>A <a href={"https://www.mathsisfun.com/calculus/derivatives-partial.html"}>partial derivative</a> is one
+            where we have multiple variables and therefore we hold some variables constant. For example if we have
+            variables <i>x</i> and <i>y</i> then we can differentiate <i>x</i> and hold <i>y</i> constant.</p>
+
+        <h4>Concave (Convexity)</h4>
+
+        <p>The concave upward (also called convex) is when the slope increases and the concave downward (also called
+            concave) is when the slope decreases. To calculate this using differentiation is you take the second
+            derivative of the function then set the value equal to zero and solve for the <i>x</i>. When the slope is
+            positive you concave and when negative you convex. The point where it changes is called the <strong>inflection
+                point</strong>.</p>
+
+        <h4>Taylor Series</h4>
+
+        <p>A Taylor Series is an expansion of a function into a infinite sum of terms where each terms exponent is
+            larger and larger. We can use the first few terms of a Taylor Series to then get an approximate value for
+            the function.</p>
 
         <h3 id={"integration"}>Integration</h3>
+
+        <p>Integration can be thought of as the reverse of differentiation it is adding up the small pieces to find the
+            whole. It can be used for areas, volumes and central points.</p>
+        <p>The symbol for integral is below and we always require to add the constant as the derivative of a constant is
+            zero, therefore when we integrate back we have providing for all constants. A good introduction and examples
+            can be found at <a href={"https://www.mathsisfun.com/calculus/integration-introduction.html"}>Maths is
+                Fun</a></p>
+
+        <BlockMath math="\int 2x dx = x^2 + c"/>
+
+        <p>When you have a single variable you have the following to integrate.</p>
+
+        <BlockMath math="\int x dx = \frac{1}{2}x^2 + c"/>
+
+        <p>When you have a single constant to integrate it is simply the value with <i>x</i> plus a constant</p>
+
+        <BlockMath math="\int 1 dx = x + c"/>
+
+        <BlockMath math="\int 7 dx = 7x + c"/>
+
+        <h4>Integration Rules</h4>
+
+        <p>As with differentiation as set of rules exist for integration that makes it much easier to solve.</p>
+
+        <p>These have been written up well at <a href={"https://www.mathsisfun.com/calculus/integration-rules.html"}>Maths
+            is Fun Integration Rules</a> therefore I would suggest reading them here.</p>
+
+        <h4>Definite vs Indefinite Integrals</h4>
+
+        <p>When you see an integral with no boundaries they are indefinite integrals. A definite integral has actual
+            values listed with the bottom value the start value and the upper value the end value. To work out the
+            definite integral the function is required to be continuous between the two points.</p>
+
+        <p>To calculate definite integrals you first integrate the indefinite function then plug in the start calculate
+            and then the end value and then subtract the start value result from the end value result. As you do this
+            you will notice the <i>C</i> constants are cancelled out in the subtraction. <a
+                href={"https://www.mathsisfun.com/calculus/integration-definite.html"}>Please check the example.</a></p>
+
+
+        <h4>Integration by Parts</h4>
+
+        <p>When trying to integrate a function that is a product of two functions you use the integration by parts
+            formula. <a href={"https://www.mathsisfun.com/calculus/integration-by-parts.html"}>Reference</a> for the
+            basics and a neat video <a
+                href={"https://ocw.mit.edu/courses/18-01sc-single-variable-calculus-fall-2010/pages/unit-4-techniques-of-integration/part-b-partial-fractions-integration-by-parts-arc-length-and-surface-area/session-76-integration-by-parts/"}> here.</a>
+        </p>
+
+        <BlockMath math="\int u v dx = u \int v dx - \int u' (\int v dx) dx"/>
+        <p>Where <i>u</i> is the function <InlineMath math="u(x)"/> <i>v</i> is the function <InlineMath math="v(x)"/> and <i>u'</i>
+            is the
+            derivative of the function <InlineMath math="u(x)"/></p>
+
+        <p>The steps to follow are as follows you can choose <i>U</i> and <i>V</i>. You can then differentiate <i>U</i>.
+            Remember choose the
+            <i>U</i> and <i>V</i> appropriately to make the calculation easier. Integrate <i>V</i>. Put them into the
+            formula and then solve and simplify.</p>
+
+        <h4></h4>
+
+        <h4>Integration by Substitution (Reverse Chain Rule)</h4>
+        <p>This is the method for making a substitution to simplify an integral <a
+            href={"https://www.mathsisfun.com/calculus/integration-by-substitution.html"}>reference.</a> .</p>
+
         <h3 id={"differential"}></h3>
 
     </div>
