@@ -62,6 +62,14 @@ const ConcreteMathematics = () => (
 
         <h4>Eulers Number</h4>
 
+        <p>When modelling <InlineMath math="a^x"/> and the gradient graph of <InlineMath math="\frac{dy}{dx} = a^x"/> you will
+            notice that the curves of the graphs will be identical when the value of <i>a</i> is exactly Eulers number
+            of 2.718281828459045…</p>
+
+        <p>This means the result of differentiating <i>e</i> to find the rate is the same as the original function.</p>
+
+        <p>Anything in the form of <InlineMath math="y = a^x"/> is <strong>an</strong> exponential function whilst <InlineMath math="y = e^x"/> is <strong>the</strong> exponential function.</p>
+
         <p>The following formula gets closer and closer to Eulers number as <i>n</i> increases.</p>
 
         <BlockMath math="(1 + \frac{1}{n})^n"></BlockMath>
@@ -178,6 +186,14 @@ const ConcreteMathematics = () => (
             the rate of change of the rate of change. For example the acceleration of speed, or the jerk of
             acceleration.</p>
 
+        <p>Therefore to find the <strong>velocity</strong> of a ball thrown given a function you differentiate it once
+            then to find the acceleration at that point you differentiate it again therefore the second derivative gives
+            you the acceleration.</p>
+
+        <p>To find the rates of change at different points on a graph where the points cross the x-axis you first
+            factorise the equation and then set the equation y = 0 and find the x coordinates. You then differentiate
+            the equation and plug in the x values to find the rate of change at those coordinates.</p>
+
         <h4>Partial Derivatives</h4>
 
         <p>A <a href={"https://www.mathsisfun.com/calculus/derivatives-partial.html"}>partial derivative</a> is one
@@ -247,7 +263,8 @@ const ConcreteMathematics = () => (
         </p>
 
         <BlockMath math="\int u v dx = u \int v dx - \int u' (\int v dx) dx"/>
-        <p>Where <i>u</i> is the function <InlineMath math="u(x)"/> <i>v</i> is the function <InlineMath math="v(x)"/> and <i>u'</i>
+        <p>Where <i>u</i> is the function <InlineMath math="u(x)"/> <i>v</i> is the function <InlineMath
+            math="v(x)"/> and <i>u'</i>
             is the
             derivative of the function <InlineMath math="u(x)"/></p>
 
