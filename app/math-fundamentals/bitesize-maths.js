@@ -283,7 +283,8 @@ const BiteSizeMath = () => (
             For example <InlineMath math="a^2 \div a^2 = a^{2-2} = a^0"/> as <InlineMath
                 math="j^2 \div j^2 = 25 \div 25 = 1"/></p>
 
-        <p>Fifth law if we have negative it can be solved as <InlineMath math="a^{-n} = \frac{1}{a^n}"/> For
+        <p>Fifth law if we have negative it can be solved as <InlineMath
+            math="a^{-n} = \frac{1}{a^n} = (\frac{1}{a})^n"/> For
             example <InlineMath math="3^5 \times 3^{-5} = 3^0 = 1"/> this can be rearranged by dividing both sides
             with <InlineMath math="3^5"/> as <InlineMath math="3^{-5} = \frac{1}{3^5}"/></p>
 
@@ -843,6 +844,52 @@ const BiteSizeMath = () => (
         <p>Giving the final result of:</p>
 
         <BlockMath math="\frac{1}{(x+4)} + \frac{2}{(2x-3)}"/>
+
+        <hr/>
+
+        <h5>Another example</h5>
+
+        <BlockMath math="\frac{2x-7}{x^2+4x+3}"></BlockMath>
+
+        <p>First factor the bottom.</p>
+        <BlockMath math="\frac{2x-7}{(x+1)(x+3)}"></BlockMath>
+
+        <p>Now decompose the fraction.</p>
+
+        <BlockMath math="2x - 7 = \frac{A}{(x+1)} + \frac{B}{(x+3)}"></BlockMath>
+
+        <p>Now multiply through the bases</p>
+        <BlockMath math="2x - 7 = A(x+3) + B(x+1)"></BlockMath>
+
+        <p>Substitute the roots to find make zero.</p>
+
+        <BlockMath math="x = -3"/>
+
+        <BlockMath math="x = -1"/>
+
+        <p>Now substitute into the equation and solve.</p>
+
+        <BlockMath math="2(-1) - 7 = A(-1 + 3) + B(-1 + 1)"/>
+
+        <BlockMath math="2(-1) - 7 = A(-1 + 3) + B(-1 + 1)"/>
+
+        <BlockMath math="-9 = 2A"/>
+
+        <BlockMath math="\frac{-9}{2} = A"/>
+
+        <p>Now solve to find B</p>
+
+        <BlockMath math="2(-3) - 7 = A(-3 + 3) + B(-3 + 1)"/>
+
+        <BlockMath math="2(-3) - 7 = A(-3 + 3) + B(-3 + 1)"/>
+
+        <BlockMath math="-13 = -2B"/>
+
+        <BlockMath math="\frac{13}{2} = B"/>
+
+        <p>Giving the final result of:</p>
+
+        <BlockMath math="\frac{13}{2(x+3)} - \frac{9}{2(x+1)}"/>
 
         <hr/>
 
