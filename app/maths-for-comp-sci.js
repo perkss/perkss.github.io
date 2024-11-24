@@ -859,7 +859,7 @@ const mathsForCompSci = {
         <hr/>
         <br/>
         <h3 id={"Probability"}>Probability</h3>
-        <p>Probability is all around how <strong>likely</strong> something is to happen. When a single DIE is rolled
+        <p>Probability is all around how <strong>likely</strong> something is to happen. When a single Die is rolled
             there are six possible outcomes <Latex>$1,2,3,4,5,6$</Latex> The probability of rolling say
             a <i>4</i> is <InlineMath math="\frac{1}{6}"/>. Generally the probability can be thought of as:</p>
 

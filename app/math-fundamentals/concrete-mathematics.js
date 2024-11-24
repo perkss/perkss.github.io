@@ -33,6 +33,10 @@ const ConcreteMathematics = () => (
             approaching limit with a negative sign and the right side approaching limit with a plus sign. Graphically
             the graphs with hole, jump or vertical asymptote are not continuous and will have limit gaps.</p>
 
+
+        <p>To read the following you are saying as x approaches infinity 1/x approaches zero (but never reaches zero).</p>
+        <BlockMath math="\lim_{x \to \infty} \frac{1}{x} = 0"></BlockMath>
+
         <p>For example when plotting a graph of a function it may have a hole at a certain point where the limit does
             not exist or
             be a piecewise graph where there are clear gaps. <a
@@ -68,11 +72,19 @@ const ConcreteMathematics = () => (
 
         <p>This means the result of differentiating <i>e</i> to find the rate is the same as the original function.</p>
 
+        <p>This is the reason why Euler number is used so much as it makes it very convenient for logarithm and exponential functions.</p>
+
         <p>Anything in the form of <InlineMath math="y = a^x"/> is <strong>an</strong> exponential function whilst <InlineMath math="y = e^x"/> is <strong>the</strong> exponential function.</p>
 
-        <p>The following formula gets closer and closer to Eulers number as <i>n</i> increases.</p>
+        <p>The following formula that can be used for compounding calculations and gets closer and closer to Eulers number as <i>n</i> increases to infinity.</p>
 
         <BlockMath math="(1 + \frac{1}{n})^n"></BlockMath>
+
+        <p>This can be tried out as the following.</p>
+
+        <BlockMath math="(1 + \frac{1}{100})^100 = 2.704813829942"></BlockMath>
+
+        <BlockMath math="(1 + \frac{1}{10000})^10000 = 2.71814592682"></BlockMath>
 
         <p>As we approach larger and larger numbers we move closer and closer to Eulers number. This is referenced later
             when we look at interest rate formulas in financial maths.</p>

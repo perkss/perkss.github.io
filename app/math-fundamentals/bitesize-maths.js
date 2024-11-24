@@ -1906,6 +1906,10 @@ const BiteSizeMath = () => (
         <p>If you need to draw the inverse function it is a reflection of the original function graph along <i>y=x</i>.
         </p>
 
+        <h4>Natural Logarithms</h4>
+
+        <p>When euler number is used as the base of the logarithm it is a natural logarithm. <InlineMath math="ln()"/></p>
+
         <br/>
 
         <h3 id={"permutation"}>Permutation & Combination</h3>
@@ -2055,7 +2059,6 @@ const BiteSizeMath = () => (
         <p>A probabilistic model is a mathematical description of an uncertain situation.</p>
 
         <p>Every probabilistic model involves an underlying process called an <strong>experiment</strong>.</p>
-
 
         <p>Sample space (represented by Omega) is all possible outcomes of an experiment for example when flipping a
             coin the sample space would be
