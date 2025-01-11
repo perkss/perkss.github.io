@@ -78,11 +78,62 @@ const MathPreliminaries = () => (
 
         <h4>Union Probability</h4>
 
-        <p>When we need to know the probability of even A or B this is called union probability and uses OR.</p>
+        <p>When we need to know the probability of gettting event A or B this is called union probability and uses
+            OR.</p>
 
         <h5>Mutually Exclusive Events</h5>
 
-        <p>Mutually exclusive events are ones that occur simultaneously. For example rolling one die you can only get one outcome.</p>
+        <p>Mutually exclusive events are ones that occur simultaneously. For example rolling one die you can only get
+            one outcome.</p>
+
+        <p>When calculating union probability you need to ensure you do not double count and the formula for calculating
+            union probability you subtract the join probability for this reason. This is the <strong>sum
+                rule</strong> of probability.</p>
+
+        <h6>Sum Rule of Probability</h6>
+        <BlockMath math="P(A OR B) = P(A) + P(B) - P(A AND B)"/>
+        <BlockMath math="P(A OR B) = P(A) + P(B) - P(A \times B)"/>
+
+        <p>The key part of union probability is to subtract the joint probabilities and this will work for mutually and
+            non mutually exclusive events.</p>
+
+        <h4>Conditional Probability</h4>
+
+        <p>Conditional probability is the probability of an event A occurring given event B has occurred and this is
+            written as follows.</p>
+
+        <BlockMath math="P(A GIVEN B) = P(A|B)"/>
+
+
+        <h4>Expected Value in Probability</h4>
+
+        <p>Expectation is the weighted average of all possible outcomes of a random variable.</p>
+
+        <p>It can be written with the following syntax.</p>
+        <BlockMath math="\mathbb{E}(X)"/>
+        <BlockMath math="\mathbb{E}[X]"/>
+        <BlockMath math="\mu X"/>
+
+        <p>An example is a dice roll for a six sided dice. The expected value can be calculated with the following
+            formula.</p>
+
+        <BlockMath math="\mathbb{E}(X) = \sum [X \times P(X = x)]"/>
+
+        <p>Where x is the value of the outcome. <InlineMath math={"P(X = x)"}></InlineMath> is the probability of that
+            outcome.</p>
+
+        <BlockMath
+            math="\mathbb{E}(X) = 1 \times (1/6) + 2 \times (1/6) + 3 \times (1/6) + 4 \times (1/6) + 5 \times (1/6) + 6 \times (1/6)"></BlockMath>
+
+        <BlockMath math="\mathbb{E}(X) = (1 + 2 + 3 + 4 + 5 + 6) \times (1/6)"></BlockMath>
+
+        <BlockMath math="\mathbb{E}(X) = 21 \times (1/6)"></BlockMath>
+
+        <BlockMath math="\mathbb{E}(X) = 3.5"></BlockMath>
+
+        <p>Therefore the expected value of a single die roll is 3.5. This means that on average if you roll the die lots
+            of times say a million the average result will be 3.5.</p>
+
 
     </div>
 

@@ -829,7 +829,7 @@ const BiteSizeMath = () => (
 
         <BlockMath math="x = -4"/>
 
-        <BlockMath math="x = -\frac{3}{2}"/>
+        <BlockMath math="x = \frac{3}{2}"/>
 
         <BlockMath math="4(-4) + 5 = A(2(-4)-3) + 0"/>
         <BlockMath math="-16 + 5 = A(-11)"/>
@@ -902,13 +902,32 @@ const BiteSizeMath = () => (
         <p>The factor theorem defined <InlineMath math="f(x)"/> is a polynomial and <InlineMath
             math="f(k) = 0"/> then <InlineMath math="(x-k)"/> is a factor of <InlineMath math="f(x)"/></p>
 
-        <BlockMath math="x^3 - 6x^2 + 3x + 10"/>
+        <BlockMath math="f(x) = x^3 - 6x^2 + 3x + 10"/>
 
-        <p>In the example above the factors to try are of 10 which are <InlineMath math="(\pm 1) (\pm 2) (\pm3)"/>. Once
-            you have found two of the factors in this case <InlineMath math="(x+1)(x-2)( ... )"/> you can simply then
+        <p>In the example above the factors to try are of 10 which are <InlineMath
+            math="(\pm 1) (\pm 2) (\pm 5) (\pm 10)"/>. Once
+            you have found two of the factors by plugging them in you can then factor. They should equal zero.</p>
+
+        <BlockMath math="f(-1) = -1^3 - 6(-1)^2 + 3(-1) + 10 = -1 - 6 -3 + 10 = 0"/>
+
+        <p>This then equals zero therefore -1 is a factor. <InlineMath math="(x+1)( ... )( ... )"/></p>
+        <p>Now we try 2.</p>
+        <BlockMath math="f(2) = 2^3 - 6(2)^2 + 3(2) + 10 = 8 - 24 + 6 + 10 = 0"/>
+        <p>This again equals zero therefore is a factor <InlineMath math="(x+1)(x-2)( ... )"/></p>
+
+        <p>Therefore in this case <InlineMath math="(x+1)(x-2)( ... )"/> we have two of the three factors. You can
+            simply then
             work out that the way to get a <InlineMath math="10"/> is through a factor of <InlineMath
-                math="1 \times -2"/> multiplied by something will be <InlineMath math="1 \times -2 \times -5 = 10"/>.
+                math="1 \times -2"/> multiplied by something. In this case it will be <InlineMath
+                math="1 \times -2 \times -5 = 10"/>.
         </p>
+
+        <p>Therefore the factors of this polynomial are <InlineMath math="(x+1)(x-2)(x-5)"/>. You can multiply this out
+            to confirm your answer.</p>
+
+        <hr/>
+
+        <p>New example.</p>
 
         <BlockMath math="p(x) = 2x^3 + 3x^2 - 32x + 15"/>
 
@@ -940,6 +959,8 @@ const BiteSizeMath = () => (
 
         <BlockMath math="2x^3 + 3x^2 - 32x + 15 = (x-3)(2x^2 + 9x -5)"/>
         <BlockMath math="= (x-3)(2x - 1 )(x + 5)"/>
+
+        <hr/>
 
         <h4>Sketching Cubics</h4>
 
@@ -1908,7 +1929,8 @@ const BiteSizeMath = () => (
 
         <h4>Natural Logarithms</h4>
 
-        <p>When euler number is used as the base of the logarithm it is a natural logarithm. <InlineMath math="ln()"/></p>
+        <p>When euler number is used as the base of the logarithm it is a natural logarithm. <InlineMath math="ln()"/>
+        </p>
 
         <br/>
 
