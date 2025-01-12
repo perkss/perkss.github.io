@@ -34,7 +34,8 @@ const ConcreteMathematics = () => (
             the graphs with hole, jump or vertical asymptote are not continuous and will have limit gaps.</p>
 
 
-        <p>To read the following you are saying as x approaches infinity 1/x approaches zero (but never reaches zero).</p>
+        <p>To read the following you are saying as x approaches infinity 1/x approaches zero (but never reaches
+            zero).</p>
         <BlockMath math="\lim_{x \to \infty} \frac{1}{x} = 0"></BlockMath>
 
         <p>For example when plotting a graph of a function it may have a hole at a certain point where the limit does
@@ -66,25 +67,29 @@ const ConcreteMathematics = () => (
 
         <h4>Eulers Number</h4>
 
-        <p>When modelling <InlineMath math="a^x"/> and the gradient graph of <InlineMath math="\frac{dy}{dx} = a^x"/> you will
+        <p>When modelling <InlineMath math="a^x"/> and the gradient graph of <InlineMath
+            math="\frac{dy}{dx} = a^x"/> you will
             notice that the curves of the graphs will be identical when the value of <i>a</i> is exactly Eulers number
             of 2.718281828459045…</p>
 
         <p>This means the result of differentiating <i>e</i> to find the rate is the same as the original function.</p>
 
-        <p>This is the reason why Euler number is used so much as it makes it very convenient for logarithm and exponential functions.</p>
+        <p>This is the reason why Euler number is used so much as it makes it very convenient for logarithm and
+            exponential functions.</p>
 
-        <p>Anything in the form of <InlineMath math="y = a^x"/> is <strong>an</strong> exponential function whilst <InlineMath math="y = e^x"/> is <strong>the</strong> exponential function.</p>
+        <p>Anything in the form of <InlineMath math="y = a^x"/> is <strong>an</strong> exponential function
+            whilst <InlineMath math="y = e^x"/> is <strong>the</strong> exponential function.</p>
 
-        <p>The following formula that can be used for compounding calculations and gets closer and closer to Eulers number as <i>n</i> increases to infinity.</p>
+        <p>The following formula that can be used for compounding calculations and gets closer and closer to Eulers
+            number as <i>n</i> increases to infinity.</p>
 
         <BlockMath math="(1 + \frac{1}{n})^n"></BlockMath>
 
         <p>This can be tried out as the following.</p>
 
-        <BlockMath math="(1 + \frac{1}{100})^100 = 2.704813829942"></BlockMath>
+        <BlockMath math="(1 + \frac{1}{100})^{100} = 2.704813829942"></BlockMath>
 
-        <BlockMath math="(1 + \frac{1}{10000})^10000 = 2.71814592682"></BlockMath>
+        <BlockMath math="(1 + \frac{1}{10000})^{10000} = 2.71814592682"></BlockMath>
 
         <p>As we approach larger and larger numbers we move closer and closer to Eulers number. This is referenced later
             when we look at interest rate formulas in financial maths.</p>
@@ -188,9 +193,35 @@ const ConcreteMathematics = () => (
 
         <BlockMath math="\frac{dy}{dx} = \frac{dy}{du} \times \frac{du}{dx}"/>
 
-        <p>Simply when you have a function of a function you will use the chain rule. You can replace the value in
-            side with a variable. Differentiate both parts and multiply then plug back in the original value for the
+        <p>Simply when you have a function of a function (a composite function) you will use the chain rule. You can
+            replace the value inside with a variable. Differentiate both parts and multiply then plug back in the
+            original value for the
             variable. <a href={"https://www.mathsisfun.com/calculus/chain-rule.html"}>Example</a>.</p>
+
+        <p>Lets walk through an example of the chain rule. Firstly identify the structure. A composite function
+            generally looks like the following:</p>
+
+        <BlockMath math="f(g(x))"/>
+
+        <p>Where <InlineMath math="f(x)"/> is the outer function and <InlineMath math="g(x)"/> is the inner function.
+        </p>
+
+        <p>In this example <InlineMath math="h(x) = (3x^2 + 2)^3"/></p>
+
+        <p>Now using the chain rule you can identify the functions.</p>
+
+        <p>Outer function is <InlineMath math="f(u) = u^3"/>.</p>
+        <p>Inner function is <InlineMath math="g(x) = 3x^2 + 2"/>.</p>
+
+        <p>Now differentiate the outer function</p>
+
+        <p><InlineMath math="f'(u) = 3u^2"/></p>
+
+        <p>Now differentiate the inner function <InlineMath math="g'(x) = 6x"/>.</p>
+
+        <p>Multiply the results to get <InlineMath
+            math="h'(x) = f'(g(x)) \times g'(x) = 3(3x^2 + 2)^2 \times 6x = 18x(3x^2+2)^2"/></p>
+
 
         <h4>Higher Order Derivatives</h4>
 
@@ -235,17 +266,21 @@ const ConcreteMathematics = () => (
             can be found at <a href={"https://www.mathsisfun.com/calculus/integration-introduction.html"}>Maths is
                 Fun</a></p>
 
-        <BlockMath math="\int 2x dx = x^2 + c"/>
+        <BlockMath math="\int 2x \;dx = x^2 + c"/>
 
         <p>When you have a single variable you have the following to integrate.</p>
 
-        <BlockMath math="\int x dx = \frac{1}{2}x^2 + c"/>
+        <BlockMath math="\int x \;dx = \frac{1}{2}x^2 + c"/>
+
+        <p>This will follow the integration power rule.</p>
+
+        <BlockMath math="\int x^n \;dx = \frac{x^{n+1}}{n+1} + c"/>
 
         <p>When you have a single constant to integrate it is simply the value with <i>x</i> plus a constant</p>
 
-        <BlockMath math="\int 1 dx = x + c"/>
+        <BlockMath math="\int 1 \;dx = x + c"/>
 
-        <BlockMath math="\int 7 dx = 7x + c"/>
+        <BlockMath math="\int 7 \;dx = 7x + c"/>
 
         <h4>Integration Rules</h4>
 
@@ -253,6 +288,25 @@ const ConcreteMathematics = () => (
 
         <p>These have been written up well at <a href={"https://www.mathsisfun.com/calculus/integration-rules.html"}>Maths
             is Fun Integration Rules</a> therefore I would suggest reading them here.</p>
+
+        <h5>Examples</h5>
+
+        <p>Constant <InlineMath math="\int a \;dx = ax + c"/></p>
+        <p>Variable <InlineMath math="\int x \;dx = \frac{x^2}{2} + c"/></p>
+        <p>Square <InlineMath math="\int x \;dx = \frac{x^3}{3} + c"/></p>
+        <p>Reciprocal <InlineMath math="\int (\frac{1}{x}) \;dx = \ln|x| + c"/></p>
+        <p>Exponential euler <InlineMath math="\int e^x \;dx = e^x + c"/></p>
+        <p>Exponent <InlineMath math="\int a^x \;dx = \frac{a^x}{\ln(a)} + c"/></p>
+        <p>Natural Log <InlineMath math="\int \ln(x) dx = x \ln(x) - x + c"/></p>
+
+        <h5>Rules</h5>
+        <p>Multiplication by Constant <InlineMath math="\int cf(x) \;dx = c \int f(x) + dx"/></p>
+        <p>Power Rule <InlineMath math="\int x^n \;dx = \frac{x^{n+1}}{n+1} + c"/></p>
+        <p>Sum Rule <InlineMath math="\int (f+g) \;dx = \int f \;dx + \int g \; dx"/></p>
+        <p>Difference Rule <InlineMath math="\int (f - g) \;dx = \int f \;dx - \int g \; dx"/></p>
+        <p>Integration By Parts <InlineMath math="\int u v \;dx = u \int v \;dx - \int u'(\int v dx) \; dx"/></p>
+        <p>Integration By Substitution see details below.</p>
+
 
         <h4>Definite vs Indefinite Integrals</h4>
 
@@ -275,17 +329,33 @@ const ConcreteMathematics = () => (
         </p>
 
         <BlockMath math="\int u v dx = u \int v dx - \int u' (\int v dx) dx"/>
+
         <p>Where <i>u</i> is the function <InlineMath math="u(x)"/> <i>v</i> is the function <InlineMath
             math="v(x)"/> and <i>u'</i>
-            is the
-            derivative of the function <InlineMath math="u(x)"/></p>
+            is the derivative of the function <InlineMath math="u(x)"/></p>
 
         <p>The steps to follow are as follows you can choose <i>U</i> and <i>V</i>. You can then differentiate <i>U</i>.
             Remember choose the
             <i>U</i> and <i>V</i> appropriately to make the calculation easier. Integrate <i>V</i>. Put them into the
             formula and then solve and simplify.</p>
 
-        <h4></h4>
+
+        <h5>Example Integration by Parts</h5>
+        <BlockMath math="\int x \; cos(x) dx"/>
+        <p>First choose the functions of u and v.</p>
+        <BlockMath math="u = x"/>
+        <BlockMath math="v = cos(x)"/>
+
+        <p>Now it is in the format <InlineMath math="\int u x \;dx"/> we can proceed.</p>
+
+        <p>Differentiate u is <InlineMath math="u' = x' = 1"/></p>
+
+        <p>Integrate v is <InlineMath math="\int v \;dx = \int cos(x) dx = sin(x)"/></p>
+
+        <p>Now put this together to give the following then solve.</p>
+
+        <p><InlineMath math="x sin(x) - \int 1 \; sin(x) \;dx"/> solved is <InlineMath math="x sin(x) + cos(x) + c"/></p>
+        <p>Put simply we have (u integral v) minus integral of (derivative u, integral v)</p>
 
         <h4>Integration by Substitution (Reverse Chain Rule)</h4>
         <p>This is the method for making a substitution to simplify an integral <a
