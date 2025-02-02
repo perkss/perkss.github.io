@@ -8,22 +8,6 @@ const FinanceMathematics = () => (
     <div>
         <h2>Finance Mathematics</h2>
 
-
-        <h3>Linear Algebra</h3>
-
-        <p><InlineMath math={"\reals ^2"}></InlineMath> the two dimensional real coordinate space is just the coordinate
-            space that is found in the coordinates plane this is one representation of it. It is all possible real value
-            two tuples (which is a ordered list of two numbers). Vectors are object in mathematics that have both
-            magnitude and direction. Vectors can be added by simply adding each part of one vector to the other and this
-            will create a new vector. The origin is not relevant when plotting vectors its tail can start at (0,0) but
-            it can be plotted anyway. The magnitude and direction is the key part. The sum of two vectors shifts the
-            original vectors is the same as plotting where the tail of vector A is used to start Vector B, it will align
-            with the resulting vector C.</p>
-
-        <p>Vectors can also be multiplied by a scalar a single number. You simply create a new vector with the values
-            from the old multiplied by the scalar. The direction of the original vector remains but the magnitude
-            increases. A scalar can be a negative number and this will reduce the magnitude.</p>
-
         <h2>Computational Thinking</h2>
 
         <h3>Introduction</h3>

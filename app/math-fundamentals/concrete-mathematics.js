@@ -223,6 +223,10 @@ const ConcreteMathematics = () => (
             math="h'(x) = f'(g(x)) \times g'(x) = 3(3x^2 + 2)^2 \times 6x = 18x(3x^2+2)^2"/></p>
 
 
+        <h4>Tangent Line</h4>
+        <p>add examples from book for these</p>
+<h4>Normal Line</h4>
+
         <h4>Higher Order Derivatives</h4>
 
         <p>You can differentiate multiple times as required to get higher order derivatives. This enables you to see the
@@ -354,12 +358,35 @@ const ConcreteMathematics = () => (
 
         <p>Now put this together to give the following then solve.</p>
 
-        <p><InlineMath math="x sin(x) - \int 1 \; sin(x) \;dx"/> solved is <InlineMath math="x sin(x) + cos(x) + c"/></p>
+        <p><InlineMath math="x sin(x) - \int 1 \; sin(x) \;dx"/> solved is <InlineMath math="x sin(x) + cos(x) + c"/>
+        </p>
         <p>Put simply we have (u integral v) minus integral of (derivative u, integral v)</p>
 
         <h4>Integration by Substitution (Reverse Chain Rule)</h4>
+
+        <p>The reverse chain rule is a method to find an integral but only when it can be setup in a specific way.</p>
+
         <p>This is the method for making a substitution to simplify an integral <a
-            href={"https://www.mathsisfun.com/calculus/integration-by-substitution.html"}>reference.</a> .</p>
+            href={"https://www.mathsisfun.com/calculus/integration-by-substitution.html"}>reference.</a></p>
+
+        <p>It requires being able to write the integral in this form <InlineMath math="\int \;f(g(x)) \;g'(x) \;dx"/> this
+            gives <InlineMath math="g(x)"/> and its derivative <InlineMath math="g'(x)"/>.</p>
+
+        <p>Lets take an example. <InlineMath math="\int cos(x^2) \;2x \;dx"/>. Identify the substitution <InlineMath
+            math="u = x^2"/>. Now compute <InlineMath math="du = \;2x \;dx"/>.</p>
+
+        <p>Do the replacements of <InlineMath math="u"/>. <InlineMath
+            math="\int cos(x^2) \;2x \;dx = \int cos(u) \;du"/>. <strong>Integrate</strong> the form. <InlineMath
+            math="\int cos(u) \;du = sin(u) + c."/></p>
+
+        <p>Now substitute back u. <InlineMath math="sin(x^2) + c"/>.</p>
+
+        <p>This only works for certain integrals some require rearranging to get it into this form for example when
+            multiplied by a constant. You need the u to be equal to the derivative of the multiplier as per the formula
+            stated at the start of this section. </p>
+
+        <p>For example <InlineMath math="\int cos(x^2) \;6x \;dx"/> is not on the correct form but it can be by moving the
+            multiplier out. <InlineMath math="\int cos(x^2) 6x \;dx = 3 \int cos(x^2) \; 2x \; dx"/></p>
 
         <h3 id={"differential"}></h3>
 
