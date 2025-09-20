@@ -23,6 +23,11 @@ const ConcreteMathematics = () => (
             something into small pieces to find out how it changes. Whilst integral calculus is joining the small
             pieces together to find out how much there is. </p>
 
+        <p>Terms to remember before starting.</p>
+
+        <p>Secant Line: A line that intersects a curve at two distinct points, representing the average rate of change between those two points.</p> 
+        <p>Tangent Line: A line that touches a curve at a single point, representing the instantaneous rate of change at that exact point. </p>
+
         <p>Learning calculus follows three main parts limits and then differentiation and integration.</p>
 
         <h3 id={"limits"}>Limits</h3>
@@ -152,10 +157,89 @@ const ConcreteMathematics = () => (
             by finding the derived function. You can ask to differentiate by the following notations , firstly the
             Liebniz Notation <InlineMath math="\frac{dy}{dx}"/> or <InlineMath math="f'(x)"/>.</p>
 
+        <p>The derivative is the gradient of the tangent to the curve at a point. If you plug in a value of x, you get the slope at that specific point.</p>
+
         <h4>Derivatives Rules</h4>
 
         <p>To differentiate there are many rules that can be followed these can be found listed on <a
             href={"https://www.mathsisfun.com/calculus/derivatives-rules.html"}>Maths is Fun</a></p>
+
+        <p>Before you start differentiating you should:</p>
+        <p>Remove brackets, separate top heavy fractions, change terms involving roots into fractional powers and change terms with <i>x</i> on the denominator to negative powers.</p>
+
+        <table className="derivative-rules-table" style={{borderCollapse: "collapse", width: "100%", margin: "1em 0"}}>
+            <thead>
+                <tr>
+                    <th style={{border: "1px solid #ccc", padding: "8px"}}>Rule</th>
+                    <th style={{border: "1px solid #ccc", padding: "8px"}}>Formula</th>
+                    <th style={{border: "1px solid #ccc", padding: "8px"}}>Example</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style={{border: "1px solid #ccc", padding: "8px"}}>Constant Rule</td>
+                    <td style={{border: "1px solid #ccc", padding: "8px"}}><InlineMath math="\frac{d}{dx}c = 0" /></td>
+                    <td style={{border: "1px solid #ccc", padding: "8px"}}><InlineMath math="\frac{d}{dx}7 = 0" /></td>
+                </tr>
+                <tr>
+                    <td style={{border: "1px solid #ccc", padding: "8px"}}>Power Rule</td>
+                    <td style={{border: "1px solid #ccc", padding: "8px"}}><InlineMath math="\frac{d}{dx}x^n = nx^{n-1}" /></td>
+                    <td style={{border: "1px solid #ccc", padding: "8px"}}><InlineMath math="\frac{d}{dx}x^3 = 3x^2" /></td>
+                </tr>
+                <tr>
+                    <td style={{border: "1px solid #ccc", padding: "8px"}}>Constant Multiple Rule</td>
+                    <td style={{border: "1px solid #ccc", padding: "8px"}}><InlineMath math="\frac{d}{dx}[cf(x)] = c f'(x)" /></td>
+                    <td style={{border: "1px solid #ccc", padding: "8px"}}><InlineMath math="\frac{d}{dx}5x^2 = 5 \cdot 2x = 10x" /></td>
+                </tr>
+                <tr>
+                    <td style={{border: "1px solid #ccc", padding: "8px"}}>Sum Rule</td>
+                    <td style={{border: "1px solid #ccc", padding: "8px"}}><InlineMath math="\frac{d}{dx}[f(x)+g(x)] = f'(x) + g'(x)" /></td>
+                    <td style={{border: "1px solid #ccc", padding: "8px"}}><InlineMath math="\frac{d}{dx}(x^2 + x) = 2x + 1" /></td>
+                </tr>
+                <tr>
+                    <td style={{border: "1px solid #ccc", padding: "8px"}}>Difference Rule</td>
+                    <td style={{border: "1px solid #ccc", padding: "8px"}}><InlineMath math="\frac{d}{dx}[f(x)-g(x)] = f'(x) - g'(x)" /></td>
+                    <td style={{border: "1px solid #ccc", padding: "8px"}}><InlineMath math="\frac{d}{dx}(x^2 - x) = 2x - 1" /></td>
+                </tr>
+                <tr>
+                    <td style={{border: "1px solid #ccc", padding: "8px"}}>Product Rule</td>
+                    <td style={{border: "1px solid #ccc", padding: "8px"}}><InlineMath math="\frac{d}{dx}[f(x)g(x)] = f(x)g'(x) + f'(x)g(x)" /></td>
+                    <td style={{border: "1px solid #ccc", padding: "8px"}}><InlineMath math="\frac{d}{dx}(x^2 \sin x) = x^2 \cos x + 2x \sin x" /></td>
+                </tr>
+                <tr>
+                    <td style={{border: "1px solid #ccc", padding: "8px"}}>Quotient Rule</td>
+                    <td style={{border: "1px solid #ccc", padding: "8px"}}><InlineMath math="\frac{d}{dx}\left[\frac{f(x)}{g(x)}\right] = \frac{f'(x)g(x) - f(x)g'(x)}{[g(x)]^2}" /></td>
+                    <td style={{border: "1px solid #ccc", padding: "8px"}}><InlineMath math="\frac{d}{dx}\left(\frac{x}{x+1}\right) = \frac{1(x+1) - x(1)}{(x+1)^2} = \frac{1}{(x+1)^2}" /></td>
+                </tr>
+                <tr>
+                    <td style={{border: "1px solid #ccc", padding: "8px"}}>Chain Rule</td>
+                    <td style={{border: "1px solid #ccc", padding: "8px"}}><InlineMath math="\frac{d}{dx}f(g(x)) = f'(g(x))g'(x)" /></td>
+                    <td style={{border: "1px solid #ccc", padding: "8px"}}><InlineMath math="\frac{d}{dx}(3x^2+2)^3 = 3(3x^2+2)^2 \cdot 6x = 18x(3x^2+2)^2" /></td>
+                </tr>
+                <tr>
+                    <td style={{border: "1px solid #ccc", padding: "8px"}}>Exponential Rule</td>
+                    <td style={{border: "1px solid #ccc", padding: "8px"}}><InlineMath math="\frac{d}{dx}e^x = e^x" /></td>
+                    <td style={{border: "1px solid #ccc", padding: "8px"}}><InlineMath math="\frac{d}{dx}e^{2x} = 2e^{2x}" /></td>
+                </tr>
+                <tr>
+                    <td style={{border: "1px solid #ccc", padding: "8px"}}>Logarithm Rule</td>
+                    <td style={{border: "1px solid #ccc", padding: "8px"}}><InlineMath math="\frac{d}{dx}\ln x = \frac{1}{x}" /></td>
+                    <td style={{border: "1px solid #ccc", padding: "8px"}}><InlineMath math="\frac{d}{dx}\ln(3x) = \frac{1}{3x} \cdot 3 = \frac{1}{x}" /></td>
+                </tr>
+                <tr>
+                    <td style={{border: "1px solid #ccc", padding: "8px"}}>Trigonometric Rules</td>
+                    <td style={{border: "1px solid #ccc", padding: "8px"}}>
+                        <div><InlineMath math="\frac{d}{dx}\sin x = \cos x" /></div>
+                        <div><InlineMath math="\frac{d}{dx}\cos x = -\sin x" /></div>
+                        <div><InlineMath math="\frac{d}{dx}\tan x = \sec^2 x" /></div>
+                    </td>
+                    <td style={{border: "1px solid #ccc", padding: "8px"}}>
+                        <div><InlineMath math="\frac{d}{dx}\sin(2x) = 2\cos(2x)" /></div>
+                        <div><InlineMath math="\frac{d}{dx}\cos(3x) = -3\sin(3x)" /></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
         <h5>Power Rule</h5>
         <p>For example the power rule to solve differentiation is to bring the power down to the front of x and multiply

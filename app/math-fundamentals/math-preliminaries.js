@@ -53,7 +53,7 @@ const MathPreliminaries = () => (
         <BlockMath math="O(X) = \frac{2}{1} = 0.2"/>
 
         <h4>Joint Probability</h4>
-        <p>Single probability of an event <InlineMath math={"P(x)"}></InlineMath> is also know as marginal probability.
+        <p>Single probability of an event <InlineMath math={"P(x)"}></InlineMath> is also known as marginal probability.
             You can start combining probabilities and this is called <strong>joint probabilities</strong> when two or
             more events occur simultaneously. For example
             lets say we want to see the probability of rolling a 2 and flipping a tail. These are two separate

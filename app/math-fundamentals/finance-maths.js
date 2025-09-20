@@ -1,6 +1,6 @@
 import React from 'react';
 import Latex from 'react-latex';
-import {BlockMath, InlineMath} from 'react-katex';
+import { BlockMath, InlineMath } from 'react-katex';
 
 const FinanceMathematics = () => (
 
@@ -159,6 +159,14 @@ const FinanceMathematics = () => (
         <h5>Model Selection</h5>
 
         {/*https://otexts.com/fpp2/autocorrelation.html*/}
+
+
+        <h2>Commodity Models</h2>
+        <p>Commodities are heterogeneous products therefore finding a fair price is difficult. Therefore prices come from exchange traded prices where available or PRA which are prices reported by publishers or information providers.</p>
+        <p>Commodities futures have <strong>contango</strong> markets where the future price is above the expected future spot price. Or a <strong>normal backwardation</strong> when the futures price is below the expected future spot price.
+            Further reading can be found at <a href="https://www.investopedia.com/articles/07/contango_backwardation.asp#:~:text=If%20the%20price%20of%20a,market%20is%20in%20normal%20backwardation.">investopedia</a>.</p>
+
+        <p></p>
 
     </div>
 
