@@ -1565,6 +1565,29 @@ const BiteSizeMath = () => (
             boundary which is <InlineMath math="2r = d" /> two times the radius is the diameter. The formula for
             calculating the circumference is <InlineMath math="c = \pi d" /> or <InlineMath math="c = 2\pi r" />.</p>
 
+        <h5>Circle Rules</h5>
+        
+        <ul className="text-list">
+            <li>
+                A tangent and radius meet at 90 degrees. A tangent is a straight line that touches the circle at one point on the circumference. 
+            </li>
+            <li>
+                A radii is a plural of radius lines. Two radii form an isosceles triangle with the chord.
+            </li>
+            <li>
+                A chord is any straight line drawn between two points on the circumference of a circle. The perpendicular bisect of a chord bisects the chord and passes through the centre of the circle.
+            </li>
+            <li>
+                Fron the same two points the angle made at the circumference is half the angle made at the centre.
+            </li>
+            <li>
+                A triangle drawn from the two ends of a diameter to any point on the circumference is a right angle.
+            </li>
+            <li>
+                
+            </li>
+        </ul>
+
         <p>The <strong>cartesian</strong> equation of a circle with a centre of (a,b) and radius r can be written
             as <InlineMath math="(x-a)^2 + (y-b)^2 = r^2" /> where x and y are points on the circle. This can be
             thought
@@ -1977,6 +2000,9 @@ const BiteSizeMath = () => (
         <p>A composite function is when you take multiple functions and combine them to make a composite one. They are
             written in the order they should be executed. </p>
 
+        <p>An example is <InlineMath math="f(x) = x^3" /> and <InlineMath math="g(x) = 2x" /> then you have <InlineMath math="fg(x) = f(2x) = (2x)^3 = 8x^3" /> and then 
+        <InlineMath math="gf(x) = g(x^3) = 2(x^3) = 2x^3" /> therefore <InlineMath math="fg(x) \neq gf(x)" /> function composition is not commutative and hte order matters.</p>
+
         <h4>Inverse Functions</h4>
 
         <p><strong>Only one to one functions have inverses</strong>. An inverse function does the opposite to the
@@ -1994,6 +2020,26 @@ const BiteSizeMath = () => (
             <li>Replace <i>x</i> with <InlineMath math="f^{-1}(x)" /> and <i>y</i> with <i>x</i>.</li>
             <li>Finally you then swap the domain and the range.</li>
         </ul>
+
+        <p>Walking through an example. </p>
+
+        <BlockMath math="f(x) = 2x^2 + 5, x \geq 0" />
+        <BlockMath math="y = 2x^2 + 5, x \geq 0" />
+        <BlockMath math="y - 5 = 2x^2" />
+        <BlockMath math="\frac{y - 5}{2} = x^2" />
+        <BlockMath math="\sqrt{\frac{y - 5}{2}} = x" />
+        <p>Because the original domain restricts <InlineMath math="x \geq 0 " />, we take the positive square root.</p>
+
+        <BlockMath math="f^{-1}(x) = \sqrt{\frac{x - 5}{2}}, x \geq 5" />
+
+        <p>The domain of <InlineMath math="f^{-1}(x)" /> is range of the original function and the range of <InlineMath math="f^{-1}(x) " /> is the domain of the original function.</p>
+
+        <p>To verify this you place the inverse function as a argument to the original function and solve.</p>
+
+        <BlockMath math="f(f^{-1}(x)) = 2(\sqrt{\frac{x - 5}{2}})^2 + 5" />
+        <BlockMath math="= 2(\frac{x - 5}{2}) + 5" />
+        <BlockMath math="= (x - 5) + 5" />
+        <BlockMath math="= x" />    
 
         <p>If you need to draw the inverse function it is a reflection of the original function graph along <i>y=x</i>.
         </p>
