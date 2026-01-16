@@ -1,11 +1,15 @@
 import React from 'react';
 import BlogPage from "../blog-page";
 import heap from "../../images/heap/max-heap.png";
+import ds from "../../images/datastructure.png";
+import staticarray from "../../images/staticarray.png"
+import assembly from "../../images/datastructure/assemblyref.png"
+import arraycode from "../../images/datastructure/codeexample.png"
 import Latex from 'react-latex';
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import {darcula} from 'react-syntax-highlighter/styles/hljs';
-import {HashLink as Link} from 'react-router-hash-link';
-import {BlockMath, InlineMath} from 'react-katex';
+import { darcula } from 'react-syntax-highlighter/styles/hljs';
+import { HashLink as Link } from 'react-router-hash-link';
+import { BlockMath, InlineMath } from 'react-katex';
 
 const algorithms = {
     title: 'Data Structures',
@@ -16,6 +20,7 @@ const algorithms = {
             <ul className="text-list">
                 <li><Link to={"#DataStructures"}>Data Structures</Link></li>
                 <ul className="text-list">
+                    <li><Link to={"#Arrays"}>Arrays</Link></li>
                     <li><Link to={"#Set"}>Sets</Link></li>
                     <li><Link to={"#Stack"}>Stacks</Link></li>
                     <li><Link to={"#Queue"}>Queues</Link></li>
@@ -37,6 +42,48 @@ const algorithms = {
             <h3 id={"DataStructures"}>Data Structures</h3>
 
             <h4>Introduction</h4>
+
+            <p>A data structure is a specific way of organizing, storing, and managing data in a computer so that it can be accessed and modified efficiently, defining the relationships between data elements and the operations that can be applied to them for better performance in software.
+                Data structures are generally organized into two groups Linear Data Structure and Non-linear Data Structure.
+                Linear data structures arrange elements sequentially (one after another) with a single path for traversal, like arrays or linked lists, making them simple for basic operations, while non-linear structures organize data hierarchically or interconnectedly, allowing multiple paths and complex relationships, as seen in trees and graphs, making them better for complex data like social networks or file systems. The key difference is sequential vs. hierarchical/interconnected storage, leading to simpler vs. complex implementation and usage scenarios.
+            </p>
+
+            <img width="50%" height="50%" src={ds} alt="Data Structure Type Image" />
+
+            <br />
+
+            <br />
+            <h5 id={"Arrays"}>Arrays</h5>
+
+            <p>
+                An array is a data structure that holds multiple entries of data by an index. This data is required to be all of the same type.
+                The data is allocated in a single contiguous block of memory which is both memory and time efficient. For static arrays the size of the array must be defined up front.
+            </p>
+            <p>This can be seen in the following diagram.</p>
+
+            <img width="50%" height="50%" src={staticarray} alt="Data Structure Static Array Image" />
+
+            <p>This can be defined in C++ for example with the following code.</p>
+
+            <SyntaxHighlighter language='c++' style={darcula} showLineNumbers={true}
+                wrapLines={true}>{`
+                int a[10];
+                int b[5] {8, 20, 25, 9, 14};
+                `}</SyntaxHighlighter>
+
+
+            <p>A nice guide can be found <a
+                href={"https://www.cs.fsu.edu/~myers/c++/notes/arrays.html"}>here</a> to read up on arrays.</p>
+
+
+            <p>Diving deep in to C arrays for data type <i>T</i> and constant size <i>N</i> <i>T A[N]</i> this line of code below will produce an Array A consisting of 12 single-byte (char) elements.</p>
+
+            <SyntaxHighlighter language='c++' style={darcula} showLineNumbers={true}
+                wrapLines={false}>{`char A[12];\nchar x = A[2];`}</SyntaxHighlighter>
+            <p></p>
+
+            <p>You can even see how we reference the index 2 in the assembly.</p>
+            <img width="50%" height="50%" src={assembly} alt="Data Structure Static Array Image" />
 
             <h5 id={"Set"}>Sets</h5>
 
@@ -169,7 +216,7 @@ const algorithms = {
             </ul>
 
             <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
-                               wrapLines={true}>{`public ListNode detectCycle(ListNode head) {
+                wrapLines={true}>{`public ListNode detectCycle(ListNode head) {
         
         if(head == null || head.next == null) {
             return null;
@@ -209,7 +256,7 @@ const algorithms = {
                 to be current and update current to be the temp next.</p>
 
             <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
-                               wrapLines={true}>{`        if(head == null || head.next == null) {
+                wrapLines={true}>{`        if(head == null || head.next == null) {
             return head;
         }
         
@@ -280,7 +327,7 @@ const algorithms = {
                 A <strong>binary</strong> heap is when there at most
                 two children for each node. Other heaps exists and can differ on number of child nodes. The smallest
                 possible size/height of a complete binary heap with <Latex>$N$</Latex> nodes is <InlineMath
-                    math="\lg n"/>. The height is the number of edges on the longest simple downwards path from the root
+                    math="\lg n" />. The height is the number of edges on the longest simple downwards path from the root
                 to a leaf. A heap will always be completely filled on all levels except the lowest. A heap has some
                 simple operations to find the parent, left and right nodes when it is stored in a array. No pointers
                 required.</p>
@@ -289,7 +336,7 @@ const algorithms = {
                 order of the array view is the same as doing BFS on the tree. As a reminder a complete binary tree is
                 when every level except the lowest is completely filled.</p>
 
-            <img width="90%" height="90%" src={heap} alt="Max Heap Image"/>
+            <img width="90%" height="90%" src={heap} alt="Max Heap Image" />
 
             <p>Root of the tree: is the first element in the stored array. These are when index of array start at 1.</p>
             <p><i>Parent(i) = i/2</i>: Finding the parent index of <i>i</i>.</p>
@@ -325,11 +372,11 @@ const algorithms = {
             </table>
 
 
-            <br/>
-            <br/>
+            <br />
+            <br />
 
             <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
-                               wrapLines={true}>{`private Integer leftChild(int index) {
+                wrapLines={true}>{`private Integer leftChild(int index) {
          return index * 2 + 1;
      }
 
@@ -344,15 +391,15 @@ private void swap(int left, int right) {
 private boolean compare(int left, int right) {
     return heap.get(left) > heap.get(right);
 }`}</SyntaxHighlighter>
-            <br/>
+            <br />
 
             <p>Some common operations on Heaps are:</p>
 
             <h5 id={"HeapB"}>Heap Build</h5>
 
             <p><i>Build Max(Min) Heap</i> produce a Max(Min) heap from unordered array runs in linear time. <InlineMath
-                math="O(n)"/></p>
-            <p><i>Max(Min) Heapify</i> correct a single violation of the Heap property. <InlineMath math="O(\lg n)"/>
+                math="O(n)" /></p>
+            <p><i>Max(Min) Heapify</i> correct a single violation of the Heap property. <InlineMath math="O(\lg n)" />
             </p>
 
 
@@ -376,7 +423,7 @@ private boolean compare(int left, int right) {
 
 
             <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
-                               wrapLines={true}>{`public int insert(int value) {
+                wrapLines={true}>{`public int insert(int value) {
           heap.add(value);
           this.siftUp();
           return this.size();
@@ -409,7 +456,7 @@ private void siftUp() {
             </ul>
 
             <SyntaxHighlighter language='java' style={darcula} showLineNumbers={true}
-                               wrapLines={true}>{`public int extractMax() {
+                wrapLines={true}>{`public int extractMax() {
          // swap first and last element
          this.swap(0, this.size()-1);
          int max = this.heap.get(this.size()-1);
